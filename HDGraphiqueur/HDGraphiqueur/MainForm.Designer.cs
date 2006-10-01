@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.buttonScan = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -141,6 +142,7 @@
             this.treeGraph1.Moteur = null;
             this.treeGraph1.Name = "treeGraph1";
             this.treeGraph1.NbNiveaux = 0;
+            this.treeGraph1.OptionShowSize = false;
             this.treeGraph1.Size = new System.Drawing.Size(450, 444);
             this.treeGraph1.TabIndex = 0;
             // 

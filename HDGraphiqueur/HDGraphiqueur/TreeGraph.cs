@@ -43,6 +43,15 @@ namespace HDGraphiqueur
             set { graphPen = value; }
         }
 
+        private bool optionShowSize = true;
+
+        public bool OptionShowSize
+        {
+            get { return optionShowSize; }
+            set { optionShowSize = value; }
+        }
+
+
         public TreeGraph()
         {
             InitializeComponent();
@@ -143,11 +152,15 @@ namespace HDGraphiqueur
                     }
                     x += this.Width / 2f;
                     y += this.Height / 2f;
-                    SizeF size = graph.MeasureString(node.Name, Font);
+                    string nodeText = node.Name;
+                    if (optionShowSize)
+                        nodeText += Environment.NewLine + FormatSize(node.TotalSize);
+
+                    SizeF size = graph.MeasureString(nodeText, Font);
                     x -= size.Width / 2f;
                     y -= size.Height / 2f;
                     graph.DrawRectangle(new Pen(Color.Black), x, y, size.Width, size.Height);
-                    graph.DrawString(node.Name, Font, new SolidBrush(Color.Black), x, y);
+                    graph.DrawString(nodeText, Font, new SolidBrush(Color.Black), x, y);
                 }
             }
             else
@@ -174,14 +187,39 @@ namespace HDGraphiqueur
                     y = (float)Math.Sin(GetRadianFromDegree(angleCentre)) * hyp;
                     x += this.Width / 2f;
                     y += this.Height / 2f;
-                    SizeF size = graph.MeasureString(node.Name, Font);
+                    StringFormat format = new StringFormat();
+                    format.Alignment = StringAlignment.Center;
+                    string nodeText = node.Name;
+                    if (optionShowSize)
+                        nodeText += Environment.NewLine + FormatSize(node.TotalSize);
+
+                    SizeF size = graph.MeasureString(nodeText, Font);
                     x -= size.Width / 2f;
                     y -= size.Height / 2f;
                     //graph.DrawRectangle(new Pen(Color.Black), x, y, size.Width, size.Height);
-                    graph.DrawString(node.Name, Font, new SolidBrush(Color.Black), x, y);
+                    graph.DrawString(nodeText, Font, new SolidBrush(Color.Black), x, y); //, format);
                 }
 
             }
+        }
+
+        private string FormatSize(long sizeInOctet)
+        {
+            long unit = 1;
+            if (sizeInOctet < unit * 1024)
+                return sizeInOctet.ToString() + " o.";
+            unit *= 1024;
+            if (sizeInOctet < unit * 1024)
+                return String.Format("{0:F} Ko", sizeInOctet / (double)unit);
+            unit *= 1024;
+            if (sizeInOctet < unit * 1024)
+                return String.Format("{0:F} Mo", sizeInOctet / (double)unit);
+            unit *= 1024;
+            if (sizeInOctet < unit * 1024)
+                return String.Format("{0:F} Go", sizeInOctet / (double)unit);
+            unit *= 1024;
+            return String.Format("{0:F} To", sizeInOctet / (double)unit);
+
         }
 
         public double GetRadianFromDegree(float degree)
