@@ -366,7 +366,10 @@ namespace HDGraphiqueurGUI
 
         }
 
-
+        //protected override void NotifyInvalidate(Rectangle invalidatedArea)
+        //{
+        //    base.NotifyInvalidate(this.DisplayRectangle);
+        //}
 
     }
 }
