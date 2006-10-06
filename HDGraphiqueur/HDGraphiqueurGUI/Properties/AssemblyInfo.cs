@@ -7,7 +7,7 @@ using System.Resources;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("HDGraphiqueur")]
-[assembly: AssemblyDescription("Affiche l'occupation de l'espace disque par camenberts imbriqués.")]
+[assembly: AssemblyDescription("Affiche l'occupation de l'espace disque par camemberts imbriqués.")] // TODO: traductions ?
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("HDGraphiqueur")]
