@@ -261,30 +261,6 @@ namespace HDGraphiqueurGUI
             Help.ShowHelp(this, GetHelpFile(), HelpNavigator.Find, "");
         }
 
-        #endregion
-
-        #region Méthodes
-
-        public void PrintStatus(string message)
-        {
-            if (message != null && message.Length > 0)
-                toolStripStatusLabel.Text = DateTime.Now.ToString() + " : " + message;
-            Application.DoEvents();
-        }
-
-        /// <summary>
-        /// Renvoi le chemin du fichier d'aide.
-        /// </summary>
-        /// <returns>Null ou chaine vide si aucun fichier d'aide.</returns>
-        private string GetHelpFile()
-        {
-            return null;
-            // Exemple :
-            // return @"C:\WINDOWS\Help\notepad.chm"; // TODO: fichier d'aide. Eventuellement, gérer un fichier par langue et donc renvoyer le fichier approprié à la langue en cours.
-        }
-
-        #endregion
-
         private void buttonBrowse_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
@@ -297,20 +273,6 @@ namespace HDGraphiqueurGUI
         private void buttonScan_Click(object sender, EventArgs e)
         {
             LaunchScan();
-        }
-
-        /// <summary>
-        /// Lance le scan et le graphiquage.
-        /// </summary>
-        private void LaunchScan()
-        {
-            int nbNiveaux = (int)numUpDownNbNivx.Value;
-            moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(PrintStatus);
-            moteur.ConstruireArborescence(comboBoxPath.Text, nbNiveaux);
-            treeGraph1.NbNiveaux = nbNiveaux;
-            treeGraph1.Moteur = moteur;
-            treeGraph1.Refresh();
-            PrintStatus("Terminé !");
         }
 
         private void numUpDownNbNivxAffich_ValueChanged(object sender, EventArgs e)
@@ -340,14 +302,14 @@ namespace HDGraphiqueurGUI
                 else
                     MessageBox.Show(resManager.GetString("HdgAlreadyIntegratedInExplorer"),
                                 resManager.GetString("OperationFailedTitle"),
-                                MessageBoxButtons.OK, 
+                                MessageBoxButtons.OK,
                                 MessageBoxIcon.Asterisk);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(String.Format(resManager.GetString("UnableToIntegrateInExplorer"), ex.Message),
                                 resManager.GetString("OperationFailedTitle"),
-                                MessageBoxButtons.OK, 
+                                MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                 // TODO: log erreur
             }
@@ -378,11 +340,59 @@ namespace HDGraphiqueurGUI
             }
         }
 
+        #endregion
 
+        #region Méthodes
 
+        public void PrintStatus(string message)
+        {
+            if (message != null && message.Length > 0)
+                toolStripStatusLabel.Text = DateTime.Now.ToString() + " : " + message;
+            Application.DoEvents();
+        }
 
+        /// <summary>
+        /// Renvoi le chemin du fichier d'aide.
+        /// </summary>
+        /// <returns>Null ou chaine vide si aucun fichier d'aide.</returns>
+        private string GetHelpFile()
+        {
+            return null;
+            // Exemple :
+            // return @"C:\WINDOWS\Help\notepad.chm"; // TODO: fichier d'aide. Eventuellement, gérer un fichier par langue et donc renvoyer le fichier approprié à la langue en cours.
+        }
 
+        /// <summary>
+        /// Lance le scan et le graphiquage.
+        /// </summary>
+        private void LaunchScan()
+        {
+            int nbNiveaux = (int)numUpDownNbNivx.Value;
+            moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(PrintStatus);
+            moteur.ConstruireArborescence(comboBoxPath.Text, nbNiveaux);
+            treeGraph1.NbNiveaux = nbNiveaux;
+            treeGraph1.Moteur = moteur;
+            treeGraph1.Refresh();
+            PrintStatus("Terminé !");
+            treeGraph1.UpdateHoverNode = new TreeGraph.UpdateHoverNodeDelegate(PrintNodeHoverCursor);
+        }
 
+        private void PrintNodeHoverCursor(DirectoryNode node)
+        {
+            if (node == null)
+                PrintStatus("Cursor hover no directory.");
+            else
+            {
+                PrintStatus("Cursor hover directory " + node.Path);
+                //MessageBox.Show("Cursor hover directory " + node.Path);
+            }
+        }
 
+        #endregion
+
+        private void MainForm_SizeChanged(object sender, EventArgs e)
+        {
+            treeGraph1.Refresh();
+        }
     }
 }

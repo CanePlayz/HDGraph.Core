@@ -51,6 +51,18 @@ namespace HDGraphiqueurGUI
             set { optionShowSize = value; }
         }
 
+        public delegate void UpdateHoverNodeDelegate(DirectoryNode node);
+
+        private UpdateHoverNodeDelegate updateHoverNode;
+
+        public UpdateHoverNodeDelegate UpdateHoverNode
+        {
+            get { return updateHoverNode; }
+            set { updateHoverNode = value; }
+        }
+
+        private Point? lastClicPosition = null;
+
 
         public TreeGraph()
         {
@@ -99,6 +111,13 @@ namespace HDGraphiqueurGUI
             PaintTree(root, pieRec, 0, 360);
         }
 
+        /// <summary>
+        /// Procédure récursive pour graphiquer les acrs de cercle. Graphique de l'extérieur vers l'intérieur.
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="rec"></param>
+        /// <param name="startAngle"></param>
+        /// <param name="endAngle"></param>
         private void PaintTree(DirectoryNode node, RectangleF rec, float startAngle, float endAngle)
         {
             if (node.TotalSize == 0)
@@ -125,6 +144,7 @@ namespace HDGraphiqueurGUI
 
         private void PaintDirPart(DirectoryNode node, RectangleF rec, float startAngle, float nodeAngle)
         {
+            // on gère les arcs "pleins" (360 de manière particulière pour avoir un disque "plein", sans trait à l'angle 0)
             if (nodeAngle == 360)
             {
                 if (!printDirNames)
@@ -227,6 +247,11 @@ namespace HDGraphiqueurGUI
             return degree * Math.PI / 180f;
         }
 
+        public double GetDegreeFromRadian(double radian)
+        {
+            return radian * 180 / Math.PI;
+        }
+
         private void PaintFilesPart(RectangleF rec, float startAngle, float endAngle)
         {
             float nodeAngle = endAngle - startAngle;
@@ -245,6 +270,84 @@ namespace HDGraphiqueurGUI
         {
             Refresh();
         }
+
+        private void SendPointedNode()
+        {
+            if (updateHoverNode == null)
+                return;
+
+            DirectoryNode foundNode = FindNodeByCursorPosition(PointToClient(Cursor.Position));
+            UpdateHoverNode(foundNode);
+        }
+
+        private DirectoryNode FindNodeByCursorPosition(Point curseurPos)
+        {
+            // On a les coordonnées du curseur dans le controle.
+            // Il faut faire un changement de référentiel pour avoir les coordonnées vis à vis de l'origine (le centre des cercles).
+            curseurPos.X -= Width / 2;
+            curseurPos.Y -= Height / 2;
+            // On a maintenant les coordonnées vis-à-vis du centre des cercles.
+            //System.Windows.Forms.MessageBox.Show(curseurPos.ToString());
+
+            // Cherchons l'angle formé formé par le curseur et la taille du rayon jusqu'à celui-ci.
+            double angle = GetDegreeFromRadian(Math.Atan(-curseurPos.Y / (double)curseurPos.X));
+            // l'angle obtenu à corriger en fonction du quartier où se situe le curseur
+            if (curseurPos.X < 0)
+                angle = 180 - angle;
+            else
+                angle = (curseurPos.Y < 0) ? 360 - angle : -angle;
+
+            double rayon = Math.Sqrt(Math.Pow(curseurPos.X, 2) + Math.Pow(curseurPos.Y, 2));
+            //System.Windows.Forms.MessageBox.Show("angle: " + angle + "; rayon: " + rayon);
+            if (root == null || root.TotalSize == 0)
+                return root;
+            DirectoryNode foundNode = FindNodeInTree(root, 0, 0, 360, angle, rayon);
+            return foundNode;
+        }
+
+        private DirectoryNode FindNodeInTree(DirectoryNode node, float levelHeight, float startAngle, float endAngle, double cursorAngle, double cursorLen)
+        {
+            if (node.TotalSize == 0)
+                return node;
+            float nodeAngle = endAngle - startAngle;
+            levelHeight += pasNiveau;
+            if (levelHeight > cursorLen && cursorAngle >= startAngle && cursorAngle <= endAngle)
+                return node;
+            long cumulSize = 0;
+            float currentStartAngle;
+            foreach (DirectoryNode childNode in node.Children)
+            {
+                currentStartAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
+                float childAngle = childNode.TotalSize * nodeAngle / node.TotalSize;
+                if (cursorLen > levelHeight && cursorAngle >= currentStartAngle && cursorAngle <= (currentStartAngle + childAngle))
+                    return FindNodeInTree(childNode, levelHeight, currentStartAngle, currentStartAngle + childAngle, cursorAngle, cursorLen);
+                cumulSize += childNode.TotalSize;
+            }
+            currentStartAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
+            return null;
+        }
+
+        private void TreeGraph_MouseMove(object sender, MouseEventArgs e)
+        {
+            SendPointedNode();
+        }
+
+        private void TreeGraph_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastClicPosition = PointToClient(Cursor.Position);
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            if (!lastClicPosition.HasValue)
+                return;
+            DirectoryNode node = FindNodeByCursorPosition(lastClicPosition.Value);
+            bool nodeIsNotNull = (node != null);
+            directoryPropertiesToolStripMenuItem.Enabled = nodeIsNotNull;
+            centerGraphOnThisDirectoryToolStripMenuItem.Enabled = nodeIsNotNull;
+        }
+
+
 
     }
 }
