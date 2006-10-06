@@ -123,6 +123,18 @@
   <data name="ErrorInConfigLanguageTitle" xml:space="preserve">
     <value>Language code error in config file</value>
   </data>
+  <data name="HdgAlreadyDesIntegratedInExplorer" xml:space="preserve">
+    <value>HDG is currently NOT integrated in the explorer context menu. Nothing to do !</value>
+  </data>
+  <data name="HdgAlreadyIntegratedInExplorer" xml:space="preserve">
+    <value>HDG has already been integrated in the explorer. Nothing to do !</value>
+  </data>
+  <data name="HdgCorrectlyDesIntegratedInExplorer" xml:space="preserve">
+    <value>HDG has been successfully removed from the explorer context menu.</value>
+  </data>
+  <data name="HdgCorrectlyIntegratedInExplorer" xml:space="preserve">
+    <value>Integration successfull ! Try to right click on a folder...</value>
+  </data>
   <data name="languageApplied" xml:space="preserve">
     <value>Language setting has been modified. Until you restart the application, only new windows will use the correct settings.</value>
   </data>
@@ -135,7 +147,19 @@
   <data name="loadingLanguageList" xml:space="preserve">
     <value>Loading language list...</value>
   </data>
+  <data name="OperationFailedTitle" xml:space="preserve">
+    <value>Operation failed</value>
+  </data>
+  <data name="OperationSuccessfullTitle" xml:space="preserve">
+    <value>Operation successfull</value>
+  </data>
   <data name="statusReady" xml:space="preserve">
     <value>Ready.</value>
+  </data>
+  <data name="UnableToDesIntegrateInExplorer" xml:space="preserve">
+    <value>An error prevent you to do the operation. Perhaps that you don't have rights to do this (try as administrator if you're not). Error detail : {0}.</value>
+  </data>
+  <data name="UnableToIntegrateInExplorer" xml:space="preserve">
+    <value>An error prevent you to do the operation. Perhaps that you don't have rights to do this (try as administrator if you're not). Error detail : {0}.</value>
   </data>
 </root>

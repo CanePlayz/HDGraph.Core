@@ -330,39 +330,52 @@ namespace HDGraphiqueurGUI
 
         private void addMeToTheExplorerConToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Create a RegistryKey, which will access the HKEY_CLASSES_ROOT
-            // key in the registry of this machine.
-            RegistryKey rk = Registry.ClassesRoot;
-            rk = rk.OpenSubKey("Folder");
-            rk = rk.OpenSubKey("shell", true);
-            string hdgKey = "HDGraphiqueur";
-            if (rk.OpenSubKey(hdgKey) != null)
+            try
             {
-                MessageBox.Show("TODO: HDG déjà enregistré !"); // TODO
-                return;
+                if (HDGTools.AddMeToExplorerContextMenu())
+                    MessageBox.Show(resManager.GetString("HdgCorrectlyIntegratedInExplorer"),
+                                resManager.GetString("OperationSuccessfullTitle"),
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+                else
+                    MessageBox.Show(resManager.GetString("HdgAlreadyIntegratedInExplorer"),
+                                resManager.GetString("OperationFailedTitle"),
+                                MessageBoxButtons.OK, 
+                                MessageBoxIcon.Asterisk);
             }
-            rk = rk.CreateSubKey(hdgKey);
-            rk.SetValue("", "Graphiquer l'espace avec HDG"); // TODO
-            rk = rk.CreateSubKey("command");
-            rk.SetValue("", Environment.GetCommandLineArgs()[0] + " \"%1\"");
-            MessageBox.Show("TODO: Ok !"); // TODO
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format(resManager.GetString("UnableToIntegrateInExplorer"), ex.Message),
+                                resManager.GetString("OperationFailedTitle"),
+                                MessageBoxButtons.OK, 
+                                MessageBoxIcon.Error);
+                // TODO: log erreur
+            }
         }
 
         private void removeMeFromTheExplorerContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Create a RegistryKey, which will access the HKEY_CLASSES_ROOT
-            // key in the registry of this machine.
-            RegistryKey rk = Registry.ClassesRoot;
-            rk = rk.OpenSubKey("Folder");
-            rk = rk.OpenSubKey("shell", true);
-            string hdgKey = "HDGraphiqueur";
-            if (rk.OpenSubKey(hdgKey) == null)
+            try
             {
-                MessageBox.Show("TODO: HDG non intégré à l'explorateur: rien à faire !"); // TODO
-                return;
+                if (HDGTools.RemoveMeFromExplorerContextMenu())
+                    MessageBox.Show(resManager.GetString("HdgCorrectlyDesIntegratedInExplorer"),
+                                resManager.GetString("OperationSuccessfullTitle"),
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+                else
+                    MessageBox.Show(resManager.GetString("HdgAlreadyDesIntegratedInExplorer"),
+                                resManager.GetString("OperationFailedTitle"),
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Asterisk);
             }
-            rk.DeleteSubKeyTree(hdgKey);
-            MessageBox.Show("TODO: Ok !"); // TODO
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format(resManager.GetString("UnableToDesIntegrateInExplorer"), ex.Message),
+                                resManager.GetString("OperationFailedTitle"),
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
+                // TODO: log erreur
+            }
         }
 
 

@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HDGraphiqueur_old", "HDGraphiqueur\HDGraphiqueur_old.csproj", "{F004CF3B-AA1B-4E7E-9B70-0D7C67DD13AB}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HDGraphiqueurGUI", "HDGraphiqueurGUI\HDGraphiqueurGUI.csproj", "{99A5D2B9-4B2C-4177-A69C-02BCB163DC78}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HDGraphiqueurSetup", "HDGraphiqueurSetup\HDGraphiqueurSetup.vdproj", "{EE7BF0A8-9FBA-4CAD-8B88-469EF41B7DF1}"
@@ -13,10 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F004CF3B-AA1B-4E7E-9B70-0D7C67DD13AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F004CF3B-AA1B-4E7E-9B70-0D7C67DD13AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F004CF3B-AA1B-4E7E-9B70-0D7C67DD13AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F004CF3B-AA1B-4E7E-9B70-0D7C67DD13AB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{99A5D2B9-4B2C-4177-A69C-02BCB163DC78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{99A5D2B9-4B2C-4177-A69C-02BCB163DC78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99A5D2B9-4B2C-4177-A69C-02BCB163DC78}.Release|Any CPU.ActiveCfg = Release|Any CPU

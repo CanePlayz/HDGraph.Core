@@ -79,6 +79,42 @@ namespace HDGraphiqueurGUI.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à HDG is currently NOT integrated in the explorer context menu. Nothing to do !.
+        /// </summary>
+        internal static string HdgAlreadyDesIntegratedInExplorer {
+            get {
+                return ResourceManager.GetString("HdgAlreadyDesIntegratedInExplorer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à HDG has already been integrated in the explorer. Nothing to do !.
+        /// </summary>
+        internal static string HdgAlreadyIntegratedInExplorer {
+            get {
+                return ResourceManager.GetString("HdgAlreadyIntegratedInExplorer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à HDG has been successfully removed from the explorer context menu..
+        /// </summary>
+        internal static string HdgCorrectlyDesIntegratedInExplorer {
+            get {
+                return ResourceManager.GetString("HdgCorrectlyDesIntegratedInExplorer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Integration successfull ! Try to right click on a folder....
+        /// </summary>
+        internal static string HdgCorrectlyIntegratedInExplorer {
+            get {
+                return ResourceManager.GetString("HdgCorrectlyIntegratedInExplorer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Language setting has been modified. Until you restart the application, only new windows will use the correct settings..
         /// </summary>
         internal static string languageApplied {
@@ -115,11 +151,47 @@ namespace HDGraphiqueurGUI.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Operation failed.
+        /// </summary>
+        internal static string OperationFailedTitle {
+            get {
+                return ResourceManager.GetString("OperationFailedTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Operation successfull.
+        /// </summary>
+        internal static string OperationSuccessfullTitle {
+            get {
+                return ResourceManager.GetString("OperationSuccessfullTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Ready..
         /// </summary>
         internal static string statusReady {
             get {
                 return ResourceManager.GetString("statusReady", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à An error prevent you to do the operation. Perhaps that you don&apos;t have rights to do this (try as administrator if you&apos;re not). Error detail : {0}..
+        /// </summary>
+        internal static string UnableToDesIntegrateInExplorer {
+            get {
+                return ResourceManager.GetString("UnableToDesIntegrateInExplorer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à An error prevent you to do the operation. Perhaps that you don&apos;t have rights to do this (try as administrator if you&apos;re not). Error detail : {0}..
+        /// </summary>
+        internal static string UnableToIntegrateInExplorer {
+            get {
+                return ResourceManager.GetString("UnableToIntegrateInExplorer", resourceCulture);
             }
         }
     }

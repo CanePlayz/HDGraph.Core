@@ -123,6 +123,18 @@
   <data name="ErrorInConfigLanguageTitle" xml:space="preserve">
     <value>Le code de la langue du fichier de config est erroné.</value>
   </data>
+  <data name="HdgAlreadyDesIntegratedInExplorer" xml:space="preserve">
+    <value>HDG n'est pas intégré à l'explorateur, impossible donc de le retirer !</value>
+  </data>
+  <data name="HdgAlreadyIntegratedInExplorer" xml:space="preserve">
+    <value>HDG est déjà intégré à l'explorateur !</value>
+  </data>
+  <data name="HdgCorrectlyDesIntegratedInExplorer" xml:space="preserve">
+    <value>HDG a été retiré avec succès du menu contextuel de l'explorateur.</value>
+  </data>
+  <data name="HdgCorrectlyIntegratedInExplorer" xml:space="preserve">
+    <value>HDG a été ajouté avec succès au menu contextuel de l'explorateur. Testez en faisant un clic droit sur un dossier...</value>
+  </data>
   <data name="languageApplied" xml:space="preserve">
     <value>Les paramètres de langue ont été modifiés. Avant le prochain démarrage de l'application, seules les nouvelles fenêtres seront affectées.</value>
   </data>
@@ -135,7 +147,19 @@
   <data name="loadingLanguageList" xml:space="preserve">
     <value>Chargement de la liste des langues...</value>
   </data>
+  <data name="OperationFailedTitle" xml:space="preserve">
+    <value>Echec de l'opération</value>
+  </data>
+  <data name="OperationSuccessfullTitle" xml:space="preserve">
+    <value>Operation réussie</value>
+  </data>
   <data name="statusReady" xml:space="preserve">
     <value>Prêt.</value>
+  </data>
+  <data name="UnableToDesIntegrateInExplorer" xml:space="preserve">
+    <value>Une erreur s'est produite, aboutissant à l'échec de l'opération. Vous ne disposez peut-être pas des droits suffisants pour effectuer cette opération. Essayez en tant qu'administrateur si vous ne l'êtes pas déjà. Détail de l'erreur : {0}.</value>
+  </data>
+  <data name="UnableToIntegrateInExplorer" xml:space="preserve">
+    <value>Une erreur s'est produite, aboutissant à l'échec de l'opération. Vous ne disposez peut-être pas des droits suffisants pour effectuer cette opération. Essayez en tant qu'administrateur si vous ne l'êtes pas déjà. Détail de l'erreur : {0}.</value>
   </data>
 </root>

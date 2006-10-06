@@ -44,6 +44,7 @@
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
     <Compile Include="DirectoryNode.cs" />
+    <Compile Include="HDGTools.cs" />
     <Compile Include="LanguageForm.cs">
       <SubType>Form</SubType>
     </Compile>
