@@ -32,16 +32,22 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.directoryPropertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.centerGraphOnThisDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.centerGraphOnParentDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.directoryNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.directoryNameToolStripMenuItem,
+            this.toolStripSeparator1,
             this.directoryPropertiesToolStripMenuItem,
-            this.centerGraphOnThisDirectoryToolStripMenuItem});
+            this.centerGraphOnThisDirectoryToolStripMenuItem,
+            this.centerGraphOnParentDirectoryToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(262, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(279, 120);
             this.contextMenuStrip1.Text = "Directory \"[TODO]\"";
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
@@ -56,6 +62,26 @@
             this.centerGraphOnThisDirectoryToolStripMenuItem.Name = "centerGraphOnThisDirectoryToolStripMenuItem";
             this.centerGraphOnThisDirectoryToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
             this.centerGraphOnThisDirectoryToolStripMenuItem.Text = "Center Graph on this directory";
+            this.centerGraphOnThisDirectoryToolStripMenuItem.Click += new System.EventHandler(this.centerGraphOnThisDirectoryToolStripMenuItem_Click);
+            // 
+            // centerGraphOnParentDirectoryToolStripMenuItem
+            // 
+            this.centerGraphOnParentDirectoryToolStripMenuItem.Name = "centerGraphOnParentDirectoryToolStripMenuItem";
+            this.centerGraphOnParentDirectoryToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
+            this.centerGraphOnParentDirectoryToolStripMenuItem.Text = "Center Graph on parent directory";
+            this.centerGraphOnParentDirectoryToolStripMenuItem.Click += new System.EventHandler(this.centerGraphOnParentDirectoryToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(275, 6);
+            // 
+            // directoryNameToolStripMenuItem
+            // 
+            this.directoryNameToolStripMenuItem.Enabled = false;
+            this.directoryNameToolStripMenuItem.Name = "directoryNameToolStripMenuItem";
+            this.directoryNameToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
+            this.directoryNameToolStripMenuItem.Text = "DirectoryName";
             // 
             // TreeGraph
             // 
@@ -78,5 +104,8 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem directoryPropertiesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem centerGraphOnThisDirectoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem centerGraphOnParentDirectoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem directoryNameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

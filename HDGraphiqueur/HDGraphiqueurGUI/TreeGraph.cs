@@ -62,7 +62,7 @@ namespace HDGraphiqueurGUI
         }
 
         private Point? lastClicPosition = null;
-
+        private DirectoryNode lastClicNode = null;
 
         public TreeGraph()
         {
@@ -341,10 +341,29 @@ namespace HDGraphiqueurGUI
         {
             if (!lastClicPosition.HasValue)
                 return;
+
             DirectoryNode node = FindNodeByCursorPosition(lastClicPosition.Value);
+            lastClicNode = node;
             bool nodeIsNotNull = (node != null);
             directoryPropertiesToolStripMenuItem.Enabled = nodeIsNotNull;
-            centerGraphOnThisDirectoryToolStripMenuItem.Enabled = nodeIsNotNull;
+            centerGraphOnThisDirectoryToolStripMenuItem.Enabled = (nodeIsNotNull && node != root);
+            centerGraphOnParentDirectoryToolStripMenuItem.Enabled = (nodeIsNotNull && node == root);
+            if (nodeIsNotNull)
+                directoryNameToolStripMenuItem.Text = node.Name;
+            else
+                directoryNameToolStripMenuItem.Text = "";
+        }
+
+        private void centerGraphOnThisDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lastClicNode != null)
+                this.root = lastClicNode;
+            Refresh();
+        }
+
+        private void centerGraphOnParentDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
 
 
