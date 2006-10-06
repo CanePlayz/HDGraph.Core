@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -7,7 +7,7 @@ namespace HDGraphiqueurGUI
     static class Program
     {
         /// <summary>
-        /// Point d'entrée principal de l'application.
+        /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()

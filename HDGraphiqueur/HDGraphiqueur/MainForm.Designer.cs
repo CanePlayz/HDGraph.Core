@@ -1,4 +1,4 @@
-﻿namespace HDGraphiqueur
+﻿namespace HDGraphiqueurGUI
 {
     partial class MainForm
     {
@@ -37,7 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.numUpDownNbNivxAffich = new System.Windows.Forms.NumericUpDown();
-            this.treeGraph1 = new HDGraphiqueur.TreeGraph();
+            this.treeGraph1 = new HDGraphiqueurGUI.TreeGraph();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivxAffich)).BeginInit();

@@ -7,7 +7,7 @@
     <ProjectGuid>{F004CF3B-AA1B-4E7E-9B70-0D7C67DD13AB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HDGraphiqueur</RootNamespace>
+    <RootNamespace>HDGraphiqueurGUI</RootNamespace>
     <AssemblyName>HDGraphiqueur</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
