@@ -10,6 +10,8 @@ namespace HDGraphiqueurGUI
 {
     public partial class TreeGraph : UserControl
     {
+        #region Variables et propriétés
+
         private DirectoryNode root;
 
         private MoteurGraphiqueur moteur;
@@ -64,40 +66,49 @@ namespace HDGraphiqueurGUI
         private Point? lastClicPosition = null;
         private DirectoryNode lastClicNode = null;
 
+        private Bitmap buffer;
+        private Graphics graph;
+        private RectangleF pieRec;
+        private bool printDirNames = false;
+
+        #endregion
+
+        #region Constructeur
+
         public TreeGraph()
         {
             InitializeComponent();
             this.SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer, true);
         }
 
+        #endregion
+
+        #region Méthodes
         private void TreeGraph_Load(object sender, EventArgs e)
         {
 
         }
-
-        private Bitmap buffer;
-        private Graphics graph;
-        private RectangleF pieRec;
-        private bool printDirNames = false;
 
         protected override void OnPaint(PaintEventArgs e)
         {
             //base.OnPaint(e);
 
             if (buffer == null || buffer.Width != this.Width || buffer.Height != this.Height)
+            {
                 buffer = new Bitmap(this.Width, this.Height);
-            graph = Graphics.FromImage(buffer);
-            graph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            graph.Clear(Color.White);
-            //if (mouseDown)
-            //    g.DrawRectangle(p, new Rectangle(startPoint, size));
-            pasNiveau = Math.Min(this.Width / (float)nbNiveaux / 2, this.Height / (float)nbNiveaux / 2);
-            pieRec = new RectangleF((float)this.Width / 2,
-                                    (float)this.Height / 2,
-                                    0,
-                                    0);
-            PaintTree();
-            graph.Dispose();
+                graph = Graphics.FromImage(buffer);
+                graph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                graph.Clear(Color.White);
+                //if (mouseDown)
+                //    g.DrawRectangle(p, new Rectangle(startPoint, size));
+                pasNiveau = Math.Min(this.Width / (float)nbNiveaux / 2, this.Height / (float)nbNiveaux / 2);
+                pieRec = new RectangleF((float)this.Width / 2,
+                                        (float)this.Height / 2,
+                                        0,
+                                        0);
+                PaintTree();
+                graph.Dispose();
+            }
             e.Graphics.DrawImageUnscaled(buffer, 0, 0);
         }
 
@@ -260,12 +271,6 @@ namespace HDGraphiqueurGUI
             //graph.FillPie(new SolidBrush(Color.White), Rectangle.Round(rec), startAngle, nodeAngle);
         }
 
-        Random rand = new Random();
-        private Color GetNextColor()
-        {
-            return Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255));
-        }
-
         private void TreeGraph_Resize(object sender, EventArgs e)
         {
             Refresh();
@@ -351,7 +356,7 @@ namespace HDGraphiqueurGUI
             centerGraphOnParentDirectoryToolStripMenuItem.Enabled = (nodeIsNotNull && node == root);
             openThisDirectoryInWindowsExplorerToolStripMenuItem.Enabled = nodeIsNotNull;
             if (nodeIsNotNull)
-                directoryNameToolStripMenuItem.Text = node.Name + " ("+ FormatSize(node.TotalSize)+")";
+                directoryNameToolStripMenuItem.Text = node.Name + " (" + FormatSize(node.TotalSize) + ")";
             else
                 directoryNameToolStripMenuItem.Text = "";
         }
@@ -380,6 +385,14 @@ namespace HDGraphiqueurGUI
         //{
         //    base.NotifyInvalidate(this.DisplayRectangle);
         //}
+
+        Random rand = new Random();
+        private Color GetNextColor()
+        {
+            return Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255));
+        }
+
+        #endregion
 
     }
 }

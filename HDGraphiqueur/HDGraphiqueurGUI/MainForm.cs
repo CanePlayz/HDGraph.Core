@@ -403,6 +403,7 @@ namespace HDGraphiqueurGUI
         private void MainForm_SizeChanged(object sender, EventArgs e)
         {
             treeGraph1.Refresh();
+            
         }
     }
 }
