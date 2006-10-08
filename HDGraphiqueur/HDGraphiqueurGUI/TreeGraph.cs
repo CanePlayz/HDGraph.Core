@@ -223,7 +223,7 @@ namespace HDGraphiqueurGUI
             }
         }
 
-        private string FormatSize(long sizeInOctet)
+        public string FormatSize(long sizeInOctet)
         {
             long unit = 1;
             if (sizeInOctet < unit * 1024)
@@ -345,11 +345,13 @@ namespace HDGraphiqueurGUI
             DirectoryNode node = FindNodeByCursorPosition(lastClicPosition.Value);
             lastClicNode = node;
             bool nodeIsNotNull = (node != null);
-            directoryPropertiesToolStripMenuItem.Enabled = nodeIsNotNull;
+            if (node == null)
+                contextMenuStrip1.Hide();
             centerGraphOnThisDirectoryToolStripMenuItem.Enabled = (nodeIsNotNull && node != root);
             centerGraphOnParentDirectoryToolStripMenuItem.Enabled = (nodeIsNotNull && node == root);
+            openThisDirectoryInWindowsExplorerToolStripMenuItem.Enabled = nodeIsNotNull;
             if (nodeIsNotNull)
-                directoryNameToolStripMenuItem.Text = node.Name;
+                directoryNameToolStripMenuItem.Text = node.Name + " ("+ FormatSize(node.TotalSize)+")";
             else
                 directoryNameToolStripMenuItem.Text = "";
         }
@@ -363,7 +365,15 @@ namespace HDGraphiqueurGUI
 
         private void centerGraphOnParentDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (lastClicNode != null && lastClicNode.Parent != null)
+                this.root = lastClicNode.Parent;
+            Refresh();
+        }
 
+        private void openThisDirectoryInWindowsExplorerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lastClicNode != null)
+                System.Diagnostics.Process.Start(lastClicNode.Path);
         }
 
         //protected override void NotifyInvalidate(Rectangle invalidatedArea)

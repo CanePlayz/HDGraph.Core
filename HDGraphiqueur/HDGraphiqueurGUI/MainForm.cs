@@ -380,11 +380,21 @@ namespace HDGraphiqueurGUI
         private void PrintNodeHoverCursor(DirectoryNode node)
         {
             if (node == null)
+            {
                 PrintStatus("Cursor hover no directory.");
+                groupBoxHoverInfo.Visible = false;
+            }
             else
             {
                 PrintStatus("Cursor hover directory " + node.Path);
                 //MessageBox.Show("Cursor hover directory " + node.Path);
+                labelDirName.Text = node.Name;
+                labelDirTotalSize.Text = treeGraph1.FormatSize(node.TotalSize);
+                if (node.TotalSize > 0)
+                    labelFilesSize.Text = treeGraph1.FormatSize(node.FilesSize) + " (" + node.FilesSize * 100 / node.TotalSize + "%)";
+                else
+                    labelFilesSize.Text = " - ";
+                groupBoxHoverInfo.Visible = true;
             }
         }
 

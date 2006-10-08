@@ -30,10 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.directoryPropertiesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.centerGraphOnThisDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.centerGraphOnParentDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.directoryNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -43,44 +44,51 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.directoryNameToolStripMenuItem,
             this.toolStripSeparator1,
-            this.directoryPropertiesToolStripMenuItem,
             this.centerGraphOnThisDirectoryToolStripMenuItem,
-            this.centerGraphOnParentDirectoryToolStripMenuItem});
+            this.centerGraphOnParentDirectoryToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(279, 120);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(319, 126);
             this.contextMenuStrip1.Text = "Directory \"[TODO]\"";
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
-            // directoryPropertiesToolStripMenuItem
+            // toolStripSeparator1
             // 
-            this.directoryPropertiesToolStripMenuItem.Name = "directoryPropertiesToolStripMenuItem";
-            this.directoryPropertiesToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
-            this.directoryPropertiesToolStripMenuItem.Text = "Directory properties";
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(315, 6);
             // 
             // centerGraphOnThisDirectoryToolStripMenuItem
             // 
             this.centerGraphOnThisDirectoryToolStripMenuItem.Name = "centerGraphOnThisDirectoryToolStripMenuItem";
-            this.centerGraphOnThisDirectoryToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.centerGraphOnThisDirectoryToolStripMenuItem.Size = new System.Drawing.Size(318, 22);
             this.centerGraphOnThisDirectoryToolStripMenuItem.Text = "Center Graph on this directory";
             this.centerGraphOnThisDirectoryToolStripMenuItem.Click += new System.EventHandler(this.centerGraphOnThisDirectoryToolStripMenuItem_Click);
             // 
             // centerGraphOnParentDirectoryToolStripMenuItem
             // 
             this.centerGraphOnParentDirectoryToolStripMenuItem.Name = "centerGraphOnParentDirectoryToolStripMenuItem";
-            this.centerGraphOnParentDirectoryToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
+            this.centerGraphOnParentDirectoryToolStripMenuItem.Size = new System.Drawing.Size(318, 22);
             this.centerGraphOnParentDirectoryToolStripMenuItem.Text = "Center Graph on parent directory";
             this.centerGraphOnParentDirectoryToolStripMenuItem.Click += new System.EventHandler(this.centerGraphOnParentDirectoryToolStripMenuItem_Click);
             // 
-            // toolStripSeparator1
+            // toolStripSeparator2
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(275, 6);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(315, 6);
+            // 
+            // openThisDirectoryInWindowsExplorerToolStripMenuItem
+            // 
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Name = "openThisDirectoryInWindowsExplorerToolStripMenuItem";
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Size = new System.Drawing.Size(318, 22);
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Text = "Open this directory in Windows Explorer";
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Click += new System.EventHandler(this.openThisDirectoryInWindowsExplorerToolStripMenuItem_Click);
             // 
             // directoryNameToolStripMenuItem
             // 
             this.directoryNameToolStripMenuItem.Enabled = false;
             this.directoryNameToolStripMenuItem.Name = "directoryNameToolStripMenuItem";
-            this.directoryNameToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
+            this.directoryNameToolStripMenuItem.Size = new System.Drawing.Size(318, 22);
             this.directoryNameToolStripMenuItem.Text = "DirectoryName";
             // 
             // TreeGraph
@@ -102,10 +110,11 @@
         #endregion
 
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem directoryPropertiesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem centerGraphOnThisDirectoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem centerGraphOnParentDirectoryToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem directoryNameToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem openThisDirectoryInWindowsExplorerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem directoryNameToolStripMenuItem;
     }
 }
