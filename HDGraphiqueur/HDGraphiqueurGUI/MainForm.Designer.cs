@@ -1,4 +1,4 @@
-namespace HDGraphiqueurGUI
+namespace HDGraph
 {
     partial class MainForm
     {
@@ -104,7 +104,7 @@ namespace HDGraphiqueurGUI
             this.labelDirTotalSize = new System.Windows.Forms.Label();
             this.labelDirName = new System.Windows.Forms.Label();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
-            this.treeGraph1 = new HDGraphiqueurGUI.TreeGraph();
+            this.treeGraph1 = new HDGraph.TreeGraph();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -744,7 +744,7 @@ namespace HDGraphiqueurGUI
         private System.Windows.Forms.ToolStripMenuItem arrangeIconsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
         private System.Windows.Forms.HelpProvider helpProvider1;
-        private HDGraphiqueurGUI.TreeGraph treeGraph1;
+        private HDGraph.TreeGraph treeGraph1;
         private System.Windows.Forms.NumericUpDown numUpDownNbNivxAffich;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

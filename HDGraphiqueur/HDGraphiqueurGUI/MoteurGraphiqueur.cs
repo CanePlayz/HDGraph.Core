@@ -4,10 +4,9 @@ using System.Text;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace HDGraphiqueurGUI
+namespace HDGraph
 {
-    [Serializable()]
-    public class MoteurGraphiqueur
+    public class MoteurGraphiqueur:IXmlSerializable
     {
         private DirectoryNode root = null;
 
@@ -81,5 +80,26 @@ namespace HDGraphiqueurGUI
                 dir.Name += "Erreur lors du chargement de " + dir.Name + ": " + ex.Message;
             }
         }
+
+        #region IXmlSerializable Membres
+
+        public System.Xml.Schema.XmlSchema GetSchema()
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        public void ReadXml(System.Xml.XmlReader reader)
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
+            //string ns = "http://HDGraphiqueur.tools.laugel.fr/MoteurGraphiqueur.xsd";
+            XmlSerializer serializer = new XmlSerializer(typeof(DirectoryNode));
+            serializer.Serialize(writer, root);
+        }
+
+        #endregion
     }
 }

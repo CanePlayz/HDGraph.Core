@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Serialization;
+using System.Reflection;
 
-namespace HDGraphiqueurGUI
+namespace HDGraph
 {
-    [Serializable()]
-    public class DirectoryNode
+    public class DirectoryNode : IXmlSerializable
     {
         private long totalSize;
 
@@ -42,7 +43,6 @@ namespace HDGraphiqueurGUI
 
         private DirectoryNode parent;
 
-        [System.Xml.Serialization.XmlIgnore()]
         public DirectoryNode Parent
         {
             get { return parent; }
@@ -74,9 +74,69 @@ namespace HDGraphiqueurGUI
                 this.name = path;
         }
 
+        internal DirectoryNode()
+        {
+
+        }
+
         public override string ToString()
         {
-            return base.ToString() + ": "+ name;
+            return base.ToString() + ": " + name;
         }
+
+        #region IXmlSerializable Membres
+
+        public System.Xml.Schema.XmlSchema GetSchema()
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        public void ReadXml(System.Xml.XmlReader reader)
+        {
+            reader.ReadStartElement();
+
+            name = reader.ReadElementContentAsString();
+            totalSize = reader.ReadElementContentAsLong();
+            filesSize = reader.ReadElementContentAsLong();
+            profondeurMax = reader.ReadElementContentAsInt();
+
+        }
+
+        public void WriteXml(System.Xml.XmlWriter writer)
+        {
+            //string ns = "http://HDGraphiqueur.tools.laugel.fr/DirectoryNode.xsd";
+            if (parent == null)
+                writer.WriteElementString("Name", path);
+            else
+                writer.WriteElementString("Name", name);
+            writer.WriteElementString("TotalSize", totalSize.ToString());
+            writer.WriteElementString("FilesSize", filesSize.ToString());
+            writer.WriteElementString("ProfondeurMax", profondeurMax.ToString());
+
+            writer.WriteStartElement("Children");
+            XmlSerializer serializer = new XmlSerializer(children.GetType());
+            serializer.Serialize(writer, children);
+            writer.WriteEndElement();
+
+            // Pour sérialiser génériquement les propriétés d'un  objet :
+            //foreach (PropertyInfo prop in this.GetType().GetProperties())
+            //{
+            //    if (prop.GetAccessors().Length > 1  // il faut un get et un set
+            //        && prop.GetAccessors()[0].IsPublic   // chacun des 2 doivent être publiques
+            //        && prop.GetAccessors()[1].IsPublic   // chacun des 2 doivent être publiques
+            //        && prop.Name != "Parent"
+            //        && prop.Name != "Path"
+            //        && prop.Name != "Name"
+            //        && prop.Name != "ProfondeurMax")
+            //    {
+            //        writer.WriteStartElement(prop.Name);
+            //        XmlSerializer serializer = new XmlSerializer(prop.PropertyType);
+            //        serializer.Serialize(writer, prop.GetValue(this, null));
+            //        writer.WriteEndElement();
+            //    }
+            //}
+        }
+
+        #endregion
     }
 }

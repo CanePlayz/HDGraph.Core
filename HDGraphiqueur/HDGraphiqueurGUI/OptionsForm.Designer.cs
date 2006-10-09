@@ -1,4 +1,4 @@
-namespace HDGraphiqueurGUI
+namespace HDGraph
 {
     partial class OptionsForm
     {
@@ -32,7 +32,7 @@ namespace HDGraphiqueurGUI
             this.buttonApply = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOk = new System.Windows.Forms.Button();
-            this.optionsUserControl1 = new HDGraphiqueurGUI.OptionsUserControl();
+            this.optionsUserControl1 = new HDGraph.OptionsUserControl();
             this.SuspendLayout();
             // 
             // buttonApply

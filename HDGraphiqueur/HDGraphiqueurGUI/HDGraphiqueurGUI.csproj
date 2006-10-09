@@ -7,8 +7,8 @@
     <ProjectGuid>{99A5D2B9-4B2C-4177-A69C-02BCB163DC78}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HDGraphiqueurGUI</RootNamespace>
-    <AssemblyName>HDGraphiqueurGUI</AssemblyName>
+    <RootNamespace>HDGraph</RootNamespace>
+    <AssemblyName>HDGraph</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

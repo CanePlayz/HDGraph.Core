@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 
-namespace HDGraphiqueurGUI
+namespace HDGraph
 {
     public partial class OptionsForm : Form
     {

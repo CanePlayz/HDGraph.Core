@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Reflection;
 
-namespace HDGraphiqueurGUI
+namespace HDGraph
 {
     partial class AboutBox : Form
     {

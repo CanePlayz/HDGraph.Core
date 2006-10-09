@@ -10,7 +10,7 @@ using System.Collections.Specialized;
 using System.Xml.Serialization;
 using System.Xml;
 
-namespace HDGraphiqueurGUI
+namespace HDGraph
 {
     public partial class MainForm : Form
     {
@@ -57,7 +57,7 @@ namespace HDGraphiqueurGUI
             InitializeComponent();
             this.Text = AboutBox.AssemblyTitle;
             EnableHelpIfAvailable();
-            comboBoxPath.DataSource = HDGraphiqueurGUI.Properties.Settings.Default.PathHistory;
+            comboBoxPath.DataSource = HDGraph.Properties.Settings.Default.PathHistory;
 
             string[] args = Environment.GetCommandLineArgs();
             if (args.Length > 1)
@@ -91,7 +91,7 @@ namespace HDGraphiqueurGUI
         /// <returns></returns>
         private bool LoadLanguage()
         {
-            string lang = HDGraphiqueurGUI.Properties.Settings.Default.Language;
+            string lang = HDGraph.Properties.Settings.Default.Language;
             if (lang != null && lang.Length > 0)
             {
                 try
@@ -306,15 +306,15 @@ namespace HDGraphiqueurGUI
 
         private void SavePathHistory()
         {
-            if (HDGraphiqueurGUI.Properties.Settings.Default.PathHistory == null)
-                HDGraphiqueurGUI.Properties.Settings.Default.PathHistory = new StringCollection();
-            StringCollection history = HDGraphiqueurGUI.Properties.Settings.Default.PathHistory;
+            if (HDGraph.Properties.Settings.Default.PathHistory == null)
+                HDGraph.Properties.Settings.Default.PathHistory = new StringCollection();
+            StringCollection history = HDGraph.Properties.Settings.Default.PathHistory;
             if (history.Count == 0 || comboBoxPath.Text != history[0])
             {
                 history.Remove(comboBoxPath.Text);
                 history.Insert(0, comboBoxPath.Text);
             }
-            HDGraphiqueurGUI.Properties.Settings.Default.Save();
+            HDGraph.Properties.Settings.Default.Save();
             comboBoxPath.DataSource = null;
             comboBoxPath.DataSource = history;
             comboBoxPath.SelectedIndex = 0;
@@ -457,16 +457,16 @@ namespace HDGraphiqueurGUI
         private void clearHistroryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string currentPath = comboBoxPath.Text;
-            if (HDGraphiqueurGUI.Properties.Settings.Default.PathHistory == null)
-                HDGraphiqueurGUI.Properties.Settings.Default.PathHistory = new StringCollection();
-            HDGraphiqueurGUI.Properties.Settings.Default.PathHistory.Clear();
-            HDGraphiqueurGUI.Properties.Settings.Default.Save();
+            if (HDGraph.Properties.Settings.Default.PathHistory == null)
+                HDGraph.Properties.Settings.Default.PathHistory = new StringCollection();
+            HDGraph.Properties.Settings.Default.PathHistory.Clear();
+            HDGraph.Properties.Settings.Default.Save();
             MessageBox.Show(resManager.GetString("HistorySuccessfullyCleared"),
                             resManager.GetString("OperationSuccessfullTitle"),
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
             comboBoxPath.DataSource = null;
-            comboBoxPath.DataSource = HDGraphiqueurGUI.Properties.Settings.Default.PathHistory;
+            comboBoxPath.DataSource = HDGraph.Properties.Settings.Default.PathHistory;
             comboBoxPath.Text = currentPath;
         }
 

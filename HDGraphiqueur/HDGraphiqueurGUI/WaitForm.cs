@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Globalization;
 
-namespace HDGraphiqueurGUI
+namespace HDGraph
 {
     public partial class WaitForm : Form
     {

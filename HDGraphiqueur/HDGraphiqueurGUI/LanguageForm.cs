@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Globalization;
 using System.Resources;
 
-namespace HDGraphiqueurGUI
+namespace HDGraph
 {
     public partial class LanguageForm : Form
     {
@@ -74,8 +74,8 @@ namespace HDGraphiqueurGUI
         {
             CultureInfo newLang = (CultureInfo)comboBoxLanguage.SelectedItem;
             System.Threading.Thread.CurrentThread.CurrentUICulture = newLang;
-            HDGraphiqueurGUI.Properties.Settings.Default.Language = newLang.Name;
-            HDGraphiqueurGUI.Properties.Settings.Default.Save();
+            HDGraph.Properties.Settings.Default.Language = newLang.Name;
+            HDGraph.Properties.Settings.Default.Save();
             UpdateApplyBtnStatus();
             MessageBox.Show(resManager.GetString("languageApplied"),
                             resManager.GetString("languageAppliedTitle"),

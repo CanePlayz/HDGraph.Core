@@ -4,7 +4,7 @@ using System.Text;
 using System.Resources;
 using Microsoft.Win32;
 
-namespace HDGraphiqueurGUI
+namespace HDGraph
 {
     public class HDGTools
     {

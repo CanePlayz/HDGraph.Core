@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.ComponentModel.Design;
 using System.Windows.Forms.Design;
 
-namespace HDGraphiqueurGUI
+namespace HDGraph
 {
     [Designer(typeof(OptionsUserControlDesigner))]
     public partial class OptionsUserControl : UserControl
