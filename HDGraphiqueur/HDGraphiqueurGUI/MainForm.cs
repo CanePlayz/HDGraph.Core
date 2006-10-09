@@ -68,6 +68,9 @@ namespace HDGraph
             }
         }
 
+        /// <summary>
+        /// Check si un fichier d'aide est présent et si oui, active les boutons d'aide de l'IHM.
+        /// </summary>
         private void EnableHelpIfAvailable()
         {
             string helpFile = GetHelpFile();
@@ -110,20 +113,32 @@ namespace HDGraph
             return true;
         }
 
+        /// <summary>
+        /// Evènement Load
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            PrintStatus(resManager.GetString("statusReady"));
+            if (launchScanOnStartup)
+            {
+                LaunchScan();
+                launchScanOnStartup = false;
+            }
+        }
+
         #endregion
 
         #region Méthodes liées aux menus
 
-        private void ShowNewForm(object sender, EventArgs e)
-        {
-            // Create a new instance of the child form.
-            Form childForm = new Form();
-            // Make it a child of this MDI form before showing it.
-            childForm.MdiParent = this;
-            childForm.Text = "Window " + childFormNumber++;
-            childForm.Show();
-        }
+        #region Sauvegardes et chargements de graphs
 
+        /// <summary>
+        /// Lance la boite de dialogue d'ouverture de fichier.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OpenFile(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -140,6 +155,10 @@ namespace HDGraph
             }
         }
 
+        /// <summary>
+        /// Charge un graph sauvegardé.
+        /// </summary>
+        /// <param name="fileName"></param>
         private void LoadGraphFromFile(string fileName)
         {
             XmlReader reader = new XmlTextReader(fileName);
@@ -155,12 +174,20 @@ namespace HDGraph
                 numUpDownNbNivxAffich.Value = moteur.Root.ProfondeurMax;
                 treeGraph1.NbNiveaux = moteur.Root.ProfondeurMax;
             }
-            treeGraph1.ForceRefreshOnNextRepaint = true;
-            treeGraph1.Refresh();
+            treeGraph1.ForceRefresh();
             PrintStatus(String.Format(resManager.GetString("GraphLoadedFromDate"), moteur.AnalyzeDate.ToString()));
         }
 
+
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LaunchSaveAsDialog();
+        }
+
+        /// <summary>
+        /// Lance la boite de dialogue "Enregistrer sous".
+        /// </summary>
+        private void LaunchSaveAsDialog()
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
@@ -175,6 +202,10 @@ namespace HDGraph
             }
         }
 
+        /// <summary>
+        /// Sauvegarde le graph actuel dans un fichier HDG.
+        /// </summary>
+        /// <param name="fileName"></param>
         private void SaveGraphToFile(string fileName)
         {
             XmlWriter writer = new XmlTextWriter(fileName, Encoding.Default);
@@ -183,10 +214,40 @@ namespace HDGraph
             writer.Close();
         }
 
+        private void exportAsImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            saveFileDialog.Filter = "Bitmap" +
+                                    " (*.bmp)|*.bmp|" +
+                                    resManager.GetString("AllFiles") +
+                                    "(*.*)|*.*";
+            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                string fileName = saveFileDialog.FileName;
+                treeGraph1.buffer.Save(fileName);
+            }
+        }
+
+        private void saveToolStripButton_Click(object sender, EventArgs e)
+        {
+            LaunchSaveAsDialog();
+        }
+
+        #endregion
+
+
+        /// <summary>
+        /// Bouton "quitter".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
+        #region Boutons couper/copier/coller
 
         private void CutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -203,6 +264,10 @@ namespace HDGraph
             // TODO: Use System.Windows.Forms.Clipboard.GetText() or System.Windows.Forms.GetData to retrieve information from the clipboard.
         }
 
+        #endregion
+
+        #region Gestion d'Affichage des la statusBar et la toolBar
+
         private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             toolStrip.Visible = toolBarToolStripMenuItem.Checked;
@@ -211,6 +276,25 @@ namespace HDGraph
         private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             statusStrip.Visible = statusBarToolStripMenuItem.Checked;
+        }
+
+        #endregion
+
+        #region Gestion des fenêtres en MDI
+
+        /// <summary>
+        /// Affiche une nouvelle fenêtre (appli MDI seulement).
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ShowNewForm(object sender, EventArgs e)
+        {
+            // Create a new instance of the child form.
+            Form childForm = new Form();
+            // Make it a child of this MDI form before showing it.
+            childForm.MdiParent = this;
+            childForm.Text = "Window " + childFormNumber++;
+            childForm.Show();
         }
 
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -240,7 +324,13 @@ namespace HDGraph
                 childForm.Close();
             }
         }
+        #endregion
 
+        /// <summary>
+        /// Affichage fenêtre "A propos".
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             (new AboutBox()).ShowDialog();
@@ -251,26 +341,27 @@ namespace HDGraph
             (new AboutBox()).ShowDialog();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            PrintStatus(resManager.GetString("statusReady"));
-            if (launchScanOnStartup)
-            {
-                LaunchScan();
-                launchScanOnStartup = false;
-            }
-        }
 
         private void menuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// Affichage fenêtre options.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             (new OptionsForm()).ShowDialog();
         }
 
+        /// <summary>
+        /// Affichage fenêtre de sélection de langue
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void languageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.DoEvents();
@@ -285,6 +376,20 @@ namespace HDGraph
                 //WaitForm.ShowWaitForm(this, "Message 2 !!");
             }
             (new LanguageForm(resManager)).ShowDialog();
+        }
+
+        #region Affichages fichier d'aide
+
+
+        /// <summary>
+        /// Renvoi le chemin du fichier d'aide.
+        /// </summary>
+        /// <returns>Null ou chaine vide si aucun fichier d'aide.</returns>
+        private string GetHelpFile()
+        {
+            return null; // TODO: modifier lorsque l'aide sera faite.
+            // Exemple :
+            // return @"C:\WINDOWS\Help\notepad.chm"; // TODO: fichier d'aide. Eventuellement, gérer un fichier par langue et donc renvoyer le fichier approprié à la langue en cours.
         }
 
         private void contentsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -302,6 +407,13 @@ namespace HDGraph
             Help.ShowHelp(this, GetHelpFile(), HelpNavigator.Find, "");
         }
 
+        #endregion
+
+        /// <summary>
+        /// Clic btn "browse"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonBrowse_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
@@ -313,11 +425,18 @@ namespace HDGraph
             }
         }
 
+        /// <summary>
+        /// Clic débuter scan
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonScan_Click(object sender, EventArgs e)
         {
             SavePathHistory();
             LaunchScan();
         }
+
+        #region Gestion de l'historique
 
         private void SavePathHistory()
         {
@@ -335,22 +454,41 @@ namespace HDGraph
             comboBoxPath.SelectedIndex = 0;
         }
 
+
+        private void clearHistroryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string currentPath = comboBoxPath.Text;
+            if (HDGraph.Properties.Settings.Default.PathHistory == null)
+                HDGraph.Properties.Settings.Default.PathHistory = new StringCollection();
+            HDGraph.Properties.Settings.Default.PathHistory.Clear();
+            HDGraph.Properties.Settings.Default.Save();
+            MessageBox.Show(resManager.GetString("HistorySuccessfullyCleared"),
+                            resManager.GetString("OperationSuccessfullTitle"),
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+            comboBoxPath.DataSource = null;
+            comboBoxPath.DataSource = HDGraph.Properties.Settings.Default.PathHistory;
+            comboBoxPath.Text = currentPath;
+        }
+
+        #endregion
+
         private void numUpDownNbNivxAffich_ValueChanged(object sender, EventArgs e)
         {
             int nbNiveaux = (int)numUpDownNbNivxAffich.Value;
             treeGraph1.NbNiveaux = nbNiveaux;
-            treeGraph1.ForceRefreshOnNextRepaint = true;
-            treeGraph1.Refresh();
+            treeGraph1.ForceRefresh();
             PrintStatus("Terminé !");
         }
 
         private void checkBoxPrintSizes_CheckedChanged(object sender, EventArgs e)
         {
             treeGraph1.OptionShowSize = checkBoxPrintSizes.Checked;
-            treeGraph1.ForceRefreshOnNextRepaint = true;
-            treeGraph1.Refresh();
+            treeGraph1.ForceRefresh();
             PrintStatus("Terminé !");
         }
+
+        #region Intégration à l'explorateur
 
         private void addMeToTheExplorerConToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -404,7 +542,6 @@ namespace HDGraph
 
         #endregion
 
-        #region Méthodes
 
         public void PrintStatus(string message)
         {
@@ -413,16 +550,6 @@ namespace HDGraph
             Application.DoEvents();
         }
 
-        /// <summary>
-        /// Renvoi le chemin du fichier d'aide.
-        /// </summary>
-        /// <returns>Null ou chaine vide si aucun fichier d'aide.</returns>
-        private string GetHelpFile()
-        {
-            return null;
-            // Exemple :
-            // return @"C:\WINDOWS\Help\notepad.chm"; // TODO: fichier d'aide. Eventuellement, gérer un fichier par langue et donc renvoyer le fichier approprié à la langue en cours.
-        }
 
         /// <summary>
         /// Lance le scan et le graphiquage.
@@ -434,8 +561,7 @@ namespace HDGraph
             moteur.ConstruireArborescence(comboBoxPath.Text, nbNiveaux);
             treeGraph1.NbNiveaux = nbNiveaux;
             treeGraph1.Moteur = moteur;
-            treeGraph1.ForceRefreshOnNextRepaint = true;
-            treeGraph1.Refresh();
+            treeGraph1.ForceRefresh();
             PrintStatus("Terminé !");
             treeGraph1.UpdateHoverNode = new TreeGraph.UpdateHoverNodeDelegate(PrintNodeHoverCursor);
         }
@@ -461,43 +587,12 @@ namespace HDGraph
             }
         }
 
-        #endregion
-
         private void MainForm_SizeChanged(object sender, EventArgs e)
         {
-            treeGraph1.Refresh();
-
+            //treeGraph1.Refresh();
         }
 
-        private void clearHistroryToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string currentPath = comboBoxPath.Text;
-            if (HDGraph.Properties.Settings.Default.PathHistory == null)
-                HDGraph.Properties.Settings.Default.PathHistory = new StringCollection();
-            HDGraph.Properties.Settings.Default.PathHistory.Clear();
-            HDGraph.Properties.Settings.Default.Save();
-            MessageBox.Show(resManager.GetString("HistorySuccessfullyCleared"),
-                            resManager.GetString("OperationSuccessfullTitle"),
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
-            comboBoxPath.DataSource = null;
-            comboBoxPath.DataSource = HDGraph.Properties.Settings.Default.PathHistory;
-            comboBoxPath.Text = currentPath;
-        }
+        #endregion
 
-        private void exportAsImageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            saveFileDialog.Filter = "Bitmap"+
-                                    " (*.bmp)|*.bmp|" +
-                                    resManager.GetString("AllFiles") +
-                                    "(*.*)|*.*";
-            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
-            {
-                string fileName = saveFileDialog.FileName;
-                treeGraph1.buffer.Save(fileName);
-            }
-        }
     }
 }

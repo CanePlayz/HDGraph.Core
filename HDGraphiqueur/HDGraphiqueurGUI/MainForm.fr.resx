@@ -117,10 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="menuStrip.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="newToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -187,14 +183,27 @@
   <data name="saveToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Enregistrer</value>
   </data>
+  <data name="saveAsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAilJREFUOE+tk91L
+        k3EUx/cvdN9N0EW3NTWGa7EaPOUcyqphWBG9PZEv5dJlmqhYmUYtXyBb4dJJy+kknFT4BqZIjaFMJUsz
+        V7TEoabYRDD49ju/6Pm1Mm/qB+fy8znPOef7qFT/4z17GgWVr30Zbd4lPHYvoLEhgvuOGdTWfIL9dgg3
+        yqdQWjKBwoLXyMsdxYXzQSi9CeztAWqqV7HRW1ldgzGtF4fTnvBSBN7WRS6orPjyV57gyMIKdpufQ62W
+        YTnkEQL3o3kuKC35vK7gJ/w+vIg4kw8Fl6dxwNwkBM76WS64ZHv3h+BXeGQygm2SF9accaSmOIWg7m6Y
+        C7KzRmMEv8ODwTA2692Q5QBMJocQVFd95AL5TEARrAf3+D9gU2IDjhx9gaSkWiG4WTmN7i6wUwLHT76C
+        5dgA3zYtjGamz6bOP+A+HLR0QpLsQnC1bBIdPrAMAE2ub+zuX1F+fY4vlRZGM2dmBBU4ObUdBkOFEFwp
+        HIenGXjoXGPBicKYnhNT5hM2pJ8r4p2TUxi83wO9vkwIbHljDAaq7kR5ZxJQSOK0EobezmJsag5y7jXs
+        NbZxWLvHBZ2uSAgolo57UD6bBASfzb+FN6F5hGaWcLHYjni9i8GNiN/1ANrEfCHIzBhmcy/zmbcaPNiy
+        Q0JLRz98XYPo7vNj4OUQ9pksUOvqkcDg7Zo6aDTWWMHpU/08npQwCgndmU5F26aF0czUlYrgnQnZQvAv
+        f/R3bGg6a0rM640AAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="saveAsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>289, 22</value>
   </data>
   <data name="saveAsToolStripMenuItem.Text" xml:space="preserve">
     <value>Enregistrer &amp;sous...</value>
-  </data>
-  <data name="exportAsImageToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+I</value>
   </data>
   <data name="exportAsImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>289, 22</value>
@@ -548,12 +557,6 @@
   <data name="helpMenu.Text" xml:space="preserve">
     <value>&amp;Aide</value>
   </data>
-  <data name="menuStrip.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="toolStrip.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
-  </data>
   <data name="newToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -664,35 +667,11 @@
   <data name="helpToolStripButton.Text" xml:space="preserve">
     <value>Aide</value>
   </data>
-  <data name="toolStrip.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="statusStrip.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
-  </data>
-  <data name="statusStrip.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numUpDownNbNivxAffich.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
-  </data>
-  <data name="numUpDownNbNivxAffich.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label2.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
-  </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>139, 13</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Niveaux de rep. à dessiner :</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 16</value>
@@ -703,35 +682,28 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Niveaux de rép. à mémoriser : (réduire pour améliorer les perfs)</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="buttonScan.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAPYAAMPmiZXHTNnvs6nYXtrwtZ3OU5/RVZnJUavbYMznjdrvpb/jfNTsnNjurYbT3eTz
+        uZDT2NfsnqHTVWvN5Zfl8KHNWtzwppLX3M/qkOPzt4PP2djuppfe5Jzl68fiitDroL7cgMfnh5/LWKPk
+        57veecDlhbTWdH/X7tDolZrj8d3xrazcYKjXXl7K5p3g8uX0t6nZXp3i8pzg8pzMUuv2yLDWbLvjer7k
+        gdTtmPD40u33zKzYZorZ5KrQadPtp6bUXXPW7c7qltbtprLfaZrh8qXPYpHd8ZLh8J7c33vU5cnojozd
+        8MDlgdvwt5bITGjJ4NrwtIDc7XfN3Y/g68TjhLffcWbP6zaeoiQgHv///wAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAFkALAAAAAAQABAAAAebgFmC
+        g4SFhllYiViHg4lII1c5iYdYEBccHVc6NC+LhFgaDjxTFFcPGRYRnoJYUklRRylXKgo4KKtYTxNAS0Qx
+        VxsMGAkenlgtVidGMi5XQkEhVCDGV9XWVw1KCyQmxj5NBAICBFAfTFU1Pbg3AO0AJTZDO0WriAMsAwgr
+        CDA/FSL1EBUoYECCgRkHDgRkhcVJgIeTGCFSJLHioEAAOw==
+</value>
   </data>
-  <data name="numUpDownNbNivx.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
-  </data>
-  <data name="numUpDownNbNivx.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBoxPath.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
-  </data>
-  <data name="comboBoxPath.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="buttonScan.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
+  <data name="buttonScan.Location" type="System.Drawing.Point, System.Drawing">
+    <value>484, 105</value>
   </data>
   <data name="buttonScan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 23</value>
+    <value>124, 23</value>
   </data>
   <data name="buttonScan.Text" xml:space="preserve">
     <value>Scanner et dessiner</value>
-  </data>
-  <data name="buttonScan.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label3.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 13</value>
@@ -739,35 +711,11 @@
   <data name="label3.Text" xml:space="preserve">
     <value>Répertoire à analyser:</value>
   </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBoxPrintSizes.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
-  </data>
   <data name="checkBoxPrintSizes.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 17</value>
   </data>
   <data name="checkBoxPrintSizes.Text" xml:space="preserve">
     <value>Afficher les tailles</value>
-  </data>
-  <data name="checkBoxPrintSizes.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
-  </data>
-  <data name="groupBox1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="buttonBrowse.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
-  </data>
-  <data name="buttonBrowse.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelFiles.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
   </data>
   <data name="labelFiles.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 13</value>
@@ -775,49 +723,7 @@
   <data name="labelFiles.Text" xml:space="preserve">
     <value>Proportion de fichiers :</value>
   </data>
-  <data name="labelFiles.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelFilesSize.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
-  </data>
-  <data name="labelFilesSize.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelDirTotalSize.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
-  </data>
-  <data name="labelDirTotalSize.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelDirName.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
-  </data>
-  <data name="labelDirName.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBoxHoverInfo.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
-  </data>
   <data name="groupBoxHoverInfo.Text" xml:space="preserve">
     <value>Répertoire survolé</value>
-  </data>
-  <data name="groupBoxHoverInfo.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="treeGraph1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
-  </data>
-  <data name="treeGraph1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="$this.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

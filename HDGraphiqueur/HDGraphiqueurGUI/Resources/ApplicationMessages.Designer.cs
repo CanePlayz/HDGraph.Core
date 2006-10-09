@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HDGraphiqueurGUI.Resources {
+namespace HDGraph.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace HDGraphiqueurGUI.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HDGraphiqueurGUI.Resources.ApplicationMessages", typeof(ApplicationMessages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HDGraph.Resources.ApplicationMessages", typeof(ApplicationMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -102,6 +102,15 @@ namespace HDGraphiqueurGUI.Resources {
         internal static string ErrorInConfigLanguageTitle {
             get {
                 return ResourceManager.GetString("ErrorInConfigLanguageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Analyze loaded. Disk snapshot date is {0}..
+        /// </summary>
+        internal static string GraphLoadedFromDate {
+            get {
+                return ResourceManager.GetString("GraphLoadedFromDate", resourceCulture);
             }
         }
         

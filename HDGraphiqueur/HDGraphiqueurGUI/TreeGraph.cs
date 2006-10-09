@@ -375,14 +375,14 @@ namespace HDGraph
         {
             if (lastClicNode != null)
                 this.root = lastClicNode;
-            Refresh();
+            ForceRefresh();
         }
 
         private void centerGraphOnParentDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (lastClicNode != null && lastClicNode.Parent != null)
                 this.root = lastClicNode.Parent;
-            Refresh();
+            ForceRefresh();
         }
 
         private void openThisDirectoryInWindowsExplorerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -400,6 +400,12 @@ namespace HDGraph
         private Color GetNextColor()
         {
             return Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255));
+        }
+
+        public void ForceRefresh()
+        {
+            forceRefreshOnNextRepaint = true;
+            this.Refresh();
         }
 
         #endregion

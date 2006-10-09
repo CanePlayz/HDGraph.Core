@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HDGraphiqueurGUI.Properties {
+namespace HDGraph.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
