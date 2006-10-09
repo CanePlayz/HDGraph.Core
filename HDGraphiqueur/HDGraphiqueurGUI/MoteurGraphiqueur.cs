@@ -2,14 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
+using System.Xml.Serialization;
 
 namespace HDGraphiqueurGUI
 {
+    [Serializable()]
     public class MoteurGraphiqueur
     {
         private DirectoryNode root = null;
 
-        internal DirectoryNode Root
+        public DirectoryNode Root
         {
             get { return root; }
         }
@@ -18,6 +20,7 @@ namespace HDGraphiqueurGUI
 
         private PrintInfoDelegate printInfoDeleg = null;
 
+        [XmlIgnore()]
         public PrintInfoDelegate PrintInfoDeleg
         {
             get { return printInfoDeleg; }

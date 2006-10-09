@@ -6,6 +6,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using System.Collections.Specialized;
+using System.Xml.Serialization;
+using System.Xml;
 
 namespace HDGraphiqueurGUI
 {
@@ -54,10 +57,13 @@ namespace HDGraphiqueurGUI
             InitializeComponent();
             this.Text = AboutBox.AssemblyTitle;
             EnableHelpIfAvailable();
+            comboBoxPath.DataSource = HDGraphiqueurGUI.Properties.Settings.Default.PathHistory;
+
             string[] args = Environment.GetCommandLineArgs();
             if (args.Length > 1)
             {
                 comboBoxPath.Text = args[1]; // args[0] correspond à l'exécutable !
+                SavePathHistory();
                 launchScanOnStartup = true;
             }
         }
@@ -122,24 +128,44 @@ namespace HDGraphiqueurGUI
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            openFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+            
+            openFileDialog.Filter = resManager.GetString("HDGFiles") + 
+                                    " (*.hdg)|*.hdg|"+
+                                    resManager.GetString("AllFiles") + 
+                                    "(*.*)|*.*";
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                string FileName = openFileDialog.FileName;
-                // TODO: Add code here to open the file.
+                string fileName = openFileDialog.FileName;
+                LoadGraphFromFile(fileName);
             }
+        }
+
+        private void LoadGraphFromFile(string fileName)
+        {
+            
         }
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            saveFileDialog.Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
+            saveFileDialog.Filter = resManager.GetString("HDGFiles") +
+                                    " (*.hdg)|*.hdg|" +
+                                    resManager.GetString("AllFiles") +
+                                    "(*.*)|*.*";
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                string FileName = saveFileDialog.FileName;
-                // TODO: Add code here to save the current contents of the form to a file.
+                string fileName = saveFileDialog.FileName;
+                SaveGraphToFile(fileName);
             }
+        }
+
+        private void SaveGraphToFile(string fileName)
+        {
+            XmlWriter writer = new XmlTextWriter(fileName, Encoding.Default);
+            XmlSerializer serializer = new XmlSerializer(typeof(MoteurGraphiqueur));
+            serializer.Serialize(writer, moteur);
+            writer.Close();
         }
 
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
@@ -264,6 +290,8 @@ namespace HDGraphiqueurGUI
         private void buttonBrowse_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.Description = resManager.GetString("PleaseChooseDirectory");
+            dialog.SelectedPath = comboBoxPath.Text;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 comboBoxPath.Text = dialog.SelectedPath;
@@ -272,13 +300,31 @@ namespace HDGraphiqueurGUI
 
         private void buttonScan_Click(object sender, EventArgs e)
         {
+            SavePathHistory();
             LaunchScan();
+        }
+
+        private void SavePathHistory()
+        {
+            if (HDGraphiqueurGUI.Properties.Settings.Default.PathHistory == null)
+                HDGraphiqueurGUI.Properties.Settings.Default.PathHistory = new StringCollection();
+            StringCollection history = HDGraphiqueurGUI.Properties.Settings.Default.PathHistory;
+            if (history.Count == 0 || comboBoxPath.Text != history[0])
+            {
+                history.Remove(comboBoxPath.Text);
+                history.Insert(0, comboBoxPath.Text);
+            }
+            HDGraphiqueurGUI.Properties.Settings.Default.Save();
+            comboBoxPath.DataSource = null;
+            comboBoxPath.DataSource = history;
+            comboBoxPath.SelectedIndex = 0;
         }
 
         private void numUpDownNbNivxAffich_ValueChanged(object sender, EventArgs e)
         {
             int nbNiveaux = (int)numUpDownNbNivxAffich.Value;
             treeGraph1.NbNiveaux = nbNiveaux;
+            treeGraph1.ForceRefreshOnNextRepaint = true;
             treeGraph1.Refresh();
             PrintStatus("Terminé !");
         }
@@ -286,6 +332,7 @@ namespace HDGraphiqueurGUI
         private void checkBoxPrintSizes_CheckedChanged(object sender, EventArgs e)
         {
             treeGraph1.OptionShowSize = checkBoxPrintSizes.Checked;
+            treeGraph1.ForceRefreshOnNextRepaint = true;
             treeGraph1.Refresh();
             PrintStatus("Terminé !");
         }
@@ -372,6 +419,7 @@ namespace HDGraphiqueurGUI
             moteur.ConstruireArborescence(comboBoxPath.Text, nbNiveaux);
             treeGraph1.NbNiveaux = nbNiveaux;
             treeGraph1.Moteur = moteur;
+            treeGraph1.ForceRefreshOnNextRepaint = true;
             treeGraph1.Refresh();
             PrintStatus("Terminé !");
             treeGraph1.UpdateHoverNode = new TreeGraph.UpdateHoverNodeDelegate(PrintNodeHoverCursor);
@@ -381,12 +429,12 @@ namespace HDGraphiqueurGUI
         {
             if (node == null)
             {
-                PrintStatus("Cursor hover no directory.");
+                PrintStatus(resManager.GetString("CursorHoverNoDirectory"));
                 groupBoxHoverInfo.Visible = false;
             }
             else
             {
-                PrintStatus("Cursor hover directory " + node.Path);
+                PrintStatus(String.Format(resManager.GetString("CursorHoverDirectory"), node.Path));
                 //MessageBox.Show("Cursor hover directory " + node.Path);
                 labelDirName.Text = node.Name;
                 labelDirTotalSize.Text = treeGraph1.FormatSize(node.TotalSize);
@@ -403,7 +451,38 @@ namespace HDGraphiqueurGUI
         private void MainForm_SizeChanged(object sender, EventArgs e)
         {
             treeGraph1.Refresh();
-            
+
+        }
+
+        private void clearHistroryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string currentPath = comboBoxPath.Text;
+            if (HDGraphiqueurGUI.Properties.Settings.Default.PathHistory == null)
+                HDGraphiqueurGUI.Properties.Settings.Default.PathHistory = new StringCollection();
+            HDGraphiqueurGUI.Properties.Settings.Default.PathHistory.Clear();
+            HDGraphiqueurGUI.Properties.Settings.Default.Save();
+            MessageBox.Show(resManager.GetString("HistorySuccessfullyCleared"),
+                            resManager.GetString("OperationSuccessfullTitle"),
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
+            comboBoxPath.DataSource = null;
+            comboBoxPath.DataSource = HDGraphiqueurGUI.Properties.Settings.Default.PathHistory;
+            comboBoxPath.Text = currentPath;
+        }
+
+        private void exportAsImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            saveFileDialog.Filter = "Bitmap"+
+                                    " (*.bmp)|*.bmp|" +
+                                    resManager.GetString("AllFiles") +
+                                    "(*.*)|*.*";
+            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                string fileName = saveFileDialog.FileName;
+                treeGraph1.buffer.Save(fileName);
+            }
         }
     }
 }

@@ -29,18 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TreeGraph));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.directoryNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.centerGraphOnThisDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.centerGraphOnParentDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.openThisDirectoryInWindowsExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.directoryNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.AccessibleDescription = null;
+            this.contextMenuStrip1.AccessibleName = null;
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
+            this.contextMenuStrip1.BackgroundImage = null;
+            this.contextMenuStrip1.Font = null;
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.directoryNameToolStripMenuItem,
             this.toolStripSeparator1,
@@ -49,55 +55,71 @@
             this.toolStripSeparator2,
             this.openThisDirectoryInWindowsExplorerToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(319, 126);
-            this.contextMenuStrip1.Text = "Directory \"[TODO]\"";
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // directoryNameToolStripMenuItem
+            // 
+            this.directoryNameToolStripMenuItem.AccessibleDescription = null;
+            this.directoryNameToolStripMenuItem.AccessibleName = null;
+            resources.ApplyResources(this.directoryNameToolStripMenuItem, "directoryNameToolStripMenuItem");
+            this.directoryNameToolStripMenuItem.BackgroundImage = null;
+            this.directoryNameToolStripMenuItem.Name = "directoryNameToolStripMenuItem";
+            this.directoryNameToolStripMenuItem.ShortcutKeyDisplayString = null;
             // 
             // toolStripSeparator1
             // 
+            this.toolStripSeparator1.AccessibleDescription = null;
+            this.toolStripSeparator1.AccessibleName = null;
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(315, 6);
             // 
             // centerGraphOnThisDirectoryToolStripMenuItem
             // 
+            this.centerGraphOnThisDirectoryToolStripMenuItem.AccessibleDescription = null;
+            this.centerGraphOnThisDirectoryToolStripMenuItem.AccessibleName = null;
+            resources.ApplyResources(this.centerGraphOnThisDirectoryToolStripMenuItem, "centerGraphOnThisDirectoryToolStripMenuItem");
+            this.centerGraphOnThisDirectoryToolStripMenuItem.BackgroundImage = null;
             this.centerGraphOnThisDirectoryToolStripMenuItem.Name = "centerGraphOnThisDirectoryToolStripMenuItem";
-            this.centerGraphOnThisDirectoryToolStripMenuItem.Size = new System.Drawing.Size(318, 22);
-            this.centerGraphOnThisDirectoryToolStripMenuItem.Text = "Center Graph on this directory";
+            this.centerGraphOnThisDirectoryToolStripMenuItem.ShortcutKeyDisplayString = null;
             this.centerGraphOnThisDirectoryToolStripMenuItem.Click += new System.EventHandler(this.centerGraphOnThisDirectoryToolStripMenuItem_Click);
             // 
             // centerGraphOnParentDirectoryToolStripMenuItem
             // 
+            this.centerGraphOnParentDirectoryToolStripMenuItem.AccessibleDescription = null;
+            this.centerGraphOnParentDirectoryToolStripMenuItem.AccessibleName = null;
+            resources.ApplyResources(this.centerGraphOnParentDirectoryToolStripMenuItem, "centerGraphOnParentDirectoryToolStripMenuItem");
+            this.centerGraphOnParentDirectoryToolStripMenuItem.BackgroundImage = null;
             this.centerGraphOnParentDirectoryToolStripMenuItem.Name = "centerGraphOnParentDirectoryToolStripMenuItem";
-            this.centerGraphOnParentDirectoryToolStripMenuItem.Size = new System.Drawing.Size(318, 22);
-            this.centerGraphOnParentDirectoryToolStripMenuItem.Text = "Center Graph on parent directory";
+            this.centerGraphOnParentDirectoryToolStripMenuItem.ShortcutKeyDisplayString = null;
             this.centerGraphOnParentDirectoryToolStripMenuItem.Click += new System.EventHandler(this.centerGraphOnParentDirectoryToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
+            this.toolStripSeparator2.AccessibleDescription = null;
+            this.toolStripSeparator2.AccessibleName = null;
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(315, 6);
             // 
             // openThisDirectoryInWindowsExplorerToolStripMenuItem
             // 
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.AccessibleDescription = null;
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.AccessibleName = null;
+            resources.ApplyResources(this.openThisDirectoryInWindowsExplorerToolStripMenuItem, "openThisDirectoryInWindowsExplorerToolStripMenuItem");
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.BackgroundImage = null;
             this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Name = "openThisDirectoryInWindowsExplorerToolStripMenuItem";
-            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Size = new System.Drawing.Size(318, 22);
-            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Text = "Open this directory in Windows Explorer";
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.ShortcutKeyDisplayString = null;
             this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Click += new System.EventHandler(this.openThisDirectoryInWindowsExplorerToolStripMenuItem_Click);
-            // 
-            // directoryNameToolStripMenuItem
-            // 
-            this.directoryNameToolStripMenuItem.Enabled = false;
-            this.directoryNameToolStripMenuItem.Name = "directoryNameToolStripMenuItem";
-            this.directoryNameToolStripMenuItem.Size = new System.Drawing.Size(318, 22);
-            this.directoryNameToolStripMenuItem.Text = "DirectoryName";
             // 
             // TreeGraph
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AccessibleDescription = null;
+            this.AccessibleName = null;
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = null;
             this.ContextMenuStrip = this.contextMenuStrip1;
+            this.Font = null;
             this.Name = "TreeGraph";
-            this.Size = new System.Drawing.Size(354, 277);
             this.Load += new System.EventHandler(this.TreeGraph_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TreeGraph_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TreeGraph_MouseMove);

@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AllFiles" xml:space="preserve">
+    <value>All files</value>
+  </data>
+  <data name="CursorHoverDirectory" xml:space="preserve">
+    <value>Cursor hover directory {0}</value>
+  </data>
+  <data name="CursorHoverNoDirectory" xml:space="preserve">
+    <value>Cursor hover no directory.</value>
+  </data>
   <data name="ErrorInConfigLanguage" xml:space="preserve">
     <value>An error in the configuration file prevent the application to load the appropriate language. Please verify that the langage code is correct in your config file !</value>
   </data>
@@ -135,6 +144,12 @@
   <data name="HdgCorrectlyIntegratedInExplorer" xml:space="preserve">
     <value>Integration successfull ! Try to right click on a folder...</value>
   </data>
+  <data name="HDGFiles" xml:space="preserve">
+    <value>HDG Graphics Files</value>
+  </data>
+  <data name="HistorySuccessfullyCleared" xml:space="preserve">
+    <value>Path history list successfully cleared !</value>
+  </data>
   <data name="languageApplied" xml:space="preserve">
     <value>Language setting has been modified. Until you restart the application, only new windows will use the correct settings.</value>
   </data>
@@ -152,6 +167,9 @@
   </data>
   <data name="OperationSuccessfullTitle" xml:space="preserve">
     <value>Operation successfull</value>
+  </data>
+  <data name="PleaseChooseDirectory" xml:space="preserve">
+    <value>Please choose the directory to analyse :</value>
   </data>
   <data name="statusReady" xml:space="preserve">
     <value>Ready.</value>

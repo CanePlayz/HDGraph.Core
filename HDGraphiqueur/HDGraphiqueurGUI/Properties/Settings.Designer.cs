@@ -34,5 +34,16 @@ namespace HDGraphiqueurGUI.Properties {
                 this["Language"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection PathHistory {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["PathHistory"]));
+            }
+            set {
+                this["PathHistory"] = value;
+            }
+        }
     }
 }

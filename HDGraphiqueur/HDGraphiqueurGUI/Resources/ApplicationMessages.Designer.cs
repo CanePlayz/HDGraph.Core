@@ -61,6 +61,33 @@ namespace HDGraphiqueurGUI.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à All files.
+        /// </summary>
+        internal static string AllFiles {
+            get {
+                return ResourceManager.GetString("AllFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Cursor hover directory {0}.
+        /// </summary>
+        internal static string CursorHoverDirectory {
+            get {
+                return ResourceManager.GetString("CursorHoverDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Cursor hover no directory..
+        /// </summary>
+        internal static string CursorHoverNoDirectory {
+            get {
+                return ResourceManager.GetString("CursorHoverNoDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à An error in the configuration file prevent the application to load the appropriate language. Please verify that the langage code is correct in your config file !.
         /// </summary>
         internal static string ErrorInConfigLanguage {
@@ -115,6 +142,24 @@ namespace HDGraphiqueurGUI.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à HDG Graphics Files.
+        /// </summary>
+        internal static string HDGFiles {
+            get {
+                return ResourceManager.GetString("HDGFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Path history list successfully cleared !.
+        /// </summary>
+        internal static string HistorySuccessfullyCleared {
+            get {
+                return ResourceManager.GetString("HistorySuccessfullyCleared", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Language setting has been modified. Until you restart the application, only new windows will use the correct settings..
         /// </summary>
         internal static string languageApplied {
@@ -165,6 +210,15 @@ namespace HDGraphiqueurGUI.Resources {
         internal static string OperationSuccessfullTitle {
             get {
                 return ResourceManager.GetString("OperationSuccessfullTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Please choose the directory to analyse :.
+        /// </summary>
+        internal static string PleaseChooseDirectory {
+            get {
+                return ResourceManager.GetString("PleaseChooseDirectory", resourceCulture);
             }
         }
         

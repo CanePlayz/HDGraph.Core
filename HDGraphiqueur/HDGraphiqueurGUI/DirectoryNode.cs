@@ -4,6 +4,7 @@ using System.Text;
 
 namespace HDGraphiqueurGUI
 {
+    [Serializable()]
     public class DirectoryNode
     {
         private long totalSize;
@@ -41,6 +42,7 @@ namespace HDGraphiqueurGUI
 
         private DirectoryNode parent;
 
+        [System.Xml.Serialization.XmlIgnore()]
         public DirectoryNode Parent
         {
             get { return parent; }

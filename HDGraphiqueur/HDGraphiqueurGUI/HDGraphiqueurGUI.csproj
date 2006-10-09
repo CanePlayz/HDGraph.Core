@@ -132,6 +132,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="TreeGraph.fr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TreeGraph.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TreeGraph.resx">
       <DependentUpon>TreeGraph.cs</DependentUpon>
       <SubType>Designer</SubType>

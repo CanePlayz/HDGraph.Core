@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AllFiles" xml:space="preserve">
+    <value>Tous les fichiers</value>
+  </data>
+  <data name="CursorHoverDirectory" xml:space="preserve">
+    <value>Le curseur se trouve sur {0}</value>
+  </data>
+  <data name="CursorHoverNoDirectory" xml:space="preserve">
+    <value>Le curseur ne survole aucun répertoire.</value>
+  </data>
   <data name="ErrorInConfigLanguage" xml:space="preserve">
     <value>Une erreur dans le fichier de configuration empêche l'application de charger la langue appropriée. Vérifiez le code de langue du fichier de config !</value>
   </data>
@@ -135,6 +144,12 @@
   <data name="HdgCorrectlyIntegratedInExplorer" xml:space="preserve">
     <value>HDG a été ajouté avec succès au menu contextuel de l'explorateur. Testez en faisant un clic droit sur un dossier...</value>
   </data>
+  <data name="HDGFiles" xml:space="preserve">
+    <value>Fichiers graphiques HDG</value>
+  </data>
+  <data name="HistorySuccessfullyCleared" xml:space="preserve">
+    <value>Historique des répertoires analysés effacé avec succès.</value>
+  </data>
   <data name="languageApplied" xml:space="preserve">
     <value>Les paramètres de langue ont été modifiés. Avant le prochain démarrage de l'application, seules les nouvelles fenêtres seront affectées.</value>
   </data>
@@ -152,6 +167,9 @@
   </data>
   <data name="OperationSuccessfullTitle" xml:space="preserve">
     <value>Operation réussie</value>
+  </data>
+  <data name="PleaseChooseDirectory" xml:space="preserve">
+    <value>Veuillez sélectionner le répertoire à analyser :</value>
   </data>
   <data name="statusReady" xml:space="preserve">
     <value>Prêt.</value>

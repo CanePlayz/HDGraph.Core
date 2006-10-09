@@ -63,10 +63,19 @@ namespace HDGraphiqueurGUI
             set { updateHoverNode = value; }
         }
 
+        private bool forceRefreshOnNextRepaint = false;
+
+        public bool ForceRefreshOnNextRepaint
+        {
+            get { return forceRefreshOnNextRepaint; }
+            set { forceRefreshOnNextRepaint = value; }
+        }
+
+
         private Point? lastClicPosition = null;
         private DirectoryNode lastClicNode = null;
 
-        private Bitmap buffer;
+        internal Bitmap buffer;
         private Graphics graph;
         private RectangleF pieRec;
         private bool printDirNames = false;
@@ -93,7 +102,7 @@ namespace HDGraphiqueurGUI
         {
             //base.OnPaint(e);
 
-            if (buffer == null || buffer.Width != this.Width || buffer.Height != this.Height)
+            if (buffer == null || buffer.Width != this.Width || buffer.Height != this.Height || forceRefreshOnNextRepaint)
             {
                 buffer = new Bitmap(this.Width, this.Height);
                 graph = Graphics.FromImage(buffer);
@@ -108,6 +117,7 @@ namespace HDGraphiqueurGUI
                                         0);
                 PaintTree();
                 graph.Dispose();
+                forceRefreshOnNextRepaint = false;
             }
             e.Graphics.DrawImageUnscaled(buffer, 0, 0);
         }
