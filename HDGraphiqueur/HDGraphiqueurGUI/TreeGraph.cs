@@ -104,21 +104,29 @@ namespace HDGraph
 
             if (buffer == null || buffer.Width != this.Width || buffer.Height != this.Height || forceRefreshOnNextRepaint)
             {
+                // Notif de mise en attente
+                Form parentForm = FindForm();
+                Cursor oldCursor = parentForm.Cursor;
+                parentForm.Cursor = Cursors.WaitCursor;
+                // Création du bitmap buffer
                 buffer = new Bitmap(this.Width, this.Height);
                 graph = Graphics.FromImage(buffer);
                 graph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
                 graph.Clear(Color.White);
-                //if (mouseDown)
-                //    g.DrawRectangle(p, new Rectangle(startPoint, size));
+                // init des données du calcul
                 pasNiveau = Math.Min(this.Width / (float)nbNiveaux / 2, this.Height / (float)nbNiveaux / 2);
                 pieRec = new RectangleF((float)this.Width / 2,
                                         (float)this.Height / 2,
                                         0,
                                         0);
+                // Calcul
                 PaintTree();
                 graph.Dispose();
                 forceRefreshOnNextRepaint = false;
+                // Fin de mise en attente
+                parentForm.Cursor = oldCursor;
             }
+            // affichage du buffer
             e.Graphics.DrawImageUnscaled(buffer, 0, 0);
         }
 
@@ -373,12 +381,22 @@ namespace HDGraph
 
         private void centerGraphOnThisDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CenterGraphOnThisDirectory();
+        }
+
+        private void CenterGraphOnThisDirectory()
+        {
             if (lastClicNode != null)
                 this.root = lastClicNode;
             ForceRefresh();
         }
 
         private void centerGraphOnParentDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CenterGraphOnParentDirectory();
+        }
+
+        private void CenterGraphOnParentDirectory()
         {
             if (lastClicNode != null && lastClicNode.Parent != null)
                 this.root = lastClicNode.Parent;
@@ -409,6 +427,20 @@ namespace HDGraph
         }
 
         #endregion
+
+        private void TreeGraph_DoubleClick(object sender, EventArgs e)
+        {
+            lastClicPosition = PointToClient(Cursor.Position);
+            lastClicNode = FindNodeByCursorPosition(lastClicPosition.Value);
+            if (lastClicNode != null)
+            {
+                if (lastClicNode == root)
+                    CenterGraphOnParentDirectory();
+                else
+                    CenterGraphOnThisDirectory();
+            }
+
+        }
 
     }
 }

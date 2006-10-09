@@ -432,8 +432,12 @@ namespace HDGraph
         /// <param name="e"></param>
         private void buttonScan_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+            buttonScan.Enabled = false;
             SavePathHistory();
             LaunchScan();
+            this.Cursor = this.DefaultCursor;
+            buttonScan.Enabled = true;
         }
 
         #region Gestion de l'historique

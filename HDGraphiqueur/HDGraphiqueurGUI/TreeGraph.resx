@@ -117,105 +117,105 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="directoryNameToolStripMenuItem.Text" xml:space="preserve">
-    <value>DirectoryName</value>
-  </data>
-  <data name="&gt;&gt;openThisDirectoryInWindowsExplorerToolStripMenuItem.Name" xml:space="preserve">
-    <value>openThisDirectoryInWindowsExplorerToolStripMenuItem</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>354, 277</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>319, 104</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;openThisDirectoryInWindowsExplorerToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="openThisDirectoryInWindowsExplorerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>318, 22</value>
-  </data>
-  <data name="centerGraphOnParentDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>318, 22</value>
-  </data>
-  <data name="&gt;&gt;directoryNameToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="openThisDirectoryInWindowsExplorerToolStripMenuItem.Text" xml:space="preserve">
-    <value>Open this directory in Windows Explorer</value>
-  </data>
-  <data name="centerGraphOnThisDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>318, 22</value>
-  </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>315, 6</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>TreeGraph</value>
-  </data>
-  <data name="centerGraphOnParentDirectoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>Center Graph on parent directory</value>
-  </data>
-  <data name="&gt;&gt;centerGraphOnThisDirectoryToolStripMenuItem.Name" xml:space="preserve">
-    <value>centerGraphOnThisDirectoryToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;centerGraphOnParentDirectoryToolStripMenuItem.Name" xml:space="preserve">
-    <value>centerGraphOnParentDirectoryToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStrip1.Name" xml:space="preserve">
-    <value>contextMenuStrip1</value>
-  </data>
-  <data name="centerGraphOnThisDirectoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>Center Graph on this directory</value>
-  </data>
-  <data name="&gt;&gt;centerGraphOnParentDirectoryToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="directoryNameToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>318, 22</value>
-  </data>
-  <data name="&gt;&gt;directoryNameToolStripMenuItem.Name" xml:space="preserve">
-    <value>directoryNameToolStripMenuItem</value>
-  </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>315, 6</value>
-  </data>
-  <data name="&gt;&gt;centerGraphOnThisDirectoryToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
+  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="directoryNameToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
-    <value>toolStripSeparator1</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="directoryNameToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>318, 22</value>
   </data>
-  <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
-    <value>toolStripSeparator2</value>
+  <data name="directoryNameToolStripMenuItem.Text" xml:space="preserve">
+    <value>DirectoryName</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>315, 6</value>
+  </data>
+  <data name="centerGraphOnThisDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>318, 22</value>
+  </data>
+  <data name="centerGraphOnThisDirectoryToolStripMenuItem.Text" xml:space="preserve">
+    <value>Center Graph on this directory</value>
+  </data>
+  <data name="centerGraphOnParentDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>318, 22</value>
+  </data>
+  <data name="centerGraphOnParentDirectoryToolStripMenuItem.Text" xml:space="preserve">
+    <value>Center Graph on parent directory</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>315, 6</value>
+  </data>
+  <data name="openThisDirectoryInWindowsExplorerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>318, 22</value>
+  </data>
+  <data name="openThisDirectoryInWindowsExplorerToolStripMenuItem.Text" xml:space="preserve">
+    <value>Open this directory in Windows Explorer</value>
+  </data>
+  <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>319, 104</value>
   </data>
   <data name="contextMenuStrip1.Text" xml:space="preserve">
     <value>Directory "[TODO]"</value>
   </data>
-  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
+  <data name="&gt;&gt;contextMenuStrip1.Name" xml:space="preserve">
+    <value>contextMenuStrip1</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>354, 277</value>
+  </data>
+  <data name="&gt;&gt;directoryNameToolStripMenuItem.Name" xml:space="preserve">
+    <value>directoryNameToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;directoryNameToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Name" xml:space="preserve">
+    <value>toolStripSeparator1</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;centerGraphOnThisDirectoryToolStripMenuItem.Name" xml:space="preserve">
+    <value>centerGraphOnThisDirectoryToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;centerGraphOnThisDirectoryToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;centerGraphOnParentDirectoryToolStripMenuItem.Name" xml:space="preserve">
+    <value>centerGraphOnParentDirectoryToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;centerGraphOnParentDirectoryToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
+    <value>toolStripSeparator2</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;openThisDirectoryInWindowsExplorerToolStripMenuItem.Name" xml:space="preserve">
+    <value>openThisDirectoryInWindowsExplorerToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;openThisDirectoryInWindowsExplorerToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>TreeGraph</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
