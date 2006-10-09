@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace HDGraph
 {
-    public class MoteurGraphiqueur:IXmlSerializable
+    public class MoteurGraphiqueur : IXmlSerializable
     {
         private DirectoryNode root = null;
 
@@ -14,6 +14,15 @@ namespace HDGraph
         {
             get { return root; }
         }
+
+        private DateTime analyzeDate;
+
+        public DateTime AnalyzeDate
+        {
+            get { return analyzeDate; }
+            set { analyzeDate = value; }
+        }
+
 
         public delegate void PrintInfoDelegate(string message);
 
@@ -27,12 +36,14 @@ namespace HDGraph
         }
 
 
-        public void ConstruireArborescence(string path, int maxLevel) {
+        public void ConstruireArborescence(string path, int maxLevel)
+        {
             if (maxLevel < 1)
                 throw new ArgumentOutOfRangeException("maxLevel", "Il faut afficher au moins 1 niveau !");
             root = new DirectoryNode(path);
-            
-            ConstruireArborescence(root, maxLevel-1);
+
+            ConstruireArborescence(root, maxLevel - 1);
+            analyzeDate = DateTime.Now;
         }
 
         private void ConstruireArborescence(DirectoryNode dir, int maxLevel)
@@ -90,14 +101,27 @@ namespace HDGraph
 
         public void ReadXml(System.Xml.XmlReader reader)
         {
-            throw new Exception("The method or operation is not implemented.");
+            //string ns = "http://HDGraph.tools.laugel.fr/MoteurGraphiqueur.xsd";
+
+            // Début élément MoteurGraphiqueur
+            reader.ReadStartElement();
+
+            XmlSerializer serializer = new XmlSerializer(typeof(DirectoryNode));
+            root = (DirectoryNode)serializer.Deserialize(reader);
+
+            analyzeDate = reader.ReadElementContentAsDateTime();
+
+            // Fin élément MoteurGraphiqueur
+            reader.ReadEndElement();
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)
         {
-            //string ns = "http://HDGraphiqueur.tools.laugel.fr/MoteurGraphiqueur.xsd";
-            XmlSerializer serializer = new XmlSerializer(typeof(DirectoryNode));
+            //string ns = "http://HDGraph.tools.laugel.fr/MoteurGraphiqueur.xsd";
+            XmlSerializer serializer = new XmlSerializer(typeof(DirectoryNode));//, ns);
             serializer.Serialize(writer, root);
+
+            writer.WriteElementString("AnalyzeDate", analyzeDate.ToString("s"));
         }
 
         #endregion

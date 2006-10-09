@@ -132,6 +132,9 @@
   <data name="ErrorInConfigLanguageTitle" xml:space="preserve">
     <value>Language code error in config file</value>
   </data>
+  <data name="GraphLoadedFromDate" xml:space="preserve">
+    <value>Analyze loaded. Disk snapshot date is {0}.</value>
+  </data>
   <data name="HdgAlreadyDesIntegratedInExplorer" xml:space="preserve">
     <value>HDG is currently NOT integrated in the explorer context menu. Nothing to do !</value>
   </data>

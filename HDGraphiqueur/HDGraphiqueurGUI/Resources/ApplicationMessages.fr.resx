@@ -132,6 +132,9 @@
   <data name="ErrorInConfigLanguageTitle" xml:space="preserve">
     <value>Le code de la langue du fichier de config est erroné.</value>
   </data>
+  <data name="GraphLoadedFromDate" xml:space="preserve">
+    <value>Graphique chargé. L'analyze date du {0}.</value>
+  </data>
   <data name="HdgAlreadyDesIntegratedInExplorer" xml:space="preserve">
     <value>HDG n'est pas intégré à l'explorateur, impossible donc de le retirer !</value>
   </data>

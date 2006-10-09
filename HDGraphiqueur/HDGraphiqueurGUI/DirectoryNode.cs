@@ -8,6 +8,8 @@ namespace HDGraph
 {
     public class DirectoryNode : IXmlSerializable
     {
+        #region Variables et propriétés 
+
         private long totalSize;
 
         public long TotalSize
@@ -65,13 +67,14 @@ namespace HDGraph
             set { profondeurMax = value; }
         }
 
+        #endregion
+
+        #region Constructeur(s)
 
         public DirectoryNode(string path)
         {
             this.path = path;
-            this.name = System.IO.Path.GetFileName(path);
-            if (this.name == null || this.name.Length == 0)
-                this.name = path;
+            this.name = GetNameFromPath(path);
         }
 
         internal DirectoryNode()
@@ -79,10 +82,37 @@ namespace HDGraph
 
         }
 
+        #endregion
+
+        #region Méthodes
+        
         public override string ToString()
         {
             return base.ToString() + ": " + name;
         }
+
+        private string GetNameFromPath(string path)
+        {
+            string theName = System.IO.Path.GetFileName(path);
+            if (theName == null || theName.Length == 0)
+                theName = path;
+            return theName;
+        }
+
+        /// <summary>
+        /// Se base sur le nom du node courant et sur le path du père pour mettre à jour le path courant.
+        /// </summary>
+        private void UpdatePathFromNameAndParent()
+        {
+            if (parent != null)
+                this.path = parent.path + System.IO.Path.DirectorySeparatorChar + name;
+            foreach (DirectoryNode node in children)
+            {
+                node.UpdatePathFromNameAndParent();
+            }
+        }
+
+        #endregion
 
         #region IXmlSerializable Membres
 
@@ -93,6 +123,7 @@ namespace HDGraph
 
         public void ReadXml(System.Xml.XmlReader reader)
         {
+            // Début élément DirectoryNode
             reader.ReadStartElement();
 
             name = reader.ReadElementContentAsString();
@@ -100,6 +131,29 @@ namespace HDGraph
             filesSize = reader.ReadElementContentAsLong();
             profondeurMax = reader.ReadElementContentAsInt();
 
+            // Début élément Children
+            reader.ReadStartElement("Children");
+            XmlSerializer serializer = new XmlSerializer(typeof(List<DirectoryNode>));
+            children = (List<DirectoryNode>)serializer.Deserialize(reader);
+            // Fin élément Children
+            reader.ReadEndElement();
+
+            // Mise à jour du parent
+            foreach (DirectoryNode node in children)
+            {
+                node.parent = this;
+            }
+
+            // Mise à jour du path
+            if (name.Contains(":"))
+            {
+                path = name;
+                name = GetNameFromPath(path);
+                UpdatePathFromNameAndParent();
+            }
+
+            // Fin élément DirectoryNode
+            reader.ReadEndElement();
         }
 
         public void WriteXml(System.Xml.XmlWriter writer)
@@ -114,7 +168,7 @@ namespace HDGraph
             writer.WriteElementString("ProfondeurMax", profondeurMax.ToString());
 
             writer.WriteStartElement("Children");
-            XmlSerializer serializer = new XmlSerializer(children.GetType());
+            XmlSerializer serializer = new XmlSerializer(typeof(List<DirectoryNode>));
             serializer.Serialize(writer, children);
             writer.WriteEndElement();
 

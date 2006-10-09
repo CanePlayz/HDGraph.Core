@@ -142,7 +142,22 @@ namespace HDGraph
 
         private void LoadGraphFromFile(string fileName)
         {
-            
+            XmlReader reader = new XmlTextReader(fileName);
+            XmlSerializer serializer = new XmlSerializer(typeof(MoteurGraphiqueur));
+            moteur = (MoteurGraphiqueur) serializer.Deserialize(reader);
+            reader.Close();
+            moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(PrintStatus);
+            treeGraph1.Moteur = moteur;
+            if (moteur.Root != null)
+            {
+                comboBoxPath.Text = moteur.Root.Path;
+                numUpDownNbNivx.Value = moteur.Root.ProfondeurMax;
+                numUpDownNbNivxAffich.Value = moteur.Root.ProfondeurMax;
+                treeGraph1.NbNiveaux = moteur.Root.ProfondeurMax;
+            }
+            treeGraph1.ForceRefreshOnNextRepaint = true;
+            treeGraph1.Refresh();
+            PrintStatus(String.Format(resManager.GetString("GraphLoadedFromDate"), moteur.AnalyzeDate.ToString()));
         }
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
