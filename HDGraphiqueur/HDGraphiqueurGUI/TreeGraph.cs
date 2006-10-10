@@ -12,8 +12,14 @@ namespace HDGraph
     {
         #region Variables et propriétés
 
+        /// <summary>
+        /// Objet DirectoryNode qui doit être considéré comme la racine du graphe.
+        /// </summary>
         private DirectoryNode root;
 
+        /// <summary>
+        /// Moteur qui a la charge de conserver l'intégrité de l'arborescence DirectoryNode.
+        /// </summary>
         private MoteurGraphiqueur moteur;
 
         public MoteurGraphiqueur Moteur
@@ -29,8 +35,9 @@ namespace HDGraph
 
 
         private int nbNiveaux;
-        private float pasNiveau;
-
+        /// <summary>
+        /// Obtient ou définit le nombre de niveaux d'arborescence à afficher.
+        /// </summary>
         public int NbNiveaux
         {
             get { return nbNiveaux; }
@@ -46,23 +53,42 @@ namespace HDGraph
         }
 
         private bool optionShowSize = true;
-
+        /// <summary>
+        /// Obtient ou définit le booléen indiquant si le composant doit afficher la taille des répertoires en plus de leur nom.
+        /// </summary>
         public bool OptionShowSize
         {
             get { return optionShowSize; }
             set { optionShowSize = value; }
         }
 
+        private Boolean optionAlsoPaintFiles = false;
+        /// <summary>
+        /// Obtient ou définit le booléen indiquant si le composant doit afficher les arcs représentant les fichiers ou non.
+        /// </summary>
+        public Boolean OptionAlsoPaintFiles
+        {
+            get { return optionAlsoPaintFiles; }
+            set { optionAlsoPaintFiles = value; }
+        }
+
+
         public delegate void UpdateHoverNodeDelegate(DirectoryNode node);
 
         private UpdateHoverNodeDelegate updateHoverNode;
-
+        /// <summary>
+        /// Obtient ou définit la méthode à appeler par le composant TreeGraph lorsque le curseur de la souris 
+        /// passe au dessus d'un répertoire du graphe.
+        /// </summary>
         public UpdateHoverNodeDelegate UpdateHoverNode
         {
             get { return updateHoverNode; }
             set { updateHoverNode = value; }
         }
 
+        /// <summary>
+        /// Impose au composant de se redessiner, même si sa taille n'a pas changé.
+        /// </summary>
         private bool forceRefreshOnNextRepaint = false;
 
         public bool ForceRefreshOnNextRepaint
@@ -72,19 +98,64 @@ namespace HDGraph
         }
 
 
+        /// <summary>
+        /// Coordonnées du curseur de la souris à l'intérieur du contrôle, lors du dernier clic effectué sur le contrôle.
+        /// Utilisé par exemple lors du chargement du menu contextuel, pour savoir sur quel répertoire du graph le clic droit a été effectué.
+        /// </summary>
         private Point? lastClicPosition = null;
+        /// <summary>
+        /// Idem que lastClicPosition, mais stocke le directoryNode directement et non les coordonnées du curseur. 
+        /// Est utilisé lorsque lastClicPosition a été définit.
+        /// </summary>
         private DirectoryNode lastClicNode = null;
 
-        internal Bitmap buffer;
+        /// <summary>
+        /// Bitmap buffer dans lequel le graph est dessiné.
+        /// </summary>
+        private Bitmap buffer;
+        /// <summary>
+        /// Obtient le gtaph sous forme d'image.
+        /// </summary>
+        internal Bitmap ImageBuffer
+        {
+            get { return buffer; }
+        }
+
+        /// <summary>
+        /// Epaisseur d'un niveau sur le graph.
+        /// </summary>
+        private float pasNiveau;
+
+        /// <summary>
+        /// Graph associé au bitmap buffer
+        /// </summary>
         private Graphics graph;
+        /// <summary>
+        /// Rectangle représentant la surface sur laquelle le graph doit être dessiné.
+        /// </summary>
         private RectangleF pieRec;
+        /// <summary>
+        /// Booléen indiquant le type de parcours lors de la création du graph: 
+        /// si false, on est dans la phase de dessin des "camemberts". Si true, on est dans la phase 
+        /// qui consiste à imprimer les noms des répertoires sur le dessin.
+        /// </summary>
         private bool printDirNames = false;
 
-        private string abrevOctet = HDGTools.resManager.GetString("abreviationOctet");
-        private string abrevKo = HDGTools.resManager.GetString("abreviationKOctet");
-        private string abrevMo = HDGTools.resManager.GetString("abreviationMOctet");
-        private string abrevGo = HDGTools.resManager.GetString("abreviationGOctet");
-        private string abrevTo = HDGTools.resManager.GetString("abreviationTOctet");
+        #region Variables chaîne (utilisées en tant que cache du resourceManager)
+
+        //private string abrevOctet = HDGTools.resManager.GetString("abreviationOctet");
+        //private string abrevKo = HDGTools.resManager.GetString("abreviationKOctet");
+        //private string abrevMo = HDGTools.resManager.GetString("abreviationMOctet");
+        //private string abrevGo = HDGTools.resManager.GetString("abreviationGOctet");
+        //private string abrevTo = HDGTools.resManager.GetString("abreviationTOctet");
+
+        private string abrevOctet = "";
+        private string abrevKo = "";
+        private string abrevMo = "";
+        private string abrevGo = "";
+        private string abrevTo = "";
+
+        #endregion
 
         #endregion
 
@@ -94,6 +165,14 @@ namespace HDGraph
         {
             InitializeComponent();
             this.SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer, true);
+            if (HDGTools.resManager != null)
+            {
+                abrevOctet = HDGTools.resManager.GetString("abreviationOctet");
+                abrevKo = HDGTools.resManager.GetString("abreviationKOctet");
+                abrevMo = HDGTools.resManager.GetString("abreviationMOctet");
+                abrevGo = HDGTools.resManager.GetString("abreviationGOctet");
+                abrevTo = HDGTools.resManager.GetString("abreviationTOctet");
+            }
         }
 
         #endregion
@@ -101,9 +180,12 @@ namespace HDGraph
         #region Méthodes
         private void TreeGraph_Load(object sender, EventArgs e)
         {
-
         }
 
+        /// <summary>
+        /// Méthode classique OnPaint surchargée pour afficher le graph, et le calculer si nécessaire.
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e)
         {
             //base.OnPaint(e);
@@ -136,6 +218,9 @@ namespace HDGraph
             e.Graphics.DrawImageUnscaled(buffer, 0, 0);
         }
 
+        /// <summary>
+        /// Effectue le premier lancement de la méthode PaintTree récursive.
+        /// </summary>
         private void PaintTree()
         {
             if (root == null || root.TotalSize == 0)
@@ -147,7 +232,7 @@ namespace HDGraph
         }
 
         /// <summary>
-        /// Procédure récursive pour graphiquer les acrs de cercle. Graphique de l'extérieur vers l'intérieur.
+        /// Procédure récursive pour graphiquer les arcs de cercle. Graphique de l'extérieur vers l'intérieur.
         /// </summary>
         /// <param name="node"></param>
         /// <param name="rec"></param>
@@ -223,6 +308,10 @@ namespace HDGraph
                     SizeF size = graph.MeasureString(nodeText, Font);
                     x -= size.Width / 2f;
                     y -= size.Height / 2f;
+                    // Adoucir le fond du texte :
+                    Color colTransp = Color.FromArgb(100, Color.White);
+                    graph.FillRectangle(new SolidBrush(colTransp),
+                                        x, y, size.Width, size.Height);
                     graph.DrawRectangle(new Pen(Color.Black), x, y, size.Width, size.Height);
                     graph.DrawString(nodeText, Font, new SolidBrush(Color.Black), x, y);
                 }
@@ -244,6 +333,8 @@ namespace HDGraph
                 }
                 else if (nodeAngle > 10)
                 {
+                    //float textWidthLimit = pasNiveau * 1.5f;
+                    float textWidthLimit = pasNiveau * 2f;
                     float x, y, angleCentre, hyp;
                     hyp = (rec.Width - pasNiveau) / 2f;
                     angleCentre = startAngle + nodeAngle / 2f;
@@ -254,34 +345,41 @@ namespace HDGraph
                     StringFormat format = new StringFormat();
                     format.Alignment = StringAlignment.Center;
                     string nodeText = node.Name;
-                    if (optionShowSize)
+                    SizeF sizeTextName = graph.MeasureString(nodeText, Font);
+                    if (sizeTextName.Width <= textWidthLimit)
                     {
-                        SizeF sizeTextName = graph.MeasureString(nodeText, Font);
-                        float xName = x - sizeTextName.Width / 2f;
-                        float yName = y - sizeTextName.Height;
-                        graph.DrawString(nodeText, Font, new SolidBrush(Color.Black), xName, yName); //, format);
-                        string nodeSize = FormatSize(node.TotalSize);
-                        SizeF sizeTextSize = graph.MeasureString(nodeSize, Font);
-                        float xSize = x - sizeTextSize.Width / 2f;
-                        float ySize = y;
-                        Color colTransp = Color.FromArgb(50, Color.White);
-                        graph.FillRectangle(new SolidBrush(colTransp),
-                                            xSize, ySize, sizeTextSize.Width, sizeTextSize.Height);
-                        graph.DrawString(nodeSize, Font, new SolidBrush(Color.Black), xSize, ySize); //, format);
-
-                    }
-                    else
-                    {
-                        SizeF sizeTextName = graph.MeasureString(nodeText, Font);
-                        x -= sizeTextName.Width / 2f;
-                        y -= sizeTextName.Height / 2f;
-                        graph.DrawString(nodeText, Font, new SolidBrush(Color.Black), x, y); //, format);
+                        if (optionShowSize)
+                        {
+                            float xName = x - sizeTextName.Width / 2f;
+                            float yName = y - sizeTextName.Height;
+                            graph.DrawString(nodeText, Font, new SolidBrush(Color.Black), xName, yName); //, format);
+                            string nodeSize = FormatSize(node.TotalSize);
+                            SizeF sizeTextSize = graph.MeasureString(nodeSize, Font);
+                            float xSize = x - sizeTextSize.Width / 2f;
+                            float ySize = y;
+                            // Adoucir le fond du texte :
+                            //Color colTransp = Color.FromArgb(50, Color.White);
+                            //graph.FillRectangle(new SolidBrush(colTransp),
+                            //                    xSize, ySize, sizeTextSize.Width, sizeTextSize.Height);
+                            graph.DrawString(nodeSize, Font, new SolidBrush(Color.Black), xSize, ySize); //, format);
+                        }
+                        else
+                        {
+                            x -= sizeTextName.Width / 2f;
+                            y -= sizeTextName.Height / 2f;
+                            graph.DrawString(nodeText, Font, new SolidBrush(Color.Black), x, y); //, format);
+                        }
                     }
                 }
 
             }
         }
 
+        /// <summary>
+        /// Format une taille en octets en chaine de caractères.
+        /// </summary>
+        /// <param name="sizeInOctet"></param>
+        /// <returns></returns>
         public string FormatSize(long sizeInOctet)
         {
             long unit = 1;
@@ -301,29 +399,51 @@ namespace HDGraph
 
         }
 
+        /// <summary>
+        /// Convertit un angle en degrés en radian.
+        /// </summary>
+        /// <param name="degree"></param>
+        /// <returns></returns>
         public double GetRadianFromDegree(float degree)
         {
             return degree * Math.PI / 180f;
         }
 
+        /// <summary>
+        /// Convertit un angle en radian en degrés.
+        /// </summary>
         public double GetDegreeFromRadian(double radian)
         {
             return radian * 180 / Math.PI;
         }
 
+
+        /// <summary>
+        /// A l'image de PaintDirPart, génère l'arc de cercle correspondant aux fichiers d'un répertoire.
+        /// </summary>
+        /// <param name="rec"></param>
+        /// <param name="startAngle"></param>
+        /// <param name="endAngle"></param>
         private void PaintFilesPart(RectangleF rec, float startAngle, float endAngle)
         {
-            float nodeAngle = endAngle - startAngle;
-            rec.Inflate(pasNiveau, pasNiveau);
-            //Console.WriteLine("Processing Files (Angle:" + startAngle + ";" + endAngle + "; Rec:" + rec + ")...");
-            //graph.FillPie(new SolidBrush(Color.White), Rectangle.Round(rec), startAngle, nodeAngle);
+            if (optionAlsoPaintFiles)
+            {
+                float nodeAngle = endAngle - startAngle;
+                rec.Inflate(pasNiveau, pasNiveau);
+                //Console.WriteLine("Processing Files (Angle:" + startAngle + ";" + endAngle + "; Rec:" + rec + ")...");
+                graph.FillPie(new SolidBrush(Color.White), Rectangle.Round(rec), startAngle, nodeAngle); //TODO
+            }
         }
+
 
         private void TreeGraph_Resize(object sender, EventArgs e)
         {
             Refresh();
         }
 
+        /// <summary>
+        /// Lance la méthode pointée par le delegate UpdateHoverNode, pour signifier au client qu'un répertoire est en ce moment survolé.
+        /// </summary>
         private void SendPointedNode()
         {
             if (updateHoverNode == null)
@@ -333,6 +453,12 @@ namespace HDGraph
             UpdateHoverNode(foundNode);
         }
 
+        /// <summary>
+        /// Trouve quel est le répertoire survolé d'après la position du curseur.
+        /// (Recherche par coordonnées cartésiennes).
+        /// </summary>
+        /// <param name="curseurPos">Position du curseur. Doit être relative au contrôle, pas à l'écran ou à la form !</param>
+        /// <returns></returns>
         private DirectoryNode FindNodeByCursorPosition(Point curseurPos)
         {
             // On a les coordonnées du curseur dans le controle.
@@ -358,6 +484,17 @@ namespace HDGraph
             return foundNode;
         }
 
+        /// <summary>
+        /// Recherche quel est le répertoire dans lequel se trouve le point définit par l'angle cursorAngle et la distance cursorLen.
+        /// (Recherche par coordonnées polaires).
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="levelHeight"></param>
+        /// <param name="startAngle"></param>
+        /// <param name="endAngle"></param>
+        /// <param name="cursorAngle"></param>
+        /// <param name="cursorLen"></param>
+        /// <returns></returns>
         private DirectoryNode FindNodeInTree(DirectoryNode node, float levelHeight, float startAngle, float endAngle, double cursorAngle, double cursorLen)
         {
             if (node.TotalSize == 0)
@@ -390,6 +527,11 @@ namespace HDGraph
             lastClicPosition = PointToClient(Cursor.Position);
         }
 
+        /// <summary>
+        /// Chargement du menu contextuel lors du clic droit sur le contrôle.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
             if (!lastClicPosition.HasValue)
@@ -414,6 +556,9 @@ namespace HDGraph
             CenterGraphOnThisDirectory();
         }
 
+        /// <summary>
+        /// Centre le graph sur le répertoire designé par lastClicNode.
+        /// </summary>
         private void CenterGraphOnThisDirectory()
         {
             if (lastClicNode != null)
@@ -426,6 +571,9 @@ namespace HDGraph
             CenterGraphOnParentDirectory();
         }
 
+        /// <summary>
+        /// Centre le graph sur le répertoire parent de lastClicNode.
+        /// </summary>
         private void CenterGraphOnParentDirectory()
         {
             if (lastClicNode != null && lastClicNode.Parent != null)
@@ -433,23 +581,38 @@ namespace HDGraph
             ForceRefresh();
         }
 
+        /// <summary>
+        /// Ouvre le répertoire désigné par lastClicNode dans l'explorateur.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void openThisDirectoryInWindowsExplorerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (lastClicNode != null)
                 System.Diagnostics.Process.Start(lastClicNode.Path);
         }
 
-        //protected override void NotifyInvalidate(Rectangle invalidatedArea)
-        //{
-        //    base.NotifyInvalidate(this.DisplayRectangle);
-        //}
 
+        /// <summary>
+        /// Est utilisé dans le cas de la génération aléatoire des couleurs.
+        /// </summary>
         Random rand = new Random();
+
+        /// <summary>
+        /// Renvoie la prochaine couleur à utiliser pour la prochaine partie du graph à dessiner.
+        /// </summary>
+        /// <returns></returns>
         private Color GetNextColor()
         {
-            return Color.FromArgb(rand.Next(255), rand.Next(255), rand.Next(255));
+            int[] col = new int[] { rand.Next(100, 255), rand.Next(100, 255), rand.Next(100, 255) };
+            col[rand.Next(3)] -= 100;
+            //return Color.FromArgb(rand.Next(100, 255), rand.Next(100, 255), rand.Next(100, 255));
+            return Color.FromArgb(col[0], col[1], col[2]);
         }
 
+        /// <summary>
+        /// Force le rafraichissement du contrôle (même si le graph n'a pas changé).
+        /// </summary>
         public void ForceRefresh()
         {
             forceRefreshOnNextRepaint = true;
@@ -458,6 +621,11 @@ namespace HDGraph
 
         #endregion
 
+        /// <summary>
+        /// Gère le double clic sur le contrôle (recentrage du graph sur le répertoire cliqué ou sur le parent du répertoire cliqué).
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TreeGraph_DoubleClick(object sender, EventArgs e)
         {
             lastClicPosition = PointToClient(Cursor.Position);

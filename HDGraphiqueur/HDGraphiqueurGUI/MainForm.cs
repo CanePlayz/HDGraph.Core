@@ -224,7 +224,7 @@ namespace HDGraph
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 string fileName = saveFileDialog.FileName;
-                treeGraph1.buffer.Save(fileName);
+                treeGraph1.ImageBuffer.Save(fileName);
             }
         }
 
