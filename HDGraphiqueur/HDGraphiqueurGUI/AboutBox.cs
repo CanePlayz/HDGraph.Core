@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace HDGraph
 {
@@ -22,7 +23,8 @@ namespace HDGraph
             this.labelVersion.Text += " " + AssemblyVersion;
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
-            this.textBoxDescription.Text = AssemblyDescription;
+            this.textBoxDescription.Text = HDGTools.resManager.GetString("HdgDescription");
+            this.linkLabelWebsite.Text = "http://hdg.laugel.fr";
         }
 
         #region Assembly Attribute Accessors
@@ -115,6 +117,16 @@ namespace HDGraph
         private void AboutBox_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void okButton_Click(object sender, EventArgs e)
+        {
+            //this.Close();
+        }
+
+        private void linkLabelWebsite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(linkLabelWebsite.Text);
         }
     }
 }

@@ -61,6 +61,51 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à GB.
+        /// </summary>
+        internal static string abreviationGOctet {
+            get {
+                return ResourceManager.GetString("abreviationGOctet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à KB.
+        /// </summary>
+        internal static string abreviationKOctet {
+            get {
+                return ResourceManager.GetString("abreviationKOctet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à MB.
+        /// </summary>
+        internal static string abreviationMOctet {
+            get {
+                return ResourceManager.GetString("abreviationMOctet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à B..
+        /// </summary>
+        internal static string abreviationOctet {
+            get {
+                return ResourceManager.GetString("abreviationOctet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à TB.
+        /// </summary>
+        internal static string abreviationTOctet {
+            get {
+                return ResourceManager.GetString("abreviationTOctet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à All files.
         /// </summary>
         internal static string AllFiles {
@@ -147,6 +192,15 @@ namespace HDGraph.Resources {
         internal static string HdgCorrectlyIntegratedInExplorer {
             get {
                 return ResourceManager.GetString("HdgCorrectlyIntegratedInExplorer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à HDG is a tool allowing to graphically display the hard disk space usage. It shows all the directories and subdirectories of the hard drive on a single graph, allowing to see the the largest directories at a glance..
+        /// </summary>
+        internal static string HdgDescription {
+            get {
+                return ResourceManager.GetString("HdgDescription", resourceCulture);
             }
         }
         

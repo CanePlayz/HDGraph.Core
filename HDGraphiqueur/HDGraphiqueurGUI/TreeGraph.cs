@@ -80,6 +80,12 @@ namespace HDGraph
         private RectangleF pieRec;
         private bool printDirNames = false;
 
+        private string abrevOctet = HDGTools.resManager.GetString("abreviationOctet");
+        private string abrevKo = HDGTools.resManager.GetString("abreviationKOctet");
+        private string abrevMo = HDGTools.resManager.GetString("abreviationMOctet");
+        private string abrevGo = HDGTools.resManager.GetString("abreviationGOctet");
+        private string abrevTo = HDGTools.resManager.GetString("abreviationTOctet");
+
         #endregion
 
         #region Constructeur
@@ -171,6 +177,15 @@ namespace HDGraph
             PaintDirPart(node, rec, startAngle, nodeAngle);
         }
 
+
+        /// <summary>
+        /// Dessine sur l'objet "graph" l'arc de cercle représentant un répertoire, 
+        /// ou dessine le nom de ce répertoire (l'un ou l'autre, pas les 2, en fonction de la valeur de printDirNames).
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="rec"></param>
+        /// <param name="startAngle"></param>
+        /// <param name="nodeAngle"></param>
         private void PaintDirPart(DirectoryNode node, RectangleF rec, float startAngle, float nodeAngle)
         {
             // on gère les arcs "pleins" (360 de manière particulière pour avoir un disque "plein", sans trait à l'angle 0)
@@ -240,13 +255,28 @@ namespace HDGraph
                     format.Alignment = StringAlignment.Center;
                     string nodeText = node.Name;
                     if (optionShowSize)
-                        nodeText += Environment.NewLine + FormatSize(node.TotalSize);
+                    {
+                        SizeF sizeTextName = graph.MeasureString(nodeText, Font);
+                        float xName = x - sizeTextName.Width / 2f;
+                        float yName = y - sizeTextName.Height;
+                        graph.DrawString(nodeText, Font, new SolidBrush(Color.Black), xName, yName); //, format);
+                        string nodeSize = FormatSize(node.TotalSize);
+                        SizeF sizeTextSize = graph.MeasureString(nodeSize, Font);
+                        float xSize = x - sizeTextSize.Width / 2f;
+                        float ySize = y;
+                        Color colTransp = Color.FromArgb(50, Color.White);
+                        graph.FillRectangle(new SolidBrush(colTransp),
+                                            xSize, ySize, sizeTextSize.Width, sizeTextSize.Height);
+                        graph.DrawString(nodeSize, Font, new SolidBrush(Color.Black), xSize, ySize); //, format);
 
-                    SizeF size = graph.MeasureString(nodeText, Font);
-                    x -= size.Width / 2f;
-                    y -= size.Height / 2f;
-                    //graph.DrawRectangle(new Pen(Color.Black), x, y, size.Width, size.Height);
-                    graph.DrawString(nodeText, Font, new SolidBrush(Color.Black), x, y); //, format);
+                    }
+                    else
+                    {
+                        SizeF sizeTextName = graph.MeasureString(nodeText, Font);
+                        x -= sizeTextName.Width / 2f;
+                        y -= sizeTextName.Height / 2f;
+                        graph.DrawString(nodeText, Font, new SolidBrush(Color.Black), x, y); //, format);
+                    }
                 }
 
             }
@@ -256,18 +286,18 @@ namespace HDGraph
         {
             long unit = 1;
             if (sizeInOctet < unit * 1024)
-                return sizeInOctet.ToString() + " o.";
+                return sizeInOctet.ToString() + " " + abrevOctet;
             unit *= 1024;
             if (sizeInOctet < unit * 1024)
-                return String.Format("{0:F} Ko", sizeInOctet / (double)unit);
+                return String.Format("{0:F} " + abrevKo, sizeInOctet / (double)unit);
             unit *= 1024;
             if (sizeInOctet < unit * 1024)
-                return String.Format("{0:F} Mo", sizeInOctet / (double)unit);
+                return String.Format("{0:F} " + abrevMo, sizeInOctet / (double)unit);
             unit *= 1024;
             if (sizeInOctet < unit * 1024)
-                return String.Format("{0:F} Go", sizeInOctet / (double)unit);
+                return String.Format("{0:F} " + abrevGo, sizeInOctet / (double)unit);
             unit *= 1024;
-            return String.Format("{0:F} To", sizeInOctet / (double)unit);
+            return String.Format("{0:F} " + abrevTo, sizeInOctet / (double)unit);
 
         }
 

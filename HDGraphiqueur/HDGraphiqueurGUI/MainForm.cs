@@ -45,9 +45,8 @@ namespace HDGraph
             bool changeLangIsSuccess = LoadLanguage();
 
             // LeResourceManager prend en paramètre : nom_du_namespace.nom_de_la_ressource_principale
-            //resManager = new System.Resources.ResourceManager("HDGraphiqueurGUI.MainForm", System.Reflection.Assembly.GetExecutingAssembly());
-            //resManager = new System.Resources.ResourceManager(this.GetType().Assembly.GetName().Name + ".ApplicationMessages", this.GetType().Assembly);
             resManager = new System.Resources.ResourceManager(this.GetType().Assembly.GetName().Name + ".Resources.ApplicationMessages", this.GetType().Assembly);
+            HDGTools.resManager = resManager;
             if (!changeLangIsSuccess)
                 MessageBox.Show(resManager.GetString("ErrorInConfigLanguage"),
                                 resManager.GetString("ErrorInConfigLanguageTitle"),

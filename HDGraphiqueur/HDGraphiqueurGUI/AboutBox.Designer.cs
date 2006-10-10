@@ -36,107 +36,82 @@ namespace HDGraph
             this.labelCompanyName = new System.Windows.Forms.Label();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.okButton = new System.Windows.Forms.Button();
+            this.linkLabelWebsite = new System.Windows.Forms.LinkLabel();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel
             // 
-            this.tableLayoutPanel.AccessibleDescription = null;
-            this.tableLayoutPanel.AccessibleName = null;
             resources.ApplyResources(this.tableLayoutPanel, "tableLayoutPanel");
-            this.tableLayoutPanel.BackgroundImage = null;
             this.tableLayoutPanel.Controls.Add(this.logoPictureBox, 0, 0);
             this.tableLayoutPanel.Controls.Add(this.labelProductName, 1, 0);
             this.tableLayoutPanel.Controls.Add(this.labelVersion, 1, 1);
             this.tableLayoutPanel.Controls.Add(this.labelCopyright, 1, 2);
             this.tableLayoutPanel.Controls.Add(this.labelCompanyName, 1, 3);
-            this.tableLayoutPanel.Controls.Add(this.textBoxDescription, 1, 4);
-            this.tableLayoutPanel.Controls.Add(this.okButton, 1, 5);
-            this.tableLayoutPanel.Font = null;
+            this.tableLayoutPanel.Controls.Add(this.textBoxDescription, 1, 5);
+            this.tableLayoutPanel.Controls.Add(this.okButton, 1, 6);
+            this.tableLayoutPanel.Controls.Add(this.linkLabelWebsite, 1, 4);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             // 
             // logoPictureBox
             // 
-            this.logoPictureBox.AccessibleDescription = null;
-            this.logoPictureBox.AccessibleName = null;
             resources.ApplyResources(this.logoPictureBox, "logoPictureBox");
-            this.logoPictureBox.BackgroundImage = null;
-            this.logoPictureBox.Font = null;
-            this.logoPictureBox.ImageLocation = null;
             this.logoPictureBox.Name = "logoPictureBox";
-            this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 6);
+            this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 7);
             this.logoPictureBox.TabStop = false;
             // 
             // labelProductName
             // 
-            this.labelProductName.AccessibleDescription = null;
-            this.labelProductName.AccessibleName = null;
             resources.ApplyResources(this.labelProductName, "labelProductName");
-            this.labelProductName.Font = null;
             this.labelProductName.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelProductName.Name = "labelProductName";
             // 
             // labelVersion
             // 
-            this.labelVersion.AccessibleDescription = null;
-            this.labelVersion.AccessibleName = null;
             resources.ApplyResources(this.labelVersion, "labelVersion");
-            this.labelVersion.Font = null;
             this.labelVersion.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelVersion.Name = "labelVersion";
             // 
             // labelCopyright
             // 
-            this.labelCopyright.AccessibleDescription = null;
-            this.labelCopyright.AccessibleName = null;
             resources.ApplyResources(this.labelCopyright, "labelCopyright");
-            this.labelCopyright.Font = null;
             this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelCopyright.Name = "labelCopyright";
             // 
             // labelCompanyName
             // 
-            this.labelCompanyName.AccessibleDescription = null;
-            this.labelCompanyName.AccessibleName = null;
             resources.ApplyResources(this.labelCompanyName, "labelCompanyName");
-            this.labelCompanyName.Font = null;
             this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelCompanyName.Name = "labelCompanyName";
             // 
             // textBoxDescription
             // 
-            this.textBoxDescription.AccessibleDescription = null;
-            this.textBoxDescription.AccessibleName = null;
             resources.ApplyResources(this.textBoxDescription, "textBoxDescription");
-            this.textBoxDescription.BackgroundImage = null;
-            this.textBoxDescription.Font = null;
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.ReadOnly = true;
             this.textBoxDescription.TabStop = false;
             // 
             // okButton
             // 
-            this.okButton.AccessibleDescription = null;
-            this.okButton.AccessibleName = null;
             resources.ApplyResources(this.okButton, "okButton");
-            this.okButton.BackgroundImage = null;
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.okButton.Font = null;
             this.okButton.Name = "okButton";
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
+            // 
+            // linkLabelWebsite
+            // 
+            resources.ApplyResources(this.linkLabelWebsite, "linkLabelWebsite");
+            this.linkLabelWebsite.Name = "linkLabelWebsite";
+            this.linkLabelWebsite.TabStop = true;
+            this.linkLabelWebsite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelWebsite_LinkClicked);
             // 
             // AboutBox
             // 
-            this.AcceptButton = this.okButton;
-            this.AccessibleDescription = null;
-            this.AccessibleName = null;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = null;
             this.Controls.Add(this.tableLayoutPanel);
-            this.Font = null;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = null;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AboutBox";
@@ -157,8 +132,9 @@ namespace HDGraph
         private System.Windows.Forms.Label labelProductName;
         private System.Windows.Forms.Label labelVersion;
         private System.Windows.Forms.Label labelCopyright;
-        private System.Windows.Forms.Label labelCompanyName;
         private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.Button okButton;
+        private System.Windows.Forms.Label labelCompanyName;
+        private System.Windows.Forms.LinkLabel linkLabelWebsite;
     }
 }
