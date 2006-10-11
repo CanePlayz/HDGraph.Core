@@ -566,7 +566,6 @@ namespace HDGraph
             resources.ApplyResources(this.comboBoxPath, "comboBoxPath");
             this.comboBoxPath.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.comboBoxPath.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
-            this.comboBoxPath.FormattingEnabled = true;
             this.comboBoxPath.Name = "comboBoxPath";
             this.helpProvider1.SetShowHelp(this.comboBoxPath, ((bool)(resources.GetObject("comboBoxPath.ShowHelp"))));
             // 

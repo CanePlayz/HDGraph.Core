@@ -73,17 +73,27 @@ namespace HDGraph
         }
 
 
-        public delegate void UpdateHoverNodeDelegate(DirectoryNode node);
+        public delegate void NodeNotificationDelegate(DirectoryNode node);
 
-        private UpdateHoverNodeDelegate updateHoverNode;
+        private NodeNotificationDelegate updateHoverNode;
         /// <summary>
-        /// Obtient ou définit la méthode à appeler par le composant TreeGraph lorsque le curseur de la souris 
+        /// Obtient ou définit la méthode appelée par le composant TreeGraph lorsque le curseur de la souris 
         /// passe au dessus d'un répertoire du graphe.
         /// </summary>
-        public UpdateHoverNodeDelegate UpdateHoverNode
+        public NodeNotificationDelegate UpdateHoverNode
         {
             get { return updateHoverNode; }
             set { updateHoverNode = value; }
+        }
+
+        private NodeNotificationDelegate notifyNewRootNode;
+        /// <summary>
+        /// Obtient ou définit la méthode appelée par le composant TreeGraph lorsque le répertoire au centre du graph a changé.
+        /// </summary>
+        public NodeNotificationDelegate NotifyNewRootNode
+        {
+            get { return notifyNewRootNode; }
+            set { notifyNewRootNode = value; }
         }
 
         /// <summary>
@@ -562,7 +572,11 @@ namespace HDGraph
         private void CenterGraphOnThisDirectory()
         {
             if (lastClicNode != null)
+            {
                 this.root = lastClicNode;
+                if (notifyNewRootNode != null)
+                    notifyNewRootNode(this.root);
+            }
             ForceRefresh();
         }
 
@@ -577,7 +591,11 @@ namespace HDGraph
         private void CenterGraphOnParentDirectory()
         {
             if (lastClicNode != null && lastClicNode.Parent != null)
+            {
                 this.root = lastClicNode.Parent;
+                if (notifyNewRootNode != null)
+                    notifyNewRootNode(this.root);
+            }
             ForceRefresh();
         }
 

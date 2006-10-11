@@ -34,9 +34,9 @@ namespace HDGraph
             this.labelVersion = new System.Windows.Forms.Label();
             this.labelCopyright = new System.Windows.Forms.Label();
             this.labelCompanyName = new System.Windows.Forms.Label();
-            this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.okButton = new System.Windows.Forms.Button();
             this.linkLabelWebsite = new System.Windows.Forms.LinkLabel();
+            this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -49,16 +49,18 @@ namespace HDGraph
             this.tableLayoutPanel.Controls.Add(this.labelVersion, 1, 1);
             this.tableLayoutPanel.Controls.Add(this.labelCopyright, 1, 2);
             this.tableLayoutPanel.Controls.Add(this.labelCompanyName, 1, 3);
-            this.tableLayoutPanel.Controls.Add(this.textBoxDescription, 1, 5);
+            this.tableLayoutPanel.Controls.Add(this.textBoxDescription, 0, 5);
             this.tableLayoutPanel.Controls.Add(this.okButton, 1, 6);
             this.tableLayoutPanel.Controls.Add(this.linkLabelWebsite, 1, 4);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             // 
             // logoPictureBox
             // 
+            this.logoPictureBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.logoPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             resources.ApplyResources(this.logoPictureBox, "logoPictureBox");
             this.logoPictureBox.Name = "logoPictureBox";
-            this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 7);
+            this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 5);
             this.logoPictureBox.TabStop = false;
             // 
             // labelProductName
@@ -85,13 +87,6 @@ namespace HDGraph
             this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelCompanyName.Name = "labelCompanyName";
             // 
-            // textBoxDescription
-            // 
-            resources.ApplyResources(this.textBoxDescription, "textBoxDescription");
-            this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.ReadOnly = true;
-            this.textBoxDescription.TabStop = false;
-            // 
             // okButton
             // 
             resources.ApplyResources(this.okButton, "okButton");
@@ -105,6 +100,14 @@ namespace HDGraph
             this.linkLabelWebsite.Name = "linkLabelWebsite";
             this.linkLabelWebsite.TabStop = true;
             this.linkLabelWebsite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelWebsite_LinkClicked);
+            // 
+            // textBoxDescription
+            // 
+            this.tableLayoutPanel.SetColumnSpan(this.textBoxDescription, 2);
+            resources.ApplyResources(this.textBoxDescription, "textBoxDescription");
+            this.textBoxDescription.Name = "textBoxDescription";
+            this.textBoxDescription.ReadOnly = true;
+            this.textBoxDescription.TabStop = false;
             // 
             // AboutBox
             // 
@@ -132,9 +135,9 @@ namespace HDGraph
         private System.Windows.Forms.Label labelProductName;
         private System.Windows.Forms.Label labelVersion;
         private System.Windows.Forms.Label labelCopyright;
-        private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Label labelCompanyName;
         private System.Windows.Forms.LinkLabel linkLabelWebsite;
+        private System.Windows.Forms.TextBox textBoxDescription;
     }
 }

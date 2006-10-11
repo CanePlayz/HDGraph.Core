@@ -191,7 +191,9 @@ namespace HDGraph
             reader.Close();
             moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(PrintStatus);
             treeGraph1.Moteur = moteur;
-            treeGraph1.UpdateHoverNode = new TreeGraph.UpdateHoverNodeDelegate(PrintNodeHoverCursor);
+            treeGraph1.UpdateHoverNode = new TreeGraph.NodeNotificationDelegate(PrintNodeHoverCursor);
+            treeGraph1.NotifyNewRootNode = new TreeGraph.NodeNotificationDelegate(UpdateCurrentNodeRoot);
+
             if (moteur.Root != null)
             {
                 comboBoxPath.Text = moteur.Root.Path;
@@ -596,10 +598,15 @@ namespace HDGraph
             treeGraph1.Moteur = moteur;
             treeGraph1.ForceRefresh();
             PrintStatus("Terminé !");
-            treeGraph1.UpdateHoverNode = new TreeGraph.UpdateHoverNodeDelegate(PrintNodeHoverCursor);
+            treeGraph1.UpdateHoverNode = new TreeGraph.NodeNotificationDelegate(PrintNodeHoverCursor);
+            treeGraph1.NotifyNewRootNode = new TreeGraph.NodeNotificationDelegate(UpdateCurrentNodeRoot);
             WaitForm.HideWaitForm();
         }
 
+        /// <summary>
+        /// Affiche les informations du répertoire "node" dans la barre de status.
+        /// </summary>
+        /// <param name="node"></param>
         private void PrintNodeHoverCursor(DirectoryNode node)
         {
             if (node == null)
@@ -618,6 +625,18 @@ namespace HDGraph
                 else
                     labelFilesSize.Text = " - ";
                 groupBoxHoverInfo.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Affiche les informations du répertoire "node" dans la barre de status.
+        /// </summary>
+        /// <param name="node"></param>
+        private void UpdateCurrentNodeRoot(DirectoryNode node)
+        {
+            if (node != null)
+            {
+                comboBoxPath.Text = node.Path;
             }
         }
 

@@ -8,7 +8,7 @@ namespace HDGraph
 {
     public class MoteurGraphiqueur : IXmlSerializable
     {
-        private static string scanningMessage = HDGTools.resManager.GetString("Scanning");
+        private static string scanningMessage = null;
 
         private DirectoryNode root = null;
 
@@ -37,6 +37,12 @@ namespace HDGraph
             set { printInfoDeleg = value; }
         }
 
+
+        public MoteurGraphiqueur()
+        {
+            if (scanningMessage == null)
+                scanningMessage = HDGTools.resManager.GetString("Scanning");
+        }
 
         public void ConstruireArborescence(string path, int maxLevel)
         {
