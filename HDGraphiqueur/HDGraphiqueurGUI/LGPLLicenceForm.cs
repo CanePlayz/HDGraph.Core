@@ -4,32 +4,24 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Reflection;
-using System.Diagnostics;
 
 namespace HDGraph
 {
-    partial class AboutBox : Form
+    partial class LGPLLicenceForm : Form
     {
-        public AboutBox()
+        public LGPLLicenceForm()
         {
             InitializeComponent();
 
-            //  Initialize the AboutBox to display the product information from the assembly information.
-            //  Change assembly information settings for your application through either:
-            //  - Project->Properties->Application->Assembly Information
-            //  - AssemblyInfo.cs
-            this.Text += " " + AssemblyTitle;
             this.labelProductName.Text = AssemblyProduct;
-            this.labelVersion.Text += " " + AssemblyVersion;
             this.labelCopyright.Text = AssemblyCopyright;
-            this.labelCompanyName.Text = AssemblyCompany;
-            this.textBoxDescription.Text = HDGTools.resManager.GetString("HdgDescription");
-            this.linkLabelWebsite.Text = "http://hdgraph.sourceforge.net";
+            this.labelLicenceName.Text = HDGTools.resManager.GetString("HdgLicenceName");
+            this.textBoxDescription.Text = HDGTools.resManager.GetString("HdgLicenceDescription");
         }
 
         #region Assembly Attribute Accessors
 
-        public static string AssemblyTitle
+        public string AssemblyTitle
         {
             get
             {
@@ -46,28 +38,6 @@ namespace HDGraph
                 }
                 // If there was no Title attribute, or if the Title attribute was the empty string, return the .exe name
                 return System.IO.Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
-            }
-        }
-
-        public string AssemblyVersion
-        {
-            get
-            {
-                return Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            }
-        }
-
-        public string AssemblyDescription
-        {
-            get
-            {
-                // Get all Description attributes on this assembly
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
-                // If there aren't any Description attributes, return an empty string
-                if (attributes.Length == 0)
-                    return "";
-                // If there is a Description attribute, return its value
-                return ((AssemblyDescriptionAttribute)attributes[0]).Description;
             }
         }
 
@@ -99,34 +69,6 @@ namespace HDGraph
             }
         }
 
-        public string AssemblyCompany
-        {
-            get
-            {
-                // Get all Company attributes on this assembly
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
-                // If there aren't any Company attributes, return an empty string
-                if (attributes.Length == 0)
-                    return "";
-                // If there is a Company attribute, return its value
-                return ((AssemblyCompanyAttribute)attributes[0]).Company;
-            }
-        }
         #endregion
-
-        private void AboutBox_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void okButton_Click(object sender, EventArgs e)
-        {
-            //this.Close();
-        }
-
-        private void linkLabelWebsite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(linkLabelWebsite.Text);
-        }
     }
 }

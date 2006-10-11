@@ -105,6 +105,7 @@ namespace HDGraph
             this.labelDirName = new System.Windows.Forms.Label();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.treeGraph1 = new HDGraph.TreeGraph();
+            this.licenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -398,6 +399,7 @@ namespace HDGraph
             this.indexToolStripMenuItem,
             this.searchToolStripMenuItem,
             this.toolStripSeparator8,
+            this.licenceToolStripMenuItem,
             this.aboutToolStripMenuItem});
             this.helpMenu.Name = "helpMenu";
             resources.ApplyResources(this.helpMenu, "helpMenu");
@@ -649,9 +651,16 @@ namespace HDGraph
             this.treeGraph1.Moteur = null;
             this.treeGraph1.Name = "treeGraph1";
             this.treeGraph1.NbNiveaux = 0;
+            this.treeGraph1.OptionAlsoPaintFiles = false;
             this.treeGraph1.OptionShowSize = true;
             this.helpProvider1.SetShowHelp(this.treeGraph1, ((bool)(resources.GetObject("treeGraph1.ShowHelp"))));
             this.treeGraph1.UpdateHoverNode = null;
+            // 
+            // licenceToolStripMenuItem
+            // 
+            this.licenceToolStripMenuItem.Name = "licenceToolStripMenuItem";
+            resources.ApplyResources(this.licenceToolStripMenuItem, "licenceToolStripMenuItem");
+            this.licenceToolStripMenuItem.Click += new System.EventHandler(this.licenceToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -767,6 +776,7 @@ namespace HDGraph
         private System.Windows.Forms.Label labelDirTotalSize;
         private System.Windows.Forms.ToolStripMenuItem clearHistroryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportAsImageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem licenceToolStripMenuItem;
     }
 }
 

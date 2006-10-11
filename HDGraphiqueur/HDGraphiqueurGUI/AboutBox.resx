@@ -847,13 +847,13 @@
     <value>140, 104</value>
   </data>
   <data name="linkLabelWebsite.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 13</value>
+    <value>88, 13</value>
   </data>
   <data name="linkLabelWebsite.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
   </data>
   <data name="linkLabelWebsite.Text" xml:space="preserve">
-    <value>linkLabel1</value>
+    <value>linkLabelWebsite</value>
   </data>
   <data name="&gt;&gt;linkLabelWebsite.Name" xml:space="preserve">
     <value>linkLabelWebsite</value>

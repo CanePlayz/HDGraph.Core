@@ -1562,6 +1562,15 @@
   <data name="&gt;&gt;treeGraph1.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="licenceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>189, 22</value>
+  </data>
+  <data name="licenceToolStripMenuItem.Text" xml:space="preserve">
+    <value>Licence</value>
+  </data>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>French</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -6257,6 +6266,12 @@
   </data>
   <data name="&gt;&gt;helpProvider1.Type" xml:space="preserve">
     <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;licenceToolStripMenuItem.Name" xml:space="preserve">
+    <value>licenceToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;licenceToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
