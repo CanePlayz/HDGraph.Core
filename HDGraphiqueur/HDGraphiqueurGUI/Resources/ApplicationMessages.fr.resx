@@ -135,6 +135,9 @@
   <data name="AllFiles" xml:space="preserve">
     <value>Tous les fichiers</value>
   </data>
+  <data name="CriticalError" xml:space="preserve">
+    <value>Une erreur critique est survenue et l'application doit s'arreter. L'erreur a été enregistrée dans le fichier de log. Merci d'envoyer le fichier de log à l'équipe HDGraph afin de corriger cette erreur (voir http://hdgraph.sourceforge.net).</value>
+  </data>
   <data name="CursorHoverDirectory" xml:space="preserve">
     <value>Le curseur se trouve sur {0}</value>
   </data>
