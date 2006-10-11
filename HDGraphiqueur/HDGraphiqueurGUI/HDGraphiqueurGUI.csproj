@@ -10,6 +10,7 @@
     <RootNamespace>HDGraph</RootNamespace>
     <AssemblyName>HDGraph</AssemblyName>
     <ApplicationIcon>HDGraph.ico</ApplicationIcon>
+    <StartupObject>HDGraph.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
