@@ -214,6 +214,34 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à This program is free software; you can redistribute it and/or
+        ///modify it under the terms of the GNU Lesser General Public
+        ///License as published by the Free Software Foundation; either
+        ///version 2.1 of the License, or (at your option) any later version.
+        ///
+        ///This program is distributed in the hope that it will be useful,
+        ///but WITHOUT ANY WARRANTY; without even the implied warranty of
+        ///MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+        ///Lesser General Public License for more details.
+        ///
+        ///You should [le reste de la chaîne a été tronqué]&quot;;.
+        /// </summary>
+        internal static string HdgLicenceDescription {
+            get {
+                return ResourceManager.GetString("HdgLicenceDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Licence : GNU Lesser General Public License (LGPL).
+        /// </summary>
+        internal static string HdgLicenceName {
+            get {
+                return ResourceManager.GetString("HdgLicenceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Path history list successfully cleared !.
         /// </summary>
         internal static string HistorySuccessfullyCleared {
