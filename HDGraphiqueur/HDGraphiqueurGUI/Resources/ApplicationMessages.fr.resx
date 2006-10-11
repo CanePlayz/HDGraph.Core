@@ -159,6 +159,9 @@
   <data name="ErrorLoadingFile" xml:space="preserve">
     <value>Erreur lors du chargement du fichier {0}. Le chargement de ce fichier a été annulé. Détail de l'erreur : </value>
   </data>
+  <data name="ExplorerContextMenuAction" xml:space="preserve">
+    <value>Afficher l'espace avec HDGraph</value>
+  </data>
   <data name="GraphLoadedFromDate" xml:space="preserve">
     <value>Graphique chargé. L'analyze date du {0}.</value>
   </data>

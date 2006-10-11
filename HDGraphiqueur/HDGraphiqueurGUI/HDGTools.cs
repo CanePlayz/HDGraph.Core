@@ -25,7 +25,8 @@ namespace HDGraph
                 return false;
             }
             rk = rk.CreateSubKey(HDG_REG_KEY);
-            rk.SetValue("", "Graphiquer l'espace avec HDG"); // TODO
+            string cmdString = resManager.GetString("ExplorerContextMenuAction");
+            rk.SetValue("", cmdString);
             rk = rk.CreateSubKey("command");
             rk.SetValue("", Environment.GetCommandLineArgs()[0] + " \"%1\"");
             return true;
@@ -44,6 +45,16 @@ namespace HDGraph
             }
             rk.DeleteSubKeyTree(HDG_REG_KEY);
             return true;
+        }
+
+
+        public static string PrintError(Exception ex)
+        {
+            string errMsg = ex.Message + " - Source: " + ex.Source + " - Stack: " + ex.StackTrace;
+            if (ex.InnerException != null)
+                return errMsg + " ==> " + PrintError(ex.InnerException);
+            else
+                return errMsg;
         }
 
 

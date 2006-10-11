@@ -115,6 +115,15 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à A critical error occured. Error is logged, and application will stop. Please send the application log to the HDGraph team (contact: http://hdgraph.sourceforge.net). Thank you..
+        /// </summary>
+        internal static string CriticalError {
+            get {
+                return ResourceManager.GetString("CriticalError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Cursor hover directory {0}.
         /// </summary>
         internal static string CursorHoverDirectory {
@@ -174,6 +183,15 @@ namespace HDGraph.Resources {
         internal static string ErrorLoadingFile {
             get {
                 return ResourceManager.GetString("ErrorLoadingFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Draw space with HDGraph.
+        /// </summary>
+        internal static string ExplorerContextMenuAction {
+            get {
+                return ResourceManager.GetString("ExplorerContextMenuAction", resourceCulture);
             }
         }
         

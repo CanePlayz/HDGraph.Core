@@ -10,6 +10,7 @@ using System.Collections.Specialized;
 using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
+using System.Diagnostics;
 
 namespace HDGraph
 {
@@ -72,10 +73,10 @@ namespace HDGraph
                         LoadGraphFromFile(path);
                         comboBoxPath.Text = moteur.Root.Path;
                     }
-                    catch (Exception Ex)
+                    catch (Exception ex)
                     {
-                        // TODO: log erreur
-                        ShowError(String.Format(resManager.GetString("ErrorLoadingFile"), path) + Ex.Message);
+                        Trace.TraceError(HDGTools.PrintError(ex));
+                        ShowError(String.Format(resManager.GetString("ErrorLoadingFile"), path) + ex.Message);
                     }
                 }
                 else
@@ -130,7 +131,7 @@ namespace HDGraph
                 }
                 catch (Exception ex)
                 {
-                    // TODO: log erreur;
+                    Trace.TraceError(HDGTools.PrintError(ex));
                     return false;
                 }
             }
@@ -544,7 +545,7 @@ namespace HDGraph
                                 resManager.GetString("OperationFailedTitle"),
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
-                // TODO: log erreur
+                Trace.TraceError(HDGTools.PrintError(ex));
             }
         }
 
@@ -569,7 +570,7 @@ namespace HDGraph
                                 resManager.GetString("OperationFailedTitle"),
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
-                // TODO: log erreur
+                Trace.TraceError(HDGTools.PrintError(ex));
             }
         }
 

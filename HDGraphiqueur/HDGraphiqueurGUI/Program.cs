@@ -23,7 +23,7 @@ namespace HDGraph
             }
             catch (Exception ex)
             {
-                Trace.TraceError(PrintBug(ex));
+                Trace.TraceError(HDGTools.PrintError(ex));
                 System.Resources.ResourceManager res = new System.Resources.ResourceManager(typeof(Program).Assembly.GetName().Name + ".Resources.ApplicationMessages", typeof(Program).Assembly);
                 MessageBox.Show(res.GetString("CriticalError"),
                                 res.GetString("Error"), 
@@ -31,12 +31,6 @@ namespace HDGraph
             }
         }
 
-        private static string PrintBug(Exception ex) {
-            string errMsg = ex.Message + " - Source: " + ex.Source + " - Stack: " + ex.StackTrace;
-            if (ex.InnerException != null)
-                return errMsg + " ==> " + PrintBug(ex.InnerException);
-            else
-                return errMsg;
-        }
+
     }
 }
