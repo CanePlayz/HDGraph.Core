@@ -141,11 +141,20 @@
   <data name="CursorHoverNoDirectory" xml:space="preserve">
     <value>Le curseur ne survole aucun répertoire.</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Erreur HDGraph</value>
+  </data>
   <data name="ErrorInConfigLanguage" xml:space="preserve">
     <value>Une erreur dans le fichier de configuration empêche l'application de charger la langue appropriée. Vérifiez le code de langue du fichier de config !</value>
   </data>
   <data name="ErrorInConfigLanguageTitle" xml:space="preserve">
     <value>Le code de la langue du fichier de config est erroné.</value>
+  </data>
+  <data name="ErrorLoading" xml:space="preserve">
+    <value>Erreur lors du chargement de {0} : {1}</value>
+  </data>
+  <data name="ErrorLoadingFile" xml:space="preserve">
+    <value>Erreur lors du chargement du fichier {0}. Le chargement de ce fichier a été annulé. Détail de l'erreur : </value>
   </data>
   <data name="GraphLoadedFromDate" xml:space="preserve">
     <value>Graphique chargé. L'analyze date du {0}.</value>
@@ -210,6 +219,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
   </data>
   <data name="PleaseChooseDirectory" xml:space="preserve">
     <value>Veuillez sélectionner le répertoire à analyser :</value>
+  </data>
+  <data name="Scanning" xml:space="preserve">
+    <value>Annalyse de </value>
   </data>
   <data name="statusReady" xml:space="preserve">
     <value>Prêt.</value>

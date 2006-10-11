@@ -8,6 +8,8 @@ namespace HDGraph
 {
     public class MoteurGraphiqueur : IXmlSerializable
     {
+        private static string scanningMessage = HDGTools.resManager.GetString("Scanning");
+
         private DirectoryNode root = null;
 
         public DirectoryNode Root
@@ -51,7 +53,7 @@ namespace HDGraph
             try
             {
                 if (printInfoDeleg != null)
-                    printInfoDeleg("Scanning " + dir.Path + "...");
+                    printInfoDeleg(scanningMessage + dir.Path + "...");
                 DirectoryInfo dirInfo = new DirectoryInfo(dir.Path);
                 if (maxLevel <= 0)
                 {
@@ -88,7 +90,7 @@ namespace HDGraph
             catch (Exception ex)
             {
                 // TODO: autre msg ?
-                dir.Name += "Erreur lors du chargement de " + dir.Name + ": " + ex.Message;
+                dir.Name += String.Format(HDGTools.resManager.GetString("ErrorLoading"), dir.Name, ex.Message);
             }
         }
 

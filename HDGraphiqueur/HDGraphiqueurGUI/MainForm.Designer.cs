@@ -681,6 +681,7 @@ namespace HDGraph
             this.Name = "MainForm";
             this.helpProvider1.SetShowHelp(this, ((bool)(resources.GetObject("$this.ShowHelp"))));
             this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
+            this.Activated += new System.EventHandler(this.MainForm_Activated);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();

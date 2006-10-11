@@ -64,6 +64,17 @@ namespace HDGraph
             }
         }
 
+
+        /// <summary>
+        /// Affiche une fenêtre pour faire patienter l'utilisateur (dans un thread à part, pour ne pas bloquer l'exécution).
+        /// </summary>
+        /// <param name="parent">Non utilisé pour le moment.</param>
+        /// <param name="message"></param>
+        public static void ShowWaitForm(string message)
+        {
+            ShowWaitForm(null, message);
+        }
+
         /// <summary>
         /// Affiche une fenêtre pour faire patienter l'utilisateur (dans un thread à part, pour ne pas bloquer l'exécution).
         /// </summary>

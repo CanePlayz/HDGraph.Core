@@ -83,6 +83,7 @@ namespace HDGraph
             this.Name = "WaitForm";
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.TopMost = true;
             this.UseWaitCursor = true;
             this.ResumeLayout(false);
 

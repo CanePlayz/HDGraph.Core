@@ -1500,7 +1500,7 @@
     <value>treeGraph1</value>
   </data>
   <data name="&gt;&gt;treeGraph1.Type" xml:space="preserve">
-    <value>HDGraph.TreeGraph, HDGraph, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>HDGraph.TreeGraph, HDGraph, Version=0.9.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;treeGraph1.Parent" xml:space="preserve">
     <value>$this</value>

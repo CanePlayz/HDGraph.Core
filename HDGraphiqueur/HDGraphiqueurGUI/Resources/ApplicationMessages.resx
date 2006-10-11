@@ -141,11 +141,20 @@
   <data name="CursorHoverNoDirectory" xml:space="preserve">
     <value>Cursor hover no directory.</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>HDGraph Error</value>
+  </data>
   <data name="ErrorInConfigLanguage" xml:space="preserve">
     <value>An error in the configuration file prevent the application to load the appropriate language. Please verify that the langage code is correct in your config file !</value>
   </data>
   <data name="ErrorInConfigLanguageTitle" xml:space="preserve">
     <value>Language code error in config file</value>
+  </data>
+  <data name="ErrorLoading" xml:space="preserve">
+    <value>Error loading {0} : {1}</value>
+  </data>
+  <data name="ErrorLoadingFile" xml:space="preserve">
+    <value>Error loading file {0}. Load action canceled. Error detail : </value>
   </data>
   <data name="GraphLoadedFromDate" xml:space="preserve">
     <value>Analyze loaded. Disk snapshot date is {0}.</value>
@@ -209,6 +218,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
   </data>
   <data name="PleaseChooseDirectory" xml:space="preserve">
     <value>Please choose the directory to analyse :</value>
+  </data>
+  <data name="Scanning" xml:space="preserve">
+    <value>Scanning </value>
   </data>
   <data name="statusReady" xml:space="preserve">
     <value>Ready.</value>

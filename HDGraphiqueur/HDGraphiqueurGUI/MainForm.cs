@@ -9,6 +9,7 @@ using Microsoft.Win32;
 using System.Collections.Specialized;
 using System.Xml.Serialization;
 using System.Xml;
+using System.IO;
 
 namespace HDGraph
 {
@@ -34,7 +35,7 @@ namespace HDGraph
         /// <summary>
         /// Moteur de scan.
         /// </summary>
-        MoteurGraphiqueur moteur = new MoteurGraphiqueur();
+        MoteurGraphiqueur moteur;
 
         #endregion
 
@@ -47,6 +48,7 @@ namespace HDGraph
             // LeResourceManager prend en paramètre : nom_du_namespace.nom_de_la_ressource_principale
             resManager = new System.Resources.ResourceManager(this.GetType().Assembly.GetName().Name + ".Resources.ApplicationMessages", this.GetType().Assembly);
             HDGTools.resManager = resManager;
+            moteur = new MoteurGraphiqueur();
             if (!changeLangIsSuccess)
                 MessageBox.Show(resManager.GetString("ErrorInConfigLanguage"),
                                 resManager.GetString("ErrorInConfigLanguageTitle"),
@@ -61,10 +63,33 @@ namespace HDGraph
             string[] args = Environment.GetCommandLineArgs();
             if (args.Length > 1)
             {
-                comboBoxPath.Text = args[1]; // args[0] correspond à l'exécutable !
-                SavePathHistory();
-                launchScanOnStartup = true;
+                string path = args[1]; // args[0] correspond à l'exécutable, args[1] au premier argument
+                if (File.Exists(path) && Path.GetExtension(path) == ".hdg")
+                {
+                    try
+                    {
+                        // le 1er argument est un fichier HDG à charger
+                        LoadGraphFromFile(path);
+                        comboBoxPath.Text = moteur.Root.Path;
+                    }
+                    catch (Exception Ex)
+                    {
+                        // TODO: log erreur
+                        ShowError(String.Format(resManager.GetString("ErrorLoadingFile"), path) + Ex.Message);
+                    }
+                }
+                else
+                {   // le 1er argument est un répertoire: il faut lancer le scan.
+                    comboBoxPath.Text = path; 
+                    SavePathHistory();
+                    launchScanOnStartup = true;
+                }
             }
+        }
+
+        private void ShowError(string msg)
+        {
+            MessageBox.Show(msg, resManager.GetString("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         /// <summary>
@@ -166,6 +191,7 @@ namespace HDGraph
             reader.Close();
             moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(PrintStatus);
             treeGraph1.Moteur = moteur;
+            treeGraph1.UpdateHoverNode = new TreeGraph.UpdateHoverNodeDelegate(PrintNodeHoverCursor);
             if (moteur.Root != null)
             {
                 comboBoxPath.Text = moteur.Root.Path;
@@ -432,10 +458,12 @@ namespace HDGraph
         private void buttonScan_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
+            this.menuStrip.Enabled = false;
             buttonScan.Enabled = false;
             SavePathHistory();
             LaunchScan();
             this.Cursor = this.DefaultCursor;
+            this.menuStrip.Enabled = true;
             buttonScan.Enabled = true;
         }
 
@@ -560,13 +588,16 @@ namespace HDGraph
         private void LaunchScan()
         {
             int nbNiveaux = (int)numUpDownNbNivx.Value;
-            moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(PrintStatus);
+            WaitForm.ShowWaitForm("Scanning files...");
+            //moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(PrintStatus);
+            moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(WaitForm.ShowWaitForm);
             moteur.ConstruireArborescence(comboBoxPath.Text, nbNiveaux);
             treeGraph1.NbNiveaux = nbNiveaux;
             treeGraph1.Moteur = moteur;
             treeGraph1.ForceRefresh();
             PrintStatus("Terminé !");
             treeGraph1.UpdateHoverNode = new TreeGraph.UpdateHoverNodeDelegate(PrintNodeHoverCursor);
+            WaitForm.HideWaitForm();
         }
 
         private void PrintNodeHoverCursor(DirectoryNode node)
@@ -600,6 +631,11 @@ namespace HDGraph
         private void licenceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             (new LGPLLicenceForm()).ShowDialog();
+        }
+
+        private void MainForm_Activated(object sender, EventArgs e)
+        {
+            
         }
 
     }
