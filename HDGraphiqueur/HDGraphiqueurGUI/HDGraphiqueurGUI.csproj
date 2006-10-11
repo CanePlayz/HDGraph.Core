@@ -9,6 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HDGraph</RootNamespace>
     <AssemblyName>HDGraph</AssemblyName>
+    <ApplicationIcon>devNiv3d.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -196,6 +197,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="devNiv3d.ico" />
     <Content Include="LGPL Licence.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
