@@ -133,6 +133,15 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à HDGraph Error.
+        /// </summary>
+        internal static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à An error in the configuration file prevent the application to load the appropriate language. Please verify that the langage code is correct in your config file !.
         /// </summary>
         internal static string ErrorInConfigLanguage {
@@ -147,6 +156,24 @@ namespace HDGraph.Resources {
         internal static string ErrorInConfigLanguageTitle {
             get {
                 return ResourceManager.GetString("ErrorInConfigLanguageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Error loading {0} : {1}.
+        /// </summary>
+        internal static string ErrorLoading {
+            get {
+                return ResourceManager.GetString("ErrorLoading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Error loading file {0}. Load action canceled. Error detail : .
+        /// </summary>
+        internal static string ErrorLoadingFile {
+            get {
+                return ResourceManager.GetString("ErrorLoadingFile", resourceCulture);
             }
         }
         
@@ -310,6 +337,15 @@ namespace HDGraph.Resources {
         internal static string PleaseChooseDirectory {
             get {
                 return ResourceManager.GetString("PleaseChooseDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Scanning .
+        /// </summary>
+        internal static string Scanning {
+            get {
+                return ResourceManager.GetString("Scanning", resourceCulture);
             }
         }
         
