@@ -45,5 +45,41 @@ namespace HDGraph.Properties {
                 this["PathHistory"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public decimal CalculMaxDepth {
+            get {
+                return ((decimal)(this["CalculMaxDepth"]));
+            }
+            set {
+                this["CalculMaxDepth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public decimal DrawMaxDepth {
+            get {
+                return ((decimal)(this["DrawMaxDepth"]));
+            }
+            set {
+                this["DrawMaxDepth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OptionPrintSize {
+            get {
+                return ((bool)(this["OptionPrintSize"]));
+            }
+            set {
+                this["OptionPrintSize"] = value;
+            }
+        }
     }
 }
