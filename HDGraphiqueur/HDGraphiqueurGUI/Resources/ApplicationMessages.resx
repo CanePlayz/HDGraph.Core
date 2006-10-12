@@ -162,6 +162,15 @@
   <data name="ExplorerContextMenuAction" xml:space="preserve">
     <value>Draw space with HDGraph</value>
   </data>
+  <data name="FolderIsEmpty" xml:space="preserve">
+    <value>Selected folder is empty.</value>
+  </data>
+  <data name="GraphGuideLine" xml:space="preserve">
+    <value>Step by step instructions :
+1) Choose a directory to analyse on the top combo box.
+2) Press the "Scan and draw" button.
+3) Wait for the end of the analysis.</value>
+  </data>
   <data name="GraphLoadedFromDate" xml:space="preserve">
     <value>Analyze loaded. Disk snapshot date is {0}.</value>
   </data>
@@ -236,5 +245,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
   </data>
   <data name="UnableToIntegrateInExplorer" xml:space="preserve">
     <value>An error prevent you to do the operation. Perhaps that you don't have rights to do this (try as administrator if you're not). Error detail : {0}.</value>
+  </data>
+  <data name="UserCanceledAnalysis" xml:space="preserve">
+    <value>Directory scan has been aborted by user. Please launch a new scan.</value>
   </data>
 </root>

@@ -6,6 +6,24 @@ using Microsoft.Win32;
 
 namespace HDGraph
 {
+    /// <summary>
+    /// Classe d'évènement avec message texte
+    /// </summary>
+    class TextEventArgs : EventArgs
+    {
+        private string myEventText = null;
+
+        public TextEventArgs(string theEventText)
+        {
+            myEventText = theEventText;
+        }
+
+        public string EventText
+        {
+            get { return this.myEventText; }
+        }
+    }
+
     public class HDGTools
     {
         public static ResourceManager resManager;

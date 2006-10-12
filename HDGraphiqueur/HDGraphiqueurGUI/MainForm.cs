@@ -81,7 +81,7 @@ namespace HDGraph
                 }
                 else
                 {   // le 1er argument est un répertoire: il faut lancer le scan.
-                    comboBoxPath.Text = path; 
+                    comboBoxPath.Text = path;
                     SavePathHistory();
                     launchScanOnStartup = true;
                 }
@@ -168,10 +168,10 @@ namespace HDGraph
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            
-            openFileDialog.Filter = resManager.GetString("HDGFiles") + 
-                                    " (*.hdg)|*.hdg|"+
-                                    resManager.GetString("AllFiles") + 
+
+            openFileDialog.Filter = resManager.GetString("HDGFiles") +
+                                    " (*.hdg)|*.hdg|" +
+                                    resManager.GetString("AllFiles") +
                                     "(*.*)|*.*";
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -188,7 +188,7 @@ namespace HDGraph
         {
             XmlReader reader = new XmlTextReader(fileName);
             XmlSerializer serializer = new XmlSerializer(typeof(MoteurGraphiqueur));
-            moteur = (MoteurGraphiqueur) serializer.Deserialize(reader);
+            moteur = (MoteurGraphiqueur)serializer.Deserialize(reader);
             reader.Close();
             moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(PrintStatus);
             treeGraph1.Moteur = moteur;
@@ -460,13 +460,13 @@ namespace HDGraph
         /// <param name="e"></param>
         private void buttonScan_Click(object sender, EventArgs e)
         {
-            this.Cursor = Cursors.WaitCursor;
-            this.menuStrip.Enabled = false;
+            //this.Cursor = Cursors.WaitCursor;
+            //this.menuStrip.Enabled = false;
             buttonScan.Enabled = false;
             SavePathHistory();
             LaunchScan();
-            this.Cursor = this.DefaultCursor;
-            this.menuStrip.Enabled = true;
+            //this.Cursor = this.DefaultCursor;
+            //this.menuStrip.Enabled = true;
             buttonScan.Enabled = true;
         }
 
@@ -591,10 +591,20 @@ namespace HDGraph
         private void LaunchScan()
         {
             int nbNiveaux = (int)numUpDownNbNivx.Value;
-            WaitForm.ShowWaitForm("Scanning files...");
-            //moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(PrintStatus);
-            moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(WaitForm.ShowWaitForm);
-            moteur.ConstruireArborescence(comboBoxPath.Text, nbNiveaux);
+            WaitForm form = new WaitForm();
+
+            //Stopwatch watch = new Stopwatch();
+            //watch.Start();
+            form.ShowDialogAndStartScan(moteur, comboBoxPath.Text, nbNiveaux);
+
+            //watch.Stop();
+            //MessageBox.Show(watch.Elapsed.ToString());
+
+            // // moteur.ConstruireArborescence(comboBoxPath.Text, nbNiveaux); // OBSOLETE
+            // // moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(WaitForm.ShowWaitForm); // OBSOLETE
+            
+            moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(PrintStatus);
+            numUpDownNbNivxAffich.Value = nbNiveaux;
             treeGraph1.NbNiveaux = nbNiveaux;
             treeGraph1.Moteur = moteur;
             treeGraph1.ForceRefresh();
@@ -655,7 +665,7 @@ namespace HDGraph
 
         private void MainForm_Activated(object sender, EventArgs e)
         {
-            
+
         }
 
     }

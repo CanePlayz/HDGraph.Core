@@ -202,10 +202,10 @@ namespace HDGraph
 
             if (buffer == null || buffer.Width != this.Width || buffer.Height != this.Height || forceRefreshOnNextRepaint)
             {
-                // Notif de mise en attente
-                Form parentForm = FindForm();
-                Cursor oldCursor = parentForm.Cursor;
-                parentForm.Cursor = Cursors.WaitCursor;
+                // Notif de mise en attente (ANNULE)
+                //Form parentForm = FindForm();
+                //Cursor oldCursor = parentForm.Cursor;
+                //parentForm.Cursor = Cursors.WaitCursor;
                 // Création du bitmap buffer
                 buffer = new Bitmap(this.Width, this.Height);
                 graph = Graphics.FromImage(buffer);
@@ -222,7 +222,7 @@ namespace HDGraph
                 graph.Dispose();
                 forceRefreshOnNextRepaint = false;
                 // Fin de mise en attente
-                parentForm.Cursor = oldCursor;
+                //parentForm.Cursor = oldCursor;
             }
             // affichage du buffer
             e.Graphics.DrawImageUnscaled(buffer, 0, 0);
@@ -234,11 +234,35 @@ namespace HDGraph
         private void PaintTree()
         {
             if (root == null || root.TotalSize == 0)
+            {
+                PaintSpecialCase();
                 return;
+            }
             printDirNames = false;
             PaintTree(root, pieRec, 0, 360);
             printDirNames = true;
             PaintTree(root, pieRec, 0, 360);
+        }
+
+        private void PaintSpecialCase()
+        {
+            float x = this.Width / 2f;
+            float y = this.Height / 2f;
+            string text;
+            if (moteur != null && moteur.WorkCanceled)
+                text = Resources.ApplicationMessages.UserCanceledAnalysis;
+            else if (root != null && root.TotalSize == 0)
+                text = Resources.ApplicationMessages.FolderIsEmpty;
+            else
+                text = Resources.ApplicationMessages.GraphGuideLine;
+            
+            SizeF sizeTextName = graph.MeasureString(text, Font);
+            x -= sizeTextName.Width / 2f;
+            y -= sizeTextName.Height / 2f;
+            graph.DrawString(text, Font, new SolidBrush(Color.Black), x, y); //, format);
+
+
+
         }
 
         /// <summary>

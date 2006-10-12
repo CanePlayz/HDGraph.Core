@@ -22,6 +22,7 @@ namespace HDGraph
         }
         #endregion
 
+        #region Méthodes liées à l'utilisation statique
 
         public void SetMessage(string message)
         {
@@ -104,6 +105,78 @@ namespace HDGraph
                 // On attend la fin du thread.
                 myThread.Join();
             }
+        }
+
+        #endregion
+
+
+        #region Méthodes liées à l'exécution modale
+
+        private MoteurGraphiqueur moteur = null;
+        private string path;
+        private int nbNiveaux;
+
+        private void WaitForm_Load(object sender, EventArgs e)
+        {
+            if (! buttonCancel.Visible)
+                this.Height -= 40;
+            if (moteur == null)
+                return;
+        }
+
+        public void ShowDialogAndStartScan(MoteurGraphiqueur moteur, string path, int nbNiveaux)
+        {
+            this.moteur = moteur;
+            this.path = path;
+            this.nbNiveaux = nbNiveaux;
+            this.buttonCancel.Visible = true;
+            this.ShowDialog();
+        }
+
+        private string message;
+
+        private void UpdateMessage(string message)
+        {
+            this.message = message;
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            if (moteur != null)
+            {
+                moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(this.UpdateMessage);
+                moteur.ConstruireArborescence(path, nbNiveaux);
+            }
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            //this.Close(); // instruction moved to WaitForm_Shown
+        }
+
+        private void WaitForm_Shown(object sender, EventArgs e)
+        {
+            if (moteur != null)
+            {
+                backgroundWorker1.RunWorkerAsync();
+                Application.DoEvents();
+                while (backgroundWorker1.IsBusy)
+                {
+                    Thread.Sleep(50);
+                    if (message != null && message != labelInformation.Text)
+                        labelInformation.Text = message;
+                    Application.DoEvents();
+                }
+                this.Close();
+            }
+        }
+
+        #endregion
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            moteur.PleaseCancelCurrentWork = true;
+            this.buttonCancel.Enabled = false;
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Xml.Serialization;
+using System.Diagnostics;
 
 namespace HDGraph
 {
@@ -37,6 +38,23 @@ namespace HDGraph
             set { printInfoDeleg = value; }
         }
 
+        private bool pleaseCancelCurrentWork = false;
+
+        public bool PleaseCancelCurrentWork
+        {
+            get { return pleaseCancelCurrentWork; }
+            set { pleaseCancelCurrentWork = value; }
+        }
+
+        private bool workCanceled = false;
+
+        public bool WorkCanceled
+        {
+            get { return workCanceled; }
+            set { workCanceled = value; }
+        }
+
+
 
         public MoteurGraphiqueur()
         {
@@ -46,16 +64,25 @@ namespace HDGraph
 
         public void ConstruireArborescence(string path, int maxLevel)
         {
+            pleaseCancelCurrentWork = false;
+            workCanceled = false;
             if (maxLevel < 1)
                 throw new ArgumentOutOfRangeException("maxLevel", "Il faut afficher au moins 1 niveau !");
             root = new DirectoryNode(path);
 
             ConstruireArborescence(root, maxLevel - 1);
             analyzeDate = DateTime.Now;
+            if (workCanceled)
+                root = null;
         }
 
         private void ConstruireArborescence(DirectoryNode dir, int maxLevel)
         {
+            if (pleaseCancelCurrentWork)
+            {
+                workCanceled = true;
+                return;
+            }
             try
             {
                 if (printInfoDeleg != null)
@@ -66,6 +93,11 @@ namespace HDGraph
                     FileInfo[] fis = dirInfo.GetFiles("*", SearchOption.AllDirectories);
                     foreach (FileInfo fi in fis)
                     {
+                        if (pleaseCancelCurrentWork)
+                        {
+                            workCanceled = true;
+                            return;
+                        }
                         dir.TotalSize += fi.Length;
                     }
                 }
@@ -75,6 +107,11 @@ namespace HDGraph
                     FileInfo[] fis = dirInfo.GetFiles();
                     foreach (FileInfo fi in fis)
                     {
+                        if (pleaseCancelCurrentWork)
+                        {
+                            workCanceled = true;
+                            return;
+                        }
                         dir.FilesSize += fi.Length;
                     }
                     dir.TotalSize += dir.FilesSize;
@@ -83,6 +120,11 @@ namespace HDGraph
                     DirectoryInfo[] dis = dirInfo.GetDirectories();
                     foreach (DirectoryInfo di in dis)
                     {
+                        if (pleaseCancelCurrentWork)
+                        {
+                            workCanceled = true;
+                            return;
+                        }
                         DirectoryNode dirNode = new DirectoryNode(di.FullName);
                         ConstruireArborescence(dirNode, maxLevel - 1);
                         dirNode.Parent = dir;
@@ -95,7 +137,7 @@ namespace HDGraph
             }
             catch (Exception ex)
             {
-                // TODO: autre msg ?
+                Trace.TraceError("Error during folder analysis ("+dir.Path+"). Folder skiped. Details: " + HDGTools.PrintError(ex));
                 dir.Name += String.Format(HDGTools.resManager.GetString("ErrorLoading"), dir.Name, ex.Message);
             }
         }

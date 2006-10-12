@@ -120,6 +120,9 @@
   <data name="labelPleaseWait.Text" xml:space="preserve">
     <value>Veuillez patienter...</value>
   </data>
+  <data name="buttonCancel.Text" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>HDG: Travail en cours...</value>
   </data>

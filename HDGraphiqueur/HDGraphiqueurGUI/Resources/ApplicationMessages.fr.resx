@@ -162,6 +162,15 @@
   <data name="ExplorerContextMenuAction" xml:space="preserve">
     <value>Afficher l'espace avec HDGraph</value>
   </data>
+  <data name="FolderIsEmpty" xml:space="preserve">
+    <value>Le dossier séléctionné est vide.</value>
+  </data>
+  <data name="GraphGuideLine" xml:space="preserve">
+    <value>Pour commencer :
+1) Choissez un répertoire à analyser dans la zone de texte ci-dessus.
+2) Cliquez sur le bouton "Scanner et dessiner".
+3) Attendez la fin de l'analyse.</value>
+  </data>
   <data name="GraphLoadedFromDate" xml:space="preserve">
     <value>Graphique chargé. L'analyze date du {0}.</value>
   </data>
@@ -237,5 +246,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
   </data>
   <data name="UnableToIntegrateInExplorer" xml:space="preserve">
     <value>Une erreur s'est produite, aboutissant à l'échec de l'opération. Vous ne disposez peut-être pas des droits suffisants pour effectuer cette opération. Essayez en tant qu'administrateur si vous ne l'êtes pas déjà. Détail de l'erreur : {0}.</value>
+  </data>
+  <data name="UserCanceledAnalysis" xml:space="preserve">
+    <value>L'analyse du disque a été stoppée par l'utilisateur. Veuillez lancer une nouvelle analyse.</value>
   </data>
 </root>
