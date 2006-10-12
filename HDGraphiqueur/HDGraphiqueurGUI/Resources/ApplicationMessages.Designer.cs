@@ -196,6 +196,27 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Selected folder is empty..
+        /// </summary>
+        internal static string FolderIsEmpty {
+            get {
+                return ResourceManager.GetString("FolderIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Step by step instructions :
+        ///1) Choose a directory to analyse on the top combo box.
+        ///2) Press the &quot;Scan and draw&quot; button.
+        ///3) Wait for the end of the analysis..
+        /// </summary>
+        internal static string GraphGuideLine {
+            get {
+                return ResourceManager.GetString("GraphGuideLine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Analyze loaded. Disk snapshot date is {0}..
         /// </summary>
         internal static string GraphLoadedFromDate {
@@ -391,6 +412,15 @@ namespace HDGraph.Resources {
         internal static string UnableToIntegrateInExplorer {
             get {
                 return ResourceManager.GetString("UnableToIntegrateInExplorer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Directory scan has been aborted by user. Please launch a new scan..
+        /// </summary>
+        internal static string UserCanceledAnalysis {
+            get {
+                return ResourceManager.GetString("UserCanceledAnalysis", resourceCulture);
             }
         }
     }

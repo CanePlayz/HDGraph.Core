@@ -403,7 +403,15 @@ namespace HDGraph
                 //System.Threading.Thread.Sleep(1000);
                 //WaitForm.ShowWaitForm(this, "Message 2 !!");
             }
-            (new LanguageForm(resManager)).ShowDialog();
+            DialogResult res = (new LanguageForm(resManager)).ShowDialog();
+            if (res == DialogResult.OK)
+            {
+                menuStrip.SuspendLayout();
+                HDGTools.ApplyCulture(this, System.Threading.Thread.CurrentThread.CurrentUICulture);
+                treeGraph1.ForceRefresh();
+                menuStrip.ResumeLayout(true);
+                buttonScan.Refresh();
+            }
         }
 
         #region Affichages fichier d'aide
@@ -602,7 +610,7 @@ namespace HDGraph
 
             // // moteur.ConstruireArborescence(comboBoxPath.Text, nbNiveaux); // OBSOLETE
             // // moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(WaitForm.ShowWaitForm); // OBSOLETE
-            
+
             moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(PrintStatus);
             numUpDownNbNivxAffich.Value = nbNiveaux;
             treeGraph1.NbNiveaux = nbNiveaux;

@@ -7,6 +7,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Globalization;
 using System.Resources;
+using System.Threading;
+using System.Reflection;
 
 namespace HDGraph
 {
@@ -71,16 +73,18 @@ namespace HDGraph
         }
 
         private void ApplyNewLangage()
-        {
+        { 
             CultureInfo newLang = (CultureInfo)comboBoxLanguage.SelectedItem;
             System.Threading.Thread.CurrentThread.CurrentUICulture = newLang;
+            HDGTools.ApplyCulture(this, newLang);
             HDGraph.Properties.Settings.Default.Language = newLang.Name;
             HDGraph.Properties.Settings.Default.Save();
             UpdateApplyBtnStatus();
-            MessageBox.Show(resManager.GetString("languageApplied"),
-                            resManager.GetString("languageAppliedTitle"),
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
+            this.labelCurrentLanguage.Text = System.Threading.Thread.CurrentThread.CurrentUICulture.NativeName;
+            //MessageBox.Show(resManager.GetString("languageApplied"),
+            //                resManager.GetString("languageAppliedTitle"),
+            //                MessageBoxButtons.OK,
+            //                MessageBoxIcon.Information);
         }
 
         private void LanguageForm_Load(object sender, EventArgs e)
@@ -98,7 +102,6 @@ namespace HDGraph
             }
             comboBoxLanguage.DataSource = cultureList;
             comboBoxLanguage.DisplayMember = "NativeName";
-
             comboBoxLanguage.SelectedItem = CultureInfo.CurrentUICulture;
         }
 
@@ -120,5 +123,6 @@ namespace HDGraph
         {
             //resManager.ReleaseAllResources();
         }
+    
     }
 }

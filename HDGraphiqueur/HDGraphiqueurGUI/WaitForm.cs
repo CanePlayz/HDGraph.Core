@@ -118,8 +118,12 @@ namespace HDGraph
 
         private void WaitForm_Load(object sender, EventArgs e)
         {
-            if (! buttonCancel.Visible)
-                this.Height -= 40;
+            if (!buttonCancel.Visible)
+            {
+                int heightDiff = 40;
+                this.Height -= heightDiff;
+                labelInformation.Height += heightDiff;
+            }
             if (moteur == null)
                 return;
         }

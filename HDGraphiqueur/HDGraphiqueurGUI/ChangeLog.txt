@@ -1,0 +1,52 @@
+HDGraph ChangeLog (http://hdgraph.sourceforge.net)
+==================================================
+
+[French version at the bottom !]
+[Version Française plus bas !]
+
+Version 0.9.1
+======================================================
+Added: 
+	- Directory scan can be canceled
+	- Short "Getting started" text showed at startup.
+
+Improved:
+	- Directory scan window is now modal (mother window not accessible until operation is finished)
+	- Changing language doesn't need to restart the application anymore.
+	- Some minor improvements
+
+
+Version 0.9.0
+======================================================
+Initial public release.
+
+
+
+
+
+
+
+
+
+
+/*****************************************************
+*
+*				VERSION FRANCAISE
+*
+******************************************************/
+
+Version 0.9.1
+======================================================
+Ajouts: 
+	- Le scan des répertoires peut maintenant être annulé
+	- Instructions "Pour commencer" ajoutées au démarrage
+
+Améliorations:
+	- La fenêtre "Travail en cours" devient modale (fenêtre parent innacessible) durant l'opération.
+	- Le changement de langue ne requiert plus le redémarrage de l'application.
+	- Améliorations mineures.
+
+
+Version 0.9.0
+======================================================
+Première distribution publique.

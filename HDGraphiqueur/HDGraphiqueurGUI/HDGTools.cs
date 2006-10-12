@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Resources;
 using Microsoft.Win32;
+using System.Windows.Forms;
+using System.Globalization;
+using System.ComponentModel;
+using System.Reflection;
 
 namespace HDGraph
 {
@@ -73,6 +77,82 @@ namespace HDGraph
                 return errMsg + " ==> " + PrintError(ex.InnerException);
             else
                 return errMsg;
+        }
+
+        public static void ApplyCulture(Form form, CultureInfo culture)
+        {
+            // Create a resource manager for this Form and determine its fields via reflection.
+            ComponentResourceManager resources = new ComponentResourceManager(form.GetType());
+            FieldInfo[] fieldInfos = form.GetType().GetFields(BindingFlags.Instance |
+                BindingFlags.DeclaredOnly | BindingFlags.NonPublic);
+
+            // Call SuspendLayout for Form and all fields derived from Control, so assignment of 
+            //   localized text doesn't change layout immediately.
+            form.SuspendLayout();
+            for (int index = 0; index < fieldInfos.Length; index++)
+            {
+                if (fieldInfos[index].FieldType.IsSubclassOf(typeof(Control)))
+                {
+                    fieldInfos[index].FieldType.InvokeMember("SuspendLayout",
+                        BindingFlags.InvokeMethod, null,
+                        fieldInfos[index].GetValue(form), null);
+                }
+            }
+
+            // If available, assign localized text to Form and fields with Text property.
+            // If available, assign localized Localtion and Size to fields
+            System.Drawing.Point point;
+            System.Drawing.Size size;
+            String text = resources.GetString("$this.Text");
+            if (text != null)
+                form.Text = text;
+            for (int index = 0; index < fieldInfos.Length; index++)
+            {
+                if (fieldInfos[index].FieldType.GetProperty("Text", typeof(String)) != null)
+                {
+                    text = resources.GetString(fieldInfos[index].Name + ".Text");
+                    if (text != null)
+                    {
+                        fieldInfos[index].FieldType.InvokeMember("Text",
+                            BindingFlags.SetProperty, null,
+                            fieldInfos[index].GetValue(form), new object[] { text });
+                    }
+                }
+                if (fieldInfos[index].FieldType.GetProperty("Location", typeof(System.Drawing.Point)) != null)
+                {
+                    point = (System.Drawing.Point)resources.GetObject(fieldInfos[index].Name + ".Location");
+                    if (point != null)
+                    {
+                        fieldInfos[index].FieldType.InvokeMember("Location",
+                            BindingFlags.SetProperty, null,
+                            fieldInfos[index].GetValue(form), new object[] { point });
+                    }
+                }
+                if (fieldInfos[index].FieldType.GetProperty("Size", typeof(System.Drawing.Size)) != null)
+                {
+                    size = (System.Drawing.Size)resources.GetObject(fieldInfos[index].Name + ".Size");
+                    if (size != null)
+                    {
+                        fieldInfos[index].FieldType.InvokeMember("Size",
+                            BindingFlags.SetProperty, null,
+                            fieldInfos[index].GetValue(form), new object[] { size });
+                    }
+                }
+            }
+
+            // Call ResumeLayout for Form and all fields derived from Control to resume layout logic.
+            // Call PerformLayout, so layout changes due to assignment of localized text are performed.
+            for (int index = 0; index < fieldInfos.Length; index++)
+            {
+                if (fieldInfos[index].FieldType.IsSubclassOf(typeof(Control)))
+                {
+                    fieldInfos[index].FieldType.InvokeMember("ResumeLayout",
+                            BindingFlags.InvokeMethod, null,
+                            fieldInfos[index].GetValue(form), new object[] { true });
+                }
+            }
+            form.ResumeLayout(false);
+            form.PerformLayout();
         }
 
 

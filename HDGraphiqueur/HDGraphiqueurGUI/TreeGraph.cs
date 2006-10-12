@@ -417,16 +417,16 @@ namespace HDGraph
         public string FormatSize(long sizeInOctet)
         {
             long unit = 1;
-            if (sizeInOctet < unit * 1024)
+            if (sizeInOctet < unit * 1000)
                 return sizeInOctet.ToString() + " " + abrevOctet;
             unit *= 1024;
-            if (sizeInOctet < unit * 1024)
+            if (sizeInOctet < unit * 1000)
                 return String.Format("{0:F} " + abrevKo, sizeInOctet / (double)unit);
             unit *= 1024;
-            if (sizeInOctet < unit * 1024)
+            if (sizeInOctet < unit * 1000)
                 return String.Format("{0:F} " + abrevMo, sizeInOctet / (double)unit);
             unit *= 1024;
-            if (sizeInOctet < unit * 1024)
+            if (sizeInOctet < unit * 1000)
                 return String.Format("{0:F} " + abrevGo, sizeInOctet / (double)unit);
             unit *= 1024;
             return String.Format("{0:F} " + abrevTo, sizeInOctet / (double)unit);

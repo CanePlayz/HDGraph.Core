@@ -52,6 +52,7 @@ namespace HDGraph
             // buttonOk
             // 
             resources.ApplyResources(this.buttonOk, "buttonOk");
+            this.buttonOk.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.UseVisualStyleBackColor = true;
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
