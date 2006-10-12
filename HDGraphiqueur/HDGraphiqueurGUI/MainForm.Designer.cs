@@ -96,6 +96,8 @@ namespace HDGraph
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBoxPrintSizes = new System.Windows.Forms.CheckBox();
+            this.numUpDownNbNivx = new System.Windows.Forms.NumericUpDown();
+            this.numUpDownNbNivxAffich = new System.Windows.Forms.NumericUpDown();
             this.buttonBrowse = new System.Windows.Forms.Button();
             this.groupBoxHoverInfo = new System.Windows.Forms.GroupBox();
             this.labelFiles = new System.Windows.Forms.Label();
@@ -104,15 +106,13 @@ namespace HDGraph
             this.labelDirName = new System.Windows.Forms.Label();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.treeGraph1 = new HDGraph.TreeGraph();
-            this.numUpDownNbNivx = new System.Windows.Forms.NumericUpDown();
-            this.numUpDownNbNivxAffich = new System.Windows.Forms.NumericUpDown();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.groupBoxHoverInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivxAffich)).BeginInit();
+            this.groupBoxHoverInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -573,6 +573,33 @@ namespace HDGraph
             this.checkBoxPrintSizes.UseVisualStyleBackColor = true;
             this.checkBoxPrintSizes.CheckedChanged += new System.EventHandler(this.checkBoxPrintSizes_CheckedChanged);
             // 
+            // numUpDownNbNivx
+            // 
+            this.numUpDownNbNivx.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::HDGraph.Properties.Settings.Default, "CalculMaxDepth", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            resources.ApplyResources(this.numUpDownNbNivx, "numUpDownNbNivx");
+            this.numUpDownNbNivx.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numUpDownNbNivx.Name = "numUpDownNbNivx";
+            this.helpProvider1.SetShowHelp(this.numUpDownNbNivx, ((bool)(resources.GetObject("numUpDownNbNivx.ShowHelp"))));
+            this.numUpDownNbNivx.Value = global::HDGraph.Properties.Settings.Default.CalculMaxDepth;
+            // 
+            // numUpDownNbNivxAffich
+            // 
+            this.numUpDownNbNivxAffich.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::HDGraph.Properties.Settings.Default, "DrawMaxDepth", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            resources.ApplyResources(this.numUpDownNbNivxAffich, "numUpDownNbNivxAffich");
+            this.numUpDownNbNivxAffich.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numUpDownNbNivxAffich.Name = "numUpDownNbNivxAffich";
+            this.helpProvider1.SetShowHelp(this.numUpDownNbNivxAffich, ((bool)(resources.GetObject("numUpDownNbNivxAffich.ShowHelp"))));
+            this.numUpDownNbNivxAffich.Value = global::HDGraph.Properties.Settings.Default.DrawMaxDepth;
+            this.numUpDownNbNivxAffich.ValueChanged += new System.EventHandler(this.numUpDownNbNivxAffich_ValueChanged);
+            // 
             // buttonBrowse
             // 
             resources.ApplyResources(this.buttonBrowse, "buttonBrowse");
@@ -630,33 +657,6 @@ namespace HDGraph
             this.helpProvider1.SetShowHelp(this.treeGraph1, ((bool)(resources.GetObject("treeGraph1.ShowHelp"))));
             this.treeGraph1.UpdateHoverNode = null;
             // 
-            // numUpDownNbNivx
-            // 
-            this.numUpDownNbNivx.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::HDGraph.Properties.Settings.Default, "CalculMaxDepth", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            resources.ApplyResources(this.numUpDownNbNivx, "numUpDownNbNivx");
-            this.numUpDownNbNivx.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numUpDownNbNivx.Name = "numUpDownNbNivx";
-            this.helpProvider1.SetShowHelp(this.numUpDownNbNivx, ((bool)(resources.GetObject("numUpDownNbNivx.ShowHelp"))));
-            this.numUpDownNbNivx.Value = global::HDGraph.Properties.Settings.Default.CalculMaxDepth;
-            // 
-            // numUpDownNbNivxAffich
-            // 
-            this.numUpDownNbNivxAffich.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::HDGraph.Properties.Settings.Default, "DrawMaxDepth", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            resources.ApplyResources(this.numUpDownNbNivxAffich, "numUpDownNbNivxAffich");
-            this.numUpDownNbNivxAffich.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numUpDownNbNivxAffich.Name = "numUpDownNbNivxAffich";
-            this.helpProvider1.SetShowHelp(this.numUpDownNbNivxAffich, ((bool)(resources.GetObject("numUpDownNbNivxAffich.ShowHelp"))));
-            this.numUpDownNbNivxAffich.Value = global::HDGraph.Properties.Settings.Default.DrawMaxDepth;
-            this.numUpDownNbNivxAffich.ValueChanged += new System.EventHandler(this.numUpDownNbNivxAffich_ValueChanged);
-            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -676,6 +676,7 @@ namespace HDGraph
             this.Name = "MainForm";
             this.helpProvider1.SetShowHelp(this, ((bool)(resources.GetObject("$this.ShowHelp"))));
             this.SizeChanged += new System.EventHandler(this.MainForm_SizeChanged);
+            this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.Activated += new System.EventHandler(this.MainForm_Activated);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip.ResumeLayout(false);
@@ -686,10 +687,10 @@ namespace HDGraph
             this.statusStrip.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBoxHoverInfo.ResumeLayout(false);
-            this.groupBoxHoverInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivxAffich)).EndInit();
+            this.groupBoxHoverInfo.ResumeLayout(false);
+            this.groupBoxHoverInfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

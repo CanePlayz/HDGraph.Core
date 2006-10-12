@@ -65,6 +65,11 @@ namespace HDGraph
             if (args.Length > 1)
             {
                 string path = args[1]; // args[0] correspond à l'exécutable, args[1] au premier argument
+                Trace.WriteLineIf(HDGTools.mySwitch.TraceInfo, "Path argument received: " + path);
+
+                // cas particulier de l'explorateur qui renvoie << x:" >> dans le cas du lecteur x
+                if (path.EndsWith(":\""))
+                    path = path.Substring(0, path.Length - 1);
                 if (File.Exists(path) && Path.GetExtension(path) == ".hdg")
                 {
                     try
@@ -146,11 +151,6 @@ namespace HDGraph
         private void MainForm_Load(object sender, EventArgs e)
         {
             PrintStatus(resManager.GetString("statusReady"));
-            if (launchScanOnStartup)
-            {
-                LaunchScan();
-                launchScanOnStartup = false;
-            }
         }
 
         #endregion
@@ -598,6 +598,7 @@ namespace HDGraph
         /// </summary>
         private void LaunchScan()
         {
+
             int nbNiveaux = (int)numUpDownNbNivx.Value;
             WaitForm form = new WaitForm();
 
@@ -616,10 +617,9 @@ namespace HDGraph
             treeGraph1.NbNiveaux = nbNiveaux;
             treeGraph1.Moteur = moteur;
             treeGraph1.ForceRefresh();
-            PrintStatus("Terminé !");
+            //PrintStatus("Terminé !");
             treeGraph1.UpdateHoverNode = new TreeGraph.NodeNotificationDelegate(PrintNodeHoverCursor);
             treeGraph1.NotifyNewRootNode = new TreeGraph.NodeNotificationDelegate(UpdateCurrentNodeRoot);
-            WaitForm.HideWaitForm();
         }
 
         /// <summary>
@@ -674,6 +674,15 @@ namespace HDGraph
         private void MainForm_Activated(object sender, EventArgs e)
         {
 
+        }
+
+        private void MainForm_Shown(object sender, EventArgs e)
+        {
+            if (launchScanOnStartup)
+            {
+                LaunchScan();
+                launchScanOnStartup = false;
+            }
         }
 
     }

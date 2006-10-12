@@ -148,8 +148,28 @@ namespace HDGraph
         {
             if (moteur != null)
             {
-                moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(this.UpdateMessage);
-                moteur.ConstruireArborescence(path, nbNiveaux);
+                try
+                {
+                    moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(this.UpdateMessage);
+                    moteur.ConstruireArborescence(path, nbNiveaux);
+                }
+                catch (ArgumentException ex)
+                {
+                    System.Diagnostics.Trace.TraceError("Invalid path (" + path + "): " + HDGTools.PrintError(ex));
+                    if (ex.ParamName == "path")
+                    {
+                        MessageBox.Show(Resources.ApplicationMessages.InvalidPathError,
+                                Resources.ApplicationMessages.Error,
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(Resources.ApplicationMessages.UnexpectedErrorDuringAnalysis,
+                                Resources.ApplicationMessages.Error,
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    System.Diagnostics.Trace.TraceError("Error while scanning " + path+ ": " + HDGTools.PrintError(ex));
+                }
             }
         }
 

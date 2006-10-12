@@ -64,6 +64,10 @@ namespace HDGraph
 
         public void ConstruireArborescence(string path, int maxLevel)
         {
+            if (!Directory.Exists(path))
+                throw new ArgumentException("Invalid path.", "path");
+            if (path.EndsWith(":"))
+                path += @"\";
             pleaseCancelCurrentWork = false;
             workCanceled = false;
             if (maxLevel < 1)

@@ -214,6 +214,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
   <data name="HistorySuccessfullyCleared" xml:space="preserve">
     <value>Historique des répertoires analysés effacé avec succès.</value>
   </data>
+  <data name="InvalidPathError" xml:space="preserve">
+    <value>Le chemin spécifié n'est pas valide ! Le scan a été annulé. Vérifiez que vous avez entré un chemin valide !</value>
+  </data>
   <data name="languageApplied" xml:space="preserve">
     <value>Les paramètres de langue ont été modifiés. Avant le prochain démarrage de l'application, seules les nouvelles fenêtres seront affectées.</value>
   </data>
@@ -246,6 +249,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
   </data>
   <data name="UnableToIntegrateInExplorer" xml:space="preserve">
     <value>Une erreur s'est produite, aboutissant à l'échec de l'opération. Vous ne disposez peut-être pas des droits suffisants pour effectuer cette opération. Essayez en tant qu'administrateur si vous ne l'êtes pas déjà. Détail de l'erreur : {0}.</value>
+  </data>
+  <data name="UnexpectedErrorDuringAnalysis" xml:space="preserve">
+    <value>Une erreur inconnue est survenue durant le scan. L'erreur a été enregistrée dans le fichier de log. Merci d'envoyer le fichier de log à l'équipe HDGraph afin de corriger cette erreur (voir http://hdgraph.sourceforge.net).</value>
   </data>
   <data name="UserCanceledAnalysis" xml:space="preserve">
     <value>L'analyse du disque a été stoppée par l'utilisateur. Veuillez lancer une nouvelle analyse.</value>

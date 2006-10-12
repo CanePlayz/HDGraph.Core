@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Globalization;
 using System.ComponentModel;
 using System.Reflection;
+using System.Diagnostics;
 
 namespace HDGraph
 {
@@ -32,7 +33,9 @@ namespace HDGraph
     {
         public static ResourceManager resManager;
 
-        private const string HDG_REG_KEY = "HDGraphiqueur";
+        public static TraceSwitch mySwitch;
+
+        private const string HDG_REG_KEY = "HDGraph";
 
 
         public static bool AddMeToExplorerContextMenu()

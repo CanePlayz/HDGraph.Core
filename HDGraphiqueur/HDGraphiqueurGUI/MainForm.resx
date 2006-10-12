@@ -737,7 +737,7 @@
     <value>True</value>
   </data>
   <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>632, 24</value>
+    <value>762, 24</value>
   </data>
   <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -934,7 +934,7 @@
     <value>True</value>
   </data>
   <data name="toolStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>632, 25</value>
+    <value>762, 25</value>
   </data>
   <data name="toolStrip.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -964,13 +964,13 @@
     <value>Status</value>
   </data>
   <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 458</value>
+    <value>0, 570</value>
   </data>
   <data name="statusStrip.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>632, 22</value>
+    <value>762, 22</value>
   </data>
   <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1066,7 +1066,7 @@
     <value>False</value>
   </data>
   <data name="comboBoxPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>397, 21</value>
+    <value>527, 21</value>
   </data>
   <data name="comboBoxPath.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1110,7 +1110,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonScan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>491, 105</value>
+    <value>621, 105</value>
   </data>
   <data name="buttonScan.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1257,7 +1257,7 @@
     <value>3</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>463, 149</value>
+    <value>593, 149</value>
   </data>
   <data name="groupBox1.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1290,7 +1290,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonBrowse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>527, 64</value>
+    <value>657, 64</value>
   </data>
   <data name="buttonBrowse.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1452,7 +1452,7 @@
     <value>3</value>
   </data>
   <data name="groupBoxHoverInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>465, 335</value>
+    <value>595, 335</value>
   </data>
   <data name="groupBoxHoverInfo.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1491,7 +1491,7 @@
     <value>True</value>
   </data>
   <data name="treeGraph1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>445, 352</value>
+    <value>575, 464</value>
   </data>
   <data name="treeGraph1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1518,7 +1518,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>632, 480</value>
+    <value>762, 592</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5859,6 +5859,9 @@
         /////gAAAB//////////////////wP/////////////////////////////////////////A////////
         /////////////////////////////////8A=
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>640, 490</value>
