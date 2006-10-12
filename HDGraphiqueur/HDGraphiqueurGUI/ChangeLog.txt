@@ -13,8 +13,11 @@ Added:
 Improved:
 	- Directory scan window is now modal (mother window not accessible until operation is finished)
 	- Changing language doesn't need to restart the application anymore.
+	- Improved error management and logs
 	- Some minor improvements
 
+Fixed:
+	- Bug opening HDGraph with a right clic on a drive in the explorer
 
 Version 0.9.0
 ======================================================
@@ -44,8 +47,12 @@ Ajouts:
 Améliorations:
 	- La fenêtre "Travail en cours" devient modale (fenêtre parent innacessible) durant l'opération.
 	- Le changement de langue ne requiert plus le redémarrage de l'application.
+	- Amélioration de la gestion des erreurs et des logs
 	- Améliorations mineures.
 
+Corrections:
+	- Bug sur l'ouverture de HDGraph via clic droit sur un lecteur depuis l'explorateur
+	
 
 Version 0.9.0
 ======================================================
