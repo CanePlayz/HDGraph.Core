@@ -317,6 +317,15 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à The specified path is not valid. Please verify it ! Scan aborted..
+        /// </summary>
+        internal static string InvalidPathError {
+            get {
+                return ResourceManager.GetString("InvalidPathError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Language setting has been modified. Until you restart the application, only new windows will use the correct settings..
         /// </summary>
         internal static string languageApplied {
@@ -412,6 +421,15 @@ namespace HDGraph.Resources {
         internal static string UnableToIntegrateInExplorer {
             get {
                 return ResourceManager.GetString("UnableToIntegrateInExplorer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à An unexpected error occured during scan. It has been logged. Please send the application log to the HDGraph team (contact: http://hdgraph.sourceforge.net). Thank you..
+        /// </summary>
+        internal static string UnexpectedErrorDuringAnalysis {
+            get {
+                return ResourceManager.GetString("UnexpectedErrorDuringAnalysis", resourceCulture);
             }
         }
         

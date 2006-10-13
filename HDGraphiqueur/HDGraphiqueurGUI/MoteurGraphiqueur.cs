@@ -54,6 +54,16 @@ namespace HDGraph
             set { workCanceled = value; }
         }
 
+        private bool autoRefreshAllowed;
+        /// <summary>
+        /// TODO: pr savoir s'il faire un refresh auto ou non dans le cas d'un changement de répertoire cible.
+        /// </summary>
+        public bool AutoRefreshAllowed
+        {
+            get { return autoRefreshAllowed; }
+            set { autoRefreshAllowed = value; }
+        }
+
 
 
         public MoteurGraphiqueur()

@@ -74,17 +74,14 @@ namespace HDGraph
 
         private void ApplyNewLangage()
         { 
-            CultureInfo newLang = (CultureInfo)comboBoxLanguage.SelectedItem;
+            CultureInfo newLang = ((CultureInfoWrapper)comboBoxLanguage.SelectedItem).Culture;
             System.Threading.Thread.CurrentThread.CurrentUICulture = newLang;
             HDGTools.ApplyCulture(this, newLang);
             HDGraph.Properties.Settings.Default.Language = newLang.Name;
             HDGraph.Properties.Settings.Default.Save();
             UpdateApplyBtnStatus();
             this.labelCurrentLanguage.Text = System.Threading.Thread.CurrentThread.CurrentUICulture.NativeName;
-            //MessageBox.Show(resManager.GetString("languageApplied"),
-            //                resManager.GetString("languageAppliedTitle"),
-            //                MessageBoxButtons.OK,
-            //                MessageBoxIcon.Information);
+            buttonCancel.DialogResult = DialogResult.OK;
         }
 
         private void LanguageForm_Load(object sender, EventArgs e)
@@ -94,15 +91,14 @@ namespace HDGraph
 
         private void LoadLanguagesCombo()
         {
-            List<CultureInfo> cultureList = new List<CultureInfo>();
+            List<CultureInfoWrapper> cultureList = new List<CultureInfoWrapper>();
             foreach (CultureInfo culture in CultureInfo.GetCultures(System.Globalization.CultureTypes.FrameworkCultures))
             {
                 if (resManager.GetString("languageId", culture) == culture.Name)
-                    cultureList.Add(culture);
+                    cultureList.Add(new CultureInfoWrapper(culture));
             }
             comboBoxLanguage.DataSource = cultureList;
-            comboBoxLanguage.DisplayMember = "NativeName";
-            comboBoxLanguage.SelectedItem = CultureInfo.CurrentUICulture;
+            comboBoxLanguage.SelectedItem = new CultureInfoWrapper(CultureInfo.CurrentUICulture);
         }
 
         private void comboBoxLanguage_SelectionChangeCommitted(object sender, EventArgs e)
@@ -112,16 +108,39 @@ namespace HDGraph
 
         private void UpdateApplyBtnStatus()
         {
-            bool canApply = (comboBoxLanguage.SelectedItem is CultureInfo)
-                            &&
-                            (!(System.Threading.Thread.CurrentThread.CurrentUICulture.Equals((CultureInfo)comboBoxLanguage.SelectedItem))
-                            );
+            bool canApply = (comboBoxLanguage.SelectedItem is CultureInfoWrapper);
+            if (canApply)
+            {
+                CultureInfo cultureSelectionnee = ((CultureInfoWrapper)comboBoxLanguage.SelectedItem).Culture;
+                canApply = !(Thread.CurrentThread.CurrentUICulture.Equals(cultureSelectionnee));
+            }
             buttonApply.Enabled = canApply;
         }
 
         private void LanguageForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             //resManager.ReleaseAllResources();
+        }
+
+        class CultureInfoWrapper
+        {
+            private CultureInfo culture;
+
+            public CultureInfo Culture
+            {
+                get { return culture; }
+                set { culture = value; }
+            }
+
+            public CultureInfoWrapper(CultureInfo culture)
+            {
+                this.culture = culture;
+            }
+
+            public override string ToString()
+            {
+                return culture.NativeName.Substring(0, 1).ToUpper() + culture.NativeName.Substring(1);
+            }
         }
     
     }
