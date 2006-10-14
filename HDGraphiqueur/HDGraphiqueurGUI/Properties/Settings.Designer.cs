@@ -81,5 +81,17 @@ namespace HDGraph.Properties {
                 this["OptionPrintSize"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OptionAutoCompleteGraph {
+            get {
+                return ((bool)(this["OptionAutoCompleteGraph"]));
+            }
+            set {
+                this["OptionAutoCompleteGraph"] = value;
+            }
+        }
     }
 }

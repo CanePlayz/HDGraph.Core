@@ -207,7 +207,7 @@ namespace HDGraph.Resources {
         /// <summary>
         ///   Recherche une chaîne localisée semblable à Step by step instructions :
         ///1) Choose a directory to analyse on the top combo box.
-        ///2) Press the &quot;Scan and draw&quot; button.
+        ///2) Press the &quot;Scan / Refresh&quot; button.
         ///3) Wait for the end of the analysis..
         /// </summary>
         internal static string GraphGuideLine {
