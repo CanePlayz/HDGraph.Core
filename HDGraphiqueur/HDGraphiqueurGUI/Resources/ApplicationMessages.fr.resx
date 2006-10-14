@@ -187,7 +187,7 @@
     <value>HDG a été ajouté avec succès au menu contextuel de l'explorateur. Testez en faisant un clic droit sur un dossier...</value>
   </data>
   <data name="HdgDescription" xml:space="preserve">
-    <value>HDG est un utilitaire permettant d'afficher l'occupation de l'espace disque sous forme graphique, via des camemberts imbriqués. Il permet ainsi de voir d'un seul coup d'oeil les répertoires les plus volumineux de votre disque dur.</value>
+    <value>HDG est un utilitaire gratuit permettant d'afficher l'occupation de l'espace disque sous forme graphique, via des camemberts imbriqués. Il permet ainsi de voir d'un seul coup d'oeil les répertoires les plus volumineux de votre disque dur.</value>
   </data>
   <data name="HDGFiles" xml:space="preserve">
     <value>Fichiers graphiques HDG</value>
