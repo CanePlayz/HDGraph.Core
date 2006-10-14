@@ -11,7 +11,9 @@ namespace HDGraph
         #region Variables et propriétés 
 
         private long totalSize;
-
+        /// <summary>
+        /// Taille total en octet du répertoire
+        /// </summary>
         public long TotalSize
         {
             get { return totalSize; }
@@ -19,7 +21,9 @@ namespace HDGraph
         }
 
         private long filesSize;
-
+        /// <summary>
+        /// Taille en octet de l'ensemble des fichiers du répertoire
+        /// </summary>
         public long FilesSize
         {
             get { return filesSize; }
@@ -28,7 +32,9 @@ namespace HDGraph
 
 
         private string name;
-
+        /// <summary>
+        /// Nom du répertoire
+        /// </summary>
         public string Name
         {
             get { return name; }
@@ -36,7 +42,9 @@ namespace HDGraph
         }
 
         private string path;
-
+        /// <summary>
+        /// Chemin du répertoire
+        /// </summary>
         public string Path
         {
             get { return path; }
@@ -44,7 +52,9 @@ namespace HDGraph
         }
 
         private DirectoryNode parent;
-
+        /// <summary>
+        /// Répetoire parent
+        /// </summary>
         public DirectoryNode Parent
         {
             get { return parent; }
@@ -52,7 +62,9 @@ namespace HDGraph
         }
 
         private List<DirectoryNode> children = new List<DirectoryNode>();
-
+        /// <summary>
+        /// Liste des répertoires contenus dans ce répertoire.
+        /// </summary>
         public List<DirectoryNode> Children
         {
             get { return children; }
@@ -60,12 +72,25 @@ namespace HDGraph
         }
 
         private int profondeurMax = 1;
-
+        /// <summary>
+        /// Plus grande profondeur calculée sur le répertoire courant.
+        /// </summary>
         public int ProfondeurMax
         {
             get { return profondeurMax; }
             set { profondeurMax = value; }
         }
+
+        private bool existsUncalcSubdir;
+        /// <summary>
+        /// Booleen indiquant s'il existe des répertoires enfants qui n'ont pas été calculés.
+        /// </summary>
+        public bool ExistsUncalcSubDir
+        {
+            get { return existsUncalcSubdir; }
+            set { existsUncalcSubdir = value; }
+        }
+
 
         #endregion
 

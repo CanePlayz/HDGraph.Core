@@ -9,17 +9,29 @@ namespace HDGraph
 {
     public class MoteurGraphiqueur : IXmlSerializable
     {
+        #region Vatiables et propriétés
+
+        #region Variables avec role de cache
+        /// <summary>
+        /// Cache messages localisés
+        /// </summary>
         private static string scanningMessage = null;
 
-        private DirectoryNode root = null;
+        #endregion
 
+        private DirectoryNode root = null;
+        /// <summary>
+        /// Répertoire racine du moteur.
+        /// </summary>
         public DirectoryNode Root
         {
             get { return root; }
         }
 
         private DateTime analyzeDate;
-
+        /// <summary>
+        /// Date de la dernière analyse
+        /// </summary>
         public DateTime AnalyzeDate
         {
             get { return analyzeDate; }
@@ -31,6 +43,9 @@ namespace HDGraph
 
         private PrintInfoDelegate printInfoDeleg = null;
 
+        /// <summary>
+        /// Delegate appelé par le moteur lorsqu'une analyze est en cours.
+        /// </summary>
         [XmlIgnore()]
         public PrintInfoDelegate PrintInfoDeleg
         {
@@ -39,7 +54,9 @@ namespace HDGraph
         }
 
         private bool pleaseCancelCurrentWork = false;
-
+        /// <summary>
+        /// Booléen indiquant s'il faut stopper l'analyse en cours.
+        /// </summary>
         public bool PleaseCancelCurrentWork
         {
             get { return pleaseCancelCurrentWork; }
@@ -47,7 +64,10 @@ namespace HDGraph
         }
 
         private bool workCanceled = false;
-
+        /// <summary>
+        /// Indique si la précédente analyse a été stoppée en 
+        /// raison d'une demande de l'utilisateur.
+        /// </summary>
         public bool WorkCanceled
         {
             get { return workCanceled; }
@@ -56,7 +76,9 @@ namespace HDGraph
 
         private bool autoRefreshAllowed;
         /// <summary>
-        /// TODO: pr savoir s'il faire un refresh auto ou non dans le cas d'un changement de répertoire cible.
+        /// Booléen indiquant si le moteur a l'autorisation de compléter l'analyse
+        /// lorsque le niveau de profondeur est insuffisant pour afficher la totalité du 
+        /// graphique.
         /// </summary>
         public bool AutoRefreshAllowed
         {
@@ -64,7 +86,9 @@ namespace HDGraph
             set { autoRefreshAllowed = value; }
         }
 
+        #endregion
 
+        #region Contructeur(s)
 
         public MoteurGraphiqueur()
         {
@@ -72,6 +96,15 @@ namespace HDGraph
                 scanningMessage = HDGTools.resManager.GetString("Scanning");
         }
 
+        #endregion
+
+        #region Méthodes
+
+        /// <summary>
+        /// Méthode à appeler pour lancer le scan.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="maxLevel"></param>
         public void ConstruireArborescence(string path, int maxLevel)
         {
             if (!Directory.Exists(path))
@@ -90,6 +123,11 @@ namespace HDGraph
                 root = null;
         }
 
+        /// <summary>
+        /// Méthode récursive construisant l'arborescence de DirectoryNode.
+        /// </summary>
+        /// <param name="dir"></param>
+        /// <param name="maxLevel"></param>
         private void ConstruireArborescence(DirectoryNode dir, int maxLevel)
         {
             if (pleaseCancelCurrentWork)
@@ -104,6 +142,7 @@ namespace HDGraph
                 DirectoryInfo dirInfo = new DirectoryInfo(dir.Path);
                 if (maxLevel <= 0)
                 {
+                    dir.ExistsUncalcSubDir = (dirInfo.GetDirectories().Length > 0);
                     FileInfo[] fis = dirInfo.GetFiles("*", SearchOption.AllDirectories);
                     foreach (FileInfo fi in fis)
                     {
@@ -147,14 +186,65 @@ namespace HDGraph
                         if (dir.ProfondeurMax < dirNode.ProfondeurMax + 1)
                             dir.ProfondeurMax = dirNode.ProfondeurMax + 1;
                     }
+                    dir.ExistsUncalcSubDir = false;
                 }
             }
             catch (Exception ex)
             {
-                Trace.TraceError("Error during folder analysis ("+dir.Path+"). Folder skiped. Details: " + HDGTools.PrintError(ex));
+                Trace.TraceError("Error during folder analysis (" + dir.Path + "). Folder skiped. Details: " + HDGTools.PrintError(ex));
                 dir.Name += String.Format(HDGTools.resManager.GetString("ErrorLoading"), dir.Name, ex.Message);
             }
         }
+
+        /// <summary>
+        /// Complète une arborescence existante pour lui donner une profondeur max de maxLevel.
+        /// I.e. si l'arborescence n'a été calculée que sur n niveaux et que maxLevel vaut n+4,
+        /// la méthode va calculer les 4 niveaux manquant.
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="maxLevel"></param>
+        /// <returns></returns>
+        public bool CompleterArborescence(DirectoryNode node, int maxLevel)
+        {
+            if (!this.autoRefreshAllowed)
+                return false;
+            if (node.ProfondeurMax >= maxLevel)
+                return true; // rien à faire !
+
+            if (node.ProfondeurMax == 1 && node.ExistsUncalcSubDir)
+            {
+                long dirPreviousTotalSize = node.TotalSize;
+                node.TotalSize = 0;
+                node.FilesSize = 0;
+                ConstruireArborescence(node, maxLevel-1);
+                if (dirPreviousTotalSize != node.TotalSize)
+                    IncrementerTailleParents(node, node.TotalSize - dirPreviousTotalSize);
+            }
+            else
+            {
+                foreach (DirectoryNode fils in node.Children)
+                {
+                    CompleterArborescence(fils, maxLevel-1);
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Incrémente la taille totale de tous les parents d'un noeud donné.
+        /// </summary>
+        /// <param name="node">Noeud dont les parents sont à mettre à jour.</param>
+        /// <param name="tailleAjoutee">Montant à ajouter.</param>
+        private void IncrementerTailleParents(DirectoryNode node, long tailleAjoutee)
+        {
+            if (node.Parent != null)
+                return;
+            node.Parent.TotalSize += tailleAjoutee;
+            IncrementerTailleParents(node.Parent, tailleAjoutee);
+        }
+
+        #endregion
 
         #region IXmlSerializable Membres
 

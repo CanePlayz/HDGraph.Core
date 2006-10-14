@@ -7,6 +7,9 @@ HDGraph ChangeLog (http://hdgraph.sourceforge.net)
 
 Version 0.9.2
 ======================================================
+Added:
+	- New Auto complete graph option: auto complete missing chart parts when you navigate in-depth directories
+	
 Fixed:
 	- Image bug in the about form in EN language. (#1577157)
 	- Invalid controls locations after changing language if the main form has been resized before. (#1577159)
@@ -49,9 +52,7 @@ Initial public release.
 
 Version 0.9.2
 ======================================================
-Version 0.9.2
-======================================================
-Fixed:
+Corrections:
 	- Mauvaise image dans boite de dialogue "à propos" (EN suelement). (#1577157)
 	- Position des contrôles invalide après un changement de langue si la taille initiale de la fenêtre à changé. (#1577159)
 

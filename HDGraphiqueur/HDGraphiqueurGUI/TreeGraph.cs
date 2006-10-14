@@ -17,6 +17,12 @@ namespace HDGraph
         /// </summary>
         private DirectoryNode root;
 
+        public DirectoryNode Root
+        {
+            get { return root; }
+            set { root = value; }
+        }
+
         /// <summary>
         /// Moteur qui a la charge de conserver l'intégrité de l'arborescence DirectoryNode.
         /// </summary>
@@ -255,7 +261,7 @@ namespace HDGraph
                 text = Resources.ApplicationMessages.FolderIsEmpty;
             else
                 text = Resources.ApplicationMessages.GraphGuideLine;
-            
+
             SizeF sizeTextName = graph.MeasureString(text, Font);
             x -= sizeTextName.Width / 2f;
             y -= sizeTextName.Height / 2f;
@@ -278,22 +284,43 @@ namespace HDGraph
                 return;
             float nodeAngle = endAngle - startAngle;
             rec.Inflate(pasNiveau, pasNiveau);
-            long cumulSize = 0;
-            float currentStartAngle;
-            foreach (DirectoryNode childNode in node.Children)
+            if (node.ExistsUncalcSubDir)
             {
-                currentStartAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
-                float childAngle = childNode.TotalSize * nodeAngle / node.TotalSize;
-                PaintTree(childNode, rec, currentStartAngle, currentStartAngle + childAngle);
-                cumulSize += childNode.TotalSize;
+                PaintUnknownPart(node, rec, startAngle, endAngle);
             }
-            currentStartAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
-            if (node.Children.Count > 0 && node.FilesSize > 0)
-                PaintFilesPart(rec, currentStartAngle, endAngle);
-            //if (node.ProfondeurMax <= 1 && endAngle - currentStartAngle > 10)
-            //    Console.WriteLine("Processing folder '" + node.Path + "' (Angle:" + startAngle + ";" + endAngle + "; Rec:" + rec + ")...");
-
+            else
+            {
+                long cumulSize = 0;
+                float currentStartAngle;
+                foreach (DirectoryNode childNode in node.Children)
+                {
+                    currentStartAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
+                    float childAngle = childNode.TotalSize * nodeAngle / node.TotalSize;
+                    PaintTree(childNode, rec, currentStartAngle, currentStartAngle + childAngle);
+                    cumulSize += childNode.TotalSize;
+                }
+                currentStartAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
+                if (node.Children.Count > 0 && node.FilesSize > 0)
+                    PaintFilesPart(rec, currentStartAngle, endAngle);
+                //if (node.ProfondeurMax <= 1 && endAngle - currentStartAngle > 10)
+                //    Console.WriteLine("Processing folder '" + node.Path + "' (Angle:" + startAngle + ";" + endAngle + "; Rec:" + rec + ")...");
+            }
             PaintDirPart(node, rec, startAngle, nodeAngle);
+        }
+
+        private void PaintUnknownPart(DirectoryNode node, RectangleF rec, float startAngle, float endAngle)
+        {
+            if (!printDirNames)
+            {
+                float nodeAngle = endAngle - startAngle;
+                rec.Inflate(pasNiveau / 6f, pasNiveau / 6f);
+                //Console.WriteLine("Processing Files (Angle:" + startAngle + ";" + endAngle + "; Rec:" + rec + ")...");
+                graph.FillPie(new System.Drawing.Drawing2D.HatchBrush(
+                                            System.Drawing.Drawing2D.HatchStyle.LargeConfetti,
+                                            Color.Gray,
+                                            Color.White),
+                                    Rectangle.Round(rec), startAngle, nodeAngle); //TODO
+            }
         }
 
 
@@ -460,12 +487,13 @@ namespace HDGraph
         /// <param name="endAngle"></param>
         private void PaintFilesPart(RectangleF rec, float startAngle, float endAngle)
         {
-            if (optionAlsoPaintFiles)
+            if (!printDirNames && optionAlsoPaintFiles)
             {
                 float nodeAngle = endAngle - startAngle;
                 rec.Inflate(pasNiveau, pasNiveau);
                 //Console.WriteLine("Processing Files (Angle:" + startAngle + ";" + endAngle + "; Rec:" + rec + ")...");
                 graph.FillPie(new SolidBrush(Color.White), Rectangle.Round(rec), startAngle, nodeAngle); //TODO
+
             }
         }
 
@@ -598,6 +626,7 @@ namespace HDGraph
             if (lastClicNode != null)
             {
                 this.root = lastClicNode;
+                moteur.CompleterArborescence(root, this.nbNiveaux); // TODO: changer en nbCalcul
                 if (notifyNewRootNode != null)
                     notifyNewRootNode(this.root);
             }

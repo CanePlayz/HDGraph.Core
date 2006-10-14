@@ -38,6 +38,12 @@ namespace HDGraph
         /// </summary>
         MoteurGraphiqueur moteur;
 
+        /// <summary>
+        /// Liste des nodes parcours, pour les boutons "back" et "next".
+        /// </summary>
+        List<DirectoryNode> graphViewHistory = new List<DirectoryNode>();
+        int currentNodeIndex = 0;
+
         #endregion
 
         #region Constructeur(s) et initialisation
@@ -60,7 +66,8 @@ namespace HDGraph
             this.Text = AboutBox.AssemblyTitle;
             EnableHelpIfAvailable();
             comboBoxPath.DataSource = HDGraph.Properties.Settings.Default.PathHistory;
-
+            checkBoxAutoRecalc.Checked = HDGraph.Properties.Settings.Default.OptionAutoCompleteGraph;
+            moteur.AutoRefreshAllowed = HDGraph.Properties.Settings.Default.OptionAutoCompleteGraph;
             string[] args = Environment.GetCommandLineArgs();
             if (args.Length > 1)
             {
@@ -186,6 +193,9 @@ namespace HDGraph
         /// <param name="fileName"></param>
         private void LoadGraphFromFile(string fileName)
         {
+            checkBoxAutoRecalc.Checked = false; // Autorecalc interdit sur un graph enregistré !
+            checkBoxAutoRecalc.Enabled = false;
+
             XmlReader reader = new XmlTextReader(fileName);
             XmlSerializer serializer = new XmlSerializer(typeof(MoteurGraphiqueur));
             moteur = (MoteurGraphiqueur)serializer.Deserialize(reader);
@@ -354,6 +364,8 @@ namespace HDGraph
         }
         #endregion
 
+        #region Méthodes diverses
+
         /// <summary>
         /// Affichage fenêtre "A propos".
         /// </summary>
@@ -413,6 +425,8 @@ namespace HDGraph
                 buttonScan.Refresh();
             }
         }
+
+        #endregion
 
         #region Affichages fichier d'aide
 
@@ -478,7 +492,7 @@ namespace HDGraph
             buttonScan.Enabled = true;
         }
 
-        #region Gestion de l'historique
+        #region Gestion de l'historique chemins entrés manuellement
 
         private void SavePathHistory()
         {
@@ -600,6 +614,7 @@ namespace HDGraph
         {
 
             int nbNiveaux = (int)numUpDownNbNivx.Value;
+
             WaitForm form = new WaitForm();
 
             //Stopwatch watch = new Stopwatch();
@@ -617,6 +632,7 @@ namespace HDGraph
             treeGraph1.NbNiveaux = nbNiveaux;
             treeGraph1.Moteur = moteur;
             treeGraph1.ForceRefresh();
+            UpdateNodeHistory(moteur.Root);
             //PrintStatus("Terminé !");
             treeGraph1.UpdateHoverNode = new TreeGraph.NodeNotificationDelegate(PrintNodeHoverCursor);
             treeGraph1.NotifyNewRootNode = new TreeGraph.NodeNotificationDelegate(UpdateCurrentNodeRoot);
@@ -656,7 +672,41 @@ namespace HDGraph
             if (node != null)
             {
                 comboBoxPath.Text = node.Path;
+                UpdateNodeHistory(node);
             }
+        }
+
+        /// <summary>
+        /// Ajoute le node à l'historique et met à jour l'état des boutons de navigation.
+        /// </summary>
+        /// <param name="node"></param>
+        private void UpdateNodeHistory(DirectoryNode node)
+        {
+
+            if (currentNodeIndex < graphViewHistory.Count - 1)
+            {
+                graphViewHistory.RemoveRange(currentNodeIndex + 1, graphViewHistory.Count - 1 - currentNodeIndex);
+            }
+
+            this.graphViewHistory.Add(node);
+            currentNodeIndex = graphViewHistory.Count - 1;
+            UpdateNavigateButtonsAvailability();
+        }
+
+        /// <summary>
+        /// Active ou desactive les boutons "suivant" et "précédent" en fonction de la position
+        /// du node actuellement vis à vis de la liste de l'historique des nodes parcourus.
+        /// </summary>
+        private void UpdateNavigateButtonsAvailability()
+        {
+            bool nextAvailable = (currentNodeIndex < graphViewHistory.Count - 1);
+            bool previousAvailable = currentNodeIndex > 0;
+
+            navigateBackwardToolStripMenuItem.Enabled = previousAvailable;
+            navigateForwardToolStripMenuItem.Enabled = nextAvailable;
+
+            toolStripButtonNavBack.Enabled = previousAvailable;
+            toolStripButtonNavForward.Enabled = nextAvailable;
         }
 
         private void MainForm_SizeChanged(object sender, EventArgs e)
@@ -683,6 +733,41 @@ namespace HDGraph
                 LaunchScan();
                 launchScanOnStartup = false;
             }
+        }
+
+        private void checkBoxAutoRecalc_CheckedChanged(object sender, EventArgs e)
+        {
+            moteur.AutoRefreshAllowed = checkBoxAutoRecalc.Checked;
+        }
+
+        private void comboBoxPath_TextUpdate(object sender, EventArgs e)
+        {
+            // Lorsque le chemin à calculé est changé par l'utilisateur,
+            // on rédéfinit l'autoRecalc du moteur par la valeur par défaut du fichier de conf.
+            checkBoxAutoRecalc.Enabled = true;
+            checkBoxAutoRecalc.Checked = HDGraph.Properties.Settings.Default.OptionAutoCompleteGraph;
+        }
+
+        private void toolStripButtonNavForward_Click(object sender, EventArgs e)
+        {
+            if (currentNodeIndex < graphViewHistory.Count - 1)
+            {
+                currentNodeIndex++;
+                treeGraph1.Root = graphViewHistory[currentNodeIndex];
+                treeGraph1.ForceRefresh();
+            }
+            UpdateNavigateButtonsAvailability();
+        }
+
+        private void toolStripButtonNavBack_Click(object sender, EventArgs e)
+        {
+            if (currentNodeIndex > 0)
+            {
+                currentNodeIndex--;
+                treeGraph1.Root = graphViewHistory[currentNodeIndex];
+                treeGraph1.ForceRefresh();
+            }
+            UpdateNavigateButtonsAvailability();
         }
 
     }
