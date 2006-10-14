@@ -754,6 +754,8 @@ namespace HDGraph
             {
                 currentNodeIndex++;
                 treeGraph1.Root = graphViewHistory[currentNodeIndex];
+                if (treeGraph1.Root != null)
+                    comboBoxPath.Text = treeGraph1.Root.Path;
                 treeGraph1.ForceRefresh();
             }
             UpdateNavigateButtonsAvailability();
@@ -765,6 +767,8 @@ namespace HDGraph
             {
                 currentNodeIndex--;
                 treeGraph1.Root = graphViewHistory[currentNodeIndex];
+                if (treeGraph1.Root != null)
+                    comboBoxPath.Text = treeGraph1.Root.Path;
                 treeGraph1.ForceRefresh();
             }
             UpdateNavigateButtonsAvailability();
