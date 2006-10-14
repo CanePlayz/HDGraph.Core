@@ -168,7 +168,7 @@
   <data name="GraphGuideLine" xml:space="preserve">
     <value>Step by step instructions :
 1) Choose a directory to analyse on the top combo box.
-2) Press the "Scan and draw" button.
+2) Press the "Scan / Refresh" button.
 3) Wait for the end of the analysis.</value>
   </data>
   <data name="GraphLoadedFromDate" xml:space="preserve">

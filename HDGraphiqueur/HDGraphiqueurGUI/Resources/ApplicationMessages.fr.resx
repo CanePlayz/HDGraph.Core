@@ -168,7 +168,7 @@
   <data name="GraphGuideLine" xml:space="preserve">
     <value>Pour commencer :
 1) Choissez un répertoire à analyser dans la zone de texte ci-dessus.
-2) Cliquez sur le bouton "Scanner et dessiner".
+2) Cliquez sur le bouton "Scanner / Rafraîchir".
 3) Attendez la fin de l'analyse.</value>
   </data>
   <data name="GraphLoadedFromDate" xml:space="preserve">
