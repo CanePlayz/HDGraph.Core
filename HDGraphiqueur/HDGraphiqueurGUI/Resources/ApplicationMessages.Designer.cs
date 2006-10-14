@@ -262,7 +262,7 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à HDG is a tool allowing to graphically display the hard disk space usage. It shows all the directories and subdirectories of the hard drive on a single graph, allowing to see the the largest directories at a glance..
+        ///   Recherche une chaîne localisée semblable à HDG is a free tool allowing to graphically display the hard disk space usage. It shows all the directories and subdirectories of the hard drive on a single graph, allowing to see the the largest directories at a glance..
         /// </summary>
         internal static string HdgDescription {
             get {
