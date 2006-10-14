@@ -34,9 +34,9 @@ namespace HDGraph
             this.labelVersion = new System.Windows.Forms.Label();
             this.labelCopyright = new System.Windows.Forms.Label();
             this.labelCompanyName = new System.Windows.Forms.Label();
+            this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.okButton = new System.Windows.Forms.Button();
             this.linkLabelWebsite = new System.Windows.Forms.LinkLabel();
-            this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -87,6 +87,14 @@ namespace HDGraph
             this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelCompanyName.Name = "labelCompanyName";
             // 
+            // textBoxDescription
+            // 
+            this.tableLayoutPanel.SetColumnSpan(this.textBoxDescription, 2);
+            resources.ApplyResources(this.textBoxDescription, "textBoxDescription");
+            this.textBoxDescription.Name = "textBoxDescription";
+            this.textBoxDescription.ReadOnly = true;
+            this.textBoxDescription.TabStop = false;
+            // 
             // okButton
             // 
             resources.ApplyResources(this.okButton, "okButton");
@@ -100,14 +108,6 @@ namespace HDGraph
             this.linkLabelWebsite.Name = "linkLabelWebsite";
             this.linkLabelWebsite.TabStop = true;
             this.linkLabelWebsite.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelWebsite_LinkClicked);
-            // 
-            // textBoxDescription
-            // 
-            this.tableLayoutPanel.SetColumnSpan(this.textBoxDescription, 2);
-            resources.ApplyResources(this.textBoxDescription, "textBoxDescription");
-            this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.ReadOnly = true;
-            this.textBoxDescription.TabStop = false;
             // 
             // AboutBox
             // 

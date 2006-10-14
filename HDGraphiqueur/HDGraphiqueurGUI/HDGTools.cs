@@ -105,7 +105,10 @@ namespace HDGraph
             // If available, assign localized text to Form and fields with Text property.
             // If available, assign localized Localtion and Size to fields
             System.Drawing.Point point;
-            System.Drawing.Size size;
+            System.Drawing.Size? size = null;
+            size = resources.GetObject("$this.ClientSize") as System.Drawing.Size?;
+            if (size != null)
+                form.ClientSize = size.Value;            
             String text = resources.GetString("$this.Text");
             if (text != null)
                 form.Text = text;
@@ -133,12 +136,12 @@ namespace HDGraph
                 }
                 if (fieldInfos[index].FieldType.GetProperty("Size", typeof(System.Drawing.Size)) != null)
                 {
-                    size = (System.Drawing.Size)resources.GetObject(fieldInfos[index].Name + ".Size");
+                    size = resources.GetObject(fieldInfos[index].Name + ".Size") as System.Drawing.Size?;
                     if (size != null)
                     {
                         fieldInfos[index].FieldType.InvokeMember("Size",
                             BindingFlags.SetProperty, null,
-                            fieldInfos[index].GetValue(form), new object[] { size });
+                            fieldInfos[index].GetValue(form), new object[] { size.Value });
                     }
                 }
             }
