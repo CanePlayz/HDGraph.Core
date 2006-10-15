@@ -9,7 +9,8 @@ Version 0.9.2
 ======================================================
 Added:
 	- New Auto complete graph option: auto complete missing chart parts when you navigate in-depth directories
-	
+	- First lines in documentation file (FR only; EN coming soon).
+	- "Legend" link (FR only; EN coming soon).
 Fixed:
 	- Image bug in the about form in EN language. (#1577157)
 	- Invalid controls locations after changing language if the main form has been resized before. (#1577159)
@@ -52,6 +53,11 @@ Initial public release.
 
 Version 0.9.2
 ======================================================
+Ajouts:
+	- Nouvelle option "auto-compléter le graphe", calculant à la volée les parties manquantes du graphique lors de la navigation d'un répertoire à l'autre.
+	- Premières lignes dans le fichier de documentation (langue française seulement).
+	- Lien "Légende"
+
 Corrections:
 	- Mauvaise image dans boite de dialogue "à propos" (EN suelement). (#1577157)
 	- Position des contrôles invalide après un changement de langue si la taille initiale de la fenêtre à changé. (#1577159)
