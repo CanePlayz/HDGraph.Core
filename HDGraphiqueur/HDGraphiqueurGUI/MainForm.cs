@@ -111,18 +111,20 @@ namespace HDGraph
         private void EnableHelpIfAvailable()
         {
             string helpFile = GetHelpFile();
-            if (helpFile != null && helpFile.Length > 0 && System.IO.File.Exists(helpFile))
+            bool activeHelp = (helpFile != null && helpFile.Length > 0 && System.IO.File.Exists(helpFile));
+            if (activeHelp)
             {
-                contentsToolStripMenuItem.Enabled = true;
-                contentsToolStripMenuItem.Visible = true;
-                indexToolStripMenuItem.Enabled = true;
-                indexToolStripMenuItem.Visible = true;
-                searchToolStripMenuItem.Enabled = true;
-                searchToolStripMenuItem.Visible = true;
-                toolStripSeparator8.Visible = true;
-                helpToolStripButton.Enabled = true;
                 helpToolStripButton.Visible = true;
             }
+            contentsToolStripMenuItem.Enabled = activeHelp;
+            contentsToolStripMenuItem.Visible = activeHelp;
+            indexToolStripMenuItem.Enabled = activeHelp;
+            indexToolStripMenuItem.Visible = activeHelp;
+            searchToolStripMenuItem.Enabled = activeHelp;
+            searchToolStripMenuItem.Visible = activeHelp;
+            toolStripSeparator8.Visible = activeHelp;
+            helpToolStripButton.Enabled = activeHelp;
+
         }
 
         /// <summary>
@@ -419,6 +421,7 @@ namespace HDGraph
             if (res == DialogResult.OK)
             {
                 menuStrip.SuspendLayout();
+                EnableHelpIfAvailable();
                 HDGTools.ApplyCulture(this, System.Threading.Thread.CurrentThread.CurrentUICulture);
                 treeGraph1.ForceRefresh();
                 menuStrip.ResumeLayout(true);
@@ -437,9 +440,7 @@ namespace HDGraph
         /// <returns>Null ou chaine vide si aucun fichier d'aide.</returns>
         private string GetHelpFile()
         {
-            return null; // TODO: modifier lorsque l'aide sera faite.
-            // Exemple :
-            // return @"C:\WINDOWS\Help\notepad.chm"; // TODO: fichier d'aide. Eventuellement, gérer un fichier par langue et donc renvoyer le fichier approprié à la langue en cours.
+            return Application.StartupPath + Path.DirectorySeparatorChar + Resources.ApplicationMessages.HelpFilename;
         }
 
         private void contentsToolStripMenuItem_Click(object sender, EventArgs e)

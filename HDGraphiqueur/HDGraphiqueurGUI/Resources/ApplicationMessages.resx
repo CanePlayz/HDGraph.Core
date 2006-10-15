@@ -210,6 +210,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
   <data name="HdgLicenceName" xml:space="preserve">
     <value>Licence : GNU Lesser General Public License (LGPL)</value>
   </data>
+  <data name="HelpFilename" xml:space="preserve">
+    <value>HDGraph_Help.chm</value>
+  </data>
   <data name="HistorySuccessfullyCleared" xml:space="preserve">
     <value>Path history list successfully cleared !</value>
   </data>
