@@ -79,17 +79,8 @@ namespace HDGraph
                     path = path.Substring(0, path.Length - 1);
                 if (File.Exists(path) && Path.GetExtension(path) == ".hdg")
                 {
-                    try
-                    {
-                        // le 1er argument est un fichier HDG à charger
-                        LoadGraphFromFile(path);
-                        comboBoxPath.Text = moteur.Root.Path;
-                    }
-                    catch (Exception ex)
-                    {
-                        Trace.TraceError(HDGTools.PrintError(ex));
-                        ShowError(String.Format(resManager.GetString("ErrorLoadingFile"), path) + ex.Message);
-                    }
+                    // le 1er argument est un fichier HDG à charger
+                    LoadGraphFromFile(path);
                 }
                 else
                 {   // le 1er argument est un répertoire: il faut lancer le scan.
@@ -98,6 +89,12 @@ namespace HDGraph
                     launchScanOnStartup = true;
                 }
             }
+        }
+
+        private void ShowError(string msg, Exception ex)
+        {
+            Trace.TraceError(HDGTools.PrintError(ex));
+            ShowError(msg);
         }
 
         private void ShowError(string msg)
@@ -124,6 +121,7 @@ namespace HDGraph
             searchToolStripMenuItem.Visible = activeHelp;
             toolStripSeparator8.Visible = activeHelp;
             helpToolStripButton.Enabled = activeHelp;
+            linkLabelHelpGraph.Enabled = activeHelp;
 
         }
 
@@ -198,24 +196,35 @@ namespace HDGraph
             checkBoxAutoRecalc.Checked = false; // Autorecalc interdit sur un graph enregistré !
             checkBoxAutoRecalc.Enabled = false;
 
-            XmlReader reader = new XmlTextReader(fileName);
-            XmlSerializer serializer = new XmlSerializer(typeof(MoteurGraphiqueur));
-            moteur = (MoteurGraphiqueur)serializer.Deserialize(reader);
-            reader.Close();
-            moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(PrintStatus);
-            treeGraph1.Moteur = moteur;
-            treeGraph1.UpdateHoverNode = new TreeGraph.NodeNotificationDelegate(PrintNodeHoverCursor);
-            treeGraph1.NotifyNewRootNode = new TreeGraph.NodeNotificationDelegate(UpdateCurrentNodeRoot);
-
-            if (moteur.Root != null)
+            try
             {
-                comboBoxPath.Text = moteur.Root.Path;
-                numUpDownNbNivx.Value = moteur.Root.ProfondeurMax;
-                numUpDownNbNivxAffich.Value = moteur.Root.ProfondeurMax;
-                treeGraph1.NbNiveaux = moteur.Root.ProfondeurMax;
+                XmlReader reader = new XmlTextReader(fileName);
+                XmlSerializer serializer = new XmlSerializer(typeof(MoteurGraphiqueur));
+                moteur = (MoteurGraphiqueur)serializer.Deserialize(reader);
+                reader.Close();
+                moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(PrintStatus);
+                treeGraph1.Moteur = moteur;
+                treeGraph1.UpdateHoverNode = new TreeGraph.NodeNotificationDelegate(PrintNodeHoverCursor);
+                treeGraph1.NotifyNewRootNode = new TreeGraph.NodeNotificationDelegate(UpdateCurrentNodeRoot);
+
+                if (moteur.Root != null)
+                {
+                    comboBoxPath.Text = moteur.Root.Path;
+                    numUpDownNbNivx.Value = moteur.Root.ProfondeurMax;
+                    numUpDownNbNivxAffich.Value = moteur.Root.ProfondeurMax;
+                    treeGraph1.NbNiveaux = moteur.Root.ProfondeurMax;
+                }
+                treeGraph1.ForceRefresh();
+                UpdateNodeHistory(moteur.Root);
+                PrintStatus(String.Format(resManager.GetString("GraphLoadedFromDate"), moteur.AnalyzeDate.ToString()));
             }
-            treeGraph1.ForceRefresh();
-            PrintStatus(String.Format(resManager.GetString("GraphLoadedFromDate"), moteur.AnalyzeDate.ToString()));
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null && ex.InnerException is IncompatibleVersionException)
+                    ShowError(Resources.ApplicationMessages.IncompatibleVersionError, ex.InnerException);
+                else
+                    ShowError(String.Format(resManager.GetString("ErrorLoadingFile"), fileName) + ex.Message, ex);
+            }
         }
 
 
@@ -423,6 +432,7 @@ namespace HDGraph
                 menuStrip.SuspendLayout();
                 EnableHelpIfAvailable();
                 HDGTools.ApplyCulture(this, System.Threading.Thread.CurrentThread.CurrentUICulture);
+                this.Text = AboutBox.AssemblyTitle;
                 treeGraph1.ForceRefresh();
                 menuStrip.ResumeLayout(true);
                 buttonScan.Refresh();
@@ -773,6 +783,11 @@ namespace HDGraph
                 treeGraph1.ForceRefresh();
             }
             UpdateNavigateButtonsAvailability();
+        }
+
+        private void linkLabelHelpGraph_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Help.ShowHelp(this, GetHelpFile(), "/html/fonctions_de_base.htm");
         }
 
     }

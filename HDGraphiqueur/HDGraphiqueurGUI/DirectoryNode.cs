@@ -155,6 +155,7 @@ namespace HDGraph
             totalSize = reader.ReadElementContentAsLong();
             filesSize = reader.ReadElementContentAsLong();
             profondeurMax = reader.ReadElementContentAsInt();
+            existsUncalcSubdir = Boolean.Parse(reader.ReadElementContentAsString());
 
             // Début élément Children
             reader.ReadStartElement("Children");
@@ -191,6 +192,7 @@ namespace HDGraph
             writer.WriteElementString("TotalSize", totalSize.ToString());
             writer.WriteElementString("FilesSize", filesSize.ToString());
             writer.WriteElementString("ProfondeurMax", profondeurMax.ToString());
+            writer.WriteElementString("ExistsUncalcSubdir", existsUncalcSubdir.ToString());
 
             writer.WriteStartElement("Children");
             XmlSerializer serializer = new XmlSerializer(typeof(List<DirectoryNode>));

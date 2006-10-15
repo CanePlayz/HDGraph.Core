@@ -11,6 +11,12 @@ using System.Diagnostics;
 
 namespace HDGraph
 {
+    public class IncompatibleVersionException:Exception
+    {
+
+    }
+
+
     /// <summary>
     /// Classe d'évènement avec message texte
     /// </summary>

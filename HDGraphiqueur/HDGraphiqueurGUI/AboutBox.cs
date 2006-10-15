@@ -49,7 +49,7 @@ namespace HDGraph
             }
         }
 
-        public string AssemblyVersion
+        public static string AssemblyVersion
         {
             get
             {

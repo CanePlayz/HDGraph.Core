@@ -250,6 +250,9 @@ namespace HDGraph
             PaintTree(root, pieRec, 0, 360);
         }
 
+        /// <summary>
+        /// Affiche un message spécifique au lieu du graph.
+        /// </summary>
         private void PaintSpecialCase()
         {
             float x = this.Width / 2f;
@@ -308,6 +311,14 @@ namespace HDGraph
             PaintDirPart(node, rec, startAngle, nodeAngle);
         }
 
+        /// <summary>
+        /// Dessine sur l'objet "graph" l'arc de cercle représentant une partie "inconnue" (confettis)
+        /// d'un répertoire.
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="rec"></param>
+        /// <param name="startAngle"></param>
+        /// <param name="endAngle"></param>
         private void PaintUnknownPart(DirectoryNode node, RectangleF rec, float startAngle, float endAngle)
         {
             if (!printDirNames)
@@ -690,8 +701,6 @@ namespace HDGraph
             this.Refresh();
         }
 
-        #endregion
-
         /// <summary>
         /// Gère le double clic sur le contrôle (recentrage du graph sur le répertoire cliqué ou sur le parent du répertoire cliqué).
         /// </summary>
@@ -711,5 +720,6 @@ namespace HDGraph
 
         }
 
+        #endregion
     }
 }

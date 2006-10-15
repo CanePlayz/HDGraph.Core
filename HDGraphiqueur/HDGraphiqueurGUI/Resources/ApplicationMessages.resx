@@ -216,6 +216,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
   <data name="HistorySuccessfullyCleared" xml:space="preserve">
     <value>Path history list successfully cleared !</value>
   </data>
+  <data name="IncompatibleVersionError" xml:space="preserve">
+    <value>Unable to load file: it has been created with an incompatible version of HDGraph.</value>
+  </data>
   <data name="InvalidPathError" xml:space="preserve">
     <value>The specified path is not valid. Please verify it ! Scan aborted.</value>
   </data>

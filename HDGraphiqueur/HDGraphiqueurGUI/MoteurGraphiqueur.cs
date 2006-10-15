@@ -260,10 +260,14 @@ namespace HDGraph
             // Début élément MoteurGraphiqueur
             reader.ReadStartElement();
 
-            XmlSerializer serializer = new XmlSerializer(typeof(DirectoryNode));
-            root = (DirectoryNode)serializer.Deserialize(reader);
+            string version = reader.ReadElementContentAsString();
+            if (version != AboutBox.AssemblyVersion)
+                throw new IncompatibleVersionException();
 
             analyzeDate = reader.ReadElementContentAsDateTime();
+
+            XmlSerializer serializer = new XmlSerializer(typeof(DirectoryNode));
+            root = (DirectoryNode)serializer.Deserialize(reader);
 
             // Fin élément MoteurGraphiqueur
             reader.ReadEndElement();
@@ -272,10 +276,12 @@ namespace HDGraph
         public void WriteXml(System.Xml.XmlWriter writer)
         {
             //string ns = "http://HDGraph.tools.laugel.fr/MoteurGraphiqueur.xsd";
+
+            writer.WriteElementString("HdgVersion", AboutBox.AssemblyVersion);
+            writer.WriteElementString("AnalyzeDate", analyzeDate.ToString("s"));
+
             XmlSerializer serializer = new XmlSerializer(typeof(DirectoryNode));//, ns);
             serializer.Serialize(writer, root);
-
-            writer.WriteElementString("AnalyzeDate", analyzeDate.ToString("s"));
         }
 
         #endregion
