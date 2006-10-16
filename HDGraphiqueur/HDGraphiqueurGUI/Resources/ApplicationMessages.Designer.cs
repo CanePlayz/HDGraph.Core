@@ -308,11 +308,29 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à HDGraph_Help.chm.
+        /// </summary>
+        internal static string HelpFilename {
+            get {
+                return ResourceManager.GetString("HelpFilename", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Path history list successfully cleared !.
         /// </summary>
         internal static string HistorySuccessfullyCleared {
             get {
                 return ResourceManager.GetString("HistorySuccessfullyCleared", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Unable to load file: it has been created with an incompatible version of HDGraph..
+        /// </summary>
+        internal static string IncompatibleVersionError {
+            get {
+                return ResourceManager.GetString("IncompatibleVersionError", resourceCulture);
             }
         }
         
