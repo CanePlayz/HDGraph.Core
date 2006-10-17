@@ -84,6 +84,7 @@ namespace HDGraph
                 }
                 else
                 {   // le 1er argument est un répertoire: il faut lancer le scan.
+                    path = (new DirectoryInfo(path)).FullName;
                     comboBoxPath.Text = path;
                     SavePathHistory();
                     launchScanOnStartup = true;
