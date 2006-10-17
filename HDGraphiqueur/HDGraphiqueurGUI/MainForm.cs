@@ -451,7 +451,11 @@ namespace HDGraph
         /// <returns>Null ou chaine vide si aucun fichier d'aide.</returns>
         private string GetHelpFile()
         {
-            return Application.StartupPath + Path.DirectorySeparatorChar + Resources.ApplicationMessages.HelpFilename;
+            return Application.StartupPath 
+                + Path.DirectorySeparatorChar 
+                + "Doc" 
+                + Path.DirectorySeparatorChar 
+                + Resources.ApplicationMessages.HelpFilename;
         }
 
         private void contentsToolStripMenuItem_Click(object sender, EventArgs e)
