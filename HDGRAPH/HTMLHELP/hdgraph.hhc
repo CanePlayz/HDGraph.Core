@@ -1,0 +1,87 @@
+<html>
+<head>
+</head>
+<body>
+<object type="text/site properties">
+<param name="Font" value="Verdana,10,0">
+</object>
+<ul>
+<li> <object type="text/sitemap">
+<param name="Name" value="HDGraph: Introduction">
+<param name="Local" value="html\index.htm">
+</object>
+<ul>
+<li> <object type="text/sitemap">
+<param name="Name" value="Qu'est-ce que HDGraph ?">
+<param name="Local" value="html\qu_est_ce_que_hdgraph__.htm">
+</object>
+<li> <object type="text/sitemap">
+<param name="Name" value="Fonctionnalités">
+<param name="Local" value="html\fonctionnalites.htm">
+</object>
+</ul>
+<li> <object type="text/sitemap">
+<param name="Name" value="Utiliser HDGraph">
+<param name="Local" value="html\utiliser_hdgraph.htm">
+</object>
+<ul>
+<li> <object type="text/sitemap">
+<param name="Name" value="Pour commencer...">
+<param name="Local" value="html\pour_commencer___.htm">
+</object>
+<li> <object type="text/sitemap">
+<param name="Name" value="Fonctions de base">
+<param name="Local" value="html\fonctions_de_base.htm">
+</object>
+<li> <object type="text/sitemap">
+<param name="Name" value="Utilisation avancée">
+<param name="Local" value="html\utilisation_avancee.htm">
+</object>
+<ul>
+<li> <object type="text/sitemap">
+<param name="Name" value="Niveaux de répertoires mémorisés">
+<param name="Local" value="html\niveaux_de_repertoires_memorises.htm">
+</object>
+<li> <object type="text/sitemap">
+<param name="Name" value="Niveaux de répertoires à dessiner (Zoom)">
+<param name="Local" value="html\niveaux_de_repertoires_a_dessiner__zoom_.htm">
+</object>
+</ul>
+</ul>
+<li> <object type="text/sitemap">
+<param name="Name" value="Menus">
+<param name="Local" value="html\menus.htm">
+</object>
+<ul>
+<li> <object type="text/sitemap">
+<param name="Name" value="Menu Fichier">
+<param name="Local" value="html\menu_fichier.htm">
+</object>
+<li> <object type="text/sitemap">
+<param name="Name" value="Menu Affichage">
+<param name="Local" value="html\menu_affichage.htm">
+</object>
+<li> <object type="text/sitemap">
+<param name="Name" value="Menu Outils">
+<param name="Local" value="html\menu_outils.htm">
+</object>
+</ul>
+<li> <object type="text/sitemap">
+<param name="Name" value="Options">
+<param name="Local" value="html\options.htm">
+</object>
+<ul>
+<li> <object type="text/sitemap">
+<param name="Name" value="Afficher les tailles des répertoires">
+<param name="Local" value="html\afficher_les_tailles_des_repertoires.htm">
+</object>
+<li> <object type="text/sitemap">
+<param name="Name" value="Compléter automatiquement le graphe pendant la navigation">
+<param name="Local" value="html\completer_automatiquement_le_graphe_pend.htm">
+</object>
+</ul>
+<li> <object type="text/sitemap">
+<param name="Name" value="Index des mots clefs">
+<param name="Local" value="html\index_des_mots_clefs.htm">
+</object>
+</ul></body></html>
