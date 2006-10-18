@@ -1,1 +1,0 @@
-function WindowOpen(url,w1,h1){var w = screen.availWidth;var h = screen.availHeight;var leftPos = (w-w1)/2;var topPos = (h-h1)/2;window.open(url,'zoom','width=' + w1 +',height='+h1+',top='+topPos+',left='+leftPos+',toolbar=no', 'menubar=yes', 'location=no', 'resizable=yes', 'scrollbar=no', 'status=no');}
