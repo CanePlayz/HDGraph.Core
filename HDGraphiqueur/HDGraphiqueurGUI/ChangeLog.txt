@@ -5,6 +5,15 @@ HDGraph ChangeLog (http://hdgraph.sourceforge.net)
 [Version Française plus bas !]
 
 
+Version 0.9.3
+======================================================
+Improved:
+	- Documentation
+Fixed:
+	- Load from explorer: directory name displayed in 8.3 format (#1579159)
+	- Incorrect window minimum size (#1580362)
+
+
 Version 0.9.2
 ======================================================
 Added:
