@@ -204,9 +204,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Readme.txt" />
-    <Content Include="Doc\Aide_HDGraph.chm">
+    <Content Include="Doc\HDGraph-fr.chm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\project-support.jpg" />
     <None Include="Resources\Help.png" />
     <None Include="Resources\InsertPictureHS.png" />
     <None Include="Resources\NavForward.png" />

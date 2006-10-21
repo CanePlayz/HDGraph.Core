@@ -794,7 +794,7 @@ namespace HDGraph
 
         private void linkLabelHelpGraph_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Help.ShowHelp(this, GetHelpFile(), "/html/fonctions_de_base.htm");
+            Help.ShowHelp(this, GetHelpFile(), HelpNavigator.TopicId, "5");
         }
 
     }

@@ -371,6 +371,120 @@
         YII=
 </value>
   </data>
+  <data name="logoPictureBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 159</value>
+  </data>
+  <data name="labelProductName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>176, 0</value>
+  </data>
+  <data name="labelProductName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 17</value>
+  </data>
+  <data name="labelVersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>176, 27</value>
+  </data>
+  <data name="labelVersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 17</value>
+  </data>
+  <data name="labelCopyright.Location" type="System.Drawing.Point, System.Drawing">
+    <value>176, 44</value>
+  </data>
+  <data name="labelCopyright.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 17</value>
+  </data>
+  <data name="textBoxDescription.Size" type="System.Drawing.Size, System.Drawing">
+    <value>560, 57</value>
+  </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 64</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>393, 21</value>
+  </data>
+  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>173, 91</value>
+  </data>
+  <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>393, 71</value>
+  </data>
+  <data name="tableLayoutPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>569, 228</value>
+  </data>
+  <data name="labelWebsite.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 13</value>
+  </data>
+  <data name="labelWebsite.Text" xml:space="preserve">
+    <value>Site web : </value>
+  </data>
+  <data name="linkLabelWebsite.Location" type="System.Drawing.Point, System.Drawing">
+    <value>66, 0</value>
+  </data>
+  <data name="linkLabelBugsAndCo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>74, 51</value>
+  </data>
+  <data name="linkLabelBugsAndCo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>313, 13</value>
+  </data>
+  <data name="linkLabelBugsAndCo.Text" xml:space="preserve">
+    <value>Soumettre un bug / Proposer une évolution / Demander de l'aide</value>
+  </data>
+  <data name="linkLabelForum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>74, 34</value>
+  </data>
+  <data name="linkLabelForum.Text" xml:space="preserve">
+    <value>Forum HDGraph</value>
+  </data>
+  <data name="linkLabelUpate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>74, 17</value>
+  </data>
+  <data name="linkLabelUpate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 13</value>
+  </data>
+  <data name="linkLabelUpate.Text" xml:space="preserve">
+    <value>Nouvelles versions (Mises à jour)</value>
+  </data>
+  <data name="linkLabelSourceforgePage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>74, 0</value>
+  </data>
+  <data name="linkLabelSourceforgePage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 13</value>
+  </data>
+  <data name="linkLabelSourceforgePage.Text" xml:space="preserve">
+    <value>Page du projet Sourceforge &amp;&amp; News</value>
+  </data>
+  <data name="labelUsefullLinks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 13</value>
+  </data>
+  <data name="labelUsefullLinks.Text" xml:space="preserve">
+    <value>Liens utiles :</value>
+  </data>
+  <data name="okButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>501, 329</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>358, 13</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Vous appréciez ce programme ? Soutenez ses auteurs en faisant un don : </value>
+  </data>
+  <data name="buttonMakeDonation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>288, 41</value>
+  </data>
+  <data name="buttonMakeDonation.Text" xml:space="preserve">
+    <value>Faire un don </value>
+  </data>
+  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>192, 36</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>566, 77</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Soutenez les auteurs bénévoles ! </value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>588, 364</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>A propos de</value>
   </data>

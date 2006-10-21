@@ -22,7 +22,7 @@ namespace HDGraph
             this.labelProductName.Text = AssemblyProduct;
             this.labelVersion.Text += " " + AssemblyVersion;
             this.labelCopyright.Text = AssemblyCopyright;
-            this.labelCompanyName.Text = AssemblyCompany;
+            //this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = HDGTools.resManager.GetString("HdgDescription");
             this.linkLabelWebsite.Text = "http://hdgraph.sourceforge.net";
         }
@@ -127,6 +127,36 @@ namespace HDGraph
         private void linkLabelWebsite_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(linkLabelWebsite.Text);
+        }
+
+        private void buttonMakeDonation_Click(object sender, EventArgs e)
+        {
+            Process.Start("http://sourceforge.net/donate/index.php?group_id=179516");
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            buttonMakeDonation_Click(sender, e);
+        }
+
+        private void linkLabelSourceforgePage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://sourceforge.net/projects/hdgraph/");
+        }
+
+        private void linkLabelUpate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://sourceforge.net/project/showfiles.php?group_id=179516");
+        }
+
+        private void linkLabelForum_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://sourceforge.net/forum/?group_id=179516");
+        }
+
+        private void linkLabelBugsAndCo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://sourceforge.net/tracker/?group_id=179516");
         }
     }
 }

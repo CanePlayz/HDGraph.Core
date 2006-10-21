@@ -87,5 +87,12 @@ namespace HDGraph.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        internal static System.Drawing.Bitmap SupportProject {
+            get {
+                object obj = ResourceManager.GetObject("SupportProject", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
