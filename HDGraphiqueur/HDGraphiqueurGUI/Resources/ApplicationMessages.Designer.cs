@@ -308,7 +308,7 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à HDGraph_Help.chm.
+        ///   Recherche une chaîne localisée semblable à HDGraph-en.chm.
         /// </summary>
         internal static string HelpFilename {
             get {
