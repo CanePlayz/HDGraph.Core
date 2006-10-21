@@ -435,6 +435,8 @@ namespace HDGraph
                 HDGTools.ApplyCulture(this, System.Threading.Thread.CurrentThread.CurrentUICulture);
                 this.Text = AboutBox.AssemblyTitle;
                 treeGraph1.ForceRefresh();
+                if (this.WindowState == FormWindowState.Maximized)
+                    this.WindowState = FormWindowState.Normal;
                 menuStrip.ResumeLayout(true);
                 buttonScan.Refresh();
             }
