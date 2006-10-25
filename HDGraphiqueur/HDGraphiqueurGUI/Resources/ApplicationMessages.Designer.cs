@@ -226,6 +226,15 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Graph refresh completed !.
+        /// </summary>
+        internal static string GraphRefreshed {
+            get {
+                return ResourceManager.GetString("GraphRefreshed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à HDG is currently NOT integrated in the explorer context menu. Nothing to do !.
         /// </summary>
         internal static string HdgAlreadyDesIntegratedInExplorer {
