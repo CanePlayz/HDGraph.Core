@@ -174,6 +174,9 @@
   <data name="GraphLoadedFromDate" xml:space="preserve">
     <value>Graphique chargé. L'analyze date du {0}.</value>
   </data>
+  <data name="GraphRefreshed" xml:space="preserve">
+    <value>Rafraîchissement du graphe terminé !</value>
+  </data>
   <data name="HdgAlreadyDesIntegratedInExplorer" xml:space="preserve">
     <value>HDG n'est pas intégré à l'explorateur, impossible donc de le retirer !</value>
   </data>
@@ -193,20 +196,12 @@
     <value>Fichiers graphiques HDG</value>
   </data>
   <data name="HdgLicenceDescription" xml:space="preserve">
-    <value>Ce programme est un logiciel libre ; vous pouvez le redistribuer ou
-le modifier suivant les termes de la Licence Générale Publique Limitée
-GNU (LGPL) telle que publiée par la Free Software Foundation ; soit la
-version 2.1 de la License, soit (à votre gré) toute version ultérieure.
+    <value>Ce programme est un logiciel libre ; vous pouvez le redistribuer ou le modifier suivant les termes de la Licence Générale Publique Limitée GNU (LGPL) telle que publiée par la Free Software Foundation ; soit la version 2.1 de la License, soit (à votre gré) toute version ultérieure.
 
-Ce programme est distribué dans l’espoir qu’il sera utile, mais
-SANS AUCUNE GARANTIE : sans même la garantie implicite de
-COMMERCIABILITE ou DE CONFORMITE A UNE UTILISATION PARTICULIERE. Consultez
-la Licence Générale Publique Limitée pour plus de détails.
+Ce programme est distribué dans l’espoir qu’il sera utile, mais SANS AUCUNE GARANTIE : sans même la garantie implicite de COMMERCIABILITE ou DE CONFORMITE A UNE UTILISATION PARTICULIERE. Consultez la Licence Générale Publique Limitée pour plus de détails.
 
-Vous devriez avoir reçu une copie de la Licence Générale Publique Limitée
-avec cette bibliothèque ; si ce n’est pas le cas, écrivez à la :
-Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</value>
+Vous devriez avoir reçu une copie de la Licence Générale Publique Limitée avec cette bibliothèque ; si ce n’est pas le cas, écrivez à la :
+Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</value>
   </data>
   <data name="HdgLicenceName" xml:space="preserve">
     <value>Licence : GNU Lesser General Public License (LGPL)</value>

@@ -552,14 +552,14 @@ namespace HDGraph
             int nbNiveaux = (int)numUpDownNbNivxAffich.Value;
             treeGraph1.NbNiveaux = nbNiveaux;
             treeGraph1.ForceRefresh();
-            PrintStatus("Terminé !");
+            PrintStatus(Resources.ApplicationMessages.GraphRefreshed);
         }
 
         private void checkBoxPrintSizes_CheckedChanged(object sender, EventArgs e)
         {
             treeGraph1.OptionShowSize = checkBoxPrintSizes.Checked;
             treeGraph1.ForceRefresh();
-            PrintStatus("Terminé !");
+            PrintStatus(Resources.ApplicationMessages.GraphRefreshed);
         }
 
         #region Intégration à l'explorateur
