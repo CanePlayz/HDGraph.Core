@@ -11,6 +11,8 @@
     <AssemblyName>HDGraph</AssemblyName>
     <ApplicationIcon>HDGraph.ico</ApplicationIcon>
     <StartupObject>HDGraph.Program</StartupObject>
+    <TargetZone>LocalIntranet</TargetZone>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -205,6 +207,10 @@
     </Content>
     <Content Include="Readme.txt" />
     <Content Include="Doc\HDGraph-fr.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <BaseApplicationManifest Include="Properties\app.manifest" />
+    <Content Include="Doc\HDGraph-en.chm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\project-support.jpg" />
