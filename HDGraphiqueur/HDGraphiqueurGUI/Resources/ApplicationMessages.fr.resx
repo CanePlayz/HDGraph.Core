@@ -240,7 +240,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  021
     <value>Veuillez sélectionner le répertoire à analyser :</value>
   </data>
   <data name="Scanning" xml:space="preserve">
-    <value>Annalyse de </value>
+    <value>Analyse de </value>
   </data>
   <data name="statusReady" xml:space="preserve">
     <value>Prêt.</value>
