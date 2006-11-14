@@ -8,7 +8,7 @@ Version 0.9.4
 ======================================================
 Fixed:
 	- tab order (use the tab key to navigate from a control to another)
-	- minor translation errors.
+	- minor translation mistakes.
 	
 	
 Version 0.9.3

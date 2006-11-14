@@ -112,8 +112,8 @@ namespace HDGraph
             this.labelDirName = new System.Windows.Forms.Label();
             this.buttonScan = new System.Windows.Forms.Button();
             this.linkLabelHelpGraph = new System.Windows.Forms.LinkLabel();
-            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.treeGraph1 = new HDGraph.TreeGraph();
+            this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -660,6 +660,7 @@ namespace HDGraph
             0});
             this.numUpDownNbNivxAffich.Name = "numUpDownNbNivxAffich";
             this.helpProvider1.SetShowHelp(this.numUpDownNbNivxAffich, ((bool)(resources.GetObject("numUpDownNbNivxAffich.ShowHelp"))));
+            this.ToolTip.SetToolTip(this.numUpDownNbNivxAffich, resources.GetString("numUpDownNbNivxAffich.ToolTip"));
             this.numUpDownNbNivxAffich.Value = global::HDGraph.Properties.Settings.Default.DrawMaxDepth;
             this.numUpDownNbNivxAffich.ValueChanged += new System.EventHandler(this.numUpDownNbNivxAffich_ValueChanged);
             // 
