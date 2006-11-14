@@ -112,8 +112,8 @@ namespace HDGraph
             this.labelDirName = new System.Windows.Forms.Label();
             this.buttonScan = new System.Windows.Forms.Button();
             this.linkLabelHelpGraph = new System.Windows.Forms.LinkLabel();
-            this.treeGraph1 = new HDGraph.TreeGraph();
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.treeGraph1 = new HDGraph.TreeGraph();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();

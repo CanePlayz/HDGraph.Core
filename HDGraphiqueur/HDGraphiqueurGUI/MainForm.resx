@@ -120,6 +120,9 @@
   <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>0, 0</value>
   </metadata>
+  <metadata name="menuStrip.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="newToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -140,7 +143,7 @@
     <value>Ctrl+N</value>
   </data>
   <data name="newToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
+    <value>210, 22</value>
   </data>
   <data name="newToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;New</value>
@@ -173,13 +176,13 @@
     <value>Ctrl+O</value>
   </data>
   <data name="openToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
+    <value>210, 22</value>
   </data>
   <data name="openToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Open</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 6</value>
+    <value>207, 6</value>
   </data>
   <data name="saveToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -204,7 +207,7 @@
     <value>Ctrl+S</value>
   </data>
   <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
+    <value>210, 22</value>
   </data>
   <data name="saveToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Save</value>
@@ -232,7 +235,7 @@
     <value>Black</value>
   </data>
   <data name="saveAsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
+    <value>210, 22</value>
   </data>
   <data name="saveAsToolStripMenuItem.Text" xml:space="preserve">
     <value>Save graph &amp;as...</value>
@@ -241,13 +244,13 @@
     <value>Ctrl+I</value>
   </data>
   <data name="exportAsImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
+    <value>210, 22</value>
   </data>
   <data name="exportAsImageToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Export as image...</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 6</value>
+    <value>207, 6</value>
   </data>
   <data name="printToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -272,7 +275,7 @@
     <value>Ctrl+P</value>
   </data>
   <data name="printToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
+    <value>210, 22</value>
   </data>
   <data name="printToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Print</value>
@@ -298,7 +301,7 @@
     <value>Black</value>
   </data>
   <data name="printPreviewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
+    <value>210, 22</value>
   </data>
   <data name="printPreviewToolStripMenuItem.Text" xml:space="preserve">
     <value>Print Pre&amp;view</value>
@@ -307,7 +310,7 @@
     <value>False</value>
   </data>
   <data name="printSetupToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
+    <value>210, 22</value>
   </data>
   <data name="printSetupToolStripMenuItem.Text" xml:space="preserve">
     <value>Print Setup</value>
@@ -316,13 +319,13 @@
     <value>False</value>
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 6</value>
+    <value>207, 6</value>
   </data>
   <data name="toolStripSeparator5.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 22</value>
+    <value>210, 22</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>E&amp;xit</value>
@@ -331,7 +334,7 @@
     <value>ActiveBorder</value>
   </data>
   <data name="fileMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
+    <value>35, 20</value>
   </data>
   <data name="fileMenu.Text" xml:space="preserve">
     <value>&amp;File</value>
@@ -359,7 +362,7 @@
     <value>Ctrl+Z</value>
   </data>
   <data name="undoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="undoToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Undo</value>
@@ -387,13 +390,13 @@
     <value>Ctrl+Y</value>
   </data>
   <data name="redoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="redoToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Redo</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 6</value>
+    <value>172, 6</value>
   </data>
   <data name="toolStripSeparator6.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -419,7 +422,7 @@
     <value>Ctrl+Maj+X</value>
   </data>
   <data name="cutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="cutToolStripMenuItem.Text" xml:space="preserve">
     <value>Cu&amp;t</value>
@@ -449,7 +452,7 @@
     <value>Ctrl+Maj+C</value>
   </data>
   <data name="copyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="copyToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Copy</value>
@@ -481,7 +484,7 @@
     <value>Ctrl+Maj+V</value>
   </data>
   <data name="pasteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="pasteToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Paste</value>
@@ -490,7 +493,7 @@
     <value>False</value>
   </data>
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 6</value>
+    <value>172, 6</value>
   </data>
   <data name="toolStripSeparator7.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -499,7 +502,7 @@
     <value>Ctrl+A</value>
   </data>
   <data name="selectAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 22</value>
+    <value>175, 22</value>
   </data>
   <data name="selectAllToolStripMenuItem.Text" xml:space="preserve">
     <value>Select &amp;All</value>
@@ -508,7 +511,7 @@
     <value>False</value>
   </data>
   <data name="editMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 20</value>
+    <value>37, 20</value>
   </data>
   <data name="editMenu.Text" xml:space="preserve">
     <value>&amp;Edit</value>
@@ -517,7 +520,7 @@
     <value>False</value>
   </data>
   <data name="navigateBackwardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 22</value>
+    <value>177, 22</value>
   </data>
   <data name="navigateBackwardToolStripMenuItem.Text" xml:space="preserve">
     <value>Navigate backward</value>
@@ -526,28 +529,28 @@
     <value>False</value>
   </data>
   <data name="navigateForwardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 22</value>
+    <value>177, 22</value>
   </data>
   <data name="navigateForwardToolStripMenuItem.Text" xml:space="preserve">
     <value>Navigate forward</value>
   </data>
   <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 6</value>
+    <value>174, 6</value>
   </data>
   <data name="toolBarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 22</value>
+    <value>177, 22</value>
   </data>
   <data name="toolBarToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Toolbar</value>
   </data>
   <data name="statusBarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 22</value>
+    <value>177, 22</value>
   </data>
   <data name="statusBarToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Status Bar</value>
   </data>
   <data name="viewMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 20</value>
+    <value>41, 20</value>
   </data>
   <data name="viewMenu.Text" xml:space="preserve">
     <value>&amp;View</value>
@@ -556,85 +559,85 @@
     <value>False</value>
   </data>
   <data name="optionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 22</value>
+    <value>187, 22</value>
   </data>
   <data name="optionsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Options</value>
   </data>
   <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 22</value>
+    <value>187, 22</value>
   </data>
   <data name="languageToolStripMenuItem.Text" xml:space="preserve">
     <value>Language</value>
   </data>
   <data name="addMeToTheExplorerConToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 22</value>
+    <value>297, 22</value>
   </data>
   <data name="addMeToTheExplorerConToolStripMenuItem.Text" xml:space="preserve">
     <value>Add me to the explorer context menu</value>
   </data>
   <data name="removeMeFromTheExplorerContextMenuToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 22</value>
+    <value>297, 22</value>
   </data>
   <data name="removeMeFromTheExplorerContextMenuToolStripMenuItem.Text" xml:space="preserve">
     <value>Remove me from the explorer context menu</value>
   </data>
   <data name="explorerIntegrationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 22</value>
+    <value>187, 22</value>
   </data>
   <data name="explorerIntegrationToolStripMenuItem.Text" xml:space="preserve">
     <value>Explorer Integration</value>
   </data>
   <data name="clearHistroryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 22</value>
+    <value>187, 22</value>
   </data>
   <data name="clearHistroryToolStripMenuItem.Text" xml:space="preserve">
     <value>Clear path history list</value>
   </data>
   <data name="toolsMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 20</value>
+    <value>44, 20</value>
   </data>
   <data name="toolsMenu.Text" xml:space="preserve">
     <value>&amp;Tools</value>
   </data>
   <data name="newWindowToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
+    <value>153, 22</value>
   </data>
   <data name="newWindowToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;New Window</value>
   </data>
   <data name="cascadeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
+    <value>153, 22</value>
   </data>
   <data name="cascadeToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Cascade</value>
   </data>
   <data name="tileVerticalToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
+    <value>153, 22</value>
   </data>
   <data name="tileVerticalToolStripMenuItem.Text" xml:space="preserve">
     <value>Tile &amp;Vertical</value>
   </data>
   <data name="tileHorizontalToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
+    <value>153, 22</value>
   </data>
   <data name="tileHorizontalToolStripMenuItem.Text" xml:space="preserve">
     <value>Tile &amp;Horizontal</value>
   </data>
   <data name="closeAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
+    <value>153, 22</value>
   </data>
   <data name="closeAllToolStripMenuItem.Text" xml:space="preserve">
     <value>C&amp;lose All</value>
   </data>
   <data name="arrangeIconsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 22</value>
+    <value>153, 22</value>
   </data>
   <data name="arrangeIconsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Arrange Icons</value>
   </data>
   <data name="windowsMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 20</value>
+    <value>62, 20</value>
   </data>
   <data name="windowsMenu.Text" xml:space="preserve">
     <value>&amp;Windows</value>
@@ -649,7 +652,7 @@
     <value>Ctrl+F1</value>
   </data>
   <data name="contentsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="contentsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Contents</value>
@@ -682,7 +685,7 @@
     <value>Black</value>
   </data>
   <data name="indexToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="indexToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Index</value>
@@ -716,7 +719,7 @@
     <value>Black</value>
   </data>
   <data name="searchToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="searchToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Search</value>
@@ -725,25 +728,25 @@
     <value>False</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 6</value>
+    <value>170, 6</value>
   </data>
   <data name="toolStripSeparator8.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="licenceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="licenceToolStripMenuItem.Text" xml:space="preserve">
     <value>Licence ...</value>
   </data>
   <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>189, 22</value>
+    <value>173, 22</value>
   </data>
   <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;About ...</value>
   </data>
   <data name="helpMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 20</value>
+    <value>40, 20</value>
   </data>
   <data name="helpMenu.Text" xml:space="preserve">
     <value>&amp;Help</value>
@@ -780,6 +783,9 @@
   </data>
   <metadata name="toolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>0, 24</value>
+  </metadata>
+  <metadata name="toolStrip.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
   <data name="newToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -987,6 +993,9 @@
   <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>0, 570</value>
   </metadata>
+  <metadata name="statusStrip.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="toolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>747, 17</value>
   </data>
@@ -1026,6 +1035,9 @@
   <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>131, 17</value>
   </metadata>
+  <metadata name="label2.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1042,7 +1054,7 @@
     <value>123, 13</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>2</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Directory levels to draw :</value>
@@ -1059,6 +1071,9 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <metadata name="label1.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1072,7 +1087,7 @@
     <value>138, 28</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
+    <value>0</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Calculation max depth : (reduce to improve perf)</value>
@@ -1089,6 +1104,9 @@
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="comboBoxPath.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="comboBoxPath.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -1102,7 +1120,7 @@
     <value>527, 21</value>
   </data>
   <data name="comboBoxPath.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+    <value>3</value>
   </data>
   <data name="comboBoxPath.Text" xml:space="preserve">
     <value>c:\</value>
@@ -1119,6 +1137,9 @@
   <data name="&gt;&gt;comboBoxPath.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <metadata name="label3.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1135,7 +1156,7 @@
     <value>106, 13</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+    <value>2</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Directory to analyze :</value>
@@ -1152,9 +1173,15 @@
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <metadata name="groupBox1.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
+  <metadata name="checkBoxAutoRecalc.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="checkBoxAutoRecalc.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopLeft</value>
   </data>
@@ -1171,7 +1198,7 @@
     <value>142, 33</value>
   </data>
   <data name="checkBoxAutoRecalc.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>5</value>
   </data>
   <data name="checkBoxAutoRecalc.Text" xml:space="preserve">
     <value>Auto complete graph</value>
@@ -1191,6 +1218,9 @@
   <data name="&gt;&gt;checkBoxAutoRecalc.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="checkBoxPrintSizes.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="checkBoxPrintSizes.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1207,7 +1237,7 @@
     <value>73, 17</value>
   </data>
   <data name="checkBoxPrintSizes.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+    <value>4</value>
   </data>
   <data name="checkBoxPrintSizes.Text" xml:space="preserve">
     <value>Print sizes</value>
@@ -1224,6 +1254,9 @@
   <data name="&gt;&gt;checkBoxPrintSizes.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="numUpDownNbNivx.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="numUpDownNbNivx.Location" type="System.Drawing.Point, System.Drawing">
     <value>86, 61</value>
   </data>
@@ -1234,7 +1267,7 @@
     <value>58, 20</value>
   </data>
   <data name="numUpDownNbNivx.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;numUpDownNbNivx.Name" xml:space="preserve">
     <value>numUpDownNbNivx</value>
@@ -1248,6 +1281,9 @@
   <data name="&gt;&gt;numUpDownNbNivx.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <metadata name="numUpDownNbNivxAffich.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="numUpDownNbNivxAffich.Location" type="System.Drawing.Point, System.Drawing">
     <value>86, 115</value>
   </data>
@@ -1258,7 +1294,7 @@
     <value>58, 20</value>
   </data>
   <data name="numUpDownNbNivxAffich.TabIndex" type="System.Int32, mscorlib">
-    <value>14</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;numUpDownNbNivxAffich.Name" xml:space="preserve">
     <value>numUpDownNbNivxAffich</value>
@@ -1282,7 +1318,7 @@
     <value>157, 205</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
+    <value>6</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Drawing options</value>
@@ -1299,6 +1335,9 @@
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <metadata name="buttonBrowse.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="buttonBrowse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -1315,7 +1354,7 @@
     <value>26, 21</value>
   </data>
   <data name="buttonBrowse.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
+    <value>4</value>
   </data>
   <data name="buttonBrowse.Text" xml:space="preserve">
     <value>...</value>
@@ -1332,9 +1371,15 @@
   <data name="&gt;&gt;buttonBrowse.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="groupBoxHoverInfo.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="groupBoxHoverInfo.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
+  <metadata name="labelFiles.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="labelFiles.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1368,6 +1413,9 @@
   <data name="&gt;&gt;labelFiles.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="labelFilesSize.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="labelFilesSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1401,6 +1449,9 @@
   <data name="&gt;&gt;labelFilesSize.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="labelDirTotalSize.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="labelDirTotalSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1434,6 +1485,9 @@
   <data name="&gt;&gt;labelDirTotalSize.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <metadata name="labelDirName.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="labelDirName.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1477,7 +1531,7 @@
     <value>155, 111</value>
   </data>
   <data name="groupBoxHoverInfo.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
+    <value>7</value>
   </data>
   <data name="groupBoxHoverInfo.Text" xml:space="preserve">
     <value>Hovered directory</value>
@@ -1497,6 +1551,9 @@
   <data name="&gt;&gt;groupBoxHoverInfo.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="buttonScan.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="buttonScan.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
@@ -1530,7 +1587,7 @@
     <value>107, 23</value>
   </data>
   <data name="buttonScan.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+    <value>5</value>
   </data>
   <data name="buttonScan.Text" xml:space="preserve">
     <value>Scan / Refresh</value>
@@ -1550,6 +1607,9 @@
   <data name="&gt;&gt;buttonScan.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <metadata name="linkLabelHelpGraph.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="linkLabelHelpGraph.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
@@ -1569,7 +1629,7 @@
     <value>151, 13</value>
   </data>
   <data name="linkLabelHelpGraph.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
+    <value>8</value>
   </data>
   <data name="linkLabelHelpGraph.Text" xml:space="preserve">
     <value>Legend / Reading the graph...</value>
@@ -1586,6 +1646,9 @@
   <data name="&gt;&gt;linkLabelHelpGraph.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="treeGraph1.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <data name="treeGraph1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
@@ -1599,13 +1662,13 @@
     <value>575, 464</value>
   </data>
   <data name="treeGraph1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;treeGraph1.Name" xml:space="preserve">
     <value>treeGraph1</value>
   </data>
   <data name="&gt;&gt;treeGraph1.Type" xml:space="preserve">
-    <value>HDGraph.TreeGraph, HDGraph, Version=0.9.2.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>HDGraph.TreeGraph, HDGraph, Version=0.9.3.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;treeGraph1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1618,6 +1681,9 @@
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>51</value>
+  </metadata>
+  <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
@@ -5964,6 +6030,9 @@
         /////gAAAB//////////////////wP/////////////////////////////////////////A////////
         /////////////////////////////////8A=
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>640, 600</value>
