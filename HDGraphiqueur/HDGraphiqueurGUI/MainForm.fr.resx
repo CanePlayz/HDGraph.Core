@@ -748,7 +748,7 @@
 </value>
   </data>
   <data name="buttonScan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>609, 105</value>
+    <value>617, 49</value>
   </data>
   <data name="buttonScan.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 23</value>
