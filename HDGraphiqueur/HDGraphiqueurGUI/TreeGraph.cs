@@ -720,6 +720,16 @@ namespace HDGraph
 
         }
 
+        private void refreshThisDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lastClicNode != null)
+            {
+                moteur.RafraichirArborescence(lastClicNode);
+            }
+            ForceRefresh();
+        }
+
         #endregion
+
     }
 }

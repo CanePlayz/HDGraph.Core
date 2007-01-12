@@ -136,7 +136,13 @@
   <data name="centerGraphOnParentDirectoryToolStripMenuItem.Text" xml:space="preserve">
     <value>Centrer le graphique sur le répertoire parent</value>
   </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="refreshThisDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>364, 22</value>
+  </data>
+  <data name="refreshThisDirectoryToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rafraîchir ce répertoire</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>361, 6</value>
   </data>
   <data name="openThisDirectoryInWindowsExplorerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
@@ -146,6 +152,6 @@
     <value>Ouvrir ce répertoire dans l'explorateur Windows</value>
   </data>
   <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>365, 104</value>
+    <value>365, 148</value>
   </data>
 </root>

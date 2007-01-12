@@ -216,7 +216,7 @@ namespace HDGraph
                 long dirPreviousTotalSize = node.TotalSize;
                 node.TotalSize = 0;
                 node.FilesSize = 0;
-                ConstruireArborescence(node, maxLevel-1);
+                ConstruireArborescence(node, maxLevel - 1);
                 if (dirPreviousTotalSize != node.TotalSize)
                     IncrementerTailleParents(node, node.TotalSize - dirPreviousTotalSize);
             }
@@ -224,10 +224,9 @@ namespace HDGraph
             {
                 foreach (DirectoryNode fils in node.Children)
                 {
-                    CompleterArborescence(fils, maxLevel-1);
+                    CompleterArborescence(fils, maxLevel - 1);
                 }
             }
-
             return true;
         }
 
@@ -238,10 +237,27 @@ namespace HDGraph
         /// <param name="tailleAjoutee">Montant à ajouter.</param>
         private void IncrementerTailleParents(DirectoryNode node, long tailleAjoutee)
         {
-            if (node.Parent != null)
+            if (node.Parent == null)
                 return;
             node.Parent.TotalSize += tailleAjoutee;
             IncrementerTailleParents(node.Parent, tailleAjoutee);
+        }
+
+
+        public bool RafraichirArborescence(DirectoryNode node)
+        {
+            if (!this.autoRefreshAllowed)
+                return false;
+
+
+            long dirPreviousTotalSize = node.TotalSize;
+            node.TotalSize = 0;
+            node.FilesSize = 0;
+            node.Children = new List<DirectoryNode>();
+            ConstruireArborescence(node, node.ProfondeurMax-1);
+            if (dirPreviousTotalSize != node.TotalSize)
+                IncrementerTailleParents(node, node.TotalSize - dirPreviousTotalSize);
+            return true;
         }
 
         #endregion
