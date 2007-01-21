@@ -206,21 +206,21 @@ namespace HDGraph
         {
             //base.OnPaint(e);
 
-            if (buffer == null || buffer.Width != this.Width || buffer.Height != this.Height || forceRefreshOnNextRepaint)
+            if (buffer == null || buffer.Width != this.ClientSize.Width || buffer.Height != this.ClientSize.Height || forceRefreshOnNextRepaint)
             {
                 // Notif de mise en attente (ANNULE)
                 //Form parentForm = FindForm();
                 //Cursor oldCursor = parentForm.Cursor;
                 //parentForm.Cursor = Cursors.WaitCursor;
                 // Création du bitmap buffer
-                buffer = new Bitmap(this.Width, this.Height);
+                buffer = new Bitmap(this.ClientSize.Width, this.ClientSize.Height);
                 graph = Graphics.FromImage(buffer);
                 graph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
                 graph.Clear(Color.White);
                 // init des données du calcul
-                pasNiveau = Math.Min(this.Width / (float)nbNiveaux / 2, this.Height / (float)nbNiveaux / 2);
-                pieRec = new RectangleF((float)this.Width / 2,
-                                        (float)this.Height / 2,
+                pasNiveau = Math.Min(this.ClientSize.Width / (float)nbNiveaux / 2, this.ClientSize.Height / (float)nbNiveaux / 2);
+                pieRec = new RectangleF((float)this.ClientSize.Width / 2,
+                                        (float)this.ClientSize.Height / 2,
                                         0,
                                         0);
                 // Calcul
@@ -255,8 +255,8 @@ namespace HDGraph
         /// </summary>
         private void PaintSpecialCase()
         {
-            float x = this.Width / 2f;
-            float y = this.Height / 2f;
+            float x = this.ClientSize.Width / 2f;
+            float y = this.ClientSize.Height / 2f;
             string text;
             if (moteur != null && moteur.WorkCanceled)
                 text = Resources.ApplicationMessages.UserCanceledAnalysis;
@@ -371,8 +371,8 @@ namespace HDGraph
                     {
                         y = rec.Height / 2f - pasNiveau * 3f / 4f;
                     }
-                    x += this.Width / 2f;
-                    y += this.Height / 2f;
+                    x += this.ClientSize.Width / 2f;
+                    y += this.ClientSize.Height / 2f;
                     string nodeText = node.Name;
                     if (optionShowSize)
                         nodeText += Environment.NewLine + FormatSize(node.TotalSize);
@@ -412,8 +412,8 @@ namespace HDGraph
                     angleCentre = startAngle + nodeAngle / 2f;
                     x = (float)Math.Cos(GetRadianFromDegree(angleCentre)) * hyp;
                     y = (float)Math.Sin(GetRadianFromDegree(angleCentre)) * hyp;
-                    x += this.Width / 2f;
-                    y += this.Height / 2f;
+                    x += this.ClientSize.Width / 2f;
+                    y += this.ClientSize.Height / 2f;
                     StringFormat format = new StringFormat();
                     format.Alignment = StringAlignment.Center;
                     string nodeText = node.Name;

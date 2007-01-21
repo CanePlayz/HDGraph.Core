@@ -118,6 +118,91 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 13</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Répertoire à analyser:</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="linkLabelHelpGraph.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="linkLabelHelpGraph.Location" type="System.Drawing.Point, System.Drawing">
+    <value>601, 484</value>
+  </data>
+  <data name="linkLabelHelpGraph.Size" type="System.Drawing.Size, System.Drawing">
+    <value>157, 30</value>
+  </data>
+  <data name="linkLabelHelpGraph.Text" xml:space="preserve">
+    <value>Légende /
+Comment lire le graphe ?</value>
+  </data>
+  <data name="checkBoxAutoRecalc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 33</value>
+  </data>
+  <data name="checkBoxAutoRecalc.Text" xml:space="preserve">
+    <value>Compléter automatiquemt le graphe sur déplacemt</value>
+  </data>
+  <data name="checkBoxPrintSizes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 17</value>
+  </data>
+  <data name="checkBoxPrintSizes.Text" xml:space="preserve">
+    <value>Afficher les tailles</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 16</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 42</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Niveaux de rép. à mémoriser : (réduire pour améliorer les perfs)</value>
+  </data>
+  <data name="numUpDownNbNivxAffich.ToolTip" xml:space="preserve">
+    <value>Fait office de zoom. Effet immédiat.</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>139, 13</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Niveaux de rep. à dessiner :</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Options de dessin</value>
+  </data>
+  <data name="labelFiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 13</value>
+  </data>
+  <data name="labelFiles.Text" xml:space="preserve">
+    <value>Proportion de fichiers :</value>
+  </data>
+  <data name="groupBoxHoverInfo.Text" xml:space="preserve">
+    <value>Répertoire survolé</value>
+  </data>
+  <data name="buttonScan.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        R0lGODlhEAAQAPYAAMPmiZXHTNnvs6nYXtrwtZ3OU5/RVZnJUavbYMznjdrvpb/jfNTsnNjurYbT3eTz
+        uZDT2NfsnqHTVWvN5Zfl8KHNWtzwppLX3M/qkOPzt4PP2djuppfe5Jzl68fiitDroL7cgMfnh5/LWKPk
+        57veecDlhbTWdH/X7tDolZrj8d3xrazcYKjXXl7K5p3g8uX0t6nZXp3i8pzg8pzMUuv2yLDWbLvjer7k
+        gdTtmPD40u33zKzYZorZ5KrQadPtp6bUXXPW7c7qltbtprLfaZrh8qXPYpHd8ZLh8J7c33vU5cnojozd
+        8MDlgdvwt5bITGjJ4NrwtIDc7XfN3Y/g68TjhLffcWbP6zaeoiQgHv///wAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAFkALAAAAAAQABAAAAebgFmC
+        g4SFhllYiViHg4lII1c5iYdYEBccHVc6NC+LhFgaDjxTFFcPGRYRnoJYUklRRylXKgo4KKtYTxNAS0Qx
+        VxsMGAkenlgtVidGMi5XQkEhVCDGV9XWVw1KCyQmxj5NBAICBFAfTFU1Pbg3AO0AJTZDO0WriAMsAwgr
+        CDA/FSL1EBUoYECCgRkHDgRkhcVJgIeTGCFSJLHioEAAOw==
+</value>
+  </data>
+  <data name="buttonScan.Location" type="System.Drawing.Point, System.Drawing">
+    <value>617, 49</value>
+  </data>
+  <data name="buttonScan.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 23</value>
+  </data>
+  <data name="buttonScan.Text" xml:space="preserve">
+    <value>Scanner / Rafraîchir</value>
+  </data>
   <data name="newToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -669,109 +754,6 @@
   </data>
   <data name="helpToolStripButton.Text" xml:space="preserve">
     <value>Aide</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 13</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Niveaux de rep. à dessiner :</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 16</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 42</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Niveaux de rép. à mémoriser : (réduire pour améliorer les perfs)</value>
-  </data>
-  <data name="comboBoxPath.ToolTip" xml:space="preserve">
-    <value>Répertoire à scanner.</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 13</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Répertoire à analyser:</value>
-  </data>
-  <data name="checkBoxAutoRecalc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 33</value>
-  </data>
-  <data name="checkBoxAutoRecalc.Text" xml:space="preserve">
-    <value>Compléter automatiquemt le graphe sur déplacemt</value>
-  </data>
-  <data name="checkBoxAutoRecalc.ToolTip" xml:space="preserve">
-    <value>Si coché, lors d'un double-clic sur le dessin, auto scanne le répertoire s'il n'a pas été mémorisé lors du scan initial.</value>
-  </data>
-  <data name="checkBoxPrintSizes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 17</value>
-  </data>
-  <data name="checkBoxPrintSizes.Text" xml:space="preserve">
-    <value>Afficher les tailles</value>
-  </data>
-  <data name="checkBoxPrintSizes.ToolTip" xml:space="preserve">
-    <value>Affiche les tailles de chaque répertoire sur le dessin.</value>
-  </data>
-  <data name="numUpDownNbNivx.ToolTip" xml:space="preserve">
-    <value>Détermine la quantité de niveaux d'imbrication des répertoires à mémoriser lors du scan. Prend effet au prochain scan.</value>
-  </data>
-  <data name="numUpDownNbNivxAffich.ToolTip" xml:space="preserve">
-    <value>Fait office de zoom. Effet immédiat.</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Options de dessin</value>
-  </data>
-  <data name="buttonBrowse.ToolTip" xml:space="preserve">
-    <value>Parcourir...</value>
-  </data>
-  <data name="labelFiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 13</value>
-  </data>
-  <data name="labelFiles.Text" xml:space="preserve">
-    <value>Proportion de fichiers :</value>
-  </data>
-  <data name="groupBoxHoverInfo.Text" xml:space="preserve">
-    <value>Répertoire survolé</value>
-  </data>
-  <data name="buttonScan.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        R0lGODlhEAAQAPYAAMPmiZXHTNnvs6nYXtrwtZ3OU5/RVZnJUavbYMznjdrvpb/jfNTsnNjurYbT3eTz
-        uZDT2NfsnqHTVWvN5Zfl8KHNWtzwppLX3M/qkOPzt4PP2djuppfe5Jzl68fiitDroL7cgMfnh5/LWKPk
-        57veecDlhbTWdH/X7tDolZrj8d3xrazcYKjXXl7K5p3g8uX0t6nZXp3i8pzg8pzMUuv2yLDWbLvjer7k
-        gdTtmPD40u33zKzYZorZ5KrQadPtp6bUXXPW7c7qltbtprLfaZrh8qXPYpHd8ZLh8J7c33vU5cnojozd
-        8MDlgdvwt5bITGjJ4NrwtIDc7XfN3Y/g68TjhLffcWbP6zaeoiQgHv///wAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAAFkALAAAAAAQABAAAAebgFmC
-        g4SFhllYiViHg4lII1c5iYdYEBccHVc6NC+LhFgaDjxTFFcPGRYRnoJYUklRRylXKgo4KKtYTxNAS0Qx
-        VxsMGAkenlgtVidGMi5XQkEhVCDGV9XWVw1KCyQmxj5NBAICBFAfTFU1Pbg3AO0AJTZDO0WriAMsAwgr
-        CDA/FSL1EBUoYECCgRkHDgRkhcVJgIeTGCFSJLHioEAAOw==
-</value>
-  </data>
-  <data name="buttonScan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>617, 49</value>
-  </data>
-  <data name="buttonScan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 23</value>
-  </data>
-  <data name="buttonScan.Text" xml:space="preserve">
-    <value>Scanner / Rafraîchir</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="linkLabelHelpGraph.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="linkLabelHelpGraph.Location" type="System.Drawing.Point, System.Drawing">
-    <value>593, 528</value>
-  </data>
-  <data name="linkLabelHelpGraph.Size" type="System.Drawing.Size, System.Drawing">
-    <value>157, 30</value>
-  </data>
-  <data name="linkLabelHelpGraph.Text" xml:space="preserve">
-    <value>Légende /
-Comment lire le graphe ?</value>
-  </data>
-  <data name="linkLabelHelpGraph.ToolTip" xml:space="preserve">
-    <value>Affiche l'aide pour apprendre à lire le graphe.</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5112,5 +5094,9 @@ Comment lire le graphe ?</value>
         /////gAAAB//////////////////wP/////////////////////////////////////////A////////
         /////////////////////////////////8A=
 </value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
 </root>
