@@ -114,6 +114,10 @@
       <SubType>Designer</SubType>
       <DependentUpon>OptionsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OptionsUserControl.fr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>OptionsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OptionsUserControl.resx">
       <SubType>Designer</SubType>
       <DependentUpon>OptionsUserControl.cs</DependentUpon>
@@ -213,6 +217,13 @@
     <Content Include="Doc\HDGraph-en.chm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\CascadeWindowsHS.png" />
+    <None Include="Resources\RefreshDocViewHS.png" />
+    <None Include="Resources\ZoomHS.png" />
+    <None Include="Resources\ActualSizeHS.png" />
+    <None Include="Resources\GoToParentFolderHS.png" />
+    <None Include="Resources\DeleteFolderHS.png" />
+    <None Include="Resources\OpenSelectedItemHS.png" />
     <None Include="Resources\project-support.jpg" />
     <None Include="Resources\Help.png" />
     <None Include="Resources\InsertPictureHS.png" />

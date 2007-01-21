@@ -144,8 +144,14 @@
   <data name="CursorHoverNoDirectory" xml:space="preserve">
     <value>Cursor hover no directory.</value>
   </data>
+  <data name="DeletionCompleteMsg" xml:space="preserve">
+    <value>Folder successfully deleted !</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>HDGraph Error</value>
+  </data>
+  <data name="ErrorDeletingFolder" xml:space="preserve">
+    <value>An error occured while deleting folder. Some files were not deleted. Error detail : {0}</value>
   </data>
   <data name="ErrorInConfigLanguage" xml:space="preserve">
     <value>An error in the configuration file prevent the application to load the appropriate language. Please verify that the langage code is correct in your config file !</value>
@@ -164,6 +170,12 @@
   </data>
   <data name="FolderIsEmpty" xml:space="preserve">
     <value>Selected folder is empty.</value>
+  </data>
+  <data name="GoingToDeleteFolderMsg" xml:space="preserve">
+    <value>This action will permanently delete the folder "{0}" and all its content. Are you sure ?</value>
+  </data>
+  <data name="GoingToDeleteFolderTitle" xml:space="preserve">
+    <value>Your are about to delete a folder</value>
   </data>
   <data name="GraphGuideLine" xml:space="preserve">
     <value>Step by step instructions :

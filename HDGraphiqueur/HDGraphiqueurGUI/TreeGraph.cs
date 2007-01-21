@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace HDGraph
 {
@@ -575,6 +576,7 @@ namespace HDGraph
             float nodeAngle = endAngle - startAngle;
             levelHeight += pasNiveau;
             if (levelHeight > cursorLen && cursorAngle >= startAngle && cursorAngle <= endAngle)
+                // le noeud courant est celui recherché
                 return node;
             long cumulSize = 0;
             float currentStartAngle;
@@ -618,6 +620,12 @@ namespace HDGraph
             centerGraphOnThisDirectoryToolStripMenuItem.Enabled = (nodeIsNotNull && node != root);
             centerGraphOnParentDirectoryToolStripMenuItem.Enabled = (nodeIsNotNull && node == root);
             openThisDirectoryInWindowsExplorerToolStripMenuItem.Enabled = nodeIsNotNull;
+            refreshThisDirectoryToolStripMenuItem.Enabled = nodeIsNotNull;
+
+            // Item "Suppression"
+            deleteToolStripMenuItem.Enabled = nodeIsNotNull && Properties.Settings.Default.OptionAllowFolderDeletion;
+
+            // Item "Titre du dossier"
             if (nodeIsNotNull)
                 directoryNameToolStripMenuItem.Text = node.Name + " (" + FormatSize(node.TotalSize) + ")";
             else
@@ -720,7 +728,22 @@ namespace HDGraph
 
         }
 
+        /// <summary>
+        /// Demande le rafraichissement du répertoire de l'arborescence pointé par la souris.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void refreshThisDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RafraichirArboDuDernierClic();
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Rafraichit l'arborescence visée par le dernier clic.
+        /// </summary>
+        private void RafraichirArboDuDernierClic()
         {
             if (lastClicNode != null)
             {
@@ -729,7 +752,44 @@ namespace HDGraph
             ForceRefresh();
         }
 
-        #endregion
+        /// <summary>
+        /// Supprime un dossier.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void deletePermanentlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string msg = String.Format(HDGTools.resManager.GetString("GoingToDeleteFolderMsg"),
+                                       lastClicNode.Name);
+            if ((! Properties.Settings.Default.OptionDeletionAsk4Confirmation) 
+                || MessageBox.Show(msg,
+                        HDGTools.resManager.GetString("GoingToDeleteFolderTitle"), 
+                        MessageBoxButtons.OKCancel, 
+                        MessageBoxIcon.Exclamation, 
+                        MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                try
+                {
+                    System.IO.Directory.Delete(lastClicNode.Path, true);
+                    RafraichirArboDuDernierClic();
+                    MessageBox.Show(HDGTools.resManager.GetString("DeletionCompleteMsg"),
+                                    HDGTools.resManager.GetString("OperationSuccessfullTitle"),
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    string msgErreur = String.Format(
+                        HDGTools.resManager.GetString("ErrorDeletingFolder"),
+                        ex.Message);
+                    MessageBox.Show(msgErreur,
+                        HDGTools.resManager.GetString("Error"),
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    RafraichirArboDuDernierClic();
+                    Trace.TraceError(HDGTools.PrintError(ex));
+                }
+            }
+            
+        }
 
     }
 }

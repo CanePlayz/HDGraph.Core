@@ -453,10 +453,10 @@ namespace HDGraph
         /// <returns>Null ou chaine vide si aucun fichier d'aide.</returns>
         private string GetHelpFile()
         {
-            return Application.StartupPath 
-                + Path.DirectorySeparatorChar 
-                + "Doc" 
-                + Path.DirectorySeparatorChar 
+            return Application.StartupPath
+                + Path.DirectorySeparatorChar
+                + "Doc"
+                + Path.DirectorySeparatorChar
                 + Resources.ApplicationMessages.HelpFilename;
         }
 
@@ -795,6 +795,30 @@ namespace HDGraph
         private void linkLabelHelpGraph_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Help.ShowHelp(this, GetHelpFile(), HelpNavigator.TopicId, "5");
+        }
+
+        private void openLogFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string fileName = "";
+                foreach (TraceListener listener in Trace.Listeners)
+                {
+                    if (listener is TextWriterTraceListener)
+                    {
+                        //Properties.Settings.Default.
+                    }
+                }
+                //Trace.Listeners[
+                System.Diagnostics.Process.Start("HDGraph.log");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,
+                    HDGTools.resManager.GetString("Error"),
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Trace.TraceError(HDGTools.PrintError(ex));
+            }
         }
 
     }

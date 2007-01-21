@@ -142,11 +142,29 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Folder successfully deleted !.
+        /// </summary>
+        internal static string DeletionCompleteMsg {
+            get {
+                return ResourceManager.GetString("DeletionCompleteMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à HDGraph Error.
         /// </summary>
         internal static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à An error occured while deleting folder. Some files were not deleted. Error detail : {0}.
+        /// </summary>
+        internal static string ErrorDeletingFolder {
+            get {
+                return ResourceManager.GetString("ErrorDeletingFolder", resourceCulture);
             }
         }
         
@@ -201,6 +219,24 @@ namespace HDGraph.Resources {
         internal static string FolderIsEmpty {
             get {
                 return ResourceManager.GetString("FolderIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à This action will permanently delete the folder &quot;{0}&quot; and all its content. Are you sure ?.
+        /// </summary>
+        internal static string GoingToDeleteFolderMsg {
+            get {
+                return ResourceManager.GetString("GoingToDeleteFolderMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Your are about to delete a folder.
+        /// </summary>
+        internal static string GoingToDeleteFolderTitle {
+            get {
+                return ResourceManager.GetString("GoingToDeleteFolderTitle", resourceCulture);
             }
         }
         

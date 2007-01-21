@@ -127,27 +127,11 @@
   <data name="&gt;&gt;saveAsToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="saveToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAilJREFUOE+tk91L
-        k3EUx/cvdN9N0EW3NTWGa7EaPOUcyqphWBG9PZEv5dJlmqhYmUYtXyBb4dJJy+kknFT4BqZIjaFMJUsz
-        V7TEoabYRDD49ju/6Pm1Mm/qB+fy8znPOef7qFT/4z17GgWVr30Zbd4lPHYvoLEhgvuOGdTWfIL9dgg3
-        yqdQWjKBwoLXyMsdxYXzQSi9CeztAWqqV7HRW1ldgzGtF4fTnvBSBN7WRS6orPjyV57gyMIKdpufQ62W
-        YTnkEQL3o3kuKC35vK7gJ/w+vIg4kw8Fl6dxwNwkBM76WS64ZHv3h+BXeGQygm2SF9accaSmOIWg7m6Y
-        C7KzRmMEv8ODwTA2692Q5QBMJocQVFd95AL5TEARrAf3+D9gU2IDjhx9gaSkWiG4WTmN7i6wUwLHT76C
-        5dgA3zYtjGamz6bOP+A+HLR0QpLsQnC1bBIdPrAMAE2ub+zuX1F+fY4vlRZGM2dmBBU4ObUdBkOFEFwp
-        HIenGXjoXGPBicKYnhNT5hM2pJ8r4p2TUxi83wO9vkwIbHljDAaq7kR5ZxJQSOK0EobezmJsag5y7jXs
-        NbZxWLvHBZ2uSAgolo57UD6bBASfzb+FN6F5hGaWcLHYjni9i8GNiN/1ANrEfCHIzBhmcy/zmbcaPNiy
-        Q0JLRz98XYPo7vNj4OUQ9pksUOvqkcDg7Zo6aDTWWMHpU/08npQwCgndmU5F26aF0czUlYrgnQnZQvAv
-        f/R3bGg6a0rM640AAAAASUVORK5CYII=
-</value>
+  <data name="&gt;&gt;printPreviewToolStripButton.Name" xml:space="preserve">
+    <value>printPreviewToolStripButton</value>
   </data>
   <data name="&gt;&gt;printToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="toolStrip.Text" xml:space="preserve">
-    <value>ToolStrip</value>
   </data>
   <data name="&gt;&gt;copyToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -171,14 +155,14 @@
   <data name="&gt;&gt;toolStrip.Name" xml:space="preserve">
     <value>toolStrip</value>
   </data>
-  <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>762, 521</value>
+  <data name="searchToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="indexToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="navigateForwardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
+  <data name="printSetupToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="menuStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -217,11 +201,8 @@
   <data name="removeMeFromTheExplorerContextMenuToolStripMenuItem.Text" xml:space="preserve">
     <value>Remove me from the explorer context menu</value>
   </data>
-  <data name="pasteToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="printPreviewToolStripButton.Text" xml:space="preserve">
-    <value>Print Preview</value>
+  <data name="checkBoxPrintSizes.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;printToolStripMenuItem.Name" xml:space="preserve">
     <value>printToolStripMenuItem</value>
@@ -286,6 +267,9 @@
   <data name="labelFilesSize.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopRight</value>
   </data>
+  <data name="panel1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
@@ -310,8 +294,8 @@
   <data name="&gt;&gt;checkBoxPrintSizes.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="saveToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Black</value>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="toolStripContainer1.TopToolStripPanel.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -342,9 +326,6 @@
   </data>
   <data name="&gt;&gt;toolStripSeparator9.Name" xml:space="preserve">
     <value>toolStripSeparator9</value>
-  </data>
-  <data name="printPreviewToolStripMenuItem.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Black</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator10.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -415,9 +396,6 @@
   <data name="numUpDownNbNivx.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="buttonBrowse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
   <data name="labelFiles.Text" xml:space="preserve">
     <value>Files :</value>
   </data>
@@ -430,14 +408,14 @@
   <data name="&gt;&gt;languageToolStripMenuItem.Name" xml:space="preserve">
     <value>languageToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;toolStripContainer1.ContentPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripContentPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>762, 521</value>
   </data>
   <data name="&gt;&gt;labelDirTotalSize.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="buttonBrowse.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.Name" xml:space="preserve">
     <value>toolStripContainer1.RightToolStripPanel</value>
@@ -470,6 +448,9 @@
   <data name="&gt;&gt;treeGraph1.Name" xml:space="preserve">
     <value>treeGraph1</value>
   </data>
+  <data name="navigateForwardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 22</value>
+  </data>
   <data name="&gt;&gt;linkLabelHelpGraph.Name" xml:space="preserve">
     <value>linkLabelHelpGraph</value>
   </data>
@@ -479,6 +460,9 @@
   <data name="&gt;&gt;navigateBackwardToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="undoToolStripMenuItem.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Black</value>
   </data>
@@ -487,6 +471,9 @@
   </data>
   <data name="&gt;&gt;statusStrip.Name" xml:space="preserve">
     <value>statusStrip</value>
+  </data>
+  <data name="helpToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Black</value>
   </data>
   <data name="&gt;&gt;buttonScan.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -505,9 +492,6 @@
   </data>
   <data name="&gt;&gt;ToolTip.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="optionsToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="groupBoxHoverInfo.ToolTip" xml:space="preserve">
     <value />
@@ -563,9 +547,6 @@
   <data name="toolStripContainer1.BottomToolStripPanel.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>AssociateIndex</value>
   </data>
-  <data name="groupBoxHoverInfo.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
-  </data>
   <data name="&gt;&gt;treeGraph1.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
@@ -604,9 +585,6 @@
   <data name="&gt;&gt;helpToolStripButton.Name" xml:space="preserve">
     <value>helpToolStripButton</value>
   </data>
-  <data name="checkBoxPrintSizes.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="&gt;&gt;helpMenu.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -628,30 +606,11 @@
   <data name="&gt;&gt;toolStripStatusLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="searchToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAtpJREFUOE+Vk1lP
-        k1EQhutC/CHGGBM1MWpc4oVLSFGhRogfFAREqVCQshSoRRAQSlFUSitQwqKtqChBEepH3IKCC4agxoi4
-        YdSw1FTQCFpE5LEfF1aCXjhX55yced7MzDuzZH9ERrGIdGVyUjbXZ7Zsns8c2ei3cdnIV7ds0vNWnhMy
-        68//086ZJS0ctIjY29q5/roLsa8Fe28uSWIMguEk0Rl2VJmnpwRmxAGTiMEm0tB9hYdfntIzNkBaYwGm
-        V1nEXVaw0VhEmKGDUH0NUbrq6RDdMQdZFgcVnWZanDZuDXfSNdpNj9tFfX8zMVYjcusz1lgaWVumQkgu
-        ZmdKuRciAfLsItZHRZT16rC9t2DvM1L+xE782XrUFUOEHXvL0nNBLDrjz/r8REISSryA1CNNVDjeYRBN
-        7HuwjeTOALQ2PWm1nrKqLmEw16AvKibSHMfiUjmLjwQSpC7yApKMjVReGyOnshLFOTlbxVBU5WZKTzdz
-        o+0Og66PvHe6qL3YRESmhvkFfiiiDV6AJr8Bs8PNgVoXkXoV/pV70NbmcbW1DSl+TMCI+ycDwxNYai6w
-        ThPElshsL2DfoXqSy96gqfqO2txLYIbGM86j9H9w/U52fv7Bi/5xmtufExQRjm+o3guIyz1PfOFtok98
-        Jco0TGj+XfYXGuj7MDSl7Pw04Un+TscLNxUNHWwXgtkgaL0AdU7dlEl2FzxEediJPLcTIV9L09VWBj95
-        lAfGuf/SzZWuURJ02QQIu8jLSp3uBclhETo7IQfvsjTVyDJtOLHaFKrrHDS292C92EFCejbByh3UmcJp
-        siZSYkibDpEcpkwsZXOSGV9VPAq1ESE2B2HnbgIFJWHB27FoNzF4Ss7Pe1HYjqfMhEgOk0wizVkaldRt
-        qWFSzWEKX2IDVvA4eyV91g0MNQeTHrPt77vxr42TADH+y7mpW81evyUo/Vf9H0ACS5B1yxbit3bBVPIv
-        gLX/NgWpi8gAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="&gt;&gt;labelFiles.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;numUpDownNbNivxAffich.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="newWindowToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;New Window</value>
   </data>
   <data name="$this.ShowHelp" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -674,8 +633,24 @@
   <data name="&gt;&gt;groupBoxHoverInfo.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;windowsMenu.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="searchToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAtpJREFUOE+Vk1lP
+        k1EQhutC/CHGGBM1MWpc4oVLSFGhRogfFAREqVCQshSoRRAQSlFUSitQwqKtqChBEepH3IKCC4agxoi4
+        YdSw1FTQCFpE5LEfF1aCXjhX55yced7MzDuzZH9ERrGIdGVyUjbXZ7Zsns8c2ei3cdnIV7ds0vNWnhMy
+        68//086ZJS0ctIjY29q5/roLsa8Fe28uSWIMguEk0Rl2VJmnpwRmxAGTiMEm0tB9hYdfntIzNkBaYwGm
+        V1nEXVaw0VhEmKGDUH0NUbrq6RDdMQdZFgcVnWZanDZuDXfSNdpNj9tFfX8zMVYjcusz1lgaWVumQkgu
+        ZmdKuRciAfLsItZHRZT16rC9t2DvM1L+xE782XrUFUOEHXvL0nNBLDrjz/r8REISSryA1CNNVDjeYRBN
+        7HuwjeTOALQ2PWm1nrKqLmEw16AvKibSHMfiUjmLjwQSpC7yApKMjVReGyOnshLFOTlbxVBU5WZKTzdz
+        o+0Og66PvHe6qL3YRESmhvkFfiiiDV6AJr8Bs8PNgVoXkXoV/pV70NbmcbW1DSl+TMCI+ycDwxNYai6w
+        ThPElshsL2DfoXqSy96gqfqO2txLYIbGM86j9H9w/U52fv7Bi/5xmtufExQRjm+o3guIyz1PfOFtok98
+        Jco0TGj+XfYXGuj7MDSl7Pw04Un+TscLNxUNHWwXgtkgaL0AdU7dlEl2FzxEediJPLcTIV9L09VWBj95
+        lAfGuf/SzZWuURJ02QQIu8jLSp3uBclhETo7IQfvsjTVyDJtOLHaFKrrHDS292C92EFCejbByh3UmcJp
+        siZSYkibDpEcpkwsZXOSGV9VPAq1ESE2B2HnbgIFJWHB27FoNzF4Ss7Pe1HYjqfMhEgOk0wizVkaldRt
+        qWFSzWEKX2IDVvA4eyV91g0MNQeTHrPt77vxr42TADH+y7mpW81evyUo/Vf9H0ACS5B1yxbit3bBVPIv
+        gLX/NgWpi8gAAAAASUVORK5CYII=
+</value>
   </data>
   <data name="&gt;&gt;toolStripContainer1.ContentPanel.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -727,8 +702,14 @@
   <data name="&gt;&gt;menuStrip.Name" xml:space="preserve">
     <value>menuStrip</value>
   </data>
+  <data name="openLogFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Open log file</value>
+  </data>
   <data name="&gt;&gt;numUpDownNbNivx.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.LeftToolStripPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 99</value>
@@ -788,21 +769,11 @@
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>E&amp;xit</value>
   </data>
-  <data name="saveAsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAilJREFUOE+tk91L
-        k3EUx/cvdN9N0EW3NTWGa7EaPOUcyqphWBG9PZEv5dJlmqhYmUYtXyBb4dJJy+kknFT4BqZIjaFMJUsz
-        V7TEoabYRDD49ju/6Pm1Mm/qB+fy8znPOef7qFT/4z17GgWVr30Zbd4lPHYvoLEhgvuOGdTWfIL9dgg3
-        yqdQWjKBwoLXyMsdxYXzQSi9CeztAWqqV7HRW1ldgzGtF4fTnvBSBN7WRS6orPjyV57gyMIKdpufQ62W
-        YTnkEQL3o3kuKC35vK7gJ/w+vIg4kw8Fl6dxwNwkBM76WS64ZHv3h+BXeGQygm2SF9accaSmOIWg7m6Y
-        C7KzRmMEv8ODwTA2692Q5QBMJocQVFd95AL5TEARrAf3+D9gU2IDjhx9gaSkWiG4WTmN7i6wUwLHT76C
-        5dgA3zYtjGamz6bOP+A+HLR0QpLsQnC1bBIdPrAMAE2ub+zuX1F+fY4vlRZGM2dmBBU4ObUdBkOFEFwp
-        HIenGXjoXGPBicKYnhNT5hM2pJ8r4p2TUxi83wO9vkwIbHljDAaq7kR5ZxJQSOK0EobezmJsag5y7jXs
-        NbZxWLvHBZ2uSAgolo57UD6bBASfzb+FN6F5hGaWcLHYjni9i8GNiN/1ANrEfCHIzBhmcy/zmbcaPNiy
-        Q0JLRz98XYPo7vNj4OUQ9pksUOvqkcDg7Zo6aDTWWMHpU/08npQwCgndmU5F26aF0czUlYrgnQnZQvAv
-        f/R3bGg6a0rM640AAAAASUVORK5CYII=
-</value>
+  <data name="toolStrip.Text" xml:space="preserve">
+    <value>ToolStrip</value>
+  </data>
+  <data name="checkBoxPrintSizes.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;newToolStripMenuItem.Name" xml:space="preserve">
     <value>newToolStripMenuItem</value>
@@ -853,14 +824,14 @@
   <data name="&gt;&gt;exportAsImageToolStripMenuItem.Name" xml:space="preserve">
     <value>exportAsImageToolStripMenuItem</value>
   </data>
-  <data name="toolsMenu.Text" xml:space="preserve">
-    <value>&amp;Tools</value>
+  <data name="openLogFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 22</value>
   </data>
   <data name="indexToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 25</value>
+  <data name="&gt;&gt;optionsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="toolStrip.ToolTip" xml:space="preserve">
     <value />
@@ -891,8 +862,8 @@
   <data name="toolStripContainer1.Text" xml:space="preserve">
     <value>toolStripContainer1</value>
   </data>
-  <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 6</value>
+  <data name="groupBoxHoverInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 111</value>
   </data>
   <data name="&gt;&gt;toolStripContainer1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -903,14 +874,14 @@
   <data name="openToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Black</value>
   </data>
+  <data name="saveToolStripButton.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
   <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="&gt;&gt;editMenu.Name" xml:space="preserve">
     <value>editMenu</value>
-  </data>
-  <data name="arrangeIconsToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Arrange Icons</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
     <value>170, 6</value>
@@ -942,14 +913,14 @@
   <data name="&gt;&gt;toolsMenu.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.Name" xml:space="preserve">
     <value>toolStripContainer1.TopToolStripPanel</value>
   </data>
   <data name="&gt;&gt;label2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="helpToolStripButton.Text" xml:space="preserve">
+    <value>Help</value>
   </data>
   <data name="&gt;&gt;newToolStripButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -975,34 +946,14 @@
   <data name="&gt;&gt;removeMeFromTheExplorerContextMenuToolStripMenuItem.Name" xml:space="preserve">
     <value>removeMeFromTheExplorerContextMenuToolStripMenuItem</value>
   </data>
-  <data name="navigateBackwardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
-  </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
     <value>207, 6</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="openToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAl9JREFUOE+9k1tI
-        E2AYhnfRRVcWaVEIRpaEXYiBIdVFSNJJUUqzwkgTylMHDMU2D206dXMnp650mNt0TZ1WlmFYIRSKRGip
-        o8S0LCgqxcxQydPT3EKTLPCmH96bn+99vvf7fn6B4H+cnGIzEq2Fy3ITeToraUojy+obnawjLF7lMJ0X
-        lpNlh6VIDUQlFyOoM2tYSo01sr92SUgrITxRRWh8gRPQ22VkYqTWoR/DFqYGDVhNKurN0iUhYQlqQuO0
-        BMcWIaitUDM+XLXIPPOphClbElXlcipLczEUZ6EvyOSaUkSRLHUxtNqoYPyLcb7zrN1MrwhssUvqD8CN
-        MhnfP+odsefMTXUKh+5b82mwyLhdmYvVkI1FL8Gku8J1bTqlahE6hdCZplKfy+i7QuZiv2kRU1+lZuaN
-        BAaki/XWftefBj3J8DKRzpoILsaEIDDosvnWJ4f3Su5Uq2h7oHQW/T7CiyhoD2e6NYiJhwG8rvDh3Kn9
-        TkCZVszXVxIGWjOotyiZ7RdDd5wT0BljNx5nui2EieZ9jDbuZqhuO5J4L04EujmXWaLOYKhLyE2zgo4n
-        9iQ9SXbAGeg4yezTw0w+PshY0x6G6/34XO1Ne85qIoM88dvq4gTo8kV0N2dyy5wPfZnw3B732VEmW4IZ
-        exTASIM/g1YfPhi3YFO6Io7djO8294WnLMxLpdYkx3Y3gXaNYF5tyhU0y1ZyL2sVNelrMaS6c/XSRiIP
-        bcLf12MBoJGmoBGfJU8YTdqFY47FnI4I5MiBnezd5cMOHy+8Pd3x2ODGujUurHf9FX1Zv+kfxT8BMS7u
-        X4BvNFkAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="helpToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 22</value>
+  <data name="&gt;&gt;toolStripContainer1.LeftToolStripPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="linkLabelHelpGraph.Size" type="System.Drawing.Size, System.Drawing">
     <value>151, 13</value>
@@ -1022,24 +973,6 @@
   <data name="checkBoxAutoRecalc.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="indexToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAqRJREFUOE+Fk1tI
-        01EYwOdr0HOJvfdm9FpPBZFQDyFBCb71ZoZooZiXMeetnJs6L9O8m2s6clNRN7VdtDmnS5uXleQQ3Zzm
-        XRMvYfz6b6KVZn3wceBwfr/zfecSIjojqurcbG98F21u7ogODhBlZFwPOWvtqfkAHEiXa5Wa2inUbyaR
-        SgdIT7fxX8kR7HCsUqJyYbGu8M7ko9c0i6bJjSTDfrboJNzRuYjNtk2/ZQurZYPenlV0unkaGieEigb/
-        FJ2E29r9mE0bdHUt09q2SIsANmtnaaifRqVyI5ePkpk9eNjSSVin9wVBvd5Pk2aO+noPlZVTlJRMoFCM
-        kJMzzNMEE7FPDBzDLtd6sGdN0yxa7Rzq1zPU1kzT1OpD1rxOVNEekbItJJU+5CVjxDw2oGsdOBRomseR
-        K5zU1Hl4VfGZsmI3ysJxqrR+4jVQboEPc0J6obbvgAfZXlpMbqa9M4jEEisa7RgSaR+ygiFk+SO8zHNS
-        3eghTg3aIZhf2CQ118jth1XBUe/Y4WackzylA9GzRAMziz6M5lGSU3oQi63BO89qWEJlJhhH8PCoNygp
-        qrUjVS8QHWNElJqupkDZzcKmn9llob9CM9KsPu7lrqEfPRQEIlBFQHDtbhmljSM09O8TerkU0Yv8QWHn
-        XiENmGzjrO1/xWL/RITYh+43wda3vSCcmGlkekk4C/MuF8Jyfr1MSWYfKWk9FBRb8fjnUHXOI2/fOa7A
-        Luwur3TgEeBx4TATitxERFadftopaSaeC6IO8xduJXykw7nP7g8wvPcSfqOAyXko7Vjh/FUl2Urz3/9G
-        mthMUnI3dS2TXIkyIq6eQWPbpdGyQ7xiknPhCmKT3tI/4vv351JVOMlX2ol+1EropSwuhqVy5345MpWV
-        wTF/EP4JaStxoteu5NMAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="numUpDownNbNivxAffich.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
@@ -1058,11 +991,26 @@
   <data name="checkBoxPrintSizes.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 142</value>
   </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value />
+  <data name="indexToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAqRJREFUOE+Fk1tI
+        01EYwOdr0HOJvfdm9FpPBZFQDyFBCb71ZoZooZiXMeetnJs6L9O8m2s6clNRN7VdtDmnS5uXleQQ3Zzm
+        XRMvYfz6b6KVZn3wceBwfr/zfecSIjojqurcbG98F21u7ogODhBlZFwPOWvtqfkAHEiXa5Wa2inUbyaR
+        SgdIT7fxX8kR7HCsUqJyYbGu8M7ko9c0i6bJjSTDfrboJNzRuYjNtk2/ZQurZYPenlV0unkaGieEigb/
+        FJ2E29r9mE0bdHUt09q2SIsANmtnaaifRqVyI5ePkpk9eNjSSVin9wVBvd5Pk2aO+noPlZVTlJRMoFCM
+        kJMzzNMEE7FPDBzDLtd6sGdN0yxa7Rzq1zPU1kzT1OpD1rxOVNEekbItJJU+5CVjxDw2oGsdOBRomseR
+        K5zU1Hl4VfGZsmI3ysJxqrR+4jVQboEPc0J6obbvgAfZXlpMbqa9M4jEEisa7RgSaR+ygiFk+SO8zHNS
+        3eghTg3aIZhf2CQ118jth1XBUe/Y4WackzylA9GzRAMziz6M5lGSU3oQi63BO89qWEJlJhhH8PCoNygp
+        qrUjVS8QHWNElJqupkDZzcKmn9llob9CM9KsPu7lrqEfPRQEIlBFQHDtbhmljSM09O8TerkU0Yv8QWHn
+        XiENmGzjrO1/xWL/RITYh+43wda3vSCcmGlkekk4C/MuF8Jyfr1MSWYfKWk9FBRb8fjnUHXOI2/fOa7A
+        Luwur3TgEeBx4TATitxERFadftopaSaeC6IO8xduJXykw7nP7g8wvPcSfqOAyXko7Vjh/FUl2Urz3/9G
+        mthMUnI3dS2TXIkyIq6eQWPbpdGyQ7xiknPhCmKT3tI/4vv351JVOMlX2ol+1EropSwuhqVy5345MpWV
+        wTF/EP4JaStxoteu5NMAAAAASUVORK5CYII=
+</value>
   </data>
-  <data name="toolStripButtonNavBack.Text" xml:space="preserve">
-    <value>Navigate backward</value>
+  <data name="&gt;&gt;linkLabelHelpGraph.Parent" xml:space="preserve">
+    <value>panel1</value>
   </data>
   <data name="numUpDownNbNivxAffich.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 20</value>
@@ -1078,9 +1026,6 @@
   </data>
   <data name="toolStripContainer1.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="&gt;&gt;optionsToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="tileHorizontalToolStripMenuItem.Text" xml:space="preserve">
     <value>Tile &amp;Horizontal</value>
@@ -1139,8 +1084,8 @@
   <data name="saveToolStripMenuItem.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Black</value>
   </data>
-  <data name="&gt;&gt;saveToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="groupBoxHoverInfo.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
   </data>
   <data name="&gt;&gt;toolStrip.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1161,8 +1106,8 @@
   <data name="&gt;&gt;printSetupToolStripMenuItem.Name" xml:space="preserve">
     <value>printSetupToolStripMenuItem</value>
   </data>
-  <data name="groupBoxHoverInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 111</value>
+  <data name="&gt;&gt;saveToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1188,20 +1133,23 @@
   <data name="&gt;&gt;toolStripSeparator7.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cascadeToolStripMenuItem.Name" xml:space="preserve">
-    <value>cascadeToolStripMenuItem</value>
-  </data>
-  <data name="toolStripContainer1.TopToolStripPanel.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+  <data name="labelFilesSize.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>AssociateIndex</value>
-  </data>
-  <data name="&gt;&gt;helpToolStripButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;saveToolStripButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;helpToolStripButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="printPreviewToolStripMenuItem.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Black</value>
+  </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Drawing options</value>
+  </data>
+  <data name="&gt;&gt;buttonBrowse.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="labelDirTotalSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>143, 16</value>
@@ -1221,8 +1169,16 @@
   <data name="printPreviewToolStripMenuItem.Text" xml:space="preserve">
     <value>Print Pre&amp;view</value>
   </data>
-  <data name="&gt;&gt;buttonBrowse.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="newToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAQpJREFUOE+t021L
+        wlAUB3C/VH6H+hr5jSRfiPSiFiEDgwWGRhZm0EoQcQN7QoblWPNp6py6h3/cwWDkvde98MDhvrnndznn
+        cFOpfYVU7+J/lmoKipUWhGs5TO5bpJgVBfEB6aMMH7m6V5nAiVBB9UnhI+Jtmwlkz27C4iiprVyWm0zA
+        9XwQJIKowLn0TAWCIIDtbGCM7BA4ODymD/O09EgF1hsPY8uBplt8IF+sbQGeH2BmrzEwF3jXxnwgd1Hd
+        ApyVC3OyRO9nis6HyQdIf/Egg5vOV+gbM3R7I7yqenIgPrjP/gTtt180Wt/Jgfjg1K8h5M4Ady9aMiDa
+        N+tkrjHaMbmwK/f1gUPnD9/19ZYU1J08AAAAAElFTkSuQmCC
+</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1266,14 +1222,17 @@
   <data name="navigateBackwardToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="undoToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
+    <value>Ctrl+Z</value>
   </data>
   <data name="&gt;&gt;comboBoxPath.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="redoToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="openToolStripButton.Text" xml:space="preserve">
+    <value>Open</value>
   </data>
   <data name="saveToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
@@ -1289,9 +1248,6 @@
   </data>
   <data name="&gt;&gt;openToolStripMenuItem.Name" xml:space="preserve">
     <value>openToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;printToolStripButton.Name" xml:space="preserve">
-    <value>printToolStripButton</value>
   </data>
   <data name="toolBarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 22</value>
@@ -1311,6 +1267,9 @@
   <data name="toolStripButtonNavForward.Text" xml:space="preserve">
     <value>Navigate forward</value>
   </data>
+  <data name="&gt;&gt;licenceToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="printToolStripButton.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -1320,8 +1279,8 @@
   <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 22</value>
   </data>
-  <data name="printSetupToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="label2.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="redoToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+Y</value>
@@ -1340,6 +1299,9 @@
   </data>
   <data name="treeGraph1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>AssociateIndex</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;toolStripContainer1.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1368,14 +1330,17 @@
   <data name="&gt;&gt;toolBarToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="treeGraph1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>593, 477</value>
+  <data name="exportAsImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Export as image...</value>
   </data>
   <data name="printToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>23, 22</value>
   </data>
   <data name="toolStripSeparator7.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="toolStripButtonNavBack.Text" xml:space="preserve">
+    <value>Navigate backward</value>
   </data>
   <data name="checkBoxAutoRecalc.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1420,20 +1385,14 @@
   <data name="&gt;&gt;explorerIntegrationToolStripMenuItem.Name" xml:space="preserve">
     <value>explorerIntegrationToolStripMenuItem</value>
   </data>
-  <data name="toolStripContainer1.BottomToolStripPanel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;openToolStripButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="searchToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;toolStripContainer1.ContentPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripContentPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="newToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;New</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.LeftToolStripPanel.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="&gt;&gt;groupBoxHoverInfo.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -1444,8 +1403,8 @@
   <data name="cutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>175, 22</value>
   </data>
-  <data name="panel1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;arrangeIconsToolStripMenuItem.Name" xml:space="preserve">
+    <value>arrangeIconsToolStripMenuItem</value>
   </data>
   <data name="toolStripSeparator6.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1523,6 +1482,9 @@
   <data name="searchToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Search</value>
   </data>
+  <data name="saveToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Black</value>
+  </data>
   <data name="newToolStripButton.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -1535,8 +1497,8 @@
   <data name="clearHistroryToolStripMenuItem.Text" xml:space="preserve">
     <value>Clear path history list</value>
   </data>
-  <data name="undoToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
-    <value>Ctrl+Z</value>
+  <data name="navigateBackwardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 22</value>
   </data>
   <data name="&gt;&gt;aboutToolStripMenuItem.Name" xml:space="preserve">
     <value>aboutToolStripMenuItem</value>
@@ -5914,8 +5876,11 @@
   <data name="printToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 22</value>
   </data>
-  <data name="helpToolStripButton.Text" xml:space="preserve">
-    <value>Help</value>
+  <data name="&gt;&gt;printToolStripButton.Name" xml:space="preserve">
+    <value>printToolStripButton</value>
+  </data>
+  <data name="toolStripContainer1.TopToolStripPanel.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
   </data>
   <data name="statusStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
@@ -5943,8 +5908,21 @@
   <data name="toolStrip.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="saveAsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAilJREFUOE+tk91L
+        k3EUx/cvdN9N0EW3NTWGa7EaPOUcyqphWBG9PZEv5dJlmqhYmUYtXyBb4dJJy+kknFT4BqZIjaFMJUsz
+        V7TEoabYRDD49ju/6Pm1Mm/qB+fy8znPOef7qFT/4z17GgWVr30Zbd4lPHYvoLEhgvuOGdTWfIL9dgg3
+        yqdQWjKBwoLXyMsdxYXzQSi9CeztAWqqV7HRW1ldgzGtF4fTnvBSBN7WRS6orPjyV57gyMIKdpufQ62W
+        YTnkEQL3o3kuKC35vK7gJ/w+vIg4kw8Fl6dxwNwkBM76WS64ZHv3h+BXeGQygm2SF9accaSmOIWg7m6Y
+        C7KzRmMEv8ODwTA2692Q5QBMJocQVFd95AL5TEARrAf3+D9gU2IDjhx9gaSkWiG4WTmN7i6wUwLHT76C
+        5dgA3zYtjGamz6bOP+A+HLR0QpLsQnC1bBIdPrAMAE2ub+zuX1F+fY4vlRZGM2dmBBU4ObUdBkOFEFwp
+        HIenGXjoXGPBicKYnhNT5hM2pJ8r4p2TUxi83wO9vkwIbHljDAaq7kR5ZxJQSOK0EobezmJsag5y7jXs
+        NbZxWLvHBZ2uSAgolo57UD6bBASfzb+FN6F5hGaWcLHYjni9i8GNiN/1ANrEfCHIzBhmcy/zmbcaPNiy
+        Q0JLRz98XYPo7vNj4OUQ9pksUOvqkcDg7Zo6aDTWWMHpU/08npQwCgndmU5F26aF0czUlYrgnQnZQvAv
+        f/R3bGg6a0rM640AAAAASUVORK5CYII=
+</value>
   </data>
   <data name="comboBoxPath.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>AssociateIndex</value>
@@ -5952,8 +5930,8 @@
   <data name="labelFilesSize.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="openToolStripButton.Text" xml:space="preserve">
-    <value>Open</value>
+  <data name="pasteToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;toolStripButtonNavBack.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -5963,9 +5941,6 @@
   </data>
   <data name="labelFilesSize.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
-  </data>
-  <data name="newWindowToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;New Window</value>
   </data>
   <data name="buttonScan.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -5994,8 +5969,11 @@
   <data name="treeGraph1.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="helpToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Black</value>
+  <data name="&gt;&gt;openLogFileToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 6</value>
   </data>
   <data name="&gt;&gt;numUpDownNbNivxAffich.Name" xml:space="preserve">
     <value>numUpDownNbNivxAffich</value>
@@ -6003,8 +5981,8 @@
   <data name="&gt;&gt;menuStrip.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="labelFilesSize.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
+  <data name="toolStripContainer1.BottomToolStripPanel.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.Parent" xml:space="preserve">
     <value>toolStripContainer1</value>
@@ -6012,8 +5990,8 @@
   <data name="&gt;&gt;toolStripSeparator2.Name" xml:space="preserve">
     <value>toolStripSeparator2</value>
   </data>
-  <data name="exportAsImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Export as image...</value>
+  <data name="treeGraph1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>593, 477</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -6021,8 +5999,21 @@
   <data name="saveToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Save</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="saveToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAilJREFUOE+tk91L
+        k3EUx/cvdN9N0EW3NTWGa7EaPOUcyqphWBG9PZEv5dJlmqhYmUYtXyBb4dJJy+kknFT4BqZIjaFMJUsz
+        V7TEoabYRDD49ju/6Pm1Mm/qB+fy8znPOef7qFT/4z17GgWVr30Zbd4lPHYvoLEhgvuOGdTWfIL9dgg3
+        yqdQWjKBwoLXyMsdxYXzQSi9CeztAWqqV7HRW1ldgzGtF4fTnvBSBN7WRS6orPjyV57gyMIKdpufQ62W
+        YTnkEQL3o3kuKC35vK7gJ/w+vIg4kw8Fl6dxwNwkBM76WS64ZHv3h+BXeGQygm2SF9accaSmOIWg7m6Y
+        C7KzRmMEv8ODwTA2692Q5QBMJocQVFd95AL5TEARrAf3+D9gU2IDjhx9gaSkWiG4WTmN7i6wUwLHT76C
+        5dgA3zYtjGamz6bOP+A+HLR0QpLsQnC1bBIdPrAMAE2ub+zuX1F+fY4vlRZGM2dmBBU4ObUdBkOFEFwp
+        HIenGXjoXGPBicKYnhNT5hM2pJ8r4p2TUxi83wO9vkwIbHljDAaq7kR5ZxJQSOK0EobezmJsag5y7jXs
+        NbZxWLvHBZ2uSAgolo57UD6bBASfzb+FN6F5hGaWcLHYjni9i8GNiN/1ANrEfCHIzBhmcy/zmbcaPNiy
+        Q0JLRz98XYPo7vNj4OUQ9pksUOvqkcDg7Zo6aDTWWMHpU/08npQwCgndmU5F26aF0czUlYrgnQnZQvAv
+        f/R3bGg6a0rM640AAAAASUVORK5CYII=
+</value>
   </data>
   <data name="labelDirTotalSize.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>AssociateIndex</value>
@@ -6033,11 +6024,14 @@
   <data name="labelFiles.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 70</value>
   </data>
-  <data name="numUpDownNbNivx.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
-    <value>AssociateIndex</value>
+  <data name="&gt;&gt;helpProvider1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;undoToolStripMenuItem.Name" xml:space="preserve">
     <value>undoToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="saveAsToolStripMenuItem.Text" xml:space="preserve">
     <value>Save graph &amp;as...</value>
@@ -6087,14 +6081,14 @@
   <data name="label1.Text" xml:space="preserve">
     <value>Calculation max depth : (reduce to improve perf)</value>
   </data>
+  <data name="&gt;&gt;toolStrip.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="&gt;&gt;newWindowToolStripMenuItem.Name" xml:space="preserve">
     <value>newWindowToolStripMenuItem</value>
   </data>
   <data name="printPreviewToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Black</value>
-  </data>
-  <data name="buttonBrowse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>668, 7</value>
   </data>
   <data name="labelDirName.ToolTip" xml:space="preserve">
     <value />
@@ -6107,6 +6101,9 @@
   </data>
   <data name="checkBoxAutoRecalc.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 33</value>
+  </data>
+  <data name="labelDirTotalSize.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 45</value>
   </data>
   <data name="selectAllToolStripMenuItem.Text" xml:space="preserve">
     <value>Select &amp;All</value>
@@ -6153,8 +6150,8 @@
   <data name="label2.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;exitToolStripMenuItem.Name" xml:space="preserve">
+    <value>exitToolStripMenuItem</value>
   </data>
   <data name="linkLabelHelpGraph.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -6179,6 +6176,9 @@
   </data>
   <data name="comboBoxPath.Text" xml:space="preserve">
     <value>c:\</value>
+  </data>
+  <data name="&gt;&gt;cascadeToolStripMenuItem.Name" xml:space="preserve">
+    <value>cascadeToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;editMenu.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -6209,9 +6209,6 @@
   <data name="buttonScan.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.Parent" xml:space="preserve">
-    <value>toolStripContainer1</value>
-  </data>
   <data name="contentsToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -6224,8 +6221,8 @@
   <data name="&gt;&gt;tileHorizontalToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="checkBoxPrintSizes.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="buttonBrowse.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
   <data name="numUpDownNbNivxAffich.ToolTip" xml:space="preserve">
     <value>Zoom feature.</value>
@@ -6278,11 +6275,25 @@
   <data name="&gt;&gt;checkBoxAutoRecalc.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
-  <data name="&gt;&gt;pasteToolStripMenuItem.Name" xml:space="preserve">
-    <value>pasteToolStripMenuItem</value>
+  <data name="arrangeIconsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Arrange Icons</value>
   </data>
-  <data name="saveToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="openToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAl9JREFUOE+9k1tI
+        E2AYhnfRRVcWaVEIRpaEXYiBIdVFSNJJUUqzwkgTylMHDMU2D206dXMnp650mNt0TZ1WlmFYIRSKRGip
+        o8S0LCgqxcxQydPT3EKTLPCmH96bn+99vvf7fn6B4H+cnGIzEq2Fy3ITeToraUojy+obnawjLF7lMJ0X
+        lpNlh6VIDUQlFyOoM2tYSo01sr92SUgrITxRRWh8gRPQ22VkYqTWoR/DFqYGDVhNKurN0iUhYQlqQuO0
+        BMcWIaitUDM+XLXIPPOphClbElXlcipLczEUZ6EvyOSaUkSRLHUxtNqoYPyLcb7zrN1MrwhssUvqD8CN
+        MhnfP+odsefMTXUKh+5b82mwyLhdmYvVkI1FL8Gku8J1bTqlahE6hdCZplKfy+i7QuZiv2kRU1+lZuaN
+        BAaki/XWftefBj3J8DKRzpoILsaEIDDosvnWJ4f3Su5Uq2h7oHQW/T7CiyhoD2e6NYiJhwG8rvDh3Kn9
+        TkCZVszXVxIGWjOotyiZ7RdDd5wT0BljNx5nui2EieZ9jDbuZqhuO5J4L04EujmXWaLOYKhLyE2zgo4n
+        9iQ9SXbAGeg4yezTw0w+PshY0x6G6/34XO1Ne85qIoM88dvq4gTo8kV0N2dyy5wPfZnw3B732VEmW4IZ
+        exTASIM/g1YfPhi3YFO6Io7djO8294WnLMxLpdYkx3Y3gXaNYF5tyhU0y1ZyL2sVNelrMaS6c/XSRiIP
+        bcLf12MBoJGmoBGfJU8YTdqFY47FnI4I5MiBnezd5cMOHy+8Pd3x2ODGujUurHf9FX1Zv+kfxT8BMS7u
+        X4BvNFkAAAAASUVORK5CYII=
+</value>
   </data>
   <data name="label1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
     <value>AssociateIndex</value>
@@ -6305,25 +6316,14 @@
   <data name="&gt;&gt;labelDirTotalSize.Parent" xml:space="preserve">
     <value>groupBoxHoverInfo</value>
   </data>
-  <data name="&gt;&gt;linkLabelHelpGraph.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
   <data name="linkLabelHelpGraph.Location" type="System.Drawing.Point, System.Drawing">
     <value>604, 501</value>
   </data>
   <data name="&gt;&gt;buttonScan.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="newToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAQpJREFUOE+t021L
-        wlAUB3C/VH6H+hr5jSRfiPSiFiEDgwWGRhZm0EoQcQN7QoblWPNp6py6h3/cwWDkvde98MDhvrnndznn
-        cFOpfYVU7+J/lmoKipUWhGs5TO5bpJgVBfEB6aMMH7m6V5nAiVBB9UnhI+Jtmwlkz27C4iiprVyWm0zA
-        9XwQJIKowLn0TAWCIIDtbGCM7BA4ODymD/O09EgF1hsPY8uBplt8IF+sbQGeH2BmrzEwF3jXxnwgd1Hd
-        ApyVC3OyRO9nis6HyQdIf/Egg5vOV+gbM3R7I7yqenIgPrjP/gTtt180Wt/Jgfjg1K8h5M4Ady9aMiDa
-        N+tkrjHaMbmwK/f1gUPnD9/19ZYU1J08AAAAAElFTkSuQmCC
-</value>
+  <data name="buttonBrowse.Location" type="System.Drawing.Point, System.Drawing">
+    <value>668, 7</value>
   </data>
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
@@ -6334,8 +6334,8 @@
   <data name="&gt;&gt;numUpDownNbNivx.Name" xml:space="preserve">
     <value>numUpDownNbNivx</value>
   </data>
-  <data name="label2.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;openLogFileToolStripMenuItem.Name" xml:space="preserve">
+    <value>openLogFileToolStripMenuItem</value>
   </data>
   <data name="label3.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6379,17 +6379,14 @@
   <data name="printPreviewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 22</value>
   </data>
-  <data name="&gt;&gt;arrangeIconsToolStripMenuItem.Name" xml:space="preserve">
-    <value>arrangeIconsToolStripMenuItem</value>
+  <data name="&gt;&gt;explorerIntegrationToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;treeGraph1.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
   <data name="openToolStripMenuItem.ShortcutKeys" type="System.Windows.Forms.Keys, System.Windows.Forms">
     <value>Ctrl+O</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="printPreviewToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -6399,6 +6396,9 @@
   </data>
   <data name="&gt;&gt;newWindowToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 25</value>
   </data>
   <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -6415,6 +6415,9 @@
   <data name="newToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
+  <data name="printPreviewToolStripButton.Text" xml:space="preserve">
+    <value>Print Preview</value>
+  </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
   </data>
@@ -6424,8 +6427,8 @@
   <data name="labelDirTotalSize.Text" xml:space="preserve">
     <value>Directory total size</value>
   </data>
-  <data name="&gt;&gt;toolStripContainer1.LeftToolStripPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numUpDownNbNivxAffich.Parent" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;undoToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -6454,14 +6457,20 @@
   <data name="&gt;&gt;copyToolStripMenuItem.Name" xml:space="preserve">
     <value>copyToolStripMenuItem</value>
   </data>
-  <data name="saveToolStripButton.Text" xml:space="preserve">
-    <value>Save</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="numUpDownNbNivx.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="&gt;&gt;pasteToolStripMenuItem.Name" xml:space="preserve">
+    <value>pasteToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="labelDirTotalSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 45</value>
+  <data name="toolsMenu.Text" xml:space="preserve">
+    <value>&amp;Tools</value>
   </data>
   <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>173, 22</value>
@@ -6469,8 +6478,11 @@
   <data name="label2.Text" xml:space="preserve">
     <value>Directory levels to draw :</value>
   </data>
-  <data name="&gt;&gt;exitToolStripMenuItem.Name" xml:space="preserve">
-    <value>exitToolStripMenuItem</value>
+  <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;windowsMenu.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator6.Name" xml:space="preserve">
     <value>toolStripSeparator6</value>
@@ -6496,8 +6508,8 @@
   <data name="licenceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>173, 22</value>
   </data>
-  <data name="&gt;&gt;explorerIntegrationToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.Parent" xml:space="preserve">
+    <value>toolStripContainer1</value>
   </data>
   <data name="&gt;&gt;tileVerticalToolStripMenuItem.Name" xml:space="preserve">
     <value>tileVerticalToolStripMenuItem</value>
@@ -6513,9 +6525,6 @@
   </data>
   <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
     <value>toolStripContainer1.ContentPanel</value>
-  </data>
-  <data name="&gt;&gt;printPreviewToolStripButton.Name" xml:space="preserve">
-    <value>printPreviewToolStripButton</value>
   </data>
   <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6547,8 +6556,8 @@
   <data name="&gt;&gt;saveToolStripMenuItem.Name" xml:space="preserve">
     <value>saveToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;helpProvider1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="saveToolStripMenuItem.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;label3.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -6561,9 +6570,6 @@
   </data>
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
-  </data>
-  <data name="buttonBrowse.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
   </data>
   <data name="labelDirName.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6598,6 +6604,9 @@
   <data name="labelFilesSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 83</value>
   </data>
+  <data name="helpToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>23, 22</value>
+  </data>
   <data name="closeAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>153, 22</value>
   </data>
@@ -6631,8 +6640,8 @@
   <data name="treeGraph1.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 37</value>
   </data>
-  <data name="&gt;&gt;licenceToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;statusBarToolStripMenuItem.Name" xml:space="preserve">
     <value>statusBarToolStripMenuItem</value>

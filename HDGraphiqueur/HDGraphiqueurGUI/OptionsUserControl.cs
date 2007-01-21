@@ -16,25 +16,32 @@ namespace HDGraph
         public OptionsUserControl()
         {
             InitializeComponent();
+            UpdateDeletionCheckedStatus();
         }
-
-        public System.Windows.Forms.TreeNodeCollection Nodes
-        {
-            get { return treeView1.Nodes; }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Content)]
-        public Panel PanelTab
-        {
-            get { return panel1; }
-        }
-
 
         private Dictionary<string, Panel> panelsBuffer = new Dictionary<string, Panel>();
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
 
+        }
+
+        private void checkBoxAllowDeleteOption_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateDeletionCheckedStatus();
+        }
+
+        private void UpdateDeletionCheckedStatus()
+        {
+            checkBoxDeletionAsk4Confirmation.Enabled = checkBoxAllowDeleteOption.Checked;
+        }
+
+        /// <summary>
+        /// Sauvegarde les valeurs dans le fichier de config.
+        /// </summary>
+        public void SaveValues()
+        {
+            Properties.Settings.Default.Save();
         }
     }
 
@@ -44,8 +51,7 @@ namespace HDGraph
         public override void Initialize(IComponent comp)
         {
             base.Initialize(comp);
-            OptionsUserControl uc = (OptionsUserControl)comp;
-            EnableDesignMode(uc.PanelTab, "PanelTab");
+
         }
     }
 }

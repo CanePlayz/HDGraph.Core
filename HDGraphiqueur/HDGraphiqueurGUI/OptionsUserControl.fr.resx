@@ -118,55 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="directoryNameToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>315, 22</value>
+  <data name="checkBoxDeletionAsk4Confirmation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>287, 17</value>
   </data>
-  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>312, 6</value>
+  <data name="checkBoxDeletionAsk4Confirmation.Text" xml:space="preserve">
+    <value>Toujours demander une confirmation avant suppression</value>
   </data>
-  <data name="refreshThisDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>315, 22</value>
+  <data name="checkBoxAllowDeleteOption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>302, 17</value>
   </data>
-  <data name="refreshThisDirectoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>Rafraîchir ce répertoire</value>
+  <data name="checkBoxAllowDeleteOption.Text" xml:space="preserve">
+    <value>Autoriser la suppression de répertoire via menu du clic droit</value>
   </data>
-  <data name="openThisDirectoryInWindowsExplorerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>315, 22</value>
-  </data>
-  <data name="openThisDirectoryInWindowsExplorerToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ouvrir ce répertoire dans l'explorateur Windows</value>
-  </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>312, 6</value>
-  </data>
-  <data name="centerGraphOnThisDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>315, 22</value>
-  </data>
-  <data name="centerGraphOnThisDirectoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>Centrer le graphique sur ce répertoire</value>
-  </data>
-  <data name="centerGraphOnParentDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>315, 22</value>
-  </data>
-  <data name="centerGraphOnParentDirectoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>Centrer le graphique sur le répertoire parent</value>
-  </data>
-  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>312, 6</value>
-  </data>
-  <data name="deletePermanentlyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 22</value>
-  </data>
-  <data name="deletePermanentlyToolStripMenuItem.Text" xml:space="preserve">
-    <value>Supprimer définitivement</value>
-  </data>
-  <data name="deleteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>315, 22</value>
-  </data>
-  <data name="deleteToolStripMenuItem.Text" xml:space="preserve">
-    <value>Supprimer ce répertoire et son contenu</value>
-  </data>
-  <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>316, 154</value>
+  <data name="tabPageRightClic.Text" xml:space="preserve">
+    <value>Menu du clic droit</value>
   </data>
 </root>

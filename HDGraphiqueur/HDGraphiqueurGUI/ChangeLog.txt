@@ -6,9 +6,15 @@ HDGraph ChangeLog (http://hdgraph.sourceforge.net)
 
 Version 0.9.4
 ======================================================
+Added:
+	- Manual dir refresh (with right clic)
+	- "Open log file" menu item
+	- "Delete folder" menu item
+	- Icons in right clic menu
 Fixed:
-	- tab order (use the tab key to navigate from a control to another)
-	- minor translation mistakes.
+	- Tab order (use the tab key to navigate from a control to another)
+	- Minor translation mistakes.
+	- Bug on dir scan if a filename introduce a too long file path (these files are know ignored)
 	
 	
 Version 0.9.3

@@ -144,8 +144,14 @@
   <data name="CursorHoverNoDirectory" xml:space="preserve">
     <value>Le curseur ne survole aucun répertoire.</value>
   </data>
+  <data name="DeletionCompleteMsg" xml:space="preserve">
+    <value>Répertoire supprimé avec succès !</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Erreur HDGraph</value>
+  </data>
+  <data name="ErrorDeletingFolder" xml:space="preserve">
+    <value>Une erreur s'est produite lors de la suppression. Il est problable que seule une partie des fichiers ai été supprimée. Détail de l'erreur : {0}</value>
   </data>
   <data name="ErrorInConfigLanguage" xml:space="preserve">
     <value>Une erreur dans le fichier de configuration empêche l'application de charger la langue appropriée. Vérifiez le code de langue du fichier de config !</value>
@@ -164,6 +170,12 @@
   </data>
   <data name="FolderIsEmpty" xml:space="preserve">
     <value>Le dossier séléctionné est vide.</value>
+  </data>
+  <data name="GoingToDeleteFolderMsg" xml:space="preserve">
+    <value>Cette action va définitivement supprimer le répertoire "{0}" ainsi que la totalité de son contenu. Cliquez sur Ok pour confirmer.</value>
+  </data>
+  <data name="GoingToDeleteFolderTitle" xml:space="preserve">
+    <value>Vous ête sur le point de supprimer un répertoire...</value>
   </data>
   <data name="GraphGuideLine" xml:space="preserve">
     <value>Pour commencer :

@@ -151,7 +151,17 @@ namespace HDGraph
                             workCanceled = true;
                             return;
                         }
-                        dir.TotalSize += fi.Length;
+                        try
+                        {
+                            dir.TotalSize += fi.Length;
+                        }
+                        catch (Exception ex)
+                        {
+                            // Une erreur de type FileNotFoundException peut survenir.
+                            // Elle peut être due à une PathTooLongException.
+                            Trace.TraceError("Error during file analysis (" + dir.Path +
+                                "\\" + fi.Name + "). Details: " + HDGTools.PrintError(ex));
+                        }
                     }
                 }
                 else
@@ -165,7 +175,17 @@ namespace HDGraph
                             workCanceled = true;
                             return;
                         }
-                        dir.FilesSize += fi.Length;
+                        try
+                        {
+                            dir.FilesSize += fi.Length;
+                        }
+                        catch (Exception ex)
+                        {
+                            // Une erreur de type FileNotFoundException peut survenir.
+                            // Elle peut être due à une PathTooLongException.
+                            Trace.TraceError("Error during file analysis (" + dir.Path +
+                                "\\" + fi.Name + "). Details: " + HDGTools.PrintError(ex));
+                        }
                     }
                     dir.TotalSize += dir.FilesSize;
 
@@ -249,12 +269,16 @@ namespace HDGraph
             if (!this.autoRefreshAllowed)
                 return false;
 
-
             long dirPreviousTotalSize = node.TotalSize;
             node.TotalSize = 0;
             node.FilesSize = 0;
             node.Children = new List<DirectoryNode>();
-            ConstruireArborescence(node, node.ProfondeurMax-1);
+            if (!Directory.Exists(node.Path))
+            {
+                IncrementerTailleParents(node, -dirPreviousTotalSize);
+                return true;
+            }
+            ConstruireArborescence(node, node.ProfondeurMax - 1);
             if (dirPreviousTotalSize != node.TotalSize)
                 IncrementerTailleParents(node, node.TotalSize - dirPreviousTotalSize);
             return true;

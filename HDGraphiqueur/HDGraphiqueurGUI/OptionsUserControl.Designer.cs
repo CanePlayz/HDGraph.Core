@@ -28,99 +28,88 @@ namespace HDGraph
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Event log");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Category 2");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Category 3");
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OptionsUserControl));
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPageRightClic = new System.Windows.Forms.TabPage();
+            this.checkBoxDeletionAsk4Confirmation = new System.Windows.Forms.CheckBox();
+            this.checkBoxAllowDeleteOption = new System.Windows.Forms.CheckBox();
+            this.tabControl1.SuspendLayout();
+            this.tabPageRightClic.SuspendLayout();
             this.SuspendLayout();
             // 
-            // splitContainer1
+            // tabControl1
             // 
-            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
+            this.tabControl1.AccessibleDescription = null;
+            this.tabControl1.AccessibleName = null;
+            resources.ApplyResources(this.tabControl1, "tabControl1");
+            this.tabControl1.BackgroundImage = null;
+            this.tabControl1.Controls.Add(this.tabPageRightClic);
+            this.tabControl1.Font = null;
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
             // 
-            // splitContainer1.Panel1
+            // tabPageRightClic
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.treeView1);
-            this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.tabPageRightClic.AccessibleDescription = null;
+            this.tabPageRightClic.AccessibleName = null;
+            resources.ApplyResources(this.tabPageRightClic, "tabPageRightClic");
+            this.tabPageRightClic.BackgroundImage = null;
+            this.tabPageRightClic.Controls.Add(this.checkBoxDeletionAsk4Confirmation);
+            this.tabPageRightClic.Controls.Add(this.checkBoxAllowDeleteOption);
+            this.tabPageRightClic.Font = null;
+            this.tabPageRightClic.Name = "tabPageRightClic";
+            this.tabPageRightClic.UseVisualStyleBackColor = true;
             // 
-            // splitContainer1.Panel2
+            // checkBoxDeletionAsk4Confirmation
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(565, 318);
-            this.splitContainer1.SplitterDistance = 240;
-            this.splitContainer1.TabIndex = 11;
+            this.checkBoxDeletionAsk4Confirmation.AccessibleDescription = null;
+            this.checkBoxDeletionAsk4Confirmation.AccessibleName = null;
+            resources.ApplyResources(this.checkBoxDeletionAsk4Confirmation, "checkBoxDeletionAsk4Confirmation");
+            this.checkBoxDeletionAsk4Confirmation.BackgroundImage = null;
+            this.checkBoxDeletionAsk4Confirmation.Checked = global::HDGraph.Properties.Settings.Default.OptionDeletionAsk4Confirmation;
+            this.checkBoxDeletionAsk4Confirmation.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxDeletionAsk4Confirmation.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::HDGraph.Properties.Settings.Default, "OptionDeletionAsk4Confirmation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBoxDeletionAsk4Confirmation.Font = null;
+            this.checkBoxDeletionAsk4Confirmation.Name = "checkBoxDeletionAsk4Confirmation";
+            this.checkBoxDeletionAsk4Confirmation.UseVisualStyleBackColor = true;
             // 
-            // treeView1
+            // checkBoxAllowDeleteOption
             // 
-            this.treeView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.treeView1.Location = new System.Drawing.Point(0, 16);
-            this.treeView1.Name = "treeView1";
-            treeNode4.Checked = true;
-            treeNode4.Name = "LogNode";
-            treeNode4.Text = "Event log";
-            treeNode5.Name = "Cat2Node";
-            treeNode5.Text = "Category 2";
-            treeNode6.Name = "Cat3Node";
-            treeNode6.Text = "Category 3";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode5,
-            treeNode6});
-            this.treeView1.Size = new System.Drawing.Size(237, 302);
-            this.treeView1.TabIndex = 8;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(-3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(190, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Select a category to acces its options :";
-            // 
-            // panel1
-            // 
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(321, 318);
-            this.panel1.TabIndex = 0;
+            this.checkBoxAllowDeleteOption.AccessibleDescription = null;
+            this.checkBoxAllowDeleteOption.AccessibleName = null;
+            resources.ApplyResources(this.checkBoxAllowDeleteOption, "checkBoxAllowDeleteOption");
+            this.checkBoxAllowDeleteOption.BackgroundImage = null;
+            this.checkBoxAllowDeleteOption.Checked = global::HDGraph.Properties.Settings.Default.OptionAllowFolderDeletion;
+            this.checkBoxAllowDeleteOption.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::HDGraph.Properties.Settings.Default, "OptionAllowFolderDeletion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBoxAllowDeleteOption.Font = null;
+            this.checkBoxAllowDeleteOption.Name = "checkBoxAllowDeleteOption";
+            this.checkBoxAllowDeleteOption.UseVisualStyleBackColor = true;
+            this.checkBoxAllowDeleteOption.CheckedChanged += new System.EventHandler(this.checkBoxAllowDeleteOption_CheckedChanged);
             // 
             // OptionsUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AccessibleDescription = null;
+            this.AccessibleName = null;
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.splitContainer1);
+            this.BackgroundImage = null;
+            this.Controls.Add(this.tabControl1);
+            this.Font = null;
             this.Name = "OptionsUserControl";
-            this.Size = new System.Drawing.Size(565, 318);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel1.PerformLayout();
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPageRightClic.ResumeLayout(false);
+            this.tabPageRightClic.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPageRightClic;
+        private System.Windows.Forms.CheckBox checkBoxAllowDeleteOption;
+        private System.Windows.Forms.CheckBox checkBoxDeletionAsk4Confirmation;
+
 
     }
 }

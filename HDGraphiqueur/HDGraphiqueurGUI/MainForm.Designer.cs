@@ -50,19 +50,8 @@ namespace HDGraph
             this.labelDirTotalSize = new System.Windows.Forms.Label();
             this.labelDirName = new System.Windows.Forms.Label();
             this.buttonScan = new System.Windows.Forms.Button();
+            this.treeGraph1 = new HDGraph.TreeGraph();
             this.buttonBrowse = new System.Windows.Forms.Button();
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.printToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.printPreviewToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonNavBack = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonNavForward = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
-            this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,6 +88,7 @@ namespace HDGraph
             this.addMeToTheExplorerConToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeMeFromTheExplorerContextMenuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearHistroryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openLogFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cascadeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,9 +103,20 @@ namespace HDGraph
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.licenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.printToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.printPreviewToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonNavBack = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonNavForward = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
-            this.treeGraph1 = new HDGraph.TreeGraph();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -126,8 +127,8 @@ namespace HDGraph
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivxAffich)).BeginInit();
             this.groupBoxHoverInfo.SuspendLayout();
-            this.toolStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
+            this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripContainer1
@@ -516,6 +517,30 @@ namespace HDGraph
             this.buttonScan.UseVisualStyleBackColor = true;
             this.buttonScan.Click += new System.EventHandler(this.buttonScan_Click);
             // 
+            // treeGraph1
+            // 
+            this.treeGraph1.AccessibleDescription = null;
+            this.treeGraph1.AccessibleName = null;
+            resources.ApplyResources(this.treeGraph1, "treeGraph1");
+            this.treeGraph1.BackgroundImage = null;
+            this.treeGraph1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.treeGraph1.Font = null;
+            this.treeGraph1.ForceRefreshOnNextRepaint = false;
+            this.helpProvider1.SetHelpKeyword(this.treeGraph1, null);
+            this.helpProvider1.SetHelpNavigator(this.treeGraph1, ((System.Windows.Forms.HelpNavigator)(resources.GetObject("treeGraph1.HelpNavigator"))));
+            this.helpProvider1.SetHelpString(this.treeGraph1, null);
+            this.treeGraph1.MinimumSize = new System.Drawing.Size(50, 50);
+            this.treeGraph1.Moteur = null;
+            this.treeGraph1.Name = "treeGraph1";
+            this.treeGraph1.NbNiveaux = 0;
+            this.treeGraph1.NotifyNewRootNode = null;
+            this.treeGraph1.OptionAlsoPaintFiles = false;
+            this.treeGraph1.OptionShowSize = true;
+            this.treeGraph1.Root = null;
+            this.helpProvider1.SetShowHelp(this.treeGraph1, ((bool)(resources.GetObject("treeGraph1.ShowHelp"))));
+            this.ToolTip.SetToolTip(this.treeGraph1, resources.GetString("treeGraph1.ToolTip"));
+            this.treeGraph1.UpdateHoverNode = null;
+            // 
             // buttonBrowse
             // 
             this.buttonBrowse.AccessibleDescription = null;
@@ -531,134 +556,6 @@ namespace HDGraph
             this.ToolTip.SetToolTip(this.buttonBrowse, resources.GetString("buttonBrowse.ToolTip"));
             this.buttonBrowse.UseVisualStyleBackColor = true;
             this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
-            // 
-            // toolStrip
-            // 
-            this.toolStrip.AccessibleDescription = null;
-            this.toolStrip.AccessibleName = null;
-            resources.ApplyResources(this.toolStrip, "toolStrip");
-            this.toolStrip.BackgroundImage = null;
-            this.toolStrip.Font = null;
-            this.helpProvider1.SetHelpKeyword(this.toolStrip, null);
-            this.helpProvider1.SetHelpNavigator(this.toolStrip, ((System.Windows.Forms.HelpNavigator)(resources.GetObject("toolStrip.HelpNavigator"))));
-            this.helpProvider1.SetHelpString(this.toolStrip, null);
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newToolStripButton,
-            this.openToolStripButton,
-            this.saveToolStripButton,
-            this.toolStripSeparator1,
-            this.printToolStripButton,
-            this.printPreviewToolStripButton,
-            this.toolStripSeparator2,
-            this.toolStripButtonNavBack,
-            this.toolStripButtonNavForward,
-            this.toolStripSeparator9,
-            this.helpToolStripButton});
-            this.toolStrip.Name = "toolStrip";
-            this.helpProvider1.SetShowHelp(this.toolStrip, ((bool)(resources.GetObject("toolStrip.ShowHelp"))));
-            this.ToolTip.SetToolTip(this.toolStrip, resources.GetString("toolStrip.ToolTip"));
-            // 
-            // newToolStripButton
-            // 
-            this.newToolStripButton.AccessibleDescription = null;
-            this.newToolStripButton.AccessibleName = null;
-            resources.ApplyResources(this.newToolStripButton, "newToolStripButton");
-            this.newToolStripButton.BackgroundImage = null;
-            this.newToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.newToolStripButton.Name = "newToolStripButton";
-            this.newToolStripButton.Click += new System.EventHandler(this.ShowNewForm);
-            // 
-            // openToolStripButton
-            // 
-            this.openToolStripButton.AccessibleDescription = null;
-            this.openToolStripButton.AccessibleName = null;
-            resources.ApplyResources(this.openToolStripButton, "openToolStripButton");
-            this.openToolStripButton.BackgroundImage = null;
-            this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.openToolStripButton.Name = "openToolStripButton";
-            this.openToolStripButton.Click += new System.EventHandler(this.OpenFile);
-            // 
-            // saveToolStripButton
-            // 
-            this.saveToolStripButton.AccessibleDescription = null;
-            this.saveToolStripButton.AccessibleName = null;
-            resources.ApplyResources(this.saveToolStripButton, "saveToolStripButton");
-            this.saveToolStripButton.BackgroundImage = null;
-            this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.saveToolStripButton.Name = "saveToolStripButton";
-            this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.AccessibleDescription = null;
-            this.toolStripSeparator1.AccessibleName = null;
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            // 
-            // printToolStripButton
-            // 
-            this.printToolStripButton.AccessibleDescription = null;
-            this.printToolStripButton.AccessibleName = null;
-            resources.ApplyResources(this.printToolStripButton, "printToolStripButton");
-            this.printToolStripButton.BackgroundImage = null;
-            this.printToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.printToolStripButton.Name = "printToolStripButton";
-            // 
-            // printPreviewToolStripButton
-            // 
-            this.printPreviewToolStripButton.AccessibleDescription = null;
-            this.printPreviewToolStripButton.AccessibleName = null;
-            resources.ApplyResources(this.printPreviewToolStripButton, "printPreviewToolStripButton");
-            this.printPreviewToolStripButton.BackgroundImage = null;
-            this.printPreviewToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.printPreviewToolStripButton.Name = "printPreviewToolStripButton";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.AccessibleDescription = null;
-            this.toolStripSeparator2.AccessibleName = null;
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            // 
-            // toolStripButtonNavBack
-            // 
-            this.toolStripButtonNavBack.AccessibleDescription = null;
-            this.toolStripButtonNavBack.AccessibleName = null;
-            resources.ApplyResources(this.toolStripButtonNavBack, "toolStripButtonNavBack");
-            this.toolStripButtonNavBack.BackgroundImage = null;
-            this.toolStripButtonNavBack.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonNavBack.Image = global::HDGraph.Properties.Resources.NavBack;
-            this.toolStripButtonNavBack.Name = "toolStripButtonNavBack";
-            this.toolStripButtonNavBack.Click += new System.EventHandler(this.toolStripButtonNavBack_Click);
-            // 
-            // toolStripButtonNavForward
-            // 
-            this.toolStripButtonNavForward.AccessibleDescription = null;
-            this.toolStripButtonNavForward.AccessibleName = null;
-            resources.ApplyResources(this.toolStripButtonNavForward, "toolStripButtonNavForward");
-            this.toolStripButtonNavForward.BackgroundImage = null;
-            this.toolStripButtonNavForward.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonNavForward.Image = global::HDGraph.Properties.Resources.NavForward;
-            this.toolStripButtonNavForward.Name = "toolStripButtonNavForward";
-            this.toolStripButtonNavForward.Click += new System.EventHandler(this.toolStripButtonNavForward_Click);
-            // 
-            // toolStripSeparator9
-            // 
-            this.toolStripSeparator9.AccessibleDescription = null;
-            this.toolStripSeparator9.AccessibleName = null;
-            resources.ApplyResources(this.toolStripSeparator9, "toolStripSeparator9");
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            // 
-            // helpToolStripButton
-            // 
-            this.helpToolStripButton.AccessibleDescription = null;
-            this.helpToolStripButton.AccessibleName = null;
-            resources.ApplyResources(this.helpToolStripButton, "helpToolStripButton");
-            this.helpToolStripButton.BackgroundImage = null;
-            this.helpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.helpToolStripButton.Image = global::HDGraph.Properties.Resources.Help;
-            this.helpToolStripButton.Name = "helpToolStripButton";
-            this.helpToolStripButton.Click += new System.EventHandler(this.contentsToolStripMenuItem_Click);
             // 
             // menuStrip
             // 
@@ -982,7 +879,8 @@ namespace HDGraph
             this.optionsToolStripMenuItem,
             this.languageToolStripMenuItem,
             this.explorerIntegrationToolStripMenuItem,
-            this.clearHistroryToolStripMenuItem});
+            this.clearHistroryToolStripMenuItem,
+            this.openLogFileToolStripMenuItem});
             this.toolsMenu.Name = "toolsMenu";
             this.toolsMenu.ShortcutKeyDisplayString = null;
             // 
@@ -1047,6 +945,16 @@ namespace HDGraph
             this.clearHistroryToolStripMenuItem.Name = "clearHistroryToolStripMenuItem";
             this.clearHistroryToolStripMenuItem.ShortcutKeyDisplayString = null;
             this.clearHistroryToolStripMenuItem.Click += new System.EventHandler(this.clearHistroryToolStripMenuItem_Click);
+            // 
+            // openLogFileToolStripMenuItem
+            // 
+            this.openLogFileToolStripMenuItem.AccessibleDescription = null;
+            this.openLogFileToolStripMenuItem.AccessibleName = null;
+            resources.ApplyResources(this.openLogFileToolStripMenuItem, "openLogFileToolStripMenuItem");
+            this.openLogFileToolStripMenuItem.BackgroundImage = null;
+            this.openLogFileToolStripMenuItem.Name = "openLogFileToolStripMenuItem";
+            this.openLogFileToolStripMenuItem.ShortcutKeyDisplayString = null;
+            this.openLogFileToolStripMenuItem.Click += new System.EventHandler(this.openLogFileToolStripMenuItem_Click);
             // 
             // windowsMenu
             // 
@@ -1198,33 +1106,137 @@ namespace HDGraph
             this.aboutToolStripMenuItem.ShortcutKeyDisplayString = null;
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click_1);
             // 
+            // toolStrip
+            // 
+            this.toolStrip.AccessibleDescription = null;
+            this.toolStrip.AccessibleName = null;
+            resources.ApplyResources(this.toolStrip, "toolStrip");
+            this.toolStrip.BackgroundImage = null;
+            this.toolStrip.Font = null;
+            this.helpProvider1.SetHelpKeyword(this.toolStrip, null);
+            this.helpProvider1.SetHelpNavigator(this.toolStrip, ((System.Windows.Forms.HelpNavigator)(resources.GetObject("toolStrip.HelpNavigator"))));
+            this.helpProvider1.SetHelpString(this.toolStrip, null);
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripButton,
+            this.openToolStripButton,
+            this.saveToolStripButton,
+            this.toolStripSeparator1,
+            this.printToolStripButton,
+            this.printPreviewToolStripButton,
+            this.toolStripSeparator2,
+            this.toolStripButtonNavBack,
+            this.toolStripButtonNavForward,
+            this.toolStripSeparator9,
+            this.helpToolStripButton});
+            this.toolStrip.Name = "toolStrip";
+            this.helpProvider1.SetShowHelp(this.toolStrip, ((bool)(resources.GetObject("toolStrip.ShowHelp"))));
+            this.ToolTip.SetToolTip(this.toolStrip, resources.GetString("toolStrip.ToolTip"));
+            // 
+            // newToolStripButton
+            // 
+            this.newToolStripButton.AccessibleDescription = null;
+            this.newToolStripButton.AccessibleName = null;
+            resources.ApplyResources(this.newToolStripButton, "newToolStripButton");
+            this.newToolStripButton.BackgroundImage = null;
+            this.newToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.newToolStripButton.Name = "newToolStripButton";
+            this.newToolStripButton.Click += new System.EventHandler(this.ShowNewForm);
+            // 
+            // openToolStripButton
+            // 
+            this.openToolStripButton.AccessibleDescription = null;
+            this.openToolStripButton.AccessibleName = null;
+            resources.ApplyResources(this.openToolStripButton, "openToolStripButton");
+            this.openToolStripButton.BackgroundImage = null;
+            this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.openToolStripButton.Name = "openToolStripButton";
+            this.openToolStripButton.Click += new System.EventHandler(this.OpenFile);
+            // 
+            // saveToolStripButton
+            // 
+            this.saveToolStripButton.AccessibleDescription = null;
+            this.saveToolStripButton.AccessibleName = null;
+            resources.ApplyResources(this.saveToolStripButton, "saveToolStripButton");
+            this.saveToolStripButton.BackgroundImage = null;
+            this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.saveToolStripButton.Name = "saveToolStripButton";
+            this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.AccessibleDescription = null;
+            this.toolStripSeparator1.AccessibleName = null;
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            // 
+            // printToolStripButton
+            // 
+            this.printToolStripButton.AccessibleDescription = null;
+            this.printToolStripButton.AccessibleName = null;
+            resources.ApplyResources(this.printToolStripButton, "printToolStripButton");
+            this.printToolStripButton.BackgroundImage = null;
+            this.printToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.printToolStripButton.Name = "printToolStripButton";
+            // 
+            // printPreviewToolStripButton
+            // 
+            this.printPreviewToolStripButton.AccessibleDescription = null;
+            this.printPreviewToolStripButton.AccessibleName = null;
+            resources.ApplyResources(this.printPreviewToolStripButton, "printPreviewToolStripButton");
+            this.printPreviewToolStripButton.BackgroundImage = null;
+            this.printPreviewToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.printPreviewToolStripButton.Name = "printPreviewToolStripButton";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.AccessibleDescription = null;
+            this.toolStripSeparator2.AccessibleName = null;
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            // 
+            // toolStripButtonNavBack
+            // 
+            this.toolStripButtonNavBack.AccessibleDescription = null;
+            this.toolStripButtonNavBack.AccessibleName = null;
+            resources.ApplyResources(this.toolStripButtonNavBack, "toolStripButtonNavBack");
+            this.toolStripButtonNavBack.BackgroundImage = null;
+            this.toolStripButtonNavBack.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonNavBack.Image = global::HDGraph.Properties.Resources.NavBack;
+            this.toolStripButtonNavBack.Name = "toolStripButtonNavBack";
+            this.toolStripButtonNavBack.Click += new System.EventHandler(this.toolStripButtonNavBack_Click);
+            // 
+            // toolStripButtonNavForward
+            // 
+            this.toolStripButtonNavForward.AccessibleDescription = null;
+            this.toolStripButtonNavForward.AccessibleName = null;
+            resources.ApplyResources(this.toolStripButtonNavForward, "toolStripButtonNavForward");
+            this.toolStripButtonNavForward.BackgroundImage = null;
+            this.toolStripButtonNavForward.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonNavForward.Image = global::HDGraph.Properties.Resources.NavForward;
+            this.toolStripButtonNavForward.Name = "toolStripButtonNavForward";
+            this.toolStripButtonNavForward.Click += new System.EventHandler(this.toolStripButtonNavForward_Click);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.AccessibleDescription = null;
+            this.toolStripSeparator9.AccessibleName = null;
+            resources.ApplyResources(this.toolStripSeparator9, "toolStripSeparator9");
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            // 
+            // helpToolStripButton
+            // 
+            this.helpToolStripButton.AccessibleDescription = null;
+            this.helpToolStripButton.AccessibleName = null;
+            resources.ApplyResources(this.helpToolStripButton, "helpToolStripButton");
+            this.helpToolStripButton.BackgroundImage = null;
+            this.helpToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.helpToolStripButton.Image = global::HDGraph.Properties.Resources.Help;
+            this.helpToolStripButton.Name = "helpToolStripButton";
+            this.helpToolStripButton.Click += new System.EventHandler(this.contentsToolStripMenuItem_Click);
+            // 
             // helpProvider1
             // 
             this.helpProvider1.HelpNamespace = null;
-            // 
-            // treeGraph1
-            // 
-            this.treeGraph1.AccessibleDescription = null;
-            this.treeGraph1.AccessibleName = null;
-            resources.ApplyResources(this.treeGraph1, "treeGraph1");
-            this.treeGraph1.BackgroundImage = null;
-            this.treeGraph1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.treeGraph1.Font = null;
-            this.treeGraph1.ForceRefreshOnNextRepaint = false;
-            this.helpProvider1.SetHelpKeyword(this.treeGraph1, null);
-            this.helpProvider1.SetHelpNavigator(this.treeGraph1, ((System.Windows.Forms.HelpNavigator)(resources.GetObject("treeGraph1.HelpNavigator"))));
-            this.helpProvider1.SetHelpString(this.treeGraph1, null);
-            this.treeGraph1.MinimumSize = new System.Drawing.Size(50, 50);
-            this.treeGraph1.Moteur = null;
-            this.treeGraph1.Name = "treeGraph1";
-            this.treeGraph1.NbNiveaux = 0;
-            this.treeGraph1.NotifyNewRootNode = null;
-            this.treeGraph1.OptionAlsoPaintFiles = false;
-            this.treeGraph1.OptionShowSize = true;
-            this.treeGraph1.Root = null;
-            this.helpProvider1.SetShowHelp(this.treeGraph1, ((bool)(resources.GetObject("treeGraph1.ShowHelp"))));
-            this.ToolTip.SetToolTip(this.treeGraph1, resources.GetString("treeGraph1.ToolTip"));
-            this.treeGraph1.UpdateHoverNode = null;
             // 
             // MainForm
             // 
@@ -1264,10 +1276,10 @@ namespace HDGraph
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivxAffich)).EndInit();
             this.groupBoxHoverInfo.ResumeLayout(false);
             this.groupBoxHoverInfo.PerformLayout();
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1360,6 +1372,7 @@ namespace HDGraph
         private System.Windows.Forms.LinkLabel linkLabelHelpGraph;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ToolStripMenuItem openLogFileToolStripMenuItem;
     }
 }
 

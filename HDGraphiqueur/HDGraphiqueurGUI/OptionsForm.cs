@@ -45,5 +45,15 @@ namespace HDGraph
 
         }
 
+        private void buttonApply_Click(object sender, EventArgs e)
+        {
+            optionsUserControl1.SaveValues();
+        }
+
+        private void buttonOk_Click(object sender, EventArgs e)
+        {
+            optionsUserControl1.SaveValues();
+        }
+
     }
 }
