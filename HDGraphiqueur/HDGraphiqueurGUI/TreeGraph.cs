@@ -617,6 +617,7 @@ namespace HDGraph
             bool nodeIsNotNull = (node != null);
             if (node == null)
                 contextMenuStrip1.Hide();
+            directoryNameToolStripMenuItem.Enabled = nodeIsNotNull;
             centerGraphOnThisDirectoryToolStripMenuItem.Enabled = (nodeIsNotNull && node != root);
             centerGraphOnParentDirectoryToolStripMenuItem.Enabled = (nodeIsNotNull 
                                                                 && node.Parent != root 
@@ -631,7 +632,7 @@ namespace HDGraph
             if (nodeIsNotNull)
                 directoryNameToolStripMenuItem.Text = node.Name + " (" + FormatSize(node.TotalSize) + ")";
             else
-                directoryNameToolStripMenuItem.Text = "";
+                directoryNameToolStripMenuItem.Text = "/";
         }
 
         private void centerGraphOnThisDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
