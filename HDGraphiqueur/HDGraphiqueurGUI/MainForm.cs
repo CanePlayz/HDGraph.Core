@@ -194,8 +194,7 @@ namespace HDGraph
         /// <param name="fileName"></param>
         private void LoadGraphFromFile(string fileName)
         {
-            checkBoxAutoRecalc.Checked = false; // Autorecalc interdit sur un graph enregistré !
-            checkBoxAutoRecalc.Enabled = false;
+            checkBoxAutoRecalc.Checked = false; // Autorecalc désactivé sur un graph enregistré !
 
             try
             {
@@ -500,13 +499,10 @@ namespace HDGraph
         /// <param name="e"></param>
         private void buttonScan_Click(object sender, EventArgs e)
         {
-            //this.Cursor = Cursors.WaitCursor;
-            //this.menuStrip.Enabled = false;
             buttonScan.Enabled = false;
+            checkBoxAutoRecalc.Checked = HDGraph.Properties.Settings.Default.OptionAutoCompleteGraph;
             SavePathHistory();
             LaunchScan();
-            //this.Cursor = this.DefaultCursor;
-            //this.menuStrip.Enabled = true;
             buttonScan.Enabled = true;
         }
 
@@ -727,11 +723,6 @@ namespace HDGraph
             toolStripButtonNavForward.Enabled = nextAvailable;
         }
 
-        private void MainForm_SizeChanged(object sender, EventArgs e)
-        {
-            //treeGraph1.Refresh();
-        }
-
         #endregion
 
         private void licenceToolStripMenuItem_Click(object sender, EventArgs e)
@@ -820,6 +811,7 @@ namespace HDGraph
                 Trace.TraceError(HDGTools.PrintError(ex));
             }
         }
+
 
     }
 }

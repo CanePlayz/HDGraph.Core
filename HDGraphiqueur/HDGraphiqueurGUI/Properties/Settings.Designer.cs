@@ -93,5 +93,29 @@ namespace HDGraph.Properties {
                 this["OptionAutoCompleteGraph"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool OptionAllowFolderDeletion {
+            get {
+                return ((bool)(this["OptionAllowFolderDeletion"]));
+            }
+            set {
+                this["OptionAllowFolderDeletion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OptionDeletionAsk4Confirmation {
+            get {
+                return ((bool)(this["OptionDeletionAsk4Confirmation"]));
+            }
+            set {
+                this["OptionDeletionAsk4Confirmation"] = value;
+            }
+        }
     }
 }

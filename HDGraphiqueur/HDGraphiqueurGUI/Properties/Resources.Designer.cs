@@ -60,6 +60,34 @@ namespace HDGraph.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap ActualSizeHS {
+            get {
+                object obj = ResourceManager.GetObject("ActualSizeHS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap CascadeWindowsHS {
+            get {
+                object obj = ResourceManager.GetObject("CascadeWindowsHS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap DeleteFolderHS {
+            get {
+                object obj = ResourceManager.GetObject("DeleteFolderHS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap GoToParentFolderHS {
+            get {
+                object obj = ResourceManager.GetObject("GoToParentFolderHS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap Help {
             get {
                 object obj = ResourceManager.GetObject("Help", resourceCulture);
@@ -88,9 +116,30 @@ namespace HDGraph.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap OpenSelectedItemHS {
+            get {
+                object obj = ResourceManager.GetObject("OpenSelectedItemHS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap RefreshDocViewHS {
+            get {
+                object obj = ResourceManager.GetObject("RefreshDocViewHS", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap SupportProject {
             get {
                 object obj = ResourceManager.GetObject("SupportProject", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ZoomHS {
+            get {
+                object obj = ResourceManager.GetObject("ZoomHS", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

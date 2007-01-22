@@ -301,7 +301,9 @@ namespace HDGraph
             reader.ReadStartElement();
 
             string version = reader.ReadElementContentAsString();
-            if (version != AboutBox.AssemblyVersion)
+
+            if (version != AboutBox.AssemblyVersion
+                && version != "0.9.3.0") // backward compatible 0.9.3.0
                 throw new IncompatibleVersionException();
 
             analyzeDate = reader.ReadElementContentAsDateTime();

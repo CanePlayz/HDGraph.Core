@@ -618,7 +618,9 @@ namespace HDGraph
             if (node == null)
                 contextMenuStrip1.Hide();
             centerGraphOnThisDirectoryToolStripMenuItem.Enabled = (nodeIsNotNull && node != root);
-            centerGraphOnParentDirectoryToolStripMenuItem.Enabled = (nodeIsNotNull && node == root);
+            centerGraphOnParentDirectoryToolStripMenuItem.Enabled = (nodeIsNotNull 
+                                                                && node.Parent != root 
+                                                                && node.Parent != null);
             openThisDirectoryInWindowsExplorerToolStripMenuItem.Enabled = nodeIsNotNull;
             refreshThisDirectoryToolStripMenuItem.Enabled = nodeIsNotNull;
 
