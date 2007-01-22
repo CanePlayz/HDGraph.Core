@@ -261,14 +261,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HDGraph"
-        "ProductCode" = "8:{3D0F0BE7-AFA1-4137-A5BF-5D926242C8FE}"
-        "PackageCode" = "8:{33EE67B1-0528-4D27-AD26-973964A743D1}"
+        "ProductCode" = "8:{2675D06C-183B-4515-BB1D-92D9742D686D}"
+        "PackageCode" = "8:{BAB5B2ED-A727-4BD8-8B33-C2B6B2FC3155}"
         "UpgradeCode" = "8:{ECE6C8C8-DA14-4318-9557-2B99CB9B9DFF}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.0.1"
         "Manufacturer" = "8:JYL2002"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -857,7 +857,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_2BFC090C1BD44105BDB439B6273822F8"
             {
-            "SourcePath" = "8:..\\HDGraphiqueurGUI\\obj\\Release\\HDGraph.exe"
+            "SourcePath" = "8:..\\HDGraphiqueurGUI\\obj\\Debug\\HDGraph.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E790C2004A742B69D2BD8EC179402C0"
