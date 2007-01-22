@@ -793,5 +793,10 @@ namespace HDGraph
             
         }
 
+        private void directoryNameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ContextMenuStrip.Show();
+        }
+
     }
 }

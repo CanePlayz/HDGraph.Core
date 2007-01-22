@@ -120,16 +120,12 @@
   <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="directoryNameToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="directoryNameToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt, style=Underline</value>
+    <value>Tahoma, 8.25pt, style=Bold</value>
   </data>
   <data name="directoryNameToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>286, 22</value>
+    <value>286, 20</value>
   </data>
   <data name="directoryNameToolStripMenuItem.Text" xml:space="preserve">
     <value>DirectoryName</value>
@@ -180,7 +176,7 @@
     <value>Delete this directory and all subdirectories</value>
   </data>
   <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>287, 176</value>
+    <value>287, 184</value>
   </data>
   <data name="contextMenuStrip1.Text" xml:space="preserve">
     <value>Directory "[TODO]"</value>
@@ -212,12 +208,6 @@
   <data name="&gt;&gt;toolStripSeparator1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;refreshThisDirectoryToolStripMenuItem.Name" xml:space="preserve">
-    <value>refreshThisDirectoryToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;refreshThisDirectoryToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;openThisDirectoryInWindowsExplorerToolStripMenuItem.Name" xml:space="preserve">
     <value>openThisDirectoryInWindowsExplorerToolStripMenuItem</value>
   </data>
@@ -229,6 +219,12 @@
   </data>
   <data name="&gt;&gt;toolStripSeparator3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;refreshThisDirectoryToolStripMenuItem.Name" xml:space="preserve">
+    <value>refreshThisDirectoryToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;refreshThisDirectoryToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;centerGraphOnThisDirectoryToolStripMenuItem.Name" xml:space="preserve">
     <value>centerGraphOnThisDirectoryToolStripMenuItem</value>
