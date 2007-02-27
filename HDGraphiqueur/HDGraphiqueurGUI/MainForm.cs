@@ -792,16 +792,7 @@ namespace HDGraph
         {
             try
             {
-                string fileName = "";
-                foreach (TraceListener listener in Trace.Listeners)
-                {
-                    if (listener is TextWriterTraceListener)
-                    {
-                        //Properties.Settings.Default.
-                    }
-                }
-                //Trace.Listeners[
-                System.Diagnostics.Process.Start("HDGraph.log");
+                System.Diagnostics.Process.Start(Application.StartupPath + "\\HDGraph.log");
             }
             catch (Exception ex)
             {
