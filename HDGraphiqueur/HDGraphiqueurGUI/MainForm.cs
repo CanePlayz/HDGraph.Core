@@ -63,11 +63,21 @@ namespace HDGraph
                                 MessageBoxIcon.Warning);
 
             InitializeComponent();
+
             this.Text = AboutBox.AssemblyTitle;
             EnableHelpIfAvailable();
             comboBoxPath.DataSource = HDGraph.Properties.Settings.Default.PathHistory;
             checkBoxAutoRecalc.Checked = HDGraph.Properties.Settings.Default.OptionAutoCompleteGraph;
-            moteur.AutoRefreshAllowed = HDGraph.Properties.Settings.Default.OptionAutoCompleteGraph;
+            try
+            {
+                moteur.AutoRefreshAllowed = HDGraph.Properties.Settings.Default.OptionAutoCompleteGraph;
+                ModeAffichageCouleurs modeCouleurs = (ModeAffichageCouleurs)Enum.Parse(typeof(ModeAffichageCouleurs), HDGraph.Properties.Settings.Default.OptionColorStyle);
+                comboBoxColorStyle.SelectedIndex = (int)modeCouleurs;
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError(HDGTools.PrintError(ex));
+            }
             string[] args = Environment.GetCommandLineArgs();
             if (args.Length > 1)
             {
@@ -801,6 +811,21 @@ namespace HDGraph
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Trace.TraceError(HDGTools.PrintError(ex));
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            (new PickColorForm()).Show();
+        }
+
+        private void comboBoxColorStyle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ModeAffichageCouleurs modeCouleurs = (ModeAffichageCouleurs)comboBoxColorStyle.SelectedIndex;
+            HDGraph.Properties.Settings.Default.OptionColorStyle = modeCouleurs.ToString();
+            HDGraph.Properties.Settings.Default.Save();
+            treeGraph1.ModeCouleur = modeCouleurs;
+            treeGraph1.ForceRefresh();
+            PrintStatus(Resources.ApplicationMessages.GraphRefreshed);
         }
 
 

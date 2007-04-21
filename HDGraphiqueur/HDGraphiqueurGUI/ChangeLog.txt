@@ -4,6 +4,16 @@ HDGraph ChangeLog (http://hdgraph.sourceforge.net)
 [French version at the bottom !]
 [Version Française plus bas !]
 
+Version 1.2.0
+======================================================
+Added:
+	- Multiple color styles (random or linear colors)
+	- Cursor appearance change on hovered folders
+Improved: 
+	- 
+Fixed:
+	- 
+
 Version 1.0.1
 ======================================================
 Added:

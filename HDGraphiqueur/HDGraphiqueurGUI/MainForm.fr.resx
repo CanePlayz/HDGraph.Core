@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 24</value>
+  </data>
   <data name="fileMenu.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 20</value>
   </data>
@@ -168,8 +171,32 @@
     <value>Légende /
 Comment lire le graphe ?</value>
   </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 249</value>
+  </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Options de dessin</value>
+  </data>
+  <data name="comboBoxColorStyle.Items" xml:space="preserve">
+    <value>Couleurs aléatoires (neutres)</value>
+  </data>
+  <data name="comboBoxColorStyle.Items1" xml:space="preserve">
+    <value>Couleurs aléatoires (vives)</value>
+  </data>
+  <data name="comboBoxColorStyle.Items2" xml:space="preserve">
+    <value>Couleurs linéaires</value>
+  </data>
+  <data name="comboBoxColorStyle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 215</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 199</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 13</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Enchaînement couleurs :</value>
   </data>
   <data name="checkBoxAutoRecalc.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 33</value>
@@ -200,6 +227,9 @@ Comment lire le graphe ?</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Niveaux de rep. à dessiner :</value>
+  </data>
+  <data name="groupBoxHoverInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>604, 349</value>
   </data>
   <data name="groupBoxHoverInfo.Text" xml:space="preserve">
     <value>Répertoire survolé</value>
@@ -245,7 +275,7 @@ Comment lire le graphe ?</value>
 </value>
   </data>
   <data name="newToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 22</value>
+    <value>278, 22</value>
   </data>
   <data name="newToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Nouveau</value>
@@ -268,13 +298,13 @@ Comment lire le graphe ?</value>
 </value>
   </data>
   <data name="openToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 22</value>
+    <value>278, 22</value>
   </data>
   <data name="openToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Ouvrir</value>
+    <value>&amp;Ouvrir un graphique existant...</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 6</value>
+    <value>275, 6</value>
   </data>
   <data name="saveToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -293,10 +323,10 @@ Comment lire le graphe ?</value>
 </value>
   </data>
   <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 22</value>
+    <value>278, 22</value>
   </data>
   <data name="saveToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Enregistrer</value>
+    <value>&amp;Enregistrer le graphique courant</value>
   </data>
   <data name="saveAsToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -315,19 +345,19 @@ Comment lire le graphe ?</value>
 </value>
   </data>
   <data name="saveAsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 22</value>
+    <value>278, 22</value>
   </data>
   <data name="saveAsToolStripMenuItem.Text" xml:space="preserve">
-    <value>Enregistrer &amp;sous...</value>
+    <value>Enregistrer le graphique courant &amp;sous...</value>
   </data>
   <data name="exportAsImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 22</value>
+    <value>278, 22</value>
   </data>
   <data name="exportAsImageToolStripMenuItem.Text" xml:space="preserve">
     <value>E&amp;xporter en tant qu'image...</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 6</value>
+    <value>275, 6</value>
   </data>
   <data name="printToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -346,7 +376,7 @@ Comment lire le graphe ?</value>
 </value>
   </data>
   <data name="printToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 22</value>
+    <value>278, 22</value>
   </data>
   <data name="printToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Imprimer</value>
@@ -366,22 +396,22 @@ Comment lire le graphe ?</value>
 </value>
   </data>
   <data name="printPreviewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 22</value>
+    <value>278, 22</value>
   </data>
   <data name="printPreviewToolStripMenuItem.Text" xml:space="preserve">
     <value>A&amp;perçu avant impression</value>
   </data>
   <data name="printSetupToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 22</value>
+    <value>278, 22</value>
   </data>
   <data name="printSetupToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Mise en page</value>
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 6</value>
+    <value>275, 6</value>
   </data>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 22</value>
+    <value>278, 22</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Quitter</value>

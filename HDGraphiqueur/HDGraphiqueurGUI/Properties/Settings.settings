@@ -26,5 +26,8 @@
     <Setting Name="OptionDeletionAsk4Confirmation" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="OptionColorStyle" Type="System.String" Scope="User">
+      <Value Profile="(Default)">RandomNeutral</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

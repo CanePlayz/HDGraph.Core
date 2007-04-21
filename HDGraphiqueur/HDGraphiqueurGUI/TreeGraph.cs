@@ -40,6 +40,15 @@ namespace HDGraph
             }
         }
 
+        private ModeAffichageCouleurs modeCouleur;
+
+        public ModeAffichageCouleurs ModeCouleur
+        {
+            get { return modeCouleur; }
+            set { modeCouleur = value; }
+        }
+
+
 
         private int nbNiveaux;
         /// <summary>
@@ -354,7 +363,7 @@ namespace HDGraph
                     graph.FillEllipse(
                         new System.Drawing.Drawing2D.LinearGradientBrush(
                                     rec,
-                                    GetNextColor(),
+                                    GetNextColor(startAngle + nodeAngle / 2f),
                                     Color.SteelBlue,
                                     System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
                                 ),
@@ -395,7 +404,7 @@ namespace HDGraph
                 {
                     graph.FillPie(new System.Drawing.Drawing2D.LinearGradientBrush(
                             rec,
-                            GetNextColor(),
+                            GetNextColor(startAngle + nodeAngle / 2f),
                             Color.SteelBlue,
                             System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
                         ),
@@ -516,15 +525,20 @@ namespace HDGraph
         }
 
         /// <summary>
-        /// Lance la méthode pointée par le delegate UpdateHoverNode, pour signifier au client qu'un répertoire est en ce moment survolé.
+        /// Lance la méthode pointée par le delegate UpdateHoverNode, 
+        /// pour signifier au client qu'un répertoire est en ce moment survolé.
+        /// Met également à jour le curseur courant.
         /// </summary>
         private void SendPointedNode()
         {
-            if (updateHoverNode == null)
-                return;
-
             DirectoryNode foundNode = FindNodeByCursorPosition(PointToClient(Cursor.Position));
-            UpdateHoverNode(foundNode);
+            if (foundNode == null)
+                this.Cursor = System.Windows.Forms.Cursors.Default;
+            else
+                this.Cursor = System.Windows.Forms.Cursors.Hand;
+
+            if (updateHoverNode != null)
+                UpdateHoverNode(foundNode);
         }
 
         /// <summary>
@@ -619,8 +633,8 @@ namespace HDGraph
                 contextMenuStrip1.Hide();
             directoryNameToolStripMenuItem.Enabled = nodeIsNotNull;
             centerGraphOnThisDirectoryToolStripMenuItem.Enabled = (nodeIsNotNull && node != root);
-            centerGraphOnParentDirectoryToolStripMenuItem.Enabled = (nodeIsNotNull 
-                                                                && node.Parent != root 
+            centerGraphOnParentDirectoryToolStripMenuItem.Enabled = (nodeIsNotNull
+                                                                && node.Parent != root
                                                                 && node.Parent != null);
             openThisDirectoryInWindowsExplorerToolStripMenuItem.Enabled = nodeIsNotNull;
             refreshThisDirectoryToolStripMenuItem.Enabled = nodeIsNotNull;
@@ -695,12 +709,47 @@ namespace HDGraph
         /// Renvoie la prochaine couleur à utiliser pour la prochaine partie du graph à dessiner.
         /// </summary>
         /// <returns></returns>
-        private Color GetNextColor()
+        private Color GetNextColor(float angle)
         {
-            int[] col = new int[] { rand.Next(100, 255), rand.Next(100, 255), rand.Next(100, 255) };
-            col[rand.Next(3)] -= 100;
-            //return Color.FromArgb(rand.Next(100, 255), rand.Next(100, 255), rand.Next(100, 255));
-            return Color.FromArgb(col[0], col[1], col[2]);
+            switch (modeCouleur)
+            {
+                case ModeAffichageCouleurs.RandomNeutral:
+                    int[] col = new int[] { rand.Next(100, 255), rand.Next(100, 255), rand.Next(100, 255) };
+                    col[rand.Next(3)] -= 100;
+                    return Color.FromArgb(col[0], col[1], col[2]);
+                case ModeAffichageCouleurs.RandomBright:
+                    return ColorByLeft(rand.Next(360));
+                case ModeAffichageCouleurs.Linear:
+                default:
+                    return ColorByLeft(Convert.ToInt32(angle));
+            }
+        }
+
+        /// <summary>
+        /// Renvoie une couleur de l'arc en ciel.
+        /// </summary>
+        /// <param name="valeurSur360">une valeur comprise entre 0 et 360.</param>
+        /// <returns></returns>
+        public Color ColorByLeft(int valeurSur360)
+        {
+            if (valeurSur360 > 360 || valeurSur360 < 0)
+                throw new ArgumentOutOfRangeException("valeurSur360", "Value must be between 0 and 360.");
+            int valMax = 360;
+            int section = valeurSur360 * 6 / (valMax);
+            valeurSur360 = Convert.ToInt32(
+                        ((float)valeurSur360 % (valMax / 6f)) * 255 * 6f / valMax);
+
+            switch (section)
+            {
+                //						       r     G     b
+                case 0: return Color.FromArgb(255, 0, valeurSur360);
+                case 1: return Color.FromArgb(255 - valeurSur360, 0, 255);
+                case 2: return Color.FromArgb(0, valeurSur360, 255);
+                case 3: return Color.FromArgb(0, 255, 255 - valeurSur360);
+                case 4: return Color.FromArgb(valeurSur360, 255, 0);
+                case 5: return Color.FromArgb(255, 255 - valeurSur360, 0);
+                default: return Color.Black;
+            }
         }
 
         /// <summary>
@@ -764,11 +813,11 @@ namespace HDGraph
         {
             string msg = String.Format(HDGTools.resManager.GetString("GoingToDeleteFolderMsg"),
                                        lastClicNode.Name);
-            if ((! Properties.Settings.Default.OptionDeletionAsk4Confirmation) 
+            if ((!Properties.Settings.Default.OptionDeletionAsk4Confirmation)
                 || MessageBox.Show(msg,
-                        HDGTools.resManager.GetString("GoingToDeleteFolderTitle"), 
-                        MessageBoxButtons.OKCancel, 
-                        MessageBoxIcon.Exclamation, 
+                        HDGTools.resManager.GetString("GoingToDeleteFolderTitle"),
+                        MessageBoxButtons.OKCancel,
+                        MessageBoxIcon.Exclamation,
                         MessageBoxDefaultButton.Button2) == DialogResult.OK)
             {
                 try
@@ -791,7 +840,7 @@ namespace HDGraph
                     Trace.TraceError(HDGTools.PrintError(ex));
                 }
             }
-            
+
         }
 
         private void directoryNameToolStripMenuItem_Click(object sender, EventArgs e)
