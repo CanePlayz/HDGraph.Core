@@ -9,6 +9,7 @@ namespace HDGraph
     {
         RandomNeutral,
         RandomBright,
-        Linear
+        Linear,
+        ImprovedLinear
     }
 }

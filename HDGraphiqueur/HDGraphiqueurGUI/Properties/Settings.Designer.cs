@@ -117,5 +117,17 @@ namespace HDGraph.Properties {
                 this["OptionDeletionAsk4Confirmation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string OptionColorStyle {
+            get {
+                return ((string)(this["OptionColorStyle"]));
+            }
+            set {
+                this["OptionColorStyle"] = value;
+            }
+        }
     }
 }

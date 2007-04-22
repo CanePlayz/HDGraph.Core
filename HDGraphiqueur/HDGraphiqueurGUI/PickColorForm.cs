@@ -81,7 +81,7 @@ namespace HDGraph
 
         private void ChargerArcEnCiel()
         {
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 1001; i++)
             {
                 graph.DrawLine(new Pen(new SolidBrush(ColorByLeft(i))),
                                new Point(i, 0),
@@ -107,8 +107,8 @@ namespace HDGraph
             graph.FillPie(new System.Drawing.Drawing2D.LinearGradientBrush(
                                     new Point(100, 100), new Point(300, 100),
                                     Color.Red,
-                                    Color.SteelBlue), 
-                200,200,100,100, 0, 180);
+                                    Color.SteelBlue),
+                200, 200, 100, 100, 0, 180);
 
             graph.FillPie(new System.Drawing.Drawing2D.LinearGradientBrush(
                         new Point(200, 400), new Point(301, 400),
@@ -117,6 +117,47 @@ namespace HDGraph
                 200, 400, 100, 100, 0, 180);
             graph.FillPie(new SolidBrush(Color.White),
                 225, 425, 50, 50, 0, 180);
+
+            Rectangle rec = new Rectangle(100, 100, this.ClientSize.Width - 150, this.ClientSize.Height - 150);
+            int nbMaxQuartiers = 1000;
+            for (int i = 0; i < nbMaxQuartiers; i++)
+            {
+                float startAngle = (360f / nbMaxQuartiers) * i;
+                float nodeAngle = 360f / nbMaxQuartiers;
+                PointF p1 = new PointF();
+                p1.X = rec.Left + rec.Width / 2f + Convert.ToSingle(Math.Cos(GetRadianFromDegree(startAngle))) * rec.Height / 2f;
+                p1.Y = rec.Top + rec.Height / 2f + Convert.ToSingle(Math.Sin(GetRadianFromDegree(startAngle))) * rec.Height / 2f;
+                PointF p2 = new PointF();
+                p2.X = rec.Left + rec.Width / 2f + Convert.ToSingle(Math.Cos(GetRadianFromDegree(startAngle + nodeAngle))) * rec.Height / 2f;
+                p2.Y = rec.Top + rec.Height / 2f + Convert.ToSingle(Math.Sin(GetRadianFromDegree(startAngle + nodeAngle))) * rec.Height / 2f;
+
+
+                graph.FillPie(
+                      new System.Drawing.Drawing2D.LinearGradientBrush(
+                            p1, p2,
+                            ColorByLeft(Convert.ToInt32(startAngle / 360f * 1000f)),
+                            ColorByLeft(Convert.ToInt32((startAngle + nodeAngle) / 360f * 1000f))
+                      ),
+                      rec, startAngle, nodeAngle+1);
+            }
+        }
+
+        /// <summary>
+        /// Convertit un angle en degrés en radian.
+        /// </summary>
+        /// <param name="degree"></param>
+        /// <returns></returns>
+        public double GetRadianFromDegree(float degree)
+        {
+            return degree * Math.PI / 180f;
+        }
+
+        /// <summary>
+        /// Convertit un angle en radian en degrés.
+        /// </summary>
+        public double GetDegreeFromRadian(double radian)
+        {
+            return radian * 180 / Math.PI;
         }
 
         /// <summary>
@@ -149,7 +190,7 @@ namespace HDGraph
                 case 3: return Color.FromArgb(0, 255, 255 - valSurMille);
                 case 4: return Color.FromArgb(valSurMille, 255, 0);
                 case 5: return Color.FromArgb(255, 255 - valSurMille, 0);
-                default: return Color.Black;
+                default: return Color.Red;
             }
         }
     }

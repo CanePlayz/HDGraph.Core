@@ -6,6 +6,7 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Drawing.Drawing2D;
 
 namespace HDGraph
 {
@@ -138,13 +139,18 @@ namespace HDGraph
         /// <summary>
         /// Bitmap buffer dans lequel le graph est dessiné.
         /// </summary>
-        private Bitmap buffer;
+        private Bitmap backBuffer;
+        /// <summary>
+        /// Bitmap buffer dans lequel le graph est dessiné.
+        /// </summary>
+        private Bitmap multicolorTree;
+
         /// <summary>
         /// Obtient le gtaph sous forme d'image.
         /// </summary>
         internal Bitmap ImageBuffer
         {
-            get { return buffer; }
+            get { return backBuffer; }
         }
 
         /// <summary>
@@ -155,17 +161,16 @@ namespace HDGraph
         /// <summary>
         /// Graph associé au bitmap buffer
         /// </summary>
-        private Graphics graph;
-        /// <summary>
-        /// Rectangle représentant la surface sur laquelle le graph doit être dessiné.
-        /// </summary>
-        private RectangleF pieRec;
+        private Graphics frontGraph;
         /// <summary>
         /// Booléen indiquant le type de parcours lors de la création du graph: 
         /// si false, on est dans la phase de dessin des "camemberts". Si true, on est dans la phase 
         /// qui consiste à imprimer les noms des répertoires sur le dessin.
         /// </summary>
         private bool printDirNames = false;
+
+
+        private Color myTransparentColor = Color.DarkGray;
 
         #region Variables chaîne (utilisées en tant que cache du resourceManager)
 
@@ -215,39 +220,91 @@ namespace HDGraph
         protected override void OnPaint(PaintEventArgs e)
         {
             //base.OnPaint(e);
-
-            if (buffer == null || buffer.Width != this.ClientSize.Width || buffer.Height != this.ClientSize.Height || forceRefreshOnNextRepaint)
+            bool sizeChanged = (backBuffer == null || backBuffer.Width != this.ClientSize.Width || backBuffer.Height != this.ClientSize.Height);
+            if (sizeChanged || forceRefreshOnNextRepaint)
             {
-                // Notif de mise en attente (ANNULE)
-                //Form parentForm = FindForm();
-                //Cursor oldCursor = parentForm.Cursor;
-                //parentForm.Cursor = Cursors.WaitCursor;
                 // Création du bitmap buffer
-                buffer = new Bitmap(this.ClientSize.Width, this.ClientSize.Height);
-                graph = Graphics.FromImage(buffer);
-                graph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-                graph.Clear(Color.White);
+                backBuffer = new Bitmap(this.ClientSize.Width, this.ClientSize.Height);
+                Graphics backGraph = Graphics.FromImage(backBuffer);
+                Bitmap frontBuffer = null;
+
+                if (modeCouleur == ModeAffichageCouleurs.ImprovedLinear)
+                {
+                    frontBuffer = new Bitmap(this.ClientSize.Width, this.ClientSize.Height);
+                    frontGraph = Graphics.FromImage(frontBuffer);
+                }
+                else
+                {
+                    frontGraph = backGraph;
+                    frontGraph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                }
+                frontGraph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                frontGraph.Clear(Color.White);
                 // init des données du calcul
                 pasNiveau = Math.Min(this.ClientSize.Width / (float)nbNiveaux / 2, this.ClientSize.Height / (float)nbNiveaux / 2);
-                pieRec = new RectangleF((float)this.ClientSize.Width / 2,
-                                        (float)this.ClientSize.Height / 2,
+                RectangleF pieRec = new RectangleF(this.ClientSize.Width / 2f,
+                                        this.ClientSize.Height / 2f,
                                         0,
                                         0);
                 // Calcul
-                PaintTree();
-                graph.Dispose();
+                PaintTree(pieRec);
+                if (modeCouleur == ModeAffichageCouleurs.ImprovedLinear)
+                {
+                    if (multicolorTree == null
+                        || multicolorTree.Width != this.ClientSize.Width
+                        || multicolorTree.Height != this.ClientSize.Height)
+                        // reconstruire multicolorTree si la taille a changé !
+                        multicolorTree = ConstruireMulticolorTree(
+                            new Bitmap(this.ClientSize.Width, this.ClientSize.Height));
+                    backGraph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                    backGraph.DrawImageUnscaled(multicolorTree, new Point(0, 0));
+                    frontBuffer.MakeTransparent(myTransparentColor);
+                    backGraph.DrawImageUnscaled(frontBuffer, new Point(0, 0));
+                    frontGraph.Dispose();
+                }
+                backGraph.Dispose();
                 forceRefreshOnNextRepaint = false;
-                // Fin de mise en attente
-                //parentForm.Cursor = oldCursor;
             }
             // affichage du buffer
-            e.Graphics.DrawImageUnscaled(buffer, 0, 0);
+            e.Graphics.DrawImageUnscaled(backBuffer, 0, 0);
+        }
+
+        private Bitmap ConstruireMulticolorTree(Bitmap newMutlicolorBitmap)
+        {
+            Rectangle pieRec;
+            if (ClientSize.Height > ClientSize.Width)
+                pieRec = new Rectangle(-(ClientSize.Height - ClientSize.Width) / 2, 0, ClientSize.Height, ClientSize.Height);
+            else
+                pieRec = new Rectangle(0, -(ClientSize.Width - ClientSize.Height) / 2, ClientSize.Width, ClientSize.Width);
+            Graphics graph = Graphics.FromImage(newMutlicolorBitmap);
+            int nbMaxQuartiers = 1000;
+            for (int i = 0; i < nbMaxQuartiers; i++)
+            {
+                float startAngle = (360f / nbMaxQuartiers) * i;
+                float nodeAngle = 360f / nbMaxQuartiers;
+                PointF p1 = new PointF();
+                p1.X = pieRec.Left + pieRec.Width / 2f + Convert.ToSingle(Math.Cos(GetRadianFromDegree(startAngle))) * pieRec.Height / 2f;
+                p1.Y = pieRec.Top + pieRec.Height / 2f + Convert.ToSingle(Math.Sin(GetRadianFromDegree(startAngle))) * pieRec.Height / 2f;
+                PointF p2 = new PointF();
+                p2.X = pieRec.Left + pieRec.Width / 2f + Convert.ToSingle(Math.Cos(GetRadianFromDegree(startAngle + nodeAngle))) * pieRec.Height / 2f;
+                p2.Y = pieRec.Top + pieRec.Height / 2f + Convert.ToSingle(Math.Sin(GetRadianFromDegree(startAngle + nodeAngle))) * pieRec.Height / 2f;
+
+
+                graph.FillPie(
+                      new System.Drawing.Drawing2D.LinearGradientBrush(
+                            p1, p2,
+                            ColorByLeft(Convert.ToInt32(startAngle / 360f * 1000f), 1000),
+                            ColorByLeft(Convert.ToInt32((startAngle + nodeAngle) / 360f * 1000f), 1000)
+                      ),
+                      pieRec, startAngle, nodeAngle + 1);
+            }
+            return newMutlicolorBitmap;
         }
 
         /// <summary>
         /// Effectue le premier lancement de la méthode PaintTree récursive.
         /// </summary>
-        private void PaintTree()
+        private void PaintTree(RectangleF pieRec)
         {
             if (root == null || root.TotalSize == 0)
             {
@@ -275,10 +332,10 @@ namespace HDGraph
             else
                 text = Resources.ApplicationMessages.GraphGuideLine;
 
-            SizeF sizeTextName = graph.MeasureString(text, Font);
+            SizeF sizeTextName = frontGraph.MeasureString(text, Font);
             x -= sizeTextName.Width / 2f;
             y -= sizeTextName.Height / 2f;
-            graph.DrawString(text, Font, new SolidBrush(Color.Black), x, y); //, format);
+            frontGraph.DrawString(text, Font, new SolidBrush(Color.Black), x, y); //, format);
 
 
 
@@ -336,7 +393,7 @@ namespace HDGraph
                 float nodeAngle = endAngle - startAngle;
                 rec.Inflate(pasNiveau / 6f, pasNiveau / 6f);
                 //Console.WriteLine("Processing Files (Angle:" + startAngle + ";" + endAngle + "; Rec:" + rec + ")...");
-                graph.FillPie(new System.Drawing.Drawing2D.HatchBrush(
+                frontGraph.FillPie(new System.Drawing.Drawing2D.HatchBrush(
                                             System.Drawing.Drawing2D.HatchStyle.LargeConfetti,
                                             Color.Gray,
                                             Color.White),
@@ -355,23 +412,20 @@ namespace HDGraph
         /// <param name="nodeAngle"></param>
         private void PaintDirPart(DirectoryNode node, RectangleF rec, float startAngle, float nodeAngle)
         {
-            // on gère les arcs "pleins" (360 de manière particulière pour avoir un disque "plein", sans trait à l'angle 0)
+            // on gère les arcs "pleins" (360°) de manière particulière pour avoir un disque "plein", sans trait à l'angle 0
             if (nodeAngle == 360)
             {
                 if (!printDirNames)
                 {
-                    graph.FillEllipse(
-                        new System.Drawing.Drawing2D.LinearGradientBrush(
-                                    rec,
-                                    GetNextColor(startAngle + nodeAngle / 2f),
-                                    Color.SteelBlue,
-                                    System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
-                                ),
+                    // on dessine le disque uniquement                  
+                    frontGraph.FillEllipse(
+                        GetBrushForAngles(rec, startAngle, nodeAngle),
                         Rectangle.Round(rec));
-                    graph.DrawEllipse(new Pen(Color.Black), rec);
+                    frontGraph.DrawEllipse(new Pen(Color.Black), rec);
                 }
                 else
                 {
+                    // on dessine les noms de répertoire uniquement
                     float x = 0, y;
                     if (rec.Height == pasNiveau * 2)
                     {
@@ -387,34 +441,32 @@ namespace HDGraph
                     if (optionShowSize)
                         nodeText += Environment.NewLine + FormatSize(node.TotalSize);
 
-                    SizeF size = graph.MeasureString(nodeText, Font);
+                    SizeF size = frontGraph.MeasureString(nodeText, Font);
                     x -= size.Width / 2f;
                     y -= size.Height / 2f;
                     // Adoucir le fond du texte :
                     Color colTransp = Color.FromArgb(100, Color.White);
-                    graph.FillRectangle(new SolidBrush(colTransp),
+                    frontGraph.FillRectangle(new SolidBrush(colTransp),
                                         x, y, size.Width, size.Height);
-                    graph.DrawRectangle(new Pen(Color.Black), x, y, size.Width, size.Height);
-                    graph.DrawString(nodeText, Font, new SolidBrush(Color.Black), x, y);
+                    frontGraph.DrawRectangle(new Pen(Color.Black), x, y, size.Width, size.Height);
+                    frontGraph.DrawString(nodeText, Font, new SolidBrush(Color.Black), x, y);
                 }
             }
             else
             {
                 if (!printDirNames)
                 {
-                    graph.FillPie(new System.Drawing.Drawing2D.LinearGradientBrush(
-                            rec,
-                            GetNextColor(startAngle + nodeAngle / 2f),
-                            Color.SteelBlue,
-                            System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
-                        ),
+                    // on dessine le disque uniquement
+                    frontGraph.FillPie(
+                        GetBrushForAngles(rec, startAngle, nodeAngle),
                         Rectangle.Round(rec),
                         startAngle,
                         nodeAngle);
-                    graph.DrawPie(new Pen(Color.Black), rec, startAngle, nodeAngle);
+                    frontGraph.DrawPie(new Pen(Color.Black), rec, startAngle, nodeAngle);
                 }
                 else if (nodeAngle > 10)
                 {
+                    // on dessine les noms de répertoire uniquement (si l'angle est supérieur à 10°)
                     //float textWidthLimit = pasNiveau * 1.5f;
                     float textWidthLimit = pasNiveau * 2f;
                     float x, y, angleCentre, hyp;
@@ -427,34 +479,85 @@ namespace HDGraph
                     StringFormat format = new StringFormat();
                     format.Alignment = StringAlignment.Center;
                     string nodeText = node.Name;
-                    SizeF sizeTextName = graph.MeasureString(nodeText, Font);
+                    SizeF sizeTextName = frontGraph.MeasureString(nodeText, Font);
                     if (sizeTextName.Width <= textWidthLimit)
                     {
                         if (optionShowSize)
                         {
                             float xName = x - sizeTextName.Width / 2f;
                             float yName = y - sizeTextName.Height;
-                            graph.DrawString(nodeText, Font, new SolidBrush(Color.Black), xName, yName); //, format);
+                            frontGraph.DrawString(nodeText, Font, new SolidBrush(Color.Black), xName, yName); //, format);
                             string nodeSize = FormatSize(node.TotalSize);
-                            SizeF sizeTextSize = graph.MeasureString(nodeSize, Font);
+                            SizeF sizeTextSize = frontGraph.MeasureString(nodeSize, Font);
                             float xSize = x - sizeTextSize.Width / 2f;
                             float ySize = y;
                             // Adoucir le fond du texte :
                             //Color colTransp = Color.FromArgb(50, Color.White);
                             //graph.FillRectangle(new SolidBrush(colTransp),
                             //                    xSize, ySize, sizeTextSize.Width, sizeTextSize.Height);
-                            graph.DrawString(nodeSize, Font, new SolidBrush(Color.Black), xSize, ySize); //, format);
+                            frontGraph.DrawString(nodeSize, Font, new SolidBrush(Color.Black), xSize, ySize); //, format);
                         }
                         else
                         {
                             x -= sizeTextName.Width / 2f;
                             y -= sizeTextName.Height / 2f;
-                            graph.DrawString(nodeText, Font, new SolidBrush(Color.Black), x, y); //, format);
+                            frontGraph.DrawString(nodeText, Font, new SolidBrush(Color.Black), x, y); //, format);
                         }
                     }
                 }
 
             }
+        }
+
+        private Brush GetBrushForAngles(RectangleF rec, float startAngle, float nodeAngle)
+        {
+            switch (modeCouleur)
+            {
+                case ModeAffichageCouleurs.RandomNeutral:
+                case ModeAffichageCouleurs.RandomBright:
+                    return new System.Drawing.Drawing2D.LinearGradientBrush(
+                                    rec,
+                                    GetNextColor(startAngle),
+                                    Color.SteelBlue,
+                                    System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
+                                );
+                case ModeAffichageCouleurs.Linear:
+                    return new System.Drawing.Drawing2D.LinearGradientBrush(
+                                    rec,
+                                    GetNextColor(startAngle + (nodeAngle / 2f)),
+                                    Color.SteelBlue,
+                                    System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
+                                );
+                case ModeAffichageCouleurs.ImprovedLinear:
+                default:
+                    return new SolidBrush(myTransparentColor);
+                    //if (nodeAngle < 1)
+                    //    return new System.Drawing.Drawing2D.LinearGradientBrush(rec,
+                    //                        GetNextColor(startAngle + (nodeAngle / 2f)),
+                    //                        Color.SteelBlue,
+                    //                        System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal);
+                    //PointF p1 = new PointF();
+                    //p1.X = rec.Left + rec.Width / 2f + Convert.ToSingle(Math.Cos(GetRadianFromDegree(startAngle))) * rec.Height / 2f;
+                    //p1.Y = rec.Top + rec.Height / 2f + Convert.ToSingle(Math.Sin(GetRadianFromDegree(startAngle))) * rec.Height / 2f;
+                    //PointF p2 = new PointF();
+                    //p2.X = rec.Left + rec.Width / 2f + Convert.ToSingle(Math.Cos(GetRadianFromDegree(startAngle + nodeAngle))) * rec.Height / 2f;
+                    //p2.Y = rec.Top + rec.Height / 2f + Convert.ToSingle(Math.Sin(GetRadianFromDegree(startAngle + nodeAngle))) * rec.Height / 2f;
+                    //if (nodeAngle == 360)
+                    //    p2.X = -p2.X;
+                    //try
+                    //{
+                    //    return new System.Drawing.Drawing2D.LinearGradientBrush(
+                    //                    p1, p2,
+                    //                    GetNextColor(startAngle),
+                    //                    GetNextColor(startAngle + nodeAngle)
+                    //                );
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    throw;
+                    //}
+            }
+
         }
 
         /// <summary>
@@ -513,7 +616,7 @@ namespace HDGraph
                 float nodeAngle = endAngle - startAngle;
                 rec.Inflate(pasNiveau, pasNiveau);
                 //Console.WriteLine("Processing Files (Angle:" + startAngle + ";" + endAngle + "; Rec:" + rec + ")...");
-                graph.FillPie(new SolidBrush(Color.White), Rectangle.Round(rec), startAngle, nodeAngle); //TODO
+                frontGraph.FillPie(new SolidBrush(Color.White), Rectangle.Round(rec), startAngle, nodeAngle); //TODO
 
             }
         }
@@ -734,21 +837,25 @@ namespace HDGraph
         {
             if (valeurSur360 > 360 || valeurSur360 < 0)
                 throw new ArgumentOutOfRangeException("valeurSur360", "Value must be between 0 and 360.");
-            int valMax = 360;
-            int section = valeurSur360 * 6 / (valMax);
-            valeurSur360 = Convert.ToInt32(
-                        ((float)valeurSur360 % (valMax / 6f)) * 255 * 6f / valMax);
+            return ColorByLeft(valeurSur360, 360);
+        }
+        public Color ColorByLeft(int valeur, int valeurMax)
+        {
+            int valMax = valeurMax;
+            int section = valeur * 6 / (valMax);
+            valeur = Convert.ToInt32(
+                        ((float)valeur % (valMax / 6f)) * 255 * 6f / valMax);
 
             switch (section)
             {
                 //						       r     G     b
-                case 0: return Color.FromArgb(255, 0, valeurSur360);
-                case 1: return Color.FromArgb(255 - valeurSur360, 0, 255);
-                case 2: return Color.FromArgb(0, valeurSur360, 255);
-                case 3: return Color.FromArgb(0, 255, 255 - valeurSur360);
-                case 4: return Color.FromArgb(valeurSur360, 255, 0);
-                case 5: return Color.FromArgb(255, 255 - valeurSur360, 0);
-                default: return Color.Black;
+                case 0: return Color.FromArgb(255, 0, valeur);
+                case 1: return Color.FromArgb(255 - valeur, 0, 255);
+                case 2: return Color.FromArgb(0, valeur, 255);
+                case 3: return Color.FromArgb(0, 255, 255 - valeur);
+                case 4: return Color.FromArgb(valeur, 255, 0);
+                case 5: return Color.FromArgb(255, 255 - valeur, 0);
+                default: return Color.Red;
             }
         }
 
