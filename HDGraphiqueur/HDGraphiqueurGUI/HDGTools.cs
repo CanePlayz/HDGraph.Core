@@ -8,6 +8,8 @@ using System.Globalization;
 using System.ComponentModel;
 using System.Reflection;
 using System.Diagnostics;
+using System.Security.Principal;
+using System.Runtime.InteropServices;
 
 namespace HDGraph
 {
@@ -43,8 +45,143 @@ namespace HDGraph
 
         private const string HDG_REG_KEY = "HDGraph";
 
+        public enum RestartAction
+        {
+            addToExplorerContextMenu,
+            removeFromExplorerContextMenu
+        }
 
-        public static bool AddMeToExplorerContextMenu()
+        /// <summary>
+        /// Restart the current process with administrator credentials
+        /// </summary>
+        public static void StartActionInAdminMode(RestartAction action)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.UseShellExecute = true;
+            startInfo.WorkingDirectory = Environment.CurrentDirectory;
+            startInfo.FileName = Application.ExecutablePath;
+            startInfo.Verb = "runas";
+            startInfo.Arguments = "/" + action.ToString();
+            try
+            {
+                Process p = new Process();
+                p.StartInfo = startInfo;
+                
+                p.Start();
+                //System.Threading.Thread.Sleep(500);
+
+                //Process p2 = Process.GetProcessesByName("consent.exe")[0];
+                //SetForegroundWindow(p2.MainWindowHandle);
+                
+                // Attente de la fin de la commande
+                //p.WaitForExit();
+                // Libération des ressources
+                //p.Close();
+            }
+            catch(System.ComponentModel.Win32Exception ex)
+            {
+                Trace.TraceError(HDGTools.PrintError(ex));
+                return; //If cancelled, do nothing
+            }
+        }
+
+        //[DllImport("user32.dll")]
+        //static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        private static bool? osIsVista;
+
+        public static bool OsIsVista
+        {
+            get {
+                if (!osIsVista.HasValue)
+                    osIsVista = Vista.VistaTools.IsReallyVista();
+                return osIsVista.Value; 
+            }
+            set { osIsVista = value; }
+        }
+
+
+        public static bool IsInAdminMode()
+        {
+            if (OsIsVista)
+            {
+                // Vista
+                return Vista.VistaTools.IsElevated();
+            }
+            else
+            {
+                // Windows XP ou inférieur
+                WindowsIdentity id = WindowsIdentity.GetCurrent();
+                WindowsPrincipal p = new WindowsPrincipal(id);
+                return p.IsInRole(WindowsBuiltInRole.Administrator);
+            }
+        }
+
+        public static void AddMeToExplorerContextMenu(bool skipAdminModeCheck)
+        {
+            if (!skipAdminModeCheck && !IsInAdminMode())
+            {
+                StartActionInAdminMode(RestartAction.addToExplorerContextMenu);
+            }
+            else
+            {
+                try
+                {
+                    if (AddMeToExplorerContextMenuViaRegistry())
+                        MessageBox.Show(resManager.GetString("HdgCorrectlyIntegratedInExplorer"),
+                                    resManager.GetString("OperationSuccessfullTitle"),
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show(resManager.GetString("HdgAlreadyIntegratedInExplorer"),
+                                    resManager.GetString("OperationFailedTitle"),
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Asterisk);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(String.Format(resManager.GetString("UnableToIntegrateInExplorer"), ex.Message),
+                                    resManager.GetString("OperationFailedTitle"),
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                    Trace.TraceError(HDGTools.PrintError(ex));
+                }
+            }
+        }
+
+        public static void RemoveMeFromExplorerContextMenu(bool skipAdminModeCheck)
+        {
+            if (!skipAdminModeCheck && !IsInAdminMode())
+            {
+                StartActionInAdminMode(RestartAction.removeFromExplorerContextMenu);
+            }
+            else
+            {
+                try
+                {
+                    if (RemoveMeFromExplorerContextMenuViaRegistry())
+                        MessageBox.Show(resManager.GetString("HdgCorrectlyDesIntegratedInExplorer"),
+                                    resManager.GetString("OperationSuccessfullTitle"),
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Information);
+                    else
+                        MessageBox.Show(resManager.GetString("HdgAlreadyDesIntegratedInExplorer"),
+                                    resManager.GetString("OperationFailedTitle"),
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Asterisk);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(String.Format(resManager.GetString("UnableToDesIntegrateInExplorer"), ex.Message),
+                                    resManager.GetString("OperationFailedTitle"),
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Error);
+                    Trace.TraceError(HDGTools.PrintError(ex));
+                }
+            }
+        }
+
+        private static bool AddMeToExplorerContextMenuViaRegistry()
         {
             // Create a RegistryKey, which will access the HKEY_CLASSES_ROOT
             // key in the registry of this machine.
@@ -63,7 +200,7 @@ namespace HDGraph
             return true;
         }
 
-        public static bool RemoveMeFromExplorerContextMenu()
+        private static bool RemoveMeFromExplorerContextMenuViaRegistry()
         {
             // Create a RegistryKey, which will access the HKEY_CLASSES_ROOT
             // key in the registry of this machine.

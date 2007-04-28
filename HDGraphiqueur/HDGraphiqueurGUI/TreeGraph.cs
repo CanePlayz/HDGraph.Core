@@ -170,7 +170,7 @@ namespace HDGraph
         private bool printDirNames = false;
 
 
-        private Color myTransparentColor = Color.DarkGray;
+        private Color myTransparentColor = Color.Black;
 
         #region Variables chaîne (utilisées en tant que cache du resourceManager)
 
@@ -521,41 +521,77 @@ namespace HDGraph
                                     Color.SteelBlue,
                                     System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
                                 );
-                case ModeAffichageCouleurs.Linear:
+                case ModeAffichageCouleurs.Linear2:
                     return new System.Drawing.Drawing2D.LinearGradientBrush(
                                     rec,
                                     GetNextColor(startAngle + (nodeAngle / 2f)),
                                     Color.SteelBlue,
-                                    System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
+                                    LinearGradientMode.ForwardDiagonal
+                                );
+                case ModeAffichageCouleurs.Linear:
+                    float middleAngle = startAngle + (nodeAngle / 2f);
+                    //return new System.Drawing.Drawing2D.LinearGradientBrush(
+                    //                rec,
+                    //                GetNextColor(middleAngle),
+                    //                Color.SteelBlue,
+                    //                System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal
+                    //            );
+                    if (middleAngle < 90)
+                        return new System.Drawing.Drawing2D.LinearGradientBrush(
+                                        rec,
+                                        Color.SteelBlue,
+                                        GetNextColor(middleAngle),
+                                        LinearGradientMode.ForwardDiagonal
+                                    );
+                    else if (middleAngle < 180)
+                        return new System.Drawing.Drawing2D.LinearGradientBrush(
+                                    rec,
+                                    Color.SteelBlue,
+                                    GetNextColor(middleAngle),
+                                    LinearGradientMode.BackwardDiagonal
+                                );
+                    else if (middleAngle < 270)
+                        return new System.Drawing.Drawing2D.LinearGradientBrush(
+                                    rec,
+                                    GetNextColor(middleAngle),
+                                    Color.SteelBlue,
+                                    LinearGradientMode.ForwardDiagonal
+                                );
+                    else
+                        return new System.Drawing.Drawing2D.LinearGradientBrush(
+                                    rec,
+                                    GetNextColor(middleAngle),
+                                    Color.SteelBlue,
+                                    LinearGradientMode.BackwardDiagonal
                                 );
                 case ModeAffichageCouleurs.ImprovedLinear:
                 default:
                     return new SolidBrush(myTransparentColor);
-                    //if (nodeAngle < 1)
-                    //    return new System.Drawing.Drawing2D.LinearGradientBrush(rec,
-                    //                        GetNextColor(startAngle + (nodeAngle / 2f)),
-                    //                        Color.SteelBlue,
-                    //                        System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal);
-                    //PointF p1 = new PointF();
-                    //p1.X = rec.Left + rec.Width / 2f + Convert.ToSingle(Math.Cos(GetRadianFromDegree(startAngle))) * rec.Height / 2f;
-                    //p1.Y = rec.Top + rec.Height / 2f + Convert.ToSingle(Math.Sin(GetRadianFromDegree(startAngle))) * rec.Height / 2f;
-                    //PointF p2 = new PointF();
-                    //p2.X = rec.Left + rec.Width / 2f + Convert.ToSingle(Math.Cos(GetRadianFromDegree(startAngle + nodeAngle))) * rec.Height / 2f;
-                    //p2.Y = rec.Top + rec.Height / 2f + Convert.ToSingle(Math.Sin(GetRadianFromDegree(startAngle + nodeAngle))) * rec.Height / 2f;
-                    //if (nodeAngle == 360)
-                    //    p2.X = -p2.X;
-                    //try
-                    //{
-                    //    return new System.Drawing.Drawing2D.LinearGradientBrush(
-                    //                    p1, p2,
-                    //                    GetNextColor(startAngle),
-                    //                    GetNextColor(startAngle + nodeAngle)
-                    //                );
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    throw;
-                    //}
+                //if (nodeAngle < 1)
+                //    return new System.Drawing.Drawing2D.LinearGradientBrush(rec,
+                //                        GetNextColor(startAngle + (nodeAngle / 2f)),
+                //                        Color.SteelBlue,
+                //                        System.Drawing.Drawing2D.LinearGradientMode.ForwardDiagonal);
+                //PointF p1 = new PointF();
+                //p1.X = rec.Left + rec.Width / 2f + Convert.ToSingle(Math.Cos(GetRadianFromDegree(startAngle))) * rec.Height / 2f;
+                //p1.Y = rec.Top + rec.Height / 2f + Convert.ToSingle(Math.Sin(GetRadianFromDegree(startAngle))) * rec.Height / 2f;
+                //PointF p2 = new PointF();
+                //p2.X = rec.Left + rec.Width / 2f + Convert.ToSingle(Math.Cos(GetRadianFromDegree(startAngle + nodeAngle))) * rec.Height / 2f;
+                //p2.Y = rec.Top + rec.Height / 2f + Convert.ToSingle(Math.Sin(GetRadianFromDegree(startAngle + nodeAngle))) * rec.Height / 2f;
+                //if (nodeAngle == 360)
+                //    p2.X = -p2.X;
+                //try
+                //{
+                //    return new System.Drawing.Drawing2D.LinearGradientBrush(
+                //                    p1, p2,
+                //                    GetNextColor(startAngle),
+                //                    GetNextColor(startAngle + nodeAngle)
+                //                );
+                //}
+                //catch (Exception ex)
+                //{
+                //    throw;
+                //}
             }
 
         }

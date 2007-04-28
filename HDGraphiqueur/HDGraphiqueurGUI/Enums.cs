@@ -10,6 +10,7 @@ namespace HDGraph
         RandomNeutral,
         RandomBright,
         Linear,
+        Linear2,
         ImprovedLinear
     }
 }

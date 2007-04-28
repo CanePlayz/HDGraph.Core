@@ -315,6 +315,33 @@
   <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
+  <data name="trackBarZoom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="trackBarZoom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 100</value>
+  </data>
+  <data name="trackBarZoom.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="trackBarZoom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 45</value>
+  </data>
+  <data name="trackBarZoom.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;trackBarZoom.Name" xml:space="preserve">
+    <value>trackBarZoom</value>
+  </data>
+  <data name="&gt;&gt;trackBarZoom.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackBarZoom.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;trackBarZoom.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="comboBoxColorStyle.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Popup</value>
   </data>
@@ -328,6 +355,9 @@
     <value>Linear</value>
   </data>
   <data name="comboBoxColorStyle.Items3" xml:space="preserve">
+    <value>Linear 2</value>
+  </data>
+  <data name="comboBoxColorStyle.Items4" xml:space="preserve">
     <value>Improved linear</value>
   </data>
   <data name="comboBoxColorStyle.Location" type="System.Drawing.Point, System.Drawing">
@@ -352,7 +382,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;comboBoxColorStyle.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -385,7 +415,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="checkBoxAutoRecalc.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopLeft</value>
@@ -421,7 +451,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;checkBoxAutoRecalc.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="checkBoxPrintSizes.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -454,7 +484,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;checkBoxPrintSizes.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -484,7 +514,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="numUpDownNbNivx.Location" type="System.Drawing.Point, System.Drawing">
     <value>86, 61</value>
@@ -508,16 +538,16 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;numUpDownNbNivx.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="numUpDownNbNivxAffich.Location" type="System.Drawing.Point, System.Drawing">
-    <value>86, 115</value>
+    <value>101, 100</value>
   </data>
   <data name="numUpDownNbNivxAffich.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="numUpDownNbNivxAffich.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 20</value>
+    <value>43, 20</value>
   </data>
   <data name="numUpDownNbNivxAffich.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -538,7 +568,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;numUpDownNbNivxAffich.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -547,7 +577,7 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 99</value>
+    <value>9, 84</value>
   </data>
   <data name="label2.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -571,7 +601,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>604, 94</value>
@@ -6219,6 +6249,9 @@
         /////gAAAB//////////////////wP/////////////////////////////////////////A////////
         /////////////////////////////////8A=
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>640, 600</value>

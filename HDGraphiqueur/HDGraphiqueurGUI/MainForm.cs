@@ -33,6 +33,12 @@ namespace HDGraph
         /// </summary>
         private bool launchScanOnStartup = false;
 
+        public bool LaunchScanOnStartup
+        {
+            get { return launchScanOnStartup; }
+            set { launchScanOnStartup = value; }
+        }
+
         /// <summary>
         /// Moteur de scan.
         /// </summary>
@@ -42,7 +48,23 @@ namespace HDGraph
         /// Liste des nodes parcours, pour les boutons "back" et "next".
         /// </summary>
         List<DirectoryNode> graphViewHistory = new List<DirectoryNode>();
+
+        /// <summary>
+        /// Index du node (de la liste graphViewHistory) qui actuellement affiché
+        /// </summary>
         int currentNodeIndex = 0;
+
+        /// <summary>
+        /// Fichier dans lequel stocker le graph lorsque le scan est fini (param de ligne de commande).
+        /// Est null si ce chemin ne figure pas dans la ligne de commande.
+        /// </summary>
+        private string outputFilePath = null;
+
+        public string OutputFilePath
+        {
+            get { return outputFilePath; }
+            set { outputFilePath = value; }
+        }
 
         #endregion
 
@@ -78,29 +100,8 @@ namespace HDGraph
             {
                 Trace.TraceError(HDGTools.PrintError(ex));
             }
-            string[] args = Environment.GetCommandLineArgs();
-            if (args.Length > 1)
-            {
-                string path = args[1]; // args[0] correspond à l'exécutable, args[1] au premier argument
-                Trace.WriteLineIf(HDGTools.mySwitch.TraceInfo, "Path argument received: " + path);
-
-                // cas particulier de l'explorateur qui renvoie << x:" >> dans le cas du lecteur x
-                if (path.EndsWith(":\""))
-                    path = path.Substring(0, path.Length - 1);
-                if (File.Exists(path) && Path.GetExtension(path) == ".hdg")
-                {
-                    // le 1er argument est un fichier HDG à charger
-                    LoadGraphFromFile(path);
-                }
-                else
-                {   // le 1er argument est un répertoire: il faut lancer le scan.
-                    path = (new DirectoryInfo(path)).FullName;
-                    comboBoxPath.Text = path;
-                    SavePathHistory();
-                    launchScanOnStartup = true;
-                }
-            }
         }
+
 
         private void ShowError(string msg, Exception ex)
         {
@@ -202,7 +203,7 @@ namespace HDGraph
         /// Charge un graph sauvegardé.
         /// </summary>
         /// <param name="fileName"></param>
-        private void LoadGraphFromFile(string fileName)
+        internal void LoadGraphFromFile(string fileName)
         {
             checkBoxAutoRecalc.Checked = false; // Autorecalc désactivé sur un graph enregistré !
 
@@ -518,7 +519,7 @@ namespace HDGraph
 
         #region Gestion de l'historique chemins entrés manuellement
 
-        private void SavePathHistory()
+        public void SavePathHistory()
         {
             if (HDGraph.Properties.Settings.Default.PathHistory == null)
                 HDGraph.Properties.Settings.Default.PathHistory = new StringCollection();
@@ -572,52 +573,12 @@ namespace HDGraph
 
         private void addMeToTheExplorerConToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (HDGTools.AddMeToExplorerContextMenu())
-                    MessageBox.Show(resManager.GetString("HdgCorrectlyIntegratedInExplorer"),
-                                resManager.GetString("OperationSuccessfullTitle"),
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
-                else
-                    MessageBox.Show(resManager.GetString("HdgAlreadyIntegratedInExplorer"),
-                                resManager.GetString("OperationFailedTitle"),
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Asterisk);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(String.Format(resManager.GetString("UnableToIntegrateInExplorer"), ex.Message),
-                                resManager.GetString("OperationFailedTitle"),
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                Trace.TraceError(HDGTools.PrintError(ex));
-            }
+            HDGTools.AddMeToExplorerContextMenu(false);
         }
 
         private void removeMeFromTheExplorerContextMenuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (HDGTools.RemoveMeFromExplorerContextMenu())
-                    MessageBox.Show(resManager.GetString("HdgCorrectlyDesIntegratedInExplorer"),
-                                resManager.GetString("OperationSuccessfullTitle"),
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Information);
-                else
-                    MessageBox.Show(resManager.GetString("HdgAlreadyDesIntegratedInExplorer"),
-                                resManager.GetString("OperationFailedTitle"),
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Asterisk);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(String.Format(resManager.GetString("UnableToDesIntegrateInExplorer"), ex.Message),
-                                resManager.GetString("OperationFailedTitle"),
-                                MessageBoxButtons.OK,
-                                MessageBoxIcon.Error);
-                Trace.TraceError(HDGTools.PrintError(ex));
-            }
+            HDGTools.RemoveMeFromExplorerContextMenu(false);
         }
 
         #endregion
@@ -828,6 +789,14 @@ namespace HDGraph
             PrintStatus(Resources.ApplicationMessages.GraphRefreshed);
         }
 
+        private void trackBarZoom_Scroll(object sender, EventArgs e)
+        {
+            numUpDownNbNivxAffich.Value = trackBarZoom.Value;
+        }
 
+        private void toolsMenu_DropDownOpening(object sender, EventArgs e)
+        {
+
+        }
     }
 }

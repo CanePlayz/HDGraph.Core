@@ -39,6 +39,7 @@ namespace HDGraph
             this.linkLabelHelpGraph = new System.Windows.Forms.LinkLabel();
             this.comboBoxPath = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.trackBarZoom = new System.Windows.Forms.TrackBar();
             this.comboBoxColorStyle = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.checkBoxAutoRecalc = new System.Windows.Forms.CheckBox();
@@ -127,6 +128,7 @@ namespace HDGraph
             this.statusStrip.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarZoom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivxAffich)).BeginInit();
             this.groupBoxHoverInfo.SuspendLayout();
@@ -228,6 +230,7 @@ namespace HDGraph
             // groupBox1
             // 
             resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.trackBarZoom);
             this.groupBox1.Controls.Add(this.comboBoxColorStyle);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.checkBoxAutoRecalc);
@@ -240,6 +243,16 @@ namespace HDGraph
             this.helpProvider1.SetShowHelp(this.groupBox1, ((bool)(resources.GetObject("groupBox1.ShowHelp"))));
             this.groupBox1.TabStop = false;
             // 
+            // trackBarZoom
+            // 
+            resources.ApplyResources(this.trackBarZoom, "trackBarZoom");
+            this.trackBarZoom.Maximum = 20;
+            this.trackBarZoom.Minimum = 1;
+            this.trackBarZoom.Name = "trackBarZoom";
+            this.helpProvider1.SetShowHelp(this.trackBarZoom, ((bool)(resources.GetObject("trackBarZoom.ShowHelp"))));
+            this.trackBarZoom.Value = 1;
+            this.trackBarZoom.Scroll += new System.EventHandler(this.trackBarZoom_Scroll);
+            // 
             // comboBoxColorStyle
             // 
             this.comboBoxColorStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -248,7 +261,8 @@ namespace HDGraph
             resources.GetString("comboBoxColorStyle.Items"),
             resources.GetString("comboBoxColorStyle.Items1"),
             resources.GetString("comboBoxColorStyle.Items2"),
-            resources.GetString("comboBoxColorStyle.Items3")});
+            resources.GetString("comboBoxColorStyle.Items3"),
+            resources.GetString("comboBoxColorStyle.Items4")});
             this.comboBoxColorStyle.Name = "comboBoxColorStyle";
             this.helpProvider1.SetShowHelp(this.comboBoxColorStyle, ((bool)(resources.GetObject("comboBoxColorStyle.ShowHelp"))));
             this.comboBoxColorStyle.Tag = new decimal(new int[] {
@@ -590,6 +604,7 @@ namespace HDGraph
             this.openLogFileToolStripMenuItem});
             this.toolsMenu.Name = "toolsMenu";
             resources.ApplyResources(this.toolsMenu, "toolsMenu");
+            this.toolsMenu.DropDownOpening += new System.EventHandler(this.toolsMenu_DropDownOpening);
             // 
             // optionsToolStripMenuItem
             // 
@@ -863,6 +878,7 @@ namespace HDGraph
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarZoom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivx)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivxAffich)).EndInit();
             this.groupBoxHoverInfo.ResumeLayout(false);
@@ -936,7 +952,6 @@ namespace HDGraph
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numUpDownNbNivx;
-        private System.Windows.Forms.ComboBox comboBoxPath;
         private System.Windows.Forms.Button buttonScan;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -967,6 +982,8 @@ namespace HDGraph
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBoxColorStyle;
+        private System.Windows.Forms.TrackBar trackBarZoom;
+        internal System.Windows.Forms.ComboBox comboBoxPath;
     }
 }
 

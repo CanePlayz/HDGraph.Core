@@ -13,6 +13,9 @@
     <StartupObject>HDGraph.Program</StartupObject>
     <TargetZone>LocalIntranet</TargetZone>
     <GenerateManifests>false</GenerateManifests>
+    <SignManifests>false</SignManifests>
+    <SignAssembly>false</SignAssembly>
+    <ManifestCertificateThumbprint>03271A981ABE121AE1E38DE6F13B76BD5C5B8BDC</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -207,6 +210,7 @@
     <Compile Include="TreeGraph.Designer.cs">
       <DependentUpon>TreeGraph.cs</DependentUpon>
     </Compile>
+    <Compile Include="VistaTools.cs" />
     <Compile Include="WaitForm.cs">
       <SubType>Form</SubType>
     </Compile>
