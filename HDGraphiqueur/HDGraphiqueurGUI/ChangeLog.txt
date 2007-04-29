@@ -9,8 +9,10 @@ Version 1.2.0
 Added:
 	- Multiple color styles (random or linear colors)
 	- Cursor appearance change on hovered folders
+	- Command line support (see help for details)
 Improved: 
-	- 
+	- Graph export available in PNG format.
+	- Full support of Windows Vista (UAC support for explorer integration)
 Fixed:
 	- 
 

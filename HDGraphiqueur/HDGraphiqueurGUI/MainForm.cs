@@ -278,8 +278,8 @@ namespace HDGraph
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            saveFileDialog.Filter = "Bitmap" +
-                                    " (*.bmp)|*.bmp|" +
+            saveFileDialog.Filter = "Portable Network Graphics (PNG)" +
+                                    " (*.png)|*.png|" +
                                     resManager.GetString("AllFiles") +
                                     "(*.*)|*.*";
             if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
@@ -710,8 +710,22 @@ namespace HDGraph
         {
             if (launchScanOnStartup)
             {
-                LaunchScan();
-                launchScanOnStartup = false;
+                try
+                {
+                    LaunchScan();
+                    launchScanOnStartup = false;
+                    if (outputFilePath != null
+                        && outputFilePath.Length > 0)
+                    {
+
+                        treeGraph1.ImageBuffer.Save(outputFilePath);
+                    }
+                    Application.Exit();
+                }
+                catch (Exception ex)
+                {
+                    throw new FatalHdgraphException(ex.Message, ex);
+                }
             }
         }
 

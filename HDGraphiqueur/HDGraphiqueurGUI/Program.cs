@@ -29,6 +29,7 @@ namespace HDGraph
             }
             catch (Exception ex)
             {
+                Console.Error.WriteLine(ex.ToString());
                 Trace.TraceError(HDGTools.PrintError(ex));
                 System.Resources.ResourceManager res = new System.Resources.ResourceManager(typeof(Program).Assembly.GetName().Name + ".Resources.ApplicationMessages", typeof(Program).Assembly);
                 MessageBox.Show(res.GetString("CriticalError"),
@@ -37,7 +38,10 @@ namespace HDGraph
             }
         }
 
-
+        /// <summary>
+        /// Analyse and process the command lines arguments.
+        /// </summary>
+        /// <param name="form"></param>
         private static void ProcessCommandLineArgs(MainForm form)
         {
             string[] args = Environment.GetCommandLineArgs();

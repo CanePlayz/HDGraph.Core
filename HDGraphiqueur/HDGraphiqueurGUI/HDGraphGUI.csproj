@@ -52,6 +52,7 @@
     </Compile>
     <Compile Include="DirectoryNode.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="FatalHdgraphException.cs" />
     <Compile Include="HDGTools.cs" />
     <Compile Include="LanguageForm.cs">
       <SubType>Form</SubType>

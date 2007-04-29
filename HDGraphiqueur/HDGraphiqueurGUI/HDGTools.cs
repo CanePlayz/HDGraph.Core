@@ -218,11 +218,12 @@ namespace HDGraph
 
         public static string PrintError(Exception ex)
         {
-            string errMsg = ex.Message + " - Source: " + ex.Source + " - Stack: " + ex.StackTrace;
-            if (ex.InnerException != null)
-                return errMsg + " ==> " + PrintError(ex.InnerException);
-            else
-                return errMsg;
+            //string errMsg = ex.Message + " - Source: " + ex.Source + " - Stack: " + ex.StackTrace;
+            //if (ex.InnerException != null)
+            //    return errMsg + " ==> " + PrintError(ex.InnerException);
+            //else
+            //    return errMsg;
+            return ex.ToString();
         }
 
         public static void ApplyCulture(Form form, CultureInfo culture)
