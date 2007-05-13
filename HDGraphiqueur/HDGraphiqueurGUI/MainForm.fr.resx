@@ -118,8 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 24</value>
+  <data name="toolStripShortcuts.Location" type="System.Drawing.Point, System.Drawing">
+    <value>147, 24</value>
+  </data>
+  <data name="toolStripShortcuts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 25</value>
   </data>
   <data name="fileMenu.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 20</value>
@@ -151,6 +154,9 @@
   <data name="helpMenu.Text" xml:space="preserve">
     <value>&amp;Aide</value>
   </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>604, 458</value>
+  </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 13</value>
   </data>
@@ -176,6 +182,15 @@ Comment lire le graphe ?</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Options de dessin</value>
+  </data>
+  <data name="checkBoxPrintSizes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 17</value>
+  </data>
+  <data name="checkBoxPrintSizes.Text" xml:space="preserve">
+    <value>Afficher les tailles</value>
+  </data>
+  <data name="numUpDownNbNivxAffich.ToolTip" xml:space="preserve">
+    <value>Fait office de zoom. Effet immédiat.</value>
   </data>
   <data name="comboBoxColorStyle.Items" xml:space="preserve">
     <value>Couleurs aléatoires (neutres)</value>
@@ -204,12 +219,6 @@ Comment lire le graphe ?</value>
   <data name="checkBoxAutoRecalc.Text" xml:space="preserve">
     <value>Compléter automatiquemt le graphe sur déplacemt</value>
   </data>
-  <data name="checkBoxPrintSizes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 17</value>
-  </data>
-  <data name="checkBoxPrintSizes.Text" xml:space="preserve">
-    <value>Afficher les tailles</value>
-  </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 16</value>
   </data>
@@ -218,9 +227,6 @@ Comment lire le graphe ?</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Niveaux de rép. à mémoriser : (réduire pour améliorer les perfs)</value>
-  </data>
-  <data name="numUpDownNbNivxAffich.ToolTip" xml:space="preserve">
-    <value>Fait office de zoom. Effet immédiat.</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>139, 13</value>
@@ -255,7 +261,7 @@ Comment lire le graphe ?</value>
 </value>
   </data>
   <data name="buttonScan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>617, 49</value>
+    <value>616, 47</value>
   </data>
   <data name="buttonScan.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 23</value>
@@ -557,6 +563,18 @@ Comment lire le graphe ?</value>
   <data name="statusBarToolStripMenuItem.Text" xml:space="preserve">
     <value>Barre d'ét&amp;at</value>
   </data>
+  <data name="shortcutsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 22</value>
+  </data>
+  <data name="shortcutsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Barre de &amp;raccourcis</value>
+  </data>
+  <data name="filesystemTreeviewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 22</value>
+  </data>
+  <data name="filesystemTreeviewToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Explorateur de disque</value>
+  </data>
   <data name="optionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>295, 22</value>
   </data>
@@ -692,6 +710,27 @@ Comment lire le graphe ?</value>
   </data>
   <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;A propos...</value>
+  </data>
+  <data name="toolStripLabelShortcuts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 22</value>
+  </data>
+  <data name="toolStripLabelShortcuts.Text" xml:space="preserve">
+    <value>Raccourcis d'analyse :</value>
+  </data>
+  <data name="toolStripSplitButtonModel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
+        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
+        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
+        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
+        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
+        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
+        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
+        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
+        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
+        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
+</value>
   </data>
   <data name="newToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

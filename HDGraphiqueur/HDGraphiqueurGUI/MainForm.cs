@@ -11,6 +11,7 @@ using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
 using System.Diagnostics;
+using WilsonProgramming;
 
 namespace HDGraph
 {
@@ -111,6 +112,50 @@ namespace HDGraph
             catch (Exception ex)
             {
                 Trace.TraceError(HDGTools.PrintError(ex));
+            }
+            PopulateAnalyseShortcuts();
+        }
+
+        private void PopulateAnalyseShortcuts()
+        {
+            toolStripSplitButtonModel.Visible = false;
+            ShellAPI.SHFILEINFO shInfo = new ShellAPI.SHFILEINFO();
+            ShellAPI.SHGFI dwAttribs =
+                ShellAPI.SHGFI.SHGFI_ICON |
+                ShellAPI.SHGFI.SHGFI_SMALLICON |
+                ShellAPI.SHGFI.SHGFI_SYSICONINDEX |
+                ShellAPI.SHGFI.SHGFI_DISPLAYNAME;
+
+            Dictionary<int, Icon> iconList = new Dictionary<int, Icon>();
+            foreach (string drive in System.IO.Directory.GetLogicalDrives())
+            {
+                ToolStripButton button = new ToolStripButton(drive);
+                IntPtr m_pHandle = ShellAPI.SHGetFileInfo(drive, ShellAPI.FILE_ATTRIBUTE_NORMAL, out shInfo, (uint)System.Runtime.InteropServices.Marshal.SizeOf(shInfo), dwAttribs);
+
+                if (!m_pHandle.Equals(IntPtr.Zero))
+                {
+                    if (!iconList.ContainsKey(shInfo.iIcon))
+                    {
+                        iconList.Add(shInfo.iIcon, Icon.FromHandle(shInfo.hIcon).Clone() as Icon);
+                        User32API.DestroyIcon(shInfo.hIcon);
+                    }
+
+                    button.Text = shInfo.szDisplayName;
+                    button.Image = iconList[shInfo.iIcon].ToBitmap();
+                    button.Tag = drive;
+                    button.Click += new EventHandler(shortcutButton_Click);
+                    toolStripShortcuts.Items.Add(button);
+                }
+            }
+        }
+
+        void shortcutButton_Click(object sender, EventArgs e)
+        {
+            ToolStripButton btn = sender as ToolStripButton;
+            if (btn != null)
+            {
+                comboBoxPath.Text = btn.Tag as string;
+                LaunchScan();
             }
         }
 
@@ -342,7 +387,7 @@ namespace HDGraph
 
         private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            toolStrip.Visible = toolBarToolStripMenuItem.Checked;
+            toolBarToolStrip.Visible = toolBarToolStripMenuItem.Checked;
         }
 
         private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -522,11 +567,7 @@ namespace HDGraph
         /// <param name="e"></param>
         private void buttonScan_Click(object sender, EventArgs e)
         {
-            buttonScan.Enabled = false;
-            checkBoxAutoRecalc.Checked = HDGraph.Properties.Settings.Default.OptionAutoCompleteGraph;
-            SavePathHistory();
             LaunchScan();
-            buttonScan.Enabled = true;
         }
 
         #region Gestion de l'historique chemins entrés manuellement
@@ -625,9 +666,11 @@ namespace HDGraph
         /// </summary>
         private void LaunchScan()
         {
+            buttonScan.Enabled = false;
+            checkBoxAutoRecalc.Checked = HDGraph.Properties.Settings.Default.OptionAutoCompleteGraph;
+            SavePathHistory();
 
             int nbNiveaux = (int)numUpDownNbNivx.Value;
-
             WaitForm form = new WaitForm();
 
             //Stopwatch watch = new Stopwatch();
@@ -649,6 +692,8 @@ namespace HDGraph
             //PrintStatus("Terminé !");
             treeGraph1.UpdateHoverNode = new TreeGraph.NodeNotificationDelegate(PrintNodeHoverCursor);
             treeGraph1.NotifyNewRootNode = new TreeGraph.NodeNotificationDelegate(UpdateCurrentNodeRoot);
+
+            buttonScan.Enabled = true;
         }
 
         /// <summary>
@@ -856,6 +901,26 @@ namespace HDGraph
             HDGraph.Properties.Settings.Default.OptionMainWindowSize = this.ClientSize;
             HDGraph.Properties.Settings.Default.OptionMainWindowOpenState = this.WindowState;
             HDGraph.Properties.Settings.Default.Save();
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void filesystemTreeviewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            toolStripTreeView.Visible = filesystemTreeviewToolStripMenuItem.Checked;
+        }
+
+        private void shortcutsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            toolStripShortcuts.Visible = shortcutsToolStripMenuItem.Checked;
         }
     }
 }

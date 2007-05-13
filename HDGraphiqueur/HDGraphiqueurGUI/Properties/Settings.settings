@@ -36,7 +36,7 @@
       <Value Profile="(Default)">762, 592</Value>
     </Setting>
     <Setting Name="OptionToolbarLocation" Type="System.Drawing.Point" Scope="User">
-      <Value Profile="(Default)">519, 24</Value>
+      <Value Profile="(Default)">346, 24</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -185,6 +185,10 @@
       <SubType>Designer</SubType>
       <DependentUpon>WaitForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WilsonProgramming\ExplorerTreeView.resx">
+      <DependentUpon>ExplorerTreeView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -221,6 +225,16 @@
     <Compile Include="WaitForm.Designer.cs">
       <DependentUpon>WaitForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="WilsonProgramming\ExplorerTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WilsonProgramming\ExplorerTreeViewWnd.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WilsonProgramming\ShellAPI.cs" />
+    <Compile Include="WilsonProgramming\ShellItem.cs" />
+    <Compile Include="WilsonProgramming\SystemImageList.cs" />
+    <Compile Include="WilsonProgramming\User32API.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ChangeLog.txt" />
