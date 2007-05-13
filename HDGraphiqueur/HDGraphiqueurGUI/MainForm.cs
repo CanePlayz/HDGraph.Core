@@ -55,16 +55,28 @@ namespace HDGraph
         int currentNodeIndex = 0;
 
         /// <summary>
+        /// Fichier dans lequel stocker l'image du graph lorsque le scan est fini (param de ligne de commande).
+        /// Est null si ce chemin ne figure pas dans la ligne de commande.
+        /// </summary>
+        private string outputImgFilePath = null;
+
+        public string OutputImgFilePath
+        {
+            get { return outputImgFilePath; }
+            set { outputImgFilePath = value; }
+        }
+        /// <summary>
         /// Fichier dans lequel stocker le graph lorsque le scan est fini (param de ligne de commande).
         /// Est null si ce chemin ne figure pas dans la ligne de commande.
         /// </summary>
-        private string outputFilePath = null;
+        private string outputGraphFilePath;
 
-        public string OutputFilePath
+        public string OutputGraphFilePath
         {
-            get { return outputFilePath; }
-            set { outputFilePath = value; }
+            get { return outputGraphFilePath; }
+            set { outputGraphFilePath = value; }
         }
+
 
         #endregion
 
@@ -714,13 +726,23 @@ namespace HDGraph
                 {
                     LaunchScan();
                     launchScanOnStartup = false;
-                    if (outputFilePath != null
-                        && outputFilePath.Length > 0)
+                    bool exitApp = false;
+                    if (outputImgFilePath != null
+                        && outputImgFilePath.Length > 0)
                     {
 
-                        treeGraph1.ImageBuffer.Save(outputFilePath);
+                        treeGraph1.ImageBuffer.Save(outputImgFilePath);
+                        exitApp = true;
                     }
-                    Application.Exit();
+                    if (outputGraphFilePath != null
+                        && outputGraphFilePath.Length > 0)
+                    {
+
+                        SaveGraphToFile(outputGraphFilePath);
+                        exitApp = true;
+                    }
+                    if (exitApp)
+                        Application.Exit();
                 }
                 catch (Exception ex)
                 {

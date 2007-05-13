@@ -293,17 +293,22 @@ namespace HDGraph
             throw new Exception("The method or operation is not implemented.");
         }
 
+        private string[] compatibleVersionsList = new string[] {
+                        "0.9.3.0",
+                        "1.0.1.0",
+                        "1.1.0.0"
+                    };
+
+
         public void ReadXml(System.Xml.XmlReader reader)
         {
-            //string ns = "http://HDGraph.tools.laugel.fr/MoteurGraphiqueur.xsd";
-
             // Début élément MoteurGraphiqueur
             reader.ReadStartElement();
 
             string version = reader.ReadElementContentAsString();
 
             if (version != AboutBox.AssemblyVersion
-                && version != "0.9.3.0") // backward compatible 0.9.3.0
+                && Array.IndexOf<string>(compatibleVersionsList, version) == -1)
                 throw new IncompatibleVersionException();
 
             analyzeDate = reader.ReadElementContentAsDateTime();

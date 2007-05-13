@@ -60,7 +60,7 @@ namespace HDGraph
                     HDGTools.RemoveMeFromExplorerContextMenu(true);
                     launchForm = false;
                 }
-                else if (path.StartsWith(OUTPUT_CMD_LINE_OPTION_PREFIX))
+                else if (path.StartsWith("/"))
                 {
                     path = "";
                 }
@@ -83,16 +83,34 @@ namespace HDGraph
             }
             if (args.Length > 2)
             {
-                string commandLineOption = args[2];
-                if (commandLineOption.StartsWith(OUTPUT_CMD_LINE_OPTION_PREFIX))
-                {
-                    commandLineOption = commandLineOption.Substring(OUTPUT_CMD_LINE_OPTION_PREFIX.Length);
-                    form.OutputFilePath = RemoveDoubleQuoteIfNecessary(commandLineOption);
-                }
+                string commandLineOption1 = args[2];
+                ProcessArg(form, commandLineOption1);
+            }
+            if (args.Length > 3)
+            {
+                string commandLineOption2 = args[3];
+                ProcessArg(form, commandLineOption2);
             }
         }
 
-        private const string OUTPUT_CMD_LINE_OPTION_PREFIX = "/output:";
+        private static void ProcessArg(MainForm form, string arg)
+        {
+            if (arg.StartsWith(OUTPUT_IMG_CMD_LINE_OPTION_PREFIX))
+            {
+                arg = arg.Substring(OUTPUT_IMG_CMD_LINE_OPTION_PREFIX.Length);
+                form.OutputImgFilePath = RemoveDoubleQuoteIfNecessary(arg);
+            }
+            if (arg.StartsWith(OUTPUT_GRAPH_CMD_LINE_OPTION_PREFIX))
+            {
+                arg = arg.Substring(OUTPUT_GRAPH_CMD_LINE_OPTION_PREFIX.Length);
+                form.OutputGraphFilePath = RemoveDoubleQuoteIfNecessary(arg);
+            }
+        }
+
+
+
+        private const string OUTPUT_IMG_CMD_LINE_OPTION_PREFIX = "/imgOutput:";
+        private const string OUTPUT_GRAPH_CMD_LINE_OPTION_PREFIX = "/graphOutput:";
 
         private static string RemoveDoubleQuoteIfNecessary(string path)
         {
