@@ -91,6 +91,8 @@ namespace HDGraph
             resManager = new System.Resources.ResourceManager(this.GetType().Assembly.GetName().Name + ".Resources.ApplicationMessages", this.GetType().Assembly);
             HDGTools.resManager = resManager;
             moteur = new MoteurGraphiqueur();
+            moteur.ShowDiskFreeSpace = true; // TODO
+            moteur.ShowUnknownFiles = true; // TODO
             if (!changeLangIsSuccess)
                 MessageBox.Show(resManager.GetString("ErrorInConfigLanguage"),
                                 resManager.GetString("ErrorInConfigLanguageTitle"),
@@ -652,6 +654,7 @@ namespace HDGraph
         {
             PrintStatus(message, true);
         }
+
         public void PrintStatus(string message, bool doEvents)
         {
             if (message != null && message.Length > 0)
@@ -709,7 +712,18 @@ namespace HDGraph
             }
             else
             {
-                PrintStatus(String.Format(resManager.GetString("CursorHoverDirectory"), node.Path));
+                if (node.IsUnknownPart)
+                {
+                    PrintStatus(resManager.GetString("CursorHoverUnknownPart"));
+                }
+                else if (node.IsFreeSpace)
+                {
+                    PrintStatus(resManager.GetString("CursorHoverFreeSpace"));
+                }
+                else
+                {
+                    PrintStatus(String.Format(resManager.GetString("CursorHoverDirectory"), node.Path));
+                }
                 //MessageBox.Show("Cursor hover directory " + node.Path);
                 labelDirName.Text = node.Name;
                 labelDirTotalSize.Text = treeGraph1.FormatSize(node.TotalSize);

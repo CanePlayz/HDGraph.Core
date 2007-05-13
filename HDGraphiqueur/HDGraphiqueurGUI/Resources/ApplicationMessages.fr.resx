@@ -141,8 +141,14 @@
   <data name="CursorHoverDirectory" xml:space="preserve">
     <value>Le curseur se trouve sur {0}</value>
   </data>
+  <data name="CursorHoverFreeSpace" xml:space="preserve">
+    <value>Le curseur pointe sur la zone représentant l'espace libre du disque.</value>
+  </data>
   <data name="CursorHoverNoDirectory" xml:space="preserve">
     <value>Le curseur ne survole aucun répertoire.</value>
+  </data>
+  <data name="CursorHoverUnknownPart" xml:space="preserve">
+    <value>Le curseur pointe sur une zone représentant les fichiers non calculables.</value>
   </data>
   <data name="DeletionCompleteMsg" xml:space="preserve">
     <value>Répertoire supprimé avec succès !</value>
@@ -170,6 +176,9 @@
   </data>
   <data name="FolderIsEmpty" xml:space="preserve">
     <value>Le dossier séléctionné est vide.</value>
+  </data>
+  <data name="FreeSpace" xml:space="preserve">
+    <value>Espace libre</value>
   </data>
   <data name="GoingToDeleteFolderMsg" xml:space="preserve">
     <value>Cette action va définitivement supprimer le répertoire "{0}" ainsi que la totalité de son contenu. Cliquez sur Ok pour confirmer.</value>
@@ -265,6 +274,9 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  021
   </data>
   <data name="UnexpectedErrorDuringAnalysis" xml:space="preserve">
     <value>Une erreur inconnue est survenue durant le scan. L'erreur a été enregistrée dans le fichier de log. Merci d'envoyer le fichier de log à l'équipe HDGraph afin de corriger cette erreur (voir http://hdgraph.sourceforge.net).</value>
+  </data>
+  <data name="UnknownFiles" xml:space="preserve">
+    <value>Fichiers inconnus</value>
   </data>
   <data name="UserCanceledAnalysis" xml:space="preserve">
     <value>L'analyse du disque a été stoppée par l'utilisateur. Veuillez lancer une nouvelle analyse.</value>

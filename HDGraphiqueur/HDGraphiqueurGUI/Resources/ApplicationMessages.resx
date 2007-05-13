@@ -139,10 +139,16 @@
     <value>A critical error occured. Error is logged, and application will stop. Please send the application log to the HDGraph team (contact: http://hdgraph.sourceforge.net). Thank you.</value>
   </data>
   <data name="CursorHoverDirectory" xml:space="preserve">
-    <value>Cursor hover directory {0}</value>
+    <value>Pointed directory : {0}</value>
+  </data>
+  <data name="CursorHoverFreeSpace" xml:space="preserve">
+    <value>Your cursor is over the part representing the disk free space.</value>
   </data>
   <data name="CursorHoverNoDirectory" xml:space="preserve">
-    <value>Cursor hover no directory.</value>
+    <value>No directory pointed.</value>
+  </data>
+  <data name="CursorHoverUnknownPart" xml:space="preserve">
+    <value>Your cursor is over the part representing the non-calculable files.</value>
   </data>
   <data name="DeletionCompleteMsg" xml:space="preserve">
     <value>Folder successfully deleted !</value>
@@ -170,6 +176,9 @@
   </data>
   <data name="FolderIsEmpty" xml:space="preserve">
     <value>Selected folder is empty.</value>
+  </data>
+  <data name="FreeSpace" xml:space="preserve">
+    <value>Free space</value>
   </data>
   <data name="GoingToDeleteFolderMsg" xml:space="preserve">
     <value>This action will permanently delete the folder "{0}" and all its content. Are you sure ?</value>
@@ -272,6 +281,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
   </data>
   <data name="UnexpectedErrorDuringAnalysis" xml:space="preserve">
     <value>An unexpected error occured during scan. It has been logged. Please send the application log to the HDGraph team (contact: http://hdgraph.sourceforge.net). Thank you.</value>
+  </data>
+  <data name="UnknownFiles" xml:space="preserve">
+    <value>Unknown files</value>
   </data>
   <data name="UserCanceledAnalysis" xml:space="preserve">
     <value>Directory scan has been aborted by user. Please launch a new scan.</value>

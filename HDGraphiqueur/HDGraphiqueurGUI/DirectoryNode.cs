@@ -91,7 +91,28 @@ namespace HDGraph
             set { existsUncalcSubdir = value; }
         }
 
+        private bool isFreeSpace;
+        /// <summary>
+        /// Booléen indiquant si le répertoire courant est en fait un répertoire fictif représentant 
+        /// l'espace libre.
+        /// </summary>
+        public bool IsFreeSpace
+        {
+            get { return isFreeSpace; }
+            set { isFreeSpace = value; }
+        }
 
+        private bool isUnknownPart;
+        /// <summary>
+        /// Booléen indiquant si le répertoire courant est en fait un répertoire fictif représentant 
+        /// les fichiers et dossiers qui n'ont pas été comptabilisés suite à des erreurs d'accès.
+        /// </summary>
+        public bool IsUnknownPart
+        {
+            get { return isUnknownPart; }
+            set { isUnknownPart = value; }
+        }
+        
         #endregion
 
         #region Constructeur(s)
