@@ -92,7 +92,6 @@ namespace HDGraph
             HDGTools.resManager = resManager;
             moteur = new MoteurGraphiqueur();
             moteur.ShowDiskFreeSpace = true; // TODO
-            moteur.ShowUnknownFiles = true; // TODO
             if (!changeLangIsSuccess)
                 MessageBox.Show(resManager.GetString("ErrorInConfigLanguage"),
                                 resManager.GetString("ErrorInConfigLanguageTitle"),

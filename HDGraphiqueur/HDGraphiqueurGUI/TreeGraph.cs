@@ -397,7 +397,7 @@ namespace HDGraph
                                             System.Drawing.Drawing2D.HatchStyle.LargeConfetti,
                                             Color.Gray,
                                             Color.White),
-                                    Rectangle.Round(rec), startAngle, nodeAngle); //TODO
+                                    Rectangle.Round(rec), startAngle, nodeAngle);
             }
         }
 
@@ -457,12 +457,38 @@ namespace HDGraph
                 if (!printDirNames)
                 {
                     // on dessine le disque uniquement
-                    frontGraph.FillPie(
-                        GetBrushForAngles(rec, startAngle, nodeAngle),
-                        Rectangle.Round(rec),
-                        startAngle,
-                        nodeAngle);
-                    frontGraph.DrawPie(new Pen(Color.Black), rec, startAngle, nodeAngle);
+                    if (node.IsFreeSpace)
+                    {
+                        // free space
+                        frontGraph.FillPie(new System.Drawing.Drawing2D.HatchBrush(
+                                                    System.Drawing.Drawing2D.HatchStyle.Wave,
+                                                    Color.LightGray,
+                                                    Color.White),
+                                        Rectangle.Round(rec),
+                                        startAngle,
+                                        nodeAngle);
+                    }
+                    else if (node.IsUnknownPart)
+                    {
+                        // non-calculable files
+                        frontGraph.FillPie(new System.Drawing.Drawing2D.HatchBrush(
+                                                    System.Drawing.Drawing2D.HatchStyle.Trellis,
+                                                    Color.Red,
+                                                    Color.White),
+                                        Rectangle.Round(rec),
+                                        startAngle, 
+                                        nodeAngle);
+                    }
+                    else
+                    {
+                        // standard zone
+                        frontGraph.FillPie(
+                            GetBrushForAngles(rec, startAngle, nodeAngle),
+                            Rectangle.Round(rec),
+                            startAngle,
+                            nodeAngle);
+                        frontGraph.DrawPie(new Pen(Color.Black), rec, startAngle, nodeAngle);
+                    }
                 }
                 else if (nodeAngle > 10)
                 {

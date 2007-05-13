@@ -94,15 +94,6 @@ namespace HDGraph
             set { showDiskFreeSpace = value; }
         }
 
-        private bool showUnknownFiles;
-
-        public bool ShowUnknownFiles
-        {
-            get { return showUnknownFiles; }
-            set { showUnknownFiles = value; }
-        }
-
-
         #endregion
 
         #region Contructeur(s)
@@ -138,35 +129,30 @@ namespace HDGraph
             if (path.IndexOf('\\') == path.LastIndexOf('\\'))
             {
                 // full drive scan, show disk free space if asked
-                if (showUnknownFiles || showDiskFreeSpace)
+
+                DriveInfo info = new DriveInfo(path);
+                // Unknown files
+                DirectoryNode dirNode = new DirectoryNode("");
+                dirNode.TotalSize = (info.TotalSize - info.TotalFreeSpace) - root.TotalSize + 500000000;
+                dirNode.FilesSize = dirNode.TotalSize;
+                dirNode.IsUnknownPart = true;
+                dirNode.ExistsUncalcSubDir = false;
+                dirNode.Name = HDGTools.resManager.GetString("UnknownFiles");
+                dirNode.Parent = root;
+                root.Children.Add(dirNode);
+                root.TotalSize += dirNode.TotalSize;
+
+                if (showDiskFreeSpace)
                 {
-                    DriveInfo info = new DriveInfo(path);
-                    if (showUnknownFiles)
-                    {
-                        DirectoryNode dirNode = new DirectoryNode("");
-                        if (showDiskFreeSpace)
-                            dirNode.TotalSize = (info.TotalSize - info.TotalFreeSpace) - root.TotalSize;
-                        else
-                            dirNode.TotalSize = info.TotalSize - root.TotalSize;
-                        dirNode.FilesSize = dirNode.TotalSize;
-                        dirNode.IsUnknownPart = true;
-                        dirNode.ExistsUncalcSubDir = false;
-                        dirNode.Name = HDGTools.resManager.GetString("UnknownFiles");
-                        dirNode.Parent = root;
-                        root.Children.Add(dirNode);
-                        root.TotalSize += dirNode.TotalSize;
-                    }
-                    if (showDiskFreeSpace)
-                    {
-                        DirectoryNode dirNode = new DirectoryNode("");
-                        dirNode.TotalSize = info.TotalFreeSpace;
-                        dirNode.IsFreeSpace = true;
-                        dirNode.ExistsUncalcSubDir = false;
-                        dirNode.Name = HDGTools.resManager.GetString("FreeSpace");
-                        dirNode.Parent = root;
-                        root.Children.Add(dirNode);
-                        root.TotalSize += dirNode.TotalSize;
-                    }
+                    // free disk space
+                    DirectoryNode dirNodeFS = new DirectoryNode("");
+                    dirNodeFS.TotalSize = info.TotalFreeSpace;
+                    dirNodeFS.IsFreeSpace = true;
+                    dirNodeFS.ExistsUncalcSubDir = false;
+                    dirNodeFS.Name = HDGTools.resManager.GetString("FreeSpace");
+                    dirNodeFS.Parent = root;
+                    root.Children.Add(dirNodeFS);
+                    root.TotalSize += dirNodeFS.TotalSize;
                 }
             }
 
