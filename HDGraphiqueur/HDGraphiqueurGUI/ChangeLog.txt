@@ -10,13 +10,14 @@ Added:
 	- Multiple color styles (random or linear colors)
 	- Cursor appearance change on hovered folders
 	- Command line support (see help for details) for scripting use.
+	- New toolbar containing analyse shortcuts with computer's drives
 Improved: 
 	- Graph export available in PNG format.
 	- Full support of Windows Vista (UAC support for explorer integration)
 	- Main window size is memorized on exit.
 	- Scan button is now the default action (equivalent to Enter key).
 Fixed:
-	- 
+	- some minor bugs
 
 Version 1.0.1
 ======================================================
