@@ -39,14 +39,14 @@ namespace HDGraph
             this.linkLabelHelpGraph = new System.Windows.Forms.LinkLabel();
             this.comboBoxPath = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBoxPrintSizes = new System.Windows.Forms.CheckBox();
+            this.numUpDownNbNivxAffich = new System.Windows.Forms.NumericUpDown();
             this.trackBarZoom = new System.Windows.Forms.TrackBar();
             this.comboBoxColorStyle = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.checkBoxAutoRecalc = new System.Windows.Forms.CheckBox();
-            this.checkBoxPrintSizes = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.numUpDownNbNivx = new System.Windows.Forms.NumericUpDown();
-            this.numUpDownNbNivxAffich = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBoxHoverInfo = new System.Windows.Forms.GroupBox();
             this.labelFiles = new System.Windows.Forms.Label();
@@ -54,7 +54,9 @@ namespace HDGraph
             this.labelDirTotalSize = new System.Windows.Forms.Label();
             this.labelDirName = new System.Windows.Forms.Label();
             this.buttonScan = new System.Windows.Forms.Button();
+            this.treeGraph1 = new HDGraph.TreeGraph();
             this.buttonBrowse = new System.Windows.Forms.Button();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -120,18 +122,21 @@ namespace HDGraph
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
-            this.treeGraph1 = new HDGraph.TreeGraph();
+            this.toolStripTreeView1 = new HDGraph.ToolStripTreeView();
+            this.toolStripTreeView2 = new HDGraph.ToolStripTreeView();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
+            this.toolStripContainer1.LeftToolStripPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivxAffich)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarZoom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivx)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivxAffich)).BeginInit();
             this.groupBoxHoverInfo.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -153,6 +158,7 @@ namespace HDGraph
             // 
             // toolStripContainer1.LeftToolStripPanel
             // 
+            this.toolStripContainer1.LeftToolStripPanel.Controls.Add(this.toolStrip1);
             this.helpProvider1.SetShowHelp(this.toolStripContainer1.LeftToolStripPanel, ((bool)(resources.GetObject("toolStripContainer1.LeftToolStripPanel.ShowHelp"))));
             this.toolStripContainer1.Name = "toolStripContainer1";
             // 
@@ -230,18 +236,44 @@ namespace HDGraph
             // groupBox1
             // 
             resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.checkBoxPrintSizes);
+            this.groupBox1.Controls.Add(this.numUpDownNbNivxAffich);
             this.groupBox1.Controls.Add(this.trackBarZoom);
             this.groupBox1.Controls.Add(this.comboBoxColorStyle);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.checkBoxAutoRecalc);
-            this.groupBox1.Controls.Add(this.checkBoxPrintSizes);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.numUpDownNbNivx);
-            this.groupBox1.Controls.Add(this.numUpDownNbNivxAffich);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Name = "groupBox1";
             this.helpProvider1.SetShowHelp(this.groupBox1, ((bool)(resources.GetObject("groupBox1.ShowHelp"))));
             this.groupBox1.TabStop = false;
+            // 
+            // checkBoxPrintSizes
+            // 
+            resources.ApplyResources(this.checkBoxPrintSizes, "checkBoxPrintSizes");
+            this.checkBoxPrintSizes.Checked = global::HDGraph.Properties.Settings.Default.OptionPrintSize;
+            this.checkBoxPrintSizes.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxPrintSizes.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::HDGraph.Properties.Settings.Default, "OptionPrintSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBoxPrintSizes.Name = "checkBoxPrintSizes";
+            this.helpProvider1.SetShowHelp(this.checkBoxPrintSizes, ((bool)(resources.GetObject("checkBoxPrintSizes.ShowHelp"))));
+            this.checkBoxPrintSizes.UseVisualStyleBackColor = true;
+            this.checkBoxPrintSizes.CheckedChanged += new System.EventHandler(this.checkBoxPrintSizes_CheckedChanged);
+            // 
+            // numUpDownNbNivxAffich
+            // 
+            this.numUpDownNbNivxAffich.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::HDGraph.Properties.Settings.Default, "OptionDrawMaxDepth", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            resources.ApplyResources(this.numUpDownNbNivxAffich, "numUpDownNbNivxAffich");
+            this.numUpDownNbNivxAffich.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numUpDownNbNivxAffich.Name = "numUpDownNbNivxAffich";
+            this.helpProvider1.SetShowHelp(this.numUpDownNbNivxAffich, ((bool)(resources.GetObject("numUpDownNbNivxAffich.ShowHelp"))));
+            this.ToolTip.SetToolTip(this.numUpDownNbNivxAffich, resources.GetString("numUpDownNbNivxAffich.ToolTip"));
+            this.numUpDownNbNivxAffich.Value = global::HDGraph.Properties.Settings.Default.OptionDrawMaxDepth;
+            this.numUpDownNbNivxAffich.ValueChanged += new System.EventHandler(this.numUpDownNbNivxAffich_ValueChanged);
             // 
             // trackBarZoom
             // 
@@ -288,17 +320,6 @@ namespace HDGraph
             this.checkBoxAutoRecalc.UseVisualStyleBackColor = true;
             this.checkBoxAutoRecalc.CheckedChanged += new System.EventHandler(this.checkBoxAutoRecalc_CheckedChanged);
             // 
-            // checkBoxPrintSizes
-            // 
-            resources.ApplyResources(this.checkBoxPrintSizes, "checkBoxPrintSizes");
-            this.checkBoxPrintSizes.Checked = global::HDGraph.Properties.Settings.Default.OptionPrintSize;
-            this.checkBoxPrintSizes.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxPrintSizes.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::HDGraph.Properties.Settings.Default, "OptionPrintSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.checkBoxPrintSizes.Name = "checkBoxPrintSizes";
-            this.helpProvider1.SetShowHelp(this.checkBoxPrintSizes, ((bool)(resources.GetObject("checkBoxPrintSizes.ShowHelp"))));
-            this.checkBoxPrintSizes.UseVisualStyleBackColor = true;
-            this.checkBoxPrintSizes.CheckedChanged += new System.EventHandler(this.checkBoxPrintSizes_CheckedChanged);
-            // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
@@ -307,7 +328,7 @@ namespace HDGraph
             // 
             // numUpDownNbNivx
             // 
-            this.numUpDownNbNivx.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::HDGraph.Properties.Settings.Default, "CalculMaxDepth", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.numUpDownNbNivx.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::HDGraph.Properties.Settings.Default, "OptionCalculMaxDepth", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             resources.ApplyResources(this.numUpDownNbNivx, "numUpDownNbNivx");
             this.numUpDownNbNivx.Minimum = new decimal(new int[] {
             1,
@@ -316,22 +337,7 @@ namespace HDGraph
             0});
             this.numUpDownNbNivx.Name = "numUpDownNbNivx";
             this.helpProvider1.SetShowHelp(this.numUpDownNbNivx, ((bool)(resources.GetObject("numUpDownNbNivx.ShowHelp"))));
-            this.numUpDownNbNivx.Value = global::HDGraph.Properties.Settings.Default.CalculMaxDepth;
-            // 
-            // numUpDownNbNivxAffich
-            // 
-            this.numUpDownNbNivxAffich.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::HDGraph.Properties.Settings.Default, "DrawMaxDepth", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            resources.ApplyResources(this.numUpDownNbNivxAffich, "numUpDownNbNivxAffich");
-            this.numUpDownNbNivxAffich.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numUpDownNbNivxAffich.Name = "numUpDownNbNivxAffich";
-            this.helpProvider1.SetShowHelp(this.numUpDownNbNivxAffich, ((bool)(resources.GetObject("numUpDownNbNivxAffich.ShowHelp"))));
-            this.ToolTip.SetToolTip(this.numUpDownNbNivxAffich, resources.GetString("numUpDownNbNivxAffich.ToolTip"));
-            this.numUpDownNbNivxAffich.Value = global::HDGraph.Properties.Settings.Default.DrawMaxDepth;
-            this.numUpDownNbNivxAffich.ValueChanged += new System.EventHandler(this.numUpDownNbNivxAffich_ValueChanged);
+            this.numUpDownNbNivx.Value = global::HDGraph.Properties.Settings.Default.OptionCalculMaxDepth;
             // 
             // label2
             // 
@@ -382,6 +388,23 @@ namespace HDGraph
             this.buttonScan.UseVisualStyleBackColor = true;
             this.buttonScan.Click += new System.EventHandler(this.buttonScan_Click);
             // 
+            // treeGraph1
+            // 
+            resources.ApplyResources(this.treeGraph1, "treeGraph1");
+            this.treeGraph1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.treeGraph1.ForceRefreshOnNextRepaint = false;
+            this.treeGraph1.MinimumSize = new System.Drawing.Size(50, 50);
+            this.treeGraph1.ModeCouleur = HDGraph.ModeAffichageCouleurs.RandomNeutral;
+            this.treeGraph1.Moteur = null;
+            this.treeGraph1.Name = "treeGraph1";
+            this.treeGraph1.NbNiveaux = 0;
+            this.treeGraph1.NotifyNewRootNode = null;
+            this.treeGraph1.OptionAlsoPaintFiles = false;
+            this.treeGraph1.OptionShowSize = true;
+            this.treeGraph1.Root = null;
+            this.helpProvider1.SetShowHelp(this.treeGraph1, ((bool)(resources.GetObject("treeGraph1.ShowHelp"))));
+            this.treeGraph1.UpdateHoverNode = null;
+            // 
             // buttonBrowse
             // 
             resources.ApplyResources(this.buttonBrowse, "buttonBrowse");
@@ -389,6 +412,14 @@ namespace HDGraph
             this.helpProvider1.SetShowHelp(this.buttonBrowse, ((bool)(resources.GetObject("buttonBrowse.ShowHelp"))));
             this.buttonBrowse.UseVisualStyleBackColor = true;
             this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
+            // 
+            // toolStrip1
+            // 
+            resources.ApplyResources(this.toolStrip1, "toolStrip1");
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripTreeView2});
+            this.toolStrip1.Name = "toolStrip1";
+            this.helpProvider1.SetShowHelp(this.toolStrip1, ((bool)(resources.GetObject("toolStrip1.ShowHelp"))));
             // 
             // menuStrip
             // 
@@ -748,6 +779,7 @@ namespace HDGraph
             // 
             // toolStrip
             // 
+            this.toolStrip.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::HDGraph.Properties.Settings.Default, "OptionToolbarLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             resources.ApplyResources(this.toolStrip, "toolStrip");
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripButton,
@@ -761,6 +793,7 @@ namespace HDGraph
             this.toolStripButtonNavForward,
             this.toolStripSeparator9,
             this.helpToolStripButton});
+            this.toolStrip.Location = global::HDGraph.Properties.Settings.Default.OptionToolbarLocation;
             this.toolStrip.Name = "toolStrip";
             this.helpProvider1.SetShowHelp(this.toolStrip, ((bool)(resources.GetObject("toolStrip.ShowHelp"))));
             // 
@@ -836,38 +869,39 @@ namespace HDGraph
             this.helpToolStripButton.Name = "helpToolStripButton";
             this.helpToolStripButton.Click += new System.EventHandler(this.contentsToolStripMenuItem_Click);
             // 
-            // treeGraph1
+            // toolStripTreeView1
             // 
-            resources.ApplyResources(this.treeGraph1, "treeGraph1");
-            this.treeGraph1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.treeGraph1.ForceRefreshOnNextRepaint = false;
-            this.treeGraph1.MinimumSize = new System.Drawing.Size(50, 50);
-            this.treeGraph1.ModeCouleur = HDGraph.ModeAffichageCouleurs.RandomNeutral;
-            this.treeGraph1.Moteur = null;
-            this.treeGraph1.Name = "treeGraph1";
-            this.treeGraph1.NbNiveaux = 0;
-            this.treeGraph1.NotifyNewRootNode = null;
-            this.treeGraph1.OptionAlsoPaintFiles = false;
-            this.treeGraph1.OptionShowSize = true;
-            this.treeGraph1.Root = null;
-            this.helpProvider1.SetShowHelp(this.treeGraph1, ((bool)(resources.GetObject("treeGraph1.ShowHelp"))));
-            this.treeGraph1.UpdateHoverNode = null;
+            this.toolStripTreeView1.Name = "toolStripTreeView1";
+            resources.ApplyResources(this.toolStripTreeView1, "toolStripTreeView1");
+            // 
+            // toolStripTreeView2
+            // 
+            this.toolStripTreeView2.Name = "toolStripTreeView2";
+            resources.ApplyResources(this.toolStripTreeView2, "toolStripTreeView2");
             // 
             // MainForm
             // 
+            this.AcceptButton = this.buttonScan;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = global::HDGraph.Properties.Settings.Default.OptionMainWindowSize;
             this.Controls.Add(this.toolStripContainer1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DataBindings.Add(new System.Windows.Forms.Binding("WindowState", global::HDGraph.Properties.Settings.Default, "OptionMainWindowOpenState", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.DataBindings.Add(new System.Windows.Forms.Binding("ClientSize", global::HDGraph.Properties.Settings.Default, "OptionMainWindowSize", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.helpProvider1.SetShowHelp(this, ((bool)(resources.GetObject("$this.ShowHelp"))));
+            this.WindowState = global::HDGraph.Properties.Settings.Default.OptionMainWindowOpenState;
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.Activated += new System.EventHandler(this.MainForm_Activated);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.BottomToolStripPanel.PerformLayout();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
+            this.toolStripContainer1.LeftToolStripPanel.ResumeLayout(false);
+            this.toolStripContainer1.LeftToolStripPanel.PerformLayout();
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
@@ -878,11 +912,13 @@ namespace HDGraph
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivxAffich)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarZoom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivx)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivxAffich)).EndInit();
             this.groupBoxHoverInfo.ResumeLayout(false);
             this.groupBoxHoverInfo.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.toolStrip.ResumeLayout(false);
@@ -984,6 +1020,9 @@ namespace HDGraph
         private System.Windows.Forms.ComboBox comboBoxColorStyle;
         private System.Windows.Forms.TrackBar trackBarZoom;
         internal System.Windows.Forms.ComboBox comboBoxPath;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private ToolStripTreeView toolStripTreeView1;
+        private ToolStripTreeView toolStripTreeView2;
     }
 }
 

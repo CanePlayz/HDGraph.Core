@@ -49,24 +49,24 @@ namespace HDGraph.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("5")]
-        public decimal CalculMaxDepth {
+        public decimal OptionCalculMaxDepth {
             get {
-                return ((decimal)(this["CalculMaxDepth"]));
+                return ((decimal)(this["OptionCalculMaxDepth"]));
             }
             set {
-                this["CalculMaxDepth"] = value;
+                this["OptionCalculMaxDepth"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("5")]
-        public decimal DrawMaxDepth {
+        public decimal OptionDrawMaxDepth {
             get {
-                return ((decimal)(this["DrawMaxDepth"]));
+                return ((decimal)(this["OptionDrawMaxDepth"]));
             }
             set {
-                this["DrawMaxDepth"] = value;
+                this["OptionDrawMaxDepth"] = value;
             }
         }
         
@@ -120,13 +120,49 @@ namespace HDGraph.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("RandomNeutral")]
         public string OptionColorStyle {
             get {
                 return ((string)(this["OptionColorStyle"]));
             }
             set {
                 this["OptionColorStyle"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
+        public global::System.Windows.Forms.FormWindowState OptionMainWindowOpenState {
+            get {
+                return ((global::System.Windows.Forms.FormWindowState)(this["OptionMainWindowOpenState"]));
+            }
+            set {
+                this["OptionMainWindowOpenState"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("762, 592")]
+        public global::System.Drawing.Size OptionMainWindowSize {
+            get {
+                return ((global::System.Drawing.Size)(this["OptionMainWindowSize"]));
+            }
+            set {
+                this["OptionMainWindowSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("519, 24")]
+        public global::System.Drawing.Point OptionToolbarLocation {
+            get {
+                return ((global::System.Drawing.Point)(this["OptionToolbarLocation"]));
+            }
+            set {
+                this["OptionToolbarLocation"] = value;
             }
         }
     }

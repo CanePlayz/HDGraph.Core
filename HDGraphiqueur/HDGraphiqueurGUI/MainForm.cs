@@ -568,10 +568,22 @@ namespace HDGraph
 
         private void numUpDownNbNivxAffich_ValueChanged(object sender, EventArgs e)
         {
-            int nbNiveaux = (int)numUpDownNbNivxAffich.Value;
-            treeGraph1.NbNiveaux = nbNiveaux;
-            treeGraph1.ForceRefresh();
-            PrintStatus(Resources.ApplicationMessages.GraphRefreshed);
+            try
+            {
+                int nbNiveaux = (int)numUpDownNbNivxAffich.Value;
+                if (nbNiveaux >= trackBarZoom.Minimum && nbNiveaux <= trackBarZoom.Maximum)
+                    trackBarZoom.Value = nbNiveaux;
+                treeGraph1.NbNiveaux = nbNiveaux;
+                treeGraph1.ForceRefresh();
+                PrintStatus(Resources.ApplicationMessages.GraphRefreshed, false);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,
+                    HDGTools.resManager.GetString("Error"),
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Trace.TraceError(HDGTools.PrintError(ex));
+            }
         }
 
         private void checkBoxPrintSizes_CheckedChanged(object sender, EventArgs e)
@@ -595,12 +607,16 @@ namespace HDGraph
 
         #endregion
 
-
         public void PrintStatus(string message)
+        {
+            PrintStatus(message, true);
+        }
+        public void PrintStatus(string message, bool doEvents)
         {
             if (message != null && message.Length > 0)
                 toolStripStatusLabel.Text = DateTime.Now.ToString() + " : " + message;
-            Application.DoEvents();
+            if (doEvents)
+                Application.DoEvents();
         }
 
 
@@ -833,6 +849,13 @@ namespace HDGraph
         private void toolsMenu_DropDownOpening(object sender, EventArgs e)
         {
 
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            HDGraph.Properties.Settings.Default.OptionMainWindowSize = this.ClientSize;
+            HDGraph.Properties.Settings.Default.OptionMainWindowOpenState = this.WindowState;
+            HDGraph.Properties.Settings.Default.Save();
         }
     }
 }

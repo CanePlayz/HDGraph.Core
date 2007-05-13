@@ -187,7 +187,7 @@
     <value>NoControl</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>607, 464</value>
+    <value>485, 464</value>
   </data>
   <data name="button1.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -256,7 +256,7 @@
     <value>NoControl</value>
   </data>
   <data name="linkLabelHelpGraph.Location" type="System.Drawing.Point, System.Drawing">
-    <value>604, 501</value>
+    <value>482, 501</value>
   </data>
   <data name="linkLabelHelpGraph.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -292,7 +292,7 @@
     <value>False</value>
   </data>
   <data name="comboBoxPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>545, 21</value>
+    <value>423, 21</value>
   </data>
   <data name="comboBoxPath.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -315,6 +315,69 @@
   <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
+  <data name="checkBoxPrintSizes.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxPrintSizes.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxPrintSizes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 142</value>
+  </data>
+  <data name="checkBoxPrintSizes.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxPrintSizes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 17</value>
+  </data>
+  <data name="checkBoxPrintSizes.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="checkBoxPrintSizes.Text" xml:space="preserve">
+    <value>Print sizes</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPrintSizes.Name" xml:space="preserve">
+    <value>checkBoxPrintSizes</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPrintSizes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPrintSizes.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPrintSizes.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numUpDownNbNivxAffich.Location" type="System.Drawing.Point, System.Drawing">
+    <value>101, 100</value>
+  </data>
+  <data name="numUpDownNbNivxAffich.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="numUpDownNbNivxAffich.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 20</value>
+  </data>
+  <data name="numUpDownNbNivxAffich.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>131, 17</value>
+  </metadata>
+  <data name="numUpDownNbNivxAffich.ToolTip" xml:space="preserve">
+    <value>Zoom feature.</value>
+  </data>
+  <data name="&gt;&gt;numUpDownNbNivxAffich.Name" xml:space="preserve">
+    <value>numUpDownNbNivxAffich</value>
+  </data>
+  <data name="&gt;&gt;numUpDownNbNivxAffich.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numUpDownNbNivxAffich.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;numUpDownNbNivxAffich.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="trackBarZoom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -325,7 +388,7 @@
     <value>True</value>
   </data>
   <data name="trackBarZoom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 45</value>
+    <value>103, 45</value>
   </data>
   <data name="trackBarZoom.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -340,7 +403,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;trackBarZoom.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="comboBoxColorStyle.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Popup</value>
@@ -382,7 +445,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;comboBoxColorStyle.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -415,7 +478,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="checkBoxAutoRecalc.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopLeft</value>
@@ -451,40 +514,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;checkBoxAutoRecalc.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="checkBoxPrintSizes.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxPrintSizes.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxPrintSizes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 142</value>
-  </data>
-  <data name="checkBoxPrintSizes.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxPrintSizes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 17</value>
-  </data>
-  <data name="checkBoxPrintSizes.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="checkBoxPrintSizes.Text" xml:space="preserve">
-    <value>Print sizes</value>
-  </data>
-  <data name="&gt;&gt;checkBoxPrintSizes.Name" xml:space="preserve">
-    <value>checkBoxPrintSizes</value>
-  </data>
-  <data name="&gt;&gt;checkBoxPrintSizes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxPrintSizes.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;checkBoxPrintSizes.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -514,7 +544,7 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="numUpDownNbNivx.Location" type="System.Drawing.Point, System.Drawing">
     <value>86, 61</value>
@@ -538,36 +568,6 @@
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;numUpDownNbNivx.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="numUpDownNbNivxAffich.Location" type="System.Drawing.Point, System.Drawing">
-    <value>101, 100</value>
-  </data>
-  <data name="numUpDownNbNivxAffich.ShowHelp" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="numUpDownNbNivxAffich.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 20</value>
-  </data>
-  <data name="numUpDownNbNivxAffich.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>131, 17</value>
-  </metadata>
-  <data name="numUpDownNbNivxAffich.ToolTip" xml:space="preserve">
-    <value>Zoom feature.</value>
-  </data>
-  <data name="&gt;&gt;numUpDownNbNivxAffich.Name" xml:space="preserve">
-    <value>numUpDownNbNivxAffich</value>
-  </data>
-  <data name="&gt;&gt;numUpDownNbNivxAffich.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numUpDownNbNivxAffich.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;numUpDownNbNivxAffich.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
@@ -604,7 +604,7 @@
     <value>8</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>604, 94</value>
+    <value>482, 94</value>
   </data>
   <data name="groupBox1.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -766,7 +766,7 @@
     <value>3</value>
   </data>
   <data name="groupBoxHoverInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>604, 331</value>
+    <value>482, 331</value>
   </data>
   <data name="groupBoxHoverInfo.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -819,7 +819,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonScan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>632, 50</value>
+    <value>510, 50</value>
   </data>
   <data name="buttonScan.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -858,7 +858,7 @@
     <value>True</value>
   </data>
   <data name="treeGraph1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>593, 477</value>
+    <value>471, 477</value>
   </data>
   <data name="treeGraph1.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -867,7 +867,7 @@
     <value>treeGraph1</value>
   </data>
   <data name="&gt;&gt;treeGraph1.Type" xml:space="preserve">
-    <value>HDGraph.TreeGraph, HDGraph, Version=1.0.2.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>HDGraph.TreeGraph, HDGraph, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;treeGraph1.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -882,7 +882,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonBrowse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>668, 7</value>
+    <value>546, 7</value>
   </data>
   <data name="buttonBrowse.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -918,7 +918,7 @@
     <value>True</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>762, 521</value>
+    <value>640, 521</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -939,7 +939,7 @@
     <value>True</value>
   </data>
   <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>762, 521</value>
+    <value>640, 521</value>
   </data>
   <data name="&gt;&gt;toolStripContainer1.ContentPanel.Name" xml:space="preserve">
     <value>toolStripContainer1.ContentPanel</value>
@@ -955,6 +955,42 @@
   </data>
   <data name="toolStripContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
+  </data>
+  <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>0, 30</value>
+  </metadata>
+  <data name="toolStrip1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toolStripTreeView2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 97</value>
+  </data>
+  <data name="toolStripTreeView2.Text" xml:space="preserve">
+    <value>toolStripTreeView2</value>
+  </data>
+  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 3</value>
+  </data>
+  <data name="toolStrip1.ShowHelp" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 111</value>
+  </data>
+  <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
+    <value>toolStrip1</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.Parent" xml:space="preserve">
+    <value>toolStripContainer1.LeftToolStripPanel</value>
+  </data>
+  <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="toolStripContainer1.LeftToolStripPanel.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1844,9 +1880,6 @@
   <data name="helpToolStripButton.Text" xml:space="preserve">
     <value>Help</value>
   </data>
-  <data name="toolStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 24</value>
-  </data>
   <data name="toolStrip.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1898,6 +1931,12 @@
   <data name="&gt;&gt;toolStripContainer1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="toolStripTreeView1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 80</value>
+  </data>
+  <data name="toolStripTreeView1.Text" xml:space="preserve">
+    <value>toolStripTreeView1</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -1906,9 +1945,6 @@
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>762, 592</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -6250,9 +6286,6 @@
         /////////////////////////////////8A=
 </value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>640, 600</value>
   </data>
@@ -6648,6 +6681,18 @@
   </data>
   <data name="&gt;&gt;helpProvider1.Type" xml:space="preserve">
     <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripTreeView1.Name" xml:space="preserve">
+    <value>toolStripTreeView1</value>
+  </data>
+  <data name="&gt;&gt;toolStripTreeView1.Type" xml:space="preserve">
+    <value>HDGraph.ToolStripTreeView, HDGraph, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;toolStripTreeView2.Name" xml:space="preserve">
+    <value>toolStripTreeView2</value>
+  </data>
+  <data name="&gt;&gt;toolStripTreeView2.Type" xml:space="preserve">
+    <value>HDGraph.ToolStripTreeView, HDGraph, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

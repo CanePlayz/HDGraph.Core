@@ -205,6 +205,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ApplicationMessages.resx</DependentUpon>
     </Compile>
+    <Compile Include="ToolStripTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="TreeGraph.cs">
       <SubType>UserControl</SubType>
     </Compile>
