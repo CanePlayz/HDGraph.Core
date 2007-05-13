@@ -112,12 +112,6 @@ namespace HDGraph
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.licenceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripShortcuts = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabelShortcuts = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSplitButtonModel = new System.Windows.Forms.ToolStripSplitButton();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolBarToolStrip = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -130,6 +124,12 @@ namespace HDGraph
             this.toolStripButtonNavForward = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripShortcuts = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabelShortcuts = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSplitButtonModel = new System.Windows.Forms.ToolStripSplitButton();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
@@ -146,8 +146,8 @@ namespace HDGraph
             this.groupBoxHoverInfo.SuspendLayout();
             this.toolStripTreeView.SuspendLayout();
             this.menuStrip.SuspendLayout();
-            this.toolStripShortcuts.SuspendLayout();
             this.toolBarToolStrip.SuspendLayout();
+            this.toolStripShortcuts.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripContainer1
@@ -178,9 +178,9 @@ namespace HDGraph
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripShortcuts);
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStrip);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolBarToolStrip);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStrip);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripShortcuts);
             this.helpProvider1.SetShowHelp(this.toolStripContainer1.TopToolStripPanel, ((bool)(resources.GetObject("toolStripContainer1.TopToolStripPanel.ShowHelp"))));
             // 
             // statusStrip
@@ -817,48 +817,8 @@ namespace HDGraph
             resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click_1);
             // 
-            // toolStripShortcuts
-            // 
-            resources.ApplyResources(this.toolStripShortcuts, "toolStripShortcuts");
-            this.toolStripShortcuts.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabelShortcuts,
-            this.toolStripSplitButtonModel});
-            this.toolStripShortcuts.Name = "toolStripShortcuts";
-            this.helpProvider1.SetShowHelp(this.toolStripShortcuts, ((bool)(resources.GetObject("toolStripShortcuts.ShowHelp"))));
-            this.toolStripShortcuts.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
-            // 
-            // toolStripLabelShortcuts
-            // 
-            this.toolStripLabelShortcuts.Name = "toolStripLabelShortcuts";
-            resources.ApplyResources(this.toolStripLabelShortcuts, "toolStripLabelShortcuts");
-            // 
-            // toolStripSplitButtonModel
-            // 
-            this.toolStripSplitButtonModel.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4});
-            resources.ApplyResources(this.toolStripSplitButtonModel, "toolStripSplitButtonModel");
-            this.toolStripSplitButtonModel.Name = "toolStripSplitButtonModel";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
-            // 
             // toolBarToolStrip
             // 
-            this.toolBarToolStrip.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::HDGraph.Properties.Settings.Default, "OptionToolbarLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             resources.ApplyResources(this.toolBarToolStrip, "toolBarToolStrip");
             this.toolBarToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripButton,
@@ -872,7 +832,6 @@ namespace HDGraph
             this.toolStripButtonNavForward,
             this.toolStripSeparator9,
             this.helpToolStripButton});
-            this.toolBarToolStrip.Location = global::HDGraph.Properties.Settings.Default.OptionToolbarLocation;
             this.toolBarToolStrip.Name = "toolBarToolStrip";
             this.helpProvider1.SetShowHelp(this.toolBarToolStrip, ((bool)(resources.GetObject("toolBarToolStrip.ShowHelp"))));
             // 
@@ -948,6 +907,45 @@ namespace HDGraph
             this.helpToolStripButton.Name = "helpToolStripButton";
             this.helpToolStripButton.Click += new System.EventHandler(this.contentsToolStripMenuItem_Click);
             // 
+            // toolStripShortcuts
+            // 
+            resources.ApplyResources(this.toolStripShortcuts, "toolStripShortcuts");
+            this.toolStripShortcuts.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabelShortcuts,
+            this.toolStripSplitButtonModel});
+            this.toolStripShortcuts.Name = "toolStripShortcuts";
+            this.helpProvider1.SetShowHelp(this.toolStripShortcuts, ((bool)(resources.GetObject("toolStripShortcuts.ShowHelp"))));
+            this.toolStripShortcuts.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
+            // 
+            // toolStripLabelShortcuts
+            // 
+            this.toolStripLabelShortcuts.Name = "toolStripLabelShortcuts";
+            resources.ApplyResources(this.toolStripLabelShortcuts, "toolStripLabelShortcuts");
+            // 
+            // toolStripSplitButtonModel
+            // 
+            this.toolStripSplitButtonModel.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4});
+            resources.ApplyResources(this.toolStripSplitButtonModel, "toolStripSplitButtonModel");
+            this.toolStripSplitButtonModel.Name = "toolStripSplitButtonModel";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
+            // 
             // MainForm
             // 
             this.AcceptButton = this.buttonScan;
@@ -988,10 +986,10 @@ namespace HDGraph
             this.toolStripTreeView.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
-            this.toolStripShortcuts.ResumeLayout(false);
-            this.toolStripShortcuts.PerformLayout();
             this.toolBarToolStrip.ResumeLayout(false);
             this.toolBarToolStrip.PerformLayout();
+            this.toolStripShortcuts.ResumeLayout(false);
+            this.toolStripShortcuts.PerformLayout();
             this.ResumeLayout(false);
 
         }
