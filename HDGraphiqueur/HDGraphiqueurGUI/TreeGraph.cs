@@ -476,7 +476,7 @@ namespace HDGraph
                                                     Color.Red,
                                                     Color.White),
                                         Rectangle.Round(rec),
-                                        startAngle, 
+                                        startAngle,
                                         nodeAngle);
                     }
                     else
@@ -794,18 +794,25 @@ namespace HDGraph
             DirectoryNode node = FindNodeByCursorPosition(lastClicPosition.Value);
             lastClicNode = node;
             bool nodeIsNotNull = (node != null);
+            bool nodeIsRegularNode = nodeIsNotNull
+                                    && !node.IsFreeSpace
+                                    && !node.IsUnknownPart;
             if (node == null)
-                contextMenuStrip1.Hide();
+            {
+                e.Cancel = true;
+                return;
+            }
             directoryNameToolStripMenuItem.Enabled = nodeIsNotNull;
-            centerGraphOnThisDirectoryToolStripMenuItem.Enabled = (nodeIsNotNull && node != root);
-            centerGraphOnParentDirectoryToolStripMenuItem.Enabled = (nodeIsNotNull
+            centerGraphOnThisDirectoryToolStripMenuItem.Enabled = (nodeIsRegularNode
+                                                                   && node != root);
+            centerGraphOnParentDirectoryToolStripMenuItem.Enabled = (nodeIsRegularNode
                                                                 && node.Parent != root
                                                                 && node.Parent != null);
-            openThisDirectoryInWindowsExplorerToolStripMenuItem.Enabled = nodeIsNotNull;
-            refreshThisDirectoryToolStripMenuItem.Enabled = nodeIsNotNull;
+            openThisDirectoryInWindowsExplorerToolStripMenuItem.Enabled = nodeIsRegularNode;
+            refreshThisDirectoryToolStripMenuItem.Enabled = nodeIsRegularNode;
 
             // Item "Suppression"
-            deleteToolStripMenuItem.Enabled = nodeIsNotNull && Properties.Settings.Default.OptionAllowFolderDeletion;
+            deleteToolStripMenuItem.Enabled = nodeIsRegularNode && Properties.Settings.Default.OptionAllowFolderDeletion;
 
             // Item "Titre du dossier"
             if (nodeIsNotNull)

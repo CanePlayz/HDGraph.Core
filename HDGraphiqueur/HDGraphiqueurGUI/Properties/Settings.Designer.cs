@@ -156,7 +156,7 @@ namespace HDGraph.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("7, 24")]
+        [global::System.Configuration.DefaultSettingValueAttribute("506, 24")]
         public global::System.Drawing.Point OptionToolbarLocation {
             get {
                 return ((global::System.Drawing.Point)(this["OptionToolbarLocation"]));

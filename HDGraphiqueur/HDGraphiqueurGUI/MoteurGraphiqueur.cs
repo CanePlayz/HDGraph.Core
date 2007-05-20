@@ -126,7 +126,20 @@ namespace HDGraph
             root = new DirectoryNode(path);
 
             ConstruireArborescence(root, maxLevel - 1);
-            if (path.IndexOf('\\') == path.LastIndexOf('\\'))
+            ApplySpecialRootOptions(root);
+
+            analyzeDate = DateTime.Now;
+            if (workCanceled)
+                root = null;
+        }
+
+        private void ApplySpecialRootOptions(DirectoryNode root)
+        {
+            string path = root.Path;
+            bool rootNodeIsDrive = path.IndexOf('\\') == path.LastIndexOf('\\') // 1 seul '\' dans le chemin
+                // le seul '\' du chemin est le dernier car du chemin ( en effet, c:\test n'est pas la racine)                   
+                && path.IndexOf('\\') == path.Length - 1; 
+            if (rootNodeIsDrive)
             {
                 // full drive scan, show disk free space if asked
 
@@ -155,10 +168,6 @@ namespace HDGraph
                     root.TotalSize += dirNodeFS.TotalSize;
                 }
             }
-
-            analyzeDate = DateTime.Now;
-            if (workCanceled)
-                root = null;
         }
 
         /// <summary>

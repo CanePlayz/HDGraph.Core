@@ -124,7 +124,7 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Cursor hover directory {0}.
+        ///   Recherche une chaîne localisée semblable à Pointed directory : {0}.
         /// </summary>
         internal static string CursorHoverDirectory {
             get {
@@ -133,11 +133,29 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Cursor hover no directory..
+        ///   Recherche une chaîne localisée semblable à Your cursor is over the part representing the disk free space..
+        /// </summary>
+        internal static string CursorHoverFreeSpace {
+            get {
+                return ResourceManager.GetString("CursorHoverFreeSpace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à No directory pointed..
         /// </summary>
         internal static string CursorHoverNoDirectory {
             get {
                 return ResourceManager.GetString("CursorHoverNoDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Your cursor is over the part representing the non-calculable files..
+        /// </summary>
+        internal static string CursorHoverUnknownPart {
+            get {
+                return ResourceManager.GetString("CursorHoverUnknownPart", resourceCulture);
             }
         }
         
@@ -219,6 +237,15 @@ namespace HDGraph.Resources {
         internal static string FolderIsEmpty {
             get {
                 return ResourceManager.GetString("FolderIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Free space.
+        /// </summary>
+        internal static string FreeSpace {
+            get {
+                return ResourceManager.GetString("FreeSpace", resourceCulture);
             }
         }
         
@@ -493,6 +520,15 @@ namespace HDGraph.Resources {
         internal static string UnexpectedErrorDuringAnalysis {
             get {
                 return ResourceManager.GetString("UnexpectedErrorDuringAnalysis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Unknown files.
+        /// </summary>
+        internal static string UnknownFiles {
+            get {
+                return ResourceManager.GetString("UnknownFiles", resourceCulture);
             }
         }
         
