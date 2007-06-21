@@ -150,6 +150,9 @@
   <data name="CursorHoverUnknownPart" xml:space="preserve">
     <value>Le curseur pointe sur une zone représentant les fichiers non calculables.</value>
   </data>
+  <data name="DeleteInProgress" xml:space="preserve">
+    <value>Suppression du répertoire en cours...</value>
+  </data>
   <data name="DeletionCompleteMsg" xml:space="preserve">
     <value>Répertoire supprimé avec succès !</value>
   </data>

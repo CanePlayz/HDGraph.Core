@@ -345,7 +345,13 @@ namespace HDGraph
             ConstruireArborescence(node, node.ProfondeurMax - 1);
             if (dirPreviousTotalSize != node.TotalSize)
                 IncrementerTailleParents(node, node.TotalSize - dirPreviousTotalSize);
+            RafraichirEspaceLibre(node);
             return true;
+        }
+
+        private void RafraichirEspaceLibre(DirectoryNode node)
+        {
+            throw new Exception("The method or operation is not implemented.");
         }
 
         #endregion

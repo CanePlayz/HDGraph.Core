@@ -150,6 +150,9 @@
   <data name="CursorHoverUnknownPart" xml:space="preserve">
     <value>Your cursor is over the part representing the non-calculable files.</value>
   </data>
+  <data name="DeleteInProgress" xml:space="preserve">
+    <value>HDGraph is deleting the folder...</value>
+  </data>
   <data name="DeletionCompleteMsg" xml:space="preserve">
     <value>Folder successfully deleted !</value>
   </data>

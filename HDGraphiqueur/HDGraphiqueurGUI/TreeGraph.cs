@@ -1036,22 +1036,25 @@ namespace HDGraph
             {
                 try
                 {
+                    WaitForm.ShowWaitForm(HDGTools.resManager.GetString("DeleteInProgress"));
                     System.IO.Directory.Delete(lastClicNode.Path, true);
                     RafraichirArboDuDernierClic();
+                    WaitForm.HideWaitForm();
                     MessageBox.Show(HDGTools.resManager.GetString("DeletionCompleteMsg"),
                                     HDGTools.resManager.GetString("OperationSuccessfullTitle"),
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
+                    WaitForm.HideWaitForm();
                     string msgErreur = String.Format(
                         HDGTools.resManager.GetString("ErrorDeletingFolder"),
                         ex.Message);
                     MessageBox.Show(msgErreur,
                         HDGTools.resManager.GetString("Error"),
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Trace.TraceError(HDGTools.PrintError(ex)); 
                     RafraichirArboDuDernierClic();
-                    Trace.TraceError(HDGTools.PrintError(ex));
                 }
             }
 
