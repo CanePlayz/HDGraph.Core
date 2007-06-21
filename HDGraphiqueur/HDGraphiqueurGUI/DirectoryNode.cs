@@ -6,6 +6,29 @@ using System.Reflection;
 
 namespace HDGraph
 {
+    public enum SpecialDirTypes:short
+    {
+        /// <summary>
+        /// Un répertoire ordinaire.
+        /// </summary>
+        NotSpecial,
+        /// <summary>
+        /// Indiquant que le répertoire courant est en fait un répertoire fictif représentant 
+        /// l'espace libre, et qu'il a été comptabilisé dans la taille du root.
+        /// </summary>
+        FreeSpaceAndShow,
+        /// <summary>
+        /// Indiquant que le répertoire courant est en fait un répertoire fictif représentant 
+        /// l'espace libre, et qu'il n'a PAS été comptabilisé dans la taille du root.
+        /// </summary>
+        FreeSpaceAndHide,
+        /// <summary>
+        /// Indique que le répertoire courant est en fait un répertoire fictif représentant 
+        /// les fichiers et dossiers qui n'ont pas été comptabilisés suite à des erreurs d'accès.
+        /// </summary>
+        UnknownPart,
+    }
+
     public class DirectoryNode : IXmlSerializable
     {
         #region Variables et propriétés 
@@ -91,28 +114,17 @@ namespace HDGraph
             set { existsUncalcSubdir = value; }
         }
 
-        private bool isFreeSpace;
+        private SpecialDirTypes directoryType;
         /// <summary>
-        /// Booléen indiquant si le répertoire courant est en fait un répertoire fictif représentant 
-        /// l'espace libre.
+        /// Type de répertoire
         /// </summary>
-        public bool IsFreeSpace
+        public SpecialDirTypes DirectoryType
         {
-            get { return isFreeSpace; }
-            set { isFreeSpace = value; }
+            get { return directoryType; }
+            set { directoryType = value; }
         }
+	
 
-        private bool isUnknownPart;
-        /// <summary>
-        /// Booléen indiquant si le répertoire courant est en fait un répertoire fictif représentant 
-        /// les fichiers et dossiers qui n'ont pas été comptabilisés suite à des erreurs d'accès.
-        /// </summary>
-        public bool IsUnknownPart
-        {
-            get { return isUnknownPart; }
-            set { isUnknownPart = value; }
-        }
-        
         #endregion
 
         #region Constructeur(s)
@@ -177,7 +189,7 @@ namespace HDGraph
             filesSize = reader.ReadElementContentAsLong();
             profondeurMax = reader.ReadElementContentAsInt();
             existsUncalcSubdir = Boolean.Parse(reader.ReadElementContentAsString());
-
+            directoryType = (SpecialDirTypes) Convert.ToInt16(reader.ReadElementContentAsInt());
             // Début élément Children
             reader.ReadStartElement("Children");
             XmlSerializer serializer = new XmlSerializer(typeof(List<DirectoryNode>));
@@ -205,7 +217,6 @@ namespace HDGraph
 
         public void WriteXml(System.Xml.XmlWriter writer)
         {
-            //string ns = "http://HDGraphiqueur.tools.laugel.fr/DirectoryNode.xsd";
             if (parent == null)
                 writer.WriteElementString("Name", path);
             else
@@ -214,7 +225,7 @@ namespace HDGraph
             writer.WriteElementString("FilesSize", filesSize.ToString());
             writer.WriteElementString("ProfondeurMax", profondeurMax.ToString());
             writer.WriteElementString("ExistsUncalcSubdir", existsUncalcSubdir.ToString());
-
+            writer.WriteElementString("DirectoryType", ((short)directoryType).ToString());
             writer.WriteStartElement("Children");
             XmlSerializer serializer = new XmlSerializer(typeof(List<DirectoryNode>));
             serializer.Serialize(writer, children);

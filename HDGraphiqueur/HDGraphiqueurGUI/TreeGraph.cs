@@ -364,10 +364,13 @@ namespace HDGraph
                 float currentStartAngle;
                 foreach (DirectoryNode childNode in node.Children)
                 {
-                    currentStartAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
-                    float childAngle = childNode.TotalSize * nodeAngle / node.TotalSize;
-                    PaintTree(childNode, rec, currentStartAngle, currentStartAngle + childAngle);
-                    cumulSize += childNode.TotalSize;
+                    if (childNode.DirectoryType != SpecialDirTypes.FreeSpaceAndHide)
+                    {
+                        currentStartAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
+                        float childAngle = childNode.TotalSize * nodeAngle / node.TotalSize;
+                        PaintTree(childNode, rec, currentStartAngle, currentStartAngle + childAngle);
+                        cumulSize += childNode.TotalSize;
+                    }
                 }
                 currentStartAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
                 if (node.Children.Count > 0 && node.FilesSize > 0)
@@ -425,31 +428,8 @@ namespace HDGraph
                 }
                 else
                 {
-                    // on dessine les noms de répertoire uniquement
-                    float x = 0, y;
-                    if (rec.Height == pasNiveau * 2)
-                    {
-                        y = 0;
-                    }
-                    else
-                    {
-                        y = rec.Height / 2f - pasNiveau * 3f / 4f;
-                    }
-                    x += this.ClientSize.Width / 2f;
-                    y += this.ClientSize.Height / 2f;
-                    string nodeText = node.Name;
-                    if (optionShowSize)
-                        nodeText += Environment.NewLine + FormatSize(node.TotalSize);
-
-                    SizeF size = frontGraph.MeasureString(nodeText, Font);
-                    x -= size.Width / 2f;
-                    y -= size.Height / 2f;
-                    // Adoucir le fond du texte :
-                    Color colTransp = Color.FromArgb(100, Color.White);
-                    frontGraph.FillRectangle(new SolidBrush(colTransp),
-                                        x, y, size.Width, size.Height);
-                    frontGraph.DrawRectangle(new Pen(Color.Black), x, y, size.Width, size.Height);
-                    frontGraph.DrawString(nodeText, Font, new SolidBrush(Color.Black), x, y);
+                    // on écrit les noms de répertoire uniquement
+                    WriteDirectoryNameForFullPie(node, rec);
                 }
             }
             else
@@ -457,81 +437,140 @@ namespace HDGraph
                 if (!printDirNames)
                 {
                     // on dessine le disque uniquement
-                    if (node.IsFreeSpace)
-                    {
-                        // free space
-                        frontGraph.FillPie(new System.Drawing.Drawing2D.HatchBrush(
-                                                    System.Drawing.Drawing2D.HatchStyle.Wave,
-                                                    Color.LightGray,
-                                                    Color.White),
-                                        Rectangle.Round(rec),
-                                        startAngle,
-                                        nodeAngle);
-                    }
-                    else if (node.IsUnknownPart)
-                    {
-                        // non-calculable files
-                        frontGraph.FillPie(new System.Drawing.Drawing2D.HatchBrush(
-                                                    System.Drawing.Drawing2D.HatchStyle.Trellis,
-                                                    Color.Red,
-                                                    Color.White),
-                                        Rectangle.Round(rec),
-                                        startAngle,
-                                        nodeAngle);
-                    }
-                    else
-                    {
-                        // standard zone
-                        frontGraph.FillPie(
-                            GetBrushForAngles(rec, startAngle, nodeAngle),
-                            Rectangle.Round(rec),
-                            startAngle,
-                            nodeAngle);
-                        frontGraph.DrawPie(new Pen(Color.Black), rec, startAngle, nodeAngle);
-                    }
+                    DrawPartialPie(node, rec, startAngle, nodeAngle);
                 }
                 else if (nodeAngle > 10)
                 {
                     // on dessine les noms de répertoire uniquement (si l'angle est supérieur à 10°)
-                    //float textWidthLimit = pasNiveau * 1.5f;
-                    float textWidthLimit = pasNiveau * 2f;
-                    float x, y, angleCentre, hyp;
-                    hyp = (rec.Width - pasNiveau) / 2f;
-                    angleCentre = startAngle + nodeAngle / 2f;
-                    x = (float)Math.Cos(GetRadianFromDegree(angleCentre)) * hyp;
-                    y = (float)Math.Sin(GetRadianFromDegree(angleCentre)) * hyp;
-                    x += this.ClientSize.Width / 2f;
-                    y += this.ClientSize.Height / 2f;
-                    StringFormat format = new StringFormat();
-                    format.Alignment = StringAlignment.Center;
-                    string nodeText = node.Name;
-                    SizeF sizeTextName = frontGraph.MeasureString(nodeText, Font);
-                    if (sizeTextName.Width <= textWidthLimit)
-                    {
-                        if (optionShowSize)
-                        {
-                            float xName = x - sizeTextName.Width / 2f;
-                            float yName = y - sizeTextName.Height;
-                            frontGraph.DrawString(nodeText, Font, new SolidBrush(Color.Black), xName, yName); //, format);
-                            string nodeSize = FormatSize(node.TotalSize);
-                            SizeF sizeTextSize = frontGraph.MeasureString(nodeSize, Font);
-                            float xSize = x - sizeTextSize.Width / 2f;
-                            float ySize = y;
-                            // Adoucir le fond du texte :
-                            //Color colTransp = Color.FromArgb(50, Color.White);
-                            //graph.FillRectangle(new SolidBrush(colTransp),
-                            //                    xSize, ySize, sizeTextSize.Width, sizeTextSize.Height);
-                            frontGraph.DrawString(nodeSize, Font, new SolidBrush(Color.Black), xSize, ySize); //, format);
-                        }
-                        else
-                        {
-                            x -= sizeTextName.Width / 2f;
-                            y -= sizeTextName.Height / 2f;
-                            frontGraph.DrawString(nodeText, Font, new SolidBrush(Color.Black), x, y); //, format);
-                        }
-                    }
+                    WriteDirectoryName(node, rec, startAngle, nodeAngle);
                 }
 
+            }
+        }
+
+        /// <summary>
+        /// Dessine le nom d'un répertoire sur le graph, lorsque ce répertoire a un angle de 360°.
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="rec"></param>
+        /// <returns></returns>
+        private void WriteDirectoryNameForFullPie(DirectoryNode node, RectangleF rec)
+        {
+            float x = 0, y;
+            if (rec.Height == pasNiveau * 2)
+            {
+                y = 0;
+            }
+            else
+            {
+                y = rec.Height / 2f - pasNiveau * 3f / 4f;
+            }
+            x += this.ClientSize.Width / 2f;
+            y += this.ClientSize.Height / 2f;
+            string nodeText = node.Name;
+            if (optionShowSize)
+                nodeText += Environment.NewLine + FormatSize(node.TotalSize);
+
+            SizeF size = frontGraph.MeasureString(nodeText, Font);
+            x -= size.Width / 2f;
+            y -= size.Height / 2f;
+            // Adoucir le fond du texte :
+            Color colTransp = Color.FromArgb(100, Color.White);
+            frontGraph.FillRectangle(new SolidBrush(colTransp),
+                                x, y, size.Width, size.Height);
+            frontGraph.DrawRectangle(new Pen(Color.Black), x, y, size.Width, size.Height);
+            frontGraph.DrawString(nodeText, Font, new SolidBrush(Color.Black), x, y);
+        }
+
+        /// <summary>
+        /// Dessine le nom d'un répertoire sur le graph.
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="rec"></param>
+        /// <param name="startAngle"></param>
+        /// <param name="nodeAngle"></param>
+        /// <returns></returns>
+        private void WriteDirectoryName(DirectoryNode node, RectangleF rec, float startAngle, float nodeAngle)
+        {
+            //float textWidthLimit = pasNiveau * 1.5f;
+            float textWidthLimit = pasNiveau * 2f;
+            float x, y, angleCentre, hyp;
+            hyp = (rec.Width - pasNiveau) / 2f;
+            angleCentre = startAngle + nodeAngle / 2f;
+            x = (float)Math.Cos(GetRadianFromDegree(angleCentre)) * hyp;
+            y = (float)Math.Sin(GetRadianFromDegree(angleCentre)) * hyp;
+            x += this.ClientSize.Width / 2f;
+            y += this.ClientSize.Height / 2f;
+            StringFormat format = new StringFormat();
+            format.Alignment = StringAlignment.Center;
+            string nodeText = node.Name;
+            SizeF sizeTextName = frontGraph.MeasureString(nodeText, Font);
+            if (sizeTextName.Width <= textWidthLimit)
+            {
+                if (optionShowSize)
+                {
+                    float xName = x - sizeTextName.Width / 2f;
+                    float yName = y - sizeTextName.Height;
+                    frontGraph.DrawString(nodeText, Font, new SolidBrush(Color.Black), xName, yName); //, format);
+                    string nodeSize = FormatSize(node.TotalSize);
+                    SizeF sizeTextSize = frontGraph.MeasureString(nodeSize, Font);
+                    float xSize = x - sizeTextSize.Width / 2f;
+                    float ySize = y;
+                    // Adoucir le fond du texte :
+                    //Color colTransp = Color.FromArgb(50, Color.White);
+                    //graph.FillRectangle(new SolidBrush(colTransp),
+                    //                    xSize, ySize, sizeTextSize.Width, sizeTextSize.Height);
+                    frontGraph.DrawString(nodeSize, Font, new SolidBrush(Color.Black), xSize, ySize); //, format);
+                }
+                else
+                {
+                    x -= sizeTextName.Width / 2f;
+                    y -= sizeTextName.Height / 2f;
+                    frontGraph.DrawString(nodeText, Font, new SolidBrush(Color.Black), x, y); //, format);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Dessine un semi anneau sur le graph.
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="rec"></param>
+        /// <param name="startAngle"></param>
+        /// <param name="nodeAngle"></param>
+        private void DrawPartialPie(DirectoryNode node, RectangleF rec, float startAngle, float nodeAngle)
+        {
+            if (node.DirectoryType == SpecialDirTypes.NotSpecial)
+            {
+                // standard zone
+                frontGraph.FillPie(
+                    GetBrushForAngles(rec, startAngle, nodeAngle),
+                    Rectangle.Round(rec),
+                    startAngle,
+                    nodeAngle);
+                frontGraph.DrawPie(new Pen(Color.Black), rec, startAngle, nodeAngle);
+            }
+            else if (node.DirectoryType == SpecialDirTypes.FreeSpaceAndShow)
+            {
+                // free space
+                frontGraph.FillPie(new System.Drawing.Drawing2D.HatchBrush(
+                                            System.Drawing.Drawing2D.HatchStyle.Wave,
+                                            Color.LightGray,
+                                            Color.White),
+                                Rectangle.Round(rec),
+                                startAngle,
+                                nodeAngle);
+            }
+            else if (node.DirectoryType == SpecialDirTypes.UnknownPart)
+            {
+                // non-calculable files
+                frontGraph.FillPie(new System.Drawing.Drawing2D.HatchBrush(
+                                            System.Drawing.Drawing2D.HatchStyle.Trellis,
+                                            Color.Red,
+                                            Color.White),
+                                Rectangle.Round(rec),
+                                startAngle,
+                                nodeAngle);
             }
         }
 
@@ -795,8 +834,7 @@ namespace HDGraph
             lastClicNode = node;
             bool nodeIsNotNull = (node != null);
             bool nodeIsRegularNode = nodeIsNotNull
-                                    && !node.IsFreeSpace
-                                    && !node.IsUnknownPart;
+                                    && node.DirectoryType == SpecialDirTypes.NotSpecial;
             if (node == null)
             {
                 e.Cancel = true;
@@ -1024,5 +1062,25 @@ namespace HDGraph
             ContextMenuStrip.Show();
         }
 
+
+        internal void ShowFreeSpace()
+        {
+            if (moteur != null)
+            {
+                moteur.ShowDiskFreeSpace = true;
+                moteur.ApplyFreeSpaceOption(this.root);
+            }
+            this.ForceRefresh();
+        }
+
+        internal void HideFreeSpace()
+        {
+            if (moteur != null)
+            {
+                moteur.ShowDiskFreeSpace = false;
+                moteur.ApplyFreeSpaceOption(this.root);
+            }
+            this.ForceRefresh();
+        }
     }
 }

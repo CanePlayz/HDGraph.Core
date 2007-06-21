@@ -118,42 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="fileMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 20</value>
-  </data>
-  <data name="fileMenu.Text" xml:space="preserve">
-    <value>&amp;Fichier</value>
-  </data>
-  <data name="editMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 20</value>
-  </data>
-  <data name="editMenu.Text" xml:space="preserve">
-    <value>&amp;Edition</value>
-  </data>
-  <data name="viewMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 20</value>
-  </data>
-  <data name="viewMenu.Text" xml:space="preserve">
-    <value>&amp;Affichage</value>
-  </data>
-  <data name="toolsMenu.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 20</value>
-  </data>
-  <data name="toolsMenu.Text" xml:space="preserve">
-    <value>&amp;Outils</value>
-  </data>
-  <data name="windowsMenu.Text" xml:space="preserve">
-    <value>&amp;Fenêtres</value>
-  </data>
-  <data name="helpMenu.Text" xml:space="preserve">
-    <value>&amp;Aide</value>
-  </data>
-  <data name="toolStripShortcuts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 24</value>
-  </data>
-  <data name="toolStripShortcuts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 25</value>
-  </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
     <value>604, 458</value>
   </data>
@@ -177,11 +141,14 @@
     <value>Légende /
 Comment lire le graphe ?</value>
   </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 249</value>
+  <data name="checkBoxShowFreeSpace.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 17</value>
   </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Options de dessin</value>
+  <data name="checkBoxShowFreeSpace.Text" xml:space="preserve">
+    <value>Afficher l'espace libre</value>
+  </data>
+  <data name="checkBoxShowFreeSpace.ToolTip" xml:space="preserve">
+    <value>Si le répertoire courant est la racine du disque, affiche l'espace libre de ce disque.</value>
   </data>
   <data name="checkBoxPrintSizes.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 17</value>
@@ -202,10 +169,10 @@ Comment lire le graphe ?</value>
     <value>Couleurs linéaires</value>
   </data>
   <data name="comboBoxColorStyle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 215</value>
+    <value>12, 238</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 199</value>
+    <value>9, 222</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 13</value>
@@ -234,17 +201,23 @@ Comment lire le graphe ?</value>
   <data name="label2.Text" xml:space="preserve">
     <value>Niveaux de rep. à dessiner :</value>
   </data>
-  <data name="groupBoxHoverInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>604, 349</value>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 264</value>
   </data>
-  <data name="groupBoxHoverInfo.Text" xml:space="preserve">
-    <value>Répertoire survolé</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Options de dessin</value>
   </data>
   <data name="labelFiles.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 13</value>
   </data>
   <data name="labelFiles.Text" xml:space="preserve">
     <value>Proportion de fichiers :</value>
+  </data>
+  <data name="groupBoxHoverInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>604, 349</value>
+  </data>
+  <data name="groupBoxHoverInfo.Text" xml:space="preserve">
+    <value>Répertoire survolé</value>
   </data>
   <data name="buttonScan.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -289,6 +262,9 @@ Comment lire le graphe ?</value>
         NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
         s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="toolStripShortcuts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 25</value>
   </data>
   <data name="newToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -541,6 +517,12 @@ Comment lire le graphe ?</value>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Quitter</value>
   </data>
+  <data name="fileMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
+  </data>
+  <data name="fileMenu.Text" xml:space="preserve">
+    <value>&amp;Fichier</value>
+  </data>
   <data name="undoToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -655,6 +637,12 @@ Comment lire le graphe ?</value>
   <data name="selectAllToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Sélectionner tout</value>
   </data>
+  <data name="editMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 20</value>
+  </data>
+  <data name="editMenu.Text" xml:space="preserve">
+    <value>&amp;Edition</value>
+  </data>
   <data name="navigateBackwardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>222, 22</value>
   </data>
@@ -694,6 +682,12 @@ Comment lire le graphe ?</value>
   <data name="filesystemTreeviewToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Explorateur de disque</value>
   </data>
+  <data name="viewMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 20</value>
+  </data>
+  <data name="viewMenu.Text" xml:space="preserve">
+    <value>&amp;Affichage</value>
+  </data>
   <data name="optionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>295, 22</value>
   </data>
@@ -702,12 +696,6 @@ Comment lire le graphe ?</value>
   </data>
   <data name="languageToolStripMenuItem.Text" xml:space="preserve">
     <value>Langue</value>
-  </data>
-  <data name="explorerIntegrationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>295, 22</value>
-  </data>
-  <data name="explorerIntegrationToolStripMenuItem.Text" xml:space="preserve">
-    <value>Integration à l'explorateur</value>
   </data>
   <data name="addMeToTheExplorerConToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>321, 22</value>
@@ -721,6 +709,12 @@ Comment lire le graphe ?</value>
   <data name="removeMeFromTheExplorerContextMenuToolStripMenuItem.Text" xml:space="preserve">
     <value>Retirer HDG du menu contextuel de l'explorateur</value>
   </data>
+  <data name="explorerIntegrationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 22</value>
+  </data>
+  <data name="explorerIntegrationToolStripMenuItem.Text" xml:space="preserve">
+    <value>Integration à l'explorateur</value>
+  </data>
   <data name="clearHistroryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>295, 22</value>
   </data>
@@ -732,6 +726,12 @@ Comment lire le graphe ?</value>
   </data>
   <data name="openLogFileToolStripMenuItem.Text" xml:space="preserve">
     <value>Ouvrir le fichier journal (fichier log)</value>
+  </data>
+  <data name="toolsMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 20</value>
+  </data>
+  <data name="toolsMenu.Text" xml:space="preserve">
+    <value>&amp;Outils</value>
   </data>
   <data name="newWindowToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>191, 22</value>
@@ -765,6 +765,9 @@ Comment lire le graphe ?</value>
   </data>
   <data name="arrangeIconsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Réordonner les îcones</value>
+  </data>
+  <data name="windowsMenu.Text" xml:space="preserve">
+    <value>&amp;Fenêtres</value>
   </data>
   <data name="contentsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>170, 22</value>
@@ -829,6 +832,9 @@ Comment lire le graphe ?</value>
   </data>
   <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;A propos...</value>
+  </data>
+  <data name="helpMenu.Text" xml:space="preserve">
+    <value>&amp;Aide</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5169,5 +5175,9 @@ Comment lire le graphe ?</value>
         /////gAAAB//////////////////wP/////////////////////////////////////////A////////
         /////////////////////////////////8A=
 </value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Inherit</value>
   </data>
 </root>

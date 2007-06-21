@@ -136,38 +136,55 @@ namespace HDGraph
         private void ApplySpecialRootOptions(DirectoryNode root)
         {
             string path = root.Path;
-            bool rootNodeIsDrive = path.IndexOf('\\') == path.LastIndexOf('\\') // 1 seul '\' dans le chemin
-                // le seul '\' du chemin est le dernier car du chemin ( en effet, c:\test n'est pas la racine)                   
-                && path.IndexOf('\\') == path.Length - 1; 
+            bool rootNodeIsDrive = PathIsDrive(path);
             if (rootNodeIsDrive)
             {
                 // full drive scan, show disk free space if asked
-
                 DriveInfo info = new DriveInfo(path);
+
                 // Unknown files
                 DirectoryNode dirNode = new DirectoryNode("");
-                dirNode.TotalSize = (info.TotalSize - info.TotalFreeSpace) - root.TotalSize + 500000000;
+                // Unknown files = taille du disque - espace libre - fichiers trouvés
+                dirNode.TotalSize = info.TotalSize - info.TotalFreeSpace - root.TotalSize;
                 dirNode.FilesSize = dirNode.TotalSize;
-                dirNode.IsUnknownPart = true;
+                dirNode.DirectoryType = SpecialDirTypes.UnknownPart;
                 dirNode.ExistsUncalcSubDir = false;
                 dirNode.Name = HDGTools.resManager.GetString("UnknownFiles");
                 dirNode.Parent = root;
                 root.Children.Add(dirNode);
                 root.TotalSize += dirNode.TotalSize;
 
+
+                // free disk space
+                DirectoryNode dirNodeFS = new DirectoryNode("");
+                dirNodeFS.TotalSize = info.TotalFreeSpace;
                 if (showDiskFreeSpace)
                 {
-                    // free disk space
-                    DirectoryNode dirNodeFS = new DirectoryNode("");
-                    dirNodeFS.TotalSize = info.TotalFreeSpace;
-                    dirNodeFS.IsFreeSpace = true;
-                    dirNodeFS.ExistsUncalcSubDir = false;
-                    dirNodeFS.Name = HDGTools.resManager.GetString("FreeSpace");
-                    dirNodeFS.Parent = root;
-                    root.Children.Add(dirNodeFS);
+                    dirNodeFS.DirectoryType = SpecialDirTypes.FreeSpaceAndShow;
                     root.TotalSize += dirNodeFS.TotalSize;
                 }
+                else
+                {
+                    dirNodeFS.DirectoryType = SpecialDirTypes.FreeSpaceAndHide;
+                }
+                dirNodeFS.ExistsUncalcSubDir = false;
+                dirNodeFS.Name = HDGTools.resManager.GetString("FreeSpace");
+                dirNodeFS.Parent = root;
+                root.Children.Add(dirNodeFS);
             }
+        }
+
+        /// <summary>
+        /// Indique si le chemin passé en paramètre représente un lecteur ou non.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static bool PathIsDrive(string path)
+        {
+            bool rootNodeIsDrive = path.IndexOf('\\') == path.LastIndexOf('\\') // 1 seul '\' dans le chemin
+                // le seul '\' du chemin est le dernier car du chemin ( en effet, c:\test n'est pas la racine)                   
+                && path.IndexOf('\\') == path.Length - 1;
+            return rootNodeIsDrive;
         }
 
         /// <summary>
@@ -341,8 +358,6 @@ namespace HDGraph
         }
 
         private string[] compatibleVersionsList = new string[] {
-                        "0.9.3.0",
-                        "1.0.1.0",
                         "1.1.0.0"
                     };
 
@@ -379,5 +394,45 @@ namespace HDGraph
         }
 
         #endregion
+
+        public void ApplyFreeSpaceOption(DirectoryNode directoryNode)
+        {
+            if (directoryNode == null)
+                return;
+            // Rechercher le répertoire racine
+            DirectoryNode root = directoryNode;
+            while (root.Parent != null)
+                root = root.Parent;
+            if (PathIsDrive(root.Path))
+            {
+                DirectoryNode freeSpaceNode = null;
+                foreach (DirectoryNode node in root.Children)
+                {
+                    if (node.DirectoryType == SpecialDirTypes.FreeSpaceAndHide
+                        || node.DirectoryType == SpecialDirTypes.FreeSpaceAndShow)
+                    {
+                        freeSpaceNode = node;
+                        break; // sortir du foreach, car le node de l'espace libre est trouvé.
+                    }
+                }
+                if (freeSpaceNode != null)
+                {
+                    if (this.showDiskFreeSpace
+                        && freeSpaceNode.DirectoryType == SpecialDirTypes.FreeSpaceAndHide)
+                    {
+                        // afficher l'espace libre
+                        freeSpaceNode.DirectoryType = SpecialDirTypes.FreeSpaceAndShow;
+                        root.TotalSize += freeSpaceNode.TotalSize;
+                    }
+                    else if (!this.showDiskFreeSpace
+                        && freeSpaceNode.DirectoryType == SpecialDirTypes.FreeSpaceAndShow)
+                    {
+                        // masquer l'espace libre
+                        freeSpaceNode.DirectoryType = SpecialDirTypes.FreeSpaceAndHide;
+                        root.TotalSize -= freeSpaceNode.TotalSize;
+                    }
+                }
+            }
+        }
     }
 }

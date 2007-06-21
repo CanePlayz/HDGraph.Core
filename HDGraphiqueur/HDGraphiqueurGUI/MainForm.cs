@@ -711,11 +711,11 @@ namespace HDGraph
             }
             else
             {
-                if (node.IsUnknownPart)
+                if (node.DirectoryType == SpecialDirTypes.UnknownPart)
                 {
                     PrintStatus(resManager.GetString("CursorHoverUnknownPart"));
                 }
-                else if (node.IsFreeSpace)
+                else if (node.DirectoryType == SpecialDirTypes.FreeSpaceAndShow)
                 {
                     PrintStatus(resManager.GetString("CursorHoverFreeSpace"));
                 }
@@ -934,6 +934,15 @@ namespace HDGraph
         private void shortcutsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             toolStripShortcuts.Visible = shortcutsToolStripMenuItem.Checked;
+        }
+
+        private void checkBoxShowFreeSpace_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxShowFreeSpace.Checked)
+                treeGraph1.ShowFreeSpace();
+            else
+                treeGraph1.HideFreeSpace();
+            PrintStatus(Resources.ApplicationMessages.GraphRefreshed);
         }
     }
 }
