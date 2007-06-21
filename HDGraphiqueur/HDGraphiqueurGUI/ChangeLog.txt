@@ -7,10 +7,13 @@ HDGraph ChangeLog (http://hdgraph.sourceforge.net)
 Version 1.2.0
 ======================================================
 Added:
+	- Root folder can include disk free spaces
+	- Root folder always contain an 'unknown files' parts, which represents the files that can not be scanned (due to acces restrictions for exemple) and lost space.
 	- Multiple color styles (random or linear colors)
 	- Cursor appearance change on hovered folders
-	- Command line support (see help for details) for scripting use.
+	- Command line support (see help for details) for scripting use
 	- New toolbar containing analyse shortcuts with computer's drives
+	- Wait form when you delete a folder
 Improved: 
 	- Graph export available in PNG format.
 	- Full support of Windows Vista (UAC support for explorer integration)

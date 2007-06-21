@@ -165,5 +165,17 @@ namespace HDGraph.Properties {
                 this["OptionToolbarLocation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OptionShowFreeSpace {
+            get {
+                return ((bool)(this["OptionShowFreeSpace"]));
+            }
+            set {
+                this["OptionShowFreeSpace"] = value;
+            }
+        }
     }
 }

@@ -160,6 +160,15 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à HDGraph is deleting the folder....
+        /// </summary>
+        internal static string DeleteInProgress {
+            get {
+                return ResourceManager.GetString("DeleteInProgress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Folder successfully deleted !.
         /// </summary>
         internal static string DeletionCompleteMsg {
