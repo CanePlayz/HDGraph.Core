@@ -1093,5 +1093,15 @@ namespace HDGraph
             }
             this.ForceRefresh();
         }
+
+        private void detailsViewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lastClicNode != null)
+            {
+                DirectoryDetailForm form = new DirectoryDetailForm();
+                form.Directory = lastClicNode;
+                form.Show();
+            }
+        }
     }
 }

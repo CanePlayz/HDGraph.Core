@@ -133,6 +133,12 @@
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>283, 6</value>
   </data>
+  <data name="detailsViewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>286, 22</value>
+  </data>
+  <data name="detailsViewToolStripMenuItem.Text" xml:space="preserve">
+    <value>Show details</value>
+  </data>
   <data name="openThisDirectoryInWindowsExplorerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>286, 22</value>
   </data>
@@ -176,7 +182,7 @@
     <value>Delete this directory and all subdirectories</value>
   </data>
   <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>287, 184</value>
+    <value>287, 206</value>
   </data>
   <data name="contextMenuStrip1.Text" xml:space="preserve">
     <value>Directory "[TODO]"</value>
@@ -254,6 +260,12 @@
     <value>deletePermanentlyToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;deletePermanentlyToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;detailsViewToolStripMenuItem.Name" xml:space="preserve">
+    <value>detailsViewToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;detailsViewToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

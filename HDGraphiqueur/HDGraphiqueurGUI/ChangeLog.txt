@@ -13,7 +13,7 @@ Added:
 	- Cursor appearance change on hovered folders
 	- Command line support (see help for details) for scripting use
 	- New toolbar containing analyse shortcuts with computer's drives
-	- Wait form when you delete a folder
+	- New wait form when you delete a folder
 Improved: 
 	- Graph export available in PNG format.
 	- Full support of Windows Vista (UAC support for explorer integration)
@@ -98,7 +98,7 @@ Initial public release.
 Version 1.0.1
 ======================================================
 Ajouts:
-	- Possiblité de rafraîchir un répertoire via cli droit
+	- Possiblité de rafraîchir un répertoire via clic droit
 	- Option "ouvrir le fichier journal" depuis le menu
 	- Menu "Supprimer le répertoire"
 	- Nouvelles icones dans le menu du clic droit

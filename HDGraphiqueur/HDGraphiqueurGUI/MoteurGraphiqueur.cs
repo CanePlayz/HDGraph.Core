@@ -367,7 +367,7 @@ namespace HDGraph
         }
 
         private string[] compatibleVersionsList = new string[] {
-                        "1.1.0.0"
+                        "1.2.0.0"
                     };
 
 

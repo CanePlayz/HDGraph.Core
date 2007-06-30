@@ -50,6 +50,18 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="DirectoryDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectoryDetailForm.Designer.cs">
+      <DependentUpon>DirectoryDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectoryDetailUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DirectoryDetailUC.Designer.cs">
+      <DependentUpon>DirectoryDetailUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="DirectoryNode.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="FatalHdgraphException.cs" />
@@ -104,6 +116,14 @@
     <EmbeddedResource Include="AboutBox.resx">
       <SubType>Designer</SubType>
       <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectoryDetailForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DirectoryDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectoryDetailUC.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DirectoryDetailUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LanguageForm.fr.resx">
       <SubType>Designer</SubType>
@@ -250,6 +270,7 @@
     <Content Include="Doc\HDGraph-en.chm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\DataSources\DirectoryNode.datasource" />
     <None Include="Resources\CascadeWindowsHS.png" />
     <None Include="Resources\RefreshDocViewHS.png" />
     <None Include="Resources\ZoomHS.png" />
