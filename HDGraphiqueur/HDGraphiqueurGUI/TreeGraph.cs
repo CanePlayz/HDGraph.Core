@@ -1036,10 +1036,9 @@ namespace HDGraph
             {
                 try
                 {
-                    WaitForm.ShowWaitForm(HDGTools.resManager.GetString("DeleteInProgress"));
-                    System.IO.Directory.Delete(lastClicNode.Path, true);
+                    new WaitForm().ShowDialogAndStartAction(HDGTools.resManager.GetString("DeleteInProgress"),
+                                                            DeleteSelectedForlder);
                     RafraichirArboDuDernierClic();
-                    WaitForm.HideWaitForm();
                     MessageBox.Show(HDGTools.resManager.GetString("DeletionCompleteMsg"),
                                     HDGTools.resManager.GetString("OperationSuccessfullTitle"),
                                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1057,8 +1056,17 @@ namespace HDGraph
                     RafraichirArboDuDernierClic();
                 }
             }
-
         }
+
+        /// <summary>
+        /// Supprime définitivement un répertoire et rafraichit l'arborescence en conséquence.
+        /// </summary>
+        private void DeleteSelectedForlder()
+        {
+            System.IO.Directory.Delete(lastClicNode.Path, true);
+        }
+
+
 
         private void directoryNameToolStripMenuItem_Click(object sender, EventArgs e)
         {

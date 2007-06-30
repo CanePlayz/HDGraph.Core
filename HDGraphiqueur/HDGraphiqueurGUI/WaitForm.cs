@@ -10,11 +10,18 @@ using System.Globalization;
 
 namespace HDGraph
 {
+    public enum AsyncActionType
+    {
+        None,
+        Scan,
+        AbstractAction
+    }
+
     public partial class WaitForm : Form
     {
         #region Constructeur
         /// <summary>
-        /// Constructeur. Inutile dans la plupart des cas : utiliser les méthodes statiques ShowWaitForm et HideWaitForm.
+        /// Constructeur.
         /// </summary>
         public WaitForm()
         {
@@ -36,6 +43,7 @@ namespace HDGraph
         private static string formMessage = "";
         private static CultureInfo threadCulture = null;
         private static WaitForm myWaitForm;
+        private AsyncActionType typeAction = AsyncActionType.None;
 
         public static CultureInfo ThreadCulture
         {
@@ -130,6 +138,7 @@ namespace HDGraph
 
         public void ShowDialogAndStartScan(MoteurGraphiqueur moteur, string path, int nbNiveaux)
         {
+            this.typeAction = AsyncActionType.Scan;
             this.moteur = moteur;
             this.path = path;
             this.nbNiveaux = nbNiveaux;
@@ -146,41 +155,60 @@ namespace HDGraph
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            if (moteur != null)
+            switch (typeAction)
             {
-                try
-                {
-                    moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(this.UpdateMessage);
-                    moteur.ConstruireArborescence(path, nbNiveaux);
-                }
-                catch (ArgumentException ex)
-                {
-                    System.Diagnostics.Trace.TraceError("Invalid path (" + path + "): " + HDGTools.PrintError(ex));
-                    if (ex.ParamName == "path")
+                case AsyncActionType.None:
+                    break;
+                case AsyncActionType.Scan:
+                    if (moteur != null)
                     {
-                        MessageBox.Show(Resources.ApplicationMessages.InvalidPathError,
-                                Resources.ApplicationMessages.Error,
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        try
+                        {
+                            moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(this.UpdateMessage);
+                            moteur.ConstruireArborescence(path, nbNiveaux);
+                        }
+                        catch (ArgumentException ex)
+                        {
+                            System.Diagnostics.Trace.TraceError("Invalid path (" + path + "): " + HDGTools.PrintError(ex));
+                            if (ex.ParamName == "path")
+                            {
+                                MessageBox.Show(Resources.ApplicationMessages.InvalidPathError,
+                                        Resources.ApplicationMessages.Error,
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                            else
+                            {
+                                MessageBox.Show(Resources.ApplicationMessages.UnexpectedErrorDuringAnalysis,
+                                        Resources.ApplicationMessages.Error,
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                System.Diagnostics.Trace.TraceError("Error while scanning " + path + ": " + HDGTools.PrintError(ex));
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Resources.ApplicationMessages.UnexpectedErrorDuringAnalysis,
+                                        Resources.ApplicationMessages.Error,
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            System.Diagnostics.Trace.TraceError("Error while scanning " + path + ": " + HDGTools.PrintError(ex));
+                        }
                     }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(Resources.ApplicationMessages.UnexpectedErrorDuringAnalysis,
-                                Resources.ApplicationMessages.Error,
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    System.Diagnostics.Trace.TraceError("Error while scanning " + path+ ": " + HDGTools.PrintError(ex));
-                }
+                    break;
+                case AsyncActionType.AbstractAction:
+                    actionToDo();
+                    break;
+                default:
+                    break;
             }
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            //this.Close(); // instruction moved to WaitForm_Shown
+            this.typeAction = AsyncActionType.None;
         }
 
         private void WaitForm_Shown(object sender, EventArgs e)
         {
-            if (moteur != null)
+            if (moteur != null || typeAction == AsyncActionType.AbstractAction)
             {
                 backgroundWorker1.RunWorkerAsync();
                 Application.DoEvents();
@@ -199,8 +227,25 @@ namespace HDGraph
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
+            this.typeAction = AsyncActionType.None;
             moteur.PleaseCancelCurrentWork = true;
             this.buttonCancel.Enabled = false;
+        }
+
+        public delegate void DoAction();
+        private DoAction actionToDo = null;
+
+        /// <summary>
+        /// Lance la fenêtre d'attente en modal puis exécute l'action passée en paramètre.
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="actionToDo"></param>
+        public void ShowDialogAndStartAction(string message, DoAction actionToDo)
+        {
+            this.typeAction = AsyncActionType.AbstractAction;
+            this.actionToDo = actionToDo;
+            this.message = message;
+            this.ShowDialog();
         }
     }
 }

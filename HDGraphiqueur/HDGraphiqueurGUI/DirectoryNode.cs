@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace HDGraph
 {
-    public enum SpecialDirTypes:short
+    public enum SpecialDirTypes : short
     {
         /// <summary>
         /// Un répertoire ordinaire.
@@ -31,7 +31,7 @@ namespace HDGraph
 
     public class DirectoryNode : IXmlSerializable
     {
-        #region Variables et propriétés 
+        #region Variables et propriétés
 
         private long totalSize;
         /// <summary>
@@ -76,12 +76,26 @@ namespace HDGraph
 
         private DirectoryNode parent;
         /// <summary>
-        /// Répetoire parent
+        /// Répertoire parent
         /// </summary>
         public DirectoryNode Parent
         {
             get { return parent; }
             set { parent = value; }
+        }
+
+        /// <summary>
+        /// Obtient le répertoire racine de l'arborescence dans laquelle se trouve ce répertoire.
+        /// </summary>
+        public DirectoryNode Root
+        {
+            get
+            {
+                DirectoryNode root = this;
+                while (root.Parent != null)
+                    root = root.Parent;
+                return root;
+            }
         }
 
         private List<DirectoryNode> children = new List<DirectoryNode>();
@@ -123,7 +137,6 @@ namespace HDGraph
             get { return directoryType; }
             set { directoryType = value; }
         }
-	
 
         #endregion
 
@@ -143,7 +156,7 @@ namespace HDGraph
         #endregion
 
         #region Méthodes
-        
+
         public override string ToString()
         {
             return base.ToString() + ": " + name;
@@ -189,7 +202,7 @@ namespace HDGraph
             filesSize = reader.ReadElementContentAsLong();
             profondeurMax = reader.ReadElementContentAsInt();
             existsUncalcSubdir = Boolean.Parse(reader.ReadElementContentAsString());
-            directoryType = (SpecialDirTypes) Convert.ToInt16(reader.ReadElementContentAsInt());
+            directoryType = (SpecialDirTypes)Convert.ToInt16(reader.ReadElementContentAsInt());
             // Début élément Children
             reader.ReadStartElement("Children");
             XmlSerializer serializer = new XmlSerializer(typeof(List<DirectoryNode>));

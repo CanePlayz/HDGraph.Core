@@ -351,7 +351,10 @@ namespace HDGraph
 
         private void RafraichirEspaceLibre(DirectoryNode node)
         {
-            throw new Exception("The method or operation is not implemented.");
+            if (PathIsDrive(node.Root.Path))
+            {
+                throw new Exception("The method or operation is not implemented.");
+            }
         }
 
         #endregion
