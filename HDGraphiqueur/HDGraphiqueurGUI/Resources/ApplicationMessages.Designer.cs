@@ -178,6 +178,15 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Details view for folder &quot;{0}&quot;....
+        /// </summary>
+        internal static string DetailsForFolderFormTitle {
+            get {
+                return ResourceManager.GetString("DetailsForFolderFormTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à HDGraph Error.
         /// </summary>
         internal static string Error {

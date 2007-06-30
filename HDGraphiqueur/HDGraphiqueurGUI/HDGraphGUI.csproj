@@ -229,6 +229,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ApplicationMessages.resx</DependentUpon>
     </Compile>
+    <Compile Include="SortableBindingList.cs" />
     <Compile Include="ToolStripTreeView.cs">
       <SubType>Component</SubType>
     </Compile>

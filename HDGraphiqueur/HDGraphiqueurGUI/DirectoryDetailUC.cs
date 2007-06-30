@@ -14,10 +14,5 @@ namespace HDGraph
         {
             InitializeComponent();
         }
-
-        private void buttonClose_Click(object sender, EventArgs e)
-        {
-            this.ParentForm.Close();
-        }
     }
 }

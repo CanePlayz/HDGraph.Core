@@ -31,7 +31,7 @@ namespace HDGraph
                     throw new ArgumentNullException();
                 directory = value;
                 directoryDetailUC1.directoryNodeEntityBindingSource.DataSource = value;
-                directoryDetailUC1.directoryNodeListBindingSource.DataSource = value.Children;
+                directoryDetailUC1.directoryNodeListBindingSource.DataSource = new SortableBindingList<DirectoryNode>(value.Children);
                 this.Text = String.Format(
                         HDGTools.resManager.GetString("DetailsForFolderFormTitle"),
                         directory.Name);
