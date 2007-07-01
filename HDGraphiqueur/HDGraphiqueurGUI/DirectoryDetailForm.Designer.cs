@@ -37,6 +37,7 @@ namespace HDGraph
             this.directoryDetailUC1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.directoryDetailUC1.BackColor = System.Drawing.SystemColors.Control;
             this.directoryDetailUC1.Location = new System.Drawing.Point(-4, 0);
             this.directoryDetailUC1.Name = "directoryDetailUC1";
             this.directoryDetailUC1.Size = new System.Drawing.Size(577, 436);
@@ -61,6 +62,7 @@ namespace HDGraph
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.directoryDetailUC1);
             this.Name = "DirectoryDetailForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.Text = "DirectoryDetailForm";
             this.ResumeLayout(false);
 

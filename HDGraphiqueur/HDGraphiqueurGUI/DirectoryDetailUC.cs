@@ -15,7 +15,7 @@ namespace HDGraph
             InitializeComponent();
             //this.dataGridViewImageColumn1.ValuesAreIcons = true;
             
-            this.DirectoryType.Image = ExternalTools.IconReader.GetFolderIcon(
+            this.dataGridViewTextBoxColumnName.Image = ExternalTools.IconReader.GetFolderIcon(
                                                         HDGraph.ExternalTools.IconReader.IconSize.Small,
                                                         HDGraph.ExternalTools.IconReader.FolderType.Open).ToBitmap();
         }
