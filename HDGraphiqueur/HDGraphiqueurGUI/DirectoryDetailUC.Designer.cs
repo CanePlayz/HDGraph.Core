@@ -43,7 +43,6 @@ namespace HDGraph
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.totalSizeTextBox = new System.Windows.Forms.TextBox();
             this.pathTextBox = new System.Windows.Forms.TextBox();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.DirectoryType = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -193,20 +192,11 @@ namespace HDGraph
             this.pathTextBox.Size = new System.Drawing.Size(506, 13);
             this.pathTextBox.TabIndex = 11;
             // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewImageColumn1.Frozen = true;
-            this.dataGridViewImageColumn1.HeaderText = "Type";
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewImageColumn1.Width = 30;
-            // 
             // DirectoryType
             // 
             this.DirectoryType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.DirectoryType.Frozen = true;
-            this.DirectoryType.HeaderText = "Type";
+            this.DirectoryType.HeaderText = "";
             this.DirectoryType.Name = "DirectoryType";
             this.DirectoryType.ReadOnly = true;
             this.DirectoryType.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -295,7 +285,6 @@ namespace HDGraph
         public System.Windows.Forms.BindingSource directoryNodeEntityBindingSource;
         public System.Windows.Forms.BindingSource directoryNodeListBindingSource;
         private System.Windows.Forms.TextBox pathTextBox;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn DirectoryType;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;

@@ -9,6 +9,7 @@ namespace WilsonProgramming
         #region Constants
 
         public const Int32 FILE_ATTRIBUTE_NORMAL = 0x80;
+		
         public static Guid IID_IShellFolder = new Guid("000214E6-0000-0000-C000-000000000046");
 
         #endregion

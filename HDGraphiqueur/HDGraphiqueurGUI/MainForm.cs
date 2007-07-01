@@ -160,7 +160,6 @@ namespace HDGraph
             }
         }
 
-
         private void ShowError(string msg, Exception ex)
         {
             Trace.TraceError(HDGTools.PrintError(ex));

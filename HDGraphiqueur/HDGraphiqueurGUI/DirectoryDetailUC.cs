@@ -13,6 +13,11 @@ namespace HDGraph
         public DirectoryDetailUC()
         {
             InitializeComponent();
+            //this.dataGridViewImageColumn1.ValuesAreIcons = true;
+            
+            this.DirectoryType.Image = ExternalTools.IconReader.GetFolderIcon(
+                                                        HDGraph.ExternalTools.IconReader.IconSize.Small,
+                                                        HDGraph.ExternalTools.IconReader.FolderType.Open).ToBitmap();
         }
     }
 }

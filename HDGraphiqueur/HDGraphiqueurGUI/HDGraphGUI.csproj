@@ -64,6 +64,8 @@
     </Compile>
     <Compile Include="DirectoryNode.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="ExternalTools\IconHelper.cs" />
+    <Compile Include="ExternalTools\TextAndImageColumn.cs" />
     <Compile Include="FatalHdgraphException.cs" />
     <Compile Include="HDGTools.cs" />
     <Compile Include="LanguageForm.cs">
