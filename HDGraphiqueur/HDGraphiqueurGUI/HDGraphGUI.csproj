@@ -63,6 +63,7 @@
       <DependentUpon>DirectoryDetailUC.cs</DependentUpon>
     </Compile>
     <Compile Include="DirectoryNode.cs" />
+    <Compile Include="DirNodeSortableBindingList.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="ExternalTools\IconHelper.cs" />
     <Compile Include="ExternalTools\TextAndImageColumn.cs" />

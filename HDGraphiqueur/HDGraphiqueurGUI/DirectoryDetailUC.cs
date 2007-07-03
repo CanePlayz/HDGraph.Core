@@ -19,5 +19,21 @@ namespace HDGraph
                                                         HDGraph.ExternalTools.IconReader.IconSize.Small,
                                                         HDGraph.ExternalTools.IconReader.FolderType.Open).ToBitmap();
         }
+
+        private void radioButtonSizesInBytes_CheckedChanged(object sender, EventArgs e)
+        {
+            dataGridViewTextBoxColumnTotalSize.Visible = true;
+            dataGridViewTextBoxColumnTotalSizeHumanReadable.Visible = false;
+            dataGridViewTextBoxColumnFilesSize.Visible = true;
+            dataGridViewTextBoxColumnFilesSizeHumanReadable.Visible = false;
+        }
+
+        private void radioButtonHumandReadableSizes_CheckedChanged(object sender, EventArgs e)
+        {
+            dataGridViewTextBoxColumnTotalSize.Visible = false;
+            dataGridViewTextBoxColumnTotalSizeHumanReadable.Visible = true;
+            dataGridViewTextBoxColumnFilesSize.Visible = false;
+            dataGridViewTextBoxColumnFilesSizeHumanReadable.Visible = true;
+        }
     }
 }
