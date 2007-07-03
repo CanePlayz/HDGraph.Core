@@ -48,6 +48,7 @@ namespace HDGraph
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumnName = new HDGraph.ExternalTools.TextAndImageColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -122,6 +123,7 @@ namespace HDGraph
             this.directoryNodeDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumnName,
             this.dataGridViewTextBoxColumn1,
+            this.TotalSize,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewCheckBoxColumn1,
             this.dataGridViewTextBoxColumn5});
@@ -237,6 +239,14 @@ namespace HDGraph
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
+            // TotalSize
+            // 
+            this.TotalSize.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.TotalSize.DataPropertyName = "HumanReadableTotalSize";
+            this.TotalSize.HeaderText = "Total Size (human readable)";
+            this.TotalSize.Name = "TotalSize";
+            this.TotalSize.ReadOnly = true;
+            // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -303,6 +313,7 @@ namespace HDGraph
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private HDGraph.ExternalTools.TextAndImageColumn dataGridViewTextBoxColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalSize;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;

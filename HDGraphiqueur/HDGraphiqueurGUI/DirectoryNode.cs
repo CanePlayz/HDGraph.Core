@@ -42,6 +42,15 @@ namespace HDGraph
             get { return totalSize; }
             set { totalSize = value; }
         }
+        /// <summary>
+        /// Taille du répertoire sous format lisible.
+        /// (par exemple ###.## Mo)
+        /// </summary>
+        public string HumanReadableTotalSize
+        {
+            get { return HDGTools.FormatSize(totalSize); }
+        }
+
 
         private long filesSize;
         /// <summary>
@@ -51,6 +60,21 @@ namespace HDGraph
         {
             get { return filesSize; }
             set { filesSize = value; }
+        }
+        /// <summary>
+        /// Taille de l'ensemble des fichiers du répertoire sous format lisible.
+        /// (par exemple ###.## Mo)
+        /// </summary>
+        public string HumanReadableFilesSize
+        {
+            get { return HDGTools.FormatSize(filesSize); }
+        }
+        /// <summary>
+        /// Pourcentage de fichiers dans le répertoire.
+        /// </summary>
+        public string FilesSizePercent
+        {
+            get { return filesSize * 100 / totalSize + "%"; }
         }
 
 

@@ -724,9 +724,9 @@ namespace HDGraph
                 }
                 //MessageBox.Show("Cursor hover directory " + node.Path);
                 labelDirName.Text = node.Name;
-                labelDirTotalSize.Text = treeGraph1.FormatSize(node.TotalSize);
+                labelDirTotalSize.Text = HDGTools.FormatSize(node.TotalSize);
                 if (node.TotalSize > 0)
-                    labelFilesSize.Text = treeGraph1.FormatSize(node.FilesSize) + " (" + node.FilesSize * 100 / node.TotalSize + "%)";
+                    labelFilesSize.Text = HDGTools.FormatSize(node.FilesSize) + " (" + node.FilesSize * 100 / node.TotalSize + "%)";
                 else
                     labelFilesSize.Text = " - ";
                 groupBoxHoverInfo.Visible = true;

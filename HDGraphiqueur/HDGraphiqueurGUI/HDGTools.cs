@@ -44,7 +44,91 @@ namespace HDGraph
         public static TraceSwitch mySwitch;
 
         private const string HDG_REG_KEY = "HDGraph";
+        
+        #region Variables chaîne (utilisées en tant que cache du resourceManager)
 
+        private static string abrevOctet;
+
+        public static string AbrevOctet
+        {
+            get
+            {
+                if (abrevOctet == null)
+                    abrevOctet = HDGTools.resManager.GetString("abreviationOctet");
+                return abrevOctet;
+            }
+        }
+        private static string abrevKo;
+
+        public static string AbrevKo
+        {
+            get
+            {
+                if (abrevKo == null)
+                    abrevKo = HDGTools.resManager.GetString("abreviationKOctet");
+                return abrevKo;
+            }
+        }
+        private static string abrevMo;
+
+        public static string AbrevMo
+        {
+            get
+            {
+                if (abrevMo == null)
+                    abrevMo = HDGTools.resManager.GetString("abreviationMOctet");
+                return abrevMo;
+            }
+        }
+        private static string abrevGo;
+
+        public static string AbrevGo
+        {
+            get
+            {
+                if (abrevGo == null)
+                    abrevGo = HDGTools.resManager.GetString("abreviationGOctet");
+                return abrevGo;
+            }
+        }
+        private static string abrevTo;
+
+        public static string AbrevTo
+        {
+            get
+            {
+                if (abrevTo == null)
+                    abrevTo = HDGTools.resManager.GetString("abreviationTOctet");
+                return abrevTo;
+            }
+        }
+
+        #endregion
+        
+        /// <summary>
+        /// Format une taille en octets en chaine de caractères.
+        /// </summary>
+        /// <param name="sizeInOctet"></param>
+        /// <returns></returns>
+        public static string FormatSize(long sizeInOctet)
+        {
+            long unit = 1;
+            if (sizeInOctet < unit * 1000)
+                return sizeInOctet.ToString() + " " + AbrevOctet;
+            unit *= 1024;
+            if (sizeInOctet < unit * 1000)
+                return String.Format("{0:F} " + AbrevKo, sizeInOctet / (double)unit);
+            unit *= 1024;
+            if (sizeInOctet < unit * 1000)
+                return String.Format("{0:F} " + AbrevMo, sizeInOctet / (double)unit);
+            unit *= 1024;
+            if (sizeInOctet < unit * 1000)
+                return String.Format("{0:F} " + AbrevGo, sizeInOctet / (double)unit);
+            unit *= 1024;
+            return String.Format("{0:F} " + AbrevTo, sizeInOctet / (double)unit);
+        }
+        
+        
         public enum RestartAction
         {
             addToExplorerContextMenu,

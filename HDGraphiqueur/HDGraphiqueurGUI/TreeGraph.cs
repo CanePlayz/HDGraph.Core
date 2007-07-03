@@ -172,22 +172,6 @@ namespace HDGraph
 
         private Color myTransparentColor = Color.Black;
 
-        #region Variables chaîne (utilisées en tant que cache du resourceManager)
-
-        //private string abrevOctet = HDGTools.resManager.GetString("abreviationOctet");
-        //private string abrevKo = HDGTools.resManager.GetString("abreviationKOctet");
-        //private string abrevMo = HDGTools.resManager.GetString("abreviationMOctet");
-        //private string abrevGo = HDGTools.resManager.GetString("abreviationGOctet");
-        //private string abrevTo = HDGTools.resManager.GetString("abreviationTOctet");
-
-        private string abrevOctet = "";
-        private string abrevKo = "";
-        private string abrevMo = "";
-        private string abrevGo = "";
-        private string abrevTo = "";
-
-        #endregion
-
         #endregion
 
         #region Constructeur
@@ -196,14 +180,6 @@ namespace HDGraph
         {
             InitializeComponent();
             this.SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer, true);
-            if (HDGTools.resManager != null)
-            {
-                abrevOctet = HDGTools.resManager.GetString("abreviationOctet");
-                abrevKo = HDGTools.resManager.GetString("abreviationKOctet");
-                abrevMo = HDGTools.resManager.GetString("abreviationMOctet");
-                abrevGo = HDGTools.resManager.GetString("abreviationGOctet");
-                abrevTo = HDGTools.resManager.GetString("abreviationTOctet");
-            }
         }
 
         #endregion
@@ -469,7 +445,7 @@ namespace HDGraph
             y += this.ClientSize.Height / 2f;
             string nodeText = node.Name;
             if (optionShowSize)
-                nodeText += Environment.NewLine + FormatSize(node.TotalSize);
+                nodeText += Environment.NewLine + HDGTools.FormatSize(node.TotalSize);
 
             SizeF size = frontGraph.MeasureString(nodeText, Font);
             x -= size.Width / 2f;
@@ -512,7 +488,7 @@ namespace HDGraph
                     float xName = x - sizeTextName.Width / 2f;
                     float yName = y - sizeTextName.Height;
                     frontGraph.DrawString(nodeText, Font, new SolidBrush(Color.Black), xName, yName); //, format);
-                    string nodeSize = FormatSize(node.TotalSize);
+                    string nodeSize = HDGTools.FormatSize(node.TotalSize);
                     SizeF sizeTextSize = frontGraph.MeasureString(nodeSize, Font);
                     float xSize = x - sizeTextSize.Width / 2f;
                     float ySize = y;
@@ -661,29 +637,6 @@ namespace HDGraph
 
         }
 
-        /// <summary>
-        /// Format une taille en octets en chaine de caractères.
-        /// </summary>
-        /// <param name="sizeInOctet"></param>
-        /// <returns></returns>
-        public string FormatSize(long sizeInOctet)
-        {
-            long unit = 1;
-            if (sizeInOctet < unit * 1000)
-                return sizeInOctet.ToString() + " " + abrevOctet;
-            unit *= 1024;
-            if (sizeInOctet < unit * 1000)
-                return String.Format("{0:F} " + abrevKo, sizeInOctet / (double)unit);
-            unit *= 1024;
-            if (sizeInOctet < unit * 1000)
-                return String.Format("{0:F} " + abrevMo, sizeInOctet / (double)unit);
-            unit *= 1024;
-            if (sizeInOctet < unit * 1000)
-                return String.Format("{0:F} " + abrevGo, sizeInOctet / (double)unit);
-            unit *= 1024;
-            return String.Format("{0:F} " + abrevTo, sizeInOctet / (double)unit);
-
-        }
 
         /// <summary>
         /// Convertit un angle en degrés en radian.
@@ -854,7 +807,7 @@ namespace HDGraph
 
             // Item "Titre du dossier"
             if (nodeIsNotNull)
-                directoryNameToolStripMenuItem.Text = node.Name + " (" + FormatSize(node.TotalSize) + ")";
+                directoryNameToolStripMenuItem.Text = node.Name + " (" + HDGTools.FormatSize(node.TotalSize) + ")";
             else
                 directoryNameToolStripMenuItem.Text = "/";
         }
@@ -1052,7 +1005,7 @@ namespace HDGraph
                     MessageBox.Show(msgErreur,
                         HDGTools.resManager.GetString("Error"),
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Trace.TraceError(HDGTools.PrintError(ex)); 
+                    Trace.TraceError(HDGTools.PrintError(ex));
                     RafraichirArboDuDernierClic();
                 }
             }
