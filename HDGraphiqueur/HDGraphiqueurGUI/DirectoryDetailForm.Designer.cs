@@ -40,7 +40,7 @@ namespace HDGraph
             this.directoryDetailUC1.BackColor = System.Drawing.SystemColors.Control;
             this.directoryDetailUC1.Location = new System.Drawing.Point(-4, 0);
             this.directoryDetailUC1.Name = "directoryDetailUC1";
-            this.directoryDetailUC1.Size = new System.Drawing.Size(577, 436);
+            this.directoryDetailUC1.Size = new System.Drawing.Size(578, 436);
             this.directoryDetailUC1.TabIndex = 0;
             // 
             // buttonClose

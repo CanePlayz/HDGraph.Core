@@ -186,6 +186,9 @@
   <data name="FreeSpace" xml:space="preserve">
     <value>Free space</value>
   </data>
+  <data name="FreeSpaceDescription" xml:space="preserve">
+    <value>Your drive free space is about {0} ({1} bytes).</value>
+  </data>
   <data name="GoingToDeleteFolderMsg" xml:space="preserve">
     <value>This action will permanently delete the folder "{0}" and all its content. Are you sure ?</value>
   </data>
@@ -290,6 +293,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
   </data>
   <data name="UnknownFiles" xml:space="preserve">
     <value>Unknown files</value>
+  </data>
+  <data name="UnknownPartDescription" xml:space="preserve">
+    <value>Your drive contains about {0} ({1} bytes) of data that HDGraph is unable to scan.\nThis includes : \n   - unreadable files (due to access restrictions)\n   - lost space (due to cluster sizes)\n   - folders and files which path if greater than 255 chars\n   - etc.</value>
   </data>
   <data name="UserCanceledAnalysis" xml:space="preserve">
     <value>Directory scan has been aborted by user. Please launch a new scan.</value>

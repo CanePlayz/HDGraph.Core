@@ -103,5 +103,21 @@ namespace HDGraph
             }
 
         }
+
+        private void openThisDirectoryInWindowsExplorerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (selectedNode != null)
+                System.Diagnostics.Process.Start(selectedNode.Path);
+        }
+
+        private DirectoryNode selectedNode = null;
+
+        private void directoryNodeDataGridView_CellContextMenuStripNeeded(object sender, DataGridViewCellContextMenuStripNeededEventArgs e)
+        {
+            e.ContextMenuStrip = contextMenuStrip1;
+            directoryNodeDataGridView.ClearSelection();
+            directoryNodeDataGridView.Rows[e.RowIndex].Selected = true;
+            selectedNode = directoryNodeDataGridView.Rows[e.RowIndex].DataBoundItem as DirectoryNode;
+        }
     }
 }

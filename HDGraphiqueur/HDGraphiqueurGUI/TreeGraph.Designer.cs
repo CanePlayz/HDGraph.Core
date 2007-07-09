@@ -33,6 +33,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.directoryNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.detailsViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openThisDirectoryInWindowsExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.refreshThisDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,7 +42,6 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deletePermanentlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.detailsViewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,6 +76,13 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
+            // 
+            // detailsViewToolStripMenuItem
+            // 
+            this.detailsViewToolStripMenuItem.Image = global::HDGraph.Properties.Resources.ActualSizeHS;
+            this.detailsViewToolStripMenuItem.Name = "detailsViewToolStripMenuItem";
+            resources.ApplyResources(this.detailsViewToolStripMenuItem, "detailsViewToolStripMenuItem");
+            this.detailsViewToolStripMenuItem.Click += new System.EventHandler(this.detailsViewToolStripMenuItem_Click);
             // 
             // openThisDirectoryInWindowsExplorerToolStripMenuItem
             // 
@@ -128,12 +135,6 @@
             this.deletePermanentlyToolStripMenuItem.Name = "deletePermanentlyToolStripMenuItem";
             resources.ApplyResources(this.deletePermanentlyToolStripMenuItem, "deletePermanentlyToolStripMenuItem");
             this.deletePermanentlyToolStripMenuItem.Click += new System.EventHandler(this.deletePermanentlyToolStripMenuItem_Click);
-            // 
-            // detailsViewToolStripMenuItem
-            // 
-            this.detailsViewToolStripMenuItem.Name = "detailsViewToolStripMenuItem";
-            resources.ApplyResources(this.detailsViewToolStripMenuItem, "detailsViewToolStripMenuItem");
-            this.detailsViewToolStripMenuItem.Click += new System.EventHandler(this.detailsViewToolStripMenuItem_Click);
             // 
             // TreeGraph
             // 

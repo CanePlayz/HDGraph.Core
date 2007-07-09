@@ -186,6 +186,9 @@
   <data name="FreeSpace" xml:space="preserve">
     <value>Espace libre</value>
   </data>
+  <data name="FreeSpaceDescription" xml:space="preserve">
+    <value>L'espace libre de ce lecteur s'élève à {0} ({1} octets).</value>
+  </data>
   <data name="GoingToDeleteFolderMsg" xml:space="preserve">
     <value>Cette action va définitivement supprimer le répertoire "{0}" ainsi que la totalité de son contenu. Cliquez sur Ok pour confirmer.</value>
   </data>
@@ -283,6 +286,9 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  021
   </data>
   <data name="UnknownFiles" xml:space="preserve">
     <value>Fichiers inconnus</value>
+  </data>
+  <data name="UnknownPartDescription" xml:space="preserve">
+    <value>Ce lecteur contient {0} ({1} octets) de données que HDGraph n'est pas en mesure de scanner.\nCela inclut : \n   - unreadable files (due to access restrictions)\n   - lost space (due to cluster sizes)\n   - folders and files which path if greater than 255 chars\n   - etc.</value>
   </data>
   <data name="UserCanceledAnalysis" xml:space="preserve">
     <value>L'analyse du disque a été stoppée par l'utilisateur. Veuillez lancer une nouvelle analyse.</value>

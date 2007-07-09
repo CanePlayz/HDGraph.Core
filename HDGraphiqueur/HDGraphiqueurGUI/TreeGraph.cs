@@ -1051,6 +1051,26 @@ namespace HDGraph
         {
             if (lastClicNode != null)
             {
+                if (lastClicNode.DirectoryType == SpecialDirTypes.FreeSpaceAndShow)
+                {
+                    MessageBox.Show(
+                        String.Format(
+                                HDGTools.resManager.GetString("FreeSpaceDescription"),
+                                lastClicNode.HumanReadableTotalSize, lastClicNode.TotalSize
+                                ).Replace("\\n", Environment.NewLine),
+                        "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+                if (lastClicNode.DirectoryType == SpecialDirTypes.UnknownPart)
+                {
+                    MessageBox.Show(
+                       String.Format(
+                               HDGTools.resManager.GetString("UnknownPartDescription"),
+                               lastClicNode.HumanReadableTotalSize, lastClicNode.TotalSize
+                               ).Replace("\\n", Environment.NewLine),
+                       "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
                 DirectoryDetailForm form = new DirectoryDetailForm();
                 form.Directory = lastClicNode;
                 form.Show();

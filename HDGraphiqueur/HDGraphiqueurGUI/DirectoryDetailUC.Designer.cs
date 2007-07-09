@@ -46,6 +46,8 @@ namespace HDGraph
             this.radioButtonSizesInBytes = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.radioButtonHumandReadableSizes = new System.Windows.Forms.RadioButton();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.directoryNodeEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumnName = new HDGraph.ExternalTools.TextAndImageColumn();
             this.dataGridViewTextBoxColumnTotalSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,6 +68,7 @@ namespace HDGraph
             labelFolderContent = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.directoryNodeDataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.directoryNodeEntityBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.directoryNodeListBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -145,6 +148,7 @@ namespace HDGraph
             this.directoryNodeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.directoryNodeDataGridView.Size = new System.Drawing.Size(555, 270);
             this.directoryNodeDataGridView.TabIndex = 1;
+            this.directoryNodeDataGridView.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.directoryNodeDataGridView_CellContextMenuStripNeeded);
             // 
             // filesSizeTextBox
             // 
@@ -202,6 +206,7 @@ namespace HDGraph
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.radioButtonSizesInBytes);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.radioButtonHumandReadableSizes);
@@ -244,6 +249,21 @@ namespace HDGraph
             this.radioButtonHumandReadableSizes.Text = "Human readable form";
             this.radioButtonHumandReadableSizes.UseVisualStyleBackColor = true;
             this.radioButtonHumandReadableSizes.CheckedChanged += new System.EventHandler(this.radioButtonHumandReadableSizes_CheckedChanged);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(278, 26);
+            // 
+            // openThisDirectoryInWindowsExplorerToolStripMenuItem
+            // 
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Image = global::HDGraph.Properties.Resources.CascadeWindowsHS;
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Name = "openThisDirectoryInWindowsExplorerToolStripMenuItem";
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Text = "Open this directory in Windows Explorer";
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Click += new System.EventHandler(this.openThisDirectoryInWindowsExplorerToolStripMenuItem_Click);
             // 
             // directoryNodeEntityBindingSource
             // 
@@ -383,6 +403,7 @@ namespace HDGraph
             ((System.ComponentModel.ISupportInitialize)(this.directoryNodeDataGridView)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.directoryNodeEntityBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.directoryNodeListBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -414,5 +435,7 @@ namespace HDGraph
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem openThisDirectoryInWindowsExplorerToolStripMenuItem;
     }
 }

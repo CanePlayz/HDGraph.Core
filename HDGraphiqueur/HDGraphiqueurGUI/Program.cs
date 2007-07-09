@@ -17,16 +17,19 @@ namespace HDGraph
         static void Main()
         {
             HDGTools.mySwitch = new TraceSwitch("traceLevelSwitch", "HDG TraceSwitch");
+#if (!DEBUG)
             try
             {
-                Trace.WriteLineIf(HDGTools.mySwitch.TraceInfo, "Application started.");
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                MainForm form = new MainForm();
-                ProcessCommandLineArgs(form);
-                if (launchForm)
-                    Application.Run(form);
-            }
+#endif
+            Trace.WriteLineIf(HDGTools.mySwitch.TraceInfo, "Application started.");
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            MainForm form = new MainForm();
+            ProcessCommandLineArgs(form);
+            if (launchForm)
+                Application.Run(form);
+#if (!DEBUG)    
+        }
             catch (Exception ex)
             {
                 Console.Error.WriteLine(ex.ToString());
@@ -36,6 +39,7 @@ namespace HDGraph
                                 res.GetString("Error"),
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+#endif
         }
 
         /// <summary>
