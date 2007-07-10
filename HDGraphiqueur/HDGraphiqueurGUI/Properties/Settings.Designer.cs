@@ -177,5 +177,17 @@ namespace HDGraph.Properties {
                 this["OptionShowFreeSpace"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OptionShowSizesInHumanForm {
+            get {
+                return ((bool)(this["OptionShowSizesInHumanForm"]));
+            }
+            set {
+                this["OptionShowSizesInHumanForm"] = value;
+            }
+        }
     }
 }

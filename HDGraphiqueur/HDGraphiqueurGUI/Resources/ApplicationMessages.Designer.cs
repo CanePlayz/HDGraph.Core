@@ -268,6 +268,15 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Your drive free space is about {0} ({1} bytes)..
+        /// </summary>
+        internal static string FreeSpaceDescription {
+            get {
+                return ResourceManager.GetString("FreeSpaceDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à This action will permanently delete the folder &quot;{0}&quot; and all its content. Are you sure ?.
         /// </summary>
         internal static string GoingToDeleteFolderMsg {
@@ -547,6 +556,15 @@ namespace HDGraph.Resources {
         internal static string UnknownFiles {
             get {
                 return ResourceManager.GetString("UnknownFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Your drive contains about {0} ({1} bytes) of data that HDGraph is unable to scan.\nThis includes : \n   - unreadable files (due to access restrictions)\n   - lost space (due to cluster sizes)\n   - folders and files which path if greater than 255 chars\n   - etc..
+        /// </summary>
+        internal static string UnknownPartDescription {
+            get {
+                return ResourceManager.GetString("UnknownPartDescription", resourceCulture);
             }
         }
         

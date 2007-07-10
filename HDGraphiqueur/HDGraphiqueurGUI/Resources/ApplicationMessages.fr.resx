@@ -288,7 +288,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  021
     <value>Fichiers inconnus</value>
   </data>
   <data name="UnknownPartDescription" xml:space="preserve">
-    <value>Ce lecteur contient {0} ({1} octets) de données que HDGraph n'est pas en mesure de scanner.\nCela inclut : \n   - unreadable files (due to access restrictions)\n   - lost space (due to cluster sizes)\n   - folders and files which path if greater than 255 chars\n   - etc.</value>
+    <value>Ce lecteur contient {0} ({1} octets) de données que HDGraph n'est pas en mesure de scanner.\nCela inclut : \n   - les fichiers inacessibles (accès refusés)\n   - l'espace perdu (dû à la taille des clusters)\n   - les fichiers et répertoires dont le chemin est supérieur à 255 caractères\n   - etc.</value>
   </data>
   <data name="UserCanceledAnalysis" xml:space="preserve">
     <value>L'analyse du disque a été stoppée par l'utilisateur. Veuillez lancer une nouvelle analyse.</value>
