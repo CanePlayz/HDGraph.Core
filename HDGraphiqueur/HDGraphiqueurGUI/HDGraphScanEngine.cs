@@ -278,6 +278,7 @@ namespace HDGraph
             {
                 Trace.TraceError("Error during folder analysis (" + dir.Path + "). Folder skiped. Details: " + HDGTools.PrintError(ex));
                 dir.Name = String.Format(HDGTools.resManager.GetString("ErrorLoading"), dir.Name, ex.Message);
+                dir.DirectoryType = SpecialDirTypes.ScanError;
             }
         }
 
