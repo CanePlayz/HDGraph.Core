@@ -115,6 +115,15 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à An application restart is required to apply the new langage. Are you sure ?.
+        /// </summary>
+        internal static string AppRestartRequiredToApplyLangage {
+            get {
+                return ResourceManager.GetString("AppRestartRequiredToApplyLangage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à A critical error occured. Error is logged, and application will stop. Please send the application log to the HDGraph team (contact: http://hdgraph.sourceforge.net). Thank you..
         /// </summary>
         internal static string CriticalError {
