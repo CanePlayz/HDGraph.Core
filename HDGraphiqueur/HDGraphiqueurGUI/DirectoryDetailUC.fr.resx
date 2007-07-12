@@ -117,76 +117,95 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;directoryDetailUC1.Type" xml:space="preserve">
-    <value>HDGraph.DirectoryDetailUC, HDGraph, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="filesSizeLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 13</value>
   </data>
-  <data name="&gt;&gt;directoryDetailUC1.Name" xml:space="preserve">
-    <value>directoryDetailUC1</value>
+  <data name="filesSizeLabel.Text" xml:space="preserve">
+    <value>Taille des fichiers :</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>572, 467</value>
+  <data name="nameLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 13</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>DirectoryDetailForm</value>
+  <data name="nameLabel.Text" xml:space="preserve">
+    <value>Nom :</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="buttonClose.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Right</value>
+  <data name="totalSizeLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 13</value>
   </data>
-  <data name="&gt;&gt;directoryDetailUC1.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="totalSizeLabel.Text" xml:space="preserve">
+    <value>Taille totale :</value>
   </data>
-  <data name="&gt;&gt;buttonClose.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="pathLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 13</value>
   </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>DirectoryDetailForm</value>
+  <data name="pathLabel.Text" xml:space="preserve">
+    <value>Chemin :</value>
   </data>
-  <data name="&gt;&gt;directoryDetailUC1.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="labelFolderContent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 13</value>
   </data>
-  <data name="buttonClose.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+  <data name="labelFolderContent.Text" xml:space="preserve">
+    <value>Contenu du répertoire :</value>
   </data>
-  <data name="directoryDetailUC1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>578, 436</value>
+  <data name="dataGridViewTextBoxColumnName.HeaderText" xml:space="preserve">
+    <value>Nom du sous-répertoire</value>
   </data>
-  <data name="buttonClose.Text" xml:space="preserve">
-    <value>Close</value>
+  <data name="dataGridViewTextBoxColumnTotalSize.HeaderText" xml:space="preserve">
+    <value>Taille totale (octets)</value>
   </data>
-  <data name="&gt;&gt;buttonClose.Name" xml:space="preserve">
-    <value>buttonClose</value>
+  <data name="dataGridViewTextBoxColumnTotalSizeHumanReadable.HeaderText" xml:space="preserve">
+    <value>Taille totale</value>
   </data>
-  <data name="&gt;&gt;buttonClose.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="dataGridViewTextBoxColumnFilesSize.HeaderText" xml:space="preserve">
+    <value>Taille des fichiers (octets)</value>
   </data>
-  <data name="&gt;&gt;buttonClose.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="dataGridViewTextBoxColumnFilesSizeHumanReadable.HeaderText" xml:space="preserve">
+    <value>Taille des fichiers</value>
   </data>
-  <data name="directoryDetailUC1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-4, 0</value>
+  <data name="filesSizeTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 88</value>
   </data>
-  <data name="buttonClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>485, 432</value>
+  <data name="filesSizeTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 13</value>
   </data>
-  <data name="directoryDetailUC1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="totalSizeTextBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 62</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="directoryDetailUC1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="totalSizeTextBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 13</value>
   </data>
-  <data name="buttonClose.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>304, 62</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>265, 64</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Options d'affichage</value>
+  </data>
+  <data name="radioButtonSizesInBytes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 16</value>
+  </data>
+  <data name="radioButtonSizesInBytes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 17</value>
+  </data>
+  <data name="radioButtonSizesInBytes.Text" xml:space="preserve">
+    <value>Octets</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 13</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Afficher les tailles en : </value>
+  </data>
+  <data name="radioButtonHumandReadableSizes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 39</value>
+  </data>
+  <data name="radioButtonHumandReadableSizes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 17</value>
+  </data>
+  <data name="radioButtonHumandReadableSizes.Text" xml:space="preserve">
+    <value>Unité automatique</value>
+  </data>
 </root>

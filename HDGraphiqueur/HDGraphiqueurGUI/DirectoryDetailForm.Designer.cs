@@ -28,42 +28,45 @@ namespace HDGraph
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DirectoryDetailForm));
             this.directoryDetailUC1 = new HDGraph.DirectoryDetailUC();
             this.buttonClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // directoryDetailUC1
             // 
-            this.directoryDetailUC1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.directoryDetailUC1.AccessibleDescription = null;
+            this.directoryDetailUC1.AccessibleName = null;
+            resources.ApplyResources(this.directoryDetailUC1, "directoryDetailUC1");
             this.directoryDetailUC1.BackColor = System.Drawing.SystemColors.Control;
-            this.directoryDetailUC1.Location = new System.Drawing.Point(-4, 0);
+            this.directoryDetailUC1.BackgroundImage = null;
+            this.directoryDetailUC1.Font = null;
             this.directoryDetailUC1.Name = "directoryDetailUC1";
-            this.directoryDetailUC1.Size = new System.Drawing.Size(578, 436);
-            this.directoryDetailUC1.TabIndex = 0;
             // 
             // buttonClose
             // 
-            this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonClose.Location = new System.Drawing.Point(485, 432);
+            this.buttonClose.AccessibleDescription = null;
+            this.buttonClose.AccessibleName = null;
+            resources.ApplyResources(this.buttonClose, "buttonClose");
+            this.buttonClose.BackgroundImage = null;
+            this.buttonClose.Font = null;
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(75, 23);
-            this.buttonClose.TabIndex = 1;
-            this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // DirectoryDetailForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AccessibleDescription = null;
+            this.AccessibleName = null;
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(572, 467);
+            this.BackgroundImage = null;
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.directoryDetailUC1);
+            this.Font = null;
+            this.Icon = null;
             this.Name = "DirectoryDetailForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.Text = "DirectoryDetailForm";
             this.ResumeLayout(false);
 
         }

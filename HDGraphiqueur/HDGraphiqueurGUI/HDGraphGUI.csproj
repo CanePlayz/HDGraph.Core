@@ -120,9 +120,17 @@
       <SubType>Designer</SubType>
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DirectoryDetailForm.fr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DirectoryDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DirectoryDetailForm.resx">
       <SubType>Designer</SubType>
       <DependentUpon>DirectoryDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectoryDetailUC.fr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DirectoryDetailUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DirectoryDetailUC.resx">
       <SubType>Designer</SubType>

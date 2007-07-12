@@ -30,15 +30,18 @@ namespace HDGraph
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label filesSizeLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DirectoryDetailUC));
             System.Windows.Forms.Label nameLabel;
             System.Windows.Forms.Label totalSizeLabel;
             System.Windows.Forms.Label pathLabel;
             System.Windows.Forms.Label labelFolderContent;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.directoryNodeDataGridView = new System.Windows.Forms.DataGridView();
+            this.directoryNodeListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.filesSizeTextBox = new System.Windows.Forms.TextBox();
+            this.directoryNodeEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.totalSizeTextBox = new System.Windows.Forms.TextBox();
             this.pathTextBox = new System.Windows.Forms.TextBox();
@@ -48,7 +51,10 @@ namespace HDGraph
             this.radioButtonHumandReadableSizes = new System.Windows.Forms.RadioButton();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openThisDirectoryInWindowsExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.directoryNodeEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textAndImageColumn1 = new HDGraph.ExternalTools.TextAndImageColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumnName = new HDGraph.ExternalTools.TextAndImageColumn();
             this.dataGridViewTextBoxColumnTotalSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumnTotalSizeHumanReadable = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,81 +62,72 @@ namespace HDGraph
             this.dataGridViewTextBoxColumnFilesSizeHumanReadable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.directoryNodeListBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.textAndImageColumn1 = new HDGraph.ExternalTools.TextAndImageColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             filesSizeLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             totalSizeLabel = new System.Windows.Forms.Label();
             pathLabel = new System.Windows.Forms.Label();
             labelFolderContent = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.directoryNodeDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeListBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeEntityBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeEntityBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeListBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // filesSizeLabel
             // 
-            filesSizeLabel.AutoSize = true;
-            filesSizeLabel.Location = new System.Drawing.Point(14, 88);
+            filesSizeLabel.AccessibleDescription = null;
+            filesSizeLabel.AccessibleName = null;
+            resources.ApplyResources(filesSizeLabel, "filesSizeLabel");
+            filesSizeLabel.Font = null;
             filesSizeLabel.Name = "filesSizeLabel";
-            filesSizeLabel.Size = new System.Drawing.Size(57, 13);
-            filesSizeLabel.TabIndex = 5;
-            filesSizeLabel.Text = "Files Size :";
             // 
             // nameLabel
             // 
-            nameLabel.AutoSize = true;
-            nameLabel.Location = new System.Drawing.Point(14, 10);
+            nameLabel.AccessibleDescription = null;
+            nameLabel.AccessibleName = null;
+            resources.ApplyResources(nameLabel, "nameLabel");
+            nameLabel.Font = null;
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new System.Drawing.Size(41, 13);
-            nameLabel.TabIndex = 7;
-            nameLabel.Text = "Name :";
             // 
             // totalSizeLabel
             // 
-            totalSizeLabel.AutoSize = true;
-            totalSizeLabel.Location = new System.Drawing.Point(14, 62);
+            totalSizeLabel.AccessibleDescription = null;
+            totalSizeLabel.AccessibleName = null;
+            resources.ApplyResources(totalSizeLabel, "totalSizeLabel");
+            totalSizeLabel.Font = null;
             totalSizeLabel.Name = "totalSizeLabel";
-            totalSizeLabel.Size = new System.Drawing.Size(60, 13);
-            totalSizeLabel.TabIndex = 9;
-            totalSizeLabel.Text = "Total Size :";
             // 
             // pathLabel
             // 
-            pathLabel.AutoSize = true;
-            pathLabel.Location = new System.Drawing.Point(14, 36);
+            pathLabel.AccessibleDescription = null;
+            pathLabel.AccessibleName = null;
+            resources.ApplyResources(pathLabel, "pathLabel");
+            pathLabel.Font = null;
             pathLabel.Name = "pathLabel";
-            pathLabel.Size = new System.Drawing.Size(35, 13);
-            pathLabel.TabIndex = 10;
-            pathLabel.Text = "Path :";
             // 
             // labelFolderContent
             // 
-            labelFolderContent.AutoSize = true;
-            labelFolderContent.Location = new System.Drawing.Point(14, 116);
+            labelFolderContent.AccessibleDescription = null;
+            labelFolderContent.AccessibleName = null;
+            resources.ApplyResources(labelFolderContent, "labelFolderContent");
+            labelFolderContent.Font = null;
             labelFolderContent.Name = "labelFolderContent";
-            labelFolderContent.Size = new System.Drawing.Size(81, 13);
-            labelFolderContent.TabIndex = 12;
-            labelFolderContent.Text = "Folder content :";
             // 
             // directoryNodeDataGridView
             // 
+            this.directoryNodeDataGridView.AccessibleDescription = null;
+            this.directoryNodeDataGridView.AccessibleName = null;
             this.directoryNodeDataGridView.AllowUserToAddRows = false;
             this.directoryNodeDataGridView.AllowUserToDeleteRows = false;
             this.directoryNodeDataGridView.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.BlanchedAlmond;
-            this.directoryNodeDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.directoryNodeDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.directoryNodeDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            resources.ApplyResources(this.directoryNodeDataGridView, "directoryNodeDataGridView");
             this.directoryNodeDataGridView.AutoGenerateColumns = false;
             this.directoryNodeDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.directoryNodeDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.directoryNodeDataGridView.BackgroundImage = null;
             this.directoryNodeDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumnName,
             this.dataGridViewTextBoxColumnTotalSize,
@@ -140,141 +137,183 @@ namespace HDGraph
             this.dataGridViewCheckBoxColumn1,
             this.dataGridViewTextBoxColumn5});
             this.directoryNodeDataGridView.DataSource = this.directoryNodeListBindingSource;
-            this.directoryNodeDataGridView.Location = new System.Drawing.Point(14, 132);
+            this.directoryNodeDataGridView.Font = null;
             this.directoryNodeDataGridView.Name = "directoryNodeDataGridView";
             this.directoryNodeDataGridView.ReadOnly = true;
             this.directoryNodeDataGridView.RowHeadersVisible = false;
             this.directoryNodeDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.directoryNodeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.directoryNodeDataGridView.Size = new System.Drawing.Size(555, 270);
-            this.directoryNodeDataGridView.TabIndex = 1;
             this.directoryNodeDataGridView.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.directoryNodeDataGridView_CellContextMenuStripNeeded);
+            // 
+            // directoryNodeListBindingSource
+            // 
+            this.directoryNodeListBindingSource.DataSource = typeof(HDGraph.DirectoryNode);
             // 
             // filesSizeTextBox
             // 
-            this.filesSizeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.filesSizeTextBox.AccessibleDescription = null;
+            this.filesSizeTextBox.AccessibleName = null;
+            resources.ApplyResources(this.filesSizeTextBox, "filesSizeTextBox");
             this.filesSizeTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.filesSizeTextBox.BackgroundImage = null;
             this.filesSizeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.filesSizeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.directoryNodeEntityBindingSource, "FilesSize", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
-            this.filesSizeTextBox.Location = new System.Drawing.Point(80, 88);
+            this.filesSizeTextBox.Font = null;
             this.filesSizeTextBox.MinimumSize = new System.Drawing.Size(187, 0);
             this.filesSizeTextBox.Name = "filesSizeTextBox";
             this.filesSizeTextBox.ReadOnly = true;
-            this.filesSizeTextBox.Size = new System.Drawing.Size(245, 13);
-            this.filesSizeTextBox.TabIndex = 6;
+            // 
+            // directoryNodeEntityBindingSource
+            // 
+            this.directoryNodeEntityBindingSource.DataSource = typeof(HDGraph.DirectoryNode);
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.nameTextBox.AccessibleDescription = null;
+            this.nameTextBox.AccessibleName = null;
+            resources.ApplyResources(this.nameTextBox, "nameTextBox");
             this.nameTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.nameTextBox.BackgroundImage = null;
             this.nameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.directoryNodeEntityBindingSource, "Name", true));
-            this.nameTextBox.Location = new System.Drawing.Point(80, 10);
+            this.nameTextBox.Font = null;
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.ReadOnly = true;
-            this.nameTextBox.Size = new System.Drawing.Size(489, 13);
-            this.nameTextBox.TabIndex = 8;
             // 
             // totalSizeTextBox
             // 
-            this.totalSizeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalSizeTextBox.AccessibleDescription = null;
+            this.totalSizeTextBox.AccessibleName = null;
+            resources.ApplyResources(this.totalSizeTextBox, "totalSizeTextBox");
             this.totalSizeTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.totalSizeTextBox.BackgroundImage = null;
             this.totalSizeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.totalSizeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.directoryNodeEntityBindingSource, "TotalSize", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
-            this.totalSizeTextBox.Location = new System.Drawing.Point(80, 62);
+            this.totalSizeTextBox.Font = null;
             this.totalSizeTextBox.MinimumSize = new System.Drawing.Size(187, 0);
             this.totalSizeTextBox.Name = "totalSizeTextBox";
             this.totalSizeTextBox.ReadOnly = true;
-            this.totalSizeTextBox.Size = new System.Drawing.Size(245, 13);
-            this.totalSizeTextBox.TabIndex = 10;
             // 
             // pathTextBox
             // 
-            this.pathTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pathTextBox.AccessibleDescription = null;
+            this.pathTextBox.AccessibleName = null;
+            resources.ApplyResources(this.pathTextBox, "pathTextBox");
             this.pathTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.pathTextBox.BackgroundImage = null;
             this.pathTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.pathTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.directoryNodeEntityBindingSource, "Path", true));
-            this.pathTextBox.Location = new System.Drawing.Point(80, 36);
+            this.pathTextBox.Font = null;
             this.pathTextBox.Name = "pathTextBox";
             this.pathTextBox.ReadOnly = true;
-            this.pathTextBox.Size = new System.Drawing.Size(489, 13);
-            this.pathTextBox.TabIndex = 11;
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.AccessibleDescription = null;
+            this.groupBox1.AccessibleName = null;
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.BackgroundImage = null;
             this.groupBox1.Controls.Add(this.radioButtonSizesInBytes);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.radioButtonHumandReadableSizes);
-            this.groupBox1.Location = new System.Drawing.Point(331, 62);
+            this.groupBox1.Font = null;
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(238, 64);
-            this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Size options";
             // 
             // radioButtonSizesInBytes
             // 
-            this.radioButtonSizesInBytes.AutoSize = true;
-            this.radioButtonSizesInBytes.Location = new System.Drawing.Point(92, 16);
+            this.radioButtonSizesInBytes.AccessibleDescription = null;
+            this.radioButtonSizesInBytes.AccessibleName = null;
+            resources.ApplyResources(this.radioButtonSizesInBytes, "radioButtonSizesInBytes");
+            this.radioButtonSizesInBytes.BackgroundImage = null;
+            this.radioButtonSizesInBytes.Font = null;
             this.radioButtonSizesInBytes.Name = "radioButtonSizesInBytes";
-            this.radioButtonSizesInBytes.Size = new System.Drawing.Size(51, 17);
-            this.radioButtonSizesInBytes.TabIndex = 2;
-            this.radioButtonSizesInBytes.Text = "Bytes";
             this.radioButtonSizesInBytes.UseVisualStyleBackColor = true;
             this.radioButtonSizesInBytes.CheckedChanged += new System.EventHandler(this.radioButtonSizesInBytes_CheckedChanged);
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 16);
+            this.label1.AccessibleDescription = null;
+            this.label1.AccessibleName = null;
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Font = null;
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(80, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Show sizes in : ";
             // 
             // radioButtonHumandReadableSizes
             // 
-            this.radioButtonHumandReadableSizes.AutoSize = true;
+            this.radioButtonHumandReadableSizes.AccessibleDescription = null;
+            this.radioButtonHumandReadableSizes.AccessibleName = null;
+            resources.ApplyResources(this.radioButtonHumandReadableSizes, "radioButtonHumandReadableSizes");
+            this.radioButtonHumandReadableSizes.BackgroundImage = null;
             this.radioButtonHumandReadableSizes.Checked = true;
-            this.radioButtonHumandReadableSizes.Location = new System.Drawing.Point(92, 39);
+            this.radioButtonHumandReadableSizes.Font = null;
             this.radioButtonHumandReadableSizes.Name = "radioButtonHumandReadableSizes";
-            this.radioButtonHumandReadableSizes.Size = new System.Drawing.Size(126, 17);
-            this.radioButtonHumandReadableSizes.TabIndex = 0;
             this.radioButtonHumandReadableSizes.TabStop = true;
-            this.radioButtonHumandReadableSizes.Text = "Human readable form";
             this.radioButtonHumandReadableSizes.UseVisualStyleBackColor = true;
             this.radioButtonHumandReadableSizes.CheckedChanged += new System.EventHandler(this.radioButtonHumandReadableSizes_CheckedChanged);
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.AccessibleDescription = null;
+            this.contextMenuStrip1.AccessibleName = null;
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
+            this.contextMenuStrip1.BackgroundImage = null;
+            this.contextMenuStrip1.Font = null;
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openThisDirectoryInWindowsExplorerToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(278, 26);
             // 
             // openThisDirectoryInWindowsExplorerToolStripMenuItem
             // 
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.AccessibleDescription = null;
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.AccessibleName = null;
+            resources.ApplyResources(this.openThisDirectoryInWindowsExplorerToolStripMenuItem, "openThisDirectoryInWindowsExplorerToolStripMenuItem");
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.BackgroundImage = null;
             this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Image = global::HDGraph.Properties.Resources.CascadeWindowsHS;
             this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Name = "openThisDirectoryInWindowsExplorerToolStripMenuItem";
-            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Size = new System.Drawing.Size(277, 22);
-            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Text = "Open this directory in Windows Explorer";
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.ShortcutKeyDisplayString = null;
             this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Click += new System.EventHandler(this.openThisDirectoryInWindowsExplorerToolStripMenuItem_Click);
             // 
-            // directoryNodeEntityBindingSource
+            // dataGridViewTextBoxColumn1
             // 
-            this.directoryNodeEntityBindingSource.DataSource = typeof(HDGraph.DirectoryNode);
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "HumanReadableTotalSize";
+            this.dataGridViewTextBoxColumn1.FillWeight = 200F;
+            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "FilesSizeHumanReadable";
+            this.dataGridViewTextBoxColumn2.FillWeight = 200F;
+            resources.ApplyResources(this.dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // textAndImageColumn1
+            // 
+            this.textAndImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.textAndImageColumn1.DataPropertyName = "Name";
+            this.textAndImageColumn1.FillWeight = 300F;
+            resources.ApplyResources(this.textAndImageColumn1, "textAndImageColumn1");
+            this.textAndImageColumn1.Image = null;
+            this.textAndImageColumn1.Name = "textAndImageColumn1";
+            this.textAndImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "DirectoryType";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn3, "dataGridViewTextBoxColumn3");
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
             // dataGridViewTextBoxColumnName
             // 
             this.dataGridViewTextBoxColumnName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumnName.DataPropertyName = "Name";
             this.dataGridViewTextBoxColumnName.FillWeight = 300F;
-            this.dataGridViewTextBoxColumnName.HeaderText = "Name";
+            resources.ApplyResources(this.dataGridViewTextBoxColumnName, "dataGridViewTextBoxColumnName");
             this.dataGridViewTextBoxColumnName.Image = null;
             this.dataGridViewTextBoxColumnName.Name = "dataGridViewTextBoxColumnName";
             this.dataGridViewTextBoxColumnName.ReadOnly = true;
@@ -284,11 +323,11 @@ namespace HDGraph
             // 
             this.dataGridViewTextBoxColumnTotalSize.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumnTotalSize.DataPropertyName = "TotalSize";
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dataGridViewTextBoxColumnTotalSize.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Format = "N0";
+            dataGridViewCellStyle5.NullValue = null;
+            this.dataGridViewTextBoxColumnTotalSize.DefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewTextBoxColumnTotalSize.FillWeight = 200F;
-            this.dataGridViewTextBoxColumnTotalSize.HeaderText = "Total size (Bytes)";
+            resources.ApplyResources(this.dataGridViewTextBoxColumnTotalSize, "dataGridViewTextBoxColumnTotalSize");
             this.dataGridViewTextBoxColumnTotalSize.Name = "dataGridViewTextBoxColumnTotalSize";
             this.dataGridViewTextBoxColumnTotalSize.ReadOnly = true;
             // 
@@ -297,20 +336,19 @@ namespace HDGraph
             this.dataGridViewTextBoxColumnTotalSizeHumanReadable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumnTotalSizeHumanReadable.DataPropertyName = "HumanReadableTotalSize";
             this.dataGridViewTextBoxColumnTotalSizeHumanReadable.FillWeight = 200F;
-            this.dataGridViewTextBoxColumnTotalSizeHumanReadable.HeaderText = "Total size";
+            resources.ApplyResources(this.dataGridViewTextBoxColumnTotalSizeHumanReadable, "dataGridViewTextBoxColumnTotalSizeHumanReadable");
             this.dataGridViewTextBoxColumnTotalSizeHumanReadable.Name = "dataGridViewTextBoxColumnTotalSizeHumanReadable";
             this.dataGridViewTextBoxColumnTotalSizeHumanReadable.ReadOnly = true;
-            this.dataGridViewTextBoxColumnTotalSizeHumanReadable.Visible = false;
             // 
             // dataGridViewTextBoxColumnFilesSize
             // 
             this.dataGridViewTextBoxColumnFilesSize.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumnFilesSize.DataPropertyName = "FilesSize";
-            dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = null;
-            this.dataGridViewTextBoxColumnFilesSize.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Format = "N0";
+            dataGridViewCellStyle6.NullValue = null;
+            this.dataGridViewTextBoxColumnFilesSize.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewTextBoxColumnFilesSize.FillWeight = 200F;
-            this.dataGridViewTextBoxColumnFilesSize.HeaderText = "Files size (Bytes)";
+            resources.ApplyResources(this.dataGridViewTextBoxColumnFilesSize, "dataGridViewTextBoxColumnFilesSize");
             this.dataGridViewTextBoxColumnFilesSize.Name = "dataGridViewTextBoxColumnFilesSize";
             this.dataGridViewTextBoxColumnFilesSize.ReadOnly = true;
             // 
@@ -319,73 +357,32 @@ namespace HDGraph
             this.dataGridViewTextBoxColumnFilesSizeHumanReadable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumnFilesSizeHumanReadable.DataPropertyName = "HumanReadableFilesSize";
             this.dataGridViewTextBoxColumnFilesSizeHumanReadable.FillWeight = 200F;
-            this.dataGridViewTextBoxColumnFilesSizeHumanReadable.HeaderText = "Files size";
+            resources.ApplyResources(this.dataGridViewTextBoxColumnFilesSizeHumanReadable, "dataGridViewTextBoxColumnFilesSizeHumanReadable");
             this.dataGridViewTextBoxColumnFilesSizeHumanReadable.Name = "dataGridViewTextBoxColumnFilesSizeHumanReadable";
             this.dataGridViewTextBoxColumnFilesSizeHumanReadable.ReadOnly = true;
-            this.dataGridViewTextBoxColumnFilesSizeHumanReadable.Visible = false;
             // 
             // dataGridViewCheckBoxColumn1
             // 
             this.dataGridViewCheckBoxColumn1.DataPropertyName = "ExistsUncalcSubDir";
-            this.dataGridViewCheckBoxColumn1.HeaderText = "ExistsUncalcSubDir";
+            resources.ApplyResources(this.dataGridViewCheckBoxColumn1, "dataGridViewCheckBoxColumn1");
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
             this.dataGridViewCheckBoxColumn1.ReadOnly = true;
-            this.dataGridViewCheckBoxColumn1.Visible = false;
             // 
             // dataGridViewTextBoxColumn5
             // 
             this.dataGridViewTextBoxColumn5.DataPropertyName = "DirectoryType";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Directory Type";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn5, "dataGridViewTextBoxColumn5");
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Visible = false;
-            // 
-            // directoryNodeListBindingSource
-            // 
-            this.directoryNodeListBindingSource.DataSource = typeof(HDGraph.DirectoryNode);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "HumanReadableTotalSize";
-            this.dataGridViewTextBoxColumn1.FillWeight = 200F;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Total Size (human readable)";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "FilesSizeHumanReadable";
-            this.dataGridViewTextBoxColumn2.FillWeight = 200F;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Files size";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Visible = false;
-            // 
-            // textAndImageColumn1
-            // 
-            this.textAndImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.textAndImageColumn1.DataPropertyName = "Name";
-            this.textAndImageColumn1.FillWeight = 300F;
-            this.textAndImageColumn1.HeaderText = "Name";
-            this.textAndImageColumn1.Image = null;
-            this.textAndImageColumn1.Name = "textAndImageColumn1";
-            this.textAndImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "DirectoryType";
-            this.dataGridViewTextBoxColumn3.HeaderText = "Directory Type";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Visible = false;
             // 
             // DirectoryDetailUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AccessibleDescription = null;
+            this.AccessibleName = null;
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImage = null;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(labelFolderContent);
             this.Controls.Add(pathLabel);
@@ -397,15 +394,15 @@ namespace HDGraph
             this.Controls.Add(totalSizeLabel);
             this.Controls.Add(this.totalSizeTextBox);
             this.Controls.Add(this.directoryNodeDataGridView);
+            this.Font = null;
             this.Name = "DirectoryDetailUC";
-            this.Size = new System.Drawing.Size(583, 415);
             this.Load += new System.EventHandler(this.DirectoryDetailUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.directoryNodeDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeListBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeEntityBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeEntityBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeListBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -427,6 +424,9 @@ namespace HDGraph
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton radioButtonHumandReadableSizes;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem openThisDirectoryInWindowsExplorerToolStripMenuItem;
         private HDGraph.ExternalTools.TextAndImageColumn dataGridViewTextBoxColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnTotalSize;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnTotalSizeHumanReadable;
@@ -434,8 +434,5 @@ namespace HDGraph
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnFilesSizeHumanReadable;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem openThisDirectoryInWindowsExplorerToolStripMenuItem;
     }
 }
