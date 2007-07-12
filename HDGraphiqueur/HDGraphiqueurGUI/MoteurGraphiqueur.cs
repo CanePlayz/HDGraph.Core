@@ -8,7 +8,7 @@ using HDGraph.Resources;
 
 namespace HDGraph
 {
-    public class MoteurGraphiqueur : IXmlSerializable
+    public class HDGraphScanEngine : IXmlSerializable
     {
         #region Vatiables et propriétés
 
@@ -99,7 +99,7 @@ namespace HDGraph
 
         #region Contructeur(s)
 
-        public MoteurGraphiqueur()
+        public HDGraphScanEngine()
         {
             if (scanningMessage == null)
                 scanningMessage = HDGTools.resManager.GetString("Scanning");

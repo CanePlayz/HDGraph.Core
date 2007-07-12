@@ -28,9 +28,9 @@ namespace HDGraph
         /// <summary>
         /// Moteur qui a la charge de conserver l'intégrité de l'arborescence DirectoryNode.
         /// </summary>
-        private MoteurGraphiqueur moteur;
+        private HDGraphScanEngine moteur;
 
-        public MoteurGraphiqueur Moteur
+        public HDGraphScanEngine Moteur
         {
             get { return moteur; }
             set
@@ -1073,6 +1073,7 @@ namespace HDGraph
                 }
                 DirectoryDetailForm form = new DirectoryDetailForm();
                 form.Directory = lastClicNode;
+                form.Icon = this.ParentForm.Icon;
                 form.Show();
             }
         }

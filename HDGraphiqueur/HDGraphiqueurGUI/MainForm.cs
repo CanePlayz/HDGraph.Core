@@ -43,7 +43,7 @@ namespace HDGraph
         /// <summary>
         /// Moteur de scan.
         /// </summary>
-        MoteurGraphiqueur moteur;
+        HDGraphScanEngine moteur;
 
         /// <summary>
         /// Liste des nodes parcours, pour les boutons "back" et "next".
@@ -90,8 +90,8 @@ namespace HDGraph
             // LeResourceManager prend en paramètre : nom_du_namespace.nom_de_la_ressource_principale
             resManager = new System.Resources.ResourceManager(this.GetType().Assembly.GetName().Name + ".Resources.ApplicationMessages", this.GetType().Assembly);
             HDGTools.resManager = resManager;
-            moteur = new MoteurGraphiqueur();
-            moteur.ShowDiskFreeSpace = true; // TODO
+            moteur = new HDGraphScanEngine();
+            moteur.ShowDiskFreeSpace = Properties.Settings.Default.OptionShowFreeSpace;
             if (!changeLangIsSuccess)
                 MessageBox.Show(resManager.GetString("ErrorInConfigLanguage"),
                                 resManager.GetString("ErrorInConfigLanguageTitle"),
@@ -269,10 +269,10 @@ namespace HDGraph
             try
             {
                 XmlReader reader = new XmlTextReader(fileName);
-                XmlSerializer serializer = new XmlSerializer(typeof(MoteurGraphiqueur));
-                moteur = (MoteurGraphiqueur)serializer.Deserialize(reader);
+                XmlSerializer serializer = new XmlSerializer(typeof(HDGraphScanEngine));
+                moteur = (HDGraphScanEngine)serializer.Deserialize(reader);
                 reader.Close();
-                moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(PrintStatus);
+                moteur.PrintInfoDeleg = new HDGraphScanEngine.PrintInfoDelegate(PrintStatus);
                 treeGraph1.Moteur = moteur;
                 treeGraph1.UpdateHoverNode = new TreeGraph.NodeNotificationDelegate(PrintNodeHoverCursor);
                 treeGraph1.NotifyNewRootNode = new TreeGraph.NodeNotificationDelegate(UpdateCurrentNodeRoot);
@@ -328,7 +328,7 @@ namespace HDGraph
         private void SaveGraphToFile(string fileName)
         {
             XmlWriter writer = new XmlTextWriter(fileName, Encoding.Default);
-            XmlSerializer serializer = new XmlSerializer(typeof(MoteurGraphiqueur));
+            XmlSerializer serializer = new XmlSerializer(typeof(HDGraphScanEngine));
             serializer.Serialize(writer, moteur);
             writer.Close();
         }
@@ -489,26 +489,9 @@ namespace HDGraph
             if (!LanguageForm.IsLoaded)
             {
                 // Premier chargement long
-                WaitForm.ShowWaitForm(this, resManager.GetString("loadingLanguageList"));
-
-                // Remarque: WaitForm.ShowWaitForm peux s'utiliser plusieurs fois consécutives pour mettre à jour le message. Exemple:
-
-                //System.Threading.Thread.Sleep(1000);
-                //WaitForm.ShowWaitForm(this, "Message 2 !!");
+                WaitForm.ShowWaitForm(this, Resources.ApplicationMessages.loadingLanguageList);
             }
             DialogResult res = (new LanguageForm(resManager)).ShowDialog();
-            //if (res == DialogResult.OK)
-            //{
-            //    menuStrip.SuspendLayout();
-            //    EnableHelpIfAvailable();
-            //    HDGTools.ApplyCulture(this, System.Threading.Thread.CurrentThread.CurrentUICulture);
-            //    this.Text = AboutBox.AssemblyTitle;
-            //    treeGraph1.ForceRefresh();
-            //    if (this.WindowState == FormWindowState.Maximized)
-            //        this.WindowState = FormWindowState.Normal;
-            //    menuStrip.ResumeLayout(true);
-            //    buttonScan.Refresh();
-            //}
         }
 
         #endregion
@@ -686,7 +669,7 @@ namespace HDGraph
             // // moteur.ConstruireArborescence(comboBoxPath.Text, nbNiveaux); // OBSOLETE
             // // moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(WaitForm.ShowWaitForm); // OBSOLETE
 
-            moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(PrintStatus);
+            moteur.PrintInfoDeleg = new HDGraphScanEngine.PrintInfoDelegate(PrintStatus);
             numUpDownNbNivxAffich.Value = nbNiveaux;
             treeGraph1.NbNiveaux = nbNiveaux;
             treeGraph1.Moteur = moteur;

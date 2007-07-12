@@ -121,7 +121,7 @@ namespace HDGraph
 
         #region Méthodes liées à l'exécution modale
 
-        private MoteurGraphiqueur moteur = null;
+        private HDGraphScanEngine moteur = null;
         private string path;
         private int nbNiveaux;
 
@@ -137,7 +137,7 @@ namespace HDGraph
                 return;
         }
 
-        public void ShowDialogAndStartScan(MoteurGraphiqueur moteur, string path, int nbNiveaux)
+        public void ShowDialogAndStartScan(HDGraphScanEngine moteur, string path, int nbNiveaux)
         {
             this.typeAction = AsyncActionType.Scan;
             this.moteur = moteur;
@@ -167,7 +167,7 @@ namespace HDGraph
                     {
                         try
                         {
-                            moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(this.UpdateMessage);
+                            moteur.PrintInfoDeleg = new HDGraphScanEngine.PrintInfoDelegate(this.UpdateMessage);
                             moteur.ConstruireArborescence(path, nbNiveaux);
                         }
                         catch (ArgumentException ex)

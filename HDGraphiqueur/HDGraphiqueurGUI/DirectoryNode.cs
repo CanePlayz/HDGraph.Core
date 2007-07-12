@@ -27,6 +27,10 @@ namespace HDGraph
         /// les fichiers et dossiers qui n'ont pas été comptabilisés suite à des erreurs d'accès.
         /// </summary>
         UnknownPart,
+        /// <summary>
+        /// Indique qu'il s'agit d'un répertoire dont le scan a échoué.
+        /// </summary>
+        ScanError
     }
 
     public class DirectoryNode : IXmlSerializable
