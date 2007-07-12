@@ -106,7 +106,7 @@ namespace HDGraph
 
         private void openThisDirectoryInWindowsExplorerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (selectedNode != null)
+            if (selectedNode != null && selectedNode.DirectoryType == SpecialDirTypes.NotSpecial)
                 System.Diagnostics.Process.Start(selectedNode.Path);
         }
 
@@ -118,6 +118,12 @@ namespace HDGraph
             directoryNodeDataGridView.ClearSelection();
             directoryNodeDataGridView.Rows[e.RowIndex].Selected = true;
             selectedNode = directoryNodeDataGridView.Rows[e.RowIndex].DataBoundItem as DirectoryNode;
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+            openThisDirectoryInWindowsExplorerToolStripMenuItem.Enabled = (selectedNode != null 
+                                                                        && selectedNode.DirectoryType == SpecialDirTypes.NotSpecial);
         }
     }
 }

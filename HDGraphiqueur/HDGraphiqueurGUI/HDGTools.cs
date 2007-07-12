@@ -41,7 +41,7 @@ namespace HDGraph
     {
         public static ResourceManager resManager;
 
-        public static TraceSwitch mySwitch;
+        public static TraceSwitch mySwitch;	
 
         private const string HDG_REG_KEY = "HDGraph";
         

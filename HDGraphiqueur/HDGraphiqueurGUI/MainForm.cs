@@ -207,6 +207,8 @@ namespace HDGraph
                 {
                     System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo(lang);
                     System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
+                    System.Threading.Thread.CurrentThread.CurrentCulture = culture;
+                    Application.CurrentCulture = culture;
                     WaitForm.ThreadCulture = culture;
                     return true;
                 }

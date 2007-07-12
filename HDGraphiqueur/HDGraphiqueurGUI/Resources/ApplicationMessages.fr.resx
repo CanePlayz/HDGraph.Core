@@ -255,7 +255,7 @@ Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  021
     <value>Paramètres de langue modifiés !</value>
   </data>
   <data name="languageId" xml:space="preserve">
-    <value>fr</value>
+    <value>fr-FR</value>
   </data>
   <data name="loadingLanguageList" xml:space="preserve">
     <value>Chargement de la liste des langues...</value>

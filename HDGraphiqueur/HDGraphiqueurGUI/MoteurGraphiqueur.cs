@@ -4,6 +4,7 @@ using System.Text;
 using System.IO;
 using System.Xml.Serialization;
 using System.Diagnostics;
+using HDGraph.Resources;
 
 namespace HDGraph
 {
@@ -149,7 +150,7 @@ namespace HDGraph
                 dirNode.FilesSize = dirNode.TotalSize;
                 dirNode.DirectoryType = SpecialDirTypes.UnknownPart;
                 dirNode.ExistsUncalcSubDir = false;
-                dirNode.Name = HDGTools.resManager.GetString("UnknownFiles");
+                dirNode.Name = ApplicationMessages.UnknownFiles;
                 dirNode.Parent = root;
                 root.Children.Add(dirNode);
                 root.TotalSize += dirNode.TotalSize;
@@ -276,7 +277,7 @@ namespace HDGraph
             catch (Exception ex)
             {
                 Trace.TraceError("Error during folder analysis (" + dir.Path + "). Folder skiped. Details: " + HDGTools.PrintError(ex));
-                dir.Name += String.Format(HDGTools.resManager.GetString("ErrorLoading"), dir.Name, ex.Message);
+                dir.Name = String.Format(HDGTools.resManager.GetString("ErrorLoading"), dir.Name, ex.Message);
             }
         }
 

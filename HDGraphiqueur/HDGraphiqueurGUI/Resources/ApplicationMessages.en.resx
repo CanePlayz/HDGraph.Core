@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="languageId" xml:space="preserve">
-    <value>en</value>
+    <value>en-US</value>
   </data>
   <data name="statusReady" xml:space="preserve">
     <value>Ready.</value>

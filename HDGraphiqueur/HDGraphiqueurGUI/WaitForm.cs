@@ -97,6 +97,7 @@ namespace HDGraph
             {
                 // LoadFormIfNecessary est la fonction exécutée par le thread.
                 myThread = new Thread(new ThreadStart(LoadFormIfNecessary));
+                myThread.CurrentUICulture = Application.CurrentCulture;
                 myThread.Start();
             }
         }
@@ -155,6 +156,8 @@ namespace HDGraph
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
+            System.Threading.Thread.CurrentThread.CurrentUICulture = WaitForm.ThreadCulture;
+            System.Threading.Thread.CurrentThread.CurrentCulture = WaitForm.ThreadCulture;
             switch (typeAction)
             {
                 case AsyncActionType.None:
