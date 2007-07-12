@@ -73,15 +73,22 @@ namespace HDGraph
         }
 
         private void ApplyNewLangage()
-        { 
-            CultureInfo newLang = ((CultureInfoWrapper)comboBoxLanguage.SelectedItem).Culture;
-            System.Threading.Thread.CurrentThread.CurrentUICulture = newLang;
-            HDGTools.ApplyCulture(this, newLang);
-            HDGraph.Properties.Settings.Default.Language = newLang.Name;
-            HDGraph.Properties.Settings.Default.Save();
-            UpdateApplyBtnStatus();
-            this.labelCurrentLanguage.Text = System.Threading.Thread.CurrentThread.CurrentUICulture.NativeName;
-            buttonCancel.DialogResult = DialogResult.OK;
+        {
+            if (MessageBox.Show(Resources.ApplicationMessages.AppRestartRequiredToApplyLangage,
+                                "HDGraph", MessageBoxButtons.YesNo, 
+                                MessageBoxIcon.Question
+                                ) == DialogResult.Yes)
+            {
+                CultureInfo newLang = ((CultureInfoWrapper)comboBoxLanguage.SelectedItem).Culture;
+                System.Threading.Thread.CurrentThread.CurrentUICulture = newLang;
+                //HDGTools.ApplyCulture(this, newLang);
+                HDGraph.Properties.Settings.Default.Language = newLang.Name;
+                HDGraph.Properties.Settings.Default.Save();
+                UpdateApplyBtnStatus();
+                this.labelCurrentLanguage.Text = System.Threading.Thread.CurrentThread.CurrentUICulture.NativeName;
+                buttonCancel.DialogResult = DialogResult.OK;
+                Application.Restart();
+            }
         }
 
         private void LanguageForm_Load(object sender, EventArgs e)

@@ -135,6 +135,9 @@
   <data name="AllFiles" xml:space="preserve">
     <value>All files</value>
   </data>
+  <data name="AppRestartRequiredToApplyLangage" xml:space="preserve">
+    <value>An application restart is required to apply the new langage. Are you sure ?</value>
+  </data>
   <data name="CriticalError" xml:space="preserve">
     <value>A critical error occured. Error is logged, and application will stop. Please send the application log to the HDGraph team (contact: http://hdgraph.sourceforge.net). Thank you.</value>
   </data>

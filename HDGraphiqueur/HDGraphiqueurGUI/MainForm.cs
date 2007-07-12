@@ -497,18 +497,18 @@ namespace HDGraph
                 //WaitForm.ShowWaitForm(this, "Message 2 !!");
             }
             DialogResult res = (new LanguageForm(resManager)).ShowDialog();
-            if (res == DialogResult.OK)
-            {
-                menuStrip.SuspendLayout();
-                EnableHelpIfAvailable();
-                HDGTools.ApplyCulture(this, System.Threading.Thread.CurrentThread.CurrentUICulture);
-                this.Text = AboutBox.AssemblyTitle;
-                treeGraph1.ForceRefresh();
-                if (this.WindowState == FormWindowState.Maximized)
-                    this.WindowState = FormWindowState.Normal;
-                menuStrip.ResumeLayout(true);
-                buttonScan.Refresh();
-            }
+            //if (res == DialogResult.OK)
+            //{
+            //    menuStrip.SuspendLayout();
+            //    EnableHelpIfAvailable();
+            //    HDGTools.ApplyCulture(this, System.Threading.Thread.CurrentThread.CurrentUICulture);
+            //    this.Text = AboutBox.AssemblyTitle;
+            //    treeGraph1.ForceRefresh();
+            //    if (this.WindowState == FormWindowState.Maximized)
+            //        this.WindowState = FormWindowState.Normal;
+            //    menuStrip.ResumeLayout(true);
+            //    buttonScan.Refresh();
+            //}
         }
 
         #endregion
