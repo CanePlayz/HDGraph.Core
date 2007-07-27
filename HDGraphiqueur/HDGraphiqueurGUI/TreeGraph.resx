@@ -137,13 +137,13 @@
     <value>286, 22</value>
   </data>
   <data name="detailsViewToolStripMenuItem.Text" xml:space="preserve">
-    <value>Show details</value>
+    <value>Show &amp;details</value>
   </data>
   <data name="openThisDirectoryInWindowsExplorerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>286, 22</value>
   </data>
   <data name="openThisDirectoryInWindowsExplorerToolStripMenuItem.Text" xml:space="preserve">
-    <value>Open this directory in Windows Explorer</value>
+    <value>&amp;Open this directory in Windows Explorer</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>283, 6</value>
@@ -152,19 +152,19 @@
     <value>286, 22</value>
   </data>
   <data name="refreshThisDirectoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>Refresh this directory</value>
+    <value>&amp;Refresh this directory</value>
   </data>
   <data name="centerGraphOnThisDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>286, 22</value>
   </data>
   <data name="centerGraphOnThisDirectoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>Center Graph on this directory</value>
+    <value>&amp;Center Graph on this directory</value>
   </data>
   <data name="centerGraphOnParentDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>286, 22</value>
   </data>
   <data name="centerGraphOnParentDirectoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>Center Graph on parent directory</value>
+    <value>Center Graph on p&amp;arent directory</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>283, 6</value>
@@ -179,10 +179,10 @@
     <value>286, 22</value>
   </data>
   <data name="deleteToolStripMenuItem.Text" xml:space="preserve">
-    <value>Delete this directory and all subdirectories</value>
+    <value>Delete this directory and all &amp;subdirectories</value>
   </data>
   <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>287, 206</value>
+    <value>287, 184</value>
   </data>
   <data name="contextMenuStrip1.Text" xml:space="preserve">
     <value>Directory "[TODO]"</value>

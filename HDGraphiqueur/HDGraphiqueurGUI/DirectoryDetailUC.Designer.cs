@@ -50,7 +50,7 @@ namespace HDGraph
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openThisDirectoryInWindowsExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.directoryNodeEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumnName = new HDGraph.ExternalTools.TextAndImageColumn();
+            this.dataGridViewTextImageColumnName = new HDGraph.ExternalTools.TextAndImageColumn();
             this.dataGridViewTextBoxColumnTotalSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumnTotalSizeHumanReadable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumnFilesSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -111,7 +111,7 @@ namespace HDGraph
             this.directoryNodeDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.directoryNodeDataGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.directoryNodeDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumnName,
+            this.dataGridViewTextImageColumnName,
             this.dataGridViewTextBoxColumnTotalSize,
             this.dataGridViewTextBoxColumnTotalSizeHumanReadable,
             this.dataGridViewTextBoxColumnFilesSize,
@@ -123,8 +123,11 @@ namespace HDGraph
             this.directoryNodeDataGridView.ReadOnly = true;
             this.directoryNodeDataGridView.RowHeadersVisible = false;
             this.directoryNodeDataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.directoryNodeDataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.directoryNodeDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.directoryNodeDataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.directoryNodeDataGridView_RowsAdded);
             this.directoryNodeDataGridView.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.directoryNodeDataGridView_CellContextMenuStripNeeded);
+            this.directoryNodeDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.directoryNodeDataGridView_CellFormatting);
             // 
             // filesSizeTextBox
             // 
@@ -213,16 +216,16 @@ namespace HDGraph
             // 
             this.directoryNodeEntityBindingSource.DataSource = typeof(HDGraph.DirectoryNode);
             // 
-            // dataGridViewTextBoxColumnName
+            // dataGridViewTextImageColumnName
             // 
-            this.dataGridViewTextBoxColumnName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumnName.DataPropertyName = "Name";
-            this.dataGridViewTextBoxColumnName.FillWeight = 300F;
-            resources.ApplyResources(this.dataGridViewTextBoxColumnName, "dataGridViewTextBoxColumnName");
-            this.dataGridViewTextBoxColumnName.Image = null;
-            this.dataGridViewTextBoxColumnName.Name = "dataGridViewTextBoxColumnName";
-            this.dataGridViewTextBoxColumnName.ReadOnly = true;
-            this.dataGridViewTextBoxColumnName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTextImageColumnName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextImageColumnName.DataPropertyName = "Name";
+            this.dataGridViewTextImageColumnName.FillWeight = 300F;
+            resources.ApplyResources(this.dataGridViewTextImageColumnName, "dataGridViewTextImageColumnName");
+            this.dataGridViewTextImageColumnName.Image = null;
+            this.dataGridViewTextImageColumnName.Name = "dataGridViewTextImageColumnName";
+            this.dataGridViewTextImageColumnName.ReadOnly = true;
+            this.dataGridViewTextImageColumnName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // dataGridViewTextBoxColumnTotalSize
             // 
@@ -366,7 +369,7 @@ namespace HDGraph
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem openThisDirectoryInWindowsExplorerToolStripMenuItem;
-        private HDGraph.ExternalTools.TextAndImageColumn dataGridViewTextBoxColumnName;
+        private HDGraph.ExternalTools.TextAndImageColumn dataGridViewTextImageColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnTotalSize;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnTotalSizeHumanReadable;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnFilesSize;

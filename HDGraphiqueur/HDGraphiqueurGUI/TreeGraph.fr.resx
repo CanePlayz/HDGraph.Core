@@ -119,54 +119,60 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="directoryNameToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>315, 22</value>
+    <value>315, 20</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>312, 6</value>
+  </data>
+  <data name="detailsViewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>315, 22</value>
+  </data>
+  <data name="detailsViewToolStripMenuItem.Text" xml:space="preserve">
+    <value>Afficher les &amp;détails</value>
+  </data>
+  <data name="openThisDirectoryInWindowsExplorerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>315, 22</value>
+  </data>
+  <data name="openThisDirectoryInWindowsExplorerToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Ouvrir ce répertoire dans l'explorateur Windows</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
     <value>312, 6</value>
   </data>
   <data name="refreshThisDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>315, 22</value>
   </data>
   <data name="refreshThisDirectoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>Rafraîchir ce répertoire</value>
-  </data>
-  <data name="openThisDirectoryInWindowsExplorerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>315, 22</value>
-  </data>
-  <data name="openThisDirectoryInWindowsExplorerToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ouvrir ce répertoire dans l'explorateur Windows</value>
-  </data>
-  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>312, 6</value>
+    <value>&amp;Rafraîchir ce répertoire</value>
   </data>
   <data name="centerGraphOnThisDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>315, 22</value>
   </data>
   <data name="centerGraphOnThisDirectoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>Centrer le graphique sur ce répertoire</value>
+    <value>&amp;Centrer le graphique sur ce répertoire</value>
   </data>
   <data name="centerGraphOnParentDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>315, 22</value>
   </data>
   <data name="centerGraphOnParentDirectoryToolStripMenuItem.Text" xml:space="preserve">
-    <value>Centrer le graphique sur le répertoire parent</value>
+    <value>Centrer le graphique sur le répertoire p&amp;arent</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
     <value>312, 6</value>
+  </data>
+  <data name="deleteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>315, 22</value>
+  </data>
+  <data name="deleteToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Supprimer ce répertoire et son contenu</value>
+  </data>
+  <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>316, 184</value>
   </data>
   <data name="deletePermanentlyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>204, 22</value>
   </data>
   <data name="deletePermanentlyToolStripMenuItem.Text" xml:space="preserve">
     <value>Supprimer définitivement</value>
-  </data>
-  <data name="deleteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>315, 22</value>
-  </data>
-  <data name="deleteToolStripMenuItem.Text" xml:space="preserve">
-    <value>Supprimer ce répertoire et son contenu</value>
-  </data>
-  <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>316, 154</value>
   </data>
 </root>

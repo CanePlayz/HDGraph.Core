@@ -5,19 +5,23 @@ using System.Drawing;
 using System.Data;
 using System.Text;
 using System.Windows.Forms;
+using HDGraph.ExternalTools;
 
 namespace HDGraph
 {
     public partial class DirectoryDetailUC : UserControl
     {
+        Bitmap folderIcon = null;
+
         public DirectoryDetailUC()
         {
             InitializeComponent();
             //this.dataGridViewImageColumn1.ValuesAreIcons = true;
 
-            this.dataGridViewTextBoxColumnName.Image = ExternalTools.IconReader.GetFolderIcon(
+            folderIcon = ExternalTools.IconReader.GetFolderIcon(
                                                         HDGraph.ExternalTools.IconReader.IconSize.Small,
                                                         HDGraph.ExternalTools.IconReader.FolderType.Open).ToBitmap();
+            this.dataGridViewTextImageColumnName.Image = folderIcon;
         }
 
         private void radioButtonSizesInBytes_CheckedChanged(object sender, EventArgs e)
@@ -116,6 +120,11 @@ namespace HDGraph
         {
             e.ContextMenuStrip = contextMenuStrip1;
             directoryNodeDataGridView.ClearSelection();
+            if (e.RowIndex < 0)
+            {
+                selectedNode = null;
+                return;
+            }
             directoryNodeDataGridView.Rows[e.RowIndex].Selected = true;
             selectedNode = directoryNodeDataGridView.Rows[e.RowIndex].DataBoundItem as DirectoryNode;
         }
@@ -124,6 +133,39 @@ namespace HDGraph
         {
             openThisDirectoryInWindowsExplorerToolStripMenuItem.Enabled = (selectedNode != null 
                                                                         && selectedNode.DirectoryType == SpecialDirTypes.NotSpecial);
+        }
+
+
+        private void directoryNodeDataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+        private void directoryNodeDataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+        }
+
+        private void directoryNodeDataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == dataGridViewTextImageColumnName.Index)
+            {
+                TextAndImageCell cell = directoryNodeDataGridView.Rows[e.RowIndex].Cells["dataGridViewTextImageColumnName"] as TextAndImageCell;
+                DirectoryNode node = directoryNodeDataGridView.Rows[e.RowIndex].DataBoundItem as DirectoryNode;
+                if (cell != null && node != null)
+                {
+                    if (node.DirectoryType == SpecialDirTypes.FreeSpaceAndHide
+                        || node.DirectoryType == SpecialDirTypes.FreeSpaceAndShow)
+                        cell.Image = Properties.Resources.ZoomHS;
+                    else if (node.DirectoryType == SpecialDirTypes.ScanError)
+                        cell.ErrorText = node.Name;
+                    else if (node.DirectoryType == SpecialDirTypes.UnknownPart)
+                        cell.Image = Properties.Resources.Help;
+                    else
+                    {
+                        cell.Image = folderIcon;
+                        cell.ErrorText = null;
+                    }
+                }
+            }
         }
     }
 }
