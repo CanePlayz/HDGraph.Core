@@ -35,9 +35,9 @@ namespace HDGraph
             System.Windows.Forms.Label totalSizeLabel;
             System.Windows.Forms.Label pathLabel;
             System.Windows.Forms.Label labelFolderContent;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.directoryNodeDataGridView = new System.Windows.Forms.DataGridView();
             this.filesSizeTextBox = new System.Windows.Forms.TextBox();
             this.nameTextBox = new System.Windows.Forms.TextBox();
@@ -62,6 +62,7 @@ namespace HDGraph
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textAndImageColumn1 = new HDGraph.ExternalTools.TextAndImageColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.showDetailsInANewWindowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             filesSizeLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             totalSizeLabel = new System.Windows.Forms.Label();
@@ -104,8 +105,8 @@ namespace HDGraph
             this.directoryNodeDataGridView.AllowUserToAddRows = false;
             this.directoryNodeDataGridView.AllowUserToDeleteRows = false;
             this.directoryNodeDataGridView.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.BlanchedAlmond;
-            this.directoryNodeDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.directoryNodeDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             resources.ApplyResources(this.directoryNodeDataGridView, "directoryNodeDataGridView");
             this.directoryNodeDataGridView.AutoGenerateColumns = false;
             this.directoryNodeDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -200,6 +201,7 @@ namespace HDGraph
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showDetailsInANewWindowToolStripMenuItem,
             this.openThisDirectoryInWindowsExplorerToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
@@ -231,9 +233,9 @@ namespace HDGraph
             // 
             this.dataGridViewTextBoxColumnTotalSize.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumnTotalSize.DataPropertyName = "TotalSize";
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dataGridViewTextBoxColumnTotalSize.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Format = "N0";
+            dataGridViewCellStyle8.NullValue = null;
+            this.dataGridViewTextBoxColumnTotalSize.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewTextBoxColumnTotalSize.FillWeight = 200F;
             resources.ApplyResources(this.dataGridViewTextBoxColumnTotalSize, "dataGridViewTextBoxColumnTotalSize");
             this.dataGridViewTextBoxColumnTotalSize.Name = "dataGridViewTextBoxColumnTotalSize";
@@ -252,9 +254,9 @@ namespace HDGraph
             // 
             this.dataGridViewTextBoxColumnFilesSize.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumnFilesSize.DataPropertyName = "FilesSize";
-            dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = null;
-            this.dataGridViewTextBoxColumnFilesSize.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Format = "N0";
+            dataGridViewCellStyle9.NullValue = null;
+            this.dataGridViewTextBoxColumnFilesSize.DefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewTextBoxColumnFilesSize.FillWeight = 200F;
             resources.ApplyResources(this.dataGridViewTextBoxColumnFilesSize, "dataGridViewTextBoxColumnFilesSize");
             this.dataGridViewTextBoxColumnFilesSize.Name = "dataGridViewTextBoxColumnFilesSize";
@@ -321,6 +323,13 @@ namespace HDGraph
             resources.ApplyResources(this.dataGridViewTextBoxColumn3, "dataGridViewTextBoxColumn3");
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
+            // showDetailsInANewWindowToolStripMenuItem
+            // 
+            this.showDetailsInANewWindowToolStripMenuItem.Image = global::HDGraph.Properties.Resources.ActualSizeHS;
+            this.showDetailsInANewWindowToolStripMenuItem.Name = "showDetailsInANewWindowToolStripMenuItem";
+            resources.ApplyResources(this.showDetailsInANewWindowToolStripMenuItem, "showDetailsInANewWindowToolStripMenuItem");
+            this.showDetailsInANewWindowToolStripMenuItem.Click += new System.EventHandler(this.showDetailsInANewWindowToolStripMenuItem_Click);
+            // 
             // DirectoryDetailUC
             // 
             resources.ApplyResources(this, "$this");
@@ -376,5 +385,6 @@ namespace HDGraph
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnFilesSizeHumanReadable;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.ToolStripMenuItem showDetailsInANewWindowToolStripMenuItem;
     }
 }

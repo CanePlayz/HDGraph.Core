@@ -35,36 +35,26 @@ namespace HDGraph
             // 
             // directoryDetailUC1
             // 
-            this.directoryDetailUC1.AccessibleDescription = null;
-            this.directoryDetailUC1.AccessibleName = null;
             resources.ApplyResources(this.directoryDetailUC1, "directoryDetailUC1");
             this.directoryDetailUC1.BackColor = System.Drawing.SystemColors.Control;
-            this.directoryDetailUC1.BackgroundImage = null;
-            this.directoryDetailUC1.Font = null;
             this.directoryDetailUC1.Name = "directoryDetailUC1";
             // 
             // buttonClose
             // 
-            this.buttonClose.AccessibleDescription = null;
-            this.buttonClose.AccessibleName = null;
             resources.ApplyResources(this.buttonClose, "buttonClose");
-            this.buttonClose.BackgroundImage = null;
-            this.buttonClose.Font = null;
+            this.buttonClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // DirectoryDetailForm
             // 
-            this.AccessibleDescription = null;
-            this.AccessibleName = null;
+            this.AcceptButton = this.buttonClose;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = null;
+            this.CancelButton = this.buttonClose;
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.directoryDetailUC1);
-            this.Font = null;
-            this.Icon = null;
             this.Name = "DirectoryDetailForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.ResumeLayout(false);

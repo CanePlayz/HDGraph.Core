@@ -167,5 +167,11 @@ namespace HDGraph
                 }
             }
         }
+
+        private void showDetailsInANewWindowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (selectedNode != null)
+                TreeGraph.ShowNodeDetails(selectedNode);
+        }
     }
 }

@@ -1053,33 +1053,36 @@ namespace HDGraph
 
         private void detailsViewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (lastClicNode != null)
+            ShowNodeDetails(lastClicNode);
+        }
+
+        public static void ShowNodeDetails(DirectoryNode node)
+        {
+            if (node == null)
+                return;
+            if (node.DirectoryType == SpecialDirTypes.FreeSpaceAndShow)
             {
-                if (lastClicNode.DirectoryType == SpecialDirTypes.FreeSpaceAndShow)
-                {
-                    MessageBox.Show(
-                        String.Format(
-                                HDGTools.resManager.GetString("FreeSpaceDescription"),
-                                lastClicNode.HumanReadableTotalSize, lastClicNode.TotalSize
-                                ).Replace("\\n", Environment.NewLine),
-                        "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                if (lastClicNode.DirectoryType == SpecialDirTypes.UnknownPart)
-                {
-                    MessageBox.Show(
-                       String.Format(
-                               HDGTools.resManager.GetString("UnknownPartDescription"),
-                               lastClicNode.HumanReadableTotalSize, lastClicNode.TotalSize
-                               ).Replace("\\n", Environment.NewLine),
-                       "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
-                DirectoryDetailForm form = new DirectoryDetailForm();
-                form.Directory = lastClicNode;
-                form.Icon = this.ParentForm.Icon;
-                form.Show();
+                MessageBox.Show(
+                    String.Format(
+                            HDGTools.resManager.GetString("FreeSpaceDescription"),
+                            node.HumanReadableTotalSize, node.TotalSize
+                            ).Replace("\\n", Environment.NewLine),
+                    "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
+            if (node.DirectoryType == SpecialDirTypes.UnknownPart)
+            {
+                MessageBox.Show(
+                   String.Format(
+                           HDGTools.resManager.GetString("UnknownPartDescription"),
+                           node.HumanReadableTotalSize, node.TotalSize
+                           ).Replace("\\n", Environment.NewLine),
+                   "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            DirectoryDetailForm form = new DirectoryDetailForm();
+            form.Directory = node;
+            form.Show();
         }
     }
 }
