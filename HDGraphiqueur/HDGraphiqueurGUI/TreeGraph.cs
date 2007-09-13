@@ -747,8 +747,12 @@ namespace HDGraph
             float nodeAngle = endAngle - startAngle;
             levelHeight += pasNiveau;
             if (levelHeight > cursorLen && cursorAngle >= startAngle && cursorAngle <= endAngle)
+            {
                 // le noeud courant est celui recherché
+                if (node.DirectoryType == SpecialDirTypes.FreeSpaceAndHide)
+                    return null;
                 return node;
+            }
             long cumulSize = 0;
             float currentStartAngle;
             foreach (DirectoryNode childNode in node.Children)
