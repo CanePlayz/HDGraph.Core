@@ -104,6 +104,7 @@ namespace HDGraph
             EnableHelpIfAvailable();
             comboBoxPath.DataSource = HDGraph.Properties.Settings.Default.PathHistory;
             checkBoxAutoRecalc.Checked = HDGraph.Properties.Settings.Default.OptionAutoCompleteGraph;
+            SetTrackBarZoomValueFromNumUpDown();
             try
             {
                 moteur.AutoRefreshAllowed = HDGraph.Properties.Settings.Default.OptionAutoCompleteGraph;
@@ -115,6 +116,13 @@ namespace HDGraph
                 Trace.TraceError(HDGTools.PrintError(ex));
             }
             PopulateAnalyseShortcuts();
+        }
+
+        private void SetTrackBarZoomValueFromNumUpDown()
+        {
+            int trackBarValue = Math.Min((int)numUpDownNbNivxAffich.Value, trackBarZoom.Maximum);
+            trackBarValue = Math.Max(trackBarZoom.Minimum, trackBarValue);
+            trackBarZoom.Value = trackBarValue;
         }
 
         private void PopulateAnalyseShortcuts()
@@ -597,7 +605,9 @@ namespace HDGraph
             try
             {
                 int nbNiveaux = (int)numUpDownNbNivxAffich.Value;
-                if (nbNiveaux >= trackBarZoom.Minimum && nbNiveaux <= trackBarZoom.Maximum)
+                if (nbNiveaux >= trackBarZoom.Minimum
+                    && nbNiveaux <= trackBarZoom.Maximum
+                    && !currentlyScrollingZoom)
                     trackBarZoom.Value = nbNiveaux;
                 treeGraph1.NbNiveaux = nbNiveaux;
                 treeGraph1.ForceRefresh();
@@ -927,6 +937,18 @@ namespace HDGraph
             else
                 treeGraph1.HideFreeSpace();
             PrintStatus(Resources.ApplicationMessages.GraphRefreshed);
+        }
+
+        private bool currentlyScrollingZoom;
+
+        private void trackBarZoom_MouseDown(object sender, MouseEventArgs e)
+        {
+            currentlyScrollingZoom = true;
+        }
+
+        private void trackBarZoom_MouseUp(object sender, MouseEventArgs e)
+        {
+            currentlyScrollingZoom = false;
         }
     }
 }
