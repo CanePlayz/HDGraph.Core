@@ -133,6 +133,7 @@ namespace HDGraph
         {
             openThisDirectoryInWindowsExplorerToolStripMenuItem.Enabled = (selectedNode != null 
                                                                         && selectedNode.DirectoryType == SpecialDirTypes.NotSpecial);
+            showDetailsInANewWindowToolStripMenuItem.Enabled = (selectedNode != null);
         }
 
 

@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Drawing.Drawing2D;
+using HDGraph.Resources;
 
 namespace HDGraph
 {
@@ -1064,7 +1065,7 @@ namespace HDGraph
             {
                 MessageBox.Show(
                     String.Format(
-                            HDGTools.resManager.GetString("FreeSpaceDescription"),
+                            ApplicationMessages.FreeSpaceDescription,
                             node.HumanReadableTotalSize, node.TotalSize
                             ).Replace("\\n", Environment.NewLine),
                     "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1074,10 +1075,17 @@ namespace HDGraph
             {
                 MessageBox.Show(
                    String.Format(
-                           HDGTools.resManager.GetString("UnknownPartDescription"),
+                           ApplicationMessages.UnknownPartDescription,
                            node.HumanReadableTotalSize, node.TotalSize
                            ).Replace("\\n", Environment.NewLine),
                    "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (node.ExistsUncalcSubDir)
+            {
+                MessageBox.Show(
+                            ApplicationMessages.UnableToShowUnknownContent,
+                    "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             DirectoryDetailForm form = new DirectoryDetailForm();

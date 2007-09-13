@@ -291,6 +291,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA</
   <data name="UnableToIntegrateInExplorer" xml:space="preserve">
     <value>An error prevent you to do the operation. Perhaps that you don't have rights to do this (try as administrator if you're not). Error detail : {0}.</value>
   </data>
+  <data name="UnableToShowUnknownContent" xml:space="preserve">
+    <value>The content of this folder has not been memorized during the HDGraph scan. Increase the "Calculation max depth" or browse this folder on the graph to be able to show its content.</value>
+  </data>
   <data name="UnexpectedErrorDuringAnalysis" xml:space="preserve">
     <value>An unexpected error occured during scan. It has been logged. Please send the application log to the HDGraph team (contact: http://hdgraph.sourceforge.net). Thank you.</value>
   </data>

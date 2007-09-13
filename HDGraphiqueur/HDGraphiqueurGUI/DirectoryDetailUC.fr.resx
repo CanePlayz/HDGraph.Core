@@ -148,8 +148,8 @@
   <data name="labelFolderContent.Text" xml:space="preserve">
     <value>Contenu du répertoire :</value>
   </data>
-  <data name="dataGridViewTextBoxColumnName.HeaderText" xml:space="preserve">
-    <value>Nom du sous-répertoire</value>
+  <data name="dataGridViewTextImageColumnName.HeaderText" xml:space="preserve">
+    <value>Nom</value>
   </data>
   <data name="dataGridViewTextBoxColumnTotalSize.HeaderText" xml:space="preserve">
     <value>Taille totale (octets)</value>
@@ -207,5 +207,20 @@
   </data>
   <data name="radioButtonHumandReadableSizes.Text" xml:space="preserve">
     <value>Unité automatique</value>
+  </data>
+  <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>303, 48</value>
+  </data>
+  <data name="showDetailsInANewWindowToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>302, 22</value>
+  </data>
+  <data name="showDetailsInANewWindowToolStripMenuItem.Text" xml:space="preserve">
+    <value>Afficher les &amp;détails dans une nouvelle fenêtre</value>
+  </data>
+  <data name="openThisDirectoryInWindowsExplorerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>302, 22</value>
+  </data>
+  <data name="openThisDirectoryInWindowsExplorerToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Ouvrir dans l'explorateur Windows</value>
   </data>
 </root>
