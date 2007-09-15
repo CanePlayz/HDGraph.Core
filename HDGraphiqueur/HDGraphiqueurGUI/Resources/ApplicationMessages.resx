@@ -175,10 +175,13 @@
     <value>Language code error in config file</value>
   </data>
   <data name="ErrorLoading" xml:space="preserve">
-    <value>Error loading {0} : {1}</value>
+    <value>{0} : Scan ERROR : {1}</value>
   </data>
   <data name="ErrorLoadingFile" xml:space="preserve">
     <value>Error loading file {0}. Load action canceled. Error detail : </value>
+  </data>
+  <data name="ErrorNegativeSizeOfUnknownParts" xml:space="preserve">
+    <value>Errorr : the non calculable files have a negative size. This means that you don't have refreshed the whole disk, or that your disk has one or more hard link or junction links (in this case, linked files are counted twice ou more).</value>
   </data>
   <data name="ExplorerContextMenuAction" xml:space="preserve">
     <value>Draw space with HDGraph</value>

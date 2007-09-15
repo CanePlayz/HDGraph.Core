@@ -105,7 +105,6 @@ namespace HDGraph
                 radioButtonSizesInBytes.Checked = true;
                 ShowSizesInBytes();
             }
-
         }
 
         private void openThisDirectoryInWindowsExplorerToolStripMenuItem_Click(object sender, EventArgs e)

@@ -152,6 +152,14 @@ namespace HDGraph
                 dirNode.ExistsUncalcSubDir = false;
                 dirNode.Name = ApplicationMessages.UnknownFiles;
                 dirNode.Parent = root;
+                if (dirNode.TotalSize < 0)
+                {
+                    dirNode.Name = String.Format(ApplicationMessages.ErrorNegativeSizeOfUnknownParts, dirNode.Name);
+                    Trace.TraceError("Error during folder analysis (" + root.Path + 
+                                     "): negative size of unkown parts (" + 
+                                     dirNode.TotalSize + "bytes).");
+                    dirNode.TotalSize = 0;                
+                }
                 root.Children.Add(dirNode);
                 root.TotalSize += dirNode.TotalSize;
 

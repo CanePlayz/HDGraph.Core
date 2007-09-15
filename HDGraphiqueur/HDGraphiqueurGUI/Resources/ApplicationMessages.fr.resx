@@ -175,10 +175,13 @@
     <value>Le code de la langue du fichier de config est erroné.</value>
   </data>
   <data name="ErrorLoading" xml:space="preserve">
-    <value>Erreur lors du chargement de {0} : {1}</value>
+    <value>{0} : Erreur lors du chargement : {1}</value>
   </data>
   <data name="ErrorLoadingFile" xml:space="preserve">
     <value>Erreur lors du chargement du fichier {0}. Le chargement de ce fichier a été annulé. Détail de l'erreur : </value>
+  </data>
+  <data name="ErrorNegativeSizeOfUnknownParts" xml:space="preserve">
+    <value>Erreur : les fichiers non calculables ont une taille négative. Cela signifie que vous n'avez rafraîchi qu'une partie du graphe, ou que votre disque comporte des alias de répertoires (appelés Hard Links et Junction Links). Ceux-ci sont alors comptés en double (ou plus).</value>
   </data>
   <data name="ExplorerContextMenuAction" xml:space="preserve">
     <value>Afficher l'espace avec HDGraph</value>

@@ -232,7 +232,7 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Error loading {0} : {1}.
+        ///   Recherche une chaîne localisée semblable à {0} : Scan ERROR : {1}.
         /// </summary>
         internal static string ErrorLoading {
             get {
@@ -246,6 +246,15 @@ namespace HDGraph.Resources {
         internal static string ErrorLoadingFile {
             get {
                 return ResourceManager.GetString("ErrorLoadingFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Errorr : the non calculable files have a negative size. This means that you don&apos;t have refreshed the whole disk, or that your disk has one or more hard link or junction links (in this case, linked files are counted twice ou more)..
+        /// </summary>
+        internal static string ErrorNegativeSizeOfUnknownParts {
+            get {
+                return ResourceManager.GetString("ErrorNegativeSizeOfUnknownParts", resourceCulture);
             }
         }
         

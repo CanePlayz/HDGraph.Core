@@ -33,6 +33,7 @@ namespace HDGraph
                 directoryDetailUC1.directoryNodeEntityBindingSource.DataSource = value;
                 IList<DirectoryNode> childrenListExceptHidenFreeSpace = ExcludeHidenFreeSpace(value.Children);
                 directoryDetailUC1.directoryNodeListBindingSource.DataSource = new DirNodeSortableBindingList(childrenListExceptHidenFreeSpace);
+                directoryDetailUC1.directoryNodeListBindingSource.Sort = "TotalSize DESC";
                 this.Text = String.Format(
                         HDGTools.resManager.GetString("DetailsForFolderFormTitle"),
                         directory.Name);
