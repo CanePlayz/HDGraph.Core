@@ -551,6 +551,15 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à The content of this folder has not been memorized during the HDGraph scan. Increase the &quot;Calculation max depth&quot; or browse this folder on the graph to be able to show its content..
+        /// </summary>
+        internal static string UnableToShowUnknownContent {
+            get {
+                return ResourceManager.GetString("UnableToShowUnknownContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à An unexpected error occured during scan. It has been logged. Please send the application log to the HDGraph team (contact: http://hdgraph.sourceforge.net). Thank you..
         /// </summary>
         internal static string UnexpectedErrorDuringAnalysis {

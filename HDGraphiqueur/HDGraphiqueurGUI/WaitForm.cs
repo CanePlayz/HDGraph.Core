@@ -156,51 +156,61 @@ namespace HDGraph
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            System.Threading.Thread.CurrentThread.CurrentUICulture = WaitForm.ThreadCulture;
-            System.Threading.Thread.CurrentThread.CurrentCulture = WaitForm.ThreadCulture;
-            switch (typeAction)
+            try
             {
-                case AsyncActionType.None:
-                    break;
-                case AsyncActionType.Scan:
-                    if (moteur != null)
-                    {
-                        try
+                System.Threading.Thread.CurrentThread.CurrentUICulture = WaitForm.ThreadCulture;
+                System.Threading.Thread.CurrentThread.CurrentCulture = WaitForm.ThreadCulture;
+                switch (typeAction)
+                {
+                    case AsyncActionType.None:
+                        break;
+                    case AsyncActionType.Scan:
+                        if (moteur != null)
                         {
-                            moteur.PrintInfoDeleg = new HDGraphScanEngine.PrintInfoDelegate(this.UpdateMessage);
-                            moteur.ConstruireArborescence(path, nbNiveaux);
-                        }
-                        catch (ArgumentException ex)
-                        {
-                            System.Diagnostics.Trace.TraceError("Invalid path (" + path + "): " + HDGTools.PrintError(ex));
-                            if (ex.ParamName == "path")
+                            try
                             {
-                                MessageBox.Show(Resources.ApplicationMessages.InvalidPathError,
-                                        Resources.ApplicationMessages.Error,
-                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                moteur.PrintInfoDeleg = new HDGraphScanEngine.PrintInfoDelegate(this.UpdateMessage);
+                                moteur.ConstruireArborescence(path, nbNiveaux);
                             }
-                            else
+                            catch (ArgumentException ex)
+                            {
+                                System.Diagnostics.Trace.TraceError("Invalid path (" + path + "): " + HDGTools.PrintError(ex));
+                                if (ex.ParamName == "path")
+                                {
+                                    MessageBox.Show(Resources.ApplicationMessages.InvalidPathError,
+                                            Resources.ApplicationMessages.Error,
+                                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                                else
+                                {
+                                    MessageBox.Show(Resources.ApplicationMessages.UnexpectedErrorDuringAnalysis,
+                                            Resources.ApplicationMessages.Error,
+                                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    System.Diagnostics.Trace.TraceError("Error while scanning " + path + ": " + HDGTools.PrintError(ex));
+                                }
+                            }
+                            catch (Exception ex)
                             {
                                 MessageBox.Show(Resources.ApplicationMessages.UnexpectedErrorDuringAnalysis,
-                                        Resources.ApplicationMessages.Error,
-                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            Resources.ApplicationMessages.Error,
+                                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 System.Diagnostics.Trace.TraceError("Error while scanning " + path + ": " + HDGTools.PrintError(ex));
                             }
                         }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(Resources.ApplicationMessages.UnexpectedErrorDuringAnalysis,
-                                        Resources.ApplicationMessages.Error,
-                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            System.Diagnostics.Trace.TraceError("Error while scanning " + path + ": " + HDGTools.PrintError(ex));
-                        }
-                    }
-                    break;
-                case AsyncActionType.AbstractAction:
-                    actionToDo();
-                    break;
-                default:
-                    break;
+                        break;
+                    case AsyncActionType.AbstractAction:
+                        actionToDo();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(Resources.ApplicationMessages.UnexpectedErrorDuringAnalysis,
+                                            Resources.ApplicationMessages.Error,
+                                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.Diagnostics.Trace.TraceError("Error while scanning " + path + ": " + HDGTools.PrintError(ex));
             }
         }
 

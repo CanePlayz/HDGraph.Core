@@ -208,25 +208,26 @@ namespace HDGraph
         /// <returns></returns>
         private bool LoadLanguage()
         {
-            string lang = HDGraph.Properties.Settings.Default.Language;
-            if (lang != null && lang.Length > 0)
+
+            try
             {
-                try
+                System.Globalization.CultureInfo culture = System.Threading.Thread.CurrentThread.CurrentUICulture;
+                string lang = HDGraph.Properties.Settings.Default.Language;
+                if (lang != null && lang.Length > 0)
                 {
-                    System.Globalization.CultureInfo culture = new System.Globalization.CultureInfo(lang);
+                    culture = new System.Globalization.CultureInfo(lang);
                     System.Threading.Thread.CurrentThread.CurrentUICulture = culture;
                     System.Threading.Thread.CurrentThread.CurrentCulture = culture;
                     Application.CurrentCulture = culture;
-                    WaitForm.ThreadCulture = culture;
-                    return true;
                 }
-                catch (Exception ex)
-                {
-                    Trace.TraceError(HDGTools.PrintError(ex));
-                    return false;
-                }
+                WaitForm.ThreadCulture = culture;
+                return true;
             }
-            return true;
+            catch (Exception ex)
+            {
+                Trace.TraceError(HDGTools.PrintError(ex));
+                return false;
+            }
         }
 
         /// <summary>
