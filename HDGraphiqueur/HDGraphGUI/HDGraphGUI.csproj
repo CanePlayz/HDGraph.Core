@@ -1,0 +1,307 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{99A5D2B9-4B2C-4177-A69C-02BCB163DC78}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HDGraph</RootNamespace>
+    <AssemblyName>HDGraph</AssemblyName>
+    <ApplicationIcon>HDGraph.ico</ApplicationIcon>
+    <StartupObject>HDGraph.Program</StartupObject>
+    <TargetZone>LocalIntranet</TargetZone>
+    <GenerateManifests>false</GenerateManifests>
+    <SignManifests>false</SignManifests>
+    <SignAssembly>false</SignAssembly>
+    <ManifestCertificateThumbprint>03271A981ABE121AE1E38DE6F13B76BD5C5B8BDC</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectoryDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DirectoryDetailForm.Designer.cs">
+      <DependentUpon>DirectoryDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectoryDetailUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DirectoryDetailUC.Designer.cs">
+      <DependentUpon>DirectoryDetailUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DirectoryNode.cs" />
+    <Compile Include="DirNodeSortableBindingList.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="ExternalTools\IconHelper.cs" />
+    <Compile Include="ExternalTools\TextAndImageColumn.cs" />
+    <Compile Include="FatalHdgraphException.cs" />
+    <Compile Include="HDGTools.cs" />
+    <Compile Include="LanguageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LanguageForm.Designer.cs">
+      <DependentUpon>LanguageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LGPLLicenceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LGPLLicenceForm.Designer.cs">
+      <DependentUpon>LGPLLicenceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HDGraphScanEngine.cs" />
+    <Compile Include="OptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OptionsForm.Designer.cs">
+      <DependentUpon>OptionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OptionsUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OptionsUserControl.Designer.cs">
+      <DependentUpon>OptionsUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PickColorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PickColorForm.Designer.cs">
+      <DependentUpon>PickColorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AboutBox.en.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AboutBox.fr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AboutBox.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectoryDetailForm.fr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DirectoryDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectoryDetailForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DirectoryDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectoryDetailUC.fr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DirectoryDetailUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectoryDetailUC.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>DirectoryDetailUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LanguageForm.fr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>LanguageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LanguageForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>LanguageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LGPLLicenceForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>LGPLLicenceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionsForm.fr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>OptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionsForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>OptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionsUserControl.fr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>OptionsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OptionsUserControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>OptionsUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PickColorForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PickColorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ApplicationMessages.en.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ApplicationMessages.fr.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ApplicationMessages.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ApplicationMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.en.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.fr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TreeGraph.fr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>TreeGraph.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TreeGraph.resx">
+      <DependentUpon>TreeGraph.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaitForm.en.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WaitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaitForm.fr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WaitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaitForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>WaitForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WilsonProgramming\ExplorerTreeView.resx">
+      <DependentUpon>ExplorerTreeView.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Resources\ApplicationMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ApplicationMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SortableBindingList.cs" />
+    <Compile Include="ToolStripTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="TreeGraph.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TreeGraph.Designer.cs">
+      <DependentUpon>TreeGraph.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VistaTools.cs" />
+    <Compile Include="WaitForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WaitForm.Designer.cs">
+      <DependentUpon>WaitForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WilsonProgramming\ExplorerTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WilsonProgramming\ExplorerTreeViewWnd.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WilsonProgramming\ShellAPI.cs" />
+    <Compile Include="WilsonProgramming\ShellItem.cs" />
+    <Compile Include="WilsonProgramming\SystemImageList.cs" />
+    <Compile Include="WilsonProgramming\User32API.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ChangeLog.txt" />
+    <Content Include="HDGraph.ico" />
+    <Content Include="LGPL Licence.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Readme.txt" />
+    <Content Include="Doc\HDGraph-fr.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <BaseApplicationManifest Include="Properties\app.manifest" />
+    <Content Include="Doc\HDGraph-en.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Properties\DataSources\DirectoryNode.datasource" />
+    <None Include="Resources\CascadeWindowsHS.png" />
+    <None Include="Resources\RefreshDocViewHS.png" />
+    <None Include="Resources\ZoomHS.png" />
+    <None Include="Resources\ActualSizeHS.png" />
+    <None Include="Resources\GoToParentFolderHS.png" />
+    <None Include="Resources\DeleteFolderHS.png" />
+    <None Include="Resources\OpenSelectedItemHS.png" />
+    <None Include="Resources\project-support.jpg" />
+    <None Include="Resources\Help.png" />
+    <None Include="Resources\InsertPictureHS.png" />
+    <None Include="Resources\NavForward.png" />
+    <None Include="Resources\NavBack.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
