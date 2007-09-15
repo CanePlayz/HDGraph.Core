@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HDGraphGUI", "HDGraphiqueurGUI\HDGraphGUI.csproj", "{99A5D2B9-4B2C-4177-A69C-02BCB163DC78}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HDGraphGUI", "HDGraphGUI\HDGraphGUI.csproj", "{99A5D2B9-4B2C-4177-A69C-02BCB163DC78}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupHDGraph", "SetupHDGraph\HDGraphiqueurSetup.vdproj", "{EE7BF0A8-9FBA-4CAD-8B88-469EF41B7DF1}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupHDGraph", "SetupHDGraph\HDGraphSetup.vdproj", "{EE7BF0A8-9FBA-4CAD-8B88-469EF41B7DF1}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupHDGraph-FR", "SetupHDGraph-FR\SetupHDGraph-FR.vdproj", "{F8B79193-FAA4-46BC-B304-075A3B75BA19}"
 EndProject
