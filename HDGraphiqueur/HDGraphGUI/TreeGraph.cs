@@ -1057,6 +1057,10 @@ namespace HDGraph
             ShowNodeDetails(lastClicNode);
         }
 
+        /// <summary>
+        /// Open a new form showing the details of a given DirectoryNode.
+        /// </summary>
+        /// <param name="node"></param>
         public static void ShowNodeDetails(DirectoryNode node)
         {
             if (node == null)
