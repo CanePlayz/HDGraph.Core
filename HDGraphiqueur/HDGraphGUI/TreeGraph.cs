@@ -1090,6 +1090,7 @@ namespace HDGraph
             }
             DirectoryDetailForm form = new DirectoryDetailForm();
             form.Directory = node;
+            form.Owner = Application.OpenForms[0];
             form.Show();
         }
     }

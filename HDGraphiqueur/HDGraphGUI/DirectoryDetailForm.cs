@@ -51,5 +51,13 @@ namespace HDGraph
             return resultList;
         }
 
+        private void DirectoryDetailForm_Load(object sender, EventArgs e)
+        {
+            if (this.Owner != null)
+            {
+                this.Icon = Owner.Icon;
+            }
+        }
+
     }
 }

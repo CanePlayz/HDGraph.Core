@@ -57,6 +57,7 @@ namespace HDGraph
             this.Controls.Add(this.directoryDetailUC1);
             this.Name = "DirectoryDetailForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
+            this.Load += new System.EventHandler(this.DirectoryDetailForm_Load);
             this.ResumeLayout(false);
 
         }
