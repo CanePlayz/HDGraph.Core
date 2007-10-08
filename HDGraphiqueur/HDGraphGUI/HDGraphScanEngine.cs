@@ -143,7 +143,8 @@ namespace HDGraph
                 // full drive scan, show disk free space if asked
                 DriveInfo info = new DriveInfo(path);
 
-                // Unknown files
+                #region Unknown files
+
                 DirectoryNode dirNode = new DirectoryNode("");
                 // Unknown files = taille du disque - espace libre - fichiers trouvés
                 dirNode.TotalSize = info.TotalSize - info.TotalFreeSpace - root.TotalSize;
@@ -155,16 +156,18 @@ namespace HDGraph
                 if (dirNode.TotalSize < 0)
                 {
                     dirNode.Name = String.Format(ApplicationMessages.ErrorNegativeSizeOfUnknownParts, dirNode.Name);
-                    Trace.TraceError("Error during folder analysis (" + root.Path + 
-                                     "): negative size of unkown parts (" + 
+                    Trace.TraceError("Error during folder analysis (" + root.Path +
+                                     "): negative size of unkown parts (" +
                                      dirNode.TotalSize + "bytes).");
-                    dirNode.TotalSize = 0;                
+                    dirNode.TotalSize = 0;
                 }
                 root.Children.Add(dirNode);
                 root.TotalSize += dirNode.TotalSize;
 
+                #endregion
 
-                // free disk space
+                #region Free disk space
+
                 DirectoryNode dirNodeFS = new DirectoryNode("");
                 dirNodeFS.TotalSize = info.TotalFreeSpace;
                 if (showDiskFreeSpace)
@@ -180,6 +183,8 @@ namespace HDGraph
                 dirNodeFS.Name = HDGTools.resManager.GetString("FreeSpace");
                 dirNodeFS.Parent = root;
                 root.Children.Add(dirNodeFS);
+
+                #endregion
             }
         }
 
@@ -359,11 +364,47 @@ namespace HDGraph
             return true;
         }
 
-        private void RafraichirEspaceLibre(DirectoryNode node)
+        private void RafraichirEspaceLibre(DirectoryNode theNode)
         {
-            if (PathIsDrive(node.Root.Path))
+            DirectoryNode root = theNode.Root;
+            if (PathIsDrive(root.Path))
             {
-                throw new Exception("The method or operation is not implemented.");
+                // Note: refresh is done as a remove/add options.
+
+                // 1. First of all: identify the special directories
+                DirectoryNode unkownPartNode = null;
+                DirectoryNode freeSpaceNode = null;
+                foreach (DirectoryNode node in root.Children)
+                {
+                    if (node.DirectoryType == SpecialDirTypes.UnknownPart)
+                    {
+                        unkownPartNode = node;
+                    }
+                    if (node.DirectoryType == SpecialDirTypes.FreeSpaceAndHide ||
+                        node.DirectoryType == SpecialDirTypes.FreeSpaceAndShow)
+                    {
+                        freeSpaceNode = node;
+                    }
+                }
+                // 2. Second step : remove the special nodes from the root node
+                //   2.1 Remove unknown part node
+                if (unkownPartNode != null)
+                {
+                    root.Children.Remove(unkownPartNode);
+                    root.TotalSize -= unkownPartNode.TotalSize;
+                }
+                //   2.2 Remove free space node
+                if (freeSpaceNode != null)
+                {
+                    root.Children.Remove(freeSpaceNode);
+                    if (showDiskFreeSpace)
+                    {
+                        root.TotalSize -= freeSpaceNode.TotalSize;
+                    }
+                }
+
+                // 3. Third step : add the special options
+                ApplySpecialRootOptions(root);
             }
         }
 
