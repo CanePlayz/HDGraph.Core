@@ -102,7 +102,7 @@ namespace HDGraph
         public HDGraphScanEngine()
         {
             if (scanningMessage == null)
-                scanningMessage = HDGTools.resManager.GetString("Scanning");
+                scanningMessage = ApplicationMessages.Scanning;
         }
 
         #endregion
@@ -134,6 +134,10 @@ namespace HDGraph
                 root = null;
         }
 
+        /// <summary>
+        /// Add to the given node a "free space node" and an "unknown part node", if the given node is a drive root.
+        /// </summary>
+        /// <param name="root"></param>
         private void ApplySpecialRootOptions(DirectoryNode root)
         {
             string path = root.Path;
@@ -180,7 +184,7 @@ namespace HDGraph
                     dirNodeFS.DirectoryType = SpecialDirTypes.FreeSpaceAndHide;
                 }
                 dirNodeFS.ExistsUncalcSubDir = false;
-                dirNodeFS.Name = HDGTools.resManager.GetString("FreeSpace");
+                dirNodeFS.Name = ApplicationMessages.FreeSpace;
                 dirNodeFS.Parent = root;
                 root.Children.Add(dirNodeFS);
 
@@ -290,7 +294,7 @@ namespace HDGraph
             catch (Exception ex)
             {
                 Trace.TraceError("Error during folder analysis (" + dir.Path + "). Folder skiped. Details: " + HDGTools.PrintError(ex));
-                dir.Name = String.Format(HDGTools.resManager.GetString("ErrorLoading"), dir.Name, ex.Message);
+                dir.Name = String.Format(ApplicationMessages.ErrorLoading, dir.Name, ex.Message);
                 dir.DirectoryType = SpecialDirTypes.ScanError;
             }
         }
@@ -312,6 +316,11 @@ namespace HDGraph
 
             if (node.ProfondeurMax == 1 && node.ExistsUncalcSubDir)
             {
+                if (node.DirectoryType == SpecialDirTypes.ScanError) {
+                    // before the new scan, reset the node state
+                    node.Name = new DirectoryInfo(node.Path).Name;
+                    node.DirectoryType = SpecialDirTypes.NotSpecial;
+                }
                 long dirPreviousTotalSize = node.TotalSize;
                 node.TotalSize = 0;
                 node.FilesSize = 0;
@@ -326,6 +335,7 @@ namespace HDGraph
                     CompleterArborescence(fils, maxLevel - 1);
                 }
             }
+            RafraichirEspaceLibre(node);
             return true;
         }
 
@@ -355,6 +365,7 @@ namespace HDGraph
             if (!Directory.Exists(node.Path))
             {
                 IncrementerTailleParents(node, -dirPreviousTotalSize);
+                RafraichirEspaceLibre(node);
                 return true;
             }
             ConstruireArborescence(node, node.ProfondeurMax - 1);
@@ -364,6 +375,10 @@ namespace HDGraph
             return true;
         }
 
+        /// <summary>
+        /// Refresh the free space size on the root folder of the given node.
+        /// </summary>
+        /// <param name="theNode"></param>
         private void RafraichirEspaceLibre(DirectoryNode theNode)
         {
             DirectoryNode root = theNode.Root;
@@ -455,6 +470,10 @@ namespace HDGraph
 
         #endregion
 
+        /// <summary>
+        /// Show or hide the free space on the root folder of the given node.
+        /// </summary>
+        /// <param name="directoryNode"></param>
         public void ApplyFreeSpaceOption(DirectoryNode directoryNode)
         {
             if (directoryNode == null)
