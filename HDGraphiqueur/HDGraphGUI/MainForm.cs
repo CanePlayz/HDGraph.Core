@@ -779,7 +779,7 @@ namespace HDGraph
 
         private void licenceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            (new LGPLLicenceForm()).ShowDialog();
+            (new LicenceForm()).ShowDialog();
         }
 
         private void MainForm_Activated(object sender, EventArgs e)
