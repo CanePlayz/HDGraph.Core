@@ -7,9 +7,9 @@ using System.Reflection;
 
 namespace HDGraph
 {
-    partial class LGPLLicenceForm : Form
+    partial class LicenceForm : Form
     {
-        public LGPLLicenceForm()
+        public LicenceForm()
         {
             InitializeComponent();
 
@@ -70,5 +70,15 @@ namespace HDGraph
         }
 
         #endregion
+
+        private void labelProductName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelLicenceName_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

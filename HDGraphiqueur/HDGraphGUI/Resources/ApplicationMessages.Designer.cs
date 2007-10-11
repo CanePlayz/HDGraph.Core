@@ -397,17 +397,17 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à This program is free software; you can redistribute it and/or
-        ///modify it under the terms of the GNU Lesser General Public
-        ///License as published by the Free Software Foundation; either
-        ///version 2.1 of the License, or (at your option) any later version.
+        ///   Recherche une chaîne localisée semblable à This software is a computer program whose purpose is to draw
+        ///multi-level pie charts of disk space, in order to easily identify
+        ///the biggest folders of the hard disk.
         ///
-        ///This program is distributed in the hope that it will be useful,
-        ///but WITHOUT ANY WARRANTY; without even the implied warranty of
-        ///MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-        ///Lesser General Public License for more details.
+        ///This software is governed by the CeCILL license under French law and
+        ///abiding by the rules of distribution of free software.  You can  use,
+        ///modify and/or redistribute the software under the terms of the CeCILL
+        ///license as circulated by CEA, CNRS and INRIA at the following URL
+        ///&quot;http://www.cecill.info&quot;.
         ///
-        ///You should [le reste de la chaîne a été tronqué]&quot;;.
+        ///As a counterpart to the access to  [le reste de la chaîne a été tronqué]&quot;;.
         /// </summary>
         internal static string HdgLicenceDescription {
             get {
@@ -416,7 +416,7 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Licence : GNU Lesser General Public License (LGPL).
+        ///   Recherche une chaîne localisée semblable à &quot;CeCILL&quot; License.
         /// </summary>
         internal static string HdgLicenceName {
             get {

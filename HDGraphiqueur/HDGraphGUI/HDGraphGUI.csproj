@@ -75,11 +75,11 @@
     <Compile Include="LanguageForm.Designer.cs">
       <DependentUpon>LanguageForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LGPLLicenceForm.cs">
+    <Compile Include="LicenceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LGPLLicenceForm.designer.cs">
-      <DependentUpon>LGPLLicenceForm.cs</DependentUpon>
+    <Compile Include="LicenceForm.designer.cs">
+      <DependentUpon>LicenceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -144,8 +144,12 @@
       <SubType>Designer</SubType>
       <DependentUpon>LanguageForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LGPLLicenceForm.resx">
-      <DependentUpon>LGPLLicenceForm.cs</DependentUpon>
+    <EmbeddedResource Include="LicenceForm.fr.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>LicenceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LicenceForm.resx">
+      <DependentUpon>LicenceForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="OptionsForm.fr.resx">
