@@ -10,10 +10,11 @@ Added:
 	- Root folder can include disk free spaces
 	- Root folder always contain an 'unknown files' parts, which represents the files that can not be scanned (due to acces restrictions for exemple) and lost space.
 	- Multiple color styles (random or linear colors)
-	- Cursor appearance change on hovered folders
+	- New "Details" window, including the full list of current subfolders
 	- Command line support (see help for details) for scripting use
 	- New toolbar containing analyse shortcuts with computer's drives
 	- New wait form when you delete a folder
+	- Cursor appearance change on hovered folders
 Improved: 
 	- Graph export available in PNG format.
 	- Full support of Windows Vista (UAC support for explorer integration)

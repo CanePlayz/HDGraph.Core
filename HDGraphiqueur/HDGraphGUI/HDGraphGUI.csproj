@@ -275,8 +275,8 @@
   <ItemGroup>
     <Content Include="ChangeLog.txt" />
     <Content Include="HDGraph.ico" />
-    <Content Include="Licence_CeCILL_V2-en.txt" />
-    <Content Include="Licence_CeCILL_V2-fr.txt" />
+    <EmbeddedResource Include="Licence_CeCILL_V2-en.txt" />
+    <EmbeddedResource Include="Licence_CeCILL_V2-fr.txt" />
     <Content Include="Readme.txt" />
     <Content Include="Doc\HDGraph-fr.chm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
