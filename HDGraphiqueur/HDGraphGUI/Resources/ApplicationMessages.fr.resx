@@ -264,7 +264,7 @@ pris connaissance de la licence CeCILL, et que vous en avez accepté les
 termes.</value>
   </data>
   <data name="HdgLicenceName" xml:space="preserve">
-    <value>Programme sous licence "CeCILL".</value>
+    <value>Programme sous licence "CeCILL v2".</value>
   </data>
   <data name="HelpFilename" xml:space="preserve">
     <value>HDGraph-fr.chm</value>
