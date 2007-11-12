@@ -416,7 +416,7 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à &quot;CeCILL&quot; License.
+        ///   Recherche une chaîne localisée semblable à &quot;CeCILL v2&quot; License.
         /// </summary>
         internal static string HdgLicenceName {
             get {
