@@ -15,19 +15,19 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_35F51DEAB16249968A883A97C3B523ED"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_9521C8B23FA5402F92BA455C92D7D38C"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_DB9C50F6EFF248169FC9B22D69F673A6"
+        "MsmKey" = "8:_98CC030F7F284A25A8027098404F752C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C0A7726091794634BB2C087664B1E3C6"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -127,10 +127,10 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_35F51DEAB16249968A883A97C3B523ED"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_98CC030F7F284A25A8027098404F752C"
             {
-            "SourcePath" = "8:..\\HDGraphiqueurGUI\\HDGraph.ico"
-            "TargetName" = "8:HDGraph.ico"
+            "SourcePath" = "8:..\\HDGraphGUI\\Licence_CeCILL_V2-fr.rtf"
+            "TargetName" = "8:Licence_CeCILL_V2-fr.rtf"
             "Tag" = "8:"
             "Folder" = "8:_67F2F62DCE714F968B6CE3A07D0B7792"
             "Condition" = "8:"
@@ -143,14 +143,14 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:FALSE"
+            "Exclude" = "11:TRUE"
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DB9C50F6EFF248169FC9B22D69F673A6"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C0A7726091794634BB2C087664B1E3C6"
             {
-            "SourcePath" = "8:..\\HDGraphiqueurGUI\\LGPL Licence.rtf"
-            "TargetName" = "8:LGPL Licence.rtf"
+            "SourcePath" = "8:..\\HDGraphGUI\\HDGraph.ico"
+            "TargetName" = "8:HDGraph.ico"
             "Tag" = "8:"
             "Folder" = "8:_67F2F62DCE714F968B6CE3A07D0B7792"
             "Condition" = "8:"
@@ -176,7 +176,7 @@
             "Description" = "8:Fichier HDGraph"
             "Extensions" = "8:hdg"
             "MIME" = "8:"
-            "Icon" = "8:_35F51DEAB16249968A883A97C3B523ED"
+            "Icon" = "8:_C0A7726091794634BB2C087664B1E3C6"
             "IconIndex" = "3:0"
                 "Command"
                 {
@@ -186,7 +186,7 @@
                 {
                     "{95C0C507-CBF0-42B8-B119-07219E384A4A}:_9214746D5F8F429F9E426589E589330A"
                     {
-                    "Command" = "8:&Open"
+                    "Command" = "8:&Ouvrir avec HDGraph"
                     "Verb" = "8:open"
                     "Arguments" = "8:\"%1\""
                     "Order" = "3:0"
@@ -257,7 +257,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HDGraph"
         "ProductCode" = "8:{2AF12739-9725-4817-902A-1DF0FC270C1B}"
-        "PackageCode" = "8:{6CE30585-ECFC-4604-AFA5-59141B371545}"
+        "PackageCode" = "8:{A8D2ABA6-3856-409D-B8FA-B674A35F6CC9}"
         "UpgradeCode" = "8:{E822B8A1-2386-4F9B-930E-7D864E9F1BD7}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
@@ -273,7 +273,7 @@
         "Keywords" = "8:HDGraph espace disque"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:http://hdgraph.sourceforge.net"
-        "ARPPRODUCTICON" = "8:_35F51DEAB16249968A883A97C3B523ED"
+        "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -387,7 +387,7 @@
             "Target" = "8:_9521C8B23FA5402F92BA455C92D7D38C"
             "Folder" = "8:_61E5ADD0E29B46C3A745CA4C5B9A8BA4"
             "WorkingFolder" = "8:_67F2F62DCE714F968B6CE3A07D0B7792"
-            "Icon" = "8:_35F51DEAB16249968A883A97C3B523ED"
+            "Icon" = "8:_C0A7726091794634BB2C087664B1E3C6"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_77BCAE6A6C214B049FC54FB1CBEA47B9"
@@ -401,7 +401,7 @@
             "Target" = "8:_9521C8B23FA5402F92BA455C92D7D38C"
             "Folder" = "8:_ADDE597C2D09411D961E9A59F3EE87D6"
             "WorkingFolder" = "8:_67F2F62DCE714F968B6CE3A07D0B7792"
-            "Icon" = "8:_35F51DEAB16249968A883A97C3B523ED"
+            "Icon" = "8:_C0A7726091794634BB2C087664B1E3C6"
             "Feature" = "8:"
             }
         }
@@ -515,6 +515,53 @@
                             "Setting" = "3:0"
                             "Value" = "3:1"
                             "DefaultValue" = "3:1"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                        }
+                    }
+                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_E0A0F5ABD8E941A484BA4A19A00C1491"
+                    {
+                    "Sequence" = "3:110"
+                    "DisplayName" = "8:Contrat de licence"
+                    "UseDynamicProperties" = "11:TRUE"
+                    "IsDependency" = "11:FALSE"
+                    "SourcePath" = "8:<VsdDialogDir>\\VsdLicenseDlg.wid"
+                        "Properties"
+                        {
+                            "BannerBitmap"
+                            {
+                            "Name" = "8:BannerBitmap"
+                            "DisplayName" = "8:#1001"
+                            "Description" = "8:#1101"
+                            "Type" = "3:8"
+                            "ContextData" = "8:Bitmap"
+                            "Attributes" = "3:4"
+                            "Setting" = "3:1"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "EulaText"
+                            {
+                            "Name" = "8:EulaText"
+                            "DisplayName" = "8:#1008"
+                            "Description" = "8:#1108"
+                            "Type" = "3:6"
+                            "ContextData" = "8:"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:2"
+                            "Value" = "8:_98CC030F7F284A25A8027098404F752C"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "Sunken"
+                            {
+                            "Name" = "8:Sunken"
+                            "DisplayName" = "8:#1007"
+                            "Description" = "8:#1107"
+                            "Type" = "3:5"
+                            "ContextData" = "8:4;True=4;False=0"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:0"
+                            "Value" = "3:0"
+                            "DefaultValue" = "3:4"
                             "UsePlugInResources" = "11:TRUE"
                             }
                         }
@@ -805,7 +852,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_9521C8B23FA5402F92BA455C92D7D38C"
             {
-            "SourcePath" = "8:..\\HDGraphiqueurGUI\\obj\\Debug\\HDGraph.exe"
+            "SourcePath" = "8:..\\HDGraphGUI\\obj\\Debug\\HDGraph.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_67F2F62DCE714F968B6CE3A07D0B7792"
