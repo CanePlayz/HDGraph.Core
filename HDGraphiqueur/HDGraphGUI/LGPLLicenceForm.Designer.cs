@@ -1,6 +1,6 @@
 namespace HDGraph
 {
-    partial class LGPLLicenceForm
+    partial class LicenceForm
     {
         /// <summary>
         /// Required designer variable.

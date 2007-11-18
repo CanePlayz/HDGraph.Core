@@ -21,13 +21,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_51994D4C92B64838BC2683DE19D62CE5"
+        "MsmKey" = "8:_87A1FE75868042DFAB999A0617A548B3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_E3821375545542B88E7A0F356290D004"
+        "MsmKey" = "8:_C09815AA3795432A971E84507B418F5D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -132,9 +132,9 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_51994D4C92B64838BC2683DE19D62CE5"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_87A1FE75868042DFAB999A0617A548B3"
             {
-            "SourcePath" = "8:..\\HDGraphiqueurGUI\\HDGraph.ico"
+            "SourcePath" = "8:..\\HDGraphGUI\\HDGraph.ico"
             "TargetName" = "8:HDGraph.ico"
             "Tag" = "8:"
             "Folder" = "8:_4E790C2004A742B69D2BD8EC179402C0"
@@ -152,10 +152,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E3821375545542B88E7A0F356290D004"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C09815AA3795432A971E84507B418F5D"
             {
-            "SourcePath" = "8:..\\HDGraphiqueurGUI\\LGPL Licence.rtf"
-            "TargetName" = "8:LGPL Licence.rtf"
+            "SourcePath" = "8:..\\HDGraphGUI\\Licence_CeCILL_V2-en.rtf"
+            "TargetName" = "8:Licence_CeCILL_V2-en.rtf"
             "Tag" = "8:"
             "Folder" = "8:_4E790C2004A742B69D2BD8EC179402C0"
             "Condition" = "8:"
@@ -168,7 +168,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:FALSE"
+            "Exclude" = "11:TRUE"
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
@@ -181,7 +181,7 @@
             "Description" = "8:HDGraph file"
             "Extensions" = "8:hdg"
             "MIME" = "8:"
-            "Icon" = "8:_51994D4C92B64838BC2683DE19D62CE5"
+            "Icon" = "8:_87A1FE75868042DFAB999A0617A548B3"
             "IconIndex" = "3:0"
                 "Command"
                 {
@@ -191,7 +191,7 @@
                 {
                     "{95C0C507-CBF0-42B8-B119-07219E384A4A}:_7BA9ABB77A104BF0AF3AC36E7C2E60F3"
                     {
-                    "Command" = "8:&Open"
+                    "Command" = "8:&Open with HDGraph"
                     "Verb" = "8:open"
                     "Arguments" = "8:\"%1\""
                     "Order" = "3:0"
@@ -278,7 +278,7 @@
         "Keywords" = "8:HDGraph disk space chart"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:http://hdgraph.sourceforge.net"
-        "ARPPRODUCTICON" = "8:_51994D4C92B64838BC2683DE19D62CE5"
+        "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -392,7 +392,7 @@
             "Target" = "8:_2BFC090C1BD44105BDB439B6273822F8"
             "Folder" = "8:_5F0D6B6D573E484A9B7049D762231D64"
             "WorkingFolder" = "8:_4E790C2004A742B69D2BD8EC179402C0"
-            "Icon" = "8:_51994D4C92B64838BC2683DE19D62CE5"
+            "Icon" = "8:_87A1FE75868042DFAB999A0617A548B3"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_5CC885CF1875471C9D86DA251565F0D7"
@@ -406,7 +406,7 @@
             "Target" = "8:_2BFC090C1BD44105BDB439B6273822F8"
             "Folder" = "8:_461E7C4B515E4687AE288BA96B46A7CA"
             "WorkingFolder" = "8:_4E790C2004A742B69D2BD8EC179402C0"
-            "Icon" = "8:_51994D4C92B64838BC2683DE19D62CE5"
+            "Icon" = "8:_87A1FE75868042DFAB999A0617A548B3"
             "Feature" = "8:"
             }
         }
@@ -448,7 +448,7 @@
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
                             "Setting" = "3:2"
-                            "Value" = "8:_E3821375545542B88E7A0F356290D004"
+                            "Value" = "8:_C09815AA3795432A971E84507B418F5D"
                             "UsePlugInResources" = "11:TRUE"
                             }
                             "Sunken"
@@ -857,7 +857,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_2BFC090C1BD44105BDB439B6273822F8"
             {
-            "SourcePath" = "8:..\\HDGraphiqueurGUI\\obj\\Debug\\HDGraph.exe"
+            "SourcePath" = "8:..\\HDGraphGUI\\obj\\Debug\\HDGraph.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E790C2004A742B69D2BD8EC179402C0"
