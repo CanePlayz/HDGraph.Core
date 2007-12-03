@@ -22,6 +22,8 @@ Improved:
 	- Scan button is now the default action (equivalent to Enter key).
 Fixed:
 	- some minor bugs
+Other:
+	- Licence replacement: HDGraph is now shipped under the CeCILL v2 licence.
 
 Version 1.0.1
 ======================================================
@@ -96,6 +98,27 @@ Initial public release.
 *
 ******************************************************/
 
+Version 1.2.0
+======================================================
+Ajouts:
+	- Les répertoires racines peuvent desormais inclure l'espace libre
+	- Les répertoire racines indiquent toujours la quantité inconnue d'espace disque, contenant les fichiers que HDGraph n'a pas été en mesure de scaner (par exemple par manque de droits) ainsi que l'espace perdu.
+	- Multiple styles de couleur (aléatoires ou linéaires)
+	- Nouvelle fenêtre "Détails", incluant la liste exhaustive des dossiers contenus par le dossier courant (permettant de trier les dossiers par taille)
+	- Fonctionne en "ligne de commande" pour usage par script (cf. aide)
+	- Nouvelle barre d'outils contenant les raccourcis vers les disques disponibles (c:, d:, etc).
+	- Nouvelle fenêtre d'attente pour les suppressions de répertoire
+	- Changement de l'apparence du curseur lors du survol du graphique
+Améliorations: 
+	- L'export du Graph se fait au format PNG.
+	- Totale compatibilité avec Windows Vista (support de l'UAC pour l'intégration à l'explorateur)
+	- Taille de la fenêtre principale mémorisée à la fermeture de l'application
+	- Le bouton "Scan" devient le bouton par défaut (raccourci via touche Entree).
+Corrections:
+	- divers bugs mineurs
+Autre:
+	- Changement de licence pour la Licence CeCILL v2.
+	
 Version 1.0.1
 ======================================================
 Ajouts:

@@ -10,7 +10,7 @@ Minimum requirements
 
 - Windows XP or Windows Vista
 - For Windows XP, the .NET Framework 2.0 (HDGraph Setup wil propose you to download it, if it's not installed).
-	
+
 	
 Install:
 ======================================================
@@ -54,7 +54,7 @@ Configuration requise
 
 - Windows XP ou  Windows Vista
 - Pour Windows XP, le .NET Framework 2.0 (Le Setup HDGraph vous proposera de le télécharger automatiquement si vous ne l'avez pas).
-	
+
 
 Installation:
 ======================================================
