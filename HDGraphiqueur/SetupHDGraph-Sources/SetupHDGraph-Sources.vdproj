@@ -4,15 +4,21 @@
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
 "ProjectName" = "8:SetupHDGraph-Sources"
-"LanguageId" = "3:1036"
+"LanguageId" = "3:1033"
 "CodePage" = "3:1252"
-"UILanguageId" = "3:1036"
+"UILanguageId" = "3:1033"
 "SccProjectName" = "8:"
 "SccLocalPath" = "8:"
 "SccAuxPath" = "8:"
 "SccProvider" = "8:"
     "Hierarchy"
     {
+        "Entry"
+        {
+        "MsmKey" = "8:_09F501E3FA024B91AFAC3AA4625F8AE2"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
         "Entry"
         {
         "MsmKey" = "8:_EA7ABEA2D6914B6FB99B77EFF30F50C5"
@@ -115,6 +121,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_09F501E3FA024B91AFAC3AA4625F8AE2"
+            {
+            "SourcePath" = "8:..\\HDGraphGUI\\Licence_CeCILL_V2-en.rtf"
+            "TargetName" = "8:Licence_CeCILL_V2-en.rtf"
+            "Tag" = "8:"
+            "Folder" = "8:_2516ADFD155D4C3F94DBB48DA8947C83"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -175,14 +201,14 @@
         }
         "MsiBootstrapper"
         {
-        "LangId" = "3:1036"
+        "LangId" = "3:1033"
         }
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HDGraph Sources"
         "ProductCode" = "8:{9DD2DA86-90F8-4E8A-AC6D-2BD73B700D2A}"
-        "PackageCode" = "8:{E0092C06-7262-4A38-B190-DB246A63E220}"
+        "PackageCode" = "8:{571E712A-6A20-4B46-BF0B-3B6F7E0FDAB9}"
         "UpgradeCode" = "8:{3AED3121-880E-4B3A-801D-2BCB0B73686E}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
@@ -192,7 +218,7 @@
         "Manufacturer" = "8:JYL2002"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:SetupHDGraph-Sources"
+        "Title" = "8:HDGraph with Sources Setup"
         "Subject" = "8:"
         "ARPCONTACT" = "8:J-Y LAUGEL"
         "Keywords" = "8:"
@@ -493,9 +519,56 @@
             "Attributes" = "3:1"
                 "Dialogs"
                 {
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_8238C27A22D047C692EAE045FFBF1B75"
+                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_6454C8BEAC484D26B466E4CA6D3C3EAC"
                     {
                     "Sequence" = "3:200"
+                    "DisplayName" = "8:Contrat de licence"
+                    "UseDynamicProperties" = "11:TRUE"
+                    "IsDependency" = "11:FALSE"
+                    "SourcePath" = "8:<VsdDialogDir>\\VsdLicenseDlg.wid"
+                        "Properties"
+                        {
+                            "BannerBitmap"
+                            {
+                            "Name" = "8:BannerBitmap"
+                            "DisplayName" = "8:#1001"
+                            "Description" = "8:#1101"
+                            "Type" = "3:8"
+                            "ContextData" = "8:Bitmap"
+                            "Attributes" = "3:4"
+                            "Setting" = "3:1"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "EulaText"
+                            {
+                            "Name" = "8:EulaText"
+                            "DisplayName" = "8:#1008"
+                            "Description" = "8:#1108"
+                            "Type" = "3:6"
+                            "ContextData" = "8:"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:2"
+                            "Value" = "8:_09F501E3FA024B91AFAC3AA4625F8AE2"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                            "Sunken"
+                            {
+                            "Name" = "8:Sunken"
+                            "DisplayName" = "8:#1007"
+                            "Description" = "8:#1107"
+                            "Type" = "3:5"
+                            "ContextData" = "8:4;True=4;False=0"
+                            "Attributes" = "3:0"
+                            "Setting" = "3:0"
+                            "Value" = "3:4"
+                            "DefaultValue" = "3:4"
+                            "UsePlugInResources" = "11:TRUE"
+                            }
+                        }
+                    }
+                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_8238C27A22D047C692EAE045FFBF1B75"
+                    {
+                    "Sequence" = "3:300"
                     "DisplayName" = "8:Dossier d'installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
@@ -578,7 +651,7 @@
                     }
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_FD962C0A2A644B7691938AA484D35C1F"
                     {
-                    "Sequence" = "3:300"
+                    "Sequence" = "3:400"
                     "DisplayName" = "8:Confirmer l'installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
@@ -786,7 +859,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_EA7ABEA2D6914B6FB99B77EFF30F50C5"
             {
-            "SourcePath" = "8:..\\HDGraphiqueurGUI\\obj\\Debug\\HDGraph.exe"
+            "SourcePath" = "8:..\\HDGraphGUI\\obj\\Debug\\HDGraph.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_2516ADFD155D4C3F94DBB48DA8947C83"
