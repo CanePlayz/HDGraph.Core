@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HDGraphGUI", "HDGraphGUI\HDGraphGUI.csproj", "{99A5D2B9-4B2C-4177-A69C-02BCB163DC78}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupHDGraph", "SetupHDGraph\HDGraphSetup.vdproj", "{EE7BF0A8-9FBA-4CAD-8B88-469EF41B7DF1}"
@@ -10,6 +10,10 @@ EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupHDGraph-Sources", "SetupHDGraph-Sources\SetupHDGraph-Sources.vdproj", "{FB6757F0-8155-44DD-A28D-3A995DAAB57A}"
 EndProject
 Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
