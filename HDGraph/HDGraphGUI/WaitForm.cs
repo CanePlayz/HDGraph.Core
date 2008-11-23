@@ -26,6 +26,7 @@ namespace HDGraph
         public WaitForm()
         {
             InitializeComponent();
+            
         }
         #endregion
 

@@ -154,7 +154,7 @@
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="labelInformation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 51</value>
+    <value>24, 51</value>
   </data>
   <data name="labelInformation.Size" type="System.Drawing.Size, System.Drawing">
     <value>362, 48</value>

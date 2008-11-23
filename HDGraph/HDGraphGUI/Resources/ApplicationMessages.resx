@@ -325,4 +325,10 @@ knowledge of the CeCILL license and that you accept its terms.</value>
   <data name="UserCanceledAnalysis" xml:space="preserve">
     <value>Directory scan has been aborted by user. Please launch a new scan.</value>
   </data>
+  <data name="PleaseWaitWhileDrawing" xml:space="preserve">
+    <value>Please wait while drawing the graph...</value>
+  </data>
+  <data name="ResizeInProgressByUser" xml:space="preserve">
+    <value>[ Resize preview ]</value>
+  </data>
 </root>

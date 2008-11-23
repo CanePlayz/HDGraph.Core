@@ -101,6 +101,9 @@ namespace HDGraph
             InitializeComponent();
 
             this.Text = AboutBox.AssemblyTitle;
+            this.WindowState = HDGraph.Properties.Settings.Default.OptionMainWindowOpenState;
+            this.ClientSize = HDGraph.Properties.Settings.Default.OptionMainWindowSize;
+            
             EnableHelpIfAvailable();
             comboBoxPath.DataSource = HDGraph.Properties.Settings.Default.PathHistory;
             checkBoxAutoRecalc.Checked = HDGraph.Properties.Settings.Default.OptionAutoCompleteGraph;
@@ -546,6 +549,7 @@ namespace HDGraph
         private void buttonBrowse_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dialog = new FolderBrowserDialog();
+            dialog.ShowNewFolderButton = false;
             dialog.Description = resManager.GetString("PleaseChooseDirectory");
             dialog.SelectedPath = comboBoxPath.Text;
             if (dialog.ShowDialog() == DialogResult.OK)
@@ -906,8 +910,6 @@ namespace HDGraph
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            HDGraph.Properties.Settings.Default.OptionMainWindowSize = this.ClientSize;
-            HDGraph.Properties.Settings.Default.OptionMainWindowOpenState = this.WindowState;
             HDGraph.Properties.Settings.Default.Save();
         }
 
@@ -950,6 +952,29 @@ namespace HDGraph
         private void trackBarZoom_MouseUp(object sender, MouseEventArgs e)
         {
             currentlyScrollingZoom = false;
+        }
+
+        private void MainForm_SizeChanged(object sender, EventArgs e)
+        {
+            HDGraph.Properties.Settings.Default.OptionMainWindowOpenState = this.WindowState;
+            if (this.WindowState == FormWindowState.Normal)
+                HDGraph.Properties.Settings.Default.OptionMainWindowSize = this.ClientSize;
+        }
+
+        private void MainForm_ResizeBegin(object sender, EventArgs e)
+        {
+            treeGraph1.Resizing = true;
+        }
+
+        private void MainForm_ResizeEnd(object sender, EventArgs e)
+        {
+            treeGraph1.Resizing = false;
+            treeGraph1.Refresh();
+        }
+
+        private void checkBoxShowTooltip_CheckedChanged(object sender, EventArgs e)
+        {
+            treeGraph1.ShowTooltip = checkBoxShowTooltip.Checked;
         }
     }
 }

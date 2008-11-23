@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.50727</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{99A5D2B9-4B2C-4177-A69C-02BCB163DC78}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -74,6 +74,7 @@
     <Compile Include="ExternalTools\TextAndImageColumn.cs" />
     <Compile Include="FatalHdgraphException.cs" />
     <Compile Include="HDGTools.cs" />
+    <Compile Include="ImageGraphGenerator.cs" />
     <Compile Include="LanguageForm.cs">
       <SubType>Form</SubType>
     </Compile>

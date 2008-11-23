@@ -326,4 +326,10 @@ termes.</value>
   <data name="UserCanceledAnalysis" xml:space="preserve">
     <value>L'analyse du disque a été stoppée par l'utilisateur. Veuillez lancer une nouvelle analyse.</value>
   </data>
+  <data name="PleaseWaitWhileDrawing" xml:space="preserve">
+    <value>Veuillez patienter, construction du graphique en cours...</value>
+  </data>
+  <data name="ResizeInProgressByUser" xml:space="preserve">
+    <value>[ Aperçu du redimentionnement ]</value>
+  </data>
 </root>

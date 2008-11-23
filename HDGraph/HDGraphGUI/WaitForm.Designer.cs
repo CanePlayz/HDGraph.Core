@@ -64,10 +64,10 @@ namespace HDGraph
             // 
             // buttonCancel
             // 
+            this.buttonCancel.Cursor = System.Windows.Forms.Cursors.Default;
             resources.ApplyResources(this.buttonCancel, "buttonCancel");
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.UseWaitCursor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // WaitForm
@@ -86,8 +86,8 @@ namespace HDGraph
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.UseWaitCursor = true;
-            this.Shown += new System.EventHandler(this.WaitForm_Shown);
             this.Load += new System.EventHandler(this.WaitForm_Load);
+            this.Shown += new System.EventHandler(this.WaitForm_Shown);
             this.ResumeLayout(false);
 
         }

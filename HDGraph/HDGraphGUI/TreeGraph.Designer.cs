@@ -42,16 +42,12 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deletePermanentlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
             // 
-            this.contextMenuStrip1.AccessibleDescription = null;
-            this.contextMenuStrip1.AccessibleName = null;
-            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
-            this.contextMenuStrip1.BackgroundImage = null;
-            this.contextMenuStrip1.Font = null;
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.directoryNameToolStripMenuItem,
             this.toolStripSeparator1,
@@ -64,134 +60,98 @@
             this.toolStripSeparator2,
             this.deleteToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // directoryNameToolStripMenuItem
             // 
-            this.directoryNameToolStripMenuItem.AccessibleDescription = null;
-            this.directoryNameToolStripMenuItem.AccessibleName = null;
             resources.ApplyResources(this.directoryNameToolStripMenuItem, "directoryNameToolStripMenuItem");
-            this.directoryNameToolStripMenuItem.BackgroundImage = null;
             this.directoryNameToolStripMenuItem.ForeColor = System.Drawing.Color.Navy;
             this.directoryNameToolStripMenuItem.Image = global::HDGraph.Properties.Resources.OpenSelectedItemHS;
             this.directoryNameToolStripMenuItem.Margin = new System.Windows.Forms.Padding(30, 5, 0, 5);
             this.directoryNameToolStripMenuItem.Name = "directoryNameToolStripMenuItem";
             this.directoryNameToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0);
-            this.directoryNameToolStripMenuItem.ShortcutKeyDisplayString = null;
             this.directoryNameToolStripMenuItem.Click += new System.EventHandler(this.directoryNameToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
-            this.toolStripSeparator1.AccessibleDescription = null;
-            this.toolStripSeparator1.AccessibleName = null;
-            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             this.toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(this.toolStripSeparator1, "toolStripSeparator1");
             // 
             // detailsViewToolStripMenuItem
             // 
-            this.detailsViewToolStripMenuItem.AccessibleDescription = null;
-            this.detailsViewToolStripMenuItem.AccessibleName = null;
-            resources.ApplyResources(this.detailsViewToolStripMenuItem, "detailsViewToolStripMenuItem");
-            this.detailsViewToolStripMenuItem.BackgroundImage = null;
             this.detailsViewToolStripMenuItem.Image = global::HDGraph.Properties.Resources.ActualSizeHS;
             this.detailsViewToolStripMenuItem.Name = "detailsViewToolStripMenuItem";
-            this.detailsViewToolStripMenuItem.ShortcutKeyDisplayString = null;
+            resources.ApplyResources(this.detailsViewToolStripMenuItem, "detailsViewToolStripMenuItem");
             this.detailsViewToolStripMenuItem.Click += new System.EventHandler(this.detailsViewToolStripMenuItem_Click);
             // 
             // openThisDirectoryInWindowsExplorerToolStripMenuItem
             // 
-            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.AccessibleDescription = null;
-            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.AccessibleName = null;
-            resources.ApplyResources(this.openThisDirectoryInWindowsExplorerToolStripMenuItem, "openThisDirectoryInWindowsExplorerToolStripMenuItem");
-            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.BackgroundImage = null;
             this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Image = global::HDGraph.Properties.Resources.CascadeWindowsHS;
             this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Name = "openThisDirectoryInWindowsExplorerToolStripMenuItem";
-            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.ShortcutKeyDisplayString = null;
+            resources.ApplyResources(this.openThisDirectoryInWindowsExplorerToolStripMenuItem, "openThisDirectoryInWindowsExplorerToolStripMenuItem");
             this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Click += new System.EventHandler(this.openThisDirectoryInWindowsExplorerToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
-            this.toolStripSeparator3.AccessibleDescription = null;
-            this.toolStripSeparator3.AccessibleName = null;
-            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             this.toolStripSeparator3.Name = "toolStripSeparator3";
+            resources.ApplyResources(this.toolStripSeparator3, "toolStripSeparator3");
             // 
             // refreshThisDirectoryToolStripMenuItem
             // 
-            this.refreshThisDirectoryToolStripMenuItem.AccessibleDescription = null;
-            this.refreshThisDirectoryToolStripMenuItem.AccessibleName = null;
-            resources.ApplyResources(this.refreshThisDirectoryToolStripMenuItem, "refreshThisDirectoryToolStripMenuItem");
-            this.refreshThisDirectoryToolStripMenuItem.BackgroundImage = null;
             this.refreshThisDirectoryToolStripMenuItem.Image = global::HDGraph.Properties.Resources.RefreshDocViewHS;
             this.refreshThisDirectoryToolStripMenuItem.Name = "refreshThisDirectoryToolStripMenuItem";
-            this.refreshThisDirectoryToolStripMenuItem.ShortcutKeyDisplayString = null;
+            resources.ApplyResources(this.refreshThisDirectoryToolStripMenuItem, "refreshThisDirectoryToolStripMenuItem");
             this.refreshThisDirectoryToolStripMenuItem.Click += new System.EventHandler(this.refreshThisDirectoryToolStripMenuItem_Click);
             // 
             // centerGraphOnThisDirectoryToolStripMenuItem
             // 
-            this.centerGraphOnThisDirectoryToolStripMenuItem.AccessibleDescription = null;
-            this.centerGraphOnThisDirectoryToolStripMenuItem.AccessibleName = null;
-            resources.ApplyResources(this.centerGraphOnThisDirectoryToolStripMenuItem, "centerGraphOnThisDirectoryToolStripMenuItem");
-            this.centerGraphOnThisDirectoryToolStripMenuItem.BackgroundImage = null;
             this.centerGraphOnThisDirectoryToolStripMenuItem.Image = global::HDGraph.Properties.Resources.ZoomHS;
             this.centerGraphOnThisDirectoryToolStripMenuItem.Name = "centerGraphOnThisDirectoryToolStripMenuItem";
-            this.centerGraphOnThisDirectoryToolStripMenuItem.ShortcutKeyDisplayString = null;
+            resources.ApplyResources(this.centerGraphOnThisDirectoryToolStripMenuItem, "centerGraphOnThisDirectoryToolStripMenuItem");
             this.centerGraphOnThisDirectoryToolStripMenuItem.Click += new System.EventHandler(this.centerGraphOnThisDirectoryToolStripMenuItem_Click);
             // 
             // centerGraphOnParentDirectoryToolStripMenuItem
             // 
-            this.centerGraphOnParentDirectoryToolStripMenuItem.AccessibleDescription = null;
-            this.centerGraphOnParentDirectoryToolStripMenuItem.AccessibleName = null;
-            resources.ApplyResources(this.centerGraphOnParentDirectoryToolStripMenuItem, "centerGraphOnParentDirectoryToolStripMenuItem");
-            this.centerGraphOnParentDirectoryToolStripMenuItem.BackgroundImage = null;
             this.centerGraphOnParentDirectoryToolStripMenuItem.Image = global::HDGraph.Properties.Resources.GoToParentFolderHS;
             this.centerGraphOnParentDirectoryToolStripMenuItem.Name = "centerGraphOnParentDirectoryToolStripMenuItem";
-            this.centerGraphOnParentDirectoryToolStripMenuItem.ShortcutKeyDisplayString = null;
+            resources.ApplyResources(this.centerGraphOnParentDirectoryToolStripMenuItem, "centerGraphOnParentDirectoryToolStripMenuItem");
             this.centerGraphOnParentDirectoryToolStripMenuItem.Click += new System.EventHandler(this.centerGraphOnParentDirectoryToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
-            this.toolStripSeparator2.AccessibleDescription = null;
-            this.toolStripSeparator2.AccessibleName = null;
-            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             this.toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(this.toolStripSeparator2, "toolStripSeparator2");
             // 
             // deleteToolStripMenuItem
             // 
-            this.deleteToolStripMenuItem.AccessibleDescription = null;
-            this.deleteToolStripMenuItem.AccessibleName = null;
-            resources.ApplyResources(this.deleteToolStripMenuItem, "deleteToolStripMenuItem");
-            this.deleteToolStripMenuItem.BackgroundImage = null;
             this.deleteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deletePermanentlyToolStripMenuItem});
             this.deleteToolStripMenuItem.Image = global::HDGraph.Properties.Resources.DeleteFolderHS;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.ShortcutKeyDisplayString = null;
+            resources.ApplyResources(this.deleteToolStripMenuItem, "deleteToolStripMenuItem");
             // 
             // deletePermanentlyToolStripMenuItem
             // 
-            this.deletePermanentlyToolStripMenuItem.AccessibleDescription = null;
-            this.deletePermanentlyToolStripMenuItem.AccessibleName = null;
-            resources.ApplyResources(this.deletePermanentlyToolStripMenuItem, "deletePermanentlyToolStripMenuItem");
-            this.deletePermanentlyToolStripMenuItem.BackgroundImage = null;
             this.deletePermanentlyToolStripMenuItem.Name = "deletePermanentlyToolStripMenuItem";
-            this.deletePermanentlyToolStripMenuItem.ShortcutKeyDisplayString = null;
+            resources.ApplyResources(this.deletePermanentlyToolStripMenuItem, "deletePermanentlyToolStripMenuItem");
             this.deletePermanentlyToolStripMenuItem.Click += new System.EventHandler(this.deletePermanentlyToolStripMenuItem_Click);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
             // TreeGraph
             // 
-            this.AccessibleDescription = null;
-            this.AccessibleName = null;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = null;
             this.ContextMenuStrip = this.contextMenuStrip1;
-            this.Font = null;
             this.Name = "TreeGraph";
-            this.DoubleClick += new System.EventHandler(this.TreeGraph_DoubleClick);
             this.Load += new System.EventHandler(this.TreeGraph_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TreeGraph_MouseDown);
+            this.DoubleClick += new System.EventHandler(this.TreeGraph_DoubleClick);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TreeGraph_MouseMove);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TreeGraph_MouseDown);
             this.Resize += new System.EventHandler(this.TreeGraph_Resize);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -212,5 +172,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem deletePermanentlyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem detailsViewToolStripMenuItem;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

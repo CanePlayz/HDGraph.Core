@@ -524,6 +524,24 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please wait while drawing the graph....
+        /// </summary>
+        internal static string PleaseWaitWhileDrawing {
+            get {
+                return ResourceManager.GetString("PleaseWaitWhileDrawing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [ Resize preview ].
+        /// </summary>
+        internal static string ResizeInProgressByUser {
+            get {
+                return ResourceManager.GetString("ResizeInProgressByUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scanning .
         /// </summary>
         internal static string Scanning {
