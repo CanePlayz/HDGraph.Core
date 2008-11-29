@@ -24,7 +24,10 @@ namespace HDGraph.UserControls
         {
             this.errorList = errorList;
             this.Visible = (errorList.Count > 0);
-            labelErrors.Text = String.Format(ApplicationMessages.SomeElementsSkipped, errorList.Count);
+            if (errorList.Count == 1)
+                labelErrors.Text = ApplicationMessages.OneElementSkipped;
+            else
+                labelErrors.Text = String.Format(ApplicationMessages.SomeElementsSkipped, errorList.Count);
         }
 
         private void linkLabelDetails_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

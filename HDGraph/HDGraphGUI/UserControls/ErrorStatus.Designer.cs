@@ -28,55 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ErrorStatus));
             this.labelErrors = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.linkLabelDetails = new System.Windows.Forms.LinkLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.blinkingImage1 = new HDGraph.UserControls.BlinkingImage();
+            ((System.ComponentModel.ISupportInitialize)(this.blinkingImage1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelErrors
             // 
-            this.labelErrors.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelErrors.Location = new System.Drawing.Point(45, 0);
+            this.labelErrors.AccessibleDescription = null;
+            this.labelErrors.AccessibleName = null;
+            resources.ApplyResources(this.labelErrors, "labelErrors");
+            this.labelErrors.Font = null;
             this.labelErrors.Name = "labelErrors";
-            this.labelErrors.Size = new System.Drawing.Size(114, 26);
-            this.labelErrors.TabIndex = 0;
-            this.labelErrors.Text = "23 elements skipped due to scan errors.";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::HDGraph.Properties.Resources.Warning;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(43, 43);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // linkLabelDetails
             // 
-            this.linkLabelDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.linkLabelDetails.AutoSize = true;
-            this.linkLabelDetails.Location = new System.Drawing.Point(49, 32);
+            this.linkLabelDetails.AccessibleDescription = null;
+            this.linkLabelDetails.AccessibleName = null;
+            resources.ApplyResources(this.linkLabelDetails, "linkLabelDetails");
+            this.linkLabelDetails.Font = null;
             this.linkLabelDetails.Name = "linkLabelDetails";
-            this.linkLabelDetails.Size = new System.Drawing.Size(67, 13);
-            this.linkLabelDetails.TabIndex = 2;
             this.linkLabelDetails.TabStop = true;
-            this.linkLabelDetails.Text = "Show details";
             this.linkLabelDetails.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelDetails_LinkClicked);
+            // 
+            // blinkingImage1
+            // 
+            this.blinkingImage1.AccessibleDescription = null;
+            this.blinkingImage1.AccessibleName = null;
+            resources.ApplyResources(this.blinkingImage1, "blinkingImage1");
+            this.blinkingImage1.BackgroundImage = null;
+            this.blinkingImage1.BlinkEnabled = true;
+            this.blinkingImage1.Font = null;
+            this.blinkingImage1.Image = global::HDGraph.Properties.Resources.Warning;
+            this.blinkingImage1.ImageLocation = null;
+            this.blinkingImage1.Name = "blinkingImage1";
+            this.blinkingImage1.TabStop = false;
             // 
             // ErrorStatus
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AccessibleDescription = null;
+            this.AccessibleName = null;
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = null;
+            this.Controls.Add(this.blinkingImage1);
             this.Controls.Add(this.linkLabelDetails);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.labelErrors);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Font = null;
             this.Name = "ErrorStatus";
-            this.Size = new System.Drawing.Size(159, 45);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blinkingImage1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -85,7 +88,7 @@
         #endregion
 
         private System.Windows.Forms.Label labelErrors;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.LinkLabel linkLabelDetails;
+        private BlinkingImage blinkingImage1;
     }
 }

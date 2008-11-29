@@ -187,13 +187,13 @@
     <value>Bottom, Right</value>
   </data>
   <data name="errorStatus1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>621, 496</value>
+    <value>621, 542</value>
   </data>
   <data name="errorStatus1.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="errorStatus1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 49</value>
+    <value>158, 49</value>
   </data>
   <data name="errorStatus1.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -220,7 +220,7 @@
     <value>NoControl</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>531, 529</value>
+    <value>530, 51</value>
   </data>
   <data name="button1.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -285,26 +285,26 @@
   <data name="linkLabelHelpGraph.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <data name="linkLabelHelpGraph.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="linkLabelHelpGraph.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="linkLabelHelpGraph.Location" type="System.Drawing.Point, System.Drawing">
-    <value>621, 548</value>
+    <value>450, 555</value>
   </data>
   <data name="linkLabelHelpGraph.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="linkLabelHelpGraph.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 13</value>
+    <value>155, 26</value>
   </data>
   <data name="linkLabelHelpGraph.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
   <data name="linkLabelHelpGraph.Text" xml:space="preserve">
     <value>Legend / Reading the graph...</value>
+  </data>
+  <data name="linkLabelHelpGraph.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomLeft</value>
   </data>
   <data name="&gt;&gt;linkLabelHelpGraph.Name" xml:space="preserve">
     <value>linkLabelHelpGraph</value>
@@ -622,19 +622,22 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 30</value>
+    <value>9, 16</value>
   </data>
   <data name="label1.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 28</value>
+    <value>142, 42</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Calculation max depth : (reduce to improve perf)</value>
+  </data>
+  <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomLeft</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -921,22 +924,19 @@
     <value>NoControl</value>
   </data>
   <data name="buttonScan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>647, 41</value>
+    <value>634, 41</value>
   </data>
   <data name="buttonScan.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="buttonScan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 23</value>
+    <value>131, 23</value>
   </data>
   <data name="buttonScan.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="buttonScan.Text" xml:space="preserve">
-    <value>Scan / Refresh</value>
-  </data>
-  <data name="buttonScan.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleRight</value>
+    <value>     Scan / Refresh</value>
   </data>
   <data name="&gt;&gt;buttonScan.Name" xml:space="preserve">
     <value>buttonScan</value>
@@ -960,7 +960,7 @@
     <value>True</value>
   </data>
   <data name="treeGraph1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>610, 524</value>
+    <value>610, 557</value>
   </data>
   <data name="treeGraph1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1020,7 +1020,7 @@
     <value>True</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>779, 568</value>
+    <value>779, 601</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1041,7 +1041,7 @@
     <value>True</value>
   </data>
   <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>779, 568</value>
+    <value>779, 601</value>
   </data>
   <data name="&gt;&gt;toolStripContainer1.ContentPanel.Name" xml:space="preserve">
     <value>toolStripContainer1.ContentPanel</value>
@@ -1056,7 +1056,7 @@
     <value>0</value>
   </data>
   <metadata name="toolStripTreeView.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>0, 3</value>
+    <value>0, 0</value>
   </metadata>
   <data name="toolStripTreeView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
@@ -1137,7 +1137,7 @@
     <value>True</value>
   </data>
   <data name="toolStripContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>779, 615</value>
+    <value>779, 648</value>
   </data>
   <data name="toolStripContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -1146,7 +1146,7 @@
     <value>toolStripContainer1</value>
   </data>
   <metadata name="toolBarToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>168, 0</value>
+    <value>3, 0</value>
   </metadata>
   <data name="toolBarToolStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
@@ -1328,7 +1328,7 @@
     <value>Help</value>
   </data>
   <data name="toolBarToolStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>171, 0</value>
+    <value>162, 0</value>
   </data>
   <data name="toolBarToolStrip.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1355,7 +1355,7 @@
     <value>0</value>
   </data>
   <metadata name="toolStripShortcuts.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>196, 0</value>
+    <value>209, 0</value>
   </metadata>
   <data name="toolStripShortcuts.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
@@ -1409,7 +1409,7 @@
     <value>C:</value>
   </data>
   <data name="toolStripShortcuts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 0</value>
+    <value>3, 0</value>
   </data>
   <data name="toolStripShortcuts.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2133,7 +2133,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>779, 644</value>
+    <value>779, 675</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -6475,9 +6475,6 @@
         /////////////////////////////////8A=
 </value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>640, 600</value>
   </data>
@@ -6501,6 +6498,12 @@
   </data>
   <data name="&gt;&gt;treeviewToolStripLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;explorerTreeView1.Name" xml:space="preserve">
+    <value>explorerTreeView1</value>
+  </data>
+  <data name="&gt;&gt;explorerTreeView1.Type" xml:space="preserve">
+    <value>WilsonProgramming.ExplorerTreeView, HDGraph, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;newToolStripButton.Name" xml:space="preserve">
     <value>newToolStripButton</value>
@@ -6921,12 +6924,6 @@
   </data>
   <data name="&gt;&gt;helpProvider1.Type" xml:space="preserve">
     <value>System.Windows.Forms.HelpProvider, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;explorerTreeView1.Name" xml:space="preserve">
-    <value>explorerTreeView1</value>
-  </data>
-  <data name="&gt;&gt;explorerTreeView1.Type" xml:space="preserve">
-    <value>WilsonProgramming.ExplorerTreeView, HDGraph, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>

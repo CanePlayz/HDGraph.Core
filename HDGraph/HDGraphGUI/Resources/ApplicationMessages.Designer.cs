@@ -497,6 +497,15 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 1 element skipped due to scan error..
+        /// </summary>
+        internal static string OneElementSkipped {
+            get {
+                return ResourceManager.GetString("OneElementSkipped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Operation failed.
         /// </summary>
         internal static string OperationFailedTitle {

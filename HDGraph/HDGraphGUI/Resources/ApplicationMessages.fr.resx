@@ -336,6 +336,9 @@ termes.</value>
     <value>Inconnu</value>
   </data>
   <data name="SomeElementsSkipped" xml:space="preserve">
-    <value>{0} éléments ont été ignorés en raison d'erreurs lors du scan.</value>
+    <value>{0} éléments ignorés (échecs d'analyse)</value>
+  </data>
+  <data name="OneElementSkipped" xml:space="preserve">
+    <value>1 élément ignoré (échec d'analyse)</value>
   </data>
 </root>

@@ -337,4 +337,7 @@ knowledge of the CeCILL license and that you accept its terms.</value>
   <data name="SomeElementsSkipped" xml:space="preserve">
     <value>{0} elements skipped due to scan errors.</value>
   </data>
+  <data name="OneElementSkipped" xml:space="preserve">
+    <value>1 element skipped due to scan error.</value>
+  </data>
 </root>
