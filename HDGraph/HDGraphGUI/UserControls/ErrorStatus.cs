@@ -34,5 +34,10 @@ namespace HDGraph.UserControls
         {
             MessageBox.Show("Not implemented yet.", "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void ErrorStatus_VisibleChanged(object sender, EventArgs e)
+        {
+            blinkingImage1.BlinkEnabled = this.Visible;
+        }
     }
 }

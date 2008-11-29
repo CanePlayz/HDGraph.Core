@@ -578,6 +578,31 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You can right click on any directory on the graph to have more options : open it in Windows Explorer, delete it, etc..
+        /// </summary>
+        internal static string Tip1_RightClick {
+            get {
+                return ResourceManager.GetString("Tip1_RightClick", resourceCulture);
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Tip1_Screenshot_rightClick {
+            get {
+                object obj = ResourceManager.GetObject("Tip1_Screenshot_rightClick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string Tip2_ {
+            get {
+                return ResourceManager.GetString("Tip2_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error prevent you to do the operation. Perhaps that you don&apos;t have rights to do this (try as administrator if you&apos;re not). Error detail : {0}..
         /// </summary>
         internal static string UnableToDesIntegrateInExplorer {

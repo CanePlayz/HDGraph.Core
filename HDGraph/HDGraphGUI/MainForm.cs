@@ -925,11 +925,6 @@ namespace HDGraph
 
         }
 
-        private void filesystemTreeviewToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            toolStripTreeView.Visible = filesystemTreeviewToolStripMenuItem.Checked;
-        }
-
         private void shortcutsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             toolStripShortcuts.Visible = shortcutsToolStripMenuItem.Checked;
@@ -977,6 +972,11 @@ namespace HDGraph
         private void checkBoxShowTooltip_CheckedChanged(object sender, EventArgs e)
         {
             treeGraph1.ShowTooltip = checkBoxShowTooltip.Checked;
+        }
+
+        private void applicationTipsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            splitContainerGraphAndTips.Panel2Collapsed = !applicationTipsToolStripMenuItem.Checked;
         }
     }
 }

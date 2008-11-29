@@ -33,7 +33,7 @@ namespace HDGraph.UserControls
             }
         }
 
-        [Description("Duration (in ms) between visibility change.")]
+        [Description("Duration (in ms) between visibility changes.")]
         [Category("Blinking effect")]
         [Browsable(true)]
         [DefaultValue(BLINK_INTERVAL_DEFAULT_VALUE)]
@@ -42,6 +42,20 @@ namespace HDGraph.UserControls
             get { return timer1.Interval; }
             set { timer1.Interval = value; }
         }
+
+        private int blinkMaxDuration = 10000;
+
+        [Description("Max blink total duration is ms. After this duration, the image stop to blink, becoming visible all time.")]
+        [Category("Blinking effect")]
+        [Browsable(true)]
+        [DefaultValue(10000)]
+        public int BlinkMaxDuration
+        {
+            get { return blinkMaxDuration; }
+            set { blinkMaxDuration = value; }
+        }
+
+        private DateTime? lastAcceptableBlinkDate = null;
 
         public BlinkingImage()
         {
@@ -52,6 +66,14 @@ namespace HDGraph.UserControls
         private void timer1_Tick(object sender, EventArgs e)
         {
             this.Visible = !this.Visible;
+            if (!lastAcceptableBlinkDate.HasValue)
+                lastAcceptableBlinkDate = DateTime.Now.AddMilliseconds(blinkMaxDuration);
+            else if (lastAcceptableBlinkDate < DateTime.Now)
+            {
+                timer1.Enabled = false;
+                this.Visible = true;
+                lastAcceptableBlinkDate = null;
+            }
         }
     }
 }

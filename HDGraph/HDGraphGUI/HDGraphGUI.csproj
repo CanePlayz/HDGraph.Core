@@ -227,6 +227,10 @@
       <DependentUpon>ErrorStatus.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TipsMonitor.resx">
+      <DependentUpon>TipsMonitor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="WaitForm.en.resx">
       <SubType>Designer</SubType>
       <DependentUpon>WaitForm.cs</DependentUpon>
@@ -285,6 +289,12 @@
     <Compile Include="UserControls\ErrorStatus.Designer.cs">
       <DependentUpon>ErrorStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\TipsMonitor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\TipsMonitor.Designer.cs">
+      <DependentUpon>TipsMonitor.cs</DependentUpon>
+    </Compile>
     <Compile Include="VistaTools.cs" />
     <Compile Include="WaitForm.cs">
       <SubType>Form</SubType>
@@ -317,6 +327,8 @@
     <Content Include="Doc\HDGraph-en.chm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Tip1_Screenshot_rightClick.PNG" />
+    <None Include="Properties\DataSources\HDGraph.UserControls.ApplicationTip.datasource" />
     <None Include="Resources\Warning.png" />
     <None Include="Properties\DataSources\DirectoryNode.datasource" />
     <None Include="Resources\CascadeWindowsHS.png" />
