@@ -5,6 +5,7 @@ using System.IO;
 using System.Xml.Serialization;
 using System.Diagnostics;
 using HDGraph.Resources;
+using HDGraph.Engine;
 
 namespace HDGraph
 {
@@ -95,6 +96,8 @@ namespace HDGraph
             set { showDiskFreeSpace = value; }
         }
 
+        public List<ScanError> ErrorList { get; set; }
+
         #endregion
 
         #region Contructeur(s)
@@ -125,7 +128,7 @@ namespace HDGraph
             if (maxLevel < 1)
                 throw new ArgumentOutOfRangeException("maxLevel", "Il faut afficher au moins 1 niveau !");
             root = new DirectoryNode(path);
-
+            ErrorList = new List<ScanError>();
             ConstruireArborescence(root, maxLevel - 1);
             ApplySpecialRootOptions(root);
 
@@ -243,6 +246,11 @@ namespace HDGraph
                             // Elle peut être due à une PathTooLongException.
                             Trace.TraceError("Error during file analysis (" + dir.Path +
                                 "\\" + fi.Name + "). Details: " + HDGTools.PrintError(ex));
+                            ErrorList.Add(new ScanError()
+                            {
+                                FileOrDirPath = fi.FullName,
+                                Exception = ex
+                            });
                         }
                     }
                 }
@@ -267,6 +275,12 @@ namespace HDGraph
                             // Elle peut être due à une PathTooLongException.
                             Trace.TraceError("Error during file analysis (" + dir.Path +
                                 "\\" + fi.Name + "). Details: " + HDGTools.PrintError(ex));
+                            ErrorList.Add(new ScanError()
+                            {
+                                FileOrDirPath = fi.FullName,
+                                Exception = ex
+                            });
+
                         }
                     }
                     dir.TotalSize += dir.FilesSize;
@@ -296,6 +310,11 @@ namespace HDGraph
                 Trace.TraceError("Error during folder analysis (" + dir.Path + "). Folder skiped. Details: " + HDGTools.PrintError(ex));
                 dir.Name = String.Format(ApplicationMessages.ErrorLoading, dir.Name, ex.Message);
                 dir.DirectoryType = SpecialDirTypes.ScanError;
+                ErrorList.Add(new ScanError()
+                {
+                    FileOrDirPath = dir.Path,
+                    Exception = ex
+                });
             }
         }
 
@@ -316,7 +335,8 @@ namespace HDGraph
 
             if (node.ProfondeurMax == 1 && node.ExistsUncalcSubDir)
             {
-                if (node.DirectoryType == SpecialDirTypes.ScanError) {
+                if (node.DirectoryType == SpecialDirTypes.ScanError)
+                {
                     // before the new scan, reset the node state
                     node.Name = new DirectoryInfo(node.Path).Name;
                     node.DirectoryType = SpecialDirTypes.NotSpecial;

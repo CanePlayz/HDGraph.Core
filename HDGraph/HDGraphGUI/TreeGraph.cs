@@ -200,7 +200,9 @@ namespace HDGraph
         /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e)
         {
-            bool sizeChanged = (backBuffer == null || backBuffer.Width != this.ClientSize.Width || backBuffer.Height != this.ClientSize.Height);
+            bool sizeChanged = (backBuffer == null 
+                                || backBuffer.Width != this.ClientSize.Width 
+                                || backBuffer.Height != this.ClientSize.Height);
             Bitmap backBufferTmp = backBuffer;
             if (backBuffer == null)
             {
@@ -416,9 +418,6 @@ namespace HDGraph
                 toolTip.IsBalloon = true;
                 string toolTipText = foundNode.Name + Environment.NewLine + foundNode.HumanReadableTotalSize;
                 toolTip.SetToolTip(this, toolTipText);
-                //toolTip.AutomaticDelay = 500;
-                //toolTip.Active = true;
-                //toolTip.Show(foundNode.Name, this.ParentForm, point.X + 1, point.Y + 1);
             }
         }
 

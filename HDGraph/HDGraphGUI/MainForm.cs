@@ -103,7 +103,7 @@ namespace HDGraph
             this.Text = AboutBox.AssemblyTitle;
             this.WindowState = HDGraph.Properties.Settings.Default.OptionMainWindowOpenState;
             this.ClientSize = HDGraph.Properties.Settings.Default.OptionMainWindowSize;
-            
+
             EnableHelpIfAvailable();
             comboBoxPath.DataSource = HDGraph.Properties.Settings.Default.PathHistory;
             checkBoxAutoRecalc.Checked = HDGraph.Properties.Settings.Default.OptionAutoCompleteGraph;
@@ -240,6 +240,7 @@ namespace HDGraph
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
+            toolStripContainer1.Location = new Point(0, menuStrip.Size.Height);
             PrintStatus(resManager.GetString("statusReady"));
         }
 
@@ -693,6 +694,7 @@ namespace HDGraph
             //PrintStatus("Terminé !");
             treeGraph1.UpdateHoverNode = new TreeGraph.NodeNotificationDelegate(PrintNodeHoverCursor);
             treeGraph1.NotifyNewRootNode = new TreeGraph.NodeNotificationDelegate(UpdateCurrentNodeRoot);
+            errorStatus1.Update(moteur.ErrorList);
 
             buttonScan.Enabled = true;
         }

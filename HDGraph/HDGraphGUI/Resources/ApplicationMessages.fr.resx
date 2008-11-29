@@ -332,4 +332,10 @@ termes.</value>
   <data name="ResizeInProgressByUser" xml:space="preserve">
     <value>[ Aperçu du redimentionnement ]</value>
   </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Inconnu</value>
+  </data>
+  <data name="SomeElementsSkipped" xml:space="preserve">
+    <value>{0} éléments ont été ignorés en raison d'erreurs lors du scan.</value>
+  </data>
 </root>

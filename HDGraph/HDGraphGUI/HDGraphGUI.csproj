@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="DirectoryNode.cs" />
     <Compile Include="DirNodeSortableBindingList.cs" />
+    <Compile Include="Engine\ScanError.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="ExternalTools\IconHelper.cs" />
     <Compile Include="ExternalTools\TextAndImageColumn.cs" />
@@ -214,6 +215,10 @@
       <DependentUpon>TreeGraph.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ErrorStatus.resx">
+      <DependentUpon>ErrorStatus.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="WaitForm.en.resx">
       <SubType>Designer</SubType>
       <DependentUpon>WaitForm.cs</DependentUpon>
@@ -260,6 +265,12 @@
     <Compile Include="TreeGraph.Designer.cs">
       <DependentUpon>TreeGraph.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ErrorStatus.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ErrorStatus.Designer.cs">
+      <DependentUpon>ErrorStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="VistaTools.cs" />
     <Compile Include="WaitForm.cs">
       <SubType>Form</SubType>
@@ -292,6 +303,7 @@
     <Content Include="Doc\HDGraph-en.chm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Warning.png" />
     <None Include="Properties\DataSources\DirectoryNode.datasource" />
     <None Include="Resources\CascadeWindowsHS.png" />
     <None Include="Resources\RefreshDocViewHS.png" />

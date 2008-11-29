@@ -132,6 +132,7 @@ namespace HDGraph
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.errorStatus1 = new HDGraph.UserControls.ErrorStatus();
             this.treeGraph1 = new HDGraph.TreeGraph();
             this.explorerTreeView1 = new WilsonProgramming.ExplorerTreeView();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
@@ -154,6 +155,7 @@ namespace HDGraph
             // 
             // toolStripContainer1
             // 
+            resources.ApplyResources(this.toolStripContainer1, "toolStripContainer1");
             // 
             // toolStripContainer1.BottomToolStripPanel
             // 
@@ -165,7 +167,6 @@ namespace HDGraph
             this.toolStripContainer1.ContentPanel.Controls.Add(this.panel1);
             this.helpProvider1.SetShowHelp(this.toolStripContainer1.ContentPanel, ((bool)(resources.GetObject("toolStripContainer1.ContentPanel.ShowHelp"))));
             resources.ApplyResources(this.toolStripContainer1.ContentPanel, "toolStripContainer1.ContentPanel");
-            resources.ApplyResources(this.toolStripContainer1, "toolStripContainer1");
             // 
             // toolStripContainer1.LeftToolStripPanel
             // 
@@ -180,9 +181,8 @@ namespace HDGraph
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStrip);
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripShortcuts);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolBarToolStrip);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripShortcuts);
             this.helpProvider1.SetShowHelp(this.toolStripContainer1.TopToolStripPanel, ((bool)(resources.GetObject("toolStripContainer1.TopToolStripPanel.ShowHelp"))));
             // 
             // statusStrip
@@ -201,6 +201,7 @@ namespace HDGraph
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.errorStatus1);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.linkLabelHelpGraph);
@@ -579,7 +580,6 @@ namespace HDGraph
             // 
             // menuStrip
             // 
-            resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileMenu,
             this.editMenu,
@@ -587,6 +587,7 @@ namespace HDGraph
             this.toolsMenu,
             this.windowsMenu,
             this.helpMenu});
+            resources.ApplyResources(this.menuStrip, "menuStrip");
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
             this.menuStrip.Name = "menuStrip";
             this.helpProvider1.SetShowHelp(this.menuStrip, ((bool)(resources.GetObject("menuStrip.ShowHelp"))));
@@ -951,6 +952,12 @@ namespace HDGraph
             resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click_1);
             // 
+            // errorStatus1
+            // 
+            resources.ApplyResources(this.errorStatus1, "errorStatus1");
+            this.errorStatus1.Name = "errorStatus1";
+            this.helpProvider1.SetShowHelp(this.errorStatus1, ((bool)(resources.GetObject("errorStatus1.ShowHelp"))));
+            // 
             // treeGraph1
             // 
             resources.ApplyResources(this.treeGraph1, "treeGraph1");
@@ -980,6 +987,7 @@ namespace HDGraph
             this.AcceptButton = this.buttonScan;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.menuStrip);
             this.Controls.Add(this.toolStripContainer1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.MainMenuStrip = this.menuStrip;
@@ -1021,6 +1029,7 @@ namespace HDGraph
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
         #endregion
@@ -1130,6 +1139,7 @@ namespace HDGraph
         private System.Windows.Forms.ToolStripLabel treeviewToolStripLabel;
         private System.Windows.Forms.CheckBox checkBoxShowFreeSpace;
         private System.Windows.Forms.CheckBox checkBoxShowTooltip;
+        private HDGraph.UserControls.ErrorStatus errorStatus1;
     }
 }
 

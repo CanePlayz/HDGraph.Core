@@ -331,4 +331,10 @@ knowledge of the CeCILL license and that you accept its terms.</value>
   <data name="ResizeInProgressByUser" xml:space="preserve">
     <value>[ Resize preview ]</value>
   </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="SomeElementsSkipped" xml:space="preserve">
+    <value>{0} elements skipped due to scan errors.</value>
+  </data>
 </root>

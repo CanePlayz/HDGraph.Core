@@ -7,6 +7,7 @@ HDGraph ChangeLog (http://hdgraph.sourceforge.net)
 Version 1.3.0
 ======================================================
 Added:
+	- New warning message when scan errors occured.
 	- New tooltip available when the mouse is hovered a directory.
 Improved: 
 	- Better resize mode (preview during resize, reel redraw when resize finished)

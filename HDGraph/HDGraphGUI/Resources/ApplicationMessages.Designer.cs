@@ -551,6 +551,15 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} elements skipped due to scan errors..
+        /// </summary>
+        internal static string SomeElementsSkipped {
+            get {
+                return ResourceManager.GetString("SomeElementsSkipped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ready..
         /// </summary>
         internal static string statusReady {
@@ -592,6 +601,15 @@ namespace HDGraph.Resources {
         internal static string UnexpectedErrorDuringAnalysis {
             get {
                 return ResourceManager.GetString("UnexpectedErrorDuringAnalysis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown.
+        /// </summary>
+        internal static string Unknown {
+            get {
+                return ResourceManager.GetString("Unknown", resourceCulture);
             }
         }
         

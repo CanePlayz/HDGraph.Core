@@ -28,6 +28,13 @@ Uninstall:
 - Select HDGraph in the list and clic "Remove".
 
 
+Known bugs and limitations:
+======================================================
+
+- HDGraph is unable to detect Hard Links.
+- HDGraph is unable to scan files and directories which full path is greater thant 255 characters.
+
+
 Contacts:
 ======================================================
 
@@ -70,6 +77,11 @@ Désinstallation:
 - Ouvrez "Ajout/Suppression de programmes" dans le panneau de configuration
 - Séléectionnez HDGraph dans la liste puis cliquez sur "Supprimer".
 
+Bug connus et limitations :
+======================================================
+
+- HDGraph est incapable de détecter les liens physiques (Hard Links).
+- HDGraph est incapable de scaner les fichiers et répetoires dont le chemin excède 255 caractères.
 
 Contacts:
 ======================================================
