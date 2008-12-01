@@ -117,23 +117,36 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="statusStrip.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
   <data name="statusStrip.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="toolStripContainer1.BottomToolStripPanel.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
   </data>
   <data name="toolStripContainer1.BottomToolStripPanel.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="errorStatus1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="button1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
   </data>
   <data name="button1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Répertoire à analyser:</value>
+  <data name="splitContainerGraphAndTips.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
   </data>
-  <data name="label3.ToolTip" xml:space="preserve">
+  <data name="treeGraph1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="treeGraph1.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="linkLabelHelpGraph.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
   </data>
   <data name="linkLabelHelpGraph.Text" xml:space="preserve">
     <value>Légende / Comment lire le graphique ?</value>
@@ -141,8 +154,57 @@
   <data name="linkLabelHelpGraph.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="splitContainerGraphAndTips.Panel1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="splitContainerGraphAndTips.Panel1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tipsMonitor1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="tipsMonitor1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="splitContainerGraphAndTips.Panel2.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="splitContainerGraphAndTips.Panel2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="splitContainerGraphAndTips.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="errorStatus1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="errorStatus1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label3.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 13</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Répertoire à analyser:</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="comboBoxPath.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
   <data name="comboBoxPath.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="checkBoxShowTooltip.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="checkBoxShowTooltip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 17</value>
   </data>
   <data name="checkBoxShowTooltip.Text" xml:space="preserve">
     <value>Afficher infobulles</value>
@@ -150,11 +212,23 @@
   <data name="checkBoxShowTooltip.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="checkBoxShowFreeSpace.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="checkBoxShowFreeSpace.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 17</value>
+  </data>
   <data name="checkBoxShowFreeSpace.Text" xml:space="preserve">
     <value>Afficher l'espace libre</value>
   </data>
   <data name="checkBoxShowFreeSpace.ToolTip" xml:space="preserve">
     <value>Si le répertoire courant est la racine du disque, affiche l'espace libre de ce disque.</value>
+  </data>
+  <data name="checkBoxPrintSizes.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="checkBoxPrintSizes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 17</value>
   </data>
   <data name="checkBoxPrintSizes.Text" xml:space="preserve">
     <value>Afficher les tailles</value>
@@ -162,11 +236,20 @@
   <data name="checkBoxPrintSizes.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="numUpDownNbNivxAffich.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
   <data name="numUpDownNbNivxAffich.ToolTip" xml:space="preserve">
     <value>Fait office de zoom. Effet immédiat.</value>
   </data>
+  <data name="trackBarZoom.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
   <data name="trackBarZoom.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="comboBoxColorStyle.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
   </data>
   <data name="comboBoxColorStyle.Items" xml:space="preserve">
     <value>Couleurs aléatoires (neutres)</value>
@@ -183,11 +266,20 @@
   <data name="comboBoxColorStyle.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="label4.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 13</value>
+  </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Enchaînement couleurs :</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="checkBoxAutoRecalc.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
   </data>
   <data name="checkBoxAutoRecalc.Text" xml:space="preserve">
     <value>Compléter graphe si déplacement</value>
@@ -195,14 +287,26 @@
   <data name="checkBoxAutoRecalc.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="label1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Niveaux de rép. à mémoriser (réduire pour améliorer les perfs) :</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="numUpDownNbNivx.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
   <data name="numUpDownNbNivx.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="label2.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>139, 13</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Niveaux de rep. à dessiner :</value>
@@ -210,11 +314,20 @@
   <data name="label2.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="groupBox1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Options de dessin</value>
   </data>
   <data name="groupBox1.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="labelFiles.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="labelFiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 13</value>
   </data>
   <data name="labelFiles.Text" xml:space="preserve">
     <value>Proportion de fichiers :</value>
@@ -222,14 +335,26 @@
   <data name="labelFiles.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="labelFilesSize.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
   <data name="labelFilesSize.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="labelDirTotalSize.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
   </data>
   <data name="labelDirTotalSize.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="labelDirName.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
   <data name="labelDirName.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="groupBoxHoverInfo.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
   </data>
   <data name="groupBoxHoverInfo.Text" xml:space="preserve">
     <value>Répertoire survolé</value>
@@ -237,7 +362,9 @@
   <data name="groupBoxHoverInfo.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonScan.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
   <data name="buttonScan.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         R0lGODlhEAAQAPYAAMPmiZXHTNnvs6nYXtrwtZ3OU5/RVZnJUavbYMznjdrvpb/jfNTsnNjurYbT3eTz
@@ -258,23 +385,41 @@
   <data name="buttonScan.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="treeGraph1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="buttonBrowse.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
   </data>
   <data name="buttonBrowse.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="panel1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
   <data name="panel1.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="toolStripContainer1.ContentPanel.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
   </data>
   <data name="toolStripContainer1.ContentPanel.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="toolStripContainer1.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="toolStripTreeView.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
   <data name="toolStripTreeView.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="toolStripContainer1.LeftToolStripPanel.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
   <data name="toolStripContainer1.LeftToolStripPanel.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="toolStripContainer1.RightToolStripPanel.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
   </data>
   <data name="toolStripContainer1.RightToolStripPanel.ToolTip" xml:space="preserve">
     <value />
@@ -282,26 +427,8 @@
   <data name="toolStripContainer1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="toolStripLabelShortcuts.Text" xml:space="preserve">
-    <value>Raccourcis d'analyse :</value>
-  </data>
-  <data name="toolStripSplitButtonModel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
-        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
-        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
-        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
-        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
-        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
-        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
-        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
-        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
-        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="toolStripShortcuts.ToolTip" xml:space="preserve">
-    <value />
+  <data name="toolBarToolStrip.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
   </data>
   <data name="newToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -401,11 +528,53 @@
   <data name="helpToolStripButton.Text" xml:space="preserve">
     <value>Aide</value>
   </data>
+  <data name="toolBarToolStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>178, 0</value>
+  </data>
   <data name="toolBarToolStrip.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="toolStripShortcuts.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
+  <data name="toolStripLabelShortcuts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 22</value>
+  </data>
+  <data name="toolStripLabelShortcuts.Text" xml:space="preserve">
+    <value>Raccourcis d'analyse :</value>
+  </data>
+  <data name="toolStripSplitButtonModel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAgxJREFUOE+lkvtL
+        U2EYx+0PEbtpFwnBKPGKiJImGP0gYhIYs1E5GF5gIxkpA00JRSmMEF0ohMh+GaRWYlqabMVcNdS2QpaI
+        VqiDIYhk397vA6fXhCjyhYdzeM/5fp7vczkAdeL2cwho7v/wWzT1zcN+Pwhr51uY2/y41PQaF+wzKKiZ
+        QvaN58g0jyLd5KEUcQbg+84P/Cm2tncQjW3j68YWIqubCC3FcOJc478BAuGoZM6zvoRnakXEruEIjhc4
+        /g5gZop9c+voGAyLbQIfeBZxLL9BA1jzXvuGbWamuKh+GmmVbswE19A59FEBbmoAG7YbsLtm2mZmiml9
+        cvabNDwpz6YB7LYBoMXCumkJr7LOmnnHzBQ/9X2Bo2cOibm1GsBREbAQiYmw/8lnuCeWkVzcgnZlnw1j
+        3HV/wuNXK6i/9x5Hc6wawDlTXHbLJ+LZUBQPRyKwdQdxutwl1h+NLXHh5Ht1ewBHsiwawCW57HyDAfWR
+        dvl0uhZQ1eqX8aVc7EKLqrum651ATLf9OJx5XQM4KmY0xPzZ0hFAiQJnXB0WwME0E3IsL5B17ZlADqWb
+        NYDrOepdlcysmTWWOrxqbceRWtaLk0VO1XW72D5Vckd2gMBfq8zdpmUG62NJvKM4+XyziDk24xmfWoGE
+        s1c0gHPmbrPTpHNJKOCo2G1mZs20zcwUJ5yp1AB5+8/zEwgF5GMVDxh4AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="toolStripShortcuts.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="toolStripShortcuts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>175, 25</value>
+  </data>
+  <data name="toolStripShortcuts.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="toolStripContainer1.TopToolStripPanel.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
+  </data>
   <data name="toolStripContainer1.TopToolStripPanel.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="menuStrip.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
   </data>
   <data name="newToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -417,6 +586,9 @@
         ApyVC3OyRO9nis6HyQdIf/Egg5vOV+gbM3R7I7yqenIgPrjP/gTtt180Wt/Jgfjg1K8h5M4Ady9aMiDa
         N+tkrjHaMbmwK/f1gUPnD9/19ZYU1J08AAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="newToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>278, 22</value>
   </data>
   <data name="newToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Nouveau</value>
@@ -438,8 +610,14 @@
         X4BvNFkAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="openToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>278, 22</value>
+  </data>
   <data name="openToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Ouvrir un graphique existant...</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 6</value>
   </data>
   <data name="saveToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -456,6 +634,9 @@
         Q0JLRz98XYPo7vNj4OUQ9pksUOvqkcDg7Zo6aDTWWMHpU/08npQwCgndmU5F26aF0czUlYrgnQnZQvAv
         f/R3bGg6a0rM640AAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>278, 22</value>
   </data>
   <data name="saveToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Enregistrer le graphique courant</value>
@@ -476,11 +657,20 @@
         f/R3bGg6a0rM640AAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="saveAsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>278, 22</value>
+  </data>
   <data name="saveAsToolStripMenuItem.Text" xml:space="preserve">
     <value>Enregistrer le graphique courant &amp;sous...</value>
   </data>
+  <data name="exportAsImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>278, 22</value>
+  </data>
   <data name="exportAsImageToolStripMenuItem.Text" xml:space="preserve">
     <value>E&amp;xporter en tant qu'image...</value>
+  </data>
+  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 6</value>
   </data>
   <data name="printToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -497,6 +687,9 @@
         yFkd4YlJcy5BvaQVsls6jE76yN3+j/IM2GNIVI9RUadEmeAauMwzLapqwmFeIw6duoT95ULsK6vHXm5t
         jpyj78RP/gPgHTGb+rLlcwAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="printToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>278, 22</value>
   </data>
   <data name="printToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Imprimer</value>
@@ -515,14 +708,29 @@
         vAu6/3ZB0RX0xcd503yausKjaItPZX9k6X5baRf5x45QeCZXDv8Gd10kHhF4wJIAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="printPreviewToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>278, 22</value>
+  </data>
   <data name="printPreviewToolStripMenuItem.Text" xml:space="preserve">
     <value>A&amp;perçu avant impression</value>
+  </data>
+  <data name="printSetupToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>278, 22</value>
   </data>
   <data name="printSetupToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Mise en page</value>
   </data>
+  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>275, 6</value>
+  </data>
+  <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>278, 22</value>
+  </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Quitter</value>
+  </data>
+  <data name="fileMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 20</value>
   </data>
   <data name="fileMenu.Text" xml:space="preserve">
     <value>&amp;Fichier</value>
@@ -540,6 +748,9 @@
         7OOnGJImiG90iPAT8TV7BCgt0mD3Ckox1piaA4JyZqXDkh/qL8ALl3QQwQeUb4QAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="undoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 22</value>
+  </data>
   <data name="undoToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Annuler</value>
   </data>
@@ -556,8 +767,14 @@
         hRZX5vcgDqK13kDnZFAzlvw94COZxpFCE11bzif8LwxvxTcHtycxLyQAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="redoToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 22</value>
+  </data>
   <data name="redoToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Rétablir</value>
+  </data>
+  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 6</value>
   </data>
   <data name="cutToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -572,6 +789,9 @@
         unYpa4wl2kfJLHyXfDxljjgvS2xkFlnIk/zawJvmVQpNk2QVN5Bb1SN+dcJf9YnBe5GF6RjGCzzaAAAA
         AElFTkSuQmCC
 </value>
+  </data>
+  <data name="cutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 22</value>
   </data>
   <data name="cutToolStripMenuItem.Text" xml:space="preserve">
     <value>Coup&amp;er</value>
@@ -590,6 +810,9 @@
         lfVki3OCg8fvFBfUGL3ZbbsElfUODKdsVNR2UF7dnk1u48Cx26Wf+Z4+034PbQPvwt9VHJdeuQAAAABJ
         RU5ErkJggg==
 </value>
+  </data>
+  <data name="copyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 22</value>
   </data>
   <data name="copyToolStripMenuItem.Text" xml:space="preserve">
     <value>Co&amp;pier</value>
@@ -611,74 +834,155 @@
         gg==
 </value>
   </data>
+  <data name="pasteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 22</value>
+  </data>
   <data name="pasteToolStripMenuItem.Text" xml:space="preserve">
     <value>C&amp;oller</value>
+  </data>
+  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 6</value>
+  </data>
+  <data name="selectAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>206, 22</value>
   </data>
   <data name="selectAllToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Sélectionner tout</value>
   </data>
+  <data name="editMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 20</value>
+  </data>
   <data name="editMenu.Text" xml:space="preserve">
     <value>&amp;Edition</value>
+  </data>
+  <data name="navigateBackwardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 22</value>
   </data>
   <data name="navigateBackwardToolStripMenuItem.Text" xml:space="preserve">
     <value>Retourner à l'état précédent</value>
   </data>
+  <data name="navigateForwardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 22</value>
+  </data>
   <data name="navigateForwardToolStripMenuItem.Text" xml:space="preserve">
     <value>Aller à l'état suivant</value>
+  </data>
+  <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>219, 6</value>
+  </data>
+  <data name="toolBarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 22</value>
   </data>
   <data name="toolBarToolStripMenuItem.Text" xml:space="preserve">
     <value>Barre d'&amp;outils</value>
   </data>
+  <data name="statusBarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 22</value>
+  </data>
   <data name="statusBarToolStripMenuItem.Text" xml:space="preserve">
     <value>Barre d'ét&amp;at</value>
+  </data>
+  <data name="shortcutsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 22</value>
   </data>
   <data name="shortcutsToolStripMenuItem.Text" xml:space="preserve">
     <value>Barre de &amp;raccourcis</value>
   </data>
-  <data name="filesystemTreeviewToolStripMenuItem.Text" xml:space="preserve">
-    <value>&amp;Explorateur de disque</value>
+  <data name="applicationTipsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 22</value>
+  </data>
+  <data name="applicationTipsToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Trucs et astuces</value>
+  </data>
+  <data name="viewMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>65, 20</value>
   </data>
   <data name="viewMenu.Text" xml:space="preserve">
     <value>&amp;Affichage</value>
   </data>
+  <data name="optionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 22</value>
+  </data>
+  <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 22</value>
+  </data>
   <data name="languageToolStripMenuItem.Text" xml:space="preserve">
     <value>Langue</value>
+  </data>
+  <data name="addMeToTheExplorerConToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>321, 22</value>
   </data>
   <data name="addMeToTheExplorerConToolStripMenuItem.Text" xml:space="preserve">
     <value>Ajouter HDG au menu contextuel de l'explorateur</value>
   </data>
+  <data name="removeMeFromTheExplorerContextMenuToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>321, 22</value>
+  </data>
   <data name="removeMeFromTheExplorerContextMenuToolStripMenuItem.Text" xml:space="preserve">
     <value>Retirer HDG du menu contextuel de l'explorateur</value>
+  </data>
+  <data name="explorerIntegrationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 22</value>
   </data>
   <data name="explorerIntegrationToolStripMenuItem.Text" xml:space="preserve">
     <value>Integration à l'explorateur</value>
   </data>
+  <data name="clearHistroryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 22</value>
+  </data>
   <data name="clearHistroryToolStripMenuItem.Text" xml:space="preserve">
     <value>Effacer l'historique des répertoires analysés</value>
+  </data>
+  <data name="openLogFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>295, 22</value>
   </data>
   <data name="openLogFileToolStripMenuItem.Text" xml:space="preserve">
     <value>Ouvrir le fichier journal (fichier log)</value>
   </data>
+  <data name="toolsMenu.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 20</value>
+  </data>
   <data name="toolsMenu.Text" xml:space="preserve">
     <value>&amp;Outils</value>
+  </data>
+  <data name="newWindowToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
   </data>
   <data name="newWindowToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Nouvelle fenêtre</value>
   </data>
+  <data name="cascadeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
+  <data name="tileVerticalToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
   <data name="tileVerticalToolStripMenuItem.Text" xml:space="preserve">
     <value>Mosaïque &amp;Verticale</value>
+  </data>
+  <data name="tileHorizontalToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
   </data>
   <data name="tileHorizontalToolStripMenuItem.Text" xml:space="preserve">
     <value>Mosaïque &amp;Horizontale</value>
   </data>
+  <data name="closeAllToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
+  </data>
   <data name="closeAllToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Fermer tout</value>
+  </data>
+  <data name="arrangeIconsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>191, 22</value>
   </data>
   <data name="arrangeIconsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Réordonner les îcones</value>
   </data>
   <data name="windowsMenu.Text" xml:space="preserve">
     <value>&amp;Fenêtres</value>
+  </data>
+  <data name="contentsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 22</value>
   </data>
   <data name="contentsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Contenu</value>
@@ -701,6 +1005,9 @@
         wTF/EP4JaStxoteu5NMAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="indexToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 22</value>
+  </data>
   <data name="searchToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -720,11 +1027,23 @@
         gLX/NgWpi8gAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="searchToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 22</value>
+  </data>
   <data name="searchToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Recherche</value>
   </data>
+  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 6</value>
+  </data>
+  <data name="licenceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 22</value>
+  </data>
   <data name="licenceToolStripMenuItem.Text" xml:space="preserve">
     <value>Licence...</value>
+  </data>
+  <data name="aboutToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 22</value>
   </data>
   <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;A propos...</value>
@@ -734,6 +1053,9 @@
   </data>
   <data name="menuStrip.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="$this.HelpNavigator" type="System.Windows.Forms.HelpNavigator, System.Windows.Forms">
+    <value>AssociateIndex</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

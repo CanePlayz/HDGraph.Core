@@ -71,6 +71,12 @@
     <Compile Include="DirNodeSortableBindingList.cs" />
     <Compile Include="Engine\ScanError.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="ErrorListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ErrorListForm.Designer.cs">
+      <DependentUpon>ErrorListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExternalTools\IconHelper.cs" />
     <Compile Include="ExternalTools\TextAndImageColumn.cs" />
     <Compile Include="FatalHdgraphException.cs" />
@@ -142,6 +148,14 @@
     <EmbeddedResource Include="DirectoryDetailUC.resx">
       <SubType>Designer</SubType>
       <DependentUpon>DirectoryDetailUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorListForm.fr.resx">
+      <DependentUpon>ErrorListForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ErrorListForm.resx">
+      <DependentUpon>ErrorListForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="LanguageForm.fr.resx">
       <SubType>Designer</SubType>
@@ -225,6 +239,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ErrorStatus.resx">
       <DependentUpon>ErrorStatus.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\TipsMonitor.fr.resx">
+      <DependentUpon>TipsMonitor.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\TipsMonitor.resx">
@@ -327,6 +345,8 @@
     <Content Include="Doc\HDGraph-en.chm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\DataSources\HDGraph.Engine.ScanError.datasource" />
+    <None Include="Resources\Tip1_Screenshot_rightClick_EN.PNG" />
     <None Include="Resources\Tip1_Screenshot_rightClick.PNG" />
     <None Include="Properties\DataSources\HDGraph.UserControls.ApplicationTip.datasource" />
     <None Include="Resources\Warning.png" />

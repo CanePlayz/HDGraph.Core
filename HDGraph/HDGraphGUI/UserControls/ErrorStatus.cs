@@ -32,7 +32,7 @@ namespace HDGraph.UserControls
 
         private void linkLabelDetails_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show("Not implemented yet.", "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ErrorListForm.ShowForm(new BindingList<ScanError>(errorList));
         }
 
         private void ErrorStatus_VisibleChanged(object sender, EventArgs e)

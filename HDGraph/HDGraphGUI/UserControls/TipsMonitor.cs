@@ -13,6 +13,8 @@ namespace HDGraph.UserControls
 {
     public partial class TipsMonitor : UserControl
     {
+        public event EventHandler HideTipsWanted;
+
         private BindingList<ApplicationTip> tipList;
 
         public TipsMonitor()
@@ -66,6 +68,12 @@ namespace HDGraph.UserControls
                 }
             }
             applicationTipBindingSource.DataSource = tipList;
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            if (HideTipsWanted != null)
+                HideTipsWanted(this, EventArgs.Empty);
         }
     }
 
