@@ -67,7 +67,7 @@
     <Compile Include="DirectoryDetailUC.Designer.cs">
       <DependentUpon>DirectoryDetailUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectoryNode.cs" />
+    <Compile Include="Engine\DirectoryNode.cs" />
     <Compile Include="DirNodeSortableBindingList.cs" />
     <Compile Include="Engine\ScanError.cs" />
     <Compile Include="Enums.cs" />
@@ -100,17 +100,17 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="HDGraphScanEngine.cs" />
+    <Compile Include="Engine\HDGraphScanEngine.cs" />
     <Compile Include="OptionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OptionsForm.Designer.cs">
       <DependentUpon>OptionsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OptionsUserControl.cs">
+    <Compile Include="UserControls\OptionsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="OptionsUserControl.Designer.cs">
+    <Compile Include="UserControls\OptionsUserControl.Designer.cs">
       <DependentUpon>OptionsUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="PickColorForm.cs">
@@ -181,11 +181,11 @@
       <SubType>Designer</SubType>
       <DependentUpon>OptionsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OptionsUserControl.fr.resx">
+    <EmbeddedResource Include="UserControls\OptionsUserControl.fr.resx">
       <SubType>Designer</SubType>
       <DependentUpon>OptionsUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OptionsUserControl.resx">
+    <EmbeddedResource Include="UserControls\OptionsUserControl.resx">
       <SubType>Designer</SubType>
       <DependentUpon>OptionsUserControl.cs</DependentUpon>
     </EmbeddedResource>
