@@ -10,11 +10,11 @@ Added:
 	- New warning message when scan errors occured.
 	- New tooltip available when the mouse is hovered a directory.
 Improved: 
-	- Better resize mode (preview during resize, reel redraw when resize finished)
+	- Better resize mode (preview during resize, real redraw when resize finished)
 	- Asynchronous draw for complicated graphs (which take a long time to draw), to avoid application freeze.
 	- Main window state is memorized on exit (or the size if the window is not maximized).
 Fixed:
-	- TODO
+	- Some minor bugs
 
 
 Version 1.2.0
