@@ -14,6 +14,7 @@ Improved:
 	- Better resize mode (preview during resize, real redraw when resize finished)
 	- Asynchronous draw for complicated graphs (which take a long time to draw), to avoid application freeze.
 	- Main window state is memorized on exit (or the size if the window is not maximized).
+	- Performance improvements
 Fixed:
 	- Some minor bugs
 
