@@ -6,6 +6,7 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using HDGraph.ExternalTools;
+using HDGraph.Resources;
 
 namespace HDGraph
 {
@@ -172,6 +173,11 @@ namespace HDGraph
         {
             if (selectedNode != null)
                 TreeGraph.ShowNodeDetails(selectedNode);
+        }
+
+        private void directoryNodeListBindingSource_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            textBoxSubdirCount.Text = String.Format(ApplicationMessages.SubDirectoriesCount, directoryNodeListBindingSource.Count);
         }
     }
 }

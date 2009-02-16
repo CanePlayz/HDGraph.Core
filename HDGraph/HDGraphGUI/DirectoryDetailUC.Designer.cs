@@ -41,16 +41,7 @@ namespace HDGraph
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.directoryNodeDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextImageColumnName = new HDGraph.ExternalTools.TextAndImageColumn();
-            this.dataGridViewTextBoxColumnTotalSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumnTotalSizeHumanReadable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumnFilesSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumnFilesSizeHumanReadable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.directoryNodeListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.filesSizeTextBox = new System.Windows.Forms.TextBox();
-            this.directoryNodeEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.totalSizeTextBox = new System.Windows.Forms.TextBox();
             this.pathTextBox = new System.Windows.Forms.TextBox();
@@ -63,6 +54,16 @@ namespace HDGraph
             this.openThisDirectoryInWindowsExplorerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBoxNumberOfFiles = new System.Windows.Forms.TextBox();
             this.textBoxTotalNumberOfFiles = new System.Windows.Forms.TextBox();
+            this.textBoxSubdirCount = new System.Windows.Forms.TextBox();
+            this.directoryNodeEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextImageColumnName = new HDGraph.ExternalTools.TextAndImageColumn();
+            this.dataGridViewTextBoxColumnTotalSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumnTotalSizeHumanReadable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumnFilesSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumnFilesSizeHumanReadable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.directoryNodeListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textAndImageColumn1 = new HDGraph.ExternalTools.TextAndImageColumn();
@@ -75,10 +76,10 @@ namespace HDGraph
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.directoryNodeDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeListBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeEntityBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeEntityBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeListBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // filesSizeLabel
@@ -146,77 +147,6 @@ namespace HDGraph
             this.directoryNodeDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.directoryNodeDataGridView_CellFormatting);
             this.directoryNodeDataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.directoryNodeDataGridView_RowsAdded);
             // 
-            // dataGridViewTextImageColumnName
-            // 
-            this.dataGridViewTextImageColumnName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextImageColumnName.DataPropertyName = "Name";
-            this.dataGridViewTextImageColumnName.FillWeight = 300F;
-            resources.ApplyResources(this.dataGridViewTextImageColumnName, "dataGridViewTextImageColumnName");
-            this.dataGridViewTextImageColumnName.Image = null;
-            this.dataGridViewTextImageColumnName.Name = "dataGridViewTextImageColumnName";
-            this.dataGridViewTextImageColumnName.ReadOnly = true;
-            this.dataGridViewTextImageColumnName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewTextBoxColumnTotalSize
-            // 
-            this.dataGridViewTextBoxColumnTotalSize.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumnTotalSize.DataPropertyName = "TotalSize";
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dataGridViewTextBoxColumnTotalSize.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewTextBoxColumnTotalSize.FillWeight = 200F;
-            resources.ApplyResources(this.dataGridViewTextBoxColumnTotalSize, "dataGridViewTextBoxColumnTotalSize");
-            this.dataGridViewTextBoxColumnTotalSize.Name = "dataGridViewTextBoxColumnTotalSize";
-            this.dataGridViewTextBoxColumnTotalSize.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumnTotalSizeHumanReadable
-            // 
-            this.dataGridViewTextBoxColumnTotalSizeHumanReadable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumnTotalSizeHumanReadable.DataPropertyName = "HumanReadableTotalSize";
-            this.dataGridViewTextBoxColumnTotalSizeHumanReadable.FillWeight = 200F;
-            resources.ApplyResources(this.dataGridViewTextBoxColumnTotalSizeHumanReadable, "dataGridViewTextBoxColumnTotalSizeHumanReadable");
-            this.dataGridViewTextBoxColumnTotalSizeHumanReadable.Name = "dataGridViewTextBoxColumnTotalSizeHumanReadable";
-            this.dataGridViewTextBoxColumnTotalSizeHumanReadable.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumnFilesSize
-            // 
-            this.dataGridViewTextBoxColumnFilesSize.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumnFilesSize.DataPropertyName = "FilesSize";
-            dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = null;
-            this.dataGridViewTextBoxColumnFilesSize.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewTextBoxColumnFilesSize.FillWeight = 200F;
-            resources.ApplyResources(this.dataGridViewTextBoxColumnFilesSize, "dataGridViewTextBoxColumnFilesSize");
-            this.dataGridViewTextBoxColumnFilesSize.Name = "dataGridViewTextBoxColumnFilesSize";
-            this.dataGridViewTextBoxColumnFilesSize.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumnFilesSizeHumanReadable
-            // 
-            this.dataGridViewTextBoxColumnFilesSizeHumanReadable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumnFilesSizeHumanReadable.DataPropertyName = "HumanReadableFilesSize";
-            this.dataGridViewTextBoxColumnFilesSizeHumanReadable.FillWeight = 200F;
-            resources.ApplyResources(this.dataGridViewTextBoxColumnFilesSizeHumanReadable, "dataGridViewTextBoxColumnFilesSizeHumanReadable");
-            this.dataGridViewTextBoxColumnFilesSizeHumanReadable.Name = "dataGridViewTextBoxColumnFilesSizeHumanReadable";
-            this.dataGridViewTextBoxColumnFilesSizeHumanReadable.ReadOnly = true;
-            // 
-            // dataGridViewCheckBoxColumn1
-            // 
-            this.dataGridViewCheckBoxColumn1.DataPropertyName = "ExistsUncalcSubDir";
-            resources.ApplyResources(this.dataGridViewCheckBoxColumn1, "dataGridViewCheckBoxColumn1");
-            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "DirectoryType";
-            resources.ApplyResources(this.dataGridViewTextBoxColumn5, "dataGridViewTextBoxColumn5");
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // directoryNodeListBindingSource
-            // 
-            this.directoryNodeListBindingSource.DataSource = typeof(HDGraph.DirectoryNode);
-            // 
             // filesSizeTextBox
             // 
             resources.ApplyResources(this.filesSizeTextBox, "filesSizeTextBox");
@@ -226,10 +156,6 @@ namespace HDGraph
             this.filesSizeTextBox.MinimumSize = new System.Drawing.Size(187, 0);
             this.filesSizeTextBox.Name = "filesSizeTextBox";
             this.filesSizeTextBox.ReadOnly = true;
-            // 
-            // directoryNodeEntityBindingSource
-            // 
-            this.directoryNodeEntityBindingSource.DataSource = typeof(HDGraph.DirectoryNode);
             // 
             // nameTextBox
             // 
@@ -332,6 +258,91 @@ namespace HDGraph
             this.textBoxTotalNumberOfFiles.Name = "textBoxTotalNumberOfFiles";
             this.textBoxTotalNumberOfFiles.ReadOnly = true;
             // 
+            // textBoxSubdirCount
+            // 
+            resources.ApplyResources(this.textBoxSubdirCount, "textBoxSubdirCount");
+            this.textBoxSubdirCount.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxSubdirCount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxSubdirCount.MinimumSize = new System.Drawing.Size(57, 0);
+            this.textBoxSubdirCount.Name = "textBoxSubdirCount";
+            this.textBoxSubdirCount.ReadOnly = true;
+            // 
+            // directoryNodeEntityBindingSource
+            // 
+            this.directoryNodeEntityBindingSource.DataSource = typeof(HDGraph.DirectoryNode);
+            // 
+            // dataGridViewTextImageColumnName
+            // 
+            this.dataGridViewTextImageColumnName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextImageColumnName.DataPropertyName = "Name";
+            this.dataGridViewTextImageColumnName.FillWeight = 300F;
+            resources.ApplyResources(this.dataGridViewTextImageColumnName, "dataGridViewTextImageColumnName");
+            this.dataGridViewTextImageColumnName.Image = null;
+            this.dataGridViewTextImageColumnName.Name = "dataGridViewTextImageColumnName";
+            this.dataGridViewTextImageColumnName.ReadOnly = true;
+            this.dataGridViewTextImageColumnName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // dataGridViewTextBoxColumnTotalSize
+            // 
+            this.dataGridViewTextBoxColumnTotalSize.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumnTotalSize.DataPropertyName = "TotalSize";
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            this.dataGridViewTextBoxColumnTotalSize.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewTextBoxColumnTotalSize.FillWeight = 200F;
+            resources.ApplyResources(this.dataGridViewTextBoxColumnTotalSize, "dataGridViewTextBoxColumnTotalSize");
+            this.dataGridViewTextBoxColumnTotalSize.Name = "dataGridViewTextBoxColumnTotalSize";
+            this.dataGridViewTextBoxColumnTotalSize.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumnTotalSizeHumanReadable
+            // 
+            this.dataGridViewTextBoxColumnTotalSizeHumanReadable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumnTotalSizeHumanReadable.DataPropertyName = "HumanReadableTotalSize";
+            this.dataGridViewTextBoxColumnTotalSizeHumanReadable.FillWeight = 200F;
+            resources.ApplyResources(this.dataGridViewTextBoxColumnTotalSizeHumanReadable, "dataGridViewTextBoxColumnTotalSizeHumanReadable");
+            this.dataGridViewTextBoxColumnTotalSizeHumanReadable.Name = "dataGridViewTextBoxColumnTotalSizeHumanReadable";
+            this.dataGridViewTextBoxColumnTotalSizeHumanReadable.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumnFilesSize
+            // 
+            this.dataGridViewTextBoxColumnFilesSize.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumnFilesSize.DataPropertyName = "FilesSize";
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            this.dataGridViewTextBoxColumnFilesSize.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewTextBoxColumnFilesSize.FillWeight = 200F;
+            resources.ApplyResources(this.dataGridViewTextBoxColumnFilesSize, "dataGridViewTextBoxColumnFilesSize");
+            this.dataGridViewTextBoxColumnFilesSize.Name = "dataGridViewTextBoxColumnFilesSize";
+            this.dataGridViewTextBoxColumnFilesSize.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumnFilesSizeHumanReadable
+            // 
+            this.dataGridViewTextBoxColumnFilesSizeHumanReadable.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumnFilesSizeHumanReadable.DataPropertyName = "HumanReadableFilesSize";
+            this.dataGridViewTextBoxColumnFilesSizeHumanReadable.FillWeight = 200F;
+            resources.ApplyResources(this.dataGridViewTextBoxColumnFilesSizeHumanReadable, "dataGridViewTextBoxColumnFilesSizeHumanReadable");
+            this.dataGridViewTextBoxColumnFilesSizeHumanReadable.Name = "dataGridViewTextBoxColumnFilesSizeHumanReadable";
+            this.dataGridViewTextBoxColumnFilesSizeHumanReadable.ReadOnly = true;
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.DataPropertyName = "ExistsUncalcSubDir";
+            resources.ApplyResources(this.dataGridViewCheckBoxColumn1, "dataGridViewCheckBoxColumn1");
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            this.dataGridViewCheckBoxColumn1.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "DirectoryType";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn5, "dataGridViewTextBoxColumn5");
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // directoryNodeListBindingSource
+            // 
+            this.directoryNodeListBindingSource.DataSource = typeof(HDGraph.DirectoryNode);
+            this.directoryNodeListBindingSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.directoryNodeListBindingSource_ListChanged);
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -386,14 +397,15 @@ namespace HDGraph
             this.Controls.Add(this.textBoxTotalNumberOfFiles);
             this.Controls.Add(this.directoryNodeDataGridView);
             this.Controls.Add(this.textBoxNumberOfFiles);
+            this.Controls.Add(this.textBoxSubdirCount);
             this.Name = "DirectoryDetailUC";
             this.Load += new System.EventHandler(this.DirectoryDetailUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.directoryNodeDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeListBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeEntityBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeEntityBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeListBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -428,5 +440,6 @@ namespace HDGraph
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.TextBox textBoxNumberOfFiles;
         private System.Windows.Forms.TextBox textBoxTotalNumberOfFiles;
+        private System.Windows.Forms.TextBox textBoxSubdirCount;
     }
 }

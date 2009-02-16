@@ -394,13 +394,13 @@
     <value>False</value>
   </data>
   <metadata name="directoryNodeListBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>209, 17</value>
+    <value>265, 21</value>
   </metadata>
   <data name="directoryNodeDataGridView.Location" type="System.Drawing.Point, System.Drawing">
     <value>14, 178</value>
   </data>
   <data name="directoryNodeDataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>555, 224</value>
+    <value>555, 218</value>
   </data>
   <data name="directoryNodeDataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -705,6 +705,30 @@
   <data name="&gt;&gt;textBoxTotalNumberOfFiles.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
+  <data name="textBoxSubdirCount.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="textBoxSubdirCount.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 399</value>
+  </data>
+  <data name="textBoxSubdirCount.Size" type="System.Drawing.Size, System.Drawing">
+    <value>366, 13</value>
+  </data>
+  <data name="textBoxSubdirCount.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;textBoxSubdirCount.Name" xml:space="preserve">
+    <value>textBoxSubdirCount</value>
+  </data>
+  <data name="&gt;&gt;textBoxSubdirCount.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxSubdirCount.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;textBoxSubdirCount.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
   <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
     <value>Total Size (human readable)</value>
   </data>
@@ -734,6 +758,24 @@
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>583, 415</value>
+  </data>
+  <data name="&gt;&gt;showDetailsInANewWindowToolStripMenuItem.Name" xml:space="preserve">
+    <value>showDetailsInANewWindowToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;showDetailsInANewWindowToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;openThisDirectoryInWindowsExplorerToolStripMenuItem.Name" xml:space="preserve">
+    <value>openThisDirectoryInWindowsExplorerToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;openThisDirectoryInWindowsExplorerToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;directoryNodeEntityBindingSource.Name" xml:space="preserve">
+    <value>directoryNodeEntityBindingSource</value>
+  </data>
+  <data name="&gt;&gt;directoryNodeEntityBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;dataGridViewTextImageColumnName.Name" xml:space="preserve">
     <value>dataGridViewTextImageColumnName</value>
@@ -782,24 +824,6 @@
   </data>
   <data name="&gt;&gt;directoryNodeListBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;directoryNodeEntityBindingSource.Name" xml:space="preserve">
-    <value>directoryNodeEntityBindingSource</value>
-  </data>
-  <data name="&gt;&gt;directoryNodeEntityBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;showDetailsInANewWindowToolStripMenuItem.Name" xml:space="preserve">
-    <value>showDetailsInANewWindowToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;showDetailsInANewWindowToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;openThisDirectoryInWindowsExplorerToolStripMenuItem.Name" xml:space="preserve">
-    <value>openThisDirectoryInWindowsExplorerToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;openThisDirectoryInWindowsExplorerToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn1.Name" xml:space="preserve">
     <value>dataGridViewTextBoxColumn1</value>
