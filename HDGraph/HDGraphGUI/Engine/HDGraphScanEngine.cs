@@ -229,6 +229,7 @@ namespace HDGraph
                 {
                     dir.ExistsUncalcSubDir = (dirInfo.GetDirectories().Length > 0);
                     FileInfo[] fis = dirInfo.GetFiles("*", SearchOption.AllDirectories);
+                    dir.DirectoryFilesNumber = fis.LongLength;
                     foreach (FileInfo fi in fis)
                     {
                         if (pleaseCancelCurrentWork)
@@ -258,6 +259,7 @@ namespace HDGraph
                 {
                     // Add file sizes.
                     FileInfo[] fis = dirInfo.GetFiles();
+                    dir.DirectoryFilesNumber = fis.LongLength;
                     foreach (FileInfo fi in fis)
                     {
                         if (pleaseCancelCurrentWork)

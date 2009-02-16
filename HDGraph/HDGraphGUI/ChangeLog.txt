@@ -9,6 +9,7 @@ Version 1.3.0
 Added:
 	- New warning message when scan errors occured.
 	- New tooltip available when the mouse is hovered a directory.
+	- Count the number of files in a directory (see the "Directory Details" form).
 Improved: 
 	- Better resize mode (preview during resize, real redraw when resize finished)
 	- Asynchronous draw for complicated graphs (which take a long time to draw), to avoid application freeze.

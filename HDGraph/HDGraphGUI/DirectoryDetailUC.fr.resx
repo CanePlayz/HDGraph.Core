@@ -148,6 +148,18 @@
   <data name="labelFolderContent.Text" xml:space="preserve">
     <value>Contenu du répertoire :</value>
   </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>217, 13</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Nombre de fichiers (sous répertoires exclus) :</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 13</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Nombre de fichiers (sous répertoires inclus) :</value>
+  </data>
   <data name="dataGridViewTextImageColumnName.HeaderText" xml:space="preserve">
     <value>Nom</value>
   </data>
@@ -176,22 +188,25 @@
     <value>187, 13</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>304, 62</value>
+    <value>351, 91</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>265, 64</value>
+    <value>218, 81</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Options d'affichage</value>
   </data>
   <data name="radioButtonSizesInBytes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>124, 16</value>
+    <value>88, 35</value>
   </data>
   <data name="radioButtonSizesInBytes.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 17</value>
   </data>
   <data name="radioButtonSizesInBytes.Text" xml:space="preserve">
     <value>Octets</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 13</value>
@@ -200,7 +215,7 @@
     <value>Afficher les tailles en : </value>
   </data>
   <data name="radioButtonHumandReadableSizes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>124, 39</value>
+    <value>88, 58</value>
   </data>
   <data name="radioButtonHumandReadableSizes.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 17</value>
@@ -222,5 +237,17 @@
   </data>
   <data name="openThisDirectoryInWindowsExplorerToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Ouvrir dans l'explorateur Windows</value>
+  </data>
+  <data name="textBoxNumberOfFiles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>231, 113</value>
+  </data>
+  <data name="textBoxNumberOfFiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 13</value>
+  </data>
+  <data name="textBoxTotalNumberOfFiles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>231, 134</value>
+  </data>
+  <data name="textBoxTotalNumberOfFiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 13</value>
   </data>
 </root>

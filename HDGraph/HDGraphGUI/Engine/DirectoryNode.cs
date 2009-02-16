@@ -65,6 +65,33 @@ namespace HDGraph
             get { return filesSize; }
             set { filesSize = value; }
         }
+
+        #region Number of files
+
+        /// <summary>
+        /// Number of files that are in the current directory, without the sub directories.
+        /// </summary>
+        public long DirectoryFilesNumber { get; set; }
+
+        /// <summary>
+        /// Total number of files that are in the current directory, AND all sub directories.
+        /// </summary>
+        public long TotalRecursiveFilesNumber
+        {
+            get
+            {
+                long num = DirectoryFilesNumber;
+                foreach (DirectoryNode node in this.Children)
+                {
+                    num += node.TotalRecursiveFilesNumber;
+                }
+                return num;
+            }
+        }
+
+        #endregion
+
+
         /// <summary>
         /// Taille de l'ensemble des fichiers du répertoire sous format lisible.
         /// (par exemple ###.## Mo)
@@ -211,6 +238,34 @@ namespace HDGraph
             }
         }
 
+        /// <summary>
+        /// Return true if the current directory contains recursively more than X directories.
+        /// </summary>
+        /// <param name="threshold"></param>
+        /// <returns></returns>
+        public bool HasMoreDirectoriesThan(long threshold)
+        {
+            return CountDirectoriesToThreshold(threshold) > threshold;
+        }
+
+        /// <summary>
+        /// Count recusively the number of directories contained in the current directory.
+        /// Stop counting if the threshold is reached.
+        /// </summary>
+        /// <param name="threshold"></param>
+        /// <returns></returns>
+        private long CountDirectoriesToThreshold(long threshold)
+        {
+            long num = this.children.Count;
+            foreach (DirectoryNode node in this.Children)
+            {
+                if (num > threshold)
+                    return num;
+                num += node.CountDirectoriesToThreshold(threshold - num);
+            }
+            return num;
+        }
+
         #endregion
 
         #region IXmlSerializable Membres
@@ -228,6 +283,7 @@ namespace HDGraph
             name = reader.ReadElementContentAsString();
             totalSize = reader.ReadElementContentAsLong();
             filesSize = reader.ReadElementContentAsLong();
+            DirectoryFilesNumber = reader.ReadContentAsLong();
             profondeurMax = reader.ReadElementContentAsInt();
             existsUncalcSubdir = Boolean.Parse(reader.ReadElementContentAsString());
             directoryType = (SpecialDirTypes)Convert.ToInt16(reader.ReadElementContentAsInt());
@@ -264,6 +320,7 @@ namespace HDGraph
                 writer.WriteElementString("Name", name);
             writer.WriteElementString("TotalSize", totalSize.ToString());
             writer.WriteElementString("FilesSize", filesSize.ToString());
+            writer.WriteElementString("DirectoryFilesCount", DirectoryFilesNumber.ToString());
             writer.WriteElementString("ProfondeurMax", profondeurMax.ToString());
             writer.WriteElementString("ExistsUncalcSubdir", existsUncalcSubdir.ToString());
             writer.WriteElementString("DirectoryType", ((short)directoryType).ToString());
