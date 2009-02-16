@@ -11,7 +11,7 @@ using System.Resources;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("HDGraph")]
-[assembly: AssemblyCopyright("Copyright © 2006 LAUGEL Jean-Yves")]
+[assembly: AssemblyCopyright("Copyright © 2006-2009 LAUGEL Jean-Yves")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -30,6 +30,6 @@ using System.Resources;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.2.0.0")]
+[assembly: AssemblyVersion("1.3.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 //[assembly: NeutralResourcesLanguageAttribute("en")]
