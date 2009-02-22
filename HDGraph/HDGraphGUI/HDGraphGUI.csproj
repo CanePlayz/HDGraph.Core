@@ -349,6 +349,7 @@
     <Content Include="Doc\HDGraph-en.chm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\DataSources\HDGraph.DrawEngine.DrawOptions.datasource" />
     <None Include="Properties\DataSources\HDGraph.Engine.ScanError.datasource" />
     <None Include="Resources\Tip1_Screenshot_rightClick_EN.PNG" />
     <None Include="Resources\Tip1_Screenshot_rightClick.PNG" />

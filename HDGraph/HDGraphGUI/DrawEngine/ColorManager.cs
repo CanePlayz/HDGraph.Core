@@ -39,7 +39,7 @@ namespace HDGraph.DrawEngine
                     return ColorByLeft(rand.Next(360));
                 case ModeAffichageCouleurs.Linear:
                 default:
-                    return ColorByLeft(Convert.ToInt32(angle));
+                    return ColorByLeft(Convert.ToInt32(angle) % 360);
             }
         }
 

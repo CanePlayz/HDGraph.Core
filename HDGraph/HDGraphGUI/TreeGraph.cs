@@ -43,12 +43,10 @@ namespace HDGraph
             }
         }
 
-        private ModeAffichageCouleurs modeCouleur;
-
         public ModeAffichageCouleurs ModeCouleur
         {
-            get { return modeCouleur; }
-            set { modeCouleur = value; }
+            get { return drawOptions.ColorStyleChoice; }
+            set { drawOptions.ColorStyleChoice = value; }
         }
 
 
@@ -150,7 +148,7 @@ namespace HDGraph
         {
             get { return backBuffer; }
         }
-        
+
 
         #endregion
 
@@ -192,14 +190,19 @@ namespace HDGraph
 
         private DrawOptions drawOptions = new DrawOptions();
 
+        public DrawOptions DrawOptions
+        {
+            get { return drawOptions; }
+        }
+
         /// <summary>
         /// Méthode classique OnPaint surchargée pour afficher le graph, et le calculer si nécessaire.
         /// </summary>
         /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e)
         {
-            bool sizeChanged = (backBuffer == null 
-                                || backBuffer.Width != this.ClientSize.Width 
+            bool sizeChanged = (backBuffer == null
+                                || backBuffer.Width != this.ClientSize.Width
                                 || backBuffer.Height != this.ClientSize.Height);
             Bitmap backBufferTmp = backBuffer;
             try
@@ -256,8 +259,8 @@ namespace HDGraph
                                 throw new NotSupportedException("Value of calculationState (" + calculationState + ") is not supported.");
                         }
                 }
-                
-                
+
+
             }
             catch (Exception ex)
             {
@@ -267,7 +270,7 @@ namespace HDGraph
             }
             // affichage du buffer
             e.Graphics.DrawImageUnscaled(backBufferTmp, 0, 0);
-            
+
         }
 
         private Bitmap TransformToWaitImage(Bitmap originalBitmap, Size clientSize, string message)

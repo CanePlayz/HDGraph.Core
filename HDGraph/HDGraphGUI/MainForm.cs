@@ -12,6 +12,7 @@ using System.Xml;
 using System.IO;
 using System.Diagnostics;
 using WilsonProgramming;
+using HDGraph.DrawEngine;
 
 namespace HDGraph
 {
@@ -77,7 +78,6 @@ namespace HDGraph
             get { return outputGraphFilePath; }
             set { outputGraphFilePath = value; }
         }
-
 
         #endregion
 
@@ -983,6 +983,20 @@ namespace HDGraph
         private void applicationTipsToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
         {
             splitContainerGraphAndTips.Panel2Collapsed = !applicationTipsToolStripMenuItem.Checked;
+        }
+
+        private void imageRotationTrackBar_ValueChanged(object sender, EventArgs e)
+        {
+
+            treeGraph1.DrawOptions.ImageRotation = imageRotationTrackBar.Value;
+            labelValeurRotation.Text = treeGraph1.DrawOptions.ImageRotation.ToString() + " °";
+            treeGraph1.ForceRefresh();
+        }
+
+        private void trackBarTextDensity_ValueChanged(object sender, EventArgs e)
+        {
+            treeGraph1.DrawOptions.TextDensity = trackBarTextDensity.Maximum - trackBarTextDensity.Value + trackBarTextDensity.Minimum;
+            treeGraph1.ForceRefresh();
         }
     }
 }

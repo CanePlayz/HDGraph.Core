@@ -32,14 +32,15 @@ namespace HDGraph.DrawEngine
         private bool printDirNames = false;
 
         private HDGraphScanEngine moteur;
-        private DrawOptions options;
+        private DrawOptions currentWorkingOptions;
+        private DrawOptions notWorkingOptions;
         private ColorManager colorManager;
         private DirectoryNode rootNode;
 
         public ImageGraphGenerator(DirectoryNode rootNode, HDGraphScanEngine moteur, DrawOptions options)
         {
             this.moteur = moteur;
-            this.options = options;
+            this.notWorkingOptions = options;
             this.colorManager = new ColorManager(options);
             this.rootNode = rootNode;
         }
@@ -47,15 +48,16 @@ namespace HDGraph.DrawEngine
         internal Bitmap Draw()
         {
             // Création du bitmap buffer
-            Bitmap backBufferTmp = new Bitmap(options.BitmapSize.Width, options.BitmapSize.Height);
+            currentWorkingOptions = notWorkingOptions.Clone();
+            Bitmap backBufferTmp = new Bitmap(currentWorkingOptions.BitmapSize.Width, currentWorkingOptions.BitmapSize.Height);
             frontGraph = Graphics.FromImage(backBufferTmp);
 
             frontGraph.Clear(Color.White);
             frontGraph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             // init des données du calcul
-            pasNiveau = Math.Min(options.BitmapSize.Width / (float)options.ShownLevelsCount / 2, options.BitmapSize.Height / (float)options.ShownLevelsCount / 2);
-            RectangleF pieRec = new RectangleF(options.BitmapSize.Width / 2f,
-                                    options.BitmapSize.Height / 2f,
+            pasNiveau = Math.Min(currentWorkingOptions.BitmapSize.Width / (float)currentWorkingOptions.ShownLevelsCount / 2, currentWorkingOptions.BitmapSize.Height / (float)currentWorkingOptions.ShownLevelsCount / 2);
+            RectangleF pieRec = new RectangleF(currentWorkingOptions.BitmapSize.Width / 2f,
+                                    currentWorkingOptions.BitmapSize.Height / 2f,
                                     0,
                                     0);
 
@@ -76,9 +78,9 @@ namespace HDGraph.DrawEngine
                 return;
             }
             printDirNames = false;
-            PaintTree(rootNode, pieRec, options.ImageRotation, 360 - options.ImageRotation);
+            PaintTree(rootNode, pieRec, currentWorkingOptions.ImageRotation, 360 + currentWorkingOptions.ImageRotation);
             printDirNames = true;
-            PaintTree(rootNode, pieRec, options.ImageRotation, 360 - options.ImageRotation);
+            PaintTree(rootNode, pieRec, currentWorkingOptions.ImageRotation, 360 + currentWorkingOptions.ImageRotation);
         }
 
         /// <summary>
@@ -94,7 +96,7 @@ namespace HDGraph.DrawEngine
             else
                 text = Resources.ApplicationMessages.GraphGuideLine;
 
-            AfficherTexteAuCentre(frontGraph, options.BitmapSize, text, options.TextFont, new SolidBrush(Color.Black), false);
+            AfficherTexteAuCentre(frontGraph, currentWorkingOptions.BitmapSize, text, currentWorkingOptions.TextFont, new SolidBrush(Color.Black), false);
         }
 
         public static void AfficherTexteAuCentre(Graphics graph, Size graphSize, string text, Font font, Brush brush, bool encadrer)
@@ -232,7 +234,7 @@ namespace HDGraph.DrawEngine
                     // on dessine le disque uniquement
                     DrawPartialPie(node, rec, startAngle, nodeAngle);
                 }
-                else if (nodeAngle > 10)
+                else if (nodeAngle > currentWorkingOptions.TextDensity)
                 {
                     // on dessine les noms de répertoire uniquement (si l'angle est supérieur à 10°)
                     WriteDirectoryName(node, rec, startAngle, nodeAngle);
@@ -258,13 +260,13 @@ namespace HDGraph.DrawEngine
             {
                 y = rec.Height / 2f - pasNiveau * 3f / 4f;
             }
-            x += options.BitmapSize.Width / 2f;
-            y += options.BitmapSize.Height / 2f;
+            x += currentWorkingOptions.BitmapSize.Width / 2f;
+            y += currentWorkingOptions.BitmapSize.Height / 2f;
             string nodeText = node.Name;
-            if (options.ShowSize)
+            if (currentWorkingOptions.ShowSize)
                 nodeText += Environment.NewLine + HDGTools.FormatSize(node.TotalSize);
 
-            SizeF size = frontGraph.MeasureString(nodeText, options.TextFont);
+            SizeF size = frontGraph.MeasureString(nodeText, currentWorkingOptions.TextFont);
             x -= size.Width / 2f;
             y -= size.Height / 2f;
             // Adoucir le fond du texte :
@@ -272,7 +274,7 @@ namespace HDGraph.DrawEngine
             frontGraph.FillRectangle(new SolidBrush(colTransp),
                                 x, y, size.Width, size.Height);
             frontGraph.DrawRectangle(new Pen(Color.Black), x, y, size.Width, size.Height);
-            frontGraph.DrawString(nodeText, options.TextFont, new SolidBrush(Color.Black), x, y);
+            frontGraph.DrawString(nodeText, currentWorkingOptions.TextFont, new SolidBrush(Color.Black), x, y);
         }
 
         /// <summary>
@@ -292,34 +294,34 @@ namespace HDGraph.DrawEngine
             angleCentre = startAngle + nodeAngle / 2f;
             x = (float)Math.Cos(MathHelper.GetRadianFromDegree(angleCentre)) * hyp;
             y = (float)Math.Sin(MathHelper.GetRadianFromDegree(angleCentre)) * hyp;
-            x += options.BitmapSize.Width / 2f;
-            y += options.BitmapSize.Height / 2f;
+            x += currentWorkingOptions.BitmapSize.Width / 2f;
+            y += currentWorkingOptions.BitmapSize.Height / 2f;
             StringFormat format = new StringFormat();
             format.Alignment = StringAlignment.Center;
             string nodeText = node.Name;
-            SizeF sizeTextName = frontGraph.MeasureString(nodeText, options.TextFont);
+            SizeF sizeTextName = frontGraph.MeasureString(nodeText, currentWorkingOptions.TextFont);
             if (sizeTextName.Width <= textWidthLimit)
             {
-                if (options.ShowSize)
+                if (currentWorkingOptions.ShowSize)
                 {
                     float xName = x - sizeTextName.Width / 2f;
                     float yName = y - sizeTextName.Height;
-                    frontGraph.DrawString(nodeText, options.TextFont, new SolidBrush(Color.Black), xName, yName); //, format);
+                    frontGraph.DrawString(nodeText, currentWorkingOptions.TextFont, new SolidBrush(Color.Black), xName, yName); //, format);
                     string nodeSize = HDGTools.FormatSize(node.TotalSize);
-                    SizeF sizeTextSize = frontGraph.MeasureString(nodeSize, options.TextFont);
+                    SizeF sizeTextSize = frontGraph.MeasureString(nodeSize, currentWorkingOptions.TextFont);
                     float xSize = x - sizeTextSize.Width / 2f;
                     float ySize = y;
                     // Adoucir le fond du texte :
                     //Color colTransp = Color.FromArgb(50, Color.White);
                     //graph.FillRectangle(new SolidBrush(colTransp),
                     //                    xSize, ySize, sizeTextSize.Width, sizeTextSize.Height);
-                    frontGraph.DrawString(nodeSize, options.TextFont, new SolidBrush(Color.Black), xSize, ySize); //, format);
+                    frontGraph.DrawString(nodeSize, currentWorkingOptions.TextFont, new SolidBrush(Color.Black), xSize, ySize); //, format);
                 }
                 else
                 {
                     x -= sizeTextName.Width / 2f;
                     y -= sizeTextName.Height / 2f;
-                    frontGraph.DrawString(nodeText, options.TextFont, new SolidBrush(Color.Black), x, y); //, format);
+                    frontGraph.DrawString(nodeText, currentWorkingOptions.TextFont, new SolidBrush(Color.Black), x, y); //, format);
                 }
             }
         }
@@ -371,7 +373,7 @@ namespace HDGraph.DrawEngine
 
         private Brush GetBrushForAngles(RectangleF rec, float startAngle, float nodeAngle)
         {
-            switch (options.ColorStyleChoice)
+            switch (currentWorkingOptions.ColorStyleChoice)
             {
                 case ModeAffichageCouleurs.RandomNeutral:
                 case ModeAffichageCouleurs.RandomBright:
