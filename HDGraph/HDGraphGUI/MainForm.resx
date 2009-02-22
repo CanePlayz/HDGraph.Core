@@ -129,7 +129,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="toolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>764, 17</value>
+    <value>818, 17</value>
   </data>
   <data name="toolStripStatusLabel.Text" xml:space="preserve">
     <value>Status</value>
@@ -148,7 +148,7 @@
     <value>True</value>
   </data>
   <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>779, 22</value>
+    <value>833, 22</value>
   </data>
   <data name="statusStrip.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -190,7 +190,7 @@
     <value>NoControl</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>530, 78</value>
+    <value>584, 105</value>
   </data>
   <data name="button1.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -238,7 +238,7 @@
     <value>True</value>
   </data>
   <data name="treeGraph1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>603, 561</value>
+    <value>657, 588</value>
   </data>
   <data name="treeGraph1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -262,7 +262,7 @@
     <value>NoControl</value>
   </data>
   <data name="linkLabelHelpGraph.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 564</value>
+    <value>184, 591</value>
   </data>
   <data name="linkLabelHelpGraph.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -352,7 +352,7 @@
     <value>True</value>
   </data>
   <data name="splitContainerGraphAndTips.Size" type="System.Drawing.Size, System.Drawing">
-    <value>603, 577</value>
+    <value>657, 604</value>
   </data>
   <data name="splitContainerGraphAndTips.SplitterDistance" type="System.Int32, mscorlib">
     <value>382</value>
@@ -376,7 +376,7 @@
     <value>Bottom, Right</value>
   </data>
   <data name="errorStatus1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>621, 569</value>
+    <value>675, 596</value>
   </data>
   <data name="errorStatus1.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -445,7 +445,7 @@
     <value>False</value>
   </data>
   <data name="comboBoxPath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>562, 21</value>
+    <value>616, 21</value>
   </data>
   <data name="comboBoxPath.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -979,7 +979,7 @@
     <value>15</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>621, 79</value>
+    <value>675, 79</value>
   </data>
   <data name="groupBox1.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1141,7 +1141,7 @@
     <value>3</value>
   </data>
   <data name="groupBoxHoverInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>621, 474</value>
+    <value>675, 474</value>
   </data>
   <data name="groupBoxHoverInfo.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1194,7 +1194,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonScan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>634, 41</value>
+    <value>688, 41</value>
   </data>
   <data name="buttonScan.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1227,7 +1227,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonBrowse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>685, 7</value>
+    <value>739, 7</value>
   </data>
   <data name="buttonBrowse.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1263,7 +1263,7 @@
     <value>True</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>779, 628</value>
+    <value>833, 655</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1284,7 +1284,7 @@
     <value>True</value>
   </data>
   <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>779, 628</value>
+    <value>833, 655</value>
   </data>
   <data name="&gt;&gt;toolStripContainer1.ContentPanel.Name" xml:space="preserve">
     <value>toolStripContainer1.ContentPanel</value>
@@ -1380,7 +1380,7 @@
     <value>True</value>
   </data>
   <data name="toolStripContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>779, 700</value>
+    <value>833, 727</value>
   </data>
   <data name="toolStripContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -2343,7 +2343,7 @@
     <value>True</value>
   </data>
   <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>779, 24</value>
+    <value>833, 24</value>
   </data>
   <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2373,7 +2373,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>779, 723</value>
+    <value>833, 750</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -6715,11 +6715,8 @@
         /////////////////////////////////8A=
 </value>
   </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>640, 600</value>
+    <value>849, 786</value>
   </data>
   <data name="$this.ShowHelp" type="System.Boolean, mscorlib">
     <value>False</value>
