@@ -158,7 +158,6 @@ namespace HDGraph
         {
             InitializeComponent();
             this.SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer, true);
-            drawOptions.TextFont = this.Font;
         }
 
         #endregion
@@ -166,6 +165,7 @@ namespace HDGraph
         #region Méthodes
         private void TreeGraph_Load(object sender, EventArgs e)
         {
+            drawOptions.TextFont = this.Font;
         }
 
 
