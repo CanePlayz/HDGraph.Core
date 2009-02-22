@@ -82,7 +82,7 @@
     <Compile Include="ExternalTools\TextAndImageColumn.cs" />
     <Compile Include="FatalHdgraphException.cs" />
     <Compile Include="HDGTools.cs" />
-    <Compile Include="ImageGraphGenerator.cs" />
+    <Compile Include="DrawEngine\ImageGraphGenerator.cs" />
     <Compile Include="LanguageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -364,9 +364,6 @@
     <None Include="Resources\InsertPictureHS.png" />
     <None Include="Resources\NavForward.png" />
     <None Include="Resources\NavBack.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DrawEngine\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

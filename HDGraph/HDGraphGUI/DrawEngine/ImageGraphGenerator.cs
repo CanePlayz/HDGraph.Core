@@ -4,7 +4,7 @@ using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 
-namespace HDGraph
+namespace HDGraph.DrawEngine
 {
     internal class ImageGraphGenerator
     {

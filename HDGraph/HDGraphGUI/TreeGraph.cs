@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.Drawing.Drawing2D;
 using HDGraph.Resources;
+using HDGraph.DrawEngine;
 
 namespace HDGraph
 {
@@ -193,8 +194,6 @@ namespace HDGraph
             get { return resizing; }
             set { resizing = value; }
         }
-
-        private int drawStartAngleDegrees = 45;
 
         /// <summary>
         /// Méthode classique OnPaint surchargée pour afficher le graph, et le calculer si nécessaire.
