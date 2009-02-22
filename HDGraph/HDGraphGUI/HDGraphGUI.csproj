@@ -55,6 +55,7 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="BiResult.cs" />
     <Compile Include="DirectoryDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>

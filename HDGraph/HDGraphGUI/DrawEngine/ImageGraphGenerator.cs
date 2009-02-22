@@ -45,26 +45,35 @@ namespace HDGraph.DrawEngine
             this.rootNode = rootNode;
         }
 
-        internal Bitmap Draw()
+        internal BiResult<Bitmap, DrawOptions> Draw()
         {
-            // Création du bitmap buffer
-            currentWorkingOptions = notWorkingOptions.Clone();
-            Bitmap backBufferTmp = new Bitmap(currentWorkingOptions.BitmapSize.Width, currentWorkingOptions.BitmapSize.Height);
-            frontGraph = Graphics.FromImage(backBufferTmp);
+            // only 1 execution allowed at a time. To do multiple executions, build a new 
+            // instance of ImageGraphGenerator.
+            lock (this)
+            {
+                // Création du bitmap buffer
+                currentWorkingOptions = notWorkingOptions.Clone();
+                Bitmap backBufferTmp = new Bitmap(currentWorkingOptions.BitmapSize.Width, currentWorkingOptions.BitmapSize.Height);
+                frontGraph = Graphics.FromImage(backBufferTmp);
 
-            frontGraph.Clear(Color.White);
-            frontGraph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            // init des données du calcul
-            pasNiveau = Math.Min(currentWorkingOptions.BitmapSize.Width / (float)currentWorkingOptions.ShownLevelsCount / 2, currentWorkingOptions.BitmapSize.Height / (float)currentWorkingOptions.ShownLevelsCount / 2);
-            RectangleF pieRec = new RectangleF(currentWorkingOptions.BitmapSize.Width / 2f,
-                                    currentWorkingOptions.BitmapSize.Height / 2f,
-                                    0,
-                                    0);
+                frontGraph.Clear(Color.White);
+                frontGraph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                // init des données du calcul
+                pasNiveau = Math.Min(currentWorkingOptions.BitmapSize.Width / (float)currentWorkingOptions.ShownLevelsCount / 2, currentWorkingOptions.BitmapSize.Height / (float)currentWorkingOptions.ShownLevelsCount / 2);
+                RectangleF pieRec = new RectangleF(currentWorkingOptions.BitmapSize.Width / 2f,
+                                        currentWorkingOptions.BitmapSize.Height / 2f,
+                                        0,
+                                        0);
 
-            PaintTree(pieRec);
+                PaintTree(pieRec);
 
-            frontGraph.Dispose();
-            return backBufferTmp;
+                frontGraph.Dispose();
+                return new BiResult<Bitmap, DrawOptions>()
+                        {
+                            Obj1 = backBufferTmp,
+                            Obj2 = currentWorkingOptions
+                        };
+            }
         }
 
         /// <summary>

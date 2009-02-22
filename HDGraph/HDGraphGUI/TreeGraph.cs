@@ -237,7 +237,8 @@ namespace HDGraph
                                 backBufferTmp = TransformToWaitImage(this.backBuffer, this.ClientSize, ApplicationMessages.PleaseWaitWhileDrawing);
                                 break;
                             case CalculationState.Finished:
-                                if (backBuffer.Size != this.ClientSize)
+                                if (backBuffer.Size != this.ClientSize
+                                    || !drawOptions.Equals(lastCompletedGraphOption))
                                 {
                                     calculationState = CalculationState.InProgress;
                                     backBufferTmp = TransformToWaitImage(this.backBuffer, this.ClientSize, ApplicationMessages.PleaseWaitWhileDrawing);
@@ -777,15 +778,18 @@ namespace HDGraph
             form.Show();
         }
 
+        DrawOptions lastCompletedGraphOption;
+
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             ImageGraphGenerator generator = e.Argument as ImageGraphGenerator;
             if (generator == null)
                 return;
-            Bitmap backBufferTmp = generator.Draw();
+            BiResult<Bitmap, DrawOptions> result = generator.Draw();
+            Bitmap backBufferTmp = result.Obj1;
+            lastCompletedGraphOption = result.Obj2;
             pasNiveau = generator.PasNiveau;
             backBuffer = backBufferTmp;
-
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
