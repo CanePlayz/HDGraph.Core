@@ -406,7 +406,8 @@ namespace HDGraph
         /// <param name="foundNode"></param>
         private void UpdateOrCreateToolTip(DirectoryNode foundNode)
         {
-            if (!ShowTooltip)
+            if (!ShowTooltip
+                || this.calculationState == CalculationState.InProgress)
                 return;
             if (toolTip != null
                 && (string)toolTip.Tag != foundNode.Path)

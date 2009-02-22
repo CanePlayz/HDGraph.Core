@@ -239,6 +239,12 @@ namespace HDGraph
                         }
                         try
                         {
+                            // TODO : détecter hardlink/junction points.
+                            //if ((fi.Attributes & FileAttributes.ReparsePoint) == FileAttributes.ReparsePoint)
+                            //{
+                            //    string path = JunctionPoint.GetTargetOrNull(fi.FullName);
+                            //    // TODO
+                            //}
                             dir.TotalSize += fi.Length;
                         }
                         catch (Exception ex)
@@ -269,6 +275,12 @@ namespace HDGraph
                         }
                         try
                         {
+                            // TODO : détecter hardlink/junction points.
+                            //if ((fi.Attributes & FileAttributes.ReparsePoint) == FileAttributes.ReparsePoint)
+                            //{
+                            //    string path = JunctionPoint.GetTargetOrNull(fi.FullName);
+                            //    // TODO
+                            //}
                             dir.FilesSize += fi.Length;
                         }
                         catch (Exception ex)
@@ -297,27 +309,47 @@ namespace HDGraph
                             return;
                         }
                         DirectoryNode dirNode = new DirectoryNode(di.FullName);
-                        ConstruireArborescence(dirNode, maxLevel - 1);
-                        dirNode.Parent = dir;
-                        dir.Children.Add(dirNode);
-                        dir.TotalSize += dirNode.TotalSize;
-                        if (dir.ProfondeurMax < dirNode.ProfondeurMax + 1)
-                            dir.ProfondeurMax = dirNode.ProfondeurMax + 1;
+                        try
+                        {
+                            
+                            // TODO : détecter hardlink/junction points.
+                            //if ((di.Attributes & FileAttributes.ReparsePoint) == FileAttributes.ReparsePoint)
+                            //{
+                            //    string path = JunctionPoint.GetTargetOrNull(di.FullName);
+                            //    // TODO
+                            //}
+                            
+                            ConstruireArborescence(dirNode, maxLevel - 1);
+                            dirNode.Parent = dir;
+                            dir.Children.Add(dirNode);
+                            dir.TotalSize += dirNode.TotalSize;
+                            if (dir.ProfondeurMax < dirNode.ProfondeurMax + 1)
+                                dir.ProfondeurMax = dirNode.ProfondeurMax + 1;
+                        }
+                        catch (Exception ex)
+                        {
+                            HandleAnalysisException(dirNode, ex);
+                        }
                     }
                     dir.ExistsUncalcSubDir = false;
                 }
             }
             catch (Exception ex)
             {
-                Trace.TraceError("Error during folder analysis (" + dir.Path + "). Folder skiped. Details: " + HDGTools.PrintError(ex));
-                dir.Name = String.Format(ApplicationMessages.ErrorLoading, dir.Name, ex.Message);
-                dir.DirectoryType = SpecialDirTypes.ScanError;
-                ErrorList.Add(new ScanError()
-                {
-                    FileOrDirPath = dir.Path,
-                    Exception = ex
-                });
+                HandleAnalysisException(dir, ex);
             }
+        }
+
+        private void HandleAnalysisException(DirectoryNode dir, Exception ex)
+        {
+            Trace.TraceError("Error during folder analysis (" + dir.Path + "). Folder skiped. Details: " + HDGTools.PrintError(ex));
+            dir.Name = String.Format(ApplicationMessages.ErrorLoading, dir.Name, ex.Message);
+            dir.DirectoryType = SpecialDirTypes.ScanError;
+            ErrorList.Add(new ScanError()
+            {
+                FileOrDirPath = dir.Path,
+                Exception = ex
+            });
         }
 
         /// <summary>

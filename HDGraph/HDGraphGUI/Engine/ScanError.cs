@@ -13,7 +13,16 @@ namespace HDGraph.Engine
 
         public string Message
         {
-            get { return Exception.Message; }
+            get
+            {
+                string msg = Exception.Message;
+                if (Exception.InnerException != null)
+                {
+                    msg += msg.Trim().EndsWith(".")  ? " " : " : ";
+                    msg += Exception.InnerException.Message;
+                }
+                return msg;
+            }
         }
 
     }
