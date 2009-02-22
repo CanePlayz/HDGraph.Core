@@ -73,9 +73,9 @@ namespace HDGraph
                 return;
             }
             printDirNames = false;
-            PaintTree(treeGraph.Root, pieRec, 0, 360);
+            PaintTree(treeGraph.Root, pieRec, 45, 360);
             printDirNames = true;
-            PaintTree(treeGraph.Root, pieRec, 0, 360);
+            PaintTree(treeGraph.Root, pieRec, 45, 360);
         }
 
 

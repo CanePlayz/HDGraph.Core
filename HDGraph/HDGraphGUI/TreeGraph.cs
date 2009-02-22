@@ -194,6 +194,8 @@ namespace HDGraph
             set { resizing = value; }
         }
 
+        private int drawStartAngleDegrees = 45;
+
         /// <summary>
         /// Méthode classique OnPaint surchargée pour afficher le graph, et le calculer si nécessaire.
         /// </summary>

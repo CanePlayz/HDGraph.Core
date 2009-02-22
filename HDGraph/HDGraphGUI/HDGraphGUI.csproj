@@ -67,10 +67,10 @@
     <Compile Include="DirectoryDetailUC.Designer.cs">
       <DependentUpon>DirectoryDetailUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Engine\DirectoryNode.cs" />
+    <Compile Include="ScanEngine\DirectoryNode.cs" />
     <Compile Include="DirNodeSortableBindingList.cs" />
-    <Compile Include="Engine\JunctionPoint.cs" />
-    <Compile Include="Engine\ScanError.cs" />
+    <Compile Include="ScanEngine\JunctionPoint.cs" />
+    <Compile Include="ScanEngine\ScanError.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="ErrorListForm.cs">
       <SubType>Form</SubType>
@@ -101,7 +101,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Engine\HDGraphScanEngine.cs" />
+    <Compile Include="ScanEngine\HDGraphScanEngine.cs" />
     <Compile Include="OptionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -364,6 +364,9 @@
     <None Include="Resources\InsertPictureHS.png" />
     <None Include="Resources\NavForward.png" />
     <None Include="Resources\NavBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DrawEngine\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

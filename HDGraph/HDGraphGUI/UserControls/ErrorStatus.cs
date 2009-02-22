@@ -6,7 +6,7 @@ using System.Data;
 using System.Text;
 using System.Windows.Forms;
 using System.Collections;
-using HDGraph.Engine;
+using HDGraph.ScanEngine;
 using HDGraph.Resources;
 
 namespace HDGraph.UserControls

@@ -5,7 +5,7 @@ using System.IO;
 using System.Xml.Serialization;
 using System.Diagnostics;
 using HDGraph.Resources;
-using HDGraph.Engine;
+using HDGraph.ScanEngine;
 
 namespace HDGraph
 {

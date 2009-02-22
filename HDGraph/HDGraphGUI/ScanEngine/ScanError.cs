@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using HDGraph.Resources;
 
-namespace HDGraph.Engine
+namespace HDGraph.ScanEngine
 {
     public class ScanError
     {

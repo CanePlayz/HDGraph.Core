@@ -91,7 +91,7 @@
             // 
             // scanErrorBindingSource
             // 
-            this.scanErrorBindingSource.DataSource = typeof(HDGraph.Engine.ScanError);
+            this.scanErrorBindingSource.DataSource = typeof(HDGraph.ScanEngine.ScanError);
             // 
             // dataGridViewTextBoxColumn1
             // 
