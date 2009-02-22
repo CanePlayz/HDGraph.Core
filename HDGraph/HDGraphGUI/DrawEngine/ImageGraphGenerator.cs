@@ -113,11 +113,16 @@ namespace HDGraph.DrawEngine
             float x = graphSize.Width / 2f;
             float y = graphSize.Height / 2f;
 
-            SizeF sizeTextName = graph.MeasureString(text, font);
+            SizeF sizeTextName = graph.MeasureString(text, font, graphSize.Width);
             x -= sizeTextName.Width / 2f;
             y -= sizeTextName.Height / 2f;
 
             int padding = 5; // 5 pixels
+            // background Rectangle
+            Rectangle rectangle = new Rectangle(Convert.ToInt32(x) - padding,
+                              Convert.ToInt32(y) - padding,
+                              Convert.ToInt32(sizeTextName.Width) + 2 * padding,
+                              Convert.ToInt32(sizeTextName.Height) + 2 * padding);
             if (encadrer)
             {
                 // Create a new pen.
@@ -129,11 +134,7 @@ namespace HDGraph.DrawEngine
                 // Set the LineJoin property.
                 pen.LineJoin = System.Drawing.Drawing2D.LineJoin.Round;
 
-                // background Rectangle
-                Rectangle rectangle = new Rectangle(Convert.ToInt32(x) - padding,
-                                  Convert.ToInt32(y) - padding,
-                                  Convert.ToInt32(sizeTextName.Width) + 2 * padding,
-                                  Convert.ToInt32(sizeTextName.Height) + 2 * padding);
+
                 // Draw a rectangle.
                 graph.FillRectangle(new SolidBrush(Color.FromArgb(150, 255, 255, 255)), rectangle);
                 graph.DrawRectangle(pen, rectangle);
@@ -142,7 +143,7 @@ namespace HDGraph.DrawEngine
                 pen.Dispose();
 
             }
-            graph.DrawString(text, font, brush, x, y);
+            graph.DrawString(text, font, brush, rectangle);
         }
 
         /// <summary>
