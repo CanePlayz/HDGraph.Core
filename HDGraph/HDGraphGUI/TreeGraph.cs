@@ -53,14 +53,13 @@ namespace HDGraph
 
 
 
-        private int nbNiveaux;
         /// <summary>
         /// Obtient ou définit le nombre de niveaux d'arborescence à afficher.
         /// </summary>
         public int NbNiveaux
         {
-            get { return nbNiveaux; }
-            set { nbNiveaux = value; }
+            get { return drawOptions.ShownLevelsCount; }
+            set { drawOptions.ShownLevelsCount = value; }
         }
 
         private Pen graphPen = new Pen(Color.Black, 1.0f);
@@ -71,26 +70,27 @@ namespace HDGraph
             set { graphPen = value; }
         }
 
-        private bool optionShowSize = true;
         /// <summary>
         /// Obtient ou définit le booléen indiquant si le composant doit afficher la taille des répertoires en plus de leur nom.
         /// </summary>
         public bool OptionShowSize
         {
-            get { return optionShowSize; }
-            set { optionShowSize = value; }
+            get { return drawOptions.ShowSize; }
+            set { drawOptions.ShowSize = value; }
         }
 
-        private Boolean optionAlsoPaintFiles = false;
-        /// <summary>
-        /// Obtient ou définit le booléen indiquant si le composant doit afficher les arcs représentant les fichiers ou non.
-        /// </summary>
-        public Boolean OptionAlsoPaintFiles
+        public override Font Font
         {
-            get { return optionAlsoPaintFiles; }
-            set { optionAlsoPaintFiles = value; }
+            get
+            {
+                return base.Font;
+            }
+            set
+            {
+                base.Font = value;
+                drawOptions.TextFont = value;
+            }
         }
-
 
         public delegate void NodeNotificationDelegate(DirectoryNode node);
 
@@ -150,13 +150,7 @@ namespace HDGraph
         {
             get { return backBuffer; }
         }
-
-
-
-
-
-
-
+        
 
         #endregion
 
@@ -166,6 +160,7 @@ namespace HDGraph
         {
             InitializeComponent();
             this.SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer, true);
+            drawOptions.TextFont = this.Font;
         }
 
         #endregion
@@ -195,6 +190,8 @@ namespace HDGraph
             set { resizing = value; }
         }
 
+        private DrawOptions drawOptions = new DrawOptions();
+
         /// <summary>
         /// Méthode classique OnPaint surchargée pour afficher le graph, et le calculer si nécessaire.
         /// </summary>
@@ -205,57 +202,72 @@ namespace HDGraph
                                 || backBuffer.Width != this.ClientSize.Width 
                                 || backBuffer.Height != this.ClientSize.Height);
             Bitmap backBufferTmp = backBuffer;
-            if (backBuffer == null)
+            try
             {
-                // tout premier init.
-                ImageGraphGenerator generator = new ImageGraphGenerator(this, moteur);
-                forceRefreshOnNextRepaint = true;
-                this.backgroundWorker1_DoWork(this, new DoWorkEventArgs(generator));
-            }
-            if (sizeChanged || forceRefreshOnNextRepaint)
-            {
-                ImageGraphGenerator generator;
-                if (resizing)
-                    backBufferTmp = TransformToWaitImage(this.backBuffer, this.ClientSize, ApplicationMessages.ResizeInProgressByUser);
-                else
-                    switch (calculationState)
-                    {
-                        case CalculationState.None:
-                            calculationState = CalculationState.InProgress;
-                            backBufferTmp = TransformToWaitImage(this.backBuffer, this.ClientSize, ApplicationMessages.PleaseWaitWhileDrawing);
-
-                            // lancement du calcul
-                            // Calcul
-                            generator = new ImageGraphGenerator(this, moteur);
-                            backgroundWorker1.RunWorkerAsync(generator);
-                            break;
-                        case CalculationState.InProgress:
-                            backBufferTmp = TransformToWaitImage(this.backBuffer, this.ClientSize, ApplicationMessages.PleaseWaitWhileDrawing);
-                            break;
-                        case CalculationState.Finished:
-                            if (backBuffer.Size != this.ClientSize)
-                            {
+                if (backBuffer == null)
+                {
+                    // tout premier init.
+                    drawOptions.BitmapSize = this.ClientSize;
+                    ImageGraphGenerator generator = new ImageGraphGenerator(this.Root, moteur, drawOptions);
+                    forceRefreshOnNextRepaint = true;
+                    this.backgroundWorker1_DoWork(this, new DoWorkEventArgs(generator));
+                }
+                if (sizeChanged || forceRefreshOnNextRepaint)
+                {
+                    ImageGraphGenerator generator;
+                    if (resizing)
+                        backBufferTmp = TransformToWaitImage(this.backBuffer, this.ClientSize, ApplicationMessages.ResizeInProgressByUser);
+                    else
+                        switch (calculationState)
+                        {
+                            case CalculationState.None:
                                 calculationState = CalculationState.InProgress;
                                 backBufferTmp = TransformToWaitImage(this.backBuffer, this.ClientSize, ApplicationMessages.PleaseWaitWhileDrawing);
 
                                 // lancement du calcul
                                 // Calcul
-                                generator = new ImageGraphGenerator(this, moteur);
+                                drawOptions.BitmapSize = this.ClientSize;
+                                generator = new ImageGraphGenerator(this.Root, moteur, drawOptions);
                                 backgroundWorker1.RunWorkerAsync(generator);
-                            }
-                            else
-                            {
-                                backBufferTmp = backBuffer;
-                                forceRefreshOnNextRepaint = false;
-                                calculationState = CalculationState.None;
-                            }
-                            break;
-                        default:
-                            throw new NotSupportedException("Value of calculationState (" + calculationState + ") is not supported.");
-                    }
+                                break;
+                            case CalculationState.InProgress:
+                                backBufferTmp = TransformToWaitImage(this.backBuffer, this.ClientSize, ApplicationMessages.PleaseWaitWhileDrawing);
+                                break;
+                            case CalculationState.Finished:
+                                if (backBuffer.Size != this.ClientSize)
+                                {
+                                    calculationState = CalculationState.InProgress;
+                                    backBufferTmp = TransformToWaitImage(this.backBuffer, this.ClientSize, ApplicationMessages.PleaseWaitWhileDrawing);
+
+                                    // lancement du calcul
+                                    // Calcul
+                                    drawOptions.BitmapSize = this.ClientSize;
+                                    generator = new ImageGraphGenerator(this.Root, moteur, drawOptions);
+                                    backgroundWorker1.RunWorkerAsync(generator);
+                                }
+                                else
+                                {
+                                    backBufferTmp = backBuffer;
+                                    forceRefreshOnNextRepaint = false;
+                                    calculationState = CalculationState.None;
+                                }
+                                break;
+                            default:
+                                throw new NotSupportedException("Value of calculationState (" + calculationState + ") is not supported.");
+                        }
+                }
+                
+                
+            }
+            catch (Exception ex)
+            {
+                // TODO : gérer exception.
+                backBufferTmp = new Bitmap(this.ClientSize.Width, this.ClientSize.Height);
+                Graphics.FromImage(backBufferTmp).DrawString(ex.ToString(), this.ParentForm.Font, new SolidBrush(Color.Black), new RectangleF(0, 0, this.ClientSize.Width, this.ClientSize.Height));
             }
             // affichage du buffer
             e.Graphics.DrawImageUnscaled(backBufferTmp, 0, 0);
+            
         }
 
         private Bitmap TransformToWaitImage(Bitmap originalBitmap, Size clientSize, string message)
@@ -321,18 +333,18 @@ namespace HDGraph
                 float startAngle = (360f / nbMaxQuartiers) * i;
                 float nodeAngle = 360f / nbMaxQuartiers;
                 PointF p1 = new PointF();
-                p1.X = pieRec.Left + pieRec.Width / 2f + Convert.ToSingle(Math.Cos(GetRadianFromDegree(startAngle))) * pieRec.Height / 2f;
-                p1.Y = pieRec.Top + pieRec.Height / 2f + Convert.ToSingle(Math.Sin(GetRadianFromDegree(startAngle))) * pieRec.Height / 2f;
+                p1.X = pieRec.Left + pieRec.Width / 2f + Convert.ToSingle(Math.Cos(MathHelper.GetRadianFromDegree(startAngle))) * pieRec.Height / 2f;
+                p1.Y = pieRec.Top + pieRec.Height / 2f + Convert.ToSingle(Math.Sin(MathHelper.GetRadianFromDegree(startAngle))) * pieRec.Height / 2f;
                 PointF p2 = new PointF();
-                p2.X = pieRec.Left + pieRec.Width / 2f + Convert.ToSingle(Math.Cos(GetRadianFromDegree(startAngle + nodeAngle))) * pieRec.Height / 2f;
-                p2.Y = pieRec.Top + pieRec.Height / 2f + Convert.ToSingle(Math.Sin(GetRadianFromDegree(startAngle + nodeAngle))) * pieRec.Height / 2f;
+                p2.X = pieRec.Left + pieRec.Width / 2f + Convert.ToSingle(Math.Cos(MathHelper.GetRadianFromDegree(startAngle + nodeAngle))) * pieRec.Height / 2f;
+                p2.Y = pieRec.Top + pieRec.Height / 2f + Convert.ToSingle(Math.Sin(MathHelper.GetRadianFromDegree(startAngle + nodeAngle))) * pieRec.Height / 2f;
 
 
                 graph.FillPie(
                       new System.Drawing.Drawing2D.LinearGradientBrush(
                             p1, p2,
-                            ColorByLeft(Convert.ToInt32(startAngle / 360f * 1000f), 1000),
-                            ColorByLeft(Convert.ToInt32((startAngle + nodeAngle) / 360f * 1000f), 1000)
+                            ColorManager.ColorByLeft(Convert.ToInt32(startAngle / 360f * 1000f), 1000),
+                            ColorManager.ColorByLeft(Convert.ToInt32((startAngle + nodeAngle) / 360f * 1000f), 1000)
                       ),
                       pieRec, startAngle, nodeAngle + 1);
             }
@@ -340,23 +352,6 @@ namespace HDGraph
         }
 
 
-        /// <summary>
-        /// Convertit un angle en degrés en radian.
-        /// </summary>
-        /// <param name="degree"></param>
-        /// <returns></returns>
-        public double GetRadianFromDegree(float degree)
-        {
-            return degree * Math.PI / 180f;
-        }
-
-        /// <summary>
-        /// Convertit un angle en radian en degrés.
-        /// </summary>
-        public double GetDegreeFromRadian(double radian)
-        {
-            return radian * 180 / Math.PI;
-        }
 
 
 
@@ -453,7 +448,7 @@ namespace HDGraph
             //System.Windows.Forms.MessageBox.Show(curseurPos.ToString());
 
             // Cherchons l'angle formé formé par le curseur et la taille du rayon jusqu'à celui-ci.
-            double angle = GetDegreeFromRadian(Math.Atan(-curseurPos.Y / (double)curseurPos.X));
+            double angle = MathHelper.GetDegreeFromRadian(Math.Atan(-curseurPos.Y / (double)curseurPos.X));
             // l'angle obtenu à corriger en fonction du quartier où se situe le curseur
             if (curseurPos.X < 0)
                 angle = 180 - angle;
@@ -568,7 +563,7 @@ namespace HDGraph
             if (lastClicNode != null)
             {
                 this.root = lastClicNode;
-                moteur.CompleterArborescence(root, this.nbNiveaux); // TODO: changer en nbCalcul
+                moteur.CompleterArborescence(root, this.NbNiveaux); // TODO: changer en nbCalcul
                 if (notifyNewRootNode != null)
                     notifyNewRootNode(this.root);
             }
@@ -603,63 +598,6 @@ namespace HDGraph
         {
             if (lastClicNode != null)
                 System.Diagnostics.Process.Start(lastClicNode.Path);
-        }
-
-
-        /// <summary>
-        /// Est utilisé dans le cas de la génération aléatoire des couleurs.
-        /// </summary>
-        Random rand = new Random();
-
-        /// <summary>
-        /// Renvoie la prochaine couleur à utiliser pour la prochaine partie du graph à dessiner.
-        /// </summary>
-        /// <returns></returns>
-        internal Color GetNextColor(float angle)
-        {
-            switch (modeCouleur)
-            {
-                case ModeAffichageCouleurs.RandomNeutral:
-                    int[] col = new int[] { rand.Next(100, 255), rand.Next(100, 255), rand.Next(100, 255) };
-                    col[rand.Next(3)] -= 100;
-                    return Color.FromArgb(col[0], col[1], col[2]);
-                case ModeAffichageCouleurs.RandomBright:
-                    return ColorByLeft(rand.Next(360));
-                case ModeAffichageCouleurs.Linear:
-                default:
-                    return ColorByLeft(Convert.ToInt32(angle));
-            }
-        }
-
-        /// <summary>
-        /// Renvoie une couleur de l'arc en ciel.
-        /// </summary>
-        /// <param name="valeurSur360">une valeur comprise entre 0 et 360.</param>
-        /// <returns></returns>
-        public Color ColorByLeft(int valeurSur360)
-        {
-            if (valeurSur360 > 360 || valeurSur360 < 0)
-                throw new ArgumentOutOfRangeException("valeurSur360", "Value must be between 0 and 360.");
-            return ColorByLeft(valeurSur360, 360);
-        }
-        public Color ColorByLeft(int valeur, int valeurMax)
-        {
-            int valMax = valeurMax;
-            int section = valeur * 6 / (valMax);
-            valeur = Convert.ToInt32(
-                        ((float)valeur % (valMax / 6f)) * 255 * 6f / valMax);
-
-            switch (section)
-            {
-                //						       r     G     b
-                case 0: return Color.FromArgb(255, 0, valeur);
-                case 1: return Color.FromArgb(255 - valeur, 0, 255);
-                case 2: return Color.FromArgb(0, valeur, 255);
-                case 3: return Color.FromArgb(0, 255, 255 - valeur);
-                case 4: return Color.FromArgb(valeur, 255, 0);
-                case 5: return Color.FromArgb(255, 255 - valeur, 0);
-                default: return Color.Red;
-            }
         }
 
         /// <summary>

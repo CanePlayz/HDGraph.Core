@@ -257,7 +257,6 @@ namespace HDGraph
             this.treeGraph1.Name = "treeGraph1";
             this.treeGraph1.NbNiveaux = 0;
             this.treeGraph1.NotifyNewRootNode = null;
-            this.treeGraph1.OptionAlsoPaintFiles = false;
             this.treeGraph1.OptionShowSize = true;
             this.treeGraph1.Resizing = false;
             this.treeGraph1.Root = null;

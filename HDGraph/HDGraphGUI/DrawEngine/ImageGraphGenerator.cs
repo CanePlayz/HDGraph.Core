@@ -8,8 +8,6 @@ namespace HDGraph.DrawEngine
 {
     internal class ImageGraphGenerator
     {
-        TreeGraph treeGraph;
-
         /// <summary>
         /// Epaisseur d'un niveau sur le graph.
         /// </summary>
@@ -34,25 +32,30 @@ namespace HDGraph.DrawEngine
         private bool printDirNames = false;
 
         private HDGraphScanEngine moteur;
+        private DrawOptions options;
+        private ColorManager colorManager;
+        private DirectoryNode rootNode;
 
-        public ImageGraphGenerator(TreeGraph treeGraph, HDGraphScanEngine moteur)
+        public ImageGraphGenerator(DirectoryNode rootNode, HDGraphScanEngine moteur, DrawOptions options)
         {
-            this.treeGraph = treeGraph;
             this.moteur = moteur;
+            this.options = options;
+            this.colorManager = new ColorManager(options);
+            this.rootNode = rootNode;
         }
 
         internal Bitmap Draw()
         {
             // Création du bitmap buffer
-            Bitmap backBufferTmp = new Bitmap(treeGraph.ClientSize.Width, treeGraph.ClientSize.Height);
+            Bitmap backBufferTmp = new Bitmap(options.BitmapSize.Width, options.BitmapSize.Height);
             frontGraph = Graphics.FromImage(backBufferTmp);
 
             frontGraph.Clear(Color.White);
             frontGraph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
             // init des données du calcul
-            pasNiveau = Math.Min(treeGraph.ClientSize.Width / (float)treeGraph.NbNiveaux / 2, treeGraph.ClientSize.Height / (float)treeGraph.NbNiveaux / 2);
-            RectangleF pieRec = new RectangleF(treeGraph.ClientSize.Width / 2f,
-                                    treeGraph.ClientSize.Height / 2f,
+            pasNiveau = Math.Min(options.BitmapSize.Width / (float)options.ShownLevelsCount / 2, options.BitmapSize.Height / (float)options.ShownLevelsCount / 2);
+            RectangleF pieRec = new RectangleF(options.BitmapSize.Width / 2f,
+                                    options.BitmapSize.Height / 2f,
                                     0,
                                     0);
 
@@ -67,18 +70,16 @@ namespace HDGraph.DrawEngine
         /// </summary>
         private void PaintTree(RectangleF pieRec)
         {
-            if (treeGraph.Root == null || treeGraph.Root.TotalSize == 0)
+            if (rootNode == null || rootNode.TotalSize == 0)
             {
                 PaintSpecialCase();
                 return;
             }
             printDirNames = false;
-            PaintTree(treeGraph.Root, pieRec, 45, 360);
+            PaintTree(rootNode, pieRec, options.ImageRotation, 360 - options.ImageRotation);
             printDirNames = true;
-            PaintTree(treeGraph.Root, pieRec, 45, 360);
+            PaintTree(rootNode, pieRec, options.ImageRotation, 360 - options.ImageRotation);
         }
-
-
 
         /// <summary>
         /// Affiche un message spécifique au lieu du graph.
@@ -88,12 +89,12 @@ namespace HDGraph.DrawEngine
             string text;
             if (moteur != null && moteur.WorkCanceled)
                 text = Resources.ApplicationMessages.UserCanceledAnalysis;
-            else if (treeGraph.Root != null && treeGraph.Root.TotalSize == 0)
+            else if (rootNode != null && rootNode.TotalSize == 0)
                 text = Resources.ApplicationMessages.FolderIsEmpty;
             else
                 text = Resources.ApplicationMessages.GraphGuideLine;
 
-            AfficherTexteAuCentre(frontGraph, treeGraph.ClientSize, text, treeGraph.Font, new SolidBrush(Color.Black), false);
+            AfficherTexteAuCentre(frontGraph, options.BitmapSize, text, options.TextFont, new SolidBrush(Color.Black), false);
         }
 
         public static void AfficherTexteAuCentre(Graphics graph, Size graphSize, string text, Font font, Brush brush, bool encadrer)
@@ -257,13 +258,13 @@ namespace HDGraph.DrawEngine
             {
                 y = rec.Height / 2f - pasNiveau * 3f / 4f;
             }
-            x += treeGraph.ClientSize.Width / 2f;
-            y += treeGraph.ClientSize.Height / 2f;
+            x += options.BitmapSize.Width / 2f;
+            y += options.BitmapSize.Height / 2f;
             string nodeText = node.Name;
-            if (treeGraph.OptionShowSize)
+            if (options.ShowSize)
                 nodeText += Environment.NewLine + HDGTools.FormatSize(node.TotalSize);
 
-            SizeF size = frontGraph.MeasureString(nodeText, treeGraph.Font);
+            SizeF size = frontGraph.MeasureString(nodeText, options.TextFont);
             x -= size.Width / 2f;
             y -= size.Height / 2f;
             // Adoucir le fond du texte :
@@ -271,7 +272,7 @@ namespace HDGraph.DrawEngine
             frontGraph.FillRectangle(new SolidBrush(colTransp),
                                 x, y, size.Width, size.Height);
             frontGraph.DrawRectangle(new Pen(Color.Black), x, y, size.Width, size.Height);
-            frontGraph.DrawString(nodeText, treeGraph.Font, new SolidBrush(Color.Black), x, y);
+            frontGraph.DrawString(nodeText, options.TextFont, new SolidBrush(Color.Black), x, y);
         }
 
         /// <summary>
@@ -289,36 +290,36 @@ namespace HDGraph.DrawEngine
             float x, y, angleCentre, hyp;
             hyp = (rec.Width - pasNiveau) / 2f;
             angleCentre = startAngle + nodeAngle / 2f;
-            x = (float)Math.Cos(treeGraph.GetRadianFromDegree(angleCentre)) * hyp;
-            y = (float)Math.Sin(treeGraph.GetRadianFromDegree(angleCentre)) * hyp;
-            x += treeGraph.ClientSize.Width / 2f;
-            y += treeGraph.ClientSize.Height / 2f;
+            x = (float)Math.Cos(MathHelper.GetRadianFromDegree(angleCentre)) * hyp;
+            y = (float)Math.Sin(MathHelper.GetRadianFromDegree(angleCentre)) * hyp;
+            x += options.BitmapSize.Width / 2f;
+            y += options.BitmapSize.Height / 2f;
             StringFormat format = new StringFormat();
             format.Alignment = StringAlignment.Center;
             string nodeText = node.Name;
-            SizeF sizeTextName = frontGraph.MeasureString(nodeText, treeGraph.Font);
+            SizeF sizeTextName = frontGraph.MeasureString(nodeText, options.TextFont);
             if (sizeTextName.Width <= textWidthLimit)
             {
-                if (treeGraph.OptionShowSize)
+                if (options.ShowSize)
                 {
                     float xName = x - sizeTextName.Width / 2f;
                     float yName = y - sizeTextName.Height;
-                    frontGraph.DrawString(nodeText, treeGraph.Font, new SolidBrush(Color.Black), xName, yName); //, format);
+                    frontGraph.DrawString(nodeText, options.TextFont, new SolidBrush(Color.Black), xName, yName); //, format);
                     string nodeSize = HDGTools.FormatSize(node.TotalSize);
-                    SizeF sizeTextSize = frontGraph.MeasureString(nodeSize, treeGraph.Font);
+                    SizeF sizeTextSize = frontGraph.MeasureString(nodeSize, options.TextFont);
                     float xSize = x - sizeTextSize.Width / 2f;
                     float ySize = y;
                     // Adoucir le fond du texte :
                     //Color colTransp = Color.FromArgb(50, Color.White);
                     //graph.FillRectangle(new SolidBrush(colTransp),
                     //                    xSize, ySize, sizeTextSize.Width, sizeTextSize.Height);
-                    frontGraph.DrawString(nodeSize, treeGraph.Font, new SolidBrush(Color.Black), xSize, ySize); //, format);
+                    frontGraph.DrawString(nodeSize, options.TextFont, new SolidBrush(Color.Black), xSize, ySize); //, format);
                 }
                 else
                 {
                     x -= sizeTextName.Width / 2f;
                     y -= sizeTextName.Height / 2f;
-                    frontGraph.DrawString(nodeText, treeGraph.Font, new SolidBrush(Color.Black), x, y); //, format);
+                    frontGraph.DrawString(nodeText, options.TextFont, new SolidBrush(Color.Black), x, y); //, format);
                 }
             }
         }
@@ -370,20 +371,20 @@ namespace HDGraph.DrawEngine
 
         private Brush GetBrushForAngles(RectangleF rec, float startAngle, float nodeAngle)
         {
-            switch (treeGraph.ModeCouleur)
+            switch (options.ColorStyleChoice)
             {
                 case ModeAffichageCouleurs.RandomNeutral:
                 case ModeAffichageCouleurs.RandomBright:
                     return new System.Drawing.Drawing2D.LinearGradientBrush(
                                     rec,
-                                    treeGraph.GetNextColor(startAngle),
+                                    colorManager.GetNextColor(startAngle),
                                     Color.SteelBlue,
                                     LinearGradientMode.ForwardDiagonal
                                 );
                 case ModeAffichageCouleurs.Linear2:
                     return new System.Drawing.Drawing2D.LinearGradientBrush(
                                     rec,
-                                    treeGraph.GetNextColor(startAngle + (nodeAngle / 2f)),
+                                    colorManager.GetNextColor(startAngle + (nodeAngle / 2f)),
                                     Color.SteelBlue,
                                     LinearGradientMode.ForwardDiagonal
                                 );
@@ -399,27 +400,27 @@ namespace HDGraph.DrawEngine
                         return new System.Drawing.Drawing2D.LinearGradientBrush(
                                         rec,
                                         Color.SteelBlue,
-                                        treeGraph.GetNextColor(middleAngle),
+                                        colorManager.GetNextColor(middleAngle),
                                         LinearGradientMode.ForwardDiagonal
                                     );
                     else if (middleAngle < 180)
                         return new System.Drawing.Drawing2D.LinearGradientBrush(
                                     rec,
                                     Color.SteelBlue,
-                                    treeGraph.GetNextColor(middleAngle),
+                                    colorManager.GetNextColor(middleAngle),
                                     LinearGradientMode.BackwardDiagonal
                                 );
                     else if (middleAngle < 270)
                         return new System.Drawing.Drawing2D.LinearGradientBrush(
                                     rec,
-                                    treeGraph.GetNextColor(middleAngle),
+                                    colorManager.GetNextColor(middleAngle),
                                     Color.SteelBlue,
                                     LinearGradientMode.ForwardDiagonal
                                 );
                     else
                         return new System.Drawing.Drawing2D.LinearGradientBrush(
                                     rec,
-                                    treeGraph.GetNextColor(middleAngle),
+                                    colorManager.GetNextColor(middleAngle),
                                     Color.SteelBlue,
                                     LinearGradientMode.BackwardDiagonal
                                 );
@@ -464,14 +465,14 @@ namespace HDGraph.DrawEngine
         /// <param name="endAngle"></param>
         private void PaintFilesPart(RectangleF rec, float startAngle, float endAngle)
         {
-            if (!printDirNames && treeGraph.OptionAlsoPaintFiles)
-            {
-                float nodeAngle = endAngle - startAngle;
-                rec.Inflate(pasNiveau, pasNiveau);
-                //Console.WriteLine("Processing Files (Angle:" + startAngle + ";" + endAngle + "; Rec:" + rec + ")...");
-                frontGraph.FillPie(new SolidBrush(Color.White), Rectangle.Round(rec), startAngle, nodeAngle); //TODO
+            //if (!printDirNames && treeGraph.OptionAlsoPaintFiles)
+            //{
+            //    float nodeAngle = endAngle - startAngle;
+            //    rec.Inflate(pasNiveau, pasNiveau);
+            //    //Console.WriteLine("Processing Files (Angle:" + startAngle + ";" + endAngle + "; Rec:" + rec + ")...");
+            //    frontGraph.FillPie(new SolidBrush(Color.White), Rectangle.Round(rec), startAngle, nodeAngle); //TODO
 
-            }
+            //}
         }
 
     }

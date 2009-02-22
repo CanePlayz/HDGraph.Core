@@ -67,6 +67,9 @@
     <Compile Include="DirectoryDetailUC.Designer.cs">
       <DependentUpon>DirectoryDetailUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="DrawEngine\ColorManager.cs" />
+    <Compile Include="DrawEngine\DrawOptions.cs" />
+    <Compile Include="DrawEngine\MathHelper.cs" />
     <Compile Include="ScanEngine\DirectoryNode.cs" />
     <Compile Include="DirNodeSortableBindingList.cs" />
     <Compile Include="ScanEngine\JunctionPoint.cs" />
