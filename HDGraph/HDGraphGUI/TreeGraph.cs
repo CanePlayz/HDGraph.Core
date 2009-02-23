@@ -350,8 +350,8 @@ namespace HDGraph
                 }
                 g.DrawImage(originalBitmap, targetRectangle);
 
-                if (Root == null
-                    || (!TextChangeInProgress && Root.HasMoreDirectoriesThan(NB_MAX_OF_SUB_DIR_BEFORE_WAIT_MESSAGE)))
+                if (Root != null
+                    && (!TextChangeInProgress && Root.HasMoreDirectoriesThan(NB_MAX_OF_SUB_DIR_BEFORE_WAIT_MESSAGE)))
                 {
                     // Print wait message
                     Brush brush = new SolidBrush(Color.FromArgb(100, 255, 255, 255));

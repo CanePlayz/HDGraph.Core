@@ -103,6 +103,8 @@ namespace HDGraph
             this.Text = AboutBox.AssemblyTitle;
             this.WindowState = HDGraph.Properties.Settings.Default.OptionMainWindowOpenState;
             this.ClientSize = HDGraph.Properties.Settings.Default.OptionMainWindowSize;
+            treeGraph1.DrawOptions.TextDensity = trackBarTextDensity.Value;
+            treeGraph1.DrawOptions.ImageRotation = imageRotationTrackBar.Value;
 
             EnableHelpIfAvailable();
             comboBoxPath.DataSource = HDGraph.Properties.Settings.Default.PathHistory;
