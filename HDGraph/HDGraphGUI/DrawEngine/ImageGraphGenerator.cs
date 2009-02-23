@@ -499,5 +499,86 @@ namespace HDGraph.DrawEngine
             //}
         }
 
+
+
+
+        /// <summary>
+        /// Trouve quel est le répertoire survolé d'après la position du curseur.
+        /// (Recherche par coordonnées cartésiennes).
+        /// </summary>
+        /// <param name="curseurPos">Position du curseur. Doit être relative au contrôle, pas à l'écran ou à la form !</param>
+        /// <returns></returns>
+        internal DirectoryNode FindNodeByCursorPosition(Point curseurPos)
+        {
+            // On a les coordonnées du curseur dans le controle.
+            // Il faut faire un changement de référentiel pour avoir les coordonnées vis à vis de l'origine (le centre des cercles).
+            curseurPos.X -= latestUsedOptions.BitmapSize.Width / 2;
+            curseurPos.Y -= latestUsedOptions.BitmapSize.Height / 2;
+            // On a maintenant les coordonnées vis-à-vis du centre des cercles.
+            //System.Windows.Forms.MessageBox.Show(curseurPos.ToString());
+
+            // Cherchons l'angle formé par le curseur et la taille du rayon jusqu'à celui-ci.
+            double angle = MathHelper.GetDegreeFromRadian(Math.Atan(-curseurPos.Y / (double)curseurPos.X));
+            // l'angle obtenu à corriger en fonction du quartier où se situe le curseur
+            if (curseurPos.X < 0)
+                angle = 180 - angle;
+            else
+                angle = (curseurPos.Y < 0) ? 360 - angle : -angle;
+
+            angle -= latestUsedOptions.ImageRotation;
+            if (angle < 0)
+                angle += 360;
+            double rayon = Math.Sqrt(Math.Pow(curseurPos.X, 2) + Math.Pow(curseurPos.Y, 2));
+            //System.Windows.Forms.MessageBox.Show("angle: " + angle + "; rayon: " + rayon);
+            if (this.rootNode == null || this.rootNode.TotalSize == 0)
+                return this.rootNode;
+            DirectoryNode foundNode = FindNodeInTree(
+                        this.rootNode, 
+                        0,
+                        0,
+                        360,
+                        angle, 
+                        rayon);
+            return foundNode;
+        }
+
+        /// <summary>
+        /// Recherche quel est le répertoire dans lequel se trouve le point définit par l'angle cursorAngle et la distance cursorLen.
+        /// (Recherche par coordonnées polaires).
+        /// </summary>
+        /// <param name="node"></param>
+        /// <param name="levelHeight"></param>
+        /// <param name="startAngle"></param>
+        /// <param name="endAngle"></param>
+        /// <param name="cursorAngle"></param>
+        /// <param name="cursorLen"></param>
+        /// <returns></returns>
+        private DirectoryNode FindNodeInTree(DirectoryNode node, float levelHeight, float startAngle, float endAngle, double cursorAngle, double cursorLen)
+        {
+            if (node.TotalSize == 0)
+                return node;
+            float nodeAngle = endAngle - startAngle;
+            levelHeight += pasNiveau;
+            if (levelHeight > cursorLen && cursorAngle >= startAngle && cursorAngle <= endAngle)
+            {
+                // le noeud courant est celui recherché
+                if (node.DirectoryType == SpecialDirTypes.FreeSpaceAndHide)
+                    return null;
+                return node;
+            }
+            long cumulSize = 0;
+            float currentStartAngle;
+            foreach (DirectoryNode childNode in node.Children)
+            {
+                currentStartAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
+                float childAngle = childNode.TotalSize * nodeAngle / node.TotalSize;
+                if (cursorLen > levelHeight && cursorAngle >= currentStartAngle && cursorAngle <= (currentStartAngle + childAngle))
+                    return FindNodeInTree(childNode, levelHeight, currentStartAngle, currentStartAngle + childAngle, cursorAngle, cursorLen);
+                cumulSize += childNode.TotalSize;
+            }
+            currentStartAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
+            return null;
+        }
+
     }
 }
