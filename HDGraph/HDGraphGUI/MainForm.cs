@@ -795,6 +795,8 @@ namespace HDGraph
 
         }
 
+        public Size? OutputImgSize { get; set; }
+
         private void MainForm_Shown(object sender, EventArgs e)
         {
             if (launchScanOnStartup)
@@ -807,14 +809,18 @@ namespace HDGraph
                     if (outputImgFilePath != null
                         && outputImgFilePath.Length > 0)
                     {
-
-                        treeGraph1.ImageBuffer.Save(outputImgFilePath);
+                        ImageGraphGenerator generator = new ImageGraphGenerator(moteur.Root, moteur);
+                        DrawOptions outputDrawOptions = treeGraph1.DrawOptions.Clone();
+                        if (OutputImgSize.HasValue)
+                            outputDrawOptions.BitmapSize = OutputImgSize.Value;
+                        Bitmap bmp = generator.Draw(true, true, outputDrawOptions).Obj1;
+                        //if (File.GetAccessControl(outputImgFilePath).
+                        bmp.Save(outputImgFilePath);
                         exitApp = true;
                     }
                     if (outputGraphFilePath != null
                         && outputGraphFilePath.Length > 0)
                     {
-
                         SaveGraphToFile(outputGraphFilePath);
                         exitApp = true;
                     }

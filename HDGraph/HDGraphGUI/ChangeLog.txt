@@ -8,16 +8,18 @@ Version 1.3.0
 ======================================================
 Added:
 	- New warning messages when scan errors occured.
-	- New "image rotation" capability (you can rotate the graph as you want)
-	- New "text density" setting (you can change the text density in real time)
+	- New "image rotation" capability (you can rotate the graph as you want).
+	- New "text density" setting (you can change the text density in real time).
 	- New tooltip available when the mouse is hovered a directory.
 	- Count the number of files in a directory (see the "Directory Details" form).
+	- New commande line argument to set output image size.
 Improved: 
 	- Better resize mode (preview during resize, real redraw when resize finished)
 	- Asynchronous draw for complicated graphs (which take a long time to draw), to avoid application freeze.
 	- Main window state is memorized on exit (or the size if the window is not maximized).
 	- Performance improvements
 Fixed:
+	- Bug 2505755 ("Wrong Image saved when run from CLI")
 	- Some minor bugs
 
 

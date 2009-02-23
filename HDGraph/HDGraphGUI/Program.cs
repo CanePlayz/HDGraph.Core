@@ -85,16 +85,30 @@ namespace HDGraph
                     }
                 }
             }
-            if (args.Length > 2)
+            for (int i = 2; i < args.Length; i++)
             {
-                string commandLineOption1 = args[2];
-                ProcessArg(form, commandLineOption1);
+                string commandLineOption = args[i];
+                ProcessArg(form, commandLineOption);
             }
-            if (args.Length > 3)
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        private static string MakeFileNameUnique(string path)
+        {
+            FileInfo fileInfo = new FileInfo(path);
+            string rootFileName = fileInfo.FullName.Remove(fileInfo.FullName.Length - fileInfo.Extension.Length);
+            string newPath = path;
+            int i = 2;
+            while (File.Exists(newPath))
             {
-                string commandLineOption2 = args[3];
-                ProcessArg(form, commandLineOption2);
+                newPath = rootFileName + "_" + i + fileInfo.Extension;
+                i++;
             }
+            return newPath;
         }
 
         private static void ProcessArg(MainForm form, string arg)
@@ -102,12 +116,34 @@ namespace HDGraph
             if (arg.StartsWith(OUTPUT_IMG_CMD_LINE_OPTION_PREFIX))
             {
                 arg = arg.Substring(OUTPUT_IMG_CMD_LINE_OPTION_PREFIX.Length);
-                form.OutputImgFilePath = RemoveDoubleQuoteIfNecessary(arg);
+                string outputImgFilePath = RemoveDoubleQuoteIfNecessary(arg);
+
+                if (!outputImgFilePath.ToLower().EndsWith(".png"))
+                    outputImgFilePath += ".png";
+                outputImgFilePath = MakeFileNameUnique(outputImgFilePath);
+                form.OutputImgFilePath = outputImgFilePath;
+
             }
             if (arg.StartsWith(OUTPUT_GRAPH_CMD_LINE_OPTION_PREFIX))
             {
                 arg = arg.Substring(OUTPUT_GRAPH_CMD_LINE_OPTION_PREFIX.Length);
                 form.OutputGraphFilePath = RemoveDoubleQuoteIfNecessary(arg);
+                if (!form.OutputGraphFilePath.ToLower().EndsWith(".hdg"))
+                    form.OutputGraphFilePath += ".hdg";
+                form.OutputGraphFilePath = MakeFileNameUnique(form.OutputGraphFilePath);
+            }
+            if (arg.StartsWith(OUTPUT_IMG_SIZE_CMD_LINE_OPTION_PREFIX))
+            {
+                arg = arg.Substring(OUTPUT_IMG_SIZE_CMD_LINE_OPTION_PREFIX.Length);
+                try
+                {
+                    string[] size = arg.Split('x');
+                    form.OutputImgSize = new System.Drawing.Size(Int32.Parse(size[0]), Int32.Parse(size[1]));
+                }
+                catch (Exception ex)
+                {
+                    throw new ArgumentException("Wrong syntax for argument \"imgOutputSize\". Check the documentation.", ex);
+                }
             }
         }
 
@@ -115,6 +151,7 @@ namespace HDGraph
 
         private const string OUTPUT_IMG_CMD_LINE_OPTION_PREFIX = "/imgOutput:";
         private const string OUTPUT_GRAPH_CMD_LINE_OPTION_PREFIX = "/graphOutput:";
+        private const string OUTPUT_IMG_SIZE_CMD_LINE_OPTION_PREFIX = "/imgOutputSize:";
 
         private static string RemoveDoubleQuoteIfNecessary(string path)
         {
