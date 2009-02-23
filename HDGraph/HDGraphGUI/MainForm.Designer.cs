@@ -458,6 +458,8 @@ namespace HDGraph
             this.imageRotationTrackBar.SmallChange = 5;
             this.imageRotationTrackBar.TickFrequency = 20;
             this.imageRotationTrackBar.ValueChanged += new System.EventHandler(this.imageRotationTrackBar_ValueChanged);
+            this.imageRotationTrackBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.imageRotationTrackBar_MouseDown);
+            this.imageRotationTrackBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.imageRotationTrackBar_MouseUp);
             // 
             // groupBoxHoverInfo
             // 

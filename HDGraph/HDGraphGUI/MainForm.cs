@@ -1006,12 +1006,23 @@ namespace HDGraph
 
         private void trackBarTextDensity_MouseDown(object sender, MouseEventArgs e)
         {
-
+            treeGraph1.TextChangeInProgress = true;
         }
 
         private void trackBarTextDensity_MouseUp(object sender, MouseEventArgs e)
         {
+            treeGraph1.TextChangeInProgress = false;
+        }
 
+        private void imageRotationTrackBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            treeGraph1.RotationInProgress = true;
+        }
+
+        private void imageRotationTrackBar_MouseUp(object sender, MouseEventArgs e)
+        {
+            treeGraph1.RotationInProgress = false;
+            //treeGraph1.ForceRefresh();
         }
     }
 }

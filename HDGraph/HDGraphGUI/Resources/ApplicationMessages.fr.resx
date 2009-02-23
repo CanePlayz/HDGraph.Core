@@ -351,4 +351,7 @@ termes.</value>
   <data name="SubDirectoriesCount" xml:space="preserve">
     <value>{0:N0} sous-répertoire(s) listé(s).</value>
   </data>
+  <data name="RotateInProgressByUser" xml:space="preserve">
+    <value>[ Aperçu de la rotation ]</value>
+  </data>
 </root>

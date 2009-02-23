@@ -150,6 +150,17 @@ namespace HDGraph
             get { return backBuffer; }
         }
 
+        /// <summary>
+        /// User is currently rotating the graph : don't rebuild the full image, only rotate the
+        /// image as preview.
+        /// When finished, rebuild the full image with the text.
+        /// </summary>
+        public bool RotationInProgress { get; set; }
+        /// <summary>
+        /// User is currently changing the text property (text size, text density, etc).
+        /// Don't rebuild the full image : just rebuild the text part.
+        /// </summary>
+        public bool TextChangeInProgress { get; set; }
 
         #endregion
 
@@ -221,6 +232,12 @@ namespace HDGraph
                     ImageGraphGenerator generator;
                     if (resizing)
                         backBufferTmp = TransformToWaitImage(this.backBuffer, this.ClientSize, ApplicationMessages.ResizeInProgressByUser);
+                    // Abandonné.
+                    //else if (RotationInProgress)
+                    //{
+                    //    Bitmap image = RotateImage(imageOnlyBackBuffer, drawOptions.ImageRotation);
+                    //    backBufferTmp = TransformToWaitImage(image, this.ClientSize, ApplicationMessages.RotateInProgressByUser);
+                    //}
                     else
                         switch (calculationState)
                         {
@@ -278,6 +295,24 @@ namespace HDGraph
 
         }
 
+        private Bitmap RotateImage(Bitmap oldUnchangedImage, float angle)
+        {
+            //create a new empty bitmap to hold rotated image
+            Bitmap returnBitmap = new Bitmap(oldUnchangedImage.Width, oldUnchangedImage.Height);
+            //make a graphics object from the empty bitmap
+            Graphics g = Graphics.FromImage(returnBitmap);
+            g.Clear(Color.White);
+            //move rotation point to center of image
+            g.TranslateTransform((float)oldUnchangedImage.Width / 2, (float)oldUnchangedImage.Height / 2);
+            //rotate
+            g.RotateTransform(angle);
+            //move image back
+            g.TranslateTransform(-(float)oldUnchangedImage.Width / 2, -(float)oldUnchangedImage.Height / 2);
+            //draw passed in image onto graphics object
+            g.DrawImage(oldUnchangedImage, new Point(0, 0));
+            return returnBitmap;
+        }
+
         private Bitmap TransformToWaitImage(Bitmap originalBitmap, Size clientSize, string message)
         {
             if (originalBitmap == null)
@@ -315,17 +350,28 @@ namespace HDGraph
                 }
                 g.DrawImage(originalBitmap, targetRectangle);
 
-                Brush brush = new SolidBrush(Color.FromArgb(100, 255, 255, 255));
-                g.FillRectangle(brush, 0, 0, newBitmap.Width, newBitmap.Height);
-                brush = new SolidBrush(Color.FromArgb(50, 0, 0, 0));
-                g.FillRectangle(brush, 0, 0, newBitmap.Width, newBitmap.Height);
+                if (Root == null
+                    || (!TextChangeInProgress && Root.HasMoreDirectoriesThan(NB_MAX_OF_SUB_DIR_BEFORE_WAIT_MESSAGE)))
+                {
+                    // Print wait message
+                    Brush brush = new SolidBrush(Color.FromArgb(100, 255, 255, 255));
+                    g.FillRectangle(brush, 0, 0, newBitmap.Width, newBitmap.Height);
+                    brush = new SolidBrush(Color.FromArgb(50, 0, 0, 0));
+                    g.FillRectangle(brush, 0, 0, newBitmap.Width, newBitmap.Height);
 
-                Font font = new Font(System.Drawing.FontFamily.GenericSerif, 24, FontStyle.Bold);
-                ImageGraphGenerator.AfficherTexteAuCentre(g, clientSize, message, font, new SolidBrush(Color.Black), true);
+                    Font font = new Font(System.Drawing.FontFamily.GenericSerif, 24, FontStyle.Bold);
+                    ImageGraphGenerator.AfficherTexteAuCentre(g, clientSize, message, font, new SolidBrush(Color.Black), true);
+                }
 
             }
             return newBitmap;
         }
+
+        /// <summary>
+        /// When the total number of directories on the graph is bigger than this 
+        /// value, a wait message is shown to the user during the graph draw.
+        /// </summary>
+        private const int NB_MAX_OF_SUB_DIR_BEFORE_WAIT_MESSAGE = 400;
 
         private Bitmap ConstruireMulticolorTree(Bitmap newMutlicolorBitmap)
         {
@@ -783,7 +829,7 @@ namespace HDGraph
         }
 
         private DrawOptions lastCompletedGraphOption;
-        Bitmap imageOnlyBackBuffer;
+        private Bitmap imageOnlyBackBuffer;
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -791,11 +837,17 @@ namespace HDGraph
             if (generator == null)
                 return;
             DrawOptions currentOptions = drawOptions.Clone();
-            BiResult<Bitmap, DrawOptions> imageResult = generator.Draw(true, false, currentOptions);
-            imageOnlyBackBuffer = imageResult.Obj1;
-            lastCompletedGraphOption = imageResult.Obj2;
+            lastCompletedGraphOption = null;
+            if (!TextChangeInProgress)
+            {
+                BiResult<Bitmap, DrawOptions> imageResult = generator.Draw(true, false, currentOptions);
+                imageOnlyBackBuffer = imageResult.Obj1;
+                lastCompletedGraphOption = imageResult.Obj2;
+            }
             BiResult<Bitmap, DrawOptions> textResult = generator.Draw(false, true, currentOptions);
             Bitmap textBackBufferTmp = textResult.Obj1;
+            if (lastCompletedGraphOption == null)
+                lastCompletedGraphOption = textResult.Obj2;
             Bitmap backBufferTmp = (Bitmap)imageOnlyBackBuffer.Clone();
             Graphics.FromImage(backBufferTmp).DrawImage(textBackBufferTmp, new Point(0, 0));
             pasNiveau = generator.PasNiveau;

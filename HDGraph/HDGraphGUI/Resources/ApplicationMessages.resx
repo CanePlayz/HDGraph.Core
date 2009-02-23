@@ -353,4 +353,7 @@ knowledge of the CeCILL license and that you accept its terms.</value>
   <data name="SubDirectoriesCount" xml:space="preserve">
     <value>{0:N0} sub folder(s) listed.</value>
   </data>
+  <data name="RotateInProgressByUser" xml:space="preserve">
+    <value>[ Rotation preview ]</value>
+  </data>
 </root>

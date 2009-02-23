@@ -551,6 +551,15 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [ Rotation preview ].
+        /// </summary>
+        internal static string RotateInProgressByUser {
+            get {
+                return ResourceManager.GetString("RotateInProgressByUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scanning .
         /// </summary>
         internal static string Scanning {
