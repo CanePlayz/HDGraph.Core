@@ -24,7 +24,7 @@ namespace HDGraph
             this.labelCopyright.Text = AssemblyCopyright;
             //this.labelCompanyName.Text = AssemblyCompany;
             this.textBoxDescription.Text = HDGTools.resManager.GetString("HdgDescription");
-            this.linkLabelWebsite.Text = "http://hdgraph.sourceforge.net";
+            this.linkLabelWebsite.Text = "http://www.hdgraph.com";
         }
 
         #region Assembly Attribute Accessors
