@@ -631,7 +631,9 @@ namespace HDGraph
         private void checkBoxPrintSizes_CheckedChanged(object sender, EventArgs e)
         {
             treeGraph1.OptionShowSize = checkBoxPrintSizes.Checked;
+            treeGraph1.TextChangeInProgress = true;
             treeGraph1.ForceRefresh();
+            treeGraph1.TextChangeInProgress = false;
             PrintStatus(Resources.ApplicationMessages.GraphRefreshed);
         }
 
