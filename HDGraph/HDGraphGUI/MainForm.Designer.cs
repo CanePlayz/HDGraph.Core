@@ -341,6 +341,9 @@ namespace HDGraph
             this.helpProvider1.SetShowHelp(this.trackBarTextDensity, ((bool)(resources.GetObject("trackBarTextDensity.ShowHelp"))));
             this.trackBarTextDensity.Value = 10;
             this.trackBarTextDensity.ValueChanged += new System.EventHandler(this.trackBarTextDensity_ValueChanged);
+            this.trackBarTextDensity.Scroll += new System.EventHandler(this.trackBarTextDensity_Scroll);
+            this.trackBarTextDensity.MouseDown += new System.Windows.Forms.MouseEventHandler(this.trackBarTextDensity_MouseDown);
+            this.trackBarTextDensity.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBarTextDensity_MouseUp);
             // 
             // numUpDownNbNivxAffich
             // 

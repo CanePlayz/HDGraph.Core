@@ -998,5 +998,20 @@ namespace HDGraph
             treeGraph1.DrawOptions.TextDensity = trackBarTextDensity.Maximum - trackBarTextDensity.Value + trackBarTextDensity.Minimum;
             treeGraph1.ForceRefresh();
         }
+
+        private void trackBarTextDensity_Scroll(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void trackBarTextDensity_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void trackBarTextDensity_MouseUp(object sender, MouseEventArgs e)
+        {
+
+        }
     }
 }

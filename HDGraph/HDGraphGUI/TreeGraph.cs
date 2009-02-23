@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.Drawing.Drawing2D;
 using HDGraph.Resources;
 using HDGraph.DrawEngine;
+using System.Drawing.Imaging;
 
 namespace HDGraph
 {
@@ -211,7 +212,7 @@ namespace HDGraph
                 {
                     // tout premier init.
                     drawOptions.BitmapSize = this.ClientSize;
-                    ImageGraphGenerator generator = new ImageGraphGenerator(this.Root, moteur, drawOptions);
+                    ImageGraphGenerator generator = new ImageGraphGenerator(this.Root, moteur);
                     forceRefreshOnNextRepaint = true;
                     this.backgroundWorker1_DoWork(this, new DoWorkEventArgs(generator));
                 }
@@ -230,7 +231,7 @@ namespace HDGraph
                                 // lancement du calcul
                                 // Calcul
                                 drawOptions.BitmapSize = this.ClientSize;
-                                generator = new ImageGraphGenerator(this.Root, moteur, drawOptions);
+                                generator = new ImageGraphGenerator(this.Root, moteur);
                                 backgroundWorker1.RunWorkerAsync(generator);
                                 break;
                             case CalculationState.InProgress:
@@ -246,7 +247,7 @@ namespace HDGraph
                                     // lancement du calcul
                                     // Calcul
                                     drawOptions.BitmapSize = this.ClientSize;
-                                    generator = new ImageGraphGenerator(this.Root, moteur, drawOptions);
+                                    generator = new ImageGraphGenerator(this.Root, moteur);
                                     backgroundWorker1.RunWorkerAsync(generator);
                                 }
                                 else
@@ -267,7 +268,10 @@ namespace HDGraph
             {
                 // TODO : gérer exception.
                 backBufferTmp = new Bitmap(this.ClientSize.Width, this.ClientSize.Height);
-                Graphics.FromImage(backBufferTmp).DrawString(ex.ToString(), this.ParentForm.Font, new SolidBrush(Color.Black), new RectangleF(0, 0, this.ClientSize.Width, this.ClientSize.Height));
+                Graphics errorGraph = Graphics.FromImage(backBufferTmp);
+                errorGraph.Clear(Color.White);
+                errorGraph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                errorGraph.DrawString(ex.ToString(), this.ParentForm.Font, new SolidBrush(Color.Black), new RectangleF(0, 0, this.ClientSize.Width, this.ClientSize.Height));
             }
             // affichage du buffer
             e.Graphics.DrawImageUnscaled(backBufferTmp, 0, 0);
@@ -778,16 +782,22 @@ namespace HDGraph
             form.Show();
         }
 
-        DrawOptions lastCompletedGraphOption;
+        private DrawOptions lastCompletedGraphOption;
+        Bitmap imageOnlyBackBuffer;
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             ImageGraphGenerator generator = e.Argument as ImageGraphGenerator;
             if (generator == null)
                 return;
-            BiResult<Bitmap, DrawOptions> result = generator.Draw();
-            Bitmap backBufferTmp = result.Obj1;
-            lastCompletedGraphOption = result.Obj2;
+            DrawOptions currentOptions = drawOptions.Clone();
+            BiResult<Bitmap, DrawOptions> imageResult = generator.Draw(true, false, currentOptions);
+            imageOnlyBackBuffer = imageResult.Obj1;
+            lastCompletedGraphOption = imageResult.Obj2;
+            BiResult<Bitmap, DrawOptions> textResult = generator.Draw(false, true, currentOptions);
+            Bitmap textBackBufferTmp = textResult.Obj1;
+            Bitmap backBufferTmp = (Bitmap)imageOnlyBackBuffer.Clone();
+            Graphics.FromImage(backBufferTmp).DrawImage(textBackBufferTmp, new Point(0, 0));
             pasNiveau = generator.PasNiveau;
             backBuffer = backBufferTmp;
         }

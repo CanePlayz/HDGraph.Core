@@ -832,13 +832,13 @@
     <value>True</value>
   </data>
   <data name="labelValeurRotation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 13</value>
+    <value>20, 13</value>
   </data>
   <data name="labelValeurRotation.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="labelValeurRotation.Text" xml:space="preserve">
-    <value>360 °</value>
+    <value>0 °</value>
   </data>
   <data name="&gt;&gt;labelValeurRotation.Name" xml:space="preserve">
     <value>labelValeurRotation</value>
@@ -6714,6 +6714,9 @@
         /////gAAAB//////////////////wP/////////////////////////////////////////A////////
         /////////////////////////////////8A=
 </value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>849, 786</value>

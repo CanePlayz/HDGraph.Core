@@ -33,41 +33,46 @@ namespace HDGraph.DrawEngine
 
         private HDGraphScanEngine moteur;
         private DrawOptions currentWorkingOptions;
-        private DrawOptions notWorkingOptions;
+        private DrawOptions latestUsedOptions;
         private ColorManager colorManager;
         private DirectoryNode rootNode;
 
-        public ImageGraphGenerator(DirectoryNode rootNode, HDGraphScanEngine moteur, DrawOptions options)
+        public ImageGraphGenerator(DirectoryNode rootNode, HDGraphScanEngine moteur)
         {
             this.moteur = moteur;
-            this.notWorkingOptions = options;
-            this.colorManager = new ColorManager(options);
+            this.colorManager = new ColorManager();
             this.rootNode = rootNode;
         }
 
-        internal BiResult<Bitmap, DrawOptions> Draw()
+        internal BiResult<Bitmap, DrawOptions> Draw(bool drawImage, bool drawText, DrawOptions options)
         {
             // only 1 execution allowed at a time. To do multiple executions, build a new 
             // instance of ImageGraphGenerator.
             lock (this)
             {
                 // Création du bitmap buffer
-                currentWorkingOptions = notWorkingOptions.Clone();
+                currentWorkingOptions = options;
+                colorManager.SetOptions(currentWorkingOptions);
                 Bitmap backBufferTmp = new Bitmap(currentWorkingOptions.BitmapSize.Width, currentWorkingOptions.BitmapSize.Height);
                 frontGraph = Graphics.FromImage(backBufferTmp);
 
-                frontGraph.Clear(Color.White);
+                if (!drawText)
+                    frontGraph.Clear(Color.White);
+                else
+                    frontGraph.Clear(Color.Transparent);
                 frontGraph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                frontGraph.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
                 // init des données du calcul
-                pasNiveau = Math.Min(currentWorkingOptions.BitmapSize.Width / (float)currentWorkingOptions.ShownLevelsCount / 2, currentWorkingOptions.BitmapSize.Height / (float)currentWorkingOptions.ShownLevelsCount / 2);
+                pasNiveau = Math.Min(currentWorkingOptions.BitmapSize.Width / (float)currentWorkingOptions.ShownLevelsCount / 2,
+                                     currentWorkingOptions.BitmapSize.Height / (float)currentWorkingOptions.ShownLevelsCount / 2);
                 RectangleF pieRec = new RectangleF(currentWorkingOptions.BitmapSize.Width / 2f,
                                         currentWorkingOptions.BitmapSize.Height / 2f,
                                         0,
                                         0);
 
-                PaintTree(pieRec);
-
+                PaintTree(pieRec, drawImage, drawText);
                 frontGraph.Dispose();
+                latestUsedOptions = currentWorkingOptions;
                 return new BiResult<Bitmap, DrawOptions>()
                         {
                             Obj1 = backBufferTmp,
@@ -79,17 +84,24 @@ namespace HDGraph.DrawEngine
         /// <summary>
         /// Effectue le premier lancement de la méthode PaintTree récursive.
         /// </summary>
-        private void PaintTree(RectangleF pieRec)
+        private void PaintTree(RectangleF pieRec, bool drawImage, bool drawText)
         {
             if (rootNode == null || rootNode.TotalSize == 0)
             {
-                PaintSpecialCase();
+                if (drawText)
+                    PaintSpecialCase();
                 return;
             }
-            printDirNames = false;
-            PaintTree(rootNode, pieRec, currentWorkingOptions.ImageRotation, 360 + currentWorkingOptions.ImageRotation);
-            printDirNames = true;
-            PaintTree(rootNode, pieRec, currentWorkingOptions.ImageRotation, 360 + currentWorkingOptions.ImageRotation);
+            if (drawImage)
+            {
+                printDirNames = false;
+                PaintTree(rootNode, pieRec, currentWorkingOptions.ImageRotation, 360 + currentWorkingOptions.ImageRotation);
+            }
+            if (drawText)
+            {
+                printDirNames = true;
+                PaintTree(rootNode, pieRec, currentWorkingOptions.ImageRotation, 360 + currentWorkingOptions.ImageRotation);
+            }
         }
 
         /// <summary>

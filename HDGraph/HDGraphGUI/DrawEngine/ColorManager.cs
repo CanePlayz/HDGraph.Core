@@ -11,12 +11,16 @@ namespace HDGraph.DrawEngine
 
         #region Ctor
         
-        public ColorManager(DrawOptions options)
+        public ColorManager()
         {
-            this.options = options;
         }
 
         #endregion
+
+        public void SetOptions(DrawOptions options)
+        {
+            this.options = options;
+        }
 
         /// <summary>
         /// Est utilisé dans le cas de la génération aléatoire des couleurs.
