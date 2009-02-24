@@ -231,7 +231,7 @@ namespace HDGraph
                 {
                     ImageGraphGenerator generator;
                     if (resizing)
-                        backBufferTmp = TransformToWaitImage(this.backBuffer, this.ClientSize, ApplicationMessages.ResizeInProgressByUser);
+                        backBufferTmp = TransformToWaitImage(this.backBuffer, this.ClientSize, ApplicationMessages.ResizeInProgressByUser, true);
                     // Abandonné.
                     //else if (RotationInProgress)
                     //{
@@ -243,7 +243,7 @@ namespace HDGraph
                         {
                             case CalculationState.None:
                                 calculationState = CalculationState.InProgress;
-                                backBufferTmp = TransformToWaitImage(this.backBuffer, this.ClientSize, ApplicationMessages.PleaseWaitWhileDrawing);
+                                backBufferTmp = TransformToWaitImage(this.backBuffer, this.ClientSize, ApplicationMessages.PleaseWaitWhileDrawing, false);
 
                                 // lancement du calcul
                                 // Calcul
@@ -252,14 +252,14 @@ namespace HDGraph
                                 backgroundWorker1.RunWorkerAsync(generator);
                                 break;
                             case CalculationState.InProgress:
-                                backBufferTmp = TransformToWaitImage(this.backBuffer, this.ClientSize, ApplicationMessages.PleaseWaitWhileDrawing);
+                                backBufferTmp = TransformToWaitImage(this.backBuffer, this.ClientSize, ApplicationMessages.PleaseWaitWhileDrawing, false);
                                 break;
                             case CalculationState.Finished:
                                 if (backBuffer.Size != this.ClientSize
                                     || !drawOptions.Equals(lastCompletedGraphOption))
                                 {
                                     calculationState = CalculationState.InProgress;
-                                    backBufferTmp = TransformToWaitImage(this.backBuffer, this.ClientSize, ApplicationMessages.PleaseWaitWhileDrawing);
+                                    backBufferTmp = TransformToWaitImage(this.backBuffer, this.ClientSize, ApplicationMessages.PleaseWaitWhileDrawing, false);
 
                                     // lancement du calcul
                                     // Calcul
@@ -313,7 +313,7 @@ namespace HDGraph
             return returnBitmap;
         }
 
-        private Bitmap TransformToWaitImage(Bitmap originalBitmap, Size clientSize, string message)
+        private Bitmap TransformToWaitImage(Bitmap originalBitmap, Size clientSize, string message, bool printMessageForSmallGraph)
         {
             if (originalBitmap == null)
                 return null;
@@ -350,8 +350,11 @@ namespace HDGraph
                 }
                 g.DrawImage(originalBitmap, targetRectangle);
 
-                if (Root != null
-                    && (!TextChangeInProgress && Root.HasMoreDirectoriesThan(NB_MAX_OF_SUB_DIR_BEFORE_WAIT_MESSAGE)))
+                bool printMessage = Root != null
+                                    && !TextChangeInProgress 
+                                    && (Root.HasMoreDirectoriesThan(NB_MAX_OF_SUB_DIR_BEFORE_WAIT_MESSAGE)
+                                        || printMessageForSmallGraph);
+                if (printMessage)
                 {
                     // Print wait message
                     Brush brush = new SolidBrush(Color.FromArgb(100, 255, 255, 255));
@@ -360,7 +363,7 @@ namespace HDGraph
                     g.FillRectangle(brush, 0, 0, newBitmap.Width, newBitmap.Height);
 
                     Font font = new Font(System.Drawing.FontFamily.GenericSerif, 24, FontStyle.Bold);
-                    ImageGraphGenerator.AfficherTexteAuCentre(g, clientSize, message, font, new SolidBrush(Color.Black), true);
+                    ImageGraphGenerator.PrintTextInTheMiddle(g, clientSize, message, font, new SolidBrush(Color.Black), true);
                 }
 
             }
@@ -487,7 +490,7 @@ namespace HDGraph
 
         }
 
-        
+
 
         private void TreeGraph_MouseMove(object sender, MouseEventArgs e)
         {

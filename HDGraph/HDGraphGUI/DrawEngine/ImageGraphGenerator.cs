@@ -117,10 +117,10 @@ namespace HDGraph.DrawEngine
             else
                 text = Resources.ApplicationMessages.GraphGuideLine;
 
-            AfficherTexteAuCentre(frontGraph, currentWorkingOptions.BitmapSize, text, currentWorkingOptions.TextFont, new SolidBrush(Color.Black), false);
+            PrintTextInTheMiddle(frontGraph, currentWorkingOptions.BitmapSize, text, currentWorkingOptions.TextFont, new SolidBrush(Color.Black), false);
         }
 
-        public static void AfficherTexteAuCentre(Graphics graph, Size graphSize, string text, Font font, Brush brush, bool encadrer)
+        public static void PrintTextInTheMiddle(Graphics graph, Size graphSize, string text, Font font, Brush brush, bool encadrer)
         {
             float x = graphSize.Width / 2f;
             float y = graphSize.Height / 2f;
@@ -155,6 +155,7 @@ namespace HDGraph.DrawEngine
                 pen.Dispose();
 
             }
+            rectangle.Inflate(-padding, -padding);
             graph.DrawString(text, font, brush, rectangle);
         }
 

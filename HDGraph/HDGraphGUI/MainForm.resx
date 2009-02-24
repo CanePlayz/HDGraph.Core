@@ -1443,7 +1443,7 @@
     <value>C:</value>
   </data>
   <data name="toolStripShortcuts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
+    <value>248, 0</value>
   </data>
   <data name="toolStripShortcuts.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1649,13 +1649,13 @@
     <value>Help</value>
   </data>
   <data name="toolBarToolStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 0</value>
+    <value>3, 0</value>
   </data>
   <data name="toolBarToolStrip.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="toolBarToolStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 25</value>
+    <value>245, 25</value>
   </data>
   <data name="toolBarToolStrip.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2125,6 +2125,9 @@
   <data name="shortcutsToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Analyse shortcuts (drives)</value>
   </data>
+  <data name="applicationTipsToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="applicationTipsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>209, 22</value>
   </data>
@@ -2363,11 +2366,11 @@
   <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>51</value>
-  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>51</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
