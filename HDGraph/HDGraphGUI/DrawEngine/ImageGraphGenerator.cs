@@ -155,7 +155,7 @@ namespace HDGraph.DrawEngine
                 pen.Dispose();
 
             }
-            rectangle.Inflate(-padding, -padding);
+            rectangle.Inflate(-padding + 1, -padding + 1);
             graph.DrawString(text, font, brush, rectangle);
         }
 
@@ -534,11 +534,11 @@ namespace HDGraph.DrawEngine
             if (this.rootNode == null || this.rootNode.TotalSize == 0)
                 return this.rootNode;
             DirectoryNode foundNode = FindNodeInTree(
-                        this.rootNode, 
+                        this.rootNode,
                         0,
                         0,
                         360,
-                        angle, 
+                        angle,
                         rayon);
             return foundNode;
         }
