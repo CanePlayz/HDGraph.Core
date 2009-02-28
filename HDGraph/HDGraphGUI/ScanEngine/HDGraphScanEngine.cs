@@ -323,8 +323,8 @@ namespace HDGraph
                             dirNode.Parent = dir;
                             dir.Children.Add(dirNode);
                             dir.TotalSize += dirNode.TotalSize;
-                            if (dir.ProfondeurMax < dirNode.ProfondeurMax + 1)
-                                dir.ProfondeurMax = dirNode.ProfondeurMax + 1;
+                            if (dir.DepthMaxLevel < dirNode.DepthMaxLevel + 1)
+                                dir.DepthMaxLevel = dirNode.DepthMaxLevel + 1;
                         }
                         catch (Exception ex)
                         {
@@ -364,10 +364,10 @@ namespace HDGraph
         {
             if (!this.autoRefreshAllowed)
                 return false;
-            if (node.ProfondeurMax >= maxLevel)
+            if (node.DepthMaxLevel >= maxLevel)
                 return true; // rien à faire !
 
-            if (node.ProfondeurMax == 1 && node.ExistsUncalcSubDir)
+            if (node.DepthMaxLevel == 1 && node.ExistsUncalcSubDir)
             {
                 if (node.DirectoryType == SpecialDirTypes.ScanError)
                 {
@@ -422,7 +422,7 @@ namespace HDGraph
                 RafraichirEspaceLibre(node);
                 return true;
             }
-            ConstruireArborescence(node, node.ProfondeurMax - 1);
+            ConstruireArborescence(node, node.DepthMaxLevel - 1);
             if (dirPreviousTotalSize != node.TotalSize)
                 IncrementerTailleParents(node, node.TotalSize - dirPreviousTotalSize);
             RafraichirEspaceLibre(node);

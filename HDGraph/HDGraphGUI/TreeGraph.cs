@@ -588,7 +588,8 @@ namespace HDGraph
         /// <param name="e"></param>
         private void openThisDirectoryInWindowsExplorerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (lastClicNode != null)
+            if (lastClicNode != null
+                && !String.IsNullOrEmpty(lastClicNode.Path))
                 System.Diagnostics.Process.Start(lastClicNode.Path);
         }
 

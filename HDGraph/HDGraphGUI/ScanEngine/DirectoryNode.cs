@@ -163,14 +163,14 @@ namespace HDGraph
             set { children = value; }
         }
 
-        private int profondeurMax = 1;
+        private int depthMaxLevel = 1;
         /// <summary>
         /// Plus grande profondeur calculée sur le répertoire courant.
         /// </summary>
-        public int ProfondeurMax
+        public int DepthMaxLevel // Profondeur max
         {
-            get { return profondeurMax; }
-            set { profondeurMax = value; }
+            get { return depthMaxLevel; }
+            set { depthMaxLevel = value; }
         }
 
         private bool existsUncalcSubdir;
@@ -279,12 +279,15 @@ namespace HDGraph
         {
             // Début élément DirectoryNode
             reader.ReadStartElement();
-
+            if (reader.NodeType == System.Xml.XmlNodeType.EndElement)
+                return;
             name = reader.ReadElementContentAsString();
             totalSize = reader.ReadElementContentAsLong();
             filesSize = reader.ReadElementContentAsLong();
-            DirectoryFilesNumber = reader.ReadContentAsLong();
-            profondeurMax = reader.ReadElementContentAsInt();
+            if (reader.Name == "DirectoryFilesCount") // because v1.2 doesn't contains the "DirectoryFilesCount" value
+                DirectoryFilesNumber = reader.ReadContentAsLong();
+            // here : reader.Name is "ProfondeurMax" (v1.2) or "DepthMaxLevel" (v1.3)
+            depthMaxLevel = reader.ReadElementContentAsInt();
             existsUncalcSubdir = Boolean.Parse(reader.ReadElementContentAsString());
             directoryType = (SpecialDirTypes)Convert.ToInt16(reader.ReadElementContentAsInt());
             // Début élément Children
@@ -321,7 +324,7 @@ namespace HDGraph
             writer.WriteElementString("TotalSize", totalSize.ToString());
             writer.WriteElementString("FilesSize", filesSize.ToString());
             writer.WriteElementString("DirectoryFilesCount", DirectoryFilesNumber.ToString());
-            writer.WriteElementString("ProfondeurMax", profondeurMax.ToString());
+            writer.WriteElementString("DepthMaxLevel", depthMaxLevel.ToString());
             writer.WriteElementString("ExistsUncalcSubdir", existsUncalcSubdir.ToString());
             writer.WriteElementString("DirectoryType", ((short)directoryType).ToString());
             writer.WriteStartElement("Children");

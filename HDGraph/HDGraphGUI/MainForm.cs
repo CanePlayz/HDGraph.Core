@@ -295,9 +295,9 @@ namespace HDGraph
                 if (moteur.Root != null)
                 {
                     comboBoxPath.Text = moteur.Root.Path;
-                    numUpDownNbNivx.Value = moteur.Root.ProfondeurMax;
-                    numUpDownNbNivxAffich.Value = moteur.Root.ProfondeurMax;
-                    treeGraph1.NbNiveaux = moteur.Root.ProfondeurMax;
+                    numUpDownNbNivx.Value = moteur.Root.DepthMaxLevel;
+                    numUpDownNbNivxAffich.Value = moteur.Root.DepthMaxLevel;
+                    treeGraph1.NbNiveaux = moteur.Root.DepthMaxLevel;
                 }
                 treeGraph1.ForceRefresh();
                 UpdateNodeHistory(moteur.Root);
