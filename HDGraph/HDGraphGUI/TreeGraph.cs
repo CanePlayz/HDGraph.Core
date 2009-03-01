@@ -181,8 +181,6 @@ namespace HDGraph
         }
 
 
-        private float pasNiveau;
-
         public enum CalculationState
         {
             None,

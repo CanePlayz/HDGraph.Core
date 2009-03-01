@@ -285,7 +285,7 @@ namespace HDGraph
             totalSize = reader.ReadElementContentAsLong();
             filesSize = reader.ReadElementContentAsLong();
             if (reader.Name == "DirectoryFilesCount") // because v1.2 doesn't contains the "DirectoryFilesCount" value
-                DirectoryFilesNumber = reader.ReadContentAsLong();
+                DirectoryFilesNumber = reader.ReadElementContentAsLong();
             // here : reader.Name is "ProfondeurMax" (v1.2) or "DepthMaxLevel" (v1.3)
             depthMaxLevel = reader.ReadElementContentAsInt();
             existsUncalcSubdir = Boolean.Parse(reader.ReadElementContentAsString());
