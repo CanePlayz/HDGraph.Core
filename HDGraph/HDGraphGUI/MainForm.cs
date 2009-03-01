@@ -984,17 +984,6 @@ namespace HDGraph
             treeGraph1.ShowTooltip = checkBoxShowTooltip.Checked;
         }
 
-
-        private void tipsMonitor1_HideTipsWanted(object sender, EventArgs e)
-        {
-            applicationTipsToolStripMenuItem.Checked = false;
-        }
-
-        private void applicationTipsToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
-        {
-            splitContainerGraphAndTips.Panel2Collapsed = !applicationTipsToolStripMenuItem.Checked;
-        }
-
         private void imageRotationTrackBar_ValueChanged(object sender, EventArgs e)
         {
 
