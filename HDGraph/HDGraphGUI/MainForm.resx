@@ -121,13 +121,13 @@
   <data name="toolStripContainer1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <metadata name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="statusStrip.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
-  </metadata>
+  </data>
   <data name="statusStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="toolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>826, 17</value>
   </data>
@@ -140,9 +140,9 @@
   <data name="statusStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <metadata name="helpProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="helpProvider1.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>227, 17</value>
-  </metadata>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="statusStrip.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -522,9 +522,9 @@
   <data name="checkBoxShowFreeSpace.Text" xml:space="preserve">
     <value>Show free space on root</value>
   </data>
-  <metadata name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="ToolTip.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>131, 17</value>
-  </metadata>
+  </data>
   <data name="checkBoxShowFreeSpace.ToolTip" xml:space="preserve">
     <value>Si le répertoire courant est une racine de disque, affiche l'espace libre de ce disque.</value>
   </data>
@@ -1298,9 +1298,9 @@
   <data name="&gt;&gt;toolStripContainer1.ContentPanel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="toolStripTreeView.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="toolStripTreeView.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
-  </metadata>
+  </data>
   <data name="toolStripTreeView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -1388,9 +1388,6 @@
   <data name="toolStripContainer1.Text" xml:space="preserve">
     <value>toolStripContainer1</value>
   </data>
-  <metadata name="toolBarToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>3, 0</value>
-  </metadata>
   <data name="toolBarToolStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -1570,9 +1567,6 @@
   <data name="helpToolStripButton.Text" xml:space="preserve">
     <value>Help</value>
   </data>
-  <data name="toolBarToolStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>162, 0</value>
-  </data>
   <data name="toolBarToolStrip.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1597,9 +1591,6 @@
   <data name="&gt;&gt;toolBarToolStrip.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="toolStripShortcuts.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>142, 0</value>
-  </metadata>
   <data name="toolStripShortcuts.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -1651,9 +1642,6 @@
   <data name="toolStripSplitButtonModel.Text" xml:space="preserve">
     <value>C:</value>
   </data>
-  <data name="toolStripShortcuts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
   <data name="toolStripShortcuts.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1702,9 +1690,9 @@
   <data name="&gt;&gt;toolStripContainer1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
-  </metadata>
+  </data>
   <data name="newToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -2366,12 +2354,12 @@
   <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  </data>
+  <data name="$this.TrayHeight" type="System.Int32, mscorlib">
     <value>51</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>

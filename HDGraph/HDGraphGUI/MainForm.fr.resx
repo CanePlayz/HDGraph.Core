@@ -124,14 +124,8 @@
   <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>833, 655</value>
   </data>
-  <data name="toolStripShortcuts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 25</value>
-  </data>
   <data name="toolStripShortcuts.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 25</value>
-  </data>
-  <data name="toolBarToolStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
     <value>584, 105</value>
