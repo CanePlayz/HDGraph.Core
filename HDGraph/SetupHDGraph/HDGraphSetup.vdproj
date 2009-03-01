@@ -263,7 +263,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HDGraph"
         "ProductCode" = "8:{8B583E95-EF9E-48D8-AF3B-15FD4F28B682}"
-        "PackageCode" = "8:{D6267D9E-9F09-4A49-A247-0A18C2E62BF0}"
+        "PackageCode" = "8:{457483DE-4724-4FFE-BBCE-4E81F97FDAF1}"
         "UpgradeCode" = "8:{ECE6C8C8-DA14-4318-9557-2B99CB9B9DFF}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
