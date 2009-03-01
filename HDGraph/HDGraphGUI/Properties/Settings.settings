@@ -27,7 +27,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="OptionColorStyle" Type="System.String" Scope="User">
-      <Value Profile="(Default)">RandomNeutral</Value>
+      <Value Profile="(Default)">Linear</Value>
     </Setting>
     <Setting Name="OptionMainWindowOpenState" Type="System.Windows.Forms.FormWindowState" Scope="User">
       <Value Profile="(Default)">Normal</Value>
