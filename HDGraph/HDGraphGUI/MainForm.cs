@@ -86,7 +86,7 @@ namespace HDGraph
         public MainForm()
         {
             bool changeLangIsSuccess = LoadLanguage();
-
+            this.Icon = Properties.Resources.HDGraph_ico;
             // LeResourceManager prend en paramètre : nom_du_namespace.nom_de_la_ressource_principale
             resManager = new System.Resources.ResourceManager(this.GetType().Assembly.GetName().Name + ".Resources.ApplicationMessages", this.GetType().Assembly);
             HDGTools.resManager = resManager;

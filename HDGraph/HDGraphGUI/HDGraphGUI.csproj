@@ -350,10 +350,9 @@
     <Content Include="Doc\HDGraph-en.chm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\HDGraph_ico.ico" />
     <None Include="Properties\DataSources\HDGraph.DrawEngine.DrawOptions.datasource" />
     <None Include="Properties\DataSources\HDGraph.Engine.ScanError.datasource" />
-    <None Include="Resources\Tip1_Screenshot_rightClick_EN.PNG" />
-    <None Include="Resources\Tip1_Screenshot_rightClick.PNG" />
     <None Include="Properties\DataSources\HDGraph.UserControls.ApplicationTip.datasource" />
     <None Include="Resources\Warning.png" />
     <None Include="Properties\DataSources\DirectoryNode.datasource" />

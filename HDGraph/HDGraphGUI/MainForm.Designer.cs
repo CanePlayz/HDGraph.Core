@@ -193,8 +193,8 @@ namespace HDGraph
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripShortcuts);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolBarToolStrip);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripShortcuts);
             this.helpProvider1.SetShowHelp(this.toolStripContainer1.TopToolStripPanel, ((bool)(resources.GetObject("toolStripContainer1.TopToolStripPanel.ShowHelp"))));
             // 
             // statusStrip
