@@ -257,7 +257,7 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HDGraph"
-        "ProductCode" = "8:{2130FBA5-4CD7-4249-BFCD-F7100FC36CC2}"
+        "ProductCode" = "8:{8B583E95-EF9E-48D8-AF3B-15FD4F28B682}"
         "PackageCode" = "8:{49540CA6-E3B7-421A-A89F-03FC0ED8C51E}"
         "UpgradeCode" = "8:{E822B8A1-2386-4F9B-930E-7D864E9F1BD7}"
         "RestartWWWService" = "11:FALSE"
@@ -853,7 +853,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_9521C8B23FA5402F92BA455C92D7D38C"
             {
-            "SourcePath" = "8:..\\HDGraphGUI\\obj\\Release\\HDGraph.exe"
+            "SourcePath" = "8:..\\HDGraphGUI\\obj\\Debug\\HDGraph.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_67F2F62DCE714F968B6CE3A07D0B7792"
