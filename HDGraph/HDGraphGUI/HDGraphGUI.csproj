@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HDGraph</RootNamespace>
     <AssemblyName>HDGraph</AssemblyName>
-    <ApplicationIcon>HDGraph.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\HDGraph_ico.ico</ApplicationIcon>
     <StartupObject>HDGraph.Program</StartupObject>
     <TargetZone>LocalIntranet</TargetZone>
     <GenerateManifests>false</GenerateManifests>
