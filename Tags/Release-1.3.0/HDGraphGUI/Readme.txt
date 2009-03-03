@@ -1,0 +1,90 @@
+HDGraph (http://hdgraph.sourceforge.net)
+=========================================
+
+[French version at the bottom !]
+[Version Française plus bas !]
+
+
+Minimum requirements
+======================================================
+
+- Windows XP or Windows Vista
+- For Windows XP, the .NET Framework 2.0 (HDGraph Setup wil propose you to download it, if it's not installed).
+
+	
+Install:
+======================================================
+
+- Make sure your computer satisfy the minimum requirements.
+- Start the installation file (setup file).
+- Follow the instructions.
+	
+
+Uninstall:
+======================================================
+
+- Close all opened HDGraph windows.
+- Open "Add/Remove programs" from the Configuration Panel
+- Select HDGraph in the list and clic "Remove".
+
+
+Known bugs and limitations:
+======================================================
+
+- HDGraph is unable to detect Hard Links.
+- HDGraph is unable to scan files and directories which full path is greater thant 255 characters.
+
+
+Contacts:
+======================================================
+
+Last informations about HDGraph and its contact informations can be found at :
+http://hdgraph.sourceforge.net
+
+	
+	
+	
+
+
+	
+
+/*****************************************************
+*
+*				VERSION FRANCAISE
+*
+******************************************************/
+
+
+	
+Configuration requise
+======================================================
+
+- Windows XP ou  Windows Vista
+- Pour Windows XP, le .NET Framework 2.0 (Le Setup HDGraph vous proposera de le télécharger automatiquement si vous ne l'avez pas).
+
+
+Installation:
+======================================================
+
+- Assurez vous que votre ordinateur possède au moins la configuration requise pour installer le logiciel.
+- Lancez le fichier d'installation.
+- Ensuite suivez les instructions indiquées à l'écran.
+
+Désinstallation:
+======================================================
+
+- Fermez toutes les fenêtres HDGraph ouvertes.
+- Ouvrez "Ajout/Suppression de programmes" dans le panneau de configuration
+- Séléectionnez HDGraph dans la liste puis cliquez sur "Supprimer".
+
+Bug connus et limitations :
+======================================================
+
+- HDGraph est incapable de détecter les liens physiques (Hard Links).
+- HDGraph est incapable de scaner les fichiers et répetoires dont le chemin excède 255 caractères.
+
+Contacts:
+======================================================
+
+Les dernières informations à propos de HDGraph sont disponibles sur le site internet: 
+http://hdgraph.sourceforge.net
