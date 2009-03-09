@@ -44,17 +44,17 @@ namespace HDGraph
         /// <summary>
         /// Moteur de scan.
         /// </summary>
-        HDGraphScanEngine moteur;
+        private HDGraphScanEngine moteur;
 
         /// <summary>
         /// Liste des nodes parcours, pour les boutons "back" et "next".
         /// </summary>
-        List<DirectoryNode> graphViewHistory = new List<DirectoryNode>();
+        private List<DirectoryNode> graphViewHistory = new List<DirectoryNode>();
 
         /// <summary>
         /// Index du node (de la liste graphViewHistory) qui actuellement affiché
         /// </summary>
-        int currentNodeIndex = 0;
+        private int currentNodeIndex = 0;
 
         /// <summary>
         /// Fichier dans lequel stocker l'image du graph lorsque le scan est fini (param de ligne de commande).
@@ -811,7 +811,7 @@ namespace HDGraph
                     if (outputImgFilePath != null
                         && outputImgFilePath.Length > 0)
                     {
-                        ImageGraphGenerator generator = new ImageGraphGenerator(moteur.Root, moteur);
+                        ImageGraphGeneratorBase generator = ImageGraphGeneratorFactory.CreateGenerator(treeGraph1.DrawOptions.DrawStyle, moteur.Root, moteur);
                         DrawOptions outputDrawOptions = treeGraph1.DrawOptions.Clone();
                         if (OutputImgSize.HasValue)
                             outputDrawOptions.BitmapSize = OutputImgSize.Value;
@@ -1000,7 +1000,7 @@ namespace HDGraph
 
         private void trackBarTextDensity_Scroll(object sender, EventArgs e)
         {
-            
+
         }
 
         private void trackBarTextDensity_MouseDown(object sender, MouseEventArgs e)
@@ -1022,6 +1022,12 @@ namespace HDGraph
         {
             treeGraph1.RotationInProgress = false;
             //treeGraph1.ForceRefresh();
+        }
+
+        private void radioButtonEngineCircular_CheckedChanged(object sender, EventArgs e)
+        {
+            treeGraph1.DrawOptions.DrawStyle = (radioButtonEngineCircular.Checked) ? DrawType.Circular : DrawType.Rectangular;
+            treeGraph1.ForceRefresh();
         }
     }
 }

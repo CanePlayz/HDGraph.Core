@@ -25,6 +25,9 @@ namespace HDGraph.DrawEngine
         /// </summary>
         public int TextDensity { get; set; }
 
+        public DrawType DrawStyle { get; set; }
+
+
         public DrawOptions Clone()
         {
             return (DrawOptions)this.MemberwiseClone();

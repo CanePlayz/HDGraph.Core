@@ -139,6 +139,8 @@ namespace HDGraph
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
+            this.radioButtonEngineCircular = new System.Windows.Forms.RadioButton();
+            this.radioButtonEngineRec = new System.Windows.Forms.RadioButton();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.LeftToolStripPanel.SuspendLayout();
@@ -285,6 +287,8 @@ namespace HDGraph
             // groupBox1
             // 
             resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.radioButtonEngineRec);
+            this.groupBox1.Controls.Add(this.radioButtonEngineCircular);
             this.groupBox1.Controls.Add(this.checkBoxShowTooltip);
             this.groupBox1.Controls.Add(this.checkBoxShowFreeSpace);
             this.groupBox1.Controls.Add(this.checkBoxPrintSizes);
@@ -1036,6 +1040,22 @@ namespace HDGraph
             this.helpToolStripButton.Name = "helpToolStripButton";
             this.helpToolStripButton.Click += new System.EventHandler(this.contentsToolStripMenuItem_Click);
             // 
+            // radioButtonEngineCircular
+            // 
+            resources.ApplyResources(this.radioButtonEngineCircular, "radioButtonEngineCircular");
+            this.radioButtonEngineCircular.Checked = true;
+            this.radioButtonEngineCircular.Name = "radioButtonEngineCircular";
+            this.radioButtonEngineCircular.TabStop = true;
+            this.radioButtonEngineCircular.UseVisualStyleBackColor = true;
+            this.radioButtonEngineCircular.CheckedChanged += new System.EventHandler(this.radioButtonEngineCircular_CheckedChanged);
+            // 
+            // radioButtonEngineRec
+            // 
+            resources.ApplyResources(this.radioButtonEngineRec, "radioButtonEngineRec");
+            this.radioButtonEngineRec.Name = "radioButtonEngineRec";
+            this.helpProvider1.SetShowHelp(this.radioButtonEngineRec, ((bool)(resources.GetObject("radioButtonEngineRec.ShowHelp"))));
+            this.radioButtonEngineRec.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AcceptButton = this.buttonScan;
@@ -1198,6 +1218,8 @@ namespace HDGraph
         private System.Windows.Forms.TrackBar imageRotationTrackBar;
         private System.Windows.Forms.TrackBar trackBarTextDensity;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.RadioButton radioButtonEngineRec;
+        private System.Windows.Forms.RadioButton radioButtonEngineCircular;
     }
 }
 

@@ -221,13 +221,13 @@ namespace HDGraph
                 {
                     // tout premier init.
                     drawOptions.BitmapSize = this.ClientSize;
-                    ImageGraphGenerator generator = new ImageGraphGenerator(this.Root, moteur);
+                    ImageGraphGeneratorBase generator = ImageGraphGeneratorFactory.CreateGenerator(drawOptions.DrawStyle, this.Root, moteur);
                     forceRefreshOnNextRepaint = true;
                     this.backgroundWorker1_DoWork(this, new DoWorkEventArgs(generator));
                 }
                 if (sizeChanged || forceRefreshOnNextRepaint)
                 {
-                    ImageGraphGenerator generator;
+                    ImageGraphGeneratorBase generator;
                     if (resizing)
                         backBufferTmp = TransformToWaitImage(this.backBuffer, this.ClientSize, ApplicationMessages.ResizeInProgressByUser, true);
                     // Abandonné.
@@ -246,7 +246,7 @@ namespace HDGraph
                                 // lancement du calcul
                                 // Calcul
                                 drawOptions.BitmapSize = this.ClientSize;
-                                generator = new ImageGraphGenerator(this.Root, moteur);
+                                generator = ImageGraphGeneratorFactory.CreateGenerator(drawOptions.DrawStyle, this.Root, moteur);
                                 backgroundWorker1.RunWorkerAsync(generator);
                                 break;
                             case CalculationState.InProgress:
@@ -262,7 +262,7 @@ namespace HDGraph
                                     // lancement du calcul
                                     // Calcul
                                     drawOptions.BitmapSize = this.ClientSize;
-                                    generator = new ImageGraphGenerator(this.Root, moteur);
+                                    generator = ImageGraphGeneratorFactory.CreateGenerator(drawOptions.DrawStyle, this.Root, moteur);
                                     backgroundWorker1.RunWorkerAsync(generator);
                                 }
                                 else
@@ -361,7 +361,7 @@ namespace HDGraph
                     g.FillRectangle(brush, 0, 0, newBitmap.Width, newBitmap.Height);
 
                     Font font = new Font(System.Drawing.FontFamily.GenericSerif, 24, FontStyle.Bold);
-                    ImageGraphGenerator.PrintTextInTheMiddle(g, clientSize, message, font, new SolidBrush(Color.Black), true);
+                    DrawHelper.PrintTextInTheMiddle(g, clientSize, message, font, new SolidBrush(Color.Black), true);
                 }
 
             }
@@ -769,11 +769,11 @@ namespace HDGraph
 
         private DrawOptions lastCompletedGraphOption;
         private Bitmap imageOnlyBackBuffer;
-        private ImageGraphGenerator lastGeneratorCompleted;
+        private ImageGraphGeneratorBase lastGeneratorCompleted;
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            ImageGraphGenerator generator = e.Argument as ImageGraphGenerator;
+            ImageGraphGeneratorBase generator = e.Argument as ImageGraphGeneratorBase;
             if (generator == null)
                 return;
             DrawOptions currentOptions = drawOptions.Clone();

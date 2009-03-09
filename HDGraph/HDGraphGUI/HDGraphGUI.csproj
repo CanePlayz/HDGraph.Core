@@ -39,6 +39,22 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -69,8 +85,12 @@
       <DependentUpon>DirectoryDetailUC.cs</DependentUpon>
     </Compile>
     <Compile Include="DrawEngine\ColorManager.cs" />
+    <Compile Include="DrawEngine\DrawHelper.cs" />
     <Compile Include="DrawEngine\DrawOptions.cs" />
+    <Compile Include="DrawEngine\ImageGraphGeneratorBase.cs" />
+    <Compile Include="DrawEngine\ImageGraphGeneratorFactory.cs" />
     <Compile Include="DrawEngine\MathHelper.cs" />
+    <Compile Include="DrawEngine\RectangularImageGraphGenerator.cs" />
     <Compile Include="ScanEngine\DirectoryNode.cs" />
     <Compile Include="DirNodeSortableBindingList.cs" />
     <Compile Include="ScanEngine\JunctionPoint.cs" />
@@ -86,7 +106,7 @@
     <Compile Include="ExternalTools\TextAndImageColumn.cs" />
     <Compile Include="FatalHdgraphException.cs" />
     <Compile Include="HDGTools.cs" />
-    <Compile Include="DrawEngine\ImageGraphGenerator.cs" />
+    <Compile Include="DrawEngine\CircularImageGraphGenerator.cs" />
     <Compile Include="LanguageForm.cs">
       <SubType>Form</SubType>
     </Compile>

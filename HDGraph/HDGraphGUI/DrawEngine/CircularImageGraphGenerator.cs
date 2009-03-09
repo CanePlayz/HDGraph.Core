@@ -6,18 +6,12 @@ using System.Drawing.Drawing2D;
 
 namespace HDGraph.DrawEngine
 {
-    internal class ImageGraphGenerator
+    internal class CircularImageGraphGenerator : ImageGraphGeneratorBase
     {
         /// <summary>
         /// Epaisseur d'un niveau sur le graph.
         /// </summary>
         private float pasNiveau;
-
-        public float PasNiveau
-        {
-            get { return pasNiveau; }
-            set { pasNiveau = value; }
-        }
 
         /// <summary>
         /// Graph associé au bitmap buffer
@@ -37,14 +31,14 @@ namespace HDGraph.DrawEngine
         private ColorManager colorManager;
         private DirectoryNode rootNode;
 
-        public ImageGraphGenerator(DirectoryNode rootNode, HDGraphScanEngine moteur)
+        public CircularImageGraphGenerator(DirectoryNode rootNode, HDGraphScanEngine moteur)
         {
             this.moteur = moteur;
             this.colorManager = new ColorManager();
             this.rootNode = rootNode;
         }
 
-        internal BiResult<Bitmap, DrawOptions> Draw(bool drawImage, bool drawText, DrawOptions options)
+        public override BiResult<Bitmap, DrawOptions> Draw(bool drawImage, bool drawText, DrawOptions options)
         {
             // only 1 execution allowed at a time. To do multiple executions, build a new 
             // instance of ImageGraphGenerator.
@@ -117,48 +111,10 @@ namespace HDGraph.DrawEngine
             else
                 text = Resources.ApplicationMessages.GraphGuideLine;
 
-            PrintTextInTheMiddle(frontGraph, currentWorkingOptions.BitmapSize, text, currentWorkingOptions.TextFont, new SolidBrush(Color.Black), false);
+            DrawHelper.PrintTextInTheMiddle(frontGraph, currentWorkingOptions.BitmapSize, text, currentWorkingOptions.TextFont, new SolidBrush(Color.Black), false);
         }
 
-        public static void PrintTextInTheMiddle(Graphics graph, Size graphSize, string text, Font font, Brush brush, bool encadrer)
-        {
-            float x = graphSize.Width / 2f;
-            float y = graphSize.Height / 2f;
-
-            SizeF sizeTextName = graph.MeasureString(text, font, graphSize.Width);
-            x -= sizeTextName.Width / 2f;
-            y -= sizeTextName.Height / 2f;
-
-            int padding = 5; // 5 pixels
-            // background Rectangle
-            Rectangle rectangle = new Rectangle(Convert.ToInt32(x) - padding,
-                              Convert.ToInt32(y) - padding,
-                              Convert.ToInt32(sizeTextName.Width) + 2 * padding,
-                              Convert.ToInt32(sizeTextName.Height) + 2 * padding);
-            if (encadrer)
-            {
-                // Create a new pen.
-                Pen pen = new Pen(Brushes.Gray);
-
-                // Set the pen's width.
-                pen.Width = 8;
-
-                // Set the LineJoin property.
-                pen.LineJoin = System.Drawing.Drawing2D.LineJoin.Round;
-
-
-                // Draw a rectangle.
-                graph.FillRectangle(new SolidBrush(Color.FromArgb(150, 255, 255, 255)), rectangle);
-                graph.DrawRectangle(pen, rectangle);
-
-                //Dispose of the pen.
-                pen.Dispose();
-
-            }
-            rectangle.Inflate(-padding + 1, -padding + 1);
-            graph.DrawString(text, font, brush, rectangle);
-        }
-
+        
         /// <summary>
         /// Procédure récursive pour graphiquer les arcs de cercle. Graphique de l'extérieur vers l'intérieur.
         /// </summary>
@@ -509,7 +465,7 @@ namespace HDGraph.DrawEngine
         /// </summary>
         /// <param name="curseurPos">Position du curseur. Doit être relative au contrôle, pas à l'écran ou à la form !</param>
         /// <returns></returns>
-        internal DirectoryNode FindNodeByCursorPosition(Point curseurPos)
+        public override DirectoryNode FindNodeByCursorPosition(Point curseurPos)
         {
             // On a les coordonnées du curseur dans le controle.
             // Il faut faire un changement de référentiel pour avoir les coordonnées vis à vis de l'origine (le centre des cercles).
