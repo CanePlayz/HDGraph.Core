@@ -4,6 +4,18 @@ HDGraph ChangeLog (http://hdgraph.sourceforge.net)
 [French version at the bottom !]
 [Version Française plus bas !]
 
+Version 1.4.0
+======================================================
+Added:
+	- Experimental display style : "Bar style"
+	- TODO : New scan engine : faster and more accurate (up to 6 times faster)
+Improved: 
+	- TODO.
+Fixed:
+	- Bug on "Text Density" : value loaded from a previous saved state was wrong.
+	- Some minor bugs
+
+
 Version 1.3.0
 ======================================================
 Added:

@@ -25,13 +25,13 @@ namespace HDGraph.DrawEngine
         /// </summary>
         private bool printDirNames = false;
 
-        private HDGraphScanEngine moteur;
+        private HDGraphScanEngineBase moteur;
         private DrawOptions currentWorkingOptions;
         private DrawOptions latestUsedOptions;
         private ColorManager colorManager;
         private DirectoryNode rootNode;
 
-        public CircularImageGraphGenerator(DirectoryNode rootNode, HDGraphScanEngine moteur)
+        public CircularImageGraphGenerator(DirectoryNode rootNode, HDGraphScanEngineBase moteur)
         {
             this.moteur = moteur;
             this.colorManager = new ColorManager();

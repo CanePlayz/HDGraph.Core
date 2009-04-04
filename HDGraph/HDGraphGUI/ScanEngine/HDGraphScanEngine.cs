@@ -9,7 +9,7 @@ using HDGraph.ScanEngine;
 
 namespace HDGraph
 {
-    public class HDGraphScanEngine : IXmlSerializable
+    public abstract class HDGraphScanEngineBase : IXmlSerializable
     {
         #region Vatiables et propriétés
 
@@ -17,7 +17,7 @@ namespace HDGraph
         /// <summary>
         /// Cache messages localisés
         /// </summary>
-        private static string scanningMessage = null;
+        protected static string scanningMessage = null;
 
         #endregion
 
@@ -55,7 +55,7 @@ namespace HDGraph
             set { printInfoDeleg = value; }
         }
 
-        private bool pleaseCancelCurrentWork = false;
+        protected bool pleaseCancelCurrentWork = false;
         /// <summary>
         /// Booléen indiquant s'il faut stopper l'analyse en cours.
         /// </summary>
@@ -65,7 +65,7 @@ namespace HDGraph
             set { pleaseCancelCurrentWork = value; }
         }
 
-        private bool workCanceled = false;
+        protected bool workCanceled = false;
         /// <summary>
         /// Indique si la précédente analyse a été stoppée en 
         /// raison d'une demande de l'utilisateur.
@@ -102,7 +102,7 @@ namespace HDGraph
 
         #region Contructeur(s)
 
-        public HDGraphScanEngine()
+        public HDGraphScanEngineBase()
         {
             if (scanningMessage == null)
                 scanningMessage = ApplicationMessages.Scanning;
@@ -208,139 +208,9 @@ namespace HDGraph
             return rootNodeIsDrive;
         }
 
-        /// <summary>
-        /// Méthode récursive construisant l'arborescence de DirectoryNode.
-        /// </summary>
-        /// <param name="dir"></param>
-        /// <param name="maxLevel"></param>
-        private void ConstruireArborescence(DirectoryNode dir, int maxLevel)
-        {
-            if (pleaseCancelCurrentWork)
-            {
-                workCanceled = true;
-                return;
-            }
-            try
-            {
-                if (printInfoDeleg != null)
-                    printInfoDeleg(scanningMessage + dir.Path + "...");
-                DirectoryInfo dirInfo = new DirectoryInfo(dir.Path);
-                if (maxLevel <= 0)
-                {
-                    dir.ExistsUncalcSubDir = (dirInfo.GetDirectories().Length > 0);
-                    FileInfo[] fis = dirInfo.GetFiles("*", SearchOption.AllDirectories);
-                    dir.DirectoryFilesNumber = fis.LongLength;
-                    foreach (FileInfo fi in fis)
-                    {
-                        if (pleaseCancelCurrentWork)
-                        {
-                            workCanceled = true;
-                            return;
-                        }
-                        try
-                        {
-                            // TODO : détecter hardlink/junction points.
-                            //if ((fi.Attributes & FileAttributes.ReparsePoint) == FileAttributes.ReparsePoint)
-                            //{
-                            //    string path = JunctionPoint.GetTargetOrNull(fi.FullName);
-                            //    // TODO
-                            //}
-                            dir.TotalSize += fi.Length;
-                        }
-                        catch (Exception ex)
-                        {
-                            // Une erreur de type FileNotFoundException peut survenir.
-                            // Elle peut être due à une PathTooLongException.
-                            Trace.TraceError("Error during file analysis (" + dir.Path +
-                                "\\" + fi.Name + "). Details: " + HDGTools.PrintError(ex));
-                            ErrorList.Add(new ScanError()
-                            {
-                                FileOrDirPath = fi.FullName,
-                                Exception = ex
-                            });
-                        }
-                    }
-                }
-                else
-                {
-                    // Add file sizes.
-                    FileInfo[] fis = dirInfo.GetFiles();
-                    dir.DirectoryFilesNumber = fis.LongLength;
-                    foreach (FileInfo fi in fis)
-                    {
-                        if (pleaseCancelCurrentWork)
-                        {
-                            workCanceled = true;
-                            return;
-                        }
-                        try
-                        {
-                            // TODO : détecter hardlink/junction points.
-                            //if ((fi.Attributes & FileAttributes.ReparsePoint) == FileAttributes.ReparsePoint)
-                            //{
-                            //    string path = JunctionPoint.GetTargetOrNull(fi.FullName);
-                            //    // TODO
-                            //}
-                            dir.FilesSize += fi.Length;
-                        }
-                        catch (Exception ex)
-                        {
-                            // Une erreur de type FileNotFoundException peut survenir.
-                            // Elle peut être due à une PathTooLongException.
-                            Trace.TraceError("Error during file analysis (" + dir.Path +
-                                "\\" + fi.Name + "). Details: " + HDGTools.PrintError(ex));
-                            ErrorList.Add(new ScanError()
-                            {
-                                FileOrDirPath = fi.FullName,
-                                Exception = ex
-                            });
+        protected abstract void ConstruireArborescence(DirectoryNode dir, int maxLevel);
 
-                        }
-                    }
-                    dir.TotalSize += dir.FilesSize;
-
-                    // Add subdirectory sizes.
-                    DirectoryInfo[] dis = dirInfo.GetDirectories();
-                    foreach (DirectoryInfo di in dis)
-                    {
-                        if (pleaseCancelCurrentWork)
-                        {
-                            workCanceled = true;
-                            return;
-                        }
-                        DirectoryNode dirNode = new DirectoryNode(di.FullName);
-                        try
-                        {
-                            
-                            // TODO : détecter hardlink/junction points.
-                            //if ((di.Attributes & FileAttributes.ReparsePoint) == FileAttributes.ReparsePoint)
-                            //{
-                            //    string path = JunctionPoint.GetTargetOrNull(di.FullName);
-                            //    // TODO
-                            //}
-                            
-                            ConstruireArborescence(dirNode, maxLevel - 1);
-                            dirNode.Parent = dir;
-                            dir.Children.Add(dirNode);
-                            dir.TotalSize += dirNode.TotalSize;
-                            if (dir.DepthMaxLevel < dirNode.DepthMaxLevel + 1)
-                                dir.DepthMaxLevel = dirNode.DepthMaxLevel + 1;
-                        }
-                        catch (Exception ex)
-                        {
-                            HandleAnalysisException(dirNode, ex);
-                        }
-                    }
-                    dir.ExistsUncalcSubDir = false;
-                }
-            }
-            catch (Exception ex)
-            {
-                HandleAnalysisException(dir, ex);
-            }
-        }
-
-        private void HandleAnalysisException(DirectoryNode dir, Exception ex)
+        protected void HandleAnalysisException(DirectoryNode dir, Exception ex)
         {
             Trace.TraceError("Error during folder analysis (" + dir.Path + "). Folder skiped. Details: " + HDGTools.PrintError(ex));
             dir.Name = String.Format(ApplicationMessages.ErrorLoading, dir.Name, ex.Message);

@@ -93,6 +93,7 @@
     <Compile Include="DrawEngine\RectangularImageGraphGenerator.cs" />
     <Compile Include="ScanEngine\DirectoryNode.cs" />
     <Compile Include="DirNodeSortableBindingList.cs" />
+    <Compile Include="ScanEngine\ExtendedFileInfo.cs" />
     <Compile Include="ScanEngine\JunctionPoint.cs" />
     <Compile Include="ScanEngine\ScanError.cs" />
     <Compile Include="Enums.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="OptionsForm.Designer.cs">
       <DependentUpon>OptionsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScanEngine\SimpleFileSystemScanEngine.cs" />
     <Compile Include="UserControls\OptionsUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

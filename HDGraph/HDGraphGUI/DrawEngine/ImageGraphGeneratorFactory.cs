@@ -12,7 +12,7 @@ namespace HDGraph.DrawEngine
 
     public class ImageGraphGeneratorFactory
     {
-        public static ImageGraphGeneratorBase CreateGenerator(DrawType type, DirectoryNode node, HDGraphScanEngine engine)
+        public static ImageGraphGeneratorBase CreateGenerator(DrawType type, DirectoryNode node, HDGraphScanEngineBase engine)
         {
             switch (type)
             {
@@ -22,7 +22,6 @@ namespace HDGraph.DrawEngine
                     return new RectangularImageGraphGenerator(node, engine);
                 default:
                     throw new NotSupportedException();
-                    break;
             }
         }
     }

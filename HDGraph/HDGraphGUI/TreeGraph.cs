@@ -31,9 +31,9 @@ namespace HDGraph
         /// <summary>
         /// Moteur qui a la charge de conserver l'intégrité de l'arborescence DirectoryNode.
         /// </summary>
-        private HDGraphScanEngine moteur;
+        private HDGraphScanEngineBase moteur;
 
-        public HDGraphScanEngine Moteur
+        public HDGraphScanEngineBase Moteur
         {
             get { return moteur; }
             set

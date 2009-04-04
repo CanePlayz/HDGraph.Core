@@ -13,6 +13,7 @@ using System.IO;
 using System.Diagnostics;
 using WilsonProgramming;
 using HDGraph.DrawEngine;
+using HDGraph.ScanEngine;
 
 namespace HDGraph
 {
@@ -44,7 +45,7 @@ namespace HDGraph
         /// <summary>
         /// Moteur de scan.
         /// </summary>
-        private HDGraphScanEngine moteur;
+        private HDGraphScanEngineBase moteur;
 
         /// <summary>
         /// Liste des nodes parcours, pour les boutons "back" et "next".
@@ -90,7 +91,7 @@ namespace HDGraph
             // LeResourceManager prend en paramètre : nom_du_namespace.nom_de_la_ressource_principale
             resManager = new System.Resources.ResourceManager(this.GetType().Assembly.GetName().Name + ".Resources.ApplicationMessages", this.GetType().Assembly);
             HDGTools.resManager = resManager;
-            moteur = new HDGraphScanEngine();
+            moteur = new SimpleFileSystemScanEngine();
             moteur.ShowDiskFreeSpace = Properties.Settings.Default.OptionShowFreeSpace;
             if (!changeLangIsSuccess)
                 MessageBox.Show(resManager.GetString("ErrorInConfigLanguage"),
@@ -103,7 +104,7 @@ namespace HDGraph
             this.Text = AboutBox.AssemblyTitle;
             this.WindowState = HDGraph.Properties.Settings.Default.OptionMainWindowOpenState;
             this.ClientSize = HDGraph.Properties.Settings.Default.OptionMainWindowSize;
-            treeGraph1.DrawOptions.TextDensity = trackBarTextDensity.Value;
+            UpdateOptionTextDensityFromTrackBar();
             treeGraph1.DrawOptions.ImageRotation = imageRotationTrackBar.Value;
 
             EnableHelpIfAvailable();
@@ -284,10 +285,10 @@ namespace HDGraph
             try
             {
                 XmlReader reader = new XmlTextReader(fileName);
-                XmlSerializer serializer = new XmlSerializer(typeof(HDGraphScanEngine));
-                moteur = (HDGraphScanEngine)serializer.Deserialize(reader);
+                XmlSerializer serializer = new XmlSerializer(typeof(HDGraphScanEngineBase));
+                moteur = (HDGraphScanEngineBase)serializer.Deserialize(reader);
                 reader.Close();
-                moteur.PrintInfoDeleg = new HDGraphScanEngine.PrintInfoDelegate(PrintStatus);
+                moteur.PrintInfoDeleg = new HDGraphScanEngineBase.PrintInfoDelegate(PrintStatus);
                 treeGraph1.Moteur = moteur;
                 treeGraph1.UpdateHoverNode = new TreeGraph.NodeNotificationDelegate(PrintNodeHoverCursor);
                 treeGraph1.NotifyNewRootNode = new TreeGraph.NodeNotificationDelegate(UpdateCurrentNodeRoot);
@@ -343,7 +344,7 @@ namespace HDGraph
         private void SaveGraphToFile(string fileName)
         {
             XmlWriter writer = new XmlTextWriter(fileName, Encoding.Default);
-            XmlSerializer serializer = new XmlSerializer(typeof(HDGraphScanEngine));
+            XmlSerializer serializer = new XmlSerializer(typeof(HDGraphScanEngineBase));
             serializer.Serialize(writer, moteur);
             writer.Close();
         }
@@ -689,7 +690,7 @@ namespace HDGraph
             // // moteur.ConstruireArborescence(comboBoxPath.Text, nbNiveaux); // OBSOLETE
             // // moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(WaitForm.ShowWaitForm); // OBSOLETE
 
-            moteur.PrintInfoDeleg = new HDGraphScanEngine.PrintInfoDelegate(PrintStatus);
+            moteur.PrintInfoDeleg = new HDGraphScanEngineBase.PrintInfoDelegate(PrintStatus);
             numUpDownNbNivxAffich.Value = nbNiveaux;
             treeGraph1.NbNiveaux = nbNiveaux;
             treeGraph1.Moteur = moteur;
@@ -994,8 +995,14 @@ namespace HDGraph
 
         private void trackBarTextDensity_ValueChanged(object sender, EventArgs e)
         {
-            treeGraph1.DrawOptions.TextDensity = trackBarTextDensity.Maximum - trackBarTextDensity.Value + trackBarTextDensity.Minimum;
+            UpdateOptionTextDensityFromTrackBar();
             treeGraph1.ForceRefresh();
+        }
+
+        private void UpdateOptionTextDensityFromTrackBar()
+        {
+            treeGraph1.DrawOptions.TextDensity = trackBarTextDensity.Maximum - trackBarTextDensity.Value + trackBarTextDensity.Minimum;
+
         }
 
         private void trackBarTextDensity_Scroll(object sender, EventArgs e)
