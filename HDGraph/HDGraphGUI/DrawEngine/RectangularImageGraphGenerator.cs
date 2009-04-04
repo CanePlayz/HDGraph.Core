@@ -56,8 +56,8 @@ namespace HDGraph.DrawEngine
                     frontGraph.Clear(Color.White);
                 else
                     frontGraph.Clear(Color.Transparent);
-                frontGraph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-                frontGraph.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
+                //frontGraph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                //frontGraph.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
                 // init des données du calcul
                 int marginUp = 30;
                 pasNiveau = (currentWorkingOptions.BitmapSize.Height - marginUp) / (float)currentWorkingOptions.ShownLevelsCount;
@@ -127,9 +127,9 @@ namespace HDGraph.DrawEngine
                 return;
             if (node.ExistsUncalcSubDir)
             {
-                rectangle.Height += (pasNiveau / 6f);
+                rectangle.Height += (pasNiveau / 10f);
                 PaintUnknownPart(node, rectangle);
-                rectangle.Height -= (pasNiveau / 6f);
+                rectangle.Height -= (pasNiveau / 10f);
             }
             else
             {
@@ -236,7 +236,7 @@ namespace HDGraph.DrawEngine
             if (node.DirectoryType == SpecialDirTypes.NotSpecial)
             {
                 // standard zone
-                Brush brush = GetBrushForAngles(targetRec.Left, targetRec.Right, targetRec.Height);
+                Brush brush = GetBrushForAngles(targetRec);
                 frontGraph.FillRectangle(brush, targetRec);
                 frontGraph.DrawRectangle(new Pen(Color.Black), targetRec.X, targetRec.Y, targetRec.Width, targetRec.Height);
             }
@@ -260,8 +260,10 @@ namespace HDGraph.DrawEngine
             }
         }
 
-        private Brush GetBrushForAngles(float xDepart, float xFin, float height)
+        private Brush GetBrushForAngles(RectangleF targetRec)
         {
+            float xDepart = targetRec.Left;
+            float xFin = targetRec.Right;
             int milieuX = Convert.ToInt32(xDepart + (xFin - xDepart) / 2f);
             switch (currentWorkingOptions.ColorStyleChoice)
             {
@@ -269,16 +271,16 @@ namespace HDGraph.DrawEngine
                 case ModeAffichageCouleurs.RandomBright:
 
                     return new System.Drawing.Drawing2D.LinearGradientBrush(
-                                    new PointF(xDepart, height),
-                                    new PointF(xFin, 0),
+                                    new PointF(targetRec.Left, targetRec.Bottom),
+                                    new PointF(targetRec.Left, targetRec.Top),
                                     colorManager.GetNextColor(0),
                                     Color.SteelBlue
                                 );
                 case ModeAffichageCouleurs.Linear:
                 case ModeAffichageCouleurs.Linear2:
                     return new System.Drawing.Drawing2D.LinearGradientBrush(
-                                    new PointF(xDepart, height),
-                                    new PointF(xFin, 0),
+                                    new PointF(targetRec.Left, targetRec.Bottom),
+                                    new PointF(targetRec.Left, targetRec.Top),
                                     ColorManager.ColorByLeft(milieuX, this.currentWorkingOptions.BitmapSize.Width),
                                     Color.SteelBlue
                                 );
