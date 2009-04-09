@@ -38,5 +38,84 @@ namespace HDGraph.Interop.Windows
             }
             return result;
         }
+
+
+        /// <summary>
+        /// Returns an icon for a given file - indicated by the name parameter.
+        /// </summary>
+        /// <param name="name">Pathname for file.</param>
+        /// <param name="size">Large or small</param>
+        /// <param name="linkOverlay">Whether to include the link icon</param>
+        /// <returns>System.Drawing.Icon</returns>
+        public override Icon GetFileIcon(string name, IconSize size, bool linkOverlay)
+        {
+            ShellAPI.SHFILEINFO shfi = new ShellAPI.SHFILEINFO();
+            uint flags = ShellAPI.SHGFI_ICON | ShellAPI.SHGFI_USEFILEATTRIBUTES;
+
+            if (true == linkOverlay) flags += ShellAPI.SHGFI_LINKOVERLAY;
+
+            /* Check the size specified for return. */
+            if (IconSize.Small == size)
+            {
+                flags += ShellAPI.SHGFI_SMALLICON;
+            }
+            else
+            {
+                flags += ShellAPI.SHGFI_LARGEICON;
+            }
+
+            ShellAPI.SHGetFileInfo(name,
+                ShellAPI.FILE_ATTRIBUTE_NORMAL,
+                ref shfi,
+                (uint)System.Runtime.InteropServices.Marshal.SizeOf(shfi),
+                flags);
+
+            // Copy (clone) the returned icon to a new object, thus allowing us to clean-up properly
+            System.Drawing.Icon icon = (System.Drawing.Icon)System.Drawing.Icon.FromHandle(shfi.hIcon).Clone();
+            ShellAPI.DestroyIcon(shfi.hIcon);		// Cleanup
+            return icon;
+        }
+
+        /// <summary>
+        /// Used to access system folder icons.
+        /// </summary>
+        /// <param name="size">Specify large or small icons.</param>
+        /// <param name="folderType">Specify open or closed FolderType.</param>
+        /// <returns>System.Drawing.Icon</returns>
+        public override Icon GetFolderIcon(IconSize size, FolderType folderType)
+        {
+            // Need to add size check, although errors generated at present!
+            uint flags = ShellAPI.SHGFI_ICON | ShellAPI.SHGFI_USEFILEATTRIBUTES;
+
+            if (FolderType.Open == folderType)
+            {
+                flags += ShellAPI.SHGFI_OPENICON;
+            }
+
+            if (IconSize.Small == size)
+            {
+                flags += ShellAPI.SHGFI_SMALLICON;
+            }
+            else
+            {
+                flags += ShellAPI.SHGFI_LARGEICON;
+            }
+
+            // Get the folder icon
+            ShellAPI.SHFILEINFO shfi = new ShellAPI.SHFILEINFO();
+            ShellAPI.SHGetFileInfo(null,
+                ShellAPI.FILE_ATTRIBUTE_DIRECTORY,
+                ref shfi,
+                (uint)System.Runtime.InteropServices.Marshal.SizeOf(shfi),
+                flags);
+
+            System.Drawing.Icon.FromHandle(shfi.hIcon);	// Load the icon from an HICON handle
+
+            // Now clone the icon, so that it can be successfully stored in an ImageList
+            System.Drawing.Icon icon = (System.Drawing.Icon)System.Drawing.Icon.FromHandle(shfi.hIcon).Clone();
+
+            ShellAPI.DestroyIcon(shfi.hIcon);		// Cleanup
+            return icon;
+        }
     }
 }

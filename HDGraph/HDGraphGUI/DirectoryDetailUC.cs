@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using HDGraph.ExternalTools;
 using HDGraph.Resources;
+using HDGraph.Interop;
 
 namespace HDGraph
 {
@@ -19,9 +20,9 @@ namespace HDGraph
             InitializeComponent();
             //this.dataGridViewImageColumn1.ValuesAreIcons = true;
 
-            folderIcon = ExternalTools.IconReader.GetFolderIcon(
-                                                        HDGraph.ExternalTools.IconReader.IconSize.Small,
-                                                        HDGraph.ExternalTools.IconReader.FolderType.Open).ToBitmap();
+            folderIcon = ToolProviderBase.Current.GetFolderIcon(
+                                                        IconSize.Small,
+                                                        FolderType.Open).ToBitmap();
             this.dataGridViewTextImageColumnName.Image = folderIcon;
         }
 
