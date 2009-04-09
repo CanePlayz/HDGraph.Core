@@ -88,6 +88,7 @@ namespace HDGraph
         {
             bool changeLangIsSuccess = LoadLanguage();
             this.Icon = Properties.Resources.HDGraph_ico;
+
             // LeResourceManager prend en paramètre : nom_du_namespace.nom_de_la_ressource_principale
             resManager = new System.Resources.ResourceManager(this.GetType().Assembly.GetName().Name + ".Resources.ApplicationMessages", this.GetType().Assembly);
             HDGTools.resManager = resManager;
@@ -101,6 +102,7 @@ namespace HDGraph
 
             InitializeComponent();
 
+            this.trackBarTextDensity.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::HDGraph.Properties.Settings.Default, "OptionTextDensity", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.Text = AboutBox.AssemblyTitle;
             this.WindowState = HDGraph.Properties.Settings.Default.OptionMainWindowOpenState;
             this.ClientSize = HDGraph.Properties.Settings.Default.OptionMainWindowSize;
@@ -141,7 +143,8 @@ namespace HDGraph
             {
                 ToolStripButton button = new ToolStripButton(pathWithIco.Path);
                 button.Text = pathWithIco.Name;
-                button.Image = pathWithIco.Icon.ToBitmap();
+                if (pathWithIco.Icon != null)
+                    button.Image = pathWithIco.Icon.ToBitmap();
                 button.Tag = pathWithIco.Path;
                 button.Click += new EventHandler(shortcutButton_Click);
                 toolStripShortcuts.Items.Add(button);

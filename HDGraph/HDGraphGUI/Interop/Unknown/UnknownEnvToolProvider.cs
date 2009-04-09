@@ -13,19 +13,19 @@ namespace HDGraph.Interop.Unknown
             {
                 Name = "Home", // TODO : localize.
                 Path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-                Icon = this.GetFolderIcon(IconSize.Small, FolderType.Open)
+                Icon = null // TODO : this.GetFolderIcon(IconSize.Small, FolderType.Open)
             });
             return res;
         }
 
         public override System.Drawing.Icon GetFileIcon(string name, IconSize size, bool linkOverlay)
         {
-            return System.Windows.Forms.Application.OpenForms[0].Icon; // TODO
+            return Properties.Resources.HDGraph_ico; // TODO
         }
 
         public override System.Drawing.Icon GetFolderIcon(IconSize size, FolderType folderType)
         {
-            return System.Windows.Forms.Application.OpenForms[0].Icon; // TODO
+            return Properties.Resources.HDGraph_ico; // TODO
         }
     }
 }
