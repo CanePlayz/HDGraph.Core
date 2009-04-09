@@ -94,6 +94,7 @@
     <Compile Include="Interop\PathWithIcon.cs" />
     <Compile Include="Interop\EnvironmentTarget.cs" />
     <Compile Include="Interop\ToolProviderBase.cs" />
+    <Compile Include="Interop\Unknown\UnknownEnvToolProvider.cs" />
     <Compile Include="Interop\Windows\WindowsToolProvider.cs" />
     <Compile Include="ScanEngine\DirectoryNode.cs" />
     <Compile Include="DirNodeSortableBindingList.cs" />

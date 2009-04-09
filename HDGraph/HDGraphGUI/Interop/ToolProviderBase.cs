@@ -7,6 +7,8 @@ namespace HDGraph.Interop
 {
     public abstract class ToolProviderBase
     {
+        #region Current OS (Win, Linux, Mac, etc).
+
         private static EnvironmentTarget? currentEnvironment = null;
 
         public static EnvironmentTarget GetEnvironmentType()
@@ -39,6 +41,8 @@ namespace HDGraph.Interop
             return currentEnvironment.Value;
         }
 
+        #endregion
+
         private static ToolProviderBase current;
 
         public static ToolProviderBase Current
@@ -56,10 +60,10 @@ namespace HDGraph.Interop
                             break;
                         case EnvironmentTarget.Unix:
                         case EnvironmentTarget.Mac:
-                            throw new NotImplementedException();
+                            current = new Unknown.UnknownEnvToolProvider();
                             break;
                         case EnvironmentTarget.Unknown:
-                            throw new NotImplementedException();
+                            current = new Unknown.UnknownEnvToolProvider();
                             break;
                         default:
                             break;
