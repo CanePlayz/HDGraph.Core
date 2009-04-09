@@ -41,6 +41,8 @@ namespace HDGraph
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxPath = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButtonEngineRec = new System.Windows.Forms.RadioButton();
+            this.radioButtonEngineCircular = new System.Windows.Forms.RadioButton();
             this.checkBoxShowTooltip = new System.Windows.Forms.CheckBox();
             this.checkBoxShowFreeSpace = new System.Windows.Forms.CheckBox();
             this.checkBoxPrintSizes = new System.Windows.Forms.CheckBox();
@@ -64,9 +66,6 @@ namespace HDGraph
             this.labelDirName = new System.Windows.Forms.Label();
             this.buttonScan = new System.Windows.Forms.Button();
             this.buttonBrowse = new System.Windows.Forms.Button();
-            this.toolStripTreeView = new System.Windows.Forms.ToolStrip();
-            this.treeviewToolStripLabel = new System.Windows.Forms.ToolStripLabel();
-            this.explorerTreeView1 = new WilsonProgramming.ExplorerTreeView();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -139,11 +138,8 @@ namespace HDGraph
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.ToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
-            this.radioButtonEngineCircular = new System.Windows.Forms.RadioButton();
-            this.radioButtonEngineRec = new System.Windows.Forms.RadioButton();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
-            this.toolStripContainer1.LeftToolStripPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -155,7 +151,6 @@ namespace HDGraph
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivx)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageRotationTrackBar)).BeginInit();
             this.groupBoxHoverInfo.SuspendLayout();
-            this.toolStripTreeView.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.toolStripShortcuts.SuspendLayout();
             this.toolBarToolStrip.SuspendLayout();
@@ -178,7 +173,6 @@ namespace HDGraph
             // 
             // toolStripContainer1.LeftToolStripPanel
             // 
-            this.toolStripContainer1.LeftToolStripPanel.Controls.Add(this.toolStripTreeView);
             this.helpProvider1.SetShowHelp(this.toolStripContainer1.LeftToolStripPanel, ((bool)(resources.GetObject("toolStripContainer1.LeftToolStripPanel.ShowHelp"))));
             this.toolStripContainer1.Name = "toolStripContainer1";
             // 
@@ -189,9 +183,9 @@ namespace HDGraph
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStrip);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStripShortcuts);
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolBarToolStrip);
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.menuStrip);
             this.helpProvider1.SetShowHelp(this.toolStripContainer1.TopToolStripPanel, ((bool)(resources.GetObject("toolStripContainer1.TopToolStripPanel.ShowHelp"))));
             // 
             // statusStrip
@@ -308,6 +302,22 @@ namespace HDGraph
             this.groupBox1.Name = "groupBox1";
             this.helpProvider1.SetShowHelp(this.groupBox1, ((bool)(resources.GetObject("groupBox1.ShowHelp"))));
             this.groupBox1.TabStop = false;
+            // 
+            // radioButtonEngineRec
+            // 
+            resources.ApplyResources(this.radioButtonEngineRec, "radioButtonEngineRec");
+            this.radioButtonEngineRec.Name = "radioButtonEngineRec";
+            this.helpProvider1.SetShowHelp(this.radioButtonEngineRec, ((bool)(resources.GetObject("radioButtonEngineRec.ShowHelp"))));
+            this.radioButtonEngineRec.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonEngineCircular
+            // 
+            resources.ApplyResources(this.radioButtonEngineCircular, "radioButtonEngineCircular");
+            this.radioButtonEngineCircular.Checked = true;
+            this.radioButtonEngineCircular.Name = "radioButtonEngineCircular";
+            this.radioButtonEngineCircular.TabStop = true;
+            this.radioButtonEngineCircular.UseVisualStyleBackColor = true;
+            this.radioButtonEngineCircular.CheckedChanged += new System.EventHandler(this.radioButtonEngineCircular_CheckedChanged);
             // 
             // checkBoxShowTooltip
             // 
@@ -525,25 +535,6 @@ namespace HDGraph
             this.helpProvider1.SetShowHelp(this.buttonBrowse, ((bool)(resources.GetObject("buttonBrowse.ShowHelp"))));
             this.buttonBrowse.UseVisualStyleBackColor = true;
             this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click);
-            // 
-            // toolStripTreeView
-            // 
-            resources.ApplyResources(this.toolStripTreeView, "toolStripTreeView");
-            this.toolStripTreeView.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.treeviewToolStripLabel,
-            this.explorerTreeView1});
-            this.toolStripTreeView.Name = "toolStripTreeView";
-            this.helpProvider1.SetShowHelp(this.toolStripTreeView, ((bool)(resources.GetObject("toolStripTreeView.ShowHelp"))));
-            // 
-            // treeviewToolStripLabel
-            // 
-            this.treeviewToolStripLabel.Name = "treeviewToolStripLabel";
-            resources.ApplyResources(this.treeviewToolStripLabel, "treeviewToolStripLabel");
-            // 
-            // explorerTreeView1
-            // 
-            this.explorerTreeView1.Name = "explorerTreeView1";
-            resources.ApplyResources(this.explorerTreeView1, "explorerTreeView1");
             // 
             // menuStrip
             // 
@@ -1040,22 +1031,6 @@ namespace HDGraph
             this.helpToolStripButton.Name = "helpToolStripButton";
             this.helpToolStripButton.Click += new System.EventHandler(this.contentsToolStripMenuItem_Click);
             // 
-            // radioButtonEngineCircular
-            // 
-            resources.ApplyResources(this.radioButtonEngineCircular, "radioButtonEngineCircular");
-            this.radioButtonEngineCircular.Checked = true;
-            this.radioButtonEngineCircular.Name = "radioButtonEngineCircular";
-            this.radioButtonEngineCircular.TabStop = true;
-            this.radioButtonEngineCircular.UseVisualStyleBackColor = true;
-            this.radioButtonEngineCircular.CheckedChanged += new System.EventHandler(this.radioButtonEngineCircular_CheckedChanged);
-            // 
-            // radioButtonEngineRec
-            // 
-            resources.ApplyResources(this.radioButtonEngineRec, "radioButtonEngineRec");
-            this.radioButtonEngineRec.Name = "radioButtonEngineRec";
-            this.helpProvider1.SetShowHelp(this.radioButtonEngineRec, ((bool)(resources.GetObject("radioButtonEngineRec.ShowHelp"))));
-            this.radioButtonEngineRec.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AcceptButton = this.buttonScan;
@@ -1076,8 +1051,6 @@ namespace HDGraph
             this.toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.BottomToolStripPanel.PerformLayout();
             this.toolStripContainer1.ContentPanel.ResumeLayout(false);
-            this.toolStripContainer1.LeftToolStripPanel.ResumeLayout(false);
-            this.toolStripContainer1.LeftToolStripPanel.PerformLayout();
             this.toolStripContainer1.TopToolStripPanel.ResumeLayout(false);
             this.toolStripContainer1.TopToolStripPanel.PerformLayout();
             this.toolStripContainer1.ResumeLayout(false);
@@ -1095,8 +1068,6 @@ namespace HDGraph
             ((System.ComponentModel.ISupportInitialize)(this.imageRotationTrackBar)).EndInit();
             this.groupBoxHoverInfo.ResumeLayout(false);
             this.groupBoxHoverInfo.PerformLayout();
-            this.toolStripTreeView.ResumeLayout(false);
-            this.toolStripTreeView.PerformLayout();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.toolStripShortcuts.ResumeLayout(false);
@@ -1200,7 +1171,6 @@ namespace HDGraph
         private System.Windows.Forms.ComboBox comboBoxColorStyle;
         private System.Windows.Forms.TrackBar trackBarZoom;
         internal System.Windows.Forms.ComboBox comboBoxPath;
-        private System.Windows.Forms.ToolStrip toolStripTreeView;
         private System.Windows.Forms.ToolStrip toolStripShortcuts;
         private System.Windows.Forms.ToolStripLabel toolStripLabelShortcuts;
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButtonModel;
@@ -1208,8 +1178,6 @@ namespace HDGraph
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem shortcutsToolStripMenuItem;
-        private WilsonProgramming.ExplorerTreeView explorerTreeView1;
-        private System.Windows.Forms.ToolStripLabel treeviewToolStripLabel;
         private System.Windows.Forms.CheckBox checkBoxShowFreeSpace;
         private System.Windows.Forms.CheckBox checkBoxShowTooltip;
         private HDGraph.UserControls.ErrorStatus errorStatus1;

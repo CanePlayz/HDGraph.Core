@@ -11,9 +11,9 @@ using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
 using System.Diagnostics;
-using WilsonProgramming;
 using HDGraph.DrawEngine;
 using HDGraph.ScanEngine;
+using HDGraph.Interop;
 
 namespace HDGraph
 {
@@ -134,33 +134,17 @@ namespace HDGraph
         private void PopulateAnalyseShortcuts()
         {
             toolStripSplitButtonModel.Visible = false;
-            ShellAPI.SHFILEINFO shInfo = new ShellAPI.SHFILEINFO();
-            ShellAPI.SHGFI dwAttribs =
-                ShellAPI.SHGFI.SHGFI_ICON |
-                ShellAPI.SHGFI.SHGFI_SMALLICON |
-                ShellAPI.SHGFI.SHGFI_SYSICONINDEX |
-                ShellAPI.SHGFI.SHGFI_DISPLAYNAME;
 
-            Dictionary<int, Icon> iconList = new Dictionary<int, Icon>();
-            foreach (string drive in System.IO.Directory.GetLogicalDrives())
+            List<PathWithIcon> pathList = ToolProviderBase.Current.ListFavoritPath();
+
+            foreach (PathWithIcon pathWithIco in pathList)
             {
-                ToolStripButton button = new ToolStripButton(drive);
-                IntPtr m_pHandle = ShellAPI.SHGetFileInfo(drive, ShellAPI.FILE_ATTRIBUTE_NORMAL, out shInfo, (uint)System.Runtime.InteropServices.Marshal.SizeOf(shInfo), dwAttribs);
-
-                if (!m_pHandle.Equals(IntPtr.Zero))
-                {
-                    if (!iconList.ContainsKey(shInfo.iIcon))
-                    {
-                        iconList.Add(shInfo.iIcon, Icon.FromHandle(shInfo.hIcon).Clone() as Icon);
-                        User32API.DestroyIcon(shInfo.hIcon);
-                    }
-
-                    button.Text = shInfo.szDisplayName;
-                    button.Image = iconList[shInfo.iIcon].ToBitmap();
-                    button.Tag = drive;
-                    button.Click += new EventHandler(shortcutButton_Click);
-                    toolStripShortcuts.Items.Add(button);
-                }
+                ToolStripButton button = new ToolStripButton(pathWithIco.Path);
+                button.Text = pathWithIco.Name;
+                button.Image = pathWithIco.Icon.ToBitmap();
+                button.Tag = pathWithIco.Path;
+                button.Click += new EventHandler(shortcutButton_Click);
+                toolStripShortcuts.Items.Add(button);
             }
         }
 

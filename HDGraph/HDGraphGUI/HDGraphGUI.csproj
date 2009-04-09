@@ -91,6 +91,10 @@
     <Compile Include="DrawEngine\ImageGraphGeneratorFactory.cs" />
     <Compile Include="DrawEngine\MathHelper.cs" />
     <Compile Include="DrawEngine\RectangularImageGraphGenerator.cs" />
+    <Compile Include="Interop\PathWithIcon.cs" />
+    <Compile Include="Interop\EnvironmentTarget.cs" />
+    <Compile Include="Interop\ToolProviderBase.cs" />
+    <Compile Include="Interop\Windows\WindowsToolProvider.cs" />
     <Compile Include="ScanEngine\DirectoryNode.cs" />
     <Compile Include="DirNodeSortableBindingList.cs" />
     <Compile Include="ScanEngine\ExtendedFileInfo.cs" />
@@ -288,10 +292,6 @@
       <SubType>Designer</SubType>
       <DependentUpon>WaitForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WilsonProgramming\ExplorerTreeView.resx">
-      <DependentUpon>ExplorerTreeView.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -313,9 +313,6 @@
       <DependentUpon>ApplicationMessages.resx</DependentUpon>
     </Compile>
     <Compile Include="SortableBindingList.cs" />
-    <Compile Include="ToolStripTreeView.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="TreeGraph.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -347,16 +344,7 @@
     <Compile Include="WaitForm.Designer.cs">
       <DependentUpon>WaitForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="WilsonProgramming\ExplorerTreeView.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WilsonProgramming\ExplorerTreeViewWnd.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WilsonProgramming\ShellAPI.cs" />
-    <Compile Include="WilsonProgramming\ShellItem.cs" />
-    <Compile Include="WilsonProgramming\SystemImageList.cs" />
-    <Compile Include="WilsonProgramming\User32API.cs" />
+    <Compile Include="Interop\Windows\ShellAPI.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ChangeLog.txt" />
