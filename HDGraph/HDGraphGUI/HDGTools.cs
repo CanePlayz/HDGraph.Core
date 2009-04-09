@@ -169,28 +169,12 @@ namespace HDGraph
             }
         }
 
-        //[DllImport("user32.dll")]
-        //static extern bool SetForegroundWindow(IntPtr hWnd);
-
-        private static bool? osIsVista;
-
-        public static bool OsIsVista
-        {
-            get {
-                if (!osIsVista.HasValue)
-                    osIsVista = Vista.VistaTools.IsReallyVista();
-                return osIsVista.Value; 
-            }
-            set { osIsVista = value; }
-        }
-
-
         public static bool IsInAdminMode()
         {
-            if (OsIsVista)
+            if (Interop.ToolProviderBase.GetEnvironmentType() == HDGraph.Interop.EnvironmentTarget.WindowsVista)
             {
                 // Vista
-                return Vista.VistaTools.IsElevated();
+                return HDGraph.Interop.Windows.VistaTools.IsElevated();
             }
             else
             {

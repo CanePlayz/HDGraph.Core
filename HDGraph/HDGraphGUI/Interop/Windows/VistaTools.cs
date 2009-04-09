@@ -19,7 +19,7 @@ using System.Runtime.InteropServices;
 //UAC is enabled and/or the current process is elevated
 
 
-namespace HDGraph.Vista
+namespace HDGraph.Interop.Windows
 {
     public class VistaTools
     {
@@ -115,7 +115,7 @@ namespace HDGraph.Vista
         {
             if (!IsReallyVista())
             {
-                throw new VistaToolsException("Function requires Vista or higher");
+                throw new VistaToolsException("Function requires Windows Vista or higher");
             }
 
             bool bRetVal = false;

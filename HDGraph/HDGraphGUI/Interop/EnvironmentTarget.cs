@@ -8,7 +8,7 @@ namespace HDGraph.Interop
     {
         WindowsXp,
         WindowsVista,
-        Linux,
+        Unix,
         Mac,
         Unknown
     }

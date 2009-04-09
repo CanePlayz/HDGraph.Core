@@ -7,9 +7,36 @@ namespace HDGraph.Interop
 {
     public abstract class ToolProviderBase
     {
+        private static EnvironmentTarget? currentEnvironment = null;
+
         public static EnvironmentTarget GetEnvironmentType()
         {
-            return EnvironmentTarget.WindowsXp; // TODO
+            if (!currentEnvironment.HasValue)
+            {
+                switch (Environment.OSVersion.Platform)
+                {
+                    case PlatformID.MacOSX:
+                        currentEnvironment = EnvironmentTarget.Mac;
+                        break;
+                    case PlatformID.Unix:
+                        currentEnvironment = EnvironmentTarget.Unix;
+                        break;
+                    case PlatformID.Win32NT:
+                    case PlatformID.Win32S:
+                    case PlatformID.Win32Windows:
+                    case PlatformID.WinCE:
+                        if (HDGraph.Interop.Windows.VistaTools.IsReallyVista())
+                            currentEnvironment = EnvironmentTarget.WindowsVista;
+                        else
+                            currentEnvironment = EnvironmentTarget.WindowsXp;
+                        break;
+                    case PlatformID.Xbox:
+                    default:
+                        currentEnvironment = EnvironmentTarget.Unknown;
+                        break;
+                }
+            }
+            return currentEnvironment.Value;
         }
 
         private static ToolProviderBase current;
@@ -27,9 +54,7 @@ namespace HDGraph.Interop
                         case EnvironmentTarget.WindowsVista:
                             current = new Windows.WindowsToolProvider();
                             break;
-                        case EnvironmentTarget.Linux:
-                            throw new NotImplementedException();
-                            break;
+                        case EnvironmentTarget.Unix:
                         case EnvironmentTarget.Mac:
                             throw new NotImplementedException();
                             break;
@@ -44,8 +69,13 @@ namespace HDGraph.Interop
             }
         }
 
+        /// <summary>
+        /// List the user favorit paths, which will be displayed in the "shortcuts" bar.
+        /// For example, in Windows, list all available drives.
+        /// </summary>
+        /// <returns></returns>
         public abstract List<PathWithIcon> ListFavoritPath();
-        
+
         /// <summary>
         /// Returns an icon for a given file - indicated by the "name" parameter.
         /// </summary>

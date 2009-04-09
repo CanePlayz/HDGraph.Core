@@ -43,6 +43,7 @@ namespace HDGraph.Interop.Windows
         /// <summary>
         /// Returns an icon for a given file - indicated by the name parameter.
         /// </summary>
+        /// <remarks>Code from http://www.codeproject.com/cs/files/fileicon.asp </remarks>
         /// <param name="name">Pathname for file.</param>
         /// <param name="size">Large or small</param>
         /// <param name="linkOverlay">Whether to include the link icon</param>
@@ -79,6 +80,7 @@ namespace HDGraph.Interop.Windows
         /// <summary>
         /// Used to access system folder icons.
         /// </summary>
+        /// <remarks>Code from http://www.codeproject.com/cs/files/fileicon.asp </remarks>
         /// <param name="size">Specify large or small icons.</param>
         /// <param name="folderType">Specify open or closed FolderType.</param>
         /// <returns>System.Drawing.Icon</returns>

@@ -98,7 +98,6 @@
     <Compile Include="ScanEngine\DirectoryNode.cs" />
     <Compile Include="DirNodeSortableBindingList.cs" />
     <Compile Include="ScanEngine\ExtendedFileInfo.cs" />
-    <Compile Include="ScanEngine\JunctionPoint.cs" />
     <Compile Include="ScanEngine\ScanError.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="ErrorListForm.cs">
@@ -107,7 +106,6 @@
     <Compile Include="ErrorListForm.Designer.cs">
       <DependentUpon>ErrorListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExternalTools\IconHelper.cs" />
     <Compile Include="ExternalTools\TextAndImageColumn.cs" />
     <Compile Include="FatalHdgraphException.cs" />
     <Compile Include="HDGTools.cs" />
@@ -337,7 +335,7 @@
     <Compile Include="UserControls\TipsMonitor.Designer.cs">
       <DependentUpon>TipsMonitor.cs</DependentUpon>
     </Compile>
-    <Compile Include="VistaTools.cs" />
+    <Compile Include="Interop\Windows\VistaTools.cs" />
     <Compile Include="WaitForm.cs">
       <SubType>Form</SubType>
     </Compile>
