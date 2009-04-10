@@ -87,7 +87,6 @@ namespace HDGraph
         public MainForm()
         {
             bool changeLangIsSuccess = LoadLanguage();
-            this.Icon = Properties.Resources.HDGraph_ico;
 
             // LeResourceManager prend en paramètre : nom_du_namespace.nom_de_la_ressource_principale
             resManager = new System.Resources.ResourceManager(this.GetType().Assembly.GetName().Name + ".Resources.ApplicationMessages", this.GetType().Assembly);
@@ -102,13 +101,15 @@ namespace HDGraph
 
             InitializeComponent();
 
+            ApplyIcon();
+            // Manual databinding for interop (otherwise make an error at runtime with Mono).
             this.trackBarTextDensity.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::HDGraph.Properties.Settings.Default, "OptionTextDensity", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.Text = AboutBox.AssemblyTitle;
             this.WindowState = HDGraph.Properties.Settings.Default.OptionMainWindowOpenState;
             this.ClientSize = HDGraph.Properties.Settings.Default.OptionMainWindowSize;
             UpdateOptionTextDensityFromTrackBar();
             treeGraph1.DrawOptions.ImageRotation = imageRotationTrackBar.Value;
-
+            explorerIntegrationToolStripMenuItem.Enabled = CurrentOsIsWindows();
             EnableHelpIfAvailable();
             comboBoxPath.DataSource = HDGraph.Properties.Settings.Default.PathHistory;
             checkBoxAutoRecalc.Checked = HDGraph.Properties.Settings.Default.OptionAutoCompleteGraph;
@@ -124,6 +125,20 @@ namespace HDGraph
                 Trace.TraceError(HDGTools.PrintError(ex));
             }
             PopulateAnalyseShortcuts();
+        }
+
+        private bool CurrentOsIsWindows()
+        {
+            EnvironmentTarget env = Interop.ToolProviderBase.GetEnvironmentType();
+            return (env == EnvironmentTarget.WindowsVista
+                    || env == EnvironmentTarget.WindowsXp);
+        }
+
+        private void ApplyIcon()
+        {
+            if (CurrentOsIsWindows())
+                // errors on other os !
+                this.Icon = Properties.Resources.HDGraph_ico;
         }
 
         private void SetTrackBarZoomValueFromNumUpDown()
