@@ -10,7 +10,7 @@ Added:
 	- Experimental display style : "Bar style"
 	- TODO : New scan engine : faster and more accurate (up to 6 times faster)
 Improved: 
-	- TODO.
+	- Design refactored
 Fixed:
 	- Bug on "Text Density" : value loaded from a previous saved state was wrong.
 	- Some minor bugs

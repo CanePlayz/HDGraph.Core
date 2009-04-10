@@ -125,6 +125,7 @@ namespace HDGraph
                 Trace.TraceError(HDGTools.PrintError(ex));
             }
             PopulateAnalyseShortcuts();
+            splitContainerGraphAndOptions.Panel2Collapsed = true;
         }
 
         private bool CurrentOsIsWindows()
@@ -408,11 +409,13 @@ namespace HDGraph
         private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             toolBarToolStrip.Visible = toolBarToolStripMenuItem.Checked;
+            UpdateToolZoneVisibility();
         }
 
         private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             statusStrip.Visible = statusBarToolStripMenuItem.Checked;
+            splitContainerGraphAndStatusBar.Panel2Collapsed = !statusBarToolStripMenuItem.Checked;
         }
 
         #endregion
@@ -804,6 +807,7 @@ namespace HDGraph
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
+            comboBoxPath.Focus();
             if (launchScanOnStartup)
             {
                 try
@@ -941,6 +945,12 @@ namespace HDGraph
         private void shortcutsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             toolStripShortcuts.Visible = shortcutsToolStripMenuItem.Checked;
+            UpdateToolZoneVisibility();
+        }
+
+        private void UpdateToolZoneVisibility()
+        {
+            splitContainerGraphAndToolBar.Panel1Collapsed = (!toolBarToolStripMenuItem.Checked && !shortcutsToolStripMenuItem.Checked);
         }
 
         private void checkBoxShowFreeSpace_CheckedChanged(object sender, EventArgs e)
@@ -1037,6 +1047,15 @@ namespace HDGraph
         {
             treeGraph1.DrawOptions.DrawStyle = (radioButtonEngineCircular.Checked) ? DrawType.Circular : DrawType.Rectangular;
             treeGraph1.ForceRefresh();
+        }
+
+        private void buttonAdvanced_Click(object sender, EventArgs e)
+        {
+            splitContainerGraphAndOptions.Panel2Collapsed = !splitContainerGraphAndOptions.Panel2Collapsed;
+            if (splitContainerGraphAndOptions.Panel2Collapsed)
+                buttonAdvanced.Image = Properties.Resources.FillLeftHS;
+            else
+                buttonAdvanced.Image = Properties.Resources.FillRightHS;
         }
     }
 }

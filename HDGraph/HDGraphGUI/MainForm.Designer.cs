@@ -136,9 +136,9 @@ namespace HDGraph
             this.helpProvider1 = new System.Windows.Forms.HelpProvider();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonAdvanced = new System.Windows.Forms.Button();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.splitContainerGraphAndOptions = new System.Windows.Forms.SplitContainer();
+            this.splitContainerGraphAndToolBar = new System.Windows.Forms.SplitContainer();
+            this.splitContainerGraphAndStatusBar = new System.Windows.Forms.SplitContainer();
             this.treeGraph1 = new HDGraph.TreeGraph();
             this.errorStatus1 = new HDGraph.UserControls.ErrorStatus();
             this.statusStrip.SuspendLayout();
@@ -153,15 +153,15 @@ namespace HDGraph
             this.toolStripShortcuts.SuspendLayout();
             this.toolBarToolStrip.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.splitContainer2.Panel1.SuspendLayout();
-            this.splitContainer2.Panel2.SuspendLayout();
-            this.splitContainer2.SuspendLayout();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.Panel2.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
+            this.splitContainerGraphAndOptions.Panel1.SuspendLayout();
+            this.splitContainerGraphAndOptions.Panel2.SuspendLayout();
+            this.splitContainerGraphAndOptions.SuspendLayout();
+            this.splitContainerGraphAndToolBar.Panel1.SuspendLayout();
+            this.splitContainerGraphAndToolBar.Panel2.SuspendLayout();
+            this.splitContainerGraphAndToolBar.SuspendLayout();
+            this.splitContainerGraphAndStatusBar.Panel1.SuspendLayout();
+            this.splitContainerGraphAndStatusBar.Panel2.SuspendLayout();
+            this.splitContainerGraphAndStatusBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip
@@ -964,9 +964,8 @@ namespace HDGraph
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel2.Controls.Add(this.buttonAdvanced);
-            this.panel2.Controls.Add(this.splitContainer1);
+            this.panel2.Controls.Add(this.splitContainerGraphAndOptions);
             this.panel2.Controls.Add(this.buttonBrowse);
             this.panel2.Controls.Add(this.comboBoxPath);
             this.panel2.Controls.Add(this.label3);
@@ -982,62 +981,63 @@ namespace HDGraph
             this.buttonAdvanced.Name = "buttonAdvanced";
             this.helpProvider1.SetShowHelp(this.buttonAdvanced, ((bool)(resources.GetObject("buttonAdvanced.ShowHelp"))));
             this.buttonAdvanced.UseVisualStyleBackColor = true;
+            this.buttonAdvanced.Click += new System.EventHandler(this.buttonAdvanced_Click);
             // 
-            // splitContainer1
+            // splitContainerGraphAndOptions
             // 
-            resources.ApplyResources(this.splitContainer1, "splitContainer1");
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer1.Name = "splitContainer1";
+            resources.ApplyResources(this.splitContainerGraphAndOptions, "splitContainerGraphAndOptions");
+            this.splitContainerGraphAndOptions.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainerGraphAndOptions.Name = "splitContainerGraphAndOptions";
             // 
-            // splitContainer1.Panel1
+            // splitContainerGraphAndOptions.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.button1);
-            this.splitContainer1.Panel1.Controls.Add(this.treeGraph1);
-            this.splitContainer1.Panel1.Controls.Add(this.linkLabelHelpGraph);
-            this.helpProvider1.SetShowHelp(this.splitContainer1.Panel1, ((bool)(resources.GetObject("splitContainer1.Panel1.ShowHelp"))));
+            this.splitContainerGraphAndOptions.Panel1.Controls.Add(this.button1);
+            this.splitContainerGraphAndOptions.Panel1.Controls.Add(this.treeGraph1);
+            this.splitContainerGraphAndOptions.Panel1.Controls.Add(this.linkLabelHelpGraph);
+            this.helpProvider1.SetShowHelp(this.splitContainerGraphAndOptions.Panel1, ((bool)(resources.GetObject("splitContainerGraphAndOptions.Panel1.ShowHelp"))));
             // 
-            // splitContainer1.Panel2
+            // splitContainerGraphAndOptions.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainer1.Panel2.Controls.Add(this.groupBoxHoverInfo);
-            this.splitContainer1.Panel2.Controls.Add(this.errorStatus1);
-            this.helpProvider1.SetShowHelp(this.splitContainer1.Panel2, ((bool)(resources.GetObject("splitContainer1.Panel2.ShowHelp"))));
-            this.helpProvider1.SetShowHelp(this.splitContainer1, ((bool)(resources.GetObject("splitContainer1.ShowHelp"))));
+            this.splitContainerGraphAndOptions.Panel2.Controls.Add(this.groupBox1);
+            this.splitContainerGraphAndOptions.Panel2.Controls.Add(this.groupBoxHoverInfo);
+            this.splitContainerGraphAndOptions.Panel2.Controls.Add(this.errorStatus1);
+            this.helpProvider1.SetShowHelp(this.splitContainerGraphAndOptions.Panel2, ((bool)(resources.GetObject("splitContainerGraphAndOptions.Panel2.ShowHelp"))));
+            this.helpProvider1.SetShowHelp(this.splitContainerGraphAndOptions, ((bool)(resources.GetObject("splitContainerGraphAndOptions.ShowHelp"))));
             // 
-            // splitContainer2
+            // splitContainerGraphAndToolBar
             // 
-            resources.ApplyResources(this.splitContainer2, "splitContainer2");
-            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer2.Name = "splitContainer2";
+            resources.ApplyResources(this.splitContainerGraphAndToolBar, "splitContainerGraphAndToolBar");
+            this.splitContainerGraphAndToolBar.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerGraphAndToolBar.Name = "splitContainerGraphAndToolBar";
             // 
-            // splitContainer2.Panel1
+            // splitContainerGraphAndToolBar.Panel1
             // 
-            this.splitContainer2.Panel1.Controls.Add(this.toolBarToolStrip);
-            this.splitContainer2.Panel1.Controls.Add(this.toolStripShortcuts);
-            this.helpProvider1.SetShowHelp(this.splitContainer2.Panel1, ((bool)(resources.GetObject("splitContainer2.Panel1.ShowHelp"))));
+            this.splitContainerGraphAndToolBar.Panel1.Controls.Add(this.toolBarToolStrip);
+            this.splitContainerGraphAndToolBar.Panel1.Controls.Add(this.toolStripShortcuts);
+            this.helpProvider1.SetShowHelp(this.splitContainerGraphAndToolBar.Panel1, ((bool)(resources.GetObject("splitContainerGraphAndToolBar.Panel1.ShowHelp"))));
             // 
-            // splitContainer2.Panel2
+            // splitContainerGraphAndToolBar.Panel2
             // 
-            this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.helpProvider1.SetShowHelp(this.splitContainer2.Panel2, ((bool)(resources.GetObject("splitContainer2.Panel2.ShowHelp"))));
-            this.helpProvider1.SetShowHelp(this.splitContainer2, ((bool)(resources.GetObject("splitContainer2.ShowHelp"))));
+            this.splitContainerGraphAndToolBar.Panel2.Controls.Add(this.splitContainerGraphAndStatusBar);
+            this.helpProvider1.SetShowHelp(this.splitContainerGraphAndToolBar.Panel2, ((bool)(resources.GetObject("splitContainerGraphAndToolBar.Panel2.ShowHelp"))));
+            this.helpProvider1.SetShowHelp(this.splitContainerGraphAndToolBar, ((bool)(resources.GetObject("splitContainerGraphAndToolBar.ShowHelp"))));
             // 
-            // splitContainer3
+            // splitContainerGraphAndStatusBar
             // 
-            resources.ApplyResources(this.splitContainer3, "splitContainer3");
-            this.splitContainer3.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.splitContainer3.Name = "splitContainer3";
+            resources.ApplyResources(this.splitContainerGraphAndStatusBar, "splitContainerGraphAndStatusBar");
+            this.splitContainerGraphAndStatusBar.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainerGraphAndStatusBar.Name = "splitContainerGraphAndStatusBar";
             // 
-            // splitContainer3.Panel1
+            // splitContainerGraphAndStatusBar.Panel1
             // 
-            this.splitContainer3.Panel1.Controls.Add(this.panel2);
-            this.helpProvider1.SetShowHelp(this.splitContainer3.Panel1, ((bool)(resources.GetObject("splitContainer3.Panel1.ShowHelp"))));
+            this.splitContainerGraphAndStatusBar.Panel1.Controls.Add(this.panel2);
+            this.helpProvider1.SetShowHelp(this.splitContainerGraphAndStatusBar.Panel1, ((bool)(resources.GetObject("splitContainerGraphAndStatusBar.Panel1.ShowHelp"))));
             // 
-            // splitContainer3.Panel2
+            // splitContainerGraphAndStatusBar.Panel2
             // 
-            this.splitContainer3.Panel2.Controls.Add(this.statusStrip);
-            this.helpProvider1.SetShowHelp(this.splitContainer3.Panel2, ((bool)(resources.GetObject("splitContainer3.Panel2.ShowHelp"))));
-            this.helpProvider1.SetShowHelp(this.splitContainer3, ((bool)(resources.GetObject("splitContainer3.ShowHelp"))));
+            this.splitContainerGraphAndStatusBar.Panel2.Controls.Add(this.statusStrip);
+            this.helpProvider1.SetShowHelp(this.splitContainerGraphAndStatusBar.Panel2, ((bool)(resources.GetObject("splitContainerGraphAndStatusBar.Panel2.ShowHelp"))));
+            this.helpProvider1.SetShowHelp(this.splitContainerGraphAndStatusBar, ((bool)(resources.GetObject("splitContainerGraphAndStatusBar.ShowHelp"))));
             // 
             // treeGraph1
             // 
@@ -1072,7 +1072,7 @@ namespace HDGraph
             this.AcceptButton = this.buttonScan;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.splitContainer2);
+            this.Controls.Add(this.splitContainerGraphAndToolBar);
             this.Controls.Add(this.menuStrip);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.MainMenuStrip = this.menuStrip;
@@ -1104,17 +1104,17 @@ namespace HDGraph
             this.toolBarToolStrip.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.ResumeLayout(false);
-            this.splitContainer2.Panel1.ResumeLayout(false);
-            this.splitContainer2.Panel1.PerformLayout();
-            this.splitContainer2.Panel2.ResumeLayout(false);
-            this.splitContainer2.ResumeLayout(false);
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            this.splitContainer3.Panel2.ResumeLayout(false);
-            this.splitContainer3.Panel2.PerformLayout();
-            this.splitContainer3.ResumeLayout(false);
+            this.splitContainerGraphAndOptions.Panel1.ResumeLayout(false);
+            this.splitContainerGraphAndOptions.Panel2.ResumeLayout(false);
+            this.splitContainerGraphAndOptions.ResumeLayout(false);
+            this.splitContainerGraphAndToolBar.Panel1.ResumeLayout(false);
+            this.splitContainerGraphAndToolBar.Panel1.PerformLayout();
+            this.splitContainerGraphAndToolBar.Panel2.ResumeLayout(false);
+            this.splitContainerGraphAndToolBar.ResumeLayout(false);
+            this.splitContainerGraphAndStatusBar.Panel1.ResumeLayout(false);
+            this.splitContainerGraphAndStatusBar.Panel2.ResumeLayout(false);
+            this.splitContainerGraphAndStatusBar.Panel2.PerformLayout();
+            this.splitContainerGraphAndStatusBar.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1229,9 +1229,9 @@ namespace HDGraph
         private System.Windows.Forms.RadioButton radioButtonEngineRec;
         private System.Windows.Forms.RadioButton radioButtonEngineCircular;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.SplitContainer splitContainer3;
+        private System.Windows.Forms.SplitContainer splitContainerGraphAndOptions;
+        private System.Windows.Forms.SplitContainer splitContainerGraphAndToolBar;
+        private System.Windows.Forms.SplitContainer splitContainerGraphAndStatusBar;
         private System.Windows.Forms.Button buttonAdvanced;
     }
 }
