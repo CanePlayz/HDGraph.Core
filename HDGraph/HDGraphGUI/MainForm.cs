@@ -245,7 +245,7 @@ namespace HDGraph
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-            toolStripContainer1.Location = new Point(0, menuStrip.Size.Height);
+            //toolStripContainer1.Location = new Point(0, menuStrip.Size.Height);
             PrintStatus(resManager.GetString("statusReady"));
         }
 

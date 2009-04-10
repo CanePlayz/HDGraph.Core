@@ -359,6 +359,8 @@
     <Content Include="Doc\HDGraph-en.chm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\FillRightHS.png" />
+    <None Include="Resources\FillLeftHS.png" />
     <None Include="Resources\HDGraph_ico.ico" />
     <None Include="Properties\DataSources\HDGraph.DrawEngine.DrawOptions.datasource" />
     <None Include="Properties\DataSources\HDGraph.Engine.ScanError.datasource" />
