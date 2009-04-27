@@ -117,18 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;labelScanEngineDesc.Name" xml:space="preserve">
-    <value>labelScanEngineDesc</value>
+  <data name="&gt;&gt;radioButtonNativeEngine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="tabPageRightClic.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="&gt;&gt;tabPageRightClic.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxAllowDeleteOption.Name" xml:space="preserve">
     <value>checkBoxAllowDeleteOption</value>
   </data>
-  <data name="groupBoxEngine.Text" xml:space="preserve">
-    <value>Choose a scan engine</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>565, 318</value>
+  </data>
+  <data name="radioButtonNativeEngine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>525, 32</value>
+  </data>
+  <data name="labelScanEngineDesc.Text" xml:space="preserve">
+    <value>The scan engine is the component of HDGraph responsible for enumerating the files and folders. It builds a report which will be used by HDGraph to draw the chart.</value>
   </data>
   <data name="&gt;&gt;checkBoxDeletionAsk4Confirmation.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -143,14 +149,17 @@
   <data name="&gt;&gt;tabPageScanEngine.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="checkBoxAllowDeleteOption.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
   </data>
   <data name="checkBoxDeletionAsk4Confirmation.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="&gt;&gt;radioButtonSimpleEngine.Parent" xml:space="preserve">
     <value>groupBoxEngine</value>
+  </data>
+  <data name="tabPageRightClic.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
   </data>
   <data name="checkBoxAllowDeleteOption.Size" type="System.Drawing.Size, System.Drawing">
     <value>241, 17</value>
@@ -183,8 +192,11 @@
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;radioButtonNativeEngine.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;labelScanEngineDesc.Name" xml:space="preserve">
+    <value>labelScanEngineDesc</value>
+  </data>
+  <data name="&gt;&gt;tabPageScanEngine.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -197,9 +209,6 @@
   </data>
   <data name="&gt;&gt;groupBoxEngine.Parent" xml:space="preserve">
     <value>tabPageScanEngine</value>
-  </data>
-  <data name="&gt;&gt;radioButtonNativeEngine.Parent" xml:space="preserve">
-    <value>groupBoxEngine</value>
   </data>
   <data name="radioButtonNativeEngine.Text" xml:space="preserve">
     <value>Native engine : use the system native API. This mode is faster and more accurate, but is not guaranteed to work on all systems.</value>
@@ -230,6 +239,9 @@
   </data>
   <data name="&gt;&gt;labelScanEngineDesc.Parent" xml:space="preserve">
     <value>tabPageScanEngine</value>
+  </data>
+  <data name="groupBoxEngine.Text" xml:space="preserve">
+    <value>Choose a scan engine</value>
   </data>
   <data name="&gt;&gt;radioButtonNativeEngine.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -265,7 +277,7 @@
     <value>557, 292</value>
   </data>
   <data name="&gt;&gt;tabPageRightClic.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="checkBoxAllowDeleteOption.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -273,8 +285,8 @@
   <data name="tabPageScanEngine.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
-    <value>tabControl1</value>
+  <data name="checkBoxAllowDeleteOption.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="groupBoxEngine.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -284,12 +296,6 @@
   </data>
   <data name="checkBoxDeletionAsk4Confirmation.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="&gt;&gt;tabPageScanEngine.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="labelScanEngineDesc.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
   </data>
   <data name="&gt;&gt;radioButtonSimpleEngine.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -303,11 +309,11 @@
   <data name="checkBoxDeletionAsk4Confirmation.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="labelScanEngineDesc.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
   <data name="radioButtonSimpleEngine.Text" xml:space="preserve">
     <value>Simple engine : use .Net API. This mode is safe (it works on all systems) but is slower and sometimes less accurate.</value>
+  </data>
+  <data name="tabPageScanEngine.Text" xml:space="preserve">
+    <value>Scan engine</value>
   </data>
   <data name="checkBoxAllowDeleteOption.Text" xml:space="preserve">
     <value>Allow to delete folders from the right clic menu</value>
@@ -321,14 +327,11 @@
   <data name="&gt;&gt;checkBoxAllowDeleteOption.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>565, 318</value>
+  <data name="&gt;&gt;radioButtonNativeEngine.Parent" xml:space="preserve">
+    <value>groupBoxEngine</value>
   </data>
   <data name="checkBoxAllowDeleteOption.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 6</value>
-  </data>
-  <data name="&gt;&gt;tabPageRightClic.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButtonSimpleEngine.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -348,9 +351,6 @@
   <data name="checkBoxDeletionAsk4Confirmation.Size" type="System.Drawing.Size, System.Drawing">
     <value>267, 17</value>
   </data>
-  <data name="labelScanEngineDesc.Text" xml:space="preserve">
-    <value>The scan engine is the component of HDGraph responsible for enumerating the files and folders. It builds a report which will be used by HDGraph to draw the chart.</value>
-  </data>
   <data name="radioButtonSimpleEngine.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -366,14 +366,14 @@
   <data name="&gt;&gt;labelScanEngineDesc.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="labelScanEngineDesc.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
   <data name="&gt;&gt;radioButtonSimpleEngine.Name" xml:space="preserve">
     <value>radioButtonSimpleEngine</value>
   </data>
-  <data name="tabPageScanEngine.Text" xml:space="preserve">
-    <value>Scan engine</value>
-  </data>
-  <data name="radioButtonNativeEngine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>525, 32</value>
+  <data name="labelScanEngineDesc.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

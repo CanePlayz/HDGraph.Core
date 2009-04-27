@@ -50,8 +50,8 @@ namespace HDGraph
             this.tabControl1.AccessibleName = null;
             resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.BackgroundImage = null;
-            this.tabControl1.Controls.Add(this.tabPageRightClic);
             this.tabControl1.Controls.Add(this.tabPageScanEngine);
+            this.tabControl1.Controls.Add(this.tabPageRightClic);
             this.tabControl1.Font = null;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
