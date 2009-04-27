@@ -352,4 +352,7 @@ knowledge of the CeCILL license and that you accept its terms.</value>
   <data name="RotateInProgressByUser" xml:space="preserve">
     <value>[ Rotation preview ]</value>
   </data>
+  <data name="AppRestartRequiredToApplySetting" xml:space="preserve">
+    <value>You must restart HDGraph before the new setting will take effect. Do you want to restart HDGraph now?</value>
+  </data>
 </root>

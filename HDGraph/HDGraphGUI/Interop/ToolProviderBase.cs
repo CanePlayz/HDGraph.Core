@@ -41,6 +41,13 @@ namespace HDGraph.Interop
             return currentEnvironment.Value;
         }
 
+        public static bool CurrentOsIsWindows()
+        {
+            EnvironmentTarget env = GetEnvironmentType();
+            return (env == EnvironmentTarget.WindowsVista
+                    || env == EnvironmentTarget.WindowsXp);
+        }
+
         #endregion
 
         private static ToolProviderBase current;

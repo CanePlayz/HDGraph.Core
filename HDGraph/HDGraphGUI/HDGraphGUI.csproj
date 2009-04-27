@@ -96,6 +96,7 @@
     <Compile Include="Interop\ToolProviderBase.cs" />
     <Compile Include="Interop\Unknown\UnknownEnvToolProvider.cs" />
     <Compile Include="Interop\Windows\WindowsToolProvider.cs" />
+    <Compile Include="ScanEngine\NativeFileSystemScanEngine.cs" />
     <Compile Include="ScanEngine\DirectoryNode.cs" />
     <Compile Include="DirNodeSortableBindingList.cs" />
     <Compile Include="ScanEngine\ExtendedFileInfo.cs" />
@@ -379,6 +380,16 @@
     <None Include="Resources\InsertPictureHS.png" />
     <None Include="Resources\NavForward.png" />
     <None Include="Resources\NavBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HDGraphInterfaces\HDGraphInterfaces.csproj">
+      <Project>{E52451BA-30AB-44C4-A09B-EBDCC62E72F6}</Project>
+      <Name>HDGraphInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Win32NativeFileSystemEnumerator\Win32NativeFileSystemEnumerator.csproj">
+      <Project>{DCEF8EBC-5FEC-439C-8097-AC5BE1D26D69}</Project>
+      <Name>Win32NativeFileSystemEnumerator</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

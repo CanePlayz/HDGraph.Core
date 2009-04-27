@@ -225,5 +225,17 @@ namespace HDGraph.Properties {
                 this["OptionGraphRotation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool OptionUseSimpleScanEngine {
+            get {
+                return ((bool)(this["OptionUseSimpleScanEngine"]));
+            }
+            set {
+                this["OptionUseSimpleScanEngine"] = value;
+            }
+        }
     }
 }

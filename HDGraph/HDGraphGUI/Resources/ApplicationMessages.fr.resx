@@ -350,4 +350,7 @@ termes.</value>
   <data name="RotateInProgressByUser" xml:space="preserve">
     <value>[ Aperçu de la rotation ]</value>
   </data>
+  <data name="AppRestartRequiredToApplySetting" xml:space="preserve">
+    <value>Vous devez redémarrer HDGraph pour que le paramètre soit pris en compte. Voulez-vous redémarrer HDGraph maintenant ?</value>
+  </data>
 </root>

@@ -7,6 +7,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.ComponentModel.Design;
 using System.Windows.Forms.Design;
+using HDGraph.Resources;
+using HDGraph.Interop;
 
 namespace HDGraph
 {
@@ -17,14 +19,17 @@ namespace HDGraph
         {
             InitializeComponent();
             UpdateDeletionCheckedStatus();
+            SetUiFromEngineProperties();
+        }
+
+        private void SetUiFromEngineProperties()
+        {
+            radioButtonSimpleEngine.Checked = Properties.Settings.Default.OptionUseSimpleScanEngine || !ToolProviderBase.CurrentOsIsWindows();
+            radioButtonNativeEngine.Checked = !radioButtonSimpleEngine.Checked;
+            radioButtonNativeEngine.Enabled = ToolProviderBase.CurrentOsIsWindows();
         }
 
         private Dictionary<string, Panel> panelsBuffer = new Dictionary<string, Panel>();
-
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-
-        }
 
         private void checkBoxAllowDeleteOption_CheckedChanged(object sender, EventArgs e)
         {
@@ -39,9 +44,34 @@ namespace HDGraph
         /// <summary>
         /// Sauvegarde les valeurs dans le fichier de config.
         /// </summary>
-        public void SaveValues()
+        public DialogResult SaveValues()
         {
-            Properties.Settings.Default.Save();
+            if (Properties.Settings.Default.OptionUseSimpleScanEngine != radioButtonSimpleEngine.Checked)
+            {
+
+                DialogResult res = MessageBox.Show(ApplicationMessages.AppRestartRequiredToApplySetting,
+                                                    "HDGraph",
+                                                    MessageBoxButtons.YesNoCancel,
+                                                    MessageBoxIcon.Question);
+                if (res == DialogResult.Cancel)
+                {
+                    SetUiFromEngineProperties();
+                    return DialogResult.Cancel;
+                }
+                else
+                {
+                    Properties.Settings.Default.OptionUseSimpleScanEngine = radioButtonSimpleEngine.Checked;
+                    Properties.Settings.Default.Save();
+                    if (res == DialogResult.Yes)
+                        Application.Restart();
+                    return DialogResult.OK;
+                }
+            }
+            else
+            {
+                Properties.Settings.Default.Save();
+                return DialogResult.OK;
+            }
         }
     }
 

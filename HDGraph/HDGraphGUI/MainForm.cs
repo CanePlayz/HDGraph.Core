@@ -91,7 +91,7 @@ namespace HDGraph
             // LeResourceManager prend en paramètre : nom_du_namespace.nom_de_la_ressource_principale
             resManager = new System.Resources.ResourceManager(this.GetType().Assembly.GetName().Name + ".Resources.ApplicationMessages", this.GetType().Assembly);
             HDGTools.resManager = resManager;
-            moteur = new SimpleFileSystemScanEngine();
+            CreateEngine();
             moteur.ShowDiskFreeSpace = Properties.Settings.Default.OptionShowFreeSpace;
             if (!changeLangIsSuccess)
                 MessageBox.Show(resManager.GetString("ErrorInConfigLanguage"),
@@ -109,7 +109,7 @@ namespace HDGraph
             this.ClientSize = HDGraph.Properties.Settings.Default.OptionMainWindowSize;
             UpdateOptionTextDensityFromTrackBar();
             treeGraph1.DrawOptions.ImageRotation = imageRotationTrackBar.Value;
-            explorerIntegrationToolStripMenuItem.Enabled = CurrentOsIsWindows();
+            explorerIntegrationToolStripMenuItem.Enabled = ToolProviderBase.CurrentOsIsWindows();
             EnableHelpIfAvailable();
             comboBoxPath.DataSource = HDGraph.Properties.Settings.Default.PathHistory;
             checkBoxAutoRecalc.Checked = HDGraph.Properties.Settings.Default.OptionAutoCompleteGraph;
@@ -128,16 +128,19 @@ namespace HDGraph
             splitContainerGraphAndOptions.Panel2Collapsed = true;
         }
 
-        private bool CurrentOsIsWindows()
+        private void CreateEngine()
         {
-            EnvironmentTarget env = Interop.ToolProviderBase.GetEnvironmentType();
-            return (env == EnvironmentTarget.WindowsVista
-                    || env == EnvironmentTarget.WindowsXp);
+            if (Properties.Settings.Default.OptionUseSimpleScanEngine
+                || ! ToolProviderBase.CurrentOsIsWindows())
+                moteur = new SimpleFileSystemScanEngine();
+            else
+                moteur = new NativeFileSystemScanEngine();
         }
+        
 
         private void ApplyIcon()
         {
-            if (CurrentOsIsWindows())
+            if (ToolProviderBase.CurrentOsIsWindows())
                 // errors on other os !
                 this.Icon = Properties.Resources.HDGraph_ico;
         }
@@ -288,7 +291,7 @@ namespace HDGraph
             try
             {
                 XmlReader reader = new XmlTextReader(fileName);
-                XmlSerializer serializer = new XmlSerializer(typeof(HDGraphScanEngineBase));
+                XmlSerializer serializer = new XmlSerializer(moteur.GetType());
                 moteur = (HDGraphScanEngineBase)serializer.Deserialize(reader);
                 reader.Close();
                 moteur.PrintInfoDeleg = new HDGraphScanEngineBase.PrintInfoDelegate(PrintStatus);
@@ -347,7 +350,7 @@ namespace HDGraph
         private void SaveGraphToFile(string fileName)
         {
             XmlWriter writer = new XmlTextWriter(fileName, Encoding.Default);
-            XmlSerializer serializer = new XmlSerializer(typeof(HDGraphScanEngineBase));
+            XmlSerializer serializer = new XmlSerializer(moteur.GetType());
             serializer.Serialize(writer, moteur);
             writer.Close();
         }

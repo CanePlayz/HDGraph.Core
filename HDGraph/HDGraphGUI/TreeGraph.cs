@@ -350,7 +350,7 @@ namespace HDGraph
 
                 bool printMessage = Root != null
                                     && !TextChangeInProgress 
-                                    && (Root.HasMoreDirectoriesThan(NB_MAX_OF_SUB_DIR_BEFORE_WAIT_MESSAGE)
+                                    && (Root.HasMoreChildrenThan(NB_MAX_OF_SUB_DIR_BEFORE_WAIT_MESSAGE)
                                         || printMessageForSmallGraph);
                 if (printMessage)
                 {
@@ -798,6 +798,13 @@ namespace HDGraph
         {
             forceRefreshOnNextRepaint = true;
             calculationState = CalculationState.Finished;
+            
+            this.Invoke(new EventHandler(this.InternalRefresh));
+            //this.Refresh();
+        }
+
+        private void InternalRefresh(Object sender, EventArgs args)
+        {
             this.Refresh();
         }
     }

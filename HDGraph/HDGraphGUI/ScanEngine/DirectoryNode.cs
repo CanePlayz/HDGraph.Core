@@ -243,9 +243,9 @@ namespace HDGraph
         /// </summary>
         /// <param name="threshold"></param>
         /// <returns></returns>
-        public bool HasMoreDirectoriesThan(long threshold)
+        public bool HasMoreChildrenThan(long threshold)
         {
-            return CountDirectoriesToThreshold(threshold) > threshold;
+            return CountChildrenToThreshold(threshold) > threshold;
         }
 
         /// <summary>
@@ -254,14 +254,14 @@ namespace HDGraph
         /// </summary>
         /// <param name="threshold"></param>
         /// <returns></returns>
-        private long CountDirectoriesToThreshold(long threshold)
+        private long CountChildrenToThreshold(long threshold)
         {
             long num = this.children.Count;
             foreach (DirectoryNode node in this.Children)
             {
                 if (num > threshold)
                     return num;
-                num += node.CountDirectoriesToThreshold(threshold - num);
+                num += node.CountChildrenToThreshold(threshold - num);
             }
             return num;
         }

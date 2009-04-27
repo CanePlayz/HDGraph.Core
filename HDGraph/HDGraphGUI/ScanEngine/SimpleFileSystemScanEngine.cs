@@ -48,7 +48,7 @@ namespace HDGraph.ScanEngine
                                 //    string path = JunctionPoint.GetTargetOrNull(fi.FullName);
                                 //    // TODO
                                 //}
-                                dir.TotalSize += fi.Length;
+                                dir.FilesSize += fi.Length;
                             }
                             catch (Exception ex)
                             {
@@ -64,6 +64,7 @@ namespace HDGraph.ScanEngine
                             }
                         }
                     }
+                    dir.TotalSize = dir.FilesSize;
                 }
                 else
                 {
