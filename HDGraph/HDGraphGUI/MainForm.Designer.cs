@@ -137,10 +137,10 @@ namespace HDGraph
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonAdvanced = new System.Windows.Forms.Button();
             this.splitContainerGraphAndOptions = new System.Windows.Forms.SplitContainer();
-            this.treeGraph1 = new HDGraph.TreeGraph();
-            this.errorStatus1 = new HDGraph.UserControls.ErrorStatus();
             this.splitContainerGraphAndToolBar = new System.Windows.Forms.SplitContainer();
             this.splitContainerGraphAndStatusBar = new System.Windows.Forms.SplitContainer();
+            this.treeGraph1 = new HDGraph.TreeGraph();
+            this.errorStatus1 = new HDGraph.UserControls.ErrorStatus();
             this.statusStrip.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTextDensity)).BeginInit();
@@ -1004,34 +1004,6 @@ namespace HDGraph
             this.helpProvider1.SetShowHelp(this.splitContainerGraphAndOptions.Panel2, ((bool)(resources.GetObject("splitContainerGraphAndOptions.Panel2.ShowHelp"))));
             this.helpProvider1.SetShowHelp(this.splitContainerGraphAndOptions, ((bool)(resources.GetObject("splitContainerGraphAndOptions.ShowHelp"))));
             // 
-            // treeGraph1
-            // 
-            resources.ApplyResources(this.treeGraph1, "treeGraph1");
-            this.treeGraph1.BackColor = System.Drawing.Color.White;
-            this.treeGraph1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.treeGraph1.ForceRefreshOnNextRepaint = false;
-            this.treeGraph1.MinimumSize = new System.Drawing.Size(50, 50);
-            this.treeGraph1.ModeCouleur = HDGraph.ModeAffichageCouleurs.RandomNeutral;
-            this.treeGraph1.Moteur = null;
-            this.treeGraph1.Name = "treeGraph1";
-            this.treeGraph1.NbNiveaux = 0;
-            this.treeGraph1.NotifyNewRootNode = null;
-            this.treeGraph1.OptionShowSize = true;
-            this.treeGraph1.Resizing = false;
-            this.treeGraph1.Root = null;
-            this.treeGraph1.RotationInProgress = false;
-            this.helpProvider1.SetShowHelp(this.treeGraph1, ((bool)(resources.GetObject("treeGraph1.ShowHelp"))));
-            this.treeGraph1.ShowTooltip = true;
-            this.treeGraph1.TextChangeInProgress = false;
-            this.treeGraph1.UpdateHoverNode = null;
-            // 
-            // errorStatus1
-            // 
-            resources.ApplyResources(this.errorStatus1, "errorStatus1");
-            this.errorStatus1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.errorStatus1.Name = "errorStatus1";
-            this.helpProvider1.SetShowHelp(this.errorStatus1, ((bool)(resources.GetObject("errorStatus1.ShowHelp"))));
-            // 
             // splitContainerGraphAndToolBar
             // 
             resources.ApplyResources(this.splitContainerGraphAndToolBar, "splitContainerGraphAndToolBar");
@@ -1066,6 +1038,34 @@ namespace HDGraph
             this.splitContainerGraphAndStatusBar.Panel2.Controls.Add(this.statusStrip);
             this.helpProvider1.SetShowHelp(this.splitContainerGraphAndStatusBar.Panel2, ((bool)(resources.GetObject("splitContainerGraphAndStatusBar.Panel2.ShowHelp"))));
             this.helpProvider1.SetShowHelp(this.splitContainerGraphAndStatusBar, ((bool)(resources.GetObject("splitContainerGraphAndStatusBar.ShowHelp"))));
+            // 
+            // treeGraph1
+            // 
+            resources.ApplyResources(this.treeGraph1, "treeGraph1");
+            this.treeGraph1.BackColor = System.Drawing.Color.White;
+            this.treeGraph1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.treeGraph1.ForceRefreshOnNextRepaint = false;
+            this.treeGraph1.MinimumSize = new System.Drawing.Size(50, 50);
+            this.treeGraph1.ModeCouleur = HDGraph.ModeAffichageCouleurs.RandomNeutral;
+            this.treeGraph1.Moteur = null;
+            this.treeGraph1.Name = "treeGraph1";
+            this.treeGraph1.NbNiveaux = 0;
+            this.treeGraph1.NotifyNewRootNode = null;
+            this.treeGraph1.OptionShowSize = true;
+            this.treeGraph1.Resizing = false;
+            this.treeGraph1.Root = null;
+            this.treeGraph1.RotationInProgress = false;
+            this.helpProvider1.SetShowHelp(this.treeGraph1, ((bool)(resources.GetObject("treeGraph1.ShowHelp"))));
+            this.treeGraph1.ShowTooltip = true;
+            this.treeGraph1.TextChangeInProgress = false;
+            this.treeGraph1.UpdateHoverNode = null;
+            // 
+            // errorStatus1
+            // 
+            resources.ApplyResources(this.errorStatus1, "errorStatus1");
+            this.errorStatus1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.errorStatus1.Name = "errorStatus1";
+            this.helpProvider1.SetShowHelp(this.errorStatus1, ((bool)(resources.GetObject("errorStatus1.ShowHelp"))));
             // 
             // MainForm
             // 
