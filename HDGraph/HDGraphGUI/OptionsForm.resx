@@ -126,7 +126,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>407, 154</value>
+    <value>500, 213</value>
   </data>
   <data name="buttonCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -157,7 +157,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonOk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>326, 154</value>
+    <value>419, 213</value>
   </data>
   <data name="buttonOk.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -187,7 +187,7 @@
     <value>12, 12</value>
   </data>
   <data name="optionsUserControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>470, 136</value>
+    <value>563, 195</value>
   </data>
   <data name="optionsUserControl1.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -211,7 +211,10 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>498, 189</value>
+    <value>591, 248</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
