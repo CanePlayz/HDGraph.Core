@@ -171,7 +171,7 @@ namespace HDGraph
                             try
                             {
                                 moteur.PrintInfoDeleg = new HDGraphScanEngineBase.PrintInfoDelegate(this.UpdateMessage);
-                                moteur.ConstruireArborescence(path, nbNiveaux);
+                                moteur.BuildTree(path, nbNiveaux);
                             }
                             catch (ArgumentException ex)
                             {

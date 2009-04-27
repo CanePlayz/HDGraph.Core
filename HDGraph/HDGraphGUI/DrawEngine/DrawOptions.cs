@@ -21,10 +21,8 @@ namespace HDGraph.DrawEngine
         public int ImageRotation { get; set; }
 
         /// <summary>
-
         /// Angle min to enable text print.
         /// </summary>
-
         public int TextDensity { get; set; }
 
         public DrawType DrawStyle { get; set; }

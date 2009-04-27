@@ -353,4 +353,7 @@ termes.</value>
   <data name="AppRestartRequiredToApplySetting" xml:space="preserve">
     <value>Vous devez redémarrer HDGraph pour que le paramètre soit pris en compte. Voulez-vous redémarrer HDGraph maintenant ?</value>
   </data>
+  <data name="ScanCompletedIn" xml:space="preserve">
+    <value>Scan terminé en {0}.</value>
+  </data>
 </root>

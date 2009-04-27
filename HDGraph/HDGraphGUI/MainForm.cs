@@ -14,6 +14,7 @@ using System.Diagnostics;
 using HDGraph.DrawEngine;
 using HDGraph.ScanEngine;
 using HDGraph.Interop;
+using HDGraph.Resources;
 
 namespace HDGraph
 {
@@ -708,8 +709,9 @@ namespace HDGraph
             treeGraph1.UpdateHoverNode = new TreeGraph.NodeNotificationDelegate(PrintNodeHoverCursor);
             treeGraph1.NotifyNewRootNode = new TreeGraph.NodeNotificationDelegate(UpdateCurrentNodeRoot);
             errorStatus1.Update(moteur.ErrorList);
-
             buttonScan.Enabled = true;
+            TimeSpan executionTime = moteur.AnalyzeDate.Subtract(moteur.AnalyseStartDate);
+            PrintStatus(String.Format(ApplicationMessages.ScanCompletedIn, executionTime));
         }
 
         /// <summary>

@@ -40,6 +40,10 @@ namespace HDGraph
             set { analyzeDate = value; }
         }
 
+        /// <summary>
+        /// Start analyze date.
+        /// </summary>
+        public DateTime AnalyseStartDate { get; set; }
 
         public delegate void PrintInfoDelegate(string message);
 
@@ -117,7 +121,7 @@ namespace HDGraph
         /// </summary>
         /// <param name="path"></param>
         /// <param name="maxLevel"></param>
-        public void ConstruireArborescence(string path, int maxLevel)
+        public void BuildTree(string path, int maxLevel)
         {
             if (!Directory.Exists(path))
                 throw new ArgumentException("Invalid path.", "path");
@@ -129,6 +133,7 @@ namespace HDGraph
                 throw new ArgumentOutOfRangeException("maxLevel", "Il faut afficher au moins 1 niveau !");
             root = new DirectoryNode(path);
             ErrorList = new List<ScanError>();
+            AnalyseStartDate = DateTime.Now;
             ConstruireArborescence(root, maxLevel - 1);
             ApplySpecialRootOptions(root);
 

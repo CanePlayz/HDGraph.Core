@@ -569,6 +569,15 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scan completed in {0}..
+        /// </summary>
+        internal static string ScanCompletedIn {
+            get {
+                return ResourceManager.GetString("ScanCompletedIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scanning .
         /// </summary>
         internal static string Scanning {
