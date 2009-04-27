@@ -424,7 +424,7 @@
     <value>633, 17</value>
   </metadata>
   <data name="checkBoxShowFreeSpace.ToolTip" xml:space="preserve">
-    <value>Si le répertoire courant est une racine de disque, affiche l'espace libre de ce disque.</value>
+    <value>Show the disk free space on the root directory.</value>
   </data>
   <data name="&gt;&gt;checkBoxShowFreeSpace.Name" xml:space="preserve">
     <value>checkBoxShowFreeSpace</value>
@@ -2530,6 +2530,9 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>841, 752</value>
+  </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>849, 786</value>
