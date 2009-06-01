@@ -322,7 +322,7 @@ namespace HDGraph.DrawEngine
                     Rectangle.Round(rec),
                     startAngle,
                     nodeAngle);
-                frontGraph.DrawPie(new Pen(Color.Black), rec, startAngle, nodeAngle);
+                frontGraph.DrawPie(new Pen(Color.Black, 0.05f), rec, startAngle, nodeAngle);
             }
             else if (node.DirectoryType == SpecialDirTypes.FreeSpaceAndShow)
             {

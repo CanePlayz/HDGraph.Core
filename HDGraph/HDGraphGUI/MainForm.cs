@@ -1060,9 +1060,12 @@ namespace HDGraph
             splitContainerGraphAndOptions.SplitterDistance = splitContainerGraphAndOptions.Size.Width - 166;
 
             #region Force locations for some controls in order to correct a Mono bug on Linux
-            groupBox1.Location = new Point(0, 5);
-            groupBoxHoverInfo.Location = new Point(0, 424);
-            errorStatus1.Location = new Point(4, 594);
+            if (!ToolProviderBase.CurrentOsIsWindows())
+            {
+                groupBox1.Location = new Point(0, 5);
+                groupBoxHoverInfo.Location = new Point(0, 424);
+                errorStatus1.Location = new Point(4, 594);
+            }
             #endregion
 
             if (splitContainerGraphAndOptions.Panel2Collapsed)
