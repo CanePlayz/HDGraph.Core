@@ -132,12 +132,12 @@ namespace HDGraph
         private void CreateEngine()
         {
             if (Properties.Settings.Default.OptionUseSimpleScanEngine
-                || ! ToolProviderBase.CurrentOsIsWindows())
+                || !ToolProviderBase.CurrentOsIsWindows())
                 moteur = new SimpleFileSystemScanEngine();
             else
                 moteur = new NativeFileSystemScanEngine();
         }
-        
+
 
         private void ApplyIcon()
         {
@@ -1057,6 +1057,14 @@ namespace HDGraph
         private void buttonAdvanced_Click(object sender, EventArgs e)
         {
             splitContainerGraphAndOptions.Panel2Collapsed = !splitContainerGraphAndOptions.Panel2Collapsed;
+            splitContainerGraphAndOptions.SplitterDistance = splitContainerGraphAndOptions.Size.Width - 166;
+            
+            #region Force locations for some controls in order to correct a Mono bug on Linux
+            groupBox1.Location = new Point(0, 5);
+            groupBoxHoverInfo.Location = new Point(0, 424);
+            errorStatus1.Location = new Point(4, 594);
+            #endregion
+
             if (splitContainerGraphAndOptions.Panel2Collapsed)
                 buttonAdvanced.Image = Properties.Resources.FillLeftHS;
             else
