@@ -34,7 +34,8 @@ namespace HDGraph.ExternalTools
             get { return this.imageValue; }
             set
             {
-                if (this.Image != value)
+                if (this.Image != value
+                    && value != null)
                 {
                     this.imageValue = value;
                     this.imageSize = value.Size;
@@ -98,14 +99,15 @@ namespace HDGraph.ExternalTools
 
             set
             {
-                if (this.imageValue != value)
+                if (this.imageValue != value
+                    && value != null)
                 {
                     this.imageValue = value;
                     this.imageSize = value.Size;
                     Padding inheritedPadding = this.InheritedStyle.Padding;
                     this.Style.Padding = new Padding(imageSize.Width,
-                    inheritedPadding.Top, inheritedPadding.Right,
-                    inheritedPadding.Bottom);
+                                inheritedPadding.Top, inheritedPadding.Right,
+                                inheritedPadding.Bottom);
                 }
             }
         }

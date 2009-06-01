@@ -20,12 +20,16 @@ namespace HDGraph.Interop.Unknown
 
         public override System.Drawing.Icon GetFileIcon(string name, IconSize size, bool linkOverlay)
         {
-            return Properties.Resources.HDGraph_ico; // TODO
+            return null;
+            return System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath);
+            //return Properties.Resources.HDGraph_ico; // TODO
         }
 
         public override System.Drawing.Icon GetFolderIcon(IconSize size, FolderType folderType)
         {
-            return Properties.Resources.HDGraph_ico; // TODO
+            return null;
+            return System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath);
+            //return Properties.Resources.HDGraph_ico; // TODO
         }
     }
 }

@@ -13,16 +13,15 @@ namespace HDGraph
 {
     public partial class DirectoryDetailUC : UserControl
     {
-        Bitmap folderIcon = null;
+        private Bitmap folderIcon = null;
 
         public DirectoryDetailUC()
         {
             InitializeComponent();
             //this.dataGridViewImageColumn1.ValuesAreIcons = true;
-
-            folderIcon = ToolProviderBase.Current.GetFolderIcon(
-                                                        IconSize.Small,
-                                                        FolderType.Open).ToBitmap();
+            Icon icon = ToolProviderBase.Current.GetFolderIcon(IconSize.Small, FolderType.Open);
+            if (icon != null)
+                folderIcon = icon.ToBitmap();
             this.dataGridViewTextImageColumnName.Image = folderIcon;
         }
 
@@ -132,7 +131,7 @@ namespace HDGraph
 
         private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
-            openThisDirectoryInWindowsExplorerToolStripMenuItem.Enabled = (selectedNode != null 
+            openThisDirectoryInWindowsExplorerToolStripMenuItem.Enabled = (selectedNode != null
                                                                         && selectedNode.DirectoryType == SpecialDirTypes.NotSpecial);
             showDetailsInANewWindowToolStripMenuItem.Enabled = (selectedNode != null);
         }

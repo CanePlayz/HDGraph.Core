@@ -110,6 +110,7 @@ namespace HDGraph
         {
             if (scanningMessage == null)
                 scanningMessage = ApplicationMessages.Scanning;
+            ErrorList = new List<ScanError>();
         }
 
         #endregion
