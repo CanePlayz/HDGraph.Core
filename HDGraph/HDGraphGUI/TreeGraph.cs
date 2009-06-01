@@ -586,6 +586,11 @@ namespace HDGraph
         /// <param name="e"></param>
         private void openThisDirectoryInWindowsExplorerToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            OpenSelectedFolderInExplorer();
+        }
+
+        private void OpenSelectedFolderInExplorer()
+        {
             if (lastClicNode != null
                 && !String.IsNullOrEmpty(lastClicNode.Path))
                 System.Diagnostics.Process.Start(lastClicNode.Path);
@@ -666,13 +671,13 @@ namespace HDGraph
                     WaitForm waitForm = new WaitForm();
                     waitForm.ShowDialogAndStartAction(HDGTools.resManager.GetString("DeleteInProgress"),
                                                             DeleteSelectedForlder);
-                    RafraichirArboDuDernierClic();
                     if (waitForm.ActionError == null)
                         MessageBox.Show(HDGTools.resManager.GetString("DeletionCompleteMsg"),
                                         HDGTools.resManager.GetString("OperationSuccessfullTitle"),
                                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
                         NotifyUserAboutDeletionError(waitForm.ActionError);
+                    RafraichirArboDuDernierClic();
                 }
                 catch (Exception ex)
                 {
@@ -683,15 +688,17 @@ namespace HDGraph
             }
         }
 
-        private static void NotifyUserAboutDeletionError(Exception ex)
+        private void NotifyUserAboutDeletionError(Exception ex)
         {
             string msgErreur = String.Format(
                 HDGTools.resManager.GetString("ErrorDeletingFolder"),
-                ex.Message);
-            MessageBox.Show(msgErreur,
-                HDGTools.resManager.GetString("Error"),
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ex.Message, Environment.NewLine);
             Trace.TraceError(HDGTools.PrintError(ex));
+            DialogResult answer = MessageBox.Show(msgErreur,
+                HDGTools.resManager.GetString("Error"),
+                MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            if (answer == DialogResult.Yes)
+                OpenSelectedFolderInExplorer();
         }
 
         /// <summary>

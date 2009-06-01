@@ -166,7 +166,7 @@
     <value>HDGraph Error</value>
   </data>
   <data name="ErrorDeletingFolder" xml:space="preserve">
-    <value>An error occured while deleting folder. Some files were not deleted. Error detail : {0}</value>
+    <value>An error occured while deleting the folder. Some files were not deleted. You probably don't have the right permissions on the folder or its files, or one file might be read only. {1}Error detail : {0}{1}{1}Do you want to open the folder to investigate the problem or delete the folder manually ?</value>
   </data>
   <data name="ErrorInConfigLanguage" xml:space="preserve">
     <value>An error in the configuration file prevent the application to load the appropriate language. Please verify that the langage code is correct in your config file !</value>

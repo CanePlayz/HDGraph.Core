@@ -14,6 +14,7 @@ Improved:
 	- Design refactored
 Fixed:
 	- Bug on "Text Density" : value loaded from a previous saved state was wrong.
+	- Wrong message when folder deletion failed.
 	- Some minor bugs
 
 

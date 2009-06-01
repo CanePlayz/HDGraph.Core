@@ -166,7 +166,7 @@
     <value>Erreur HDGraph</value>
   </data>
   <data name="ErrorDeletingFolder" xml:space="preserve">
-    <value>Une erreur s'est produite lors de la suppression. Il est problable que seule une partie des fichiers ai été supprimée. Détail de l'erreur : {0}</value>
+    <value>Une erreur s'est produite lors de la suppression. Certains fichiers n'ont pas été supprimés. Il est probable que vous n'ayez pas les droits suffisants sur ces fichiers ou qu'ils possèdent l'attribut "lecture seule". {1}Détail de l'erreur : {0}{1}{1}Voulez-vous ouvrir ce dossier pour corriger le problème ou le supprimer manuellement ?</value>
   </data>
   <data name="ErrorInConfigLanguage" xml:space="preserve">
     <value>Une erreur dans le fichier de configuration empêche l'application de charger la langue appropriée. Vérifiez le code de langue du fichier de config !</value>
