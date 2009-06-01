@@ -1008,6 +1008,7 @@ namespace HDGraph
             // 
             // splitContainerAdressBarAndGraph
             // 
+            this.splitContainerAdressBarAndGraph.AllowDrop = true;
             resources.ApplyResources(this.splitContainerAdressBarAndGraph, "splitContainerAdressBarAndGraph");
             this.splitContainerAdressBarAndGraph.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainerAdressBarAndGraph.Name = "splitContainerAdressBarAndGraph";
@@ -1026,6 +1027,8 @@ namespace HDGraph
             this.splitContainerAdressBarAndGraph.Panel2.Controls.Add(this.splitContainerGraphAndOptions);
             this.helpProvider1.SetShowHelp(this.splitContainerAdressBarAndGraph.Panel2, ((bool)(resources.GetObject("splitContainerAdressBarAndGraph.Panel2.ShowHelp"))));
             this.helpProvider1.SetShowHelp(this.splitContainerAdressBarAndGraph, ((bool)(resources.GetObject("splitContainerAdressBarAndGraph.ShowHelp"))));
+            this.splitContainerAdressBarAndGraph.DragDrop += new System.Windows.Forms.DragEventHandler(this.splitContainerAdressBarAndGraph_DragDrop);
+            this.splitContainerAdressBarAndGraph.DragEnter += new System.Windows.Forms.DragEventHandler(this.splitContainerAdressBarAndGraph_DragEnter);
             // 
             // buttonAdvanced
             // 

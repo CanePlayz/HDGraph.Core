@@ -8,7 +8,8 @@ Version 1.4.0
 ======================================================
 Added:
 	- Experimental display style : "Bar style"
-	- TODO : New scan engine : faster and more accurate (up to 6 times faster)
+	- TODO : New scan engine on Windows : faster and more accurate (up to 6 times faster).
+	- "Drag & drop" capable (from Windows explorer)
 Improved: 
 	- Design refactored
 Fixed:

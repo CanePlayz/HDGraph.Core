@@ -1058,7 +1058,7 @@ namespace HDGraph
         {
             splitContainerGraphAndOptions.Panel2Collapsed = !splitContainerGraphAndOptions.Panel2Collapsed;
             splitContainerGraphAndOptions.SplitterDistance = splitContainerGraphAndOptions.Size.Width - 166;
-            
+
             #region Force locations for some controls in order to correct a Mono bug on Linux
             groupBox1.Location = new Point(0, 5);
             groupBoxHoverInfo.Location = new Point(0, 424);
@@ -1069,6 +1069,64 @@ namespace HDGraph
                 buttonAdvanced.Image = Properties.Resources.FillLeftHS;
             else
                 buttonAdvanced.Image = Properties.Resources.FillRightHS;
+        }
+
+        private void splitContainerAdressBarAndGraph_DragEnter(object sender, DragEventArgs e)
+        {
+            try
+            {
+                string path = GetFolderPathFromDrag(e);
+                if (!string.IsNullOrEmpty(path))
+                {
+                    e.Effect = DragDropEffects.All;
+                }
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError("DragAndDrop Error (DragEnter) : " + HDGTools.PrintError(ex));
+            }
+        }
+
+        /// <summary>
+        /// Get the path of the directory of the drag event.
+        /// Return null if the path is not a directory (for exemple for a file path instead
+        /// of a folder path).
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        private static string GetFolderPathFromDrag(DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                Object o = e.Data.GetData(DataFormats.FileDrop);
+                string[] files = o as string[];
+                if (files != null)
+                {
+                    string firstFile = files[0];
+                    if (Directory.Exists(firstFile))
+                    {
+                        return firstFile;
+                    }
+                }
+            }
+            return null;
+        }
+
+        private void splitContainerAdressBarAndGraph_DragDrop(object sender, DragEventArgs e)
+        {
+            try
+            {
+                string path = GetFolderPathFromDrag(e);
+                if (!string.IsNullOrEmpty(path))
+                {
+                    comboBoxPath.Text = path;
+                    LaunchScan();
+                }
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError("DragAndDrop Error (Drop) : " + HDGTools.PrintError(ex));
+            }
         }
     }
 }
