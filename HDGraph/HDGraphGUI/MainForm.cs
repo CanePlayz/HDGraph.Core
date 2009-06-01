@@ -1071,6 +1071,13 @@ namespace HDGraph
                 buttonAdvanced.Image = Properties.Resources.FillRightHS;
         }
 
+        #region Drag&Drop
+
+        /// <summary>
+        /// DragEnter event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void splitContainerAdressBarAndGraph_DragEnter(object sender, DragEventArgs e)
         {
             try
@@ -1112,6 +1119,11 @@ namespace HDGraph
             return null;
         }
 
+        /// <summary>
+        /// Drop event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void splitContainerAdressBarAndGraph_DragDrop(object sender, DragEventArgs e)
         {
             try
@@ -1128,5 +1140,7 @@ namespace HDGraph
                 Trace.TraceError("DragAndDrop Error (Drop) : " + HDGTools.PrintError(ex));
             }
         }
+
+        #endregion
     }
 }
