@@ -349,7 +349,7 @@ namespace HDGraph
                 g.DrawImage(originalBitmap, targetRectangle);
 
                 bool printMessage = Root != null
-                                    && !TextChangeInProgress 
+                                    && !TextChangeInProgress
                                     && (Root.HasMoreChildrenThan(NB_MAX_OF_SUB_DIR_BEFORE_WAIT_MESSAGE)
                                         || printMessageForSmallGraph);
                 if (printMessage)
@@ -663,26 +663,35 @@ namespace HDGraph
             {
                 try
                 {
-                    new WaitForm().ShowDialogAndStartAction(HDGTools.resManager.GetString("DeleteInProgress"),
+                    WaitForm waitForm = new WaitForm();
+                    waitForm.ShowDialogAndStartAction(HDGTools.resManager.GetString("DeleteInProgress"),
                                                             DeleteSelectedForlder);
                     RafraichirArboDuDernierClic();
-                    MessageBox.Show(HDGTools.resManager.GetString("DeletionCompleteMsg"),
-                                    HDGTools.resManager.GetString("OperationSuccessfullTitle"),
-                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (waitForm.ActionError == null)
+                        MessageBox.Show(HDGTools.resManager.GetString("DeletionCompleteMsg"),
+                                        HDGTools.resManager.GetString("OperationSuccessfullTitle"),
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        NotifyUserAboutDeletionError(waitForm.ActionError);
                 }
                 catch (Exception ex)
                 {
                     WaitForm.HideWaitForm();
-                    string msgErreur = String.Format(
-                        HDGTools.resManager.GetString("ErrorDeletingFolder"),
-                        ex.Message);
-                    MessageBox.Show(msgErreur,
-                        HDGTools.resManager.GetString("Error"),
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    Trace.TraceError(HDGTools.PrintError(ex));
+                    NotifyUserAboutDeletionError(ex);
                     RafraichirArboDuDernierClic();
                 }
             }
+        }
+
+        private static void NotifyUserAboutDeletionError(Exception ex)
+        {
+            string msgErreur = String.Format(
+                HDGTools.resManager.GetString("ErrorDeletingFolder"),
+                ex.Message);
+            MessageBox.Show(msgErreur,
+                HDGTools.resManager.GetString("Error"),
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            Trace.TraceError(HDGTools.PrintError(ex));
         }
 
         /// <summary>
@@ -798,7 +807,7 @@ namespace HDGraph
         {
             forceRefreshOnNextRepaint = true;
             calculationState = CalculationState.Finished;
-            
+
             this.Invoke(new EventHandler(this.InternalRefresh));
             //this.Refresh();
         }

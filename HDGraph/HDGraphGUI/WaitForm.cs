@@ -26,7 +26,7 @@ namespace HDGraph
         public WaitForm()
         {
             InitializeComponent();
-            
+
         }
         #endregion
 
@@ -125,6 +125,7 @@ namespace HDGraph
         private HDGraphScanEngineBase moteur = null;
         private string path;
         private int nbNiveaux;
+        public Exception ActionError { get; set; }
 
         private void WaitForm_Load(object sender, EventArgs e)
         {
@@ -208,10 +209,12 @@ namespace HDGraph
             }
             catch (Exception ex)
             {
-                MessageBox.Show(Resources.ApplicationMessages.UnexpectedErrorDuringAnalysis,
-                                            Resources.ApplicationMessages.Error,
-                                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                System.Diagnostics.Trace.TraceError("Error while scanning " + path + ": " + HDGTools.PrintError(ex));
+                if (typeAction != AsyncActionType.AbstractAction)
+                    MessageBox.Show(Resources.ApplicationMessages.UnexpectedErrorDuringAnalysis,
+                                                Resources.ApplicationMessages.Error,
+                                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.Diagnostics.Trace.TraceError("Error while scanning or during abstract action for " + path + ": " + HDGTools.PrintError(ex));
+                this.ActionError = ex;
             }
         }
 
@@ -256,6 +259,7 @@ namespace HDGraph
         /// <param name="actionToDo"></param>
         public void ShowDialogAndStartAction(string message, DoAction actionToDo)
         {
+            this.ActionError = null;
             this.typeAction = AsyncActionType.AbstractAction;
             this.actionToDo = actionToDo;
             this.message = message;
