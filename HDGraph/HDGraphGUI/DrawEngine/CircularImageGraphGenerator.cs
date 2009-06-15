@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using HDGraph.Interfaces.ScanEngines;
 
 namespace HDGraph.DrawEngine
 {
@@ -29,9 +30,9 @@ namespace HDGraph.DrawEngine
         private DrawOptions currentWorkingOptions;
         private DrawOptions latestUsedOptions;
         private ColorManager colorManager;
-        private DirectoryNode rootNode;
+        private IDirectoryNode rootNode;
 
-        public CircularImageGraphGenerator(DirectoryNode rootNode, HDGraphScanEngineBase moteur)
+        public CircularImageGraphGenerator(IDirectoryNode rootNode, HDGraphScanEngineBase moteur)
         {
             this.moteur = moteur;
             this.colorManager = new ColorManager();
@@ -122,7 +123,7 @@ namespace HDGraph.DrawEngine
         /// <param name="rec"></param>
         /// <param name="startAngle"></param>
         /// <param name="endAngle"></param>
-        private void PaintTree(DirectoryNode node, RectangleF rec, float startAngle, float endAngle)
+        private void PaintTree(IDirectoryNode node, RectangleF rec, float startAngle, float endAngle)
         {
             if (node.TotalSize == 0)
                 return;
@@ -136,7 +137,7 @@ namespace HDGraph.DrawEngine
             {
                 long cumulSize = 0;
                 float currentStartAngle;
-                foreach (DirectoryNode childNode in node.Children)
+                foreach (IDirectoryNode childNode in node.Children)
                 {
                     if (childNode.DirectoryType != SpecialDirTypes.FreeSpaceAndHide)
                     {
@@ -163,7 +164,7 @@ namespace HDGraph.DrawEngine
         /// <param name="rec"></param>
         /// <param name="startAngle"></param>
         /// <param name="endAngle"></param>
-        private void PaintUnknownPart(DirectoryNode node, RectangleF rec, float startAngle, float endAngle)
+        private void PaintUnknownPart(IDirectoryNode node, RectangleF rec, float startAngle, float endAngle)
         {
             if (!printDirNames)
             {
@@ -187,7 +188,7 @@ namespace HDGraph.DrawEngine
         /// <param name="rec"></param>
         /// <param name="startAngle"></param>
         /// <param name="nodeAngle"></param>
-        private void PaintDirPart(DirectoryNode node, RectangleF rec, float startAngle, float nodeAngle)
+        private void PaintDirPart(IDirectoryNode node, RectangleF rec, float startAngle, float nodeAngle)
         {
             // on gère les arcs "pleins" (360°) de manière particulière pour avoir un disque "plein", sans trait à l'angle 0
             if (nodeAngle == 360)
@@ -228,7 +229,7 @@ namespace HDGraph.DrawEngine
         /// <param name="node"></param>
         /// <param name="rec"></param>
         /// <returns></returns>
-        private void WriteDirectoryNameForFullPie(DirectoryNode node, RectangleF rec)
+        private void WriteDirectoryNameForFullPie(IDirectoryNode node, RectangleF rec)
         {
             float x = 0, y;
             if (rec.Height == pasNiveau * 2)
@@ -264,7 +265,7 @@ namespace HDGraph.DrawEngine
         /// <param name="startAngle"></param>
         /// <param name="nodeAngle"></param>
         /// <returns></returns>
-        private void WriteDirectoryName(DirectoryNode node, RectangleF rec, float startAngle, float nodeAngle)
+        private void WriteDirectoryName(IDirectoryNode node, RectangleF rec, float startAngle, float nodeAngle)
         {
             //float textWidthLimit = pasNiveau * 1.5f;
             float textWidthLimit = pasNiveau * 2f;
@@ -312,7 +313,7 @@ namespace HDGraph.DrawEngine
         /// <param name="rec"></param>
         /// <param name="startAngle"></param>
         /// <param name="nodeAngle"></param>
-        private void DrawPartialPie(DirectoryNode node, RectangleF rec, float startAngle, float nodeAngle)
+        private void DrawPartialPie(IDirectoryNode node, RectangleF rec, float startAngle, float nodeAngle)
         {
             if (node.DirectoryType == SpecialDirTypes.NotSpecial)
             {
@@ -469,7 +470,7 @@ namespace HDGraph.DrawEngine
         /// </summary>
         /// <param name="curseurPos">Position du curseur. Doit être relative au contrôle, pas à l'écran ou à la form !</param>
         /// <returns></returns>
-        public override DirectoryNode FindNodeByCursorPosition(Point curseurPos)
+        public override IDirectoryNode FindNodeByCursorPosition(Point curseurPos)
         {
             // On a les coordonnées du curseur dans le controle.
             // Il faut faire un changement de référentiel pour avoir les coordonnées vis à vis de l'origine (le centre des cercles).
@@ -493,7 +494,7 @@ namespace HDGraph.DrawEngine
             //System.Windows.Forms.MessageBox.Show("angle: " + angle + "; rayon: " + rayon);
             if (this.rootNode == null || this.rootNode.TotalSize == 0)
                 return this.rootNode;
-            DirectoryNode foundNode = FindNodeInTree(
+            IDirectoryNode foundNode = FindNodeInTree(
                         this.rootNode,
                         0,
                         0,
@@ -514,7 +515,7 @@ namespace HDGraph.DrawEngine
         /// <param name="cursorAngle"></param>
         /// <param name="cursorLen"></param>
         /// <returns></returns>
-        private DirectoryNode FindNodeInTree(DirectoryNode node, float levelHeight, float startAngle, float endAngle, double cursorAngle, double cursorLen)
+        private IDirectoryNode FindNodeInTree(IDirectoryNode node, float levelHeight, float startAngle, float endAngle, double cursorAngle, double cursorLen)
         {
             if (node.TotalSize == 0)
                 return node;
@@ -529,7 +530,7 @@ namespace HDGraph.DrawEngine
             }
             long cumulSize = 0;
             float currentStartAngle;
-            foreach (DirectoryNode childNode in node.Children)
+            foreach (IDirectoryNode childNode in node.Children)
             {
                 currentStartAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
                 float childAngle = childNode.TotalSize * nodeAngle / node.TotalSize;

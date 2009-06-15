@@ -10,6 +10,7 @@ using System.Drawing.Drawing2D;
 using HDGraph.Resources;
 using HDGraph.DrawEngine;
 using System.Drawing.Imaging;
+using HDGraph.Interfaces.ScanEngines;
 
 namespace HDGraph
 {
@@ -20,9 +21,9 @@ namespace HDGraph
         /// <summary>
         /// Objet DirectoryNode qui doit être considéré comme la racine du graphe.
         /// </summary>
-        private DirectoryNode root;
+        private IDirectoryNode root;
 
-        public DirectoryNode Root
+        public IDirectoryNode Root
         {
             get { return root; }
             set { root = value; }
@@ -91,7 +92,7 @@ namespace HDGraph
             }
         }
 
-        public delegate void NodeNotificationDelegate(DirectoryNode node);
+        public delegate void NodeNotificationDelegate(IDirectoryNode node);
 
         private NodeNotificationDelegate updateHoverNode;
         /// <summary>
@@ -135,7 +136,7 @@ namespace HDGraph
         /// Idem que lastClicPosition, mais stocke le directoryNode directement et non les coordonnées du curseur. 
         /// Est utilisé lorsque lastClicPosition a été définit.
         /// </summary>
-        private DirectoryNode lastClicNode = null;
+        private IDirectoryNode lastClicNode = null;
 
         /// <summary>
         /// Bitmap buffer dans lequel le graph est dessiné.
@@ -423,7 +424,7 @@ namespace HDGraph
         /// </summary>
         private void SendPointedNode()
         {
-            DirectoryNode foundNode = (lastGeneratorCompleted == null) ? null
+            IDirectoryNode foundNode = (lastGeneratorCompleted == null) ? null
                         : lastGeneratorCompleted.FindNodeByCursorPosition(PointToClient(Cursor.Position));
             if (foundNode == null)
             {
@@ -456,7 +457,7 @@ namespace HDGraph
         /// Ensure the correct tooltip is affected to the current userControl, according to the given node.
         /// </summary>
         /// <param name="foundNode"></param>
-        private void UpdateOrCreateToolTip(DirectoryNode foundNode)
+        private void UpdateOrCreateToolTip(IDirectoryNode foundNode)
         {
             if (!ShowTooltip
                 || this.calculationState == CalculationState.InProgress)
@@ -469,6 +470,7 @@ namespace HDGraph
                 toolTip = new ToolTip();
                 toolTip.Tag = foundNode.Path;
                 toolTip.IsBalloon = true;
+
                 string toolTipText = foundNode.Name + Environment.NewLine + foundNode.HumanReadableTotalSize;
                 toolTip.SetToolTip(this, toolTipText);
             }
@@ -510,7 +512,7 @@ namespace HDGraph
             if (!lastClicPosition.HasValue)
                 return;
 
-            DirectoryNode node = (lastGeneratorCompleted == null) ? null
+            IDirectoryNode node = (lastGeneratorCompleted == null) ? null
                         : lastGeneratorCompleted.FindNodeByCursorPosition(lastClicPosition.Value);
             lastClicNode = node;
             bool nodeIsNotNull = (node != null);
@@ -572,7 +574,7 @@ namespace HDGraph
         {
             if (lastClicNode != null && lastClicNode.Parent != null)
             {
-                this.root = lastClicNode.Parent;
+                this.Root = lastClicNode.Parent;
                 if (notifyNewRootNode != null)
                     notifyNewRootNode(this.root);
             }
@@ -746,7 +748,7 @@ namespace HDGraph
         /// Open a new form showing the details of a given DirectoryNode.
         /// </summary>
         /// <param name="node"></param>
-        public static void ShowNodeDetails(DirectoryNode node)
+        public static void ShowNodeDetails(IDirectoryNode node)
         {
             if (node == null)
                 return;

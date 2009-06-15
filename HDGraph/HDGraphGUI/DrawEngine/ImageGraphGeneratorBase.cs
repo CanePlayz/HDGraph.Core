@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
+using HDGraph.Interfaces.ScanEngines;
 
 namespace HDGraph.DrawEngine
 {
@@ -9,6 +10,6 @@ namespace HDGraph.DrawEngine
     {
         public abstract BiResult<Bitmap, DrawOptions> Draw(bool drawImage, bool drawText, DrawOptions options);
 
-        public abstract DirectoryNode FindNodeByCursorPosition(Point curseurPos);
+        public abstract IDirectoryNode FindNodeByCursorPosition(Point curseurPos);
     }
 }

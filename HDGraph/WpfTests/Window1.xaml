@@ -2,14 +2,13 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:extern="clr-namespace:HDGraph.WpfDrawEngine;assembly=WpfDrawEngine"
-    Title="Window1" Height="446" Width="461">
+    Title="Window1" Height="446" Width="515">
     <Grid>
         <extern:Arc Background="RosyBrown" 
                     SmallRadius="{Binding ElementName=sliderSmallRad, Path=Value}"
                     LargeRadius="{Binding ElementName=sliderLargeRad, Path=Value}" 
                     StopAngle="{Binding ElementName=sliderAngle, Path=Value}" 
-                    StartAngle="{Binding ElementName=sliderStartAngle, Path=Value}" 
-                    Margin="86,158,112,32"></extern:Arc>
+                    StartAngle="{Binding ElementName=sliderStartAngle, Path=Value}" Margin="189,179,0,0"></extern:Arc>
         <Slider Height="22" Margin="117,37,22,0" Name="sliderLargeRad" 
                 VerticalAlignment="Top" Maximum="1000" Value="200" />
         <Label Height="30" HorizontalAlignment="Left" Margin="12,32,0,0" Name="label1" VerticalAlignment="Top" Width="99">Large Radius :

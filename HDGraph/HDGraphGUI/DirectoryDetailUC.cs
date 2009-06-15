@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using HDGraph.ExternalTools;
 using HDGraph.Resources;
 using HDGraph.Interop;
+using HDGraph.Interfaces.ScanEngines;
 
 namespace HDGraph
 {

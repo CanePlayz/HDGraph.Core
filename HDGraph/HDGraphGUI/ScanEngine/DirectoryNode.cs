@@ -3,37 +3,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
 using System.Reflection;
+using HDGraph.Interfaces.ScanEngines;
 
 namespace HDGraph
 {
-    public enum SpecialDirTypes : short
-    {
-        /// <summary>
-        /// Un répertoire ordinaire.
-        /// </summary>
-        NotSpecial,
-        /// <summary>
-        /// Indiquant que le répertoire courant est en fait un répertoire fictif représentant 
-        /// l'espace libre, et qu'il a été comptabilisé dans la taille du root.
-        /// </summary>
-        FreeSpaceAndShow,
-        /// <summary>
-        /// Indiquant que le répertoire courant est en fait un répertoire fictif représentant 
-        /// l'espace libre, et qu'il n'a PAS été comptabilisé dans la taille du root.
-        /// </summary>
-        FreeSpaceAndHide,
-        /// <summary>
-        /// Indique que le répertoire courant est en fait un répertoire fictif représentant 
-        /// les fichiers et dossiers qui n'ont pas été comptabilisés suite à des erreurs d'accès.
-        /// </summary>
-        UnknownPart,
-        /// <summary>
-        /// Indique qu'il s'agit d'un répertoire dont le scan a échoué.
-        /// </summary>
-        ScanError
-    }
-
-    public class DirectoryNode : IXmlSerializable
+    public class DirectoryNode : IXmlSerializable, IDirectoryNode
     {
         #region Variables et propriétés
 
@@ -129,11 +103,11 @@ namespace HDGraph
             set { path = value; }
         }
 
-        private DirectoryNode parent;
+        private IDirectoryNode parent;
         /// <summary>
         /// Répertoire parent
         /// </summary>
-        public DirectoryNode Parent
+        public IDirectoryNode Parent
         {
             get { return parent; }
             set { parent = value; }
@@ -142,22 +116,22 @@ namespace HDGraph
         /// <summary>
         /// Obtient le répertoire racine de l'arborescence dans laquelle se trouve ce répertoire.
         /// </summary>
-        public DirectoryNode Root
+        public IDirectoryNode Root
         {
             get
             {
-                DirectoryNode root = this;
+                IDirectoryNode root = this;
                 while (root.Parent != null)
                     root = root.Parent;
                 return root;
             }
         }
 
-        private List<DirectoryNode> children = new List<DirectoryNode>();
+        private List<IDirectoryNode> children = new List<IDirectoryNode>();
         /// <summary>
         /// Liste des répertoires contenus dans ce répertoire.
         /// </summary>
-        public List<DirectoryNode> Children
+        public List<IDirectoryNode> Children
         {
             get { return children; }
             set { children = value; }
@@ -231,7 +205,7 @@ namespace HDGraph
         private void UpdatePathFromNameAndParent()
         {
             if (parent != null)
-                this.path = parent.path + System.IO.Path.DirectorySeparatorChar + name;
+                this.path = parent.Path + System.IO.Path.DirectorySeparatorChar + name;
             foreach (DirectoryNode node in children)
             {
                 node.UpdatePathFromNameAndParent();
@@ -293,7 +267,7 @@ namespace HDGraph
             // Début élément Children
             reader.ReadStartElement("Children");
             XmlSerializer serializer = new XmlSerializer(typeof(List<DirectoryNode>));
-            children = (List<DirectoryNode>)serializer.Deserialize(reader);
+            children = (List<IDirectoryNode>)serializer.Deserialize(reader);
             // Fin élément Children
             reader.ReadEndElement();
 

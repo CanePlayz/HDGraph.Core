@@ -15,6 +15,7 @@ using HDGraph.DrawEngine;
 using HDGraph.ScanEngine;
 using HDGraph.Interop;
 using HDGraph.Resources;
+using HDGraph.Interfaces.ScanEngines;
 
 namespace HDGraph
 {
@@ -51,7 +52,7 @@ namespace HDGraph
         /// <summary>
         /// Liste des nodes parcours, pour les boutons "back" et "next".
         /// </summary>
-        private List<DirectoryNode> graphViewHistory = new List<DirectoryNode>();
+        private List<IDirectoryNode> graphViewHistory = new List<IDirectoryNode>();
 
         /// <summary>
         /// Index du node (de la liste graphViewHistory) qui actuellement affiché
@@ -718,7 +719,7 @@ namespace HDGraph
         /// Affiche les informations du répertoire "node" dans la barre de status.
         /// </summary>
         /// <param name="node"></param>
-        private void PrintNodeHoverCursor(DirectoryNode node)
+        private void PrintNodeHoverCursor(IDirectoryNode node)
         {
             if (node == null)
             {
@@ -754,7 +755,7 @@ namespace HDGraph
         /// Affiche les informations du répertoire "node" dans la barre de status.
         /// </summary>
         /// <param name="node"></param>
-        private void UpdateCurrentNodeRoot(DirectoryNode node)
+        private void UpdateCurrentNodeRoot(IDirectoryNode node)
         {
             if (node != null)
             {
@@ -767,7 +768,7 @@ namespace HDGraph
         /// Ajoute le node à l'historique et met à jour l'état des boutons de navigation.
         /// </summary>
         /// <param name="node"></param>
-        private void UpdateNodeHistory(DirectoryNode node)
+        private void UpdateNodeHistory(IDirectoryNode node)
         {
 
             if (currentNodeIndex < graphViewHistory.Count - 1)

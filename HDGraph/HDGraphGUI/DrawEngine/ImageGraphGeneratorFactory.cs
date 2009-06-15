@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using HDGraph.Interfaces.ScanEngines;
 
 namespace HDGraph.DrawEngine
 {
@@ -12,7 +13,7 @@ namespace HDGraph.DrawEngine
 
     public class ImageGraphGeneratorFactory
     {
-        public static ImageGraphGeneratorBase CreateGenerator(DrawType type, DirectoryNode node, HDGraphScanEngineBase engine)
+        public static ImageGraphGeneratorBase CreateGenerator(DrawType type, IDirectoryNode node, HDGraphScanEngineBase engine)
         {
             switch (type)
             {

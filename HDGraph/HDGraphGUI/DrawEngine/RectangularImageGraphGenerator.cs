@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using HDGraph.Interfaces.ScanEngines;
 
 namespace HDGraph.DrawEngine
 {
@@ -29,9 +30,9 @@ namespace HDGraph.DrawEngine
         private DrawOptions currentWorkingOptions;
         private DrawOptions latestUsedOptions;
         private ColorManager colorManager;
-        private DirectoryNode rootNode;
+        private IDirectoryNode rootNode;
 
-        public RectangularImageGraphGenerator(DirectoryNode rootNode, HDGraphScanEngineBase moteur)
+        public RectangularImageGraphGenerator(IDirectoryNode rootNode, HDGraphScanEngineBase moteur)
         {
             this.moteur = moteur;
             this.colorManager = new ColorManager();
@@ -121,7 +122,7 @@ namespace HDGraph.DrawEngine
         /// <param name="rec"></param>
         /// <param name="startAngle"></param>
         /// <param name="endAngle"></param>
-        private void PaintTree(DirectoryNode node, RectangleF rectangle)
+        private void PaintTree(IDirectoryNode node, RectangleF rectangle)
         {
             if (node.TotalSize == 0)
                 return;
@@ -163,7 +164,7 @@ namespace HDGraph.DrawEngine
         /// <param name="rec"></param>
         /// <param name="startAngle"></param>
         /// <param name="endAngle"></param>
-        private void PaintUnknownPart(DirectoryNode node, RectangleF targetRec)
+        private void PaintUnknownPart(IDirectoryNode node, RectangleF targetRec)
         {
             if (!printDirNames)
             {
@@ -183,7 +184,7 @@ namespace HDGraph.DrawEngine
         /// <param name="rec"></param>
         /// <param name="startAngle"></param>
         /// <param name="nodeAngle"></param>
-        private void PaintDirPart(DirectoryNode node, RectangleF targetRec)
+        private void PaintDirPart(IDirectoryNode node, RectangleF targetRec)
         {
 
             if (!printDirNames)
@@ -206,7 +207,7 @@ namespace HDGraph.DrawEngine
         /// <param name="startAngle"></param>
         /// <param name="nodeAngle"></param>
         /// <returns></returns>
-        private void WriteDirectoryName(DirectoryNode node, RectangleF targetRec)
+        private void WriteDirectoryName(IDirectoryNode node, RectangleF targetRec)
         {
             StringFormat format = new StringFormat();
             format.Alignment = StringAlignment.Center;
@@ -231,7 +232,7 @@ namespace HDGraph.DrawEngine
             }
         }
 
-        private void DrawRectangle(DirectoryNode node, RectangleF targetRec)
+        private void DrawRectangle(IDirectoryNode node, RectangleF targetRec)
         {
             if (node.DirectoryType == SpecialDirTypes.NotSpecial)
             {
@@ -310,7 +311,7 @@ namespace HDGraph.DrawEngine
 
 
 
-        public override DirectoryNode FindNodeByCursorPosition(System.Drawing.Point curseurPos)
+        public override IDirectoryNode FindNodeByCursorPosition(System.Drawing.Point curseurPos)
         {
             return null; // TODO throw new NotImplementedException();
         }

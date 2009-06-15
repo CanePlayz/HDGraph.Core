@@ -6,6 +6,7 @@ using System.Xml.Serialization;
 using System.Diagnostics;
 using HDGraph.Resources;
 using HDGraph.ScanEngine;
+using HDGraph.Interfaces.ScanEngines;
 
 namespace HDGraph
 {
@@ -147,7 +148,7 @@ namespace HDGraph
         /// Add to the given node a "free space node" and an "unknown part node", if the given node is a drive root.
         /// </summary>
         /// <param name="root"></param>
-        private void ApplySpecialRootOptions(DirectoryNode root)
+        private void ApplySpecialRootOptions(IDirectoryNode root)
         {
             string path = root.Path;
             bool rootNodeIsDrive = PathIsDrive(path);
@@ -158,7 +159,7 @@ namespace HDGraph
 
                 #region Unknown files
 
-                DirectoryNode dirNode = new DirectoryNode("");
+                IDirectoryNode dirNode = new DirectoryNode("");
                 // Unknown files = taille du disque - espace libre - fichiers trouvés
                 dirNode.TotalSize = info.TotalSize - info.TotalFreeSpace - root.TotalSize;
                 dirNode.FilesSize = dirNode.TotalSize;
@@ -214,9 +215,9 @@ namespace HDGraph
             return rootNodeIsDrive;
         }
 
-        protected abstract void ConstruireArborescence(DirectoryNode dir, int maxLevel);
+        protected abstract void ConstruireArborescence(IDirectoryNode dir, int maxLevel);
 
-        protected void HandleAnalysisException(DirectoryNode dir, Exception ex)
+        protected void HandleAnalysisException(IDirectoryNode dir, Exception ex)
         {
             Trace.TraceError("Error during folder analysis (" + dir.Path + "). Folder skiped. Details: " + HDGTools.PrintError(ex));
             dir.Name = String.Format(ApplicationMessages.ErrorLoading, dir.Name, ex.Message);
@@ -236,7 +237,7 @@ namespace HDGraph
         /// <param name="node"></param>
         /// <param name="maxLevel"></param>
         /// <returns></returns>
-        public bool CompleterArborescence(DirectoryNode node, int maxLevel)
+        public bool CompleterArborescence(IDirectoryNode node, int maxLevel)
         {
             if (!this.autoRefreshAllowed)
                 return false;
@@ -260,7 +261,7 @@ namespace HDGraph
             }
             else
             {
-                foreach (DirectoryNode fils in node.Children)
+                foreach (IDirectoryNode fils in node.Children)
                 {
                     CompleterArborescence(fils, maxLevel - 1);
                 }
@@ -274,7 +275,7 @@ namespace HDGraph
         /// </summary>
         /// <param name="node">Noeud dont les parents sont à mettre à jour.</param>
         /// <param name="tailleAjoutee">Montant à ajouter.</param>
-        private void IncrementerTailleParents(DirectoryNode node, long tailleAjoutee)
+        private void IncrementerTailleParents(IDirectoryNode node, long tailleAjoutee)
         {
             if (node.Parent == null)
                 return;
@@ -283,7 +284,7 @@ namespace HDGraph
         }
 
 
-        public bool RafraichirArborescence(DirectoryNode node)
+        public bool RafraichirArborescence(IDirectoryNode node)
         {
             if (!this.autoRefreshAllowed)
                 return false;
@@ -291,7 +292,7 @@ namespace HDGraph
             long dirPreviousTotalSize = node.TotalSize;
             node.TotalSize = 0;
             node.FilesSize = 0;
-            node.Children = new List<DirectoryNode>();
+            node.Children = new List<IDirectoryNode>();
             if (!Directory.Exists(node.Path))
             {
                 IncrementerTailleParents(node, -dirPreviousTotalSize);
@@ -309,17 +310,17 @@ namespace HDGraph
         /// Refresh the free space size on the root folder of the given node.
         /// </summary>
         /// <param name="theNode"></param>
-        private void RafraichirEspaceLibre(DirectoryNode theNode)
+        private void RafraichirEspaceLibre(IDirectoryNode theNode)
         {
-            DirectoryNode root = theNode.Root;
+            IDirectoryNode root = theNode.Root;
             if (PathIsDrive(root.Path))
             {
                 // Note: refresh is done as a remove/add options.
 
                 // 1. First of all: identify the special directories
-                DirectoryNode unkownPartNode = null;
-                DirectoryNode freeSpaceNode = null;
-                foreach (DirectoryNode node in root.Children)
+                IDirectoryNode unkownPartNode = null;
+                IDirectoryNode freeSpaceNode = null;
+                foreach (IDirectoryNode node in root.Children)
                 {
                     if (node.DirectoryType == SpecialDirTypes.UnknownPart)
                     {
@@ -404,12 +405,12 @@ namespace HDGraph
         /// Show or hide the free space on the root folder of the given node.
         /// </summary>
         /// <param name="directoryNode"></param>
-        public void ApplyFreeSpaceOption(DirectoryNode directoryNode)
+        public void ApplyFreeSpaceOption(IDirectoryNode directoryNode)
         {
             if (directoryNode == null)
                 return;
             // Rechercher le répertoire racine
-            DirectoryNode root = directoryNode;
+            IDirectoryNode root = directoryNode;
             while (root.Parent != null)
                 root = root.Parent;
             if (PathIsDrive(root.Path))

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Diagnostics;
+using HDGraph.Interfaces.ScanEngines;
 
 namespace HDGraph.ScanEngine
 {
@@ -14,7 +15,7 @@ namespace HDGraph.ScanEngine
         /// </summary>
         /// <param name="dir"></param>
         /// <param name="maxLevel"></param>
-        protected override void ConstruireArborescence(DirectoryNode dir, int maxLevel)
+        protected override void ConstruireArborescence(IDirectoryNode dir, int maxLevel)
         {
             if (pleaseCancelCurrentWork)
             {

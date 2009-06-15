@@ -68,6 +68,7 @@
     <Compile Include="Arc.xaml.cs">
       <DependentUpon>Arc.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DrawEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -90,6 +91,7 @@
     <Compile Include="TreeGraphContainer.Designer.cs">
       <DependentUpon>TreeGraphContainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="WpfDrawEngineContract.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -102,6 +104,12 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HDGraphInterfaces\HDGraphInterfaces.csproj">
+      <Project>{E52451BA-30AB-44C4-A09B-EBDCC62E72F6}</Project>
+      <Name>HDGraphInterfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

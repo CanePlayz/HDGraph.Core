@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using HDGraph.Interfaces.ScanEngines;
 
 namespace HDGraph
 {
@@ -20,9 +21,9 @@ namespace HDGraph
             this.Close();
         }
 
-        private DirectoryNode directory;
+        private IDirectoryNode directory;
 
-        public DirectoryNode Directory
+        public IDirectoryNode Directory
         {
             get { return directory; }
             set
@@ -40,7 +41,7 @@ namespace HDGraph
             }
         }
 
-        private IList<DirectoryNode> ExcludeHidenFreeSpace(List<DirectoryNode> list)
+        private IList<DirectoryNode> ExcludeHidenFreeSpace(List<IDirectoryNode> list)
         {
             List<DirectoryNode> resultList = new List<DirectoryNode>(list.Count);
             foreach (DirectoryNode node in list)

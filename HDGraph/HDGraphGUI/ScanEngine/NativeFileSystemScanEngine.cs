@@ -17,7 +17,7 @@ namespace HDGraph.ScanEngine
         /// </summary>
         /// <param name="dir"></param>
         /// <param name="maxLevel"></param>
-        protected override void ConstruireArborescence(DirectoryNode dir, int maxLevel)
+        protected override void ConstruireArborescence(IDirectoryNode dir, int maxLevel)
         {
             if (pleaseCancelCurrentWork)
             {
@@ -91,7 +91,7 @@ namespace HDGraph.ScanEngine
             }
         }
 
-        private void ScanFilesOfDir(DirectoryNode dir, bool includeFilesOfSubdir)
+        private void ScanFilesOfDir(IDirectoryNode dir, bool includeFilesOfSubdir)
         {
             FileSystemEnumerator enumerator = new FileSystemEnumerator(dir.Path, null, includeFilesOfSubdir);
             foreach (IExtendedFileInfo fi in enumerator.Matches())

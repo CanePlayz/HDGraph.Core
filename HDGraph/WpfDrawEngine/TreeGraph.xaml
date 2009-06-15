@@ -3,39 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Height="472" Width="544">
     <Grid>
-        <!--<Path Stroke="Black" StrokeThickness="1"  
-                Data="M 0 0 A 10,10 45 1 0 200,100" >
-        </Path>-->
-        
-        <Path Stroke="Red" StrokeThickness="1">
-            <Path.Data>
-                <PathGeometry>
-                    <PathGeometry.Figures>
-                        <PathFigureCollection>
-                            <PathFigure ><!--StartPoint="00,00"-->
-                                <PathFigure.Segments>
-                                    <PathSegmentCollection>
-                                        <ArcSegment Point="100,100" Size="100,100" SweepDirection="Clockwise" >
-                                        </ArcSegment>
-                                        <!--<ArcSegment Size="20,20" RotationAngle="90" IsLargeArc="True" SweepDirection="Clockwise" Point="10,10" />-->
-                                    </PathSegmentCollection>
-                                </PathFigure.Segments>
-                            </PathFigure>
-                        </PathFigureCollection>
-                    </PathGeometry.Figures>
-                </PathGeometry>
-            </Path.Data>
-        </Path>
-        <Path Stroke="Black" StrokeThickness="1">
-</Path>
-        <UniformGrid Height="100" HorizontalAlignment="Right" Margin="0,27.684,28.453,0" Name="uniformGrid1" VerticalAlignment="Top" Width="242.235" Columns="2">
-            <Label Height="27.684" Name="labelSmallad" Width="119.964">Small radius :</Label>
-            <TextBox Height="23.07" Name="textBoxSmallRadius" Width="119.964" Text="200,200" />
-            <Label Height="27.684" Name="labelLargeRad" Width="119.964">Large radius :</Label>
-            <TextBox Height="23.07" Name="textBoxLargeRadius" Width="119.964" />
-            <Label Height="27.684" Name="labelAngle" Width="119.964">Angle :</Label>
-            <TextBox Height="23.07" Name="textBoxAngle" Width="119.964" />
-        </UniformGrid>
-        <Rectangle Margin="234.545,133.806,0,0" Name="rectangle1" Stroke="Black" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" />
+
+
     </Grid>
 </UserControl>
