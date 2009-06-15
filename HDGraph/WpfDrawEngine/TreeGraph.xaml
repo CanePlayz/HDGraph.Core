@@ -1,9 +1,10 @@
 ﻿<UserControl x:Class="HDGraph.WpfDrawEngine.TreeGraph"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Height="472" Width="544">
-    <Grid>
+    xmlns:extern="clr-namespace:HDGraph.WpfDrawEngine"
+    >
+
+    <extern:Arc></extern:Arc>
 
 
-    </Grid>
 </UserControl>

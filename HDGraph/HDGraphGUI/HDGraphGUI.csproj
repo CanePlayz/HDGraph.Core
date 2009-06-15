@@ -96,6 +96,7 @@
     <Compile Include="Interop\ToolProviderBase.cs" />
     <Compile Include="Interop\Unknown\UnknownEnvToolProvider.cs" />
     <Compile Include="Interop\Windows\WindowsToolProvider.cs" />
+    <Compile Include="PlugIn\PlugInsManager.cs" />
     <Compile Include="ScanEngine\NativeFileSystemScanEngine.cs" />
     <Compile Include="ScanEngine\DirectoryNode.cs" />
     <Compile Include="DirNodeSortableBindingList.cs" />
