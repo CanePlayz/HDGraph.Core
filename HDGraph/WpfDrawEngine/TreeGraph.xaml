@@ -3,12 +3,22 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:extern="clr-namespace:HDGraph.WpfDrawEngine"
     >
-    <Canvas x:Name="canvas1">
-        <Label x:Name="labelInfo" Visibility="Hidden">Nothing to draw.</Label>
-        <extern:Arc x:Name="arc1" Loaded="Arc_Loaded" Visibility="Hidden"></extern:Arc>
-        <Button Click="Button_Click">Essai</Button>
-    </Canvas>
-
+    <Grid Height="500" Width="500">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Slider Grid.Row="0" Name="sliderRotation" Margin="10,10,10,10" Maximum="360" Minimum="0" />
+        <Canvas Grid.Row="1" x:Name="canvas1">
+            <Label x:Name="labelInfo" Visibility="Hidden">Nothing to draw.</Label>
+            <extern:Arc x:Name="arc1" Loaded="Arc_Loaded" Visibility="Hidden"></extern:Arc>
+            <Button Click="Button_Click">Essai</Button>
+            <Canvas.RenderTransform>
+                <RotateTransform x:Name="rotateTransform" Angle="{Binding ElementName=sliderRotation, Path=Value}" CenterX="200" CenterY="200"></RotateTransform>
+            </Canvas.RenderTransform>
+        </Canvas>
+        
+    </Grid>
 
 
 </UserControl>
