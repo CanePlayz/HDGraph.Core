@@ -3,34 +3,20 @@ using System.Collections.Generic;
 using System.Text;
 using System.Drawing;
 using System.Reflection;
+using HDGraph.Interfaces.DrawEngines;
 
 namespace HDGraph.DrawEngine
 {
-    public class DrawOptions
+    public class InternalDrawOptions : DrawOptions
     {
-        public Font TextFont { get; set; }
-
-        public bool ShowSize { get; set; }
 
         public Size BitmapSize { get; set; }
 
-        public int ShownLevelsCount { get; set; }
-
-        public ModeAffichageCouleurs ColorStyleChoice { get; set; }
-
-        public int ImageRotation { get; set; }
-
-        /// <summary>
-        /// Angle min to enable text print.
-        /// </summary>
-        public int TextDensity { get; set; }
-
         public DrawType DrawStyle { get; set; }
-
-
-        public DrawOptions Clone()
+        
+        public InternalDrawOptions Clone()
         {
-            return (DrawOptions)this.MemberwiseClone();
+            return (InternalDrawOptions)this.MemberwiseClone();
         }
 
         public override bool Equals(object obj)

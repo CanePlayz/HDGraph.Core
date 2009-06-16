@@ -384,7 +384,7 @@ namespace HDGraph
             resources.ApplyResources(this.treeGraph1, "treeGraph1");
             this.treeGraph1.ForceRefreshOnNextRepaint = false;
             this.treeGraph1.MinimumSize = new System.Drawing.Size(50, 50);
-            this.treeGraph1.ModeCouleur = HDGraph.ModeAffichageCouleurs.RandomNeutral;
+            this.treeGraph1.ModeCouleur = HDGraph.Interfaces.DrawEngines.ModeAffichageCouleurs.RandomNeutral;
             this.treeGraph1.Moteur = null;
             this.treeGraph1.Name = "treeGraph1";
             this.treeGraph1.NbNiveaux = 0;

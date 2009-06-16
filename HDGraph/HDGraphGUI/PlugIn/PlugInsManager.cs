@@ -4,12 +4,13 @@ using System.Text;
 using System.Reflection;
 using HDGraph.Interfaces.DrawEngines;
 using System.Windows.Forms;
+using HDGraph.Interfaces.ScanEngines;
 
 namespace HDGraph.PlugIn
 {
     public class PlugInsManager
     {
-        public static void Test()
+        public static void Test(IDirectoryNode node, DrawOptions options)
         {
             Assembly assembly = Assembly.Load("WpfDrawEngine");
             foreach (Type type in assembly.GetTypes())
@@ -18,7 +19,7 @@ namespace HDGraph.PlugIn
                 {
                     IDrawEngineContract engineContract = (IDrawEngineContract)Activator.CreateInstance(type);
                     IControlTypeEngine engine = engineContract.GetNewControlTypeEngine();
-                    Control control = engine.GenerateControlFromNode(null);
+                    Control control = engine.GenerateControlFromNode(node, options);
                     Form form = new Form();
                     form.Controls.Add(control);
                     control.Dock = DockStyle.Fill;

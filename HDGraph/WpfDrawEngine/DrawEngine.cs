@@ -11,9 +11,10 @@ namespace HDGraph.WpfDrawEngine
 
         #region IControlTypeEngine Members
 
-        public System.Windows.Forms.Control GenerateControlFromNode(IDirectoryNode node)
+        public System.Windows.Forms.Control GenerateControlFromNode(IDirectoryNode node, DrawOptions options)
         {
             TreeGraphContainer container = new TreeGraphContainer();
+            container.SetRoot(node, options);
             return container;
         }
 

@@ -16,6 +16,7 @@ using HDGraph.ScanEngine;
 using HDGraph.Interop;
 using HDGraph.Resources;
 using HDGraph.Interfaces.ScanEngines;
+using HDGraph.Interfaces.DrawEngines;
 
 namespace HDGraph
 {
@@ -47,7 +48,7 @@ namespace HDGraph
         /// <summary>
         /// Moteur de scan.
         /// </summary>
-        private HDGraphScanEngineBase moteur;
+        private HDGraphScanEngineBase scanEngine;
 
         /// <summary>
         /// Liste des nodes parcours, pour les boutons "back" et "next".
@@ -94,7 +95,7 @@ namespace HDGraph
             resManager = new System.Resources.ResourceManager(this.GetType().Assembly.GetName().Name + ".Resources.ApplicationMessages", this.GetType().Assembly);
             HDGTools.resManager = resManager;
             CreateEngine();
-            moteur.ShowDiskFreeSpace = Properties.Settings.Default.OptionShowFreeSpace;
+            scanEngine.ShowDiskFreeSpace = Properties.Settings.Default.OptionShowFreeSpace;
             if (!changeLangIsSuccess)
                 MessageBox.Show(resManager.GetString("ErrorInConfigLanguage"),
                                 resManager.GetString("ErrorInConfigLanguageTitle"),
@@ -118,7 +119,7 @@ namespace HDGraph
             SetTrackBarZoomValueFromNumUpDown();
             try
             {
-                moteur.AutoRefreshAllowed = HDGraph.Properties.Settings.Default.OptionAutoCompleteGraph;
+                scanEngine.AutoRefreshAllowed = HDGraph.Properties.Settings.Default.OptionAutoCompleteGraph;
                 ModeAffichageCouleurs modeCouleurs = (ModeAffichageCouleurs)Enum.Parse(typeof(ModeAffichageCouleurs), HDGraph.Properties.Settings.Default.OptionColorStyle);
                 comboBoxColorStyle.SelectedIndex = (int)modeCouleurs;
             }
@@ -134,9 +135,9 @@ namespace HDGraph
         {
             if (Properties.Settings.Default.OptionUseSimpleScanEngine
                 || !ToolProviderBase.CurrentOsIsWindows())
-                moteur = new SimpleFileSystemScanEngine();
+                scanEngine = new SimpleFileSystemScanEngine();
             else
-                moteur = new NativeFileSystemScanEngine();
+                scanEngine = new NativeFileSystemScanEngine();
         }
 
 
@@ -293,24 +294,24 @@ namespace HDGraph
             try
             {
                 XmlReader reader = new XmlTextReader(fileName);
-                XmlSerializer serializer = new XmlSerializer(moteur.GetType());
-                moteur = (HDGraphScanEngineBase)serializer.Deserialize(reader);
+                XmlSerializer serializer = new XmlSerializer(scanEngine.GetType());
+                scanEngine = (HDGraphScanEngineBase)serializer.Deserialize(reader);
                 reader.Close();
-                moteur.PrintInfoDeleg = new HDGraphScanEngineBase.PrintInfoDelegate(PrintStatus);
-                treeGraph1.Moteur = moteur;
+                scanEngine.PrintInfoDeleg = new HDGraphScanEngineBase.PrintInfoDelegate(PrintStatus);
+                treeGraph1.Moteur = scanEngine;
                 treeGraph1.UpdateHoverNode = new TreeGraph.NodeNotificationDelegate(PrintNodeHoverCursor);
                 treeGraph1.NotifyNewRootNode = new TreeGraph.NodeNotificationDelegate(UpdateCurrentNodeRoot);
 
-                if (moteur.Root != null)
+                if (scanEngine.Root != null)
                 {
-                    comboBoxPath.Text = moteur.Root.Path;
-                    numUpDownNbNivx.Value = moteur.Root.DepthMaxLevel;
-                    numUpDownNbNivxAffich.Value = moteur.Root.DepthMaxLevel;
-                    treeGraph1.NbNiveaux = moteur.Root.DepthMaxLevel;
+                    comboBoxPath.Text = scanEngine.Root.Path;
+                    numUpDownNbNivx.Value = scanEngine.Root.DepthMaxLevel;
+                    numUpDownNbNivxAffich.Value = scanEngine.Root.DepthMaxLevel;
+                    treeGraph1.NbNiveaux = scanEngine.Root.DepthMaxLevel;
                 }
                 treeGraph1.ForceRefresh();
-                UpdateNodeHistory(moteur.Root);
-                PrintStatus(String.Format(resManager.GetString("GraphLoadedFromDate"), moteur.AnalyzeDate.ToString()));
+                UpdateNodeHistory(scanEngine.Root);
+                PrintStatus(String.Format(resManager.GetString("GraphLoadedFromDate"), scanEngine.AnalyzeDate.ToString()));
             }
             catch (Exception ex)
             {
@@ -352,8 +353,8 @@ namespace HDGraph
         private void SaveGraphToFile(string fileName)
         {
             XmlWriter writer = new XmlTextWriter(fileName, Encoding.Default);
-            XmlSerializer serializer = new XmlSerializer(moteur.GetType());
-            serializer.Serialize(writer, moteur);
+            XmlSerializer serializer = new XmlSerializer(scanEngine.GetType());
+            serializer.Serialize(writer, scanEngine);
             writer.Close();
         }
 
@@ -692,7 +693,7 @@ namespace HDGraph
 
             //Stopwatch watch = new Stopwatch();
             //watch.Start();
-            form.ShowDialogAndStartScan(moteur, comboBoxPath.Text, nbNiveaux);
+            form.ShowDialogAndStartScan(scanEngine, comboBoxPath.Text, nbNiveaux);
 
             //watch.Stop();
             //MessageBox.Show(watch.Elapsed.ToString());
@@ -700,18 +701,18 @@ namespace HDGraph
             // // moteur.ConstruireArborescence(comboBoxPath.Text, nbNiveaux); // OBSOLETE
             // // moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(WaitForm.ShowWaitForm); // OBSOLETE
 
-            moteur.PrintInfoDeleg = new HDGraphScanEngineBase.PrintInfoDelegate(PrintStatus);
+            scanEngine.PrintInfoDeleg = new HDGraphScanEngineBase.PrintInfoDelegate(PrintStatus);
             numUpDownNbNivxAffich.Value = nbNiveaux;
             treeGraph1.NbNiveaux = nbNiveaux;
-            treeGraph1.Moteur = moteur;
+            treeGraph1.Moteur = scanEngine;
             treeGraph1.ForceRefresh();
-            UpdateNodeHistory(moteur.Root);
+            UpdateNodeHistory(scanEngine.Root);
             //PrintStatus("Terminé !");
             treeGraph1.UpdateHoverNode = new TreeGraph.NodeNotificationDelegate(PrintNodeHoverCursor);
             treeGraph1.NotifyNewRootNode = new TreeGraph.NodeNotificationDelegate(UpdateCurrentNodeRoot);
-            errorStatus1.Update(moteur.ErrorList);
+            errorStatus1.Update(scanEngine.ErrorList);
             buttonScan.Enabled = true;
-            TimeSpan executionTime = moteur.AnalyzeDate.Subtract(moteur.AnalyseStartDate);
+            TimeSpan executionTime = scanEngine.AnalyzeDate.Subtract(scanEngine.AnalyseStartDate);
             PrintStatus(String.Format(ApplicationMessages.ScanCompletedIn, executionTime));
         }
 
@@ -824,8 +825,8 @@ namespace HDGraph
                     if (outputImgFilePath != null
                         && outputImgFilePath.Length > 0)
                     {
-                        ImageGraphGeneratorBase generator = ImageGraphGeneratorFactory.CreateGenerator(treeGraph1.DrawOptions.DrawStyle, moteur.Root, moteur);
-                        DrawOptions outputDrawOptions = treeGraph1.DrawOptions.Clone();
+                        ImageGraphGeneratorBase generator = ImageGraphGeneratorFactory.CreateGenerator(treeGraph1.DrawOptions.DrawStyle, scanEngine.Root, scanEngine);
+                        InternalDrawOptions outputDrawOptions = treeGraph1.DrawOptions.Clone();
                         if (OutputImgSize.HasValue)
                             outputDrawOptions.BitmapSize = OutputImgSize.Value;
                         Bitmap bmp = generator.Draw(true, true, outputDrawOptions).Obj1;
@@ -851,7 +852,7 @@ namespace HDGraph
 
         private void checkBoxAutoRecalc_CheckedChanged(object sender, EventArgs e)
         {
-            moteur.AutoRefreshAllowed = checkBoxAutoRecalc.Checked;
+            scanEngine.AutoRefreshAllowed = checkBoxAutoRecalc.Checked;
         }
 
         private void comboBoxPath_TextUpdate(object sender, EventArgs e)
@@ -1146,5 +1147,11 @@ namespace HDGraph
         }
 
         #endregion
+
+        private void buttonTestWpf_Click(object sender, EventArgs e)
+        {
+            PlugIn.PlugInsManager.Test(this.scanEngine.Root, this.treeGraph1.DrawOptions);
+        }
+
     }
 }

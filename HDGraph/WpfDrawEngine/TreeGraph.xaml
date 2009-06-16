@@ -3,8 +3,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:extern="clr-namespace:HDGraph.WpfDrawEngine"
     >
+    <Canvas x:Name="canvas1">
+        <Label x:Name="labelInfo" Visibility="Hidden">Nothing to draw.</Label>
+        <extern:Arc x:Name="arc1" Loaded="Arc_Loaded" Visibility="Hidden"></extern:Arc>
+        <Button Click="Button_Click">Essai</Button>
+    </Canvas>
 
-    <extern:Arc></extern:Arc>
 
 
 </UserControl>

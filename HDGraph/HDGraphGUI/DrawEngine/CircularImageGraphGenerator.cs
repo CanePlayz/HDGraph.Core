@@ -4,6 +4,7 @@ using System.Text;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using HDGraph.Interfaces.ScanEngines;
+using HDGraph.Interfaces.DrawEngines;
 
 namespace HDGraph.DrawEngine
 {
@@ -27,8 +28,8 @@ namespace HDGraph.DrawEngine
         private bool printDirNames = false;
 
         private HDGraphScanEngineBase moteur;
-        private DrawOptions currentWorkingOptions;
-        private DrawOptions latestUsedOptions;
+        private InternalDrawOptions currentWorkingOptions;
+        private InternalDrawOptions latestUsedOptions;
         private ColorManager colorManager;
         private IDirectoryNode rootNode;
 
@@ -39,7 +40,7 @@ namespace HDGraph.DrawEngine
             this.rootNode = rootNode;
         }
 
-        public override BiResult<Bitmap, DrawOptions> Draw(bool drawImage, bool drawText, DrawOptions options)
+        public override BiResult<Bitmap, InternalDrawOptions> Draw(bool drawImage, bool drawText, InternalDrawOptions options)
         {
             // only 1 execution allowed at a time. To do multiple executions, build a new 
             // instance of ImageGraphGenerator.
@@ -68,7 +69,7 @@ namespace HDGraph.DrawEngine
                 PaintTree(pieRec, drawImage, drawText);
                 frontGraph.Dispose();
                 latestUsedOptions = currentWorkingOptions;
-                return new BiResult<Bitmap, DrawOptions>()
+                return new BiResult<Bitmap, InternalDrawOptions>()
                         {
                             Obj1 = backBufferTmp,
                             Obj2 = currentWorkingOptions

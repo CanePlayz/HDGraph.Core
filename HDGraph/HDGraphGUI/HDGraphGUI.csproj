@@ -86,7 +86,7 @@
     </Compile>
     <Compile Include="DrawEngine\ColorManager.cs" />
     <Compile Include="DrawEngine\DrawHelper.cs" />
-    <Compile Include="DrawEngine\DrawOptions.cs" />
+    <Compile Include="DrawEngine\InternalDrawOptions.cs" />
     <Compile Include="DrawEngine\ImageGraphGeneratorBase.cs" />
     <Compile Include="DrawEngine\ImageGraphGeneratorFactory.cs" />
     <Compile Include="DrawEngine\MathHelper.cs" />
@@ -102,7 +102,6 @@
     <Compile Include="DirNodeSortableBindingList.cs" />
     <Compile Include="ScanEngine\ExtendedFileInfo.cs" />
     <Compile Include="ScanEngine\ScanError.cs" />
-    <Compile Include="Enums.cs" />
     <Compile Include="ErrorListForm.cs">
       <SubType>Form</SubType>
     </Compile>

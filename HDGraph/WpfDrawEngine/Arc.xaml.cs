@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HDGraph.Interfaces.ScanEngines;
 
 namespace HDGraph.WpfDrawEngine
 {
@@ -23,6 +24,16 @@ namespace HDGraph.WpfDrawEngine
             InitializeComponent();
         }
 
+        private IDirectoryNode node;
+        public IDirectoryNode Node
+        {
+            get { return node; }
+            set
+            {
+                node = value;
+                this.ToolTip = node.Path;
+            }
+        }
 
         #region Dependency Properties
 
@@ -58,7 +69,7 @@ namespace HDGraph.WpfDrawEngine
         // Using a DependencyProperty as the backing store for LargeRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty LargeRadiusProperty =
             DependencyProperty.Register("LargeRadius", typeof(float), typeof(Arc), new UIPropertyMetadata(200f, new PropertyChangedCallback(OnDesignPropertyChanged)));
-        
+
 
         public float SmallRadius
         {
@@ -69,6 +80,18 @@ namespace HDGraph.WpfDrawEngine
         // Using a DependencyProperty as the backing store for SmallRadius.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SmallRadiusProperty =
             DependencyProperty.Register("SmallRadius", typeof(float), typeof(Arc), new UIPropertyMetadata(50f, new PropertyChangedCallback(OnDesignPropertyChanged)));
+
+
+
+        public string Caption
+        {
+            get { return (string)GetValue(CaptionProperty); }
+            set { SetValue(CaptionProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Caption.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CaptionProperty =
+            DependencyProperty.Register("Caption", typeof(string), typeof(Arc), new UIPropertyMetadata("Test"));
 
 
 

@@ -11,6 +11,7 @@ using HDGraph.Resources;
 using HDGraph.DrawEngine;
 using System.Drawing.Imaging;
 using HDGraph.Interfaces.ScanEngines;
+using HDGraph.Interfaces.DrawEngines;
 
 namespace HDGraph
 {
@@ -199,9 +200,9 @@ namespace HDGraph
             set { resizing = value; }
         }
 
-        private DrawOptions drawOptions = new DrawOptions();
+        private InternalDrawOptions drawOptions = new InternalDrawOptions();
 
-        public DrawOptions DrawOptions
+        public InternalDrawOptions DrawOptions
         {
             get { return drawOptions; }
         }
@@ -785,7 +786,7 @@ namespace HDGraph
             form.Show();
         }
 
-        private DrawOptions lastCompletedGraphOption;
+        private InternalDrawOptions lastCompletedGraphOption;
         private Bitmap imageOnlyBackBuffer;
         private ImageGraphGeneratorBase lastGeneratorCompleted;
 
@@ -794,15 +795,15 @@ namespace HDGraph
             ImageGraphGeneratorBase generator = e.Argument as ImageGraphGeneratorBase;
             if (generator == null)
                 return;
-            DrawOptions currentOptions = drawOptions.Clone();
+            InternalDrawOptions currentOptions = drawOptions.Clone();
             lastCompletedGraphOption = null;
             if (!TextChangeInProgress)
             {
-                BiResult<Bitmap, DrawOptions> imageResult = generator.Draw(true, false, currentOptions);
+                BiResult<Bitmap, InternalDrawOptions> imageResult = generator.Draw(true, false, currentOptions);
                 imageOnlyBackBuffer = imageResult.Obj1;
                 lastCompletedGraphOption = imageResult.Obj2;
             }
-            BiResult<Bitmap, DrawOptions> textResult = generator.Draw(false, true, currentOptions);
+            BiResult<Bitmap, InternalDrawOptions> textResult = generator.Draw(false, true, currentOptions);
             Bitmap textBackBufferTmp = textResult.Obj1;
             if (lastCompletedGraphOption == null)
                 lastCompletedGraphOption = textResult.Obj2;

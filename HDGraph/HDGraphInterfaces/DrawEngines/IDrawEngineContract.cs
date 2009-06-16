@@ -26,7 +26,7 @@ namespace HDGraph.Interfaces.DrawEngines
 
     public interface IControlTypeEngine
     {
-        System.Windows.Forms.Control GenerateControlFromNode(IDirectoryNode node);
+        System.Windows.Forms.Control GenerateControlFromNode(IDirectoryNode node, DrawOptions options);
     }
 
     public interface IBitmapTypeEngine
