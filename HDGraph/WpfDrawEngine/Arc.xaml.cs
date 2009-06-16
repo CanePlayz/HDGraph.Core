@@ -22,18 +22,18 @@ namespace HDGraph.WpfDrawEngine
         public Arc()
         {
             InitializeComponent();
+            this.ToolTipOpening += new ToolTipEventHandler(Arc_ToolTipOpening);
+            this.ToolTip = "Loading..."; // TODO.
         }
 
-        private IDirectoryNode node;
-        public IDirectoryNode Node
+        void Arc_ToolTipOpening(object sender, ToolTipEventArgs e)
         {
-            get { return node; }
-            set
-            {
-                node = value;
-                this.ToolTip = node.Path;
-            }
+
+            this.ToolTip = ((Node == null) ? String.Empty : Node.Path) +
+                            "; StartAngle:" + StartAngle + "; StopAngle:" + StopAngle;
         }
+
+        public IDirectoryNode Node { get; set; }
 
         #region Dependency Properties
 

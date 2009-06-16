@@ -135,7 +135,7 @@ namespace HDGraph.WpfDrawEngine
         {
             Arc arc = new Arc();
             arc.StartAngle = startAngle;
-            arc.StopAngle = endAngle;
+            arc.StopAngle = endAngle - startAngle;
             arc.SmallRadius = Convert.ToSingle(currentLevel * pasNiveau);
             arc.LargeRadius = Convert.ToSingle(currentLevel * (pasNiveau - 1) + pasNiveau / 6);
             arc.Node = node;
@@ -319,7 +319,7 @@ namespace HDGraph.WpfDrawEngine
         {
             Arc arc = new Arc();
             arc.StartAngle = startAngle;
-            arc.StopAngle = endAngle;
+            arc.StopAngle = endAngle - startAngle;
             arc.SmallRadius = Convert.ToSingle(currentLevel * pasNiveau);
             arc.LargeRadius = Convert.ToSingle((currentLevel + 1) * pasNiveau);
             arc.Node = node;

@@ -28,6 +28,7 @@
             <TransformGroup>
                 <RotateTransform x:Name="rotateTransform1" Angle="45" CenterX="0" CenterY="0">
                 </RotateTransform>
+                <TranslateTransform X="200" Y="200"></TranslateTransform>
                 <!-- TODO : TranslateTransform ? -->
             </TransformGroup>
         </Path.RenderTransform>
