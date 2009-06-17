@@ -1,10 +1,19 @@
 ﻿<UserControl x:Class="HDGraph.WpfDrawEngine.Arc"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Resources>
+        <Style x:Key="ArcStyle">
+            <Style.Triggers>
+                <Trigger Property="Path.IsMouseOver" Value="True">
+                    <Setter Property="Path.Opacity" Value="0.5"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
 
     <Path x:Name="path1"
                 Stroke="Black" StrokeThickness="1" StrokeLineJoin="Round"  StrokeStartLineCap="Round"
-                MouseEnter="Path_MouseEnter" MouseLeave="Path_MouseLeave">
+                MouseEnter="Path_MouseEnter" MouseLeave="Path_MouseLeave" Style="{StaticResource ArcStyle}">
         <Path.Data>
             <PathGeometry>
                 <PathGeometry.Figures>

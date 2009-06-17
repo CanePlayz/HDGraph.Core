@@ -143,13 +143,13 @@ namespace HDGraph.WpfDrawEngine
 
         private void Path_MouseEnter(object sender, MouseEventArgs e)
         {
-            brush1.Opacity = 0.5;
+            //brush1.Opacity = 0.5;
             path1.StrokeThickness = 5;
         }
 
         private void Path_MouseLeave(object sender, MouseEventArgs e)
         {
-            brush1.Opacity = 1;
+            //brush1.Opacity = 1;
             path1.StrokeThickness = 1;
         }
 
