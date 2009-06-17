@@ -7,11 +7,15 @@ HDGraph ChangeLog (http://hdgraph.sourceforge.net)
 Version 1.4.0
 ======================================================
 Added:
+	- TODO : Totaly new draw engine (WPF). Faster and above all more powerfull. Defined as a plugin, which requires ".Net framework" version 3.0 or higher.
+	- TODO : WPF draw engine : Zoom feature
+	- TODO : WPF draw engine : Full "fluid" rotation
+	- WPF draw engine : auto hide too small folders, in order to speed up the build of the graph.
 	- Experimental display style : "Bar style"
-	- TODO : New scan engine on Windows : faster and more accurate (up to 6 times faster).
+	- TODO : New "native" scan engine on Windows : faster and more accurate (up to 6 times faster).
 	- "Drag & drop" capable (from Windows explorer)
 Improved: 
-	- Design refactored
+	- Design refactored, mostly with the WPF draw engine.
 Fixed:
 	- Bug on "Text Density" : value loaded from a previous saved state was wrong.
 	- Wrong message when folder deletion failed.

@@ -38,7 +38,7 @@ namespace HDGraph.WpfDrawEngine
             if (root == null || options == null)
                 return;
             this.rootNode = root;
-            
+
 
             // Création du bitmap buffer
             currentWorkingOptions = options;
@@ -82,6 +82,7 @@ namespace HDGraph.WpfDrawEngine
             //DrawHelper.PrintTextInTheMiddle(frontGraph, currentWorkingOptions.BitmapSize, text, currentWorkingOptions.TextFont, new SolidBrush(Color.Black), false);
         }
 
+        private const float MINIMUM_ANGLE_TO_DRAW = 1;
 
         /// <summary>
         /// Procédure récursive pour graphiquer les arcs de cercle. Graphique de l'extérieur vers l'intérieur.
@@ -98,21 +99,41 @@ namespace HDGraph.WpfDrawEngine
 
             if (node.ExistsUncalcSubDir)
             {
-                PaintUnknownPart(node, currentLevel, startAngle, endAngle);
+                PaintUnknownPart(node, currentLevel + 1, startAngle, endAngle);
             }
             else
             {
                 long cumulSize = 0;
-                float currentStartAngle;
+                float currentStartAngle = 0;
+                bool multiFolderView = false;
                 foreach (IDirectoryNode childNode in node.Children)
                 {
+                    if (!multiFolderView)
+                        currentStartAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
+
                     if (childNode.DirectoryType != SpecialDirTypes.FreeSpaceAndHide)
                     {
-                        currentStartAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
                         float childAngle = childNode.TotalSize * nodeAngle / node.TotalSize;
-                        BuildTree(childNode, currentLevel + 1, currentStartAngle, currentStartAngle + childAngle);
+                        if (childAngle < MINIMUM_ANGLE_TO_DRAW)
+                        {
+                            multiFolderView = true;
+                        }
+                        else
+                        {
+                            float tempEndAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
+                            if (multiFolderView)
+                                PaintUnknownPart(node, currentLevel + 1, currentStartAngle, tempEndAngle);
+                            currentStartAngle = tempEndAngle;
+                            BuildTree(childNode, currentLevel + 1, currentStartAngle, currentStartAngle + childAngle);
+                            multiFolderView = false;
+                        }
                         cumulSize += childNode.TotalSize;
                     }
+                }
+                if (multiFolderView)
+                {
+                    float tempEndAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
+                    PaintUnknownPart(node, currentLevel + 1, currentStartAngle, tempEndAngle);
                 }
                 currentStartAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
                 if (node.Children.Count > 0 && node.FilesSize > 0)

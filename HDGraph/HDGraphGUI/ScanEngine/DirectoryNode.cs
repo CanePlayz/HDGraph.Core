@@ -267,7 +267,12 @@ namespace HDGraph
             // Début élément Children
             reader.ReadStartElement("Children");
             XmlSerializer serializer = new XmlSerializer(typeof(List<DirectoryNode>));
-            children = (List<IDirectoryNode>)serializer.Deserialize(reader);
+            List<DirectoryNode> concreteChildren = (List<DirectoryNode>)serializer.Deserialize(reader);
+            children = new List<IDirectoryNode>();
+            foreach (DirectoryNode dir in concreteChildren)
+            {
+                children.Add(dir);
+            }
             // Fin élément Children
             reader.ReadEndElement();
 
