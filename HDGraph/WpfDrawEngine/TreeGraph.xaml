@@ -54,31 +54,31 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    
-    <!--<Viewbox>-->
-    <Grid Margin="0,0,0,0">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <Slider Grid.Row="0" Name="sliderRotation" Margin="10,10,10,10" Maximum="360" Minimum="0" />
-        <Slider Grid.Row="1" Name="sliderScale" Margin="10,10,10,10" Maximum="20" Minimum="0.5" Value="1" />
-        <Canvas Grid.Row="2" x:Name="canvas1" Width="500" Height="500">
-            <Label x:Name="labelInfo" Visibility="Hidden">Nothing to draw.</Label>
-            <extern:Arc x:Name="arc1" Loaded="Arc_Loaded" Visibility="Hidden"></extern:Arc>
-            <!--<Button Click="Button_Click">Essai</Button>-->
-            <Canvas.RenderTransform>
-                <TransformGroup>
-                    <RotateTransform x:Name="rotateTransform" Angle="{Binding ElementName=sliderRotation, Path=Value}" CenterX="200" CenterY="200"></RotateTransform>
-                    <ScaleTransform 
+
+    <Viewbox>
+        <Grid Margin="0,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Slider Grid.Row="0" Name="sliderRotation" Margin="10,10,10,10" Maximum="360" Minimum="0" />
+            <Slider Grid.Row="1" Name="sliderScale" Margin="10,10,10,10" Maximum="20" Minimum="0.5" Value="1" />
+            <Canvas Grid.Row="2" x:Name="canvas1" Width="500" Height="500">
+                <Label x:Name="labelInfo" Visibility="Hidden">Nothing to draw.</Label>
+                <extern:Arc x:Name="arc1" Loaded="Arc_Loaded" Visibility="Hidden"></extern:Arc>
+                <!--<Button Click="Button_Click">Essai</Button>-->
+                <Canvas.RenderTransform>
+                    <TransformGroup>
+                        <RotateTransform x:Name="rotateTransform" Angle="{Binding ElementName=sliderRotation, Path=Value}" CenterX="200" CenterY="200"></RotateTransform>
+                        <ScaleTransform 
                     ScaleX="{Binding ElementName=sliderScale, Path=Value}"
                     ScaleY="{Binding ElementName=sliderScale, Path=Value}">
-                    </ScaleTransform>
-                </TransformGroup>
-            </Canvas.RenderTransform>
-        </Canvas>
-    </Grid>
-<!--</Viewbox>-->
+                        </ScaleTransform>
+                    </TransformGroup>
+                </Canvas.RenderTransform>
+            </Canvas>
+        </Grid>
+    </Viewbox>
 
 </UserControl>
