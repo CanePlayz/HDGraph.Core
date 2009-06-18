@@ -29,30 +29,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style x:Key="ArcStyle">
-            <Setter Property="Path.Fill">
-                <Setter.Value>
-                    <LinearGradientBrush x:Name="brushArcStyle" Opacity="1" >
-                        <GradientStop Color="Yellow" Offset="0"></GradientStop>
-                        <GradientStop Color="Red" Offset="0.5"></GradientStop>
-                        <GradientStop Color="Yellow" Offset="1"></GradientStop>
-                    </LinearGradientBrush>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="Path.IsMouseOver" Value="True">
-                    <Setter Property="Path.Fill">
-                        <Setter.Value>
-                            <LinearGradientBrush x:Name="brushArcStyleOver" Opacity="0.5" >
-                                <GradientStop Color="Yellow" Offset="0"></GradientStop>
-                                <GradientStop Color="Blue" Offset="0.5"></GradientStop>
-                                <GradientStop Color="Yellow" Offset="1"></GradientStop>
-                            </LinearGradientBrush>
-                        </Setter.Value>
-                    </Setter>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
     </UserControl.Resources>
 
     <Viewbox>
@@ -72,8 +48,8 @@
                     <TransformGroup>
                         <RotateTransform x:Name="rotateTransform" Angle="{Binding ElementName=sliderRotation, Path=Value}" CenterX="200" CenterY="200"></RotateTransform>
                         <ScaleTransform 
-                    ScaleX="{Binding ElementName=sliderScale, Path=Value}"
-                    ScaleY="{Binding ElementName=sliderScale, Path=Value}">
+                                ScaleX="{Binding ElementName=sliderScale, Path=Value}"
+                                ScaleY="{Binding ElementName=sliderScale, Path=Value}">
                         </ScaleTransform>
                     </TransformGroup>
                 </Canvas.RenderTransform>

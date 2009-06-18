@@ -25,7 +25,7 @@
         <Style x:Key="ArcStyle">
             <Setter Property="Path.Fill">
                 <Setter.Value>
-                    <LinearGradientBrush x:Name="brushArcStyle" Opacity="1" >
+                    <LinearGradientBrush x:Name="brushArcStyle" Opacity="0.7" >
                         <GradientStop Color="Yellow" Offset="0"></GradientStop>
                         <GradientStop Color="Red" Offset="0.5"></GradientStop>
                         <GradientStop Color="Yellow" Offset="1"></GradientStop>
@@ -63,7 +63,7 @@
             </GroupBox>
         </ContextMenu>
     </UserControl.ContextMenu>
-    
+
     <Path x:Name="path1"
                 Stroke="Black" StrokeThickness="1" StrokeLineJoin="Round"  StrokeStartLineCap="Round"
                 MouseEnter="Path_MouseEnter" MouseLeave="Path_MouseLeave" Style="{StaticResource ArcStyle}">
