@@ -19,21 +19,22 @@ namespace HDGraph.WpfDrawEngine
     /// </summary>
     public partial class Arc : UserControl
     {
+
         public Arc()
         {
             InitializeComponent();
             this.ToolTipOpening += new ToolTipEventHandler(Arc_ToolTipOpening);
-            this.ToolTip = "Loading..."; // TODO.
+            this.ToolTip = "TODO : Tooltip here."; // TODO.
         }
 
         void Arc_ToolTipOpening(object sender, ToolTipEventArgs e)
         {
 
-            this.ToolTip = ((Node == null) ? String.Empty : Node.Path) +
-                            "; StartAngle:" + StartAngle + "; StopAngle:" + StopAngle;
+            //this.ToolTip = ((Node == null) ? String.Empty : Node.Path) +
+            //                "; StartAngle:" + StartAngle + "; StopAngle:" + StopAngle;
         }
 
-        public IDirectoryNode Node { get; set; }
+
 
         #region Dependency Properties
 
@@ -95,7 +96,27 @@ namespace HDGraph.WpfDrawEngine
 
 
 
+        public IDirectoryNode Node
+        {
+            get { return (IDirectoryNode)GetValue(NodeProperty); }
+            set { SetValue(NodeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Node.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty NodeProperty =
+            DependencyProperty.Register("Node", typeof(IDirectoryNode), typeof(Arc), new UIPropertyMetadata(null, new PropertyChangedCallback(OnNodePropertyChanged)));
+
+
         #endregion
+
+        public static void OnNodePropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs arg)
+        {
+            //Arc arc = obj as Arc;
+            //if (arc == null)
+            //    return;
+            ////if (arc.Node.DirectoryType == SpecialDirTypes.UnknownPart)
+            //// TODO
+        }
 
 
         public static void OnDesignPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs arg)
@@ -144,13 +165,13 @@ namespace HDGraph.WpfDrawEngine
         private void Path_MouseEnter(object sender, MouseEventArgs e)
         {
             //brush1.Opacity = 0.5;
-            path1.StrokeThickness = 5;
+            //path1.StrokeThickness = 5;
         }
 
         private void Path_MouseLeave(object sender, MouseEventArgs e)
         {
             //brush1.Opacity = 1;
-            path1.StrokeThickness = 1;
+            //path1.StrokeThickness = 1;
         }
 
     }

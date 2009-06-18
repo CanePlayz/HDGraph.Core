@@ -122,7 +122,7 @@ namespace HDGraph.WpfDrawEngine
                         {
                             float tempEndAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
                             if (multiFolderView)
-                                PaintUnknownPart(node, currentLevel + 1, currentStartAngle, tempEndAngle);
+                                PaintMultipleNodesPart(node, currentLevel + 1, currentStartAngle, tempEndAngle);
                             currentStartAngle = tempEndAngle;
                             BuildTree(childNode, currentLevel + 1, currentStartAngle, currentStartAngle + childAngle);
                             multiFolderView = false;
@@ -133,7 +133,7 @@ namespace HDGraph.WpfDrawEngine
                 if (multiFolderView)
                 {
                     float tempEndAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
-                    PaintUnknownPart(node, currentLevel + 1, currentStartAngle, tempEndAngle);
+                    PaintMultipleNodesPart(node, currentLevel + 1, currentStartAngle, tempEndAngle);
                 }
                 currentStartAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
                 if (node.Children.Count > 0 && node.FilesSize > 0)
@@ -158,9 +158,11 @@ namespace HDGraph.WpfDrawEngine
             arc.StartAngle = startAngle;
             arc.StopAngle = endAngle - startAngle;
             arc.SmallRadius = Convert.ToSingle(currentLevel * pasNiveau);
-            arc.LargeRadius = Convert.ToSingle(currentLevel * (pasNiveau - 1) + pasNiveau / 6);
+            arc.LargeRadius = Convert.ToSingle(currentLevel * pasNiveau + pasNiveau / 6);
             arc.Node = node;
             canvas1.Children.Add(arc);
+            arc.path1.Style = (Style)FindResource("UncalculatedPart");
+            arc.path1.StrokeThickness = 0;
             // TODO : arc.brush1 ==> LargeConfetti
 
             //frontGraph.FillPie(new System.Drawing.Drawing2D.HatchBrush(
@@ -169,6 +171,19 @@ namespace HDGraph.WpfDrawEngine
             //                            Color.White),
             //                    Rectangle.Round(rec), startAngle, nodeAngle);
 
+        }
+
+        private void PaintMultipleNodesPart(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
+        {
+            Arc arc = new Arc();
+            arc.StartAngle = startAngle;
+            arc.StopAngle = endAngle - startAngle;
+            arc.SmallRadius = Convert.ToSingle(currentLevel * pasNiveau);
+            arc.LargeRadius = Convert.ToSingle((currentLevel + 1) * pasNiveau);
+            arc.Node = node;
+            arc.path1.Style = (Style)FindResource("MultipleNodeStyle");
+            arc.path1.StrokeThickness = 0;
+            canvas1.Children.Add(arc);
         }
 
 
@@ -293,6 +308,14 @@ namespace HDGraph.WpfDrawEngine
         {
             Arc arc = BuildArc(node, currentLevel, startAngle, endAngle);
             canvas1.Children.Add(arc);
+            arc.MouseEnter += new MouseEventHandler(arc_MouseEnter);
+            arc.MouseLeave += new MouseEventHandler(arc_MouseLeave);
+            ArcToolTip arcTooltip = new ArcToolTip()
+            {
+                DataContext = node
+            };
+            arc.ToolTip = arcTooltip;
+
             // TODO : now, apply the correct brush.
             if (node.DirectoryType == SpecialDirTypes.NotSpecial)
             {
@@ -332,6 +355,26 @@ namespace HDGraph.WpfDrawEngine
                 //                Rectangle.Round(rec),
                 //                startAngle,
                 //                nodeAngle);
+            }
+        }
+
+        void arc_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Arc arc = (Arc)sender;
+            if (arc != null)
+            {
+                arc.path1.StrokeThickness = 1;
+                Canvas.SetZIndex(arc, 0);
+            }
+        }
+
+        void arc_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Arc arc = (Arc)sender;
+            if (arc != null)
+            {
+                arc.path1.StrokeThickness = 3;
+                Canvas.SetZIndex(arc, 2);
             }
         }
 

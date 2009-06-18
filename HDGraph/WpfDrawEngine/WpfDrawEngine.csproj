@@ -59,6 +59,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ArcToolTip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="TreeGraph.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -67,6 +71,9 @@
   <ItemGroup>
     <Compile Include="Arc.xaml.cs">
       <DependentUpon>Arc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ArcToolTip.xaml.cs">
+      <DependentUpon>ArcToolTip.xaml</DependentUpon>
     </Compile>
     <Compile Include="DrawEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
