@@ -83,19 +83,6 @@ namespace HDGraph.WpfDrawEngine
             DependencyProperty.Register("SmallRadius", typeof(float), typeof(Arc), new UIPropertyMetadata(50f, new PropertyChangedCallback(OnDesignPropertyChanged)));
 
 
-
-        public string Caption
-        {
-            get { return (string)GetValue(CaptionProperty); }
-            set { SetValue(CaptionProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Caption.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CaptionProperty =
-            DependencyProperty.Register("Caption", typeof(string), typeof(Arc), new UIPropertyMetadata("Test"));
-
-
-
         public IDirectoryNode Node
         {
             get { return (IDirectoryNode)GetValue(NodeProperty); }
@@ -118,28 +105,53 @@ namespace HDGraph.WpfDrawEngine
             //// TODO
         }
 
+        private bool editing;
+
+        public void BeginEdit()
+        {
+            editing = true;
+        }
+
+        public void EndEdit()
+        {
+            if (editing)
+            {
+                editing = false;
+                UpdateDesign();
+            }
+        }
+
+        private void UpdateDesign()
+        {
+            float newRadius = this.LargeRadius;
+            this.line1.Point = new Point(newRadius, 0);
+            this.arc1.Size = new Size(newRadius, newRadius);
+            double stopAngleInRadian = GetRadianFromDegree(this.StopAngle);
+            double stopAngleCos = Math.Cos(stopAngleInRadian);
+            double stopAngleSin = Math.Sin(stopAngleInRadian);
+            double xLarge = stopAngleCos * this.LargeRadius;
+            double yLarge = stopAngleSin * this.LargeRadius;
+            double xSmall = stopAngleCos * this.SmallRadius;
+            double ySmall = stopAngleSin * this.SmallRadius;
+            this.arc1.Point = new Point(xLarge, yLarge);
+            this.line2.Point = new Point(xSmall, ySmall);
+            this.arc1.IsLargeArc = (this.StopAngle > 180);
+            this.pathFigure1.StartPoint = new Point(this.SmallRadius, 0);
+            this.arc2.Point = this.pathFigure1.StartPoint;
+            this.arc2.Size = new Size(this.SmallRadius, this.SmallRadius);
+            this.arc2.IsLargeArc = this.arc1.IsLargeArc;
+            this.rotateTransform1.Angle = this.StartAngle;
+        }
 
         public static void OnDesignPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs arg)
         {
             Arc arc = obj as Arc;
             if (arc == null)
                 return;
-
-            float newRadius = arc.LargeRadius;
-            arc.line1.Point = new Point(newRadius, 0);
-            arc.arc1.Size = new Size(newRadius, newRadius);
-            double xLarge = Math.Cos(GetRadianFromDegree(arc.StopAngle)) * arc.LargeRadius;
-            double yLarge = Math.Sin(GetRadianFromDegree(arc.StopAngle)) * arc.LargeRadius;
-            double xSmall = Math.Cos(GetRadianFromDegree(arc.StopAngle)) * arc.SmallRadius;
-            double ySmall = Math.Sin(GetRadianFromDegree(arc.StopAngle)) * arc.SmallRadius;
-            arc.arc1.Point = new Point(xLarge, yLarge);
-            arc.line2.Point = new Point(xSmall, ySmall);
-            arc.arc1.IsLargeArc = (arc.StopAngle > 180);
-            arc.pathFigure1.StartPoint = new Point(arc.SmallRadius, 0);
-            arc.arc2.Point = arc.pathFigure1.StartPoint;
-            arc.arc2.Size = new Size(arc.SmallRadius, arc.SmallRadius);
-            arc.arc2.IsLargeArc = (arc.StopAngle > 180);
-            arc.rotateTransform1.Angle = arc.StartAngle;
+            if (!arc.editing)
+                // Update design now only if not in edit mode
+                // (Update will be called at the end of the "edit mode" if it is enabled).
+                arc.UpdateDesign();
         }
 
         // TODO : Move out there.

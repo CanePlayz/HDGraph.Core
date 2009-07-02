@@ -29,7 +29,7 @@ namespace HDGraph.WpfDrawEngine
         /// <summary>
         /// Epaisseur d'un niveau sur le graph.
         /// </summary>
-        private double pasNiveau;
+        private double singleLevelHeight;
 
         private DrawOptions currentWorkingOptions;
         private IDirectoryNode rootNode;
@@ -45,12 +45,12 @@ namespace HDGraph.WpfDrawEngine
             currentWorkingOptions = options;
 
             // init des données du calcul
-            //pasNiveau = Convert.ToDouble(
+            //singleLevelHeight = Convert.ToDouble(
             //                Math.Min(this.Width / currentWorkingOptions.ShownLevelsCount / 2,
             //                         this.Height / currentWorkingOptions.ShownLevelsCount / 2));
 
             // init des données du calcul
-            pasNiveau = Convert.ToDouble(
+            singleLevelHeight = Convert.ToDouble(
                             Math.Min(500 / currentWorkingOptions.ShownLevelsCount / 2,
                                      500 / currentWorkingOptions.ShownLevelsCount / 2));
 
@@ -156,14 +156,16 @@ namespace HDGraph.WpfDrawEngine
         private void PaintUnknownPart(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
         {
             Arc arc = new Arc();
+            arc.BeginEdit();
             arc.StartAngle = startAngle;
             arc.StopAngle = endAngle - startAngle;
-            arc.SmallRadius = Convert.ToSingle(currentLevel * pasNiveau);
-            arc.LargeRadius = Convert.ToSingle(currentLevel * pasNiveau + pasNiveau / 6);
+            arc.SmallRadius = Convert.ToSingle(currentLevel * singleLevelHeight);
+            arc.LargeRadius = Convert.ToSingle(currentLevel * singleLevelHeight + singleLevelHeight / 6);
             arc.Node = node;
-            canvas1.Children.Add(arc);
             arc.path1.Style = (Style)FindResource("UncalculatedPart");
             arc.path1.StrokeThickness = 0;
+            arc.EndEdit();
+            canvas1.Children.Add(arc);
             // TODO : arc.brush1 ==> LargeConfetti
 
             //frontGraph.FillPie(new System.Drawing.Drawing2D.HatchBrush(
@@ -177,13 +179,15 @@ namespace HDGraph.WpfDrawEngine
         private void PaintMultipleNodesPart(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
         {
             Arc arc = new Arc();
+            arc.BeginEdit();
             arc.StartAngle = startAngle;
             arc.StopAngle = endAngle - startAngle;
-            arc.SmallRadius = Convert.ToSingle(currentLevel * pasNiveau);
-            arc.LargeRadius = Convert.ToSingle((currentLevel + 1) * pasNiveau);
+            arc.SmallRadius = Convert.ToSingle(currentLevel * singleLevelHeight);
+            arc.LargeRadius = Convert.ToSingle((currentLevel + 1) * singleLevelHeight);
             arc.Node = node;
             arc.path1.Style = (Style)FindResource("MultipleNodeStyle");
             arc.path1.StrokeThickness = 0;
+            arc.EndEdit();
             canvas1.Children.Add(arc);
         }
 
@@ -203,7 +207,7 @@ namespace HDGraph.WpfDrawEngine
             {
                 Ellipse e = new Ellipse()
                 {
-                    Width = currentLevel * pasNiveau,
+                    Width = currentLevel * singleLevelHeight,
                     Height = Width
                 };
                 canvas1.Children.Add(e);
@@ -224,13 +228,13 @@ namespace HDGraph.WpfDrawEngine
         //private void WriteDirectoryNameForFullPie(IDirectoryNode node, RectangleF rec)
         //{
         //    float x = 0, y;
-        //    if (rec.Height == pasNiveau * 2)
+        //    if (rec.Height == singleLevelHeight * 2)
         //    {
         //        y = 0;
         //    }
         //    else
         //    {
-        //        y = rec.Height / 2f - pasNiveau * 3f / 4f;
+        //        y = rec.Height / 2f - singleLevelHeight * 3f / 4f;
         //    }
         //    x += currentWorkingOptions.BitmapSize.Width / 2f;
         //    y += currentWorkingOptions.BitmapSize.Height / 2f;
@@ -259,10 +263,10 @@ namespace HDGraph.WpfDrawEngine
         ///// <returns></returns>
         //private void WriteDirectoryName(IDirectoryNode node, RectangleF rec, float startAngle, float nodeAngle)
         //{
-        //    //float textWidthLimit = pasNiveau * 1.5f;
-        //    float textWidthLimit = pasNiveau * 2f;
+        //    //float textWidthLimit = singleLevelHeight * 1.5f;
+        //    float textWidthLimit = singleLevelHeight * 2f;
         //    float x, y, angleCentre, hyp;
-        //    hyp = (rec.Width - pasNiveau) / 2f;
+        //    hyp = (rec.Width - singleLevelHeight) / 2f;
         //    angleCentre = startAngle + nodeAngle / 2f;
         //    x = (float)Math.Cos(MathHelper.GetRadianFromDegree(angleCentre)) * hyp;
         //    y = (float)Math.Sin(MathHelper.GetRadianFromDegree(angleCentre)) * hyp;
@@ -387,11 +391,13 @@ namespace HDGraph.WpfDrawEngine
         private Arc BuildArc(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
         {
             Arc arc = new Arc();
+            arc.BeginEdit();
             arc.StartAngle = startAngle;
             arc.StopAngle = endAngle - startAngle;
-            arc.SmallRadius = Convert.ToSingle(currentLevel * pasNiveau);
-            arc.LargeRadius = Convert.ToSingle((currentLevel + 1) * pasNiveau);
+            arc.SmallRadius = Convert.ToSingle(currentLevel * singleLevelHeight);
+            arc.LargeRadius = Convert.ToSingle((currentLevel + 1) * singleLevelHeight);
             arc.Node = node;
+            arc.EndEdit();
             return arc;
         }
 
@@ -496,7 +502,7 @@ namespace HDGraph.WpfDrawEngine
             //if (!printDirNames && treeGraph.OptionAlsoPaintFiles)
             //{
             //    float nodeAngle = endAngle - startAngle;
-            //    rec.Inflate(pasNiveau, pasNiveau);
+            //    rec.Inflate(singleLevelHeight, singleLevelHeight);
             //    //Console.WriteLine("Processing Files (Angle:" + startAngle + ";" + endAngle + "; Rec:" + rec + ")...");
             //    frontGraph.FillPie(new SolidBrush(Color.White), Rectangle.Round(rec), startAngle, nodeAngle); //TODO
 
@@ -572,7 +578,7 @@ namespace HDGraph.WpfDrawEngine
         //    if (node.TotalSize == 0)
         //        return node;
         //    float nodeAngle = endAngle - startAngle;
-        //    levelHeight += pasNiveau;
+        //    levelHeight += singleLevelHeight;
         //    if (levelHeight > cursorLen && cursorAngle >= startAngle && cursorAngle <= endAngle)
         //    {
         //        // le noeud courant est celui recherché
