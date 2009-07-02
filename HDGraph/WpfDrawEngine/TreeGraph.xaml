@@ -37,6 +37,7 @@
                 <RowDefinition Height="50"></RowDefinition>
                 <RowDefinition Height="50"></RowDefinition>
                 <RowDefinition></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
             </Grid.RowDefinitions>
             <Slider Grid.Row="0" Name="sliderRotation" Margin="10,10,10,10" Maximum="360" Minimum="0" />
             <Slider Grid.Row="1" Name="sliderScale" Margin="10,10,10,10" Maximum="20" Minimum="0.5" Value="1" />
@@ -54,6 +55,7 @@
                     </TransformGroup>
                 </Canvas.RenderTransform>
             </Canvas>
+            <Label Grid.Row="3" x:Name="labelStatus" ></Label>
         </Grid>
     </Viewbox>
 

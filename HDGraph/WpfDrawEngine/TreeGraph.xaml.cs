@@ -23,6 +23,7 @@ namespace HDGraph.WpfDrawEngine
         public TreeGraph()
         {
             InitializeComponent();
+            labelStatus.Content = "Acceleration : " + WpfUtils.GetAccelerationType().ToString();
         }
 
         /// <summary>
