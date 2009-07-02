@@ -331,6 +331,7 @@ namespace HDGraph.WpfDrawEngine
                 ////float middleAngle = startAngle + (nodeAngle / 2f);
                 ////frontGraph.DrawRectangle(new Pen(colorManager.GetNextColor(middleAngle), 0.05f),
                 ////                        Rectangle.Round(rec));
+                Canvas.SetZIndex(arc, DEFAULT_STANDARD_ARC_Z_INDEX);
             }
             else if (node.DirectoryType == SpecialDirTypes.FreeSpaceAndShow)
             {
@@ -358,13 +359,16 @@ namespace HDGraph.WpfDrawEngine
             }
         }
 
+        private const int DEFAULT_STANDARD_ARC_Z_INDEX = 1;
+        private const int DEFAULT_STANDARD_ARC_OVER_Z_INDEX = 2;
+
         void arc_MouseLeave(object sender, MouseEventArgs e)
         {
             Arc arc = (Arc)sender;
             if (arc != null)
             {
                 arc.path1.StrokeThickness = 1;
-                Canvas.SetZIndex(arc, 0);
+                Canvas.SetZIndex(arc, DEFAULT_STANDARD_ARC_Z_INDEX);
             }
         }
 
@@ -374,7 +378,7 @@ namespace HDGraph.WpfDrawEngine
             if (arc != null)
             {
                 arc.path1.StrokeThickness = 3;
-                Canvas.SetZIndex(arc, 2);
+                Canvas.SetZIndex(arc, DEFAULT_STANDARD_ARC_OVER_Z_INDEX);
             }
         }
 
