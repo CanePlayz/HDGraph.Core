@@ -17,9 +17,10 @@ namespace HDGraph.Interop
             {
                 switch (Environment.OSVersion.Platform)
                 {
-                    case PlatformID.MacOSX:
-                        currentEnvironment = EnvironmentTarget.Mac;
-                        break;
+                    // From 3.5 SP1 only ???
+                    //case PlatformID.MacOSX:
+                    //    currentEnvironment = EnvironmentTarget.Mac;
+                    //    break;
                     case PlatformID.Unix:
                         currentEnvironment = EnvironmentTarget.Unix;
                         break;
@@ -32,7 +33,8 @@ namespace HDGraph.Interop
                         else
                             currentEnvironment = EnvironmentTarget.WindowsXp;
                         break;
-                    case PlatformID.Xbox:
+                    // From 3.5 SP1 only ???
+                    //case PlatformID.Xbox:
                     default:
                         currentEnvironment = EnvironmentTarget.Unknown;
                         break;
