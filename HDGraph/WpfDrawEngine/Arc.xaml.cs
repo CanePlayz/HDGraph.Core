@@ -126,7 +126,7 @@ namespace HDGraph.WpfDrawEngine
             float newRadius = this.LargeRadius;
             this.line1.Point = new Point(newRadius, 0);
             this.arc1.Size = new Size(newRadius, newRadius);
-            double stopAngleInRadian = GetRadianFromDegree(this.StopAngle);
+            double stopAngleInRadian = WpfUtils.GetRadianFromDegree(this.StopAngle);
             double stopAngleCos = Math.Cos(stopAngleInRadian);
             double stopAngleSin = Math.Sin(stopAngleInRadian);
             double xLarge = stopAngleCos * this.LargeRadius;
@@ -152,26 +152,6 @@ namespace HDGraph.WpfDrawEngine
                 // Update design now only if not in edit mode
                 // (Update will be called at the end of the "edit mode" if it is enabled).
                 arc.UpdateDesign();
-        }
-
-        // TODO : Move out there.
-        /// <summary>
-        /// Convertit un angle en degrés en radian.
-        /// </summary>
-        /// <param name="degree"></param>
-        /// <returns></returns>
-        public static double GetRadianFromDegree(float degree)
-        {
-            return degree * Math.PI / 180f;
-        }
-
-        // TODO : Move out there.
-        /// <summary>
-        /// Convertit un angle en radian en degrés.
-        /// </summary>
-        public static double GetDegreeFromRadian(double radian)
-        {
-            return radian * 180 / Math.PI;
         }
 
         private void Path_MouseEnter(object sender, MouseEventArgs e)

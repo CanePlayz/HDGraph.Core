@@ -89,6 +89,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ReverseNumericConverter.cs" />
     <Compile Include="TreeGraph.xaml.cs">
       <DependentUpon>TreeGraph.xaml</DependentUpon>
     </Compile>

@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HDGraph.Interfaces.ScanEngines;
 using HDGraph.Interfaces.DrawEngines;
+using System.Globalization;
 
 namespace HDGraph.WpfDrawEngine
 {
@@ -336,7 +337,9 @@ namespace HDGraph.WpfDrawEngine
                 ////float middleAngle = startAngle + (nodeAngle / 2f);
                 ////frontGraph.DrawRectangle(new Pen(colorManager.GetNextColor(middleAngle), 0.05f),
                 ////                        Rectangle.Round(rec));
-                Canvas.SetZIndex(arc, DEFAULT_STANDARD_ARC_Z_INDEX);
+                Canvas.SetZIndex(arc, DEFAULT_Z_INDEX_STANDARD_ARC);
+                ApplyArcLabel(node, currentLevel, startAngle, endAngle);
+
             }
             else if (node.DirectoryType == SpecialDirTypes.FreeSpaceAndShow)
             {
@@ -364,8 +367,42 @@ namespace HDGraph.WpfDrawEngine
             }
         }
 
-        private const int DEFAULT_STANDARD_ARC_Z_INDEX = 1;
-        private const int DEFAULT_STANDARD_ARC_OVER_Z_INDEX = 2;
+        private void ApplyArcLabel(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
+        {
+            Label label = new Label()
+            {
+                Content = node.Name
+            };
+            canvas1.Children.Add(label);
+            //Canvas.SetTop(label, canvas1.Height / 2);
+            //Canvas.SetLeft(label, canvas1.Width / 2);
+            Canvas.SetZIndex(label, DEFAULT_Z_INDEX_ARC_CAPTION);
+
+            // Define coordinates of the label.
+            double radius = ((currentLevel + 0.5) * singleLevelHeight);
+            double angleInRadian = WpfUtils.GetRadianFromDegree(startAngle + (endAngle - startAngle) / 2);
+            double angleCos = Math.Cos(angleInRadian);
+            double angleSin = Math.Sin(angleInRadian);
+            double xLarge = angleCos * radius;
+            double yLarge = angleSin * radius;
+            Canvas.SetTop(label, yLarge);
+            Canvas.SetLeft(label, xLarge);
+            //Canvas.SetTop(label, ((currentLevel + 0.5) * singleLevelHeight) - (label.ActualHeight / 2));
+            //Canvas.SetLeft(label, -label.ActualWidth / 2);
+
+            // Apply rotation to Label
+            RotateTransform transform = new RotateTransform();
+            Binding b = new Binding();
+            b.Source = this.sliderRotation;
+            b.Path = new PropertyPath(Slider.ValueProperty);
+            b.Converter = new ReverseNumericConverter(); // apply the reversed rotation to the one made on the graph.
+            BindingOperations.SetBinding(transform, RotateTransform.AngleProperty, b);
+            label.RenderTransform = transform;
+        }
+
+        private const int DEFAULT_Z_INDEX_STANDARD_ARC = 1;
+        private const int DEFAULT_Z_INDEX_STANDARD_ARC_OVER = 2;
+        private const int DEFAULT_Z_INDEX_ARC_CAPTION = 3;
 
         void arc_MouseLeave(object sender, MouseEventArgs e)
         {
@@ -373,7 +410,7 @@ namespace HDGraph.WpfDrawEngine
             if (arc != null)
             {
                 arc.path1.StrokeThickness = 1;
-                Canvas.SetZIndex(arc, DEFAULT_STANDARD_ARC_Z_INDEX);
+                Canvas.SetZIndex(arc, DEFAULT_Z_INDEX_STANDARD_ARC);
             }
         }
 
@@ -383,7 +420,7 @@ namespace HDGraph.WpfDrawEngine
             if (arc != null)
             {
                 arc.path1.StrokeThickness = 3;
-                Canvas.SetZIndex(arc, DEFAULT_STANDARD_ARC_OVER_Z_INDEX);
+                Canvas.SetZIndex(arc, DEFAULT_Z_INDEX_STANDARD_ARC_OVER);
             }
         }
 
@@ -508,19 +545,6 @@ namespace HDGraph.WpfDrawEngine
 
             //}
         }
-
-        private void Arc_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            arc1.LargeRadius = 250;
-
-        }
-
-
 
         ///// <summary>
         ///// Trouve quel est le répertoire survolé d'après la position du curseur.
