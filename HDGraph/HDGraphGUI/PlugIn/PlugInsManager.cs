@@ -23,6 +23,8 @@ namespace HDGraph.PlugIn
                     Form form = new Form();
                     form.Controls.Add(control);
                     control.Dock = DockStyle.Fill;
+                    control.Margin = new Padding(10);
+                    control.Padding = new Padding(10);
                     form.Show();
                     return;
                 }
