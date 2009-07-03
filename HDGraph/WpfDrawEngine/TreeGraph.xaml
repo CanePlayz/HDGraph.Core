@@ -4,6 +4,7 @@
     xmlns:extern="clr-namespace:HDGraph.WpfDrawEngine"
     >
     <UserControl.Resources>
+        <extern:DivideBy2NumericConverter x:Key="myDivideBy2NumericConverter"/>
         <Style TargetType="{x:Type ToolTip}">
             <Setter Property="Background" Value="#7F000000"/>
             <Setter Property="BorderBrush" Value="#7Fdcdcdc" />
@@ -39,9 +40,7 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition Height="50"></RowDefinition>
             </Grid.RowDefinitions>
-            <Slider Grid.Row="0" Name="sliderRotation" Margin="10,10,10,10" Maximum="360" Minimum="0" />
-            <Slider Grid.Row="1" Name="sliderScale" Margin="10,10,10,10" Maximum="20" Minimum="0.5" Value="1" />
-            <Canvas Grid.Row="2" x:Name="canvas1" Width="500" Height="500" Background="Red">
+            <Canvas Grid.Row="2" x:Name="canvas1" Width="500" Height="500">
                 <Label x:Name="labelInfo" Visibility="Hidden">Nothing to draw.</Label>
                 <!--<extern:Arc x:Name="arc1" Loaded="Arc_Loaded" Visibility="Hidden"></extern:Arc>-->
                 <!--<Button Click="Button_Click">Essai</Button>-->
@@ -54,9 +53,23 @@
                                 ScaleX="{Binding ElementName=sliderScale, Path=Value}"
                                 ScaleY="{Binding ElementName=sliderScale, Path=Value}">
                         </ScaleTransform>
+                        <TranslateTransform
+                             X="{Binding 
+                                Path=ActualWidth,
+                                RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Canvas}}, 
+                                 Converter={StaticResource myDivideBy2NumericConverter}}"
+                            Y="{Binding 
+                                Path=ActualHeight,
+                                RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Canvas}}, 
+                                 Converter={StaticResource myDivideBy2NumericConverter}}"
+                            >
+                        </TranslateTransform>
                     </TransformGroup>
                 </Canvas.RenderTransform>
             </Canvas>
+            <Slider Grid.Row="0" Name="sliderRotation" Margin="10,10,10,10" Maximum="360" Minimum="0" />
+            <Slider Grid.Row="1" Name="sliderScale" Margin="10,10,10,10" Maximum="20" Minimum="0.5" Value="1" />
+
             <Label Grid.Row="3" x:Name="labelStatus" ></Label>
         </Grid>
     </Viewbox>

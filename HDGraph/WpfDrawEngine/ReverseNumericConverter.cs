@@ -27,4 +27,38 @@ namespace HDGraph.WpfDrawEngine
             return Binding.DoNothing;
         }
     }
+
+    /// <summary>
+    /// Converter used to divide by 2 a numeric.
+    /// </summary>
+    internal class DivideBy2NumericConverter : IValueConverter
+    {
+        public DivideBy2NumericConverter()
+            : this(false)
+        {
+        }
+
+        private int coef;
+
+        public DivideBy2NumericConverter(bool reverse)
+        {
+            this.coef = reverse ? -1 : 1;
+        }
+
+        public object Convert(object value, Type targetType,
+            object parameter, CultureInfo culture)
+        {
+            if (value is double)
+                return ((double)value) / 2 * coef;
+            return Binding.DoNothing;
+        }
+
+        public object ConvertBack(object value, Type targetType,
+            object parameter, CultureInfo culture)
+        {
+            if (value is double)
+                return 2 * ((double)value) * coef;
+            return Binding.DoNothing;
+        }
+    }
 }

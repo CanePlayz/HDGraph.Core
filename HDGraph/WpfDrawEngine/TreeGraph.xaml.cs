@@ -367,15 +367,19 @@ namespace HDGraph.WpfDrawEngine
             }
         }
 
+        private DivideBy2NumericConverter divideBy2Converter = new DivideBy2NumericConverter(true);
+
         private void ApplyArcLabel(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
         {
             Label label = new Label()
             {
-                Content = node.Name
+                Content = node.Name,// + Environment.NewLine + node.HumanReadableTotalSize,
+                //Height = singleLevelHeight,
+                //Width = 50, // TODO : optimize ?
+                HorizontalContentAlignment = HorizontalAlignment.Center,
+                VerticalContentAlignment = VerticalAlignment.Center
             };
             canvas1.Children.Add(label);
-            //Canvas.SetTop(label, canvas1.Height / 2);
-            //Canvas.SetLeft(label, canvas1.Width / 2);
             Canvas.SetZIndex(label, DEFAULT_Z_INDEX_ARC_CAPTION);
 
             // Define coordinates of the label.
@@ -387,22 +391,41 @@ namespace HDGraph.WpfDrawEngine
             double yLarge = angleSin * radius;
             Canvas.SetTop(label, yLarge);
             Canvas.SetLeft(label, xLarge);
-            //Canvas.SetTop(label, ((currentLevel + 0.5) * singleLevelHeight) - (label.ActualHeight / 2));
-            //Canvas.SetLeft(label, -label.ActualWidth / 2);
 
+            TransformGroup transformGroup = new TransformGroup();
+            Binding b;
+
+            // Apply HORIZONTAL Translation to Label (it must be centered)
+            b = new Binding();
+            TranslateTransform translateTransform = new TranslateTransform();
+            b.Source = label;
+            b.Path = new PropertyPath(Label.ActualHeightProperty);
+            b.Converter = divideBy2Converter;
+            BindingOperations.SetBinding(translateTransform, TranslateTransform.YProperty, b);
+            transformGroup.Children.Add(translateTransform);
+            // Apply VERTICAL Translation to Label (it must be centered)
+            b = new Binding();
+            translateTransform = new TranslateTransform();
+            b.Source = label;
+            b.Path = new PropertyPath(Label.ActualWidthProperty);
+            b.Converter = divideBy2Converter;
+            BindingOperations.SetBinding(translateTransform, TranslateTransform.XProperty, b);
+            transformGroup.Children.Add(translateTransform);
             // Apply rotation to Label
-            RotateTransform transform = new RotateTransform();
-            Binding b = new Binding();
+            RotateTransform rotateTransform = new RotateTransform();
+            b = new Binding();
             b.Source = this.sliderRotation;
             b.Path = new PropertyPath(Slider.ValueProperty);
             b.Converter = new ReverseNumericConverter(); // apply the reversed rotation to the one made on the graph.
-            BindingOperations.SetBinding(transform, RotateTransform.AngleProperty, b);
-            label.RenderTransform = transform;
+            BindingOperations.SetBinding(rotateTransform, RotateTransform.AngleProperty, b);
+            transformGroup.Children.Add(rotateTransform);
+            
+            label.RenderTransform = transformGroup;
         }
 
         private const int DEFAULT_Z_INDEX_STANDARD_ARC = 1;
         private const int DEFAULT_Z_INDEX_STANDARD_ARC_OVER = 2;
-        private const int DEFAULT_Z_INDEX_ARC_CAPTION = 3;
+        private const int DEFAULT_Z_INDEX_ARC_CAPTION = 0;
 
         void arc_MouseLeave(object sender, MouseEventArgs e)
         {
