@@ -10,6 +10,10 @@
             <Setter Property="BorderBrush" Value="#7Fdcdcdc" />
             <Setter Property="Foreground" Value="White"/>
         </Style>
+        <Style x:Key="ArcTextStyle">
+            <Setter Property="Label.FontSize" Value="{Binding ElementName=sliderTextSize, Path=Value}">
+            </Setter>
+        </Style>
         <Style x:Key="MultipleNodeStyle">
             <Setter Property="Path.Fill">
                 <Setter.Value>
@@ -37,10 +41,11 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"></RowDefinition>
                 <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition Height="50"></RowDefinition>
             </Grid.RowDefinitions>
-            <Canvas Grid.Row="2" x:Name="canvas1" Width="500" Height="500">
+            <Canvas Grid.Row="3" x:Name="canvas1" Width="500" Height="500">
                 <Label x:Name="labelInfo" Visibility="Hidden">Nothing to draw.</Label>
                 <!--<extern:Arc x:Name="arc1" Loaded="Arc_Loaded" Visibility="Hidden"></extern:Arc>-->
                 <!--<Button Click="Button_Click">Essai</Button>-->
@@ -69,8 +74,8 @@
             </Canvas>
             <Slider Grid.Row="0" Name="sliderRotation" Margin="10,10,10,10" Maximum="360" Minimum="0" />
             <Slider Grid.Row="1" Name="sliderScale" Margin="10,10,10,10" Maximum="20" Minimum="0.5" Value="1" />
-
-            <Label Grid.Row="3" x:Name="labelStatus" ></Label>
+            <Slider Grid.Row="2" Name="sliderTextSize" Margin="10,10,10,10" Maximum="100" Minimum="0.5" Value="12" />
+            <Label Grid.Row="4" x:Name="labelStatus" ></Label>
         </Grid>
     </Viewbox>
 

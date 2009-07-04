@@ -10,8 +10,8 @@
             <Setter Property="Foreground" Value="White"></Setter>
         </Style>
     </UserControl.Resources>
-        <Grid>
-        <GroupBox Header="Details" Foreground="White">
+        <!--<Grid>
+        <GroupBox Header="Details" Foreground="White">-->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
@@ -28,6 +28,6 @@
                 <Label Grid.Row="1" Grid.Column="1" FontWeight="Bold" Content="{Binding HumanReadableTotalSize}"></Label>
                 <Label Grid.Row="2" Grid.ColumnSpan="2" Content="{Binding Path}"></Label>
             </Grid>
-        </GroupBox>
-    </Grid>
+        <!--</GroupBox>
+    </Grid>-->
 </UserControl>

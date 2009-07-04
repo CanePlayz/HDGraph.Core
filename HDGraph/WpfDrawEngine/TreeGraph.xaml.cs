@@ -377,7 +377,8 @@ namespace HDGraph.WpfDrawEngine
                 //Height = singleLevelHeight,
                 //Width = 50, // TODO : optimize ?
                 HorizontalContentAlignment = HorizontalAlignment.Center,
-                VerticalContentAlignment = VerticalAlignment.Center
+                VerticalContentAlignment = VerticalAlignment.Center,
+                Style=(Style)FindResource("ArcTextStyle")
             };
             canvas1.Children.Add(label);
             Canvas.SetZIndex(label, DEFAULT_Z_INDEX_ARC_CAPTION);
