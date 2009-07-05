@@ -88,6 +88,7 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Rotation :</Label>
                 <Slider Grid.Column="1" Grid.Row="0"
@@ -111,6 +112,10 @@
                        HorizontalAlignment="Left" VerticalAlignment="Center"
                        Content="{Binding ElementName=sliderTextSize, Path=Value}"/>
 
+                <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="3">
+                    <Button x:Name="ButtonPrint" 
+                        Click="ButtonPrint_Click">Print</Button>
+                </StackPanel>
             </Grid>
         </Expander>
     </Grid>

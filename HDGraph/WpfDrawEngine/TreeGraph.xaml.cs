@@ -378,7 +378,7 @@ namespace HDGraph.WpfDrawEngine
                 //Width = 50, // TODO : optimize ?
                 HorizontalContentAlignment = HorizontalAlignment.Center,
                 VerticalContentAlignment = VerticalAlignment.Center,
-                Style=(Style)FindResource("ArcTextStyle")
+                Style = (Style)FindResource("ArcTextStyle")
             };
             canvas1.Children.Add(label);
             Canvas.SetZIndex(label, DEFAULT_Z_INDEX_ARC_CAPTION);
@@ -420,7 +420,7 @@ namespace HDGraph.WpfDrawEngine
             b.Converter = new ReverseNumericConverter(); // apply the reversed rotation to the one made on the graph.
             BindingOperations.SetBinding(rotateTransform, RotateTransform.AngleProperty, b);
             transformGroup.Children.Add(rotateTransform);
-            
+
             label.RenderTransform = transformGroup;
         }
 
@@ -568,6 +568,17 @@ namespace HDGraph.WpfDrawEngine
             //    frontGraph.FillPie(new SolidBrush(Color.White), Rectangle.Round(rec), startAngle, nodeAngle); //TODO
 
             //}
+        }
+
+
+        private void ButtonPrint_Click(object sender, RoutedEventArgs e)
+        {
+            PrintDialog dialog = new PrintDialog();
+            if (dialog.ShowDialog() == true)
+            {
+                dialog.PrintVisual(canvas1, "HDGraph diagram");
+            }
+
         }
 
         ///// <summary>
