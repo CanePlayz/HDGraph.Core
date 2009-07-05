@@ -35,24 +35,20 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-
-    <Viewbox>
-        <Grid Margin="0,0,0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition Height="50"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Canvas Grid.Row="3" x:Name="canvas1" Width="500" Height="500">
+    <Grid Margin="0,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Viewbox Grid.Row="1">
+            <Canvas x:Name="canvas1" Width="500" Height="500">
                 <Label x:Name="labelInfo" Visibility="Hidden">Nothing to draw.</Label>
                 <!--<extern:Arc x:Name="arc1" Loaded="Arc_Loaded" Visibility="Hidden"></extern:Arc>-->
                 <!--<Button Click="Button_Click">Essai</Button>-->
                 <Canvas.RenderTransform>
                     <TransformGroup>
                         <RotateTransform x:Name="rotateTransform" Angle="{Binding ElementName=sliderRotation, Path=Value}"></RotateTransform>
-                        <!--<RotateTransform x:Name="rotateTransform" Angle="{Binding ElementName=sliderRotation, Path=Value}" CenterX="200" CenterY="200"></RotateTransform>-->
 
                         <ScaleTransform 
                                 ScaleX="{Binding ElementName=sliderScale, Path=Value}"
@@ -72,11 +68,52 @@
                     </TransformGroup>
                 </Canvas.RenderTransform>
             </Canvas>
-            <Slider Grid.Row="0" Name="sliderRotation" Margin="10,10,10,10" Maximum="360" Minimum="0" />
-            <Slider Grid.Row="1" Name="sliderScale" Margin="10,10,10,10" Maximum="20" Minimum="0.5" Value="1" />
-            <Slider Grid.Row="2" Name="sliderTextSize" Margin="10,10,10,10" Maximum="25" Minimum="0.5" Value="12" />
-            <Label Grid.Row="4" x:Name="labelStatus" ></Label>
-        </Grid>
-    </Viewbox>
+        </Viewbox>
+
+        <Label Grid.Row="2" x:Name="labelStatus" ></Label>
+        <Expander Grid.Row="0" Header="View options" Name="expander1" Background="#55BAC6FF">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="40">
+                        <!--<ColumnDefinition.Style>
+                            <Style>
+                                <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                            </Style>
+                        </ColumnDefinition.Style>-->
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Rotation :</Label>
+                <Slider Grid.Column="1" Grid.Row="0"
+                    Name="sliderRotation" Margin="10,10,10,10" Maximum="360" Minimum="0" />
+                <Label Grid.Column="2" Grid.Row="0" 
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       Content="{Binding ElementName=sliderRotation, Path=Value}"/>
+                
+                <Label Grid.Column="0" Grid.Row="1"  VerticalAlignment="Center">Zoom :</Label>
+                <Slider Grid.Column="1" Grid.Row="1"
+                    Name="sliderScale" Margin="10,10,10,10" Maximum="20" Minimum="0.5" Value="1" />
+                <Label Grid.Column="2" Grid.Row="1" 
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       Content="{Binding ElementName=sliderScale, Path=Value}"/>
+
+
+                <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Text size :</Label>
+                <Slider Grid.Column="1" Grid.Row="2"
+                    Name="sliderTextSize" Margin="10,10,10,10" Maximum="25" Minimum="0.5" Value="8" />
+                <Label Grid.Column="2" Grid.Row="2" 
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       Content="{Binding ElementName=sliderTextSize, Path=Value}"/>
+
+            </Grid>
+        </Expander>
+    </Grid>
+
 
 </UserControl>
