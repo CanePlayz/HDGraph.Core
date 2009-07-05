@@ -21,6 +21,7 @@ namespace HDGraph.PlugIn
                     IControlTypeEngine engine = engineContract.GetNewControlTypeEngine();
                     Control control = engine.GenerateControlFromNode(node, options);
                     Form form = new Form();
+                    form.WindowState = FormWindowState.Maximized;
                     form.Controls.Add(control);
                     control.Dock = DockStyle.Fill;
                     control.Margin = new Padding(10);

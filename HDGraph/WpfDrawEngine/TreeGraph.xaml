@@ -74,7 +74,7 @@
             </Canvas>
             <Slider Grid.Row="0" Name="sliderRotation" Margin="10,10,10,10" Maximum="360" Minimum="0" />
             <Slider Grid.Row="1" Name="sliderScale" Margin="10,10,10,10" Maximum="20" Minimum="0.5" Value="1" />
-            <Slider Grid.Row="2" Name="sliderTextSize" Margin="10,10,10,10" Maximum="100" Minimum="0.5" Value="12" />
+            <Slider Grid.Row="2" Name="sliderTextSize" Margin="10,10,10,10" Maximum="25" Minimum="0.5" Value="12" />
             <Label Grid.Row="4" x:Name="labelStatus" ></Label>
         </Grid>
     </Viewbox>
