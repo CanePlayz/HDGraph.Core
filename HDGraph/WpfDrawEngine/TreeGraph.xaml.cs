@@ -156,7 +156,7 @@ namespace HDGraph.WpfDrawEngine
         /// <param name="endAngle"></param>
         private void PaintUnknownPart(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
         {
-            Arc arc = new Arc();
+            Arc2 arc = new Arc2();
             arc.BeginEdit();
             arc.StartAngle = startAngle;
             arc.StopAngle = endAngle - startAngle;
@@ -179,7 +179,7 @@ namespace HDGraph.WpfDrawEngine
 
         private void PaintMultipleNodesPart(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
         {
-            Arc arc = new Arc();
+            Arc2 arc = new Arc2();
             arc.BeginEdit();
             arc.StartAngle = startAngle;
             arc.StopAngle = endAngle - startAngle;
@@ -312,7 +312,8 @@ namespace HDGraph.WpfDrawEngine
         /// <param name="nodeAngle"></param>
         private void BuildPartialPie(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
         {
-            Arc arc = BuildArc(node, currentLevel, startAngle, endAngle);
+            Arc2 arc = BuildArc(node, currentLevel, startAngle, endAngle);
+            arc.DataContext = node;
             canvas1.Children.Add(arc);
             arc.MouseEnter += new MouseEventHandler(arc_MouseEnter);
             arc.MouseLeave += new MouseEventHandler(arc_MouseLeave);
@@ -397,27 +398,33 @@ namespace HDGraph.WpfDrawEngine
             Binding b;
 
             // Apply HORIZONTAL Translation to Label (it must be centered)
-            b = new Binding();
             TranslateTransform translateTransform = new TranslateTransform();
-            b.Source = label;
-            b.Path = new PropertyPath(Label.ActualHeightProperty);
-            b.Converter = divideBy2Converter;
+            b = new Binding()
+            {
+                Source = label,
+                Path = new PropertyPath(Label.ActualHeightProperty),
+                Converter = divideBy2Converter,
+            };
             BindingOperations.SetBinding(translateTransform, TranslateTransform.YProperty, b);
             transformGroup.Children.Add(translateTransform);
             // Apply VERTICAL Translation to Label (it must be centered)
-            b = new Binding();
             translateTransform = new TranslateTransform();
-            b.Source = label;
-            b.Path = new PropertyPath(Label.ActualWidthProperty);
-            b.Converter = divideBy2Converter;
+            b = new Binding()
+            {
+                Source = label,
+                Path = new PropertyPath(Label.ActualWidthProperty),
+                Converter = divideBy2Converter
+            };
             BindingOperations.SetBinding(translateTransform, TranslateTransform.XProperty, b);
             transformGroup.Children.Add(translateTransform);
             // Apply rotation to Label
             RotateTransform rotateTransform = new RotateTransform();
-            b = new Binding();
-            b.Source = this.sliderRotation;
-            b.Path = new PropertyPath(Slider.ValueProperty);
-            b.Converter = new ReverseNumericConverter(); // apply the reversed rotation to the one made on the graph.
+            b = new Binding()
+            {
+                Source = this.sliderRotation,
+                Path = new PropertyPath(Slider.ValueProperty),
+                Converter = new ReverseNumericConverter(), // apply the reversed rotation to the one made on the graph.
+            };
             BindingOperations.SetBinding(rotateTransform, RotateTransform.AngleProperty, b);
             transformGroup.Children.Add(rotateTransform);
 
@@ -430,7 +437,7 @@ namespace HDGraph.WpfDrawEngine
 
         void arc_MouseLeave(object sender, MouseEventArgs e)
         {
-            Arc arc = (Arc)sender;
+            Arc2 arc = (Arc2)sender;
             if (arc != null)
             {
                 arc.path1.StrokeThickness = 1;
@@ -440,7 +447,7 @@ namespace HDGraph.WpfDrawEngine
 
         void arc_MouseEnter(object sender, MouseEventArgs e)
         {
-            Arc arc = (Arc)sender;
+            Arc2 arc = (Arc2)sender;
             if (arc != null)
             {
                 arc.path1.StrokeThickness = 3;
@@ -449,9 +456,9 @@ namespace HDGraph.WpfDrawEngine
         }
 
 
-        private Arc BuildArc(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
+        private Arc2 BuildArc(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
         {
-            Arc arc = new Arc();
+            Arc2 arc = new Arc2();
             arc.BeginEdit();
             arc.StartAngle = startAngle;
             arc.StopAngle = endAngle - startAngle;
