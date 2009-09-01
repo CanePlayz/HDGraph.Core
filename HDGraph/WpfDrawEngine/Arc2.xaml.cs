@@ -63,6 +63,19 @@ namespace HDGraph.WpfDrawEngine
             DependencyProperty.Register("StartAngle", typeof(float), typeof(Arc2), new UIPropertyMetadata(0f, new PropertyChangedCallback(OnDesignPropertyChanged)));
 
 
+
+        private float MiddleAngle
+        {
+            get { return (float)GetValue(MiddleAngleProperty); }
+            set { SetValue(MiddleAngleProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MiddleAngle.  This enables animation, styling, binding, etc...
+        private static readonly DependencyProperty MiddleAngleProperty =
+            DependencyProperty.Register("MiddleAngle", typeof(float), typeof(Arc2), new UIPropertyMetadata(0f));
+
+
+
         public float StopAngle
         {
             get { return (float)GetValue(StopAngleProperty); }
@@ -137,6 +150,7 @@ namespace HDGraph.WpfDrawEngine
 
         private void UpdateDesign()
         {
+            MiddleAngle = StartAngle + StopAngle / 2;
             float newRadius = this.LargeRadius;
             double stopAngleInRadian = WpfUtils.GetRadianFromDegree(this.StopAngle);
             double stopAngleCos = Math.Cos(stopAngleInRadian);

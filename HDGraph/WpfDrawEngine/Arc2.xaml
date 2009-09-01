@@ -5,6 +5,7 @@
     x:Name="arcUC">
     <UserControl.Resources>
         <local:ReverseNumericConverter x:Key="myReverseNumericConverter"/>
+        <local:DivideBy2NumericConverter x:Key="myDivideBy2NumericConverter"/>
         <Style x:Key="ArcStyle">
             <Setter Property="Path.Fill">
                 <Setter.Value>
@@ -49,14 +50,28 @@
     <Canvas>
         <TextBlock Text="{Binding Path=Name}" Panel.ZIndex="10">
             <TextBlock.RenderTransform>
-            <TransformGroup>
-                <TranslateTransform X="{Binding ElementName=arcUC, Path=SmallRadius}"></TranslateTransform>
-                <!--<RotateTransform x:Name="rotateTransform2" 
-                                 Angle="{Binding ElementName=arcUC, Path=StartAngle, Converter={StaticResource myReverseNumericConverter}}"
-                                 CenterX="0" CenterY="0" >
-                </RotateTransform>-->
-            </TransformGroup>    
-        </TextBlock.RenderTransform>
+                <TransformGroup>
+                    <TranslateTransform X="{Binding ElementName=arcUC, Path=SmallRadius}"></TranslateTransform>
+                    <!--<RotateTransform x:Name="rotateTransform2" 
+                                     Angle="{Binding ElementName=arcUC, Path=StartAngle, Converter={StaticResource myReverseNumericConverter}}"
+                                     CenterX="0" CenterY="0" >
+                    </RotateTransform>-->
+                </TransformGroup>    
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Text="{Binding Path=Name}" Panel.ZIndex="10">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <RotateTransform 
+                                     Angle="{Binding ElementName=arcUC, Path=MiddleAngle, Converter={StaticResource myReverseNumericConverter}}"
+                                     CenterX="0" CenterY="0" ></RotateTransform>
+                    <TranslateTransform X="{Binding ElementName=arcUC, Path=SmallRadius}"></TranslateTransform>
+                    <RotateTransform 
+                                     Angle="{Binding ElementName=arcUC, Path=StopAngle, Converter={StaticResource myDivideBy2NumericConverter}}"
+                                     CenterX="0" CenterY="0" ></RotateTransform>
+                    
+                </TransformGroup>    
+            </TextBlock.RenderTransform>
         </TextBlock>
         <!--<Label HorizontalContentAlignment="Left">
             <Label.Content>Essai</Label.Content>

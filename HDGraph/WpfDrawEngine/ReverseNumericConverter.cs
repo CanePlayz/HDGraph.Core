@@ -16,6 +16,8 @@ namespace HDGraph.WpfDrawEngine
         {
             if (value is double)
                 return -1 * (double)value;
+            if (value is float)
+                return -1 * (float)value;
             return Binding.DoNothing;
         }
 
@@ -24,6 +26,8 @@ namespace HDGraph.WpfDrawEngine
         {
             if (value is double)
                 return -1 * (double)value;
+            if (value is float)
+                return -1 * (float)value;
             return Binding.DoNothing;
         }
     }
@@ -50,6 +54,8 @@ namespace HDGraph.WpfDrawEngine
         {
             if (value is double)
                 return ((double)value) / 2 * coef;
+            if (value is float)
+                return ((float)value) / 2 * coef;
             return Binding.DoNothing;
         }
 
@@ -58,6 +64,8 @@ namespace HDGraph.WpfDrawEngine
         {
             if (value is double)
                 return 2 * ((double)value) * coef;
+            if (value is float)
+                return 2 * ((float)value) * coef;
             return Binding.DoNothing;
         }
     }
