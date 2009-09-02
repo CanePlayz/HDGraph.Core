@@ -69,6 +69,7 @@
                     <RotateTransform 
                                      Angle="{Binding ElementName=arcUC, Path=StopAngle, Converter={StaticResource myDivideBy2NumericConverter}}"
                                      CenterX="0" CenterY="0" ></RotateTransform>
+                    <!--<TranslateTransform X="{Binding Path=Width, RelativeSource={RelativeSource Self}, Converter={StaticResource myDivideBy2NumericConverter}}"></TranslateTransform>-->
                     
                 </TransformGroup>    
             </TextBlock.RenderTransform>

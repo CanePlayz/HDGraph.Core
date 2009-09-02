@@ -55,7 +55,6 @@
                 </Setter>
                 <Style.Triggers>
                     <DataTrigger Binding="{Binding ElementName=treeGraph1, Path=IsRotating}" Value="true">
-                        <!--<Setter Property="ContentControl.Opacity" Value="0.8"/>-->
                         <DataTrigger.EnterActions>
                             <BeginStoryboard>
                                 <Storyboard>
@@ -75,9 +74,6 @@
                             </BeginStoryboard>
                         </DataTrigger.ExitActions>
                     </DataTrigger>
-                    <!--<DataTrigger Binding="{Binding ElementName=treeGraph1, Path=IsRotating}" Value="false">
-                        <Setter Property="ContentControl.Opacity" Value="0"/>
-                    </DataTrigger>-->
                 </Style.Triggers>
             </Style>
         </ResourceDictionary>
@@ -91,8 +87,6 @@
         <Viewbox Grid.Row="1" x:Name="viewBoxTreegraph">
             <Canvas x:Name="canvas1" Width="500" Height="500" MouseDown="canvas1_MouseDown" MouseUp="canvas1_MouseUp" MouseMove="canvas1_MouseMove">
                 <Label x:Name="labelInfo" Visibility="Hidden">Nothing to draw.</Label>
-                <!--<extern:Arc x:Name="arc1" Loaded="Arc_Loaded" Visibility="Hidden"></extern:Arc>-->
-                <!--<Button Click="Button_Click">Essai</Button>-->
                 <Canvas.RenderTransform>
                     <TransformGroup>
                         <RotateTransform x:Name="rotateTransform"></RotateTransform>
@@ -128,11 +122,6 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition/>
                     <ColumnDefinition Width="40">
-                        <!--<ColumnDefinition.Style>
-                            <Style>
-                                <Setter Property="HorizontalAlignment" Value="Left"></Setter>
-                            </Style>
-                        </ColumnDefinition.Style>-->
                     </ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
