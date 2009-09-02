@@ -88,7 +88,7 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
-        <Viewbox Grid.Row="1">
+        <Viewbox Grid.Row="1" x:Name="viewBoxTreegraph">
             <Canvas x:Name="canvas1" Width="500" Height="500" MouseDown="canvas1_MouseDown" MouseUp="canvas1_MouseUp" MouseMove="canvas1_MouseMove">
                 <Label x:Name="labelInfo" Visibility="Hidden">Nothing to draw.</Label>
                 <!--<extern:Arc x:Name="arc1" Loaded="Arc_Loaded" Visibility="Hidden"></extern:Arc>-->

@@ -609,12 +609,13 @@ namespace HDGraph.WpfDrawEngine
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                initialCursorLocation = e.MouseDevice.GetPosition(grid1);
+                initialCursorLocation = e.MouseDevice.GetPosition(viewBoxTreegraph);
                 e.Handled = true;
-                if (!canvas1.CaptureMouse())
-                    initialCursorLocation = null;
                 initialRotationAngle = rotateTransform.Angle;
                 IsRotating = true;
+                if (!canvas1.CaptureMouse())
+                    initialCursorLocation = null;
+                
             }
         }
 
@@ -633,15 +634,16 @@ namespace HDGraph.WpfDrawEngine
         {
             if (initialCursorLocation == null || e.LeftButton != MouseButtonState.Pressed)
                 return;
-            Point newPoint = e.MouseDevice.GetPosition(grid1);
-            Vector centerPoint = new Vector(grid1.ActualWidth / 2, grid1.ActualHeight / 2);
+            Point newPoint = e.MouseDevice.GetPosition(viewBoxTreegraph);
+            Vector centerPoint = new Vector(viewBoxTreegraph.ActualWidth / 2, viewBoxTreegraph.ActualHeight / 2);
             Vector initVector = new Vector(initialCursorLocation.Value.X, initialCursorLocation.Value.Y);
             Vector newVector = new Vector(newPoint.X, newPoint.Y);
             double rotationAngle = Vector.AngleBetween(initVector - centerPoint, newVector - centerPoint);
+            rotationAngle = (rotationAngle + initialRotationAngle) % 360;
             if (rotationAngle < 0)
                 rotationAngle = rotationAngle + 360;
 
-            rotateTransform.Angle = initialRotationAngle + rotationAngle;
+            rotateTransform.Angle = rotationAngle;
             e.Handled = true;
             labelStatus.Content = "rotationAngle:" + rotationAngle + " initVector:" + initVector + " newVector:" + newVector + " centerPoint:" + centerPoint;
         }
