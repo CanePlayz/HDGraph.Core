@@ -27,6 +27,20 @@ namespace HDGraph.WpfDrawEngine
             labelStatus.Content = "Acceleration : " + WpfUtils.GetAccelerationType().ToString();
         }
 
+
+
+        public bool IsRotating
+        {
+            get { return (bool)GetValue(IsRotatingProperty); }
+            set { SetValue(IsRotatingProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IsRotating.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IsRotatingProperty =
+            DependencyProperty.Register("IsRotating", typeof(bool), typeof(TreeGraph), new UIPropertyMetadata(false));
+
+
+
         /// <summary>
         /// Epaisseur d'un niveau sur le graph.
         /// </summary>
@@ -586,6 +600,50 @@ namespace HDGraph.WpfDrawEngine
                 dialog.PrintVisual(canvas1, "HDGraph diagram");
             }
 
+        }
+
+        private Point? initialCursorLocation;
+        private double initialRotationAngle;
+
+        private void canvas1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                initialCursorLocation = e.MouseDevice.GetPosition(grid1);
+                e.Handled = true;
+                if (!canvas1.CaptureMouse())
+                    initialCursorLocation = null;
+                initialRotationAngle = rotateTransform.Angle;
+                IsRotating = true;
+            }
+        }
+
+        private void canvas1_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (initialCursorLocation != null)
+            {
+                initialCursorLocation = null;
+                e.Handled = true;
+                canvas1.ReleaseMouseCapture();
+                IsRotating = false;
+            }
+        }
+
+        private void canvas1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (initialCursorLocation == null || e.LeftButton != MouseButtonState.Pressed)
+                return;
+            Point newPoint = e.MouseDevice.GetPosition(grid1);
+            Vector centerPoint = new Vector(grid1.ActualWidth / 2, grid1.ActualHeight / 2);
+            Vector initVector = new Vector(initialCursorLocation.Value.X, initialCursorLocation.Value.Y);
+            Vector newVector = new Vector(newPoint.X, newPoint.Y);
+            double rotationAngle = Vector.AngleBetween(initVector - centerPoint, newVector - centerPoint);
+            if (rotationAngle < 0)
+                rotationAngle = rotationAngle + 360;
+
+            rotateTransform.Angle = initialRotationAngle + rotationAngle;
+            e.Handled = true;
+            labelStatus.Content = "rotationAngle:" + rotationAngle + " initVector:" + initVector + " newVector:" + newVector + " centerPoint:" + centerPoint;
         }
 
         ///// <summary>
