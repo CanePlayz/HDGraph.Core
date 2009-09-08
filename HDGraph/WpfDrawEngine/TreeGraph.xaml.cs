@@ -337,6 +337,19 @@ namespace HDGraph.WpfDrawEngine
             };
             arc.ToolTip = arcTooltip;
 
+
+            Binding b = new Binding()
+            {
+                Source = rotateTransform,
+                Path = new PropertyPath(RotateTransform.AngleProperty),
+            };
+            BindingOperations.SetBinding(arc, Arc2.TextRotationProperty, b);
+
+
+
+
+
+
             // TODO : now, apply the correct brush.
             if (node.DirectoryType == SpecialDirTypes.NotSpecial)
             {
@@ -353,8 +366,6 @@ namespace HDGraph.WpfDrawEngine
                 ////frontGraph.DrawRectangle(new Pen(colorManager.GetNextColor(middleAngle), 0.05f),
                 ////                        Rectangle.Round(rec));
                 Canvas.SetZIndex(arc, DEFAULT_Z_INDEX_STANDARD_ARC);
-                ApplyArcLabel(node, currentLevel, startAngle, endAngle);
-
             }
             else if (node.DirectoryType == SpecialDirTypes.FreeSpaceAndShow)
             {
@@ -383,67 +394,6 @@ namespace HDGraph.WpfDrawEngine
         }
 
         private DivideBy2NumericConverter divideBy2Converter = new DivideBy2NumericConverter(true);
-
-        private void ApplyArcLabel(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
-        {
-            Label label = new Label()
-            {
-                Content = node.Name,// + Environment.NewLine + node.HumanReadableTotalSize,
-                //Height = singleLevelHeight,
-                //Width = 50, // TODO : optimize ?
-                HorizontalContentAlignment = HorizontalAlignment.Center,
-                VerticalContentAlignment = VerticalAlignment.Center,
-                Style = (Style)FindResource("ArcTextStyle")
-            };
-            canvas1.Children.Add(label);
-            Canvas.SetZIndex(label, DEFAULT_Z_INDEX_ARC_CAPTION);
-
-            // Define coordinates of the label.
-            double radius = ((currentLevel + 0.5) * singleLevelHeight);
-            double angleInRadian = WpfUtils.GetRadianFromDegree(startAngle + (endAngle - startAngle) / 2);
-            double angleCos = Math.Cos(angleInRadian);
-            double angleSin = Math.Sin(angleInRadian);
-            double xLarge = angleCos * radius;
-            double yLarge = angleSin * radius;
-            Canvas.SetTop(label, yLarge);
-            Canvas.SetLeft(label, xLarge);
-
-            TransformGroup transformGroup = new TransformGroup();
-            Binding b;
-
-            // Apply HORIZONTAL Translation to Label (it must be centered)
-            TranslateTransform translateTransform = new TranslateTransform();
-            b = new Binding()
-            {
-                Source = label,
-                Path = new PropertyPath(Label.ActualHeightProperty),
-                Converter = divideBy2Converter,
-            };
-            BindingOperations.SetBinding(translateTransform, TranslateTransform.YProperty, b);
-            transformGroup.Children.Add(translateTransform);
-            // Apply VERTICAL Translation to Label (it must be centered)
-            translateTransform = new TranslateTransform();
-            b = new Binding()
-            {
-                Source = label,
-                Path = new PropertyPath(Label.ActualWidthProperty),
-                Converter = divideBy2Converter
-            };
-            BindingOperations.SetBinding(translateTransform, TranslateTransform.XProperty, b);
-            transformGroup.Children.Add(translateTransform);
-            // Apply rotation to Label
-            RotateTransform rotateTransform = new RotateTransform();
-            b = new Binding()
-            {
-                Source = this.sliderRotation,
-                Path = new PropertyPath(Slider.ValueProperty),
-                Converter = new ReverseNumericConverter(), // apply the reversed rotation to the one made on the graph.
-            };
-            BindingOperations.SetBinding(rotateTransform, RotateTransform.AngleProperty, b);
-            transformGroup.Children.Add(rotateTransform);
-
-            label.RenderTransform = transformGroup;
-        }
 
         private const int DEFAULT_Z_INDEX_STANDARD_ARC = 1;
         private const int DEFAULT_Z_INDEX_STANDARD_ARC_OVER = 2;
