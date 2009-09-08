@@ -51,7 +51,7 @@
         </ContextMenu>
     </UserControl.ContextMenu>
     <Canvas>
-        <TextBlock Text="{Binding Path=Name}" Panel.ZIndex="10" x:Name="TextBlockArcName">
+        <TextBlock Text="{Binding Path=Name}" Panel.ZIndex="10" x:Name="TextBlockArcName" FontSize="{Binding ElementName=arcUC, Path=FontSize}">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <TranslateTransform X="{Binding Path=ActualWidth, ElementName=TextBlockArcName, Converter={StaticResource myDivideBy2NumericConverter}, ConverterParameter=-1}"/>

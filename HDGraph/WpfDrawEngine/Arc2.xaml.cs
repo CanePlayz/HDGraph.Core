@@ -20,6 +20,8 @@ namespace HDGraph.WpfDrawEngine
     /// </summary>
     public partial class Arc2 : UserControl
     {
+        //public static readonly DependencyProperty FontSizeProperty = UserControl.FontSizeProperty.AddOwner(typeof(Arc2), null);
+
 
         public Arc2()
         {

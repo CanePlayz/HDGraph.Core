@@ -345,8 +345,15 @@ namespace HDGraph.WpfDrawEngine
             };
             BindingOperations.SetBinding(arc, Arc2.TextRotationProperty, b);
 
+            b = new Binding()
+            {
+                Source = sliderTextSize,
+                Path = new PropertyPath(Slider.ValueProperty),
+                Mode = BindingMode.OneWay
+            };
+            BindingOperations.SetBinding(arc, Arc2.FontSizeProperty, b);
 
-
+            
 
 
 
