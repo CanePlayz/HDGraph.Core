@@ -41,7 +41,7 @@
                 </Setter>
             </Style>
             <Style x:Key="RotateArrowStyle">
-                <Setter Property="ContentControl.RenderTransform">
+                <!--<Setter Property="ContentControl.RenderTransform">
                     <Setter.Value>
                         <RotateTransform x:Name="rotateArrowRotation" Angle="0"
                                          CenterX="{Binding Path=ActualWidth, 
@@ -52,16 +52,16 @@
                                               Converter={StaticResource myDivideBy2NumericConverter}}">
                         </RotateTransform>
                     </Setter.Value>
-                </Setter>
+                </Setter>-->
                 <Style.Triggers>
                     <DataTrigger Binding="{Binding ElementName=treeGraph1, Path=IsRotating}" Value="true">
                         <DataTrigger.EnterActions>
                             <BeginStoryboard>
                                 <Storyboard>
                                     <DoubleAnimation Storyboard.TargetProperty="Opacity"
-                                        From="0.3" To="0.5" Duration="0:0:0.5" AutoReverse="True" RepeatBehavior="Forever"/>
-                                    <DoubleAnimation Storyboard.TargetProperty="RenderTransform.Angle"
-                                        From="360" To="0" Duration="0:0:1" RepeatBehavior="Forever"/>
+                                        From="0" To="1" Duration="0:0:0.5" AutoReverse="True" AccelerationRatio="1" RepeatBehavior="Forever"/>
+                                    <!--<DoubleAnimation Storyboard.TargetProperty="RenderTransform.Angle"
+                                        From="360" To="0" Duration="0:0:1" RepeatBehavior="Forever"/>-->
                                 </Storyboard>
                             </BeginStoryboard>
                         </DataTrigger.EnterActions>

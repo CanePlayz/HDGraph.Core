@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HDGraph.Interfaces.ScanEngines;
+using System.Diagnostics;
 
 namespace HDGraph.WpfDrawEngine
 {
@@ -75,7 +76,6 @@ namespace HDGraph.WpfDrawEngine
             DependencyProperty.Register("MiddleAngle", typeof(float), typeof(Arc2), new UIPropertyMetadata(0f));
 
 
-
         public float StopAngle
         {
             get { return (float)GetValue(StopAngleProperty); }
@@ -119,6 +119,19 @@ namespace HDGraph.WpfDrawEngine
         // Using a DependencyProperty as the backing store for Node.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty NodeProperty =
             DependencyProperty.Register("Node", typeof(IDirectoryNode), typeof(Arc2), new UIPropertyMetadata(null, new PropertyChangedCallback(OnNodePropertyChanged)));
+
+
+
+        public float TextRotation
+        {
+            get { return (float)GetValue(TextRotationProperty); }
+            set { SetValue(TextRotationProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TextRotation.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextRotationProperty =
+            DependencyProperty.Register("TextRotation", typeof(float), typeof(Arc2), new UIPropertyMetadata(0f));
+
 
 
         #endregion
