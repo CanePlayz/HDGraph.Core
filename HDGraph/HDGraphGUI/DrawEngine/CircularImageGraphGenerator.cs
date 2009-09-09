@@ -28,8 +28,8 @@ namespace HDGraph.DrawEngine
         private bool printDirNames = false;
 
         private HDGraphScanEngineBase moteur;
-        private InternalDrawOptions currentWorkingOptions;
-        private InternalDrawOptions latestUsedOptions;
+        private DrawOptions currentWorkingOptions;
+        private DrawOptions latestUsedOptions;
         private ColorManager colorManager;
         private IDirectoryNode rootNode;
 
@@ -40,7 +40,7 @@ namespace HDGraph.DrawEngine
             this.rootNode = rootNode;
         }
 
-        public override BiResult<Bitmap, InternalDrawOptions> Draw(bool drawImage, bool drawText, InternalDrawOptions options)
+        public override BiResult<Bitmap, DrawOptions> Draw(bool drawImage, bool drawText, DrawOptions options)
         {
             // only 1 execution allowed at a time. To do multiple executions, build a new 
             // instance of ImageGraphGenerator.
@@ -49,7 +49,7 @@ namespace HDGraph.DrawEngine
                 // Création du bitmap buffer
                 currentWorkingOptions = options;
                 colorManager.SetOptions(currentWorkingOptions);
-                Bitmap backBufferTmp = new Bitmap(currentWorkingOptions.BitmapSize.Width, currentWorkingOptions.BitmapSize.Height);
+                Bitmap backBufferTmp = new Bitmap(currentWorkingOptions.TargetSize.Width, currentWorkingOptions.TargetSize.Height);
                 frontGraph = Graphics.FromImage(backBufferTmp);
 
                 if (!drawText)
@@ -59,17 +59,17 @@ namespace HDGraph.DrawEngine
                 frontGraph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
                 frontGraph.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
                 // init des données du calcul
-                pasNiveau = Math.Min(currentWorkingOptions.BitmapSize.Width / (float)currentWorkingOptions.ShownLevelsCount / 2,
-                                     currentWorkingOptions.BitmapSize.Height / (float)currentWorkingOptions.ShownLevelsCount / 2);
-                RectangleF pieRec = new RectangleF(currentWorkingOptions.BitmapSize.Width / 2f,
-                                        currentWorkingOptions.BitmapSize.Height / 2f,
+                pasNiveau = Math.Min(currentWorkingOptions.TargetSize.Width / (float)currentWorkingOptions.ShownLevelsCount / 2,
+                                     currentWorkingOptions.TargetSize.Height / (float)currentWorkingOptions.ShownLevelsCount / 2);
+                RectangleF pieRec = new RectangleF(currentWorkingOptions.TargetSize.Width / 2f,
+                                        currentWorkingOptions.TargetSize.Height / 2f,
                                         0,
                                         0);
 
                 PaintTree(pieRec, drawImage, drawText);
                 frontGraph.Dispose();
                 latestUsedOptions = currentWorkingOptions;
-                return new BiResult<Bitmap, InternalDrawOptions>()
+                return new BiResult<Bitmap, DrawOptions>()
                         {
                             Obj1 = backBufferTmp,
                             Obj2 = currentWorkingOptions
@@ -113,7 +113,7 @@ namespace HDGraph.DrawEngine
             else
                 text = Resources.ApplicationMessages.GraphGuideLine;
 
-            DrawHelper.PrintTextInTheMiddle(frontGraph, currentWorkingOptions.BitmapSize, text, currentWorkingOptions.TextFont, new SolidBrush(Color.Black), false);
+            DrawHelper.PrintTextInTheMiddle(frontGraph, currentWorkingOptions.TargetSize, text, currentWorkingOptions.TextFont, new SolidBrush(Color.Black), false);
         }
 
         
@@ -243,8 +243,8 @@ namespace HDGraph.DrawEngine
             {
                 y = rec.Height / 2f - pasNiveau * 3f / 4f;
             }
-            x += currentWorkingOptions.BitmapSize.Width / 2f;
-            y += currentWorkingOptions.BitmapSize.Height / 2f;
+            x += currentWorkingOptions.TargetSize.Width / 2f;
+            y += currentWorkingOptions.TargetSize.Height / 2f;
             string nodeText = node.Name;
             if (currentWorkingOptions.ShowSize)
                 nodeText += Environment.NewLine + HDGTools.FormatSize(node.TotalSize);
@@ -271,14 +271,14 @@ namespace HDGraph.DrawEngine
         private void WriteDirectoryName(IDirectoryNode node, RectangleF rec, float startAngle, float nodeAngle)
         {
             //float textWidthLimit = pasNiveau * 1.5f;
-            float textWidthLimit = pasNiveau * 2f;
+            float textWidthLimit = pasNiveau * 3f;
             float x, y, angleCentre, hyp;
             hyp = (rec.Width - pasNiveau) / 2f;
             angleCentre = startAngle + nodeAngle / 2f;
             x = (float)Math.Cos(MathHelper.GetRadianFromDegree(angleCentre)) * hyp;
             y = (float)Math.Sin(MathHelper.GetRadianFromDegree(angleCentre)) * hyp;
-            x += currentWorkingOptions.BitmapSize.Width / 2f;
-            y += currentWorkingOptions.BitmapSize.Height / 2f;
+            x += currentWorkingOptions.TargetSize.Width / 2f;
+            y += currentWorkingOptions.TargetSize.Height / 2f;
             StringFormat format = new StringFormat();
             format.Alignment = StringAlignment.Center;
             string nodeText = node.Name;
@@ -477,8 +477,8 @@ namespace HDGraph.DrawEngine
         {
             // On a les coordonnées du curseur dans le controle.
             // Il faut faire un changement de référentiel pour avoir les coordonnées vis à vis de l'origine (le centre des cercles).
-            curseurPos.X -= latestUsedOptions.BitmapSize.Width / 2;
-            curseurPos.Y -= latestUsedOptions.BitmapSize.Height / 2;
+            curseurPos.X -= latestUsedOptions.TargetSize.Width / 2;
+            curseurPos.Y -= latestUsedOptions.TargetSize.Height / 2;
             // On a maintenant les coordonnées vis-à-vis du centre des cercles.
             //System.Windows.Forms.MessageBox.Show(curseurPos.ToString());
 

@@ -96,7 +96,7 @@ namespace HDGraph
             // LeResourceManager prend en paramètre : nom_du_namespace.nom_de_la_ressource_principale
             resManager = new System.Resources.ResourceManager(this.GetType().Assembly.GetName().Name + ".Resources.ApplicationMessages", this.GetType().Assembly);
             HDGTools.resManager = resManager;
-            CreateEngine();
+            CreateScanEngine();
             scanEngine.ShowDiskFreeSpace = Properties.Settings.Default.OptionShowFreeSpace;
             if (!changeLangIsSuccess)
                 MessageBox.Show(resManager.GetString("ErrorInConfigLanguage"),
@@ -111,6 +111,9 @@ namespace HDGraph
             this.WindowState = HDGraph.Properties.Settings.Default.OptionMainWindowOpenState;
             this.ClientSize = HDGraph.Properties.Settings.Default.OptionMainWindowSize;
 
+            if (Properties.Settings.Default.DrawOptions == null)
+                Properties.Settings.Default.DrawOptions = new DrawOptions();
+            treeGraph1.DrawOptions = Properties.Settings.Default.DrawOptions;
             drawOptionsBindingSource.DataSource = treeGraph1.DrawOptions;
             explorerIntegrationToolStripMenuItem.Enabled = ToolProviderBase.CurrentOsIsWindows();
             EnableHelpIfAvailable();
@@ -131,7 +134,7 @@ namespace HDGraph
             splitContainerGraphAndOptions.Panel2Collapsed = true;
         }
 
-        private void CreateEngine()
+        private void CreateScanEngine()
         {
             if (Properties.Settings.Default.OptionUseSimpleScanEngine
                 || !ToolProviderBase.CurrentOsIsWindows())
@@ -307,7 +310,7 @@ namespace HDGraph
                     comboBoxPath.Text = scanEngine.Root.Path;
                     numUpDownNbNivx.Value = scanEngine.Root.DepthMaxLevel;
                     numUpDownNbNivxAffich.Value = scanEngine.Root.DepthMaxLevel;
-                    treeGraph1.NbNiveaux = scanEngine.Root.DepthMaxLevel;
+                    treeGraph1.DrawOptions.ShownLevelsCount = scanEngine.Root.DepthMaxLevel;
                 }
                 treeGraph1.ForceRefresh();
                 UpdateNodeHistory(scanEngine.Root);
@@ -629,7 +632,7 @@ namespace HDGraph
                     && nbNiveaux <= trackBarZoom.Maximum
                     && !currentlyScrollingZoom)
                     trackBarZoom.Value = nbNiveaux;
-                treeGraph1.NbNiveaux = nbNiveaux;
+                treeGraph1.DrawOptions.ShownLevelsCount = nbNiveaux;
                 treeGraph1.ForceRefresh();
                 PrintStatus(Resources.ApplicationMessages.GraphRefreshed, false);
             }
@@ -693,9 +696,9 @@ namespace HDGraph
             // // moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(WaitForm.ShowWaitForm); // OBSOLETE
 
             scanEngine.NotifyForNewInfo = new HDGraphScanEngineBase.PrintInfoDelegate(PrintStatus);
-            numUpDownNbNivxAffich.Value = nbNiveaux;
-            treeGraph1.NbNiveaux = nbNiveaux;
             treeGraph1.ScanEngine = scanEngine;
+            numUpDownNbNivxAffich.Value = nbNiveaux;
+            treeGraph1.DrawOptions.ShownLevelsCount = nbNiveaux;
             treeGraph1.ForceRefresh();
             UpdateNodeHistory(scanEngine.Root);
             //PrintStatus("Terminé !");
@@ -817,9 +820,9 @@ namespace HDGraph
                         && outputImgFilePath.Length > 0)
                     {
                         ImageGraphGeneratorBase generator = ImageGraphGeneratorFactory.CreateGenerator(this.DrawType, scanEngine.Root, scanEngine);
-                        InternalDrawOptions outputDrawOptions = (InternalDrawOptions)treeGraph1.DrawOptions.Clone();
+                        DrawOptions outputDrawOptions = treeGraph1.DrawOptions.Clone();
                         if (OutputImgSize.HasValue)
-                            outputDrawOptions.BitmapSize = OutputImgSize.Value;
+                            outputDrawOptions.TargetSize = OutputImgSize.Value;
                         Bitmap bmp = generator.Draw(true, true, outputDrawOptions).Obj1;
                         //if (File.GetAccessControl(outputImgFilePath).
                         bmp.Save(outputImgFilePath);
@@ -908,10 +911,7 @@ namespace HDGraph
         private void comboBoxColorStyle_SelectedIndexChanged(object sender, EventArgs e)
         {
             ModeAffichageCouleurs modeCouleurs = (ModeAffichageCouleurs)comboBoxColorStyle.SelectedIndex;
-            HDGraph.Properties.Settings.Default.OptionColorStyle = modeCouleurs.ToString();
-            HDGraph.Properties.Settings.Default.Save();
-            treeGraph1.ModeCouleur = modeCouleurs;
-            treeGraph1.ForceRefresh();
+            treeGraph1.DrawOptions.ColorStyleChoice = modeCouleurs;
             PrintStatus(Resources.ApplicationMessages.GraphRefreshed);
         }
 
@@ -927,6 +927,7 @@ namespace HDGraph
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            HDGraph.Properties.Settings.Default.DrawOptions = treeGraph1.DrawOptions;
             HDGraph.Properties.Settings.Default.Save();
         }
 

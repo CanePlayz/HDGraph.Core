@@ -388,11 +388,8 @@ namespace HDGraph
             this.treeGraph1.DrawType = HDGraph.DrawEngine.DrawType.Circular;
             this.treeGraph1.ForceRefreshOnNextRepaint = false;
             this.treeGraph1.MinimumSize = new System.Drawing.Size(50, 50);
-            this.treeGraph1.ModeCouleur = HDGraph.Interfaces.DrawEngines.ModeAffichageCouleurs.RandomNeutral;
             this.treeGraph1.Name = "treeGraph1";
-            this.treeGraph1.NbNiveaux = 0;
             this.treeGraph1.NotifyNewRootNode = null;
-            this.treeGraph1.OptionShowSize = true;
             this.treeGraph1.Resizing = false;
             this.treeGraph1.Root = null;
             this.treeGraph1.RotationInProgress = false;

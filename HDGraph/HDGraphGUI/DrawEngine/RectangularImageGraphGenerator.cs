@@ -28,8 +28,8 @@ namespace HDGraph.DrawEngine
         private bool printDirNames = false;
 
         private HDGraphScanEngineBase moteur;
-        private InternalDrawOptions currentWorkingOptions;
-        private InternalDrawOptions latestUsedOptions;
+        private DrawOptions currentWorkingOptions;
+        private DrawOptions latestUsedOptions;
         private ColorManager colorManager;
         private IDirectoryNode rootNode;
 
@@ -42,7 +42,7 @@ namespace HDGraph.DrawEngine
 
 
 
-        public override BiResult<System.Drawing.Bitmap, InternalDrawOptions> Draw(bool drawImage, bool drawText, InternalDrawOptions options)
+        public override BiResult<System.Drawing.Bitmap, DrawOptions> Draw(bool drawImage, bool drawText, DrawOptions options)
         {
             // only 1 execution allowed at a time. To do multiple executions, build a new 
             // instance of ImageGraphGenerator.
@@ -51,7 +51,7 @@ namespace HDGraph.DrawEngine
                 // Création du bitmap buffer
                 currentWorkingOptions = options;
                 colorManager.SetOptions(currentWorkingOptions);
-                Bitmap backBufferTmp = new Bitmap(currentWorkingOptions.BitmapSize.Width, currentWorkingOptions.BitmapSize.Height);
+                Bitmap backBufferTmp = new Bitmap(currentWorkingOptions.TargetSize.Width, currentWorkingOptions.TargetSize.Height);
                 frontGraph = Graphics.FromImage(backBufferTmp);
 
                 if (!drawText)
@@ -62,14 +62,14 @@ namespace HDGraph.DrawEngine
                 //frontGraph.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
                 // init des données du calcul
                 int marginUp = 30;
-                pasNiveau = (currentWorkingOptions.BitmapSize.Height - marginUp) / (float)currentWorkingOptions.ShownLevelsCount;
+                pasNiveau = (currentWorkingOptions.TargetSize.Height - marginUp) / (float)currentWorkingOptions.ShownLevelsCount;
                 RectangleF pieRec = new RectangleF(0, 0,
-                                        currentWorkingOptions.BitmapSize.Width,
+                                        currentWorkingOptions.TargetSize.Width,
                                         pasNiveau);
                 PaintTree(pieRec, drawImage, drawText);
                 frontGraph.Dispose();
                 latestUsedOptions = currentWorkingOptions;
-                return new BiResult<Bitmap, InternalDrawOptions>()
+                return new BiResult<Bitmap, DrawOptions>()
                             {
                                 Obj1 = backBufferTmp,
                                 Obj2 = currentWorkingOptions
@@ -113,7 +113,7 @@ namespace HDGraph.DrawEngine
             else
                 text = Resources.ApplicationMessages.GraphGuideLine;
 
-            DrawHelper.PrintTextInTheMiddle(frontGraph, currentWorkingOptions.BitmapSize, text, currentWorkingOptions.TextFont, new SolidBrush(Color.Black), false);
+            DrawHelper.PrintTextInTheMiddle(frontGraph, currentWorkingOptions.TargetSize, text, currentWorkingOptions.TextFont, new SolidBrush(Color.Black), false);
         }
 
         /// <summary>
@@ -283,7 +283,7 @@ namespace HDGraph.DrawEngine
                     return new System.Drawing.Drawing2D.LinearGradientBrush(
                                     new PointF(targetRec.Left, targetRec.Bottom),
                                     new PointF(targetRec.Left, targetRec.Top),
-                                    ColorManager.ColorByLeft(milieuX, this.currentWorkingOptions.BitmapSize.Width),
+                                    ColorManager.ColorByLeft(milieuX, this.currentWorkingOptions.TargetSize.Width),
                                     Color.SteelBlue
                                 );
                 default:

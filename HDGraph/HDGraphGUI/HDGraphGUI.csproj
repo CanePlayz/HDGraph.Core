@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{99A5D2B9-4B2C-4177-A69C-02BCB163DC78}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -86,7 +86,6 @@
     </Compile>
     <Compile Include="DrawEngine\ColorManager.cs" />
     <Compile Include="DrawEngine\DrawHelper.cs" />
-    <Compile Include="DrawEngine\InternalDrawOptions.cs" />
     <Compile Include="DrawEngine\ImageGraphGeneratorBase.cs" />
     <Compile Include="DrawEngine\ImageGraphGeneratorFactory.cs" />
     <Compile Include="DrawEngine\MathHelper.cs" />

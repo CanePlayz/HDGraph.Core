@@ -34,7 +34,7 @@ namespace HDGraph
         /// Moteur qui a la charge de conserver l'intégrité de l'arborescence DirectoryNode.
         /// </summary>
         private HDGraphScanEngineBase scanEngine;
-
+        [ReadOnly(true)]
         public HDGraphScanEngineBase ScanEngine
         {
             get { return scanEngine; }
@@ -46,38 +46,12 @@ namespace HDGraph
             }
         }
 
-        public ModeAffichageCouleurs ModeCouleur
-        {
-            get { return drawOptions.ColorStyleChoice; }
-            set { drawOptions.ColorStyleChoice = value; }
-        }
-
-
-
-        /// <summary>
-        /// Obtient ou définit le nombre de niveaux d'arborescence à afficher.
-        /// </summary>
-        public int NbNiveaux
-        {
-            get { return drawOptions.ShownLevelsCount; }
-            set { drawOptions.ShownLevelsCount = value; }
-        }
-
         private Pen graphPen = new Pen(Color.Black, 1.0f);
 
         public Pen GraphPen
         {
             get { return graphPen; }
             set { graphPen = value; }
-        }
-
-        /// <summary>
-        /// Obtient ou définit le booléen indiquant si le composant doit afficher la taille des répertoires en plus de leur nom.
-        /// </summary>
-        public bool OptionShowSize
-        {
-            get { return drawOptions.ShowSize; }
-            set { drawOptions.ShowSize = value; }
         }
 
         public override Font Font
@@ -172,7 +146,6 @@ namespace HDGraph
         {
             InitializeComponent();
             this.SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer, true);
-            this.DrawOptions.PropertyChanged += new PropertyChangedEventHandler(DrawOptions_PropertyChanged);
         }
 
         void DrawOptions_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -194,6 +167,8 @@ namespace HDGraph
         #region Méthodes
         private void TreeGraph_Load(object sender, EventArgs e)
         {
+            if (drawOptions == null)
+                drawOptions = new DrawOptions();
             drawOptions.TextFont = this.Font;
         }
 
@@ -215,11 +190,19 @@ namespace HDGraph
             set { resizing = value; }
         }
 
-        private InternalDrawOptions drawOptions = new InternalDrawOptions();
+        private DrawOptions drawOptions;
 
         public DrawOptions DrawOptions
         {
             get { return drawOptions; }
+            set
+            {
+                if (drawOptions != null)
+                    drawOptions.PropertyChanged -= new PropertyChangedEventHandler(DrawOptions_PropertyChanged);
+                drawOptions = value;
+                if (drawOptions != null)
+                    drawOptions.PropertyChanged += new PropertyChangedEventHandler(DrawOptions_PropertyChanged);
+            }
         }
 
         public DrawType DrawType { get; set; }
@@ -239,7 +222,7 @@ namespace HDGraph
                 if (backBuffer == null)
                 {
                     // tout premier init.
-                    drawOptions.BitmapSize = this.ClientSize;
+                    drawOptions.TargetSize = this.ClientSize;
                     ImageGraphGeneratorBase generator = ImageGraphGeneratorFactory.CreateGenerator(this.DrawType, this.Root, scanEngine);
                     forceRefreshOnNextRepaint = true;
                     this.backgroundWorker1_DoWork(this, new DoWorkEventArgs(generator));
@@ -264,7 +247,7 @@ namespace HDGraph
 
                                 // lancement du calcul
                                 // Calcul
-                                drawOptions.BitmapSize = this.ClientSize;
+                                drawOptions.TargetSize = this.ClientSize;
                                 generator = ImageGraphGeneratorFactory.CreateGenerator(this.DrawType, this.Root, scanEngine);
                                 backgroundWorker1.RunWorkerAsync(generator);
                                 break;
@@ -280,7 +263,7 @@ namespace HDGraph
 
                                     // lancement du calcul
                                     // Calcul
-                                    drawOptions.BitmapSize = this.ClientSize;
+                                    drawOptions.TargetSize = this.ClientSize;
                                     generator = ImageGraphGeneratorFactory.CreateGenerator(this.DrawType, this.Root, scanEngine);
                                     backgroundWorker1.RunWorkerAsync(generator);
                                 }
@@ -573,7 +556,7 @@ namespace HDGraph
             if (lastClicNode != null)
             {
                 this.root = lastClicNode;
-                scanEngine.CompleterArborescence(root, this.NbNiveaux); // TODO: changer en nbCalcul
+                scanEngine.CompleterArborescence(root, drawOptions.ShownLevelsCount); // TODO: changer en nbCalcul
                 if (notifyNewRootNode != null)
                     notifyNewRootNode(this.root);
             }
@@ -803,7 +786,7 @@ namespace HDGraph
             form.Show();
         }
 
-        private InternalDrawOptions lastCompletedGraphOption;
+        private DrawOptions lastCompletedGraphOption;
         private Bitmap imageOnlyBackBuffer;
         private ImageGraphGeneratorBase lastGeneratorCompleted;
 
@@ -812,15 +795,15 @@ namespace HDGraph
             ImageGraphGeneratorBase generator = e.Argument as ImageGraphGeneratorBase;
             if (generator == null)
                 return;
-            InternalDrawOptions currentOptions = (InternalDrawOptions)drawOptions.Clone();
+            DrawOptions currentOptions = drawOptions.Clone();
             lastCompletedGraphOption = null;
             if (!TextChangeInProgress)
             {
-                BiResult<Bitmap, InternalDrawOptions> imageResult = generator.Draw(true, false, currentOptions);
+                BiResult<Bitmap, DrawOptions> imageResult = generator.Draw(true, false, currentOptions);
                 imageOnlyBackBuffer = imageResult.Obj1;
                 lastCompletedGraphOption = imageResult.Obj2;
             }
-            BiResult<Bitmap, InternalDrawOptions> textResult = generator.Draw(false, true, currentOptions);
+            BiResult<Bitmap, DrawOptions> textResult = generator.Draw(false, true, currentOptions);
             Bitmap textBackBufferTmp = textResult.Obj1;
             if (lastCompletedGraphOption == null)
                 lastCompletedGraphOption = textResult.Obj2;

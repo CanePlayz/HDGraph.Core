@@ -120,6 +120,19 @@ namespace HDGraph.Interfaces.DrawEngines
             }
         }
 
+        private Size targetSize;
+        public Size TargetSize
+        {
+            get { return targetSize; }
+            set
+            {
+                if (targetSize != value)
+                {
+                    targetSize = value;
+                    RaisePropertyChanged("TargetSize");
+                }
+            }
+        }
 
         public virtual DrawOptions Clone()
         {
