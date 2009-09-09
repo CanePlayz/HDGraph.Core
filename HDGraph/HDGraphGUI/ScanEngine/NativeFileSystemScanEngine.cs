@@ -26,8 +26,8 @@ namespace HDGraph.ScanEngine
             }
             try
             {
-                if (PrintInfoDeleg != null)
-                    PrintInfoDeleg(scanningMessage + dir.Path + "...");
+                if (NotifyForNewInfo != null)
+                    NotifyForNewInfo(scanningMessage + dir.Path + "...");
                 if (maxLevel <= 0)
                 {
                     // Scanning in one time all files of the current directory AND its sub-directories.

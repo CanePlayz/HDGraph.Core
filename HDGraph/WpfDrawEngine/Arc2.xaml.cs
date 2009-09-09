@@ -20,9 +20,6 @@ namespace HDGraph.WpfDrawEngine
     /// </summary>
     public partial class Arc2 : UserControl
     {
-        //public static readonly DependencyProperty FontSizeProperty = UserControl.FontSizeProperty.AddOwner(typeof(Arc2), null);
-
-
         public Arc2()
         {
             InitializeComponent();
@@ -39,7 +36,22 @@ namespace HDGraph.WpfDrawEngine
 
 
 
+
         #region Dependency Properties
+
+
+
+
+        public double InternalTextSize
+        {
+            get { return (double)GetValue(InternalTextSizeProperty); }
+            set { SetValue(InternalTextSizeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for InternalTextSize.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty InternalTextSizeProperty =
+            DependencyProperty.Register("InternalTextSize", typeof(double), typeof(Arc2), new UIPropertyMetadata((double)0));
+
 
 
 

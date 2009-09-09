@@ -24,8 +24,8 @@ namespace HDGraph.ScanEngine
             }
             try
             {
-                if (PrintInfoDeleg != null)
-                    PrintInfoDeleg(scanningMessage + dir.Path + "...");
+                if (NotifyForNewInfo != null)
+                    NotifyForNewInfo(scanningMessage + dir.Path + "...");
                 if (maxLevel <= 0)
                 {
                     DirectoryInfo dirInfo = new DirectoryInfo(dir.Path);

@@ -215,7 +215,7 @@ namespace HDGraph.DrawEngine
                     // on dessine le disque uniquement
                     DrawPartialPie(node, rec, startAngle, nodeAngle);
                 }
-                else if (nodeAngle > currentWorkingOptions.TextDensity)
+                else if (nodeAngle > (TextDensityMaxValue - currentWorkingOptions.TextDensity))
                 {
                     // on dessine les noms de répertoire uniquement (si l'angle est supérieur à 10°)
                     WriteDirectoryName(node, rec, startAngle, nodeAngle);
@@ -223,6 +223,8 @@ namespace HDGraph.DrawEngine
 
             }
         }
+
+        private const int TextDensityMaxValue = 21;
 
         /// <summary>
         /// Dessine le nom d'un répertoire sur le graph, lorsque ce répertoire a un angle de 360°.

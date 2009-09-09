@@ -8,26 +8,27 @@ namespace HDGraph.Interfaces.ScanEngines
     public enum SpecialDirTypes : short
     {
         /// <summary>
-        /// Un répertoire ordinaire.
+        /// An ordinary folder.
         /// </summary>
         NotSpecial,
         /// <summary>
-        /// Indiquant que le répertoire courant est en fait un répertoire fictif représentant 
-        /// l'espace libre, et qu'il a été comptabilisé dans la taille du root.
+        /// A list of folders, which are too small to appear individualy on the graph.
+        /// </summary>
+        SubDirectoryCollection,
+        /// <summary>
+        /// Free space of the drive, which has been included in the total size of the root.
         /// </summary>
         FreeSpaceAndShow,
         /// <summary>
-        /// Indiquant que le répertoire courant est en fait un répertoire fictif représentant 
-        /// l'espace libre, et qu'il n'a PAS été comptabilisé dans la taille du root.
+        /// Free space of the drive, which has NOT been included in the total size of the root.
         /// </summary>
         FreeSpaceAndHide,
         /// <summary>
-        /// Indique que le répertoire courant est en fait un répertoire fictif représentant 
-        /// les fichiers et dossiers qui n'ont pas été comptabilisés suite à des erreurs d'accès.
+        /// All space which couldn't be scanned (because of scan errors or lost space due to cluster size, etc).
         /// </summary>
         UnknownPart,
         /// <summary>
-        /// Indique qu'il s'agit d'un répertoire dont le scan a échoué.
+        /// One single directory whith a scan error : Size is unknown or approximate.
         /// </summary>
         ScanError
     }

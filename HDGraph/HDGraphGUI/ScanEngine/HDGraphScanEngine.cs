@@ -54,7 +54,7 @@ namespace HDGraph
         /// Delegate appelé par le moteur lorsqu'une analyze est en cours.
         /// </summary>
         [XmlIgnore()]
-        public PrintInfoDelegate PrintInfoDeleg
+        public PrintInfoDelegate NotifyForNewInfo
         {
             get { return printInfoDeleg; }
             set { printInfoDeleg = value; }

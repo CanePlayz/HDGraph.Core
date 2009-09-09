@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{99A5D2B9-4B2C-4177-A69C-02BCB163DC78}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -360,11 +360,10 @@
     <Content Include="Doc\HDGraph-en.chm">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\DataSources\HDGraph.Interfaces.DrawEngines.DrawOptions.datasource" />
     <None Include="Resources\FillRightHS.png" />
     <None Include="Resources\FillLeftHS.png" />
     <None Include="Resources\HDGraph_ico.ico" />
-    <None Include="Properties\DataSources\HDGraph.DrawEngine.DrawOptions.datasource" />
-    <None Include="Properties\DataSources\HDGraph.Engine.ScanError.datasource" />
     <None Include="Properties\DataSources\HDGraph.UserControls.ApplicationTip.datasource" />
     <None Include="Resources\Warning.png" />
     <None Include="Properties\DataSources\DirectoryNode.datasource" />

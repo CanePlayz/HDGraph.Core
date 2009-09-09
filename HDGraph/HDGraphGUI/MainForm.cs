@@ -83,6 +83,8 @@ namespace HDGraph
             set { outputGraphFilePath = value; }
         }
 
+        public DrawType DrawType { get; set; }
+
         #endregion
 
         #region Constructeur(s) et initialisation
@@ -105,13 +107,11 @@ namespace HDGraph
             InitializeComponent();
 
             ApplyIcon();
-            // Manual databinding for interop (otherwise make an error at runtime with Mono).
-            this.trackBarTextDensity.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::HDGraph.Properties.Settings.Default, "OptionTextDensity", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.Text = AboutBox.AssemblyTitle;
             this.WindowState = HDGraph.Properties.Settings.Default.OptionMainWindowOpenState;
             this.ClientSize = HDGraph.Properties.Settings.Default.OptionMainWindowSize;
-            UpdateOptionTextDensityFromTrackBar();
-            treeGraph1.DrawOptions.ImageRotation = imageRotationTrackBar.Value;
+
+            drawOptionsBindingSource.DataSource = treeGraph1.DrawOptions;
             explorerIntegrationToolStripMenuItem.Enabled = ToolProviderBase.CurrentOsIsWindows();
             EnableHelpIfAvailable();
             comboBoxPath.DataSource = HDGraph.Properties.Settings.Default.PathHistory;
@@ -297,8 +297,8 @@ namespace HDGraph
                 XmlSerializer serializer = new XmlSerializer(scanEngine.GetType());
                 scanEngine = (HDGraphScanEngineBase)serializer.Deserialize(reader);
                 reader.Close();
-                scanEngine.PrintInfoDeleg = new HDGraphScanEngineBase.PrintInfoDelegate(PrintStatus);
-                treeGraph1.Moteur = scanEngine;
+                scanEngine.NotifyForNewInfo = new HDGraphScanEngineBase.PrintInfoDelegate(PrintStatus);
+                treeGraph1.ScanEngine = scanEngine;
                 treeGraph1.UpdateHoverNode = new TreeGraph.NodeNotificationDelegate(PrintNodeHoverCursor);
                 treeGraph1.NotifyNewRootNode = new TreeGraph.NodeNotificationDelegate(UpdateCurrentNodeRoot);
 
@@ -642,15 +642,6 @@ namespace HDGraph
             }
         }
 
-        private void checkBoxPrintSizes_CheckedChanged(object sender, EventArgs e)
-        {
-            treeGraph1.OptionShowSize = checkBoxPrintSizes.Checked;
-            treeGraph1.TextChangeInProgress = true;
-            treeGraph1.ForceRefresh();
-            treeGraph1.TextChangeInProgress = false;
-            PrintStatus(Resources.ApplicationMessages.GraphRefreshed);
-        }
-
         #region Intégration à l'explorateur
 
         private void addMeToTheExplorerConToolStripMenuItem_Click(object sender, EventArgs e)
@@ -701,10 +692,10 @@ namespace HDGraph
             // // moteur.ConstruireArborescence(comboBoxPath.Text, nbNiveaux); // OBSOLETE
             // // moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(WaitForm.ShowWaitForm); // OBSOLETE
 
-            scanEngine.PrintInfoDeleg = new HDGraphScanEngineBase.PrintInfoDelegate(PrintStatus);
+            scanEngine.NotifyForNewInfo = new HDGraphScanEngineBase.PrintInfoDelegate(PrintStatus);
             numUpDownNbNivxAffich.Value = nbNiveaux;
             treeGraph1.NbNiveaux = nbNiveaux;
-            treeGraph1.Moteur = scanEngine;
+            treeGraph1.ScanEngine = scanEngine;
             treeGraph1.ForceRefresh();
             UpdateNodeHistory(scanEngine.Root);
             //PrintStatus("Terminé !");
@@ -825,8 +816,8 @@ namespace HDGraph
                     if (outputImgFilePath != null
                         && outputImgFilePath.Length > 0)
                     {
-                        ImageGraphGeneratorBase generator = ImageGraphGeneratorFactory.CreateGenerator(treeGraph1.DrawOptions.DrawStyle, scanEngine.Root, scanEngine);
-                        InternalDrawOptions outputDrawOptions = treeGraph1.DrawOptions.Clone();
+                        ImageGraphGeneratorBase generator = ImageGraphGeneratorFactory.CreateGenerator(this.DrawType, scanEngine.Root, scanEngine);
+                        InternalDrawOptions outputDrawOptions = (InternalDrawOptions)treeGraph1.DrawOptions.Clone();
                         if (OutputImgSize.HasValue)
                             outputDrawOptions.BitmapSize = OutputImgSize.Value;
                         Bitmap bmp = generator.Draw(true, true, outputDrawOptions).Obj1;
@@ -1004,30 +995,6 @@ namespace HDGraph
             treeGraph1.ShowTooltip = checkBoxShowTooltip.Checked;
         }
 
-        private void imageRotationTrackBar_ValueChanged(object sender, EventArgs e)
-        {
-
-            treeGraph1.DrawOptions.ImageRotation = imageRotationTrackBar.Value;
-            labelValeurRotation.Text = treeGraph1.DrawOptions.ImageRotation.ToString() + " °";
-            treeGraph1.ForceRefresh();
-        }
-
-        private void trackBarTextDensity_ValueChanged(object sender, EventArgs e)
-        {
-            UpdateOptionTextDensityFromTrackBar();
-            treeGraph1.ForceRefresh();
-        }
-
-        private void UpdateOptionTextDensityFromTrackBar()
-        {
-            treeGraph1.DrawOptions.TextDensity = trackBarTextDensity.Maximum - trackBarTextDensity.Value + trackBarTextDensity.Minimum;
-
-        }
-
-        private void trackBarTextDensity_Scroll(object sender, EventArgs e)
-        {
-
-        }
 
         private void trackBarTextDensity_MouseDown(object sender, MouseEventArgs e)
         {
@@ -1052,7 +1019,8 @@ namespace HDGraph
 
         private void radioButtonEngineCircular_CheckedChanged(object sender, EventArgs e)
         {
-            treeGraph1.DrawOptions.DrawStyle = (radioButtonEngineCircular.Checked) ? DrawType.Circular : DrawType.Rectangular;
+            this.DrawType = (radioButtonEngineCircular.Checked) ? DrawType.Circular : DrawType.Rectangular;
+            this.treeGraph1.DrawType = this.DrawType;
             treeGraph1.ForceRefresh();
         }
 
@@ -1151,6 +1119,11 @@ namespace HDGraph
         private void buttonTestWpf_Click(object sender, EventArgs e)
         {
             PlugIn.PlugInsManager.Test(this.scanEngine.Root, this.treeGraph1.DrawOptions);
+        }
+
+        private void drawOptionsBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

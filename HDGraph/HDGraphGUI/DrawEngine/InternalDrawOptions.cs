@@ -12,9 +12,7 @@ namespace HDGraph.DrawEngine
 
         public Size BitmapSize { get; set; }
 
-        public DrawType DrawStyle { get; set; }
-        
-        public InternalDrawOptions Clone()
+        public override DrawOptions Clone()
         {
             return (InternalDrawOptions)this.MemberwiseClone();
         }

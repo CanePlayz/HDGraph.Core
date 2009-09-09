@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
 using System.Drawing;
+using System.ComponentModel;
 
 namespace HDGraph.Interfaces.DrawEngines
 {
@@ -15,25 +16,112 @@ namespace HDGraph.Interfaces.DrawEngines
         ImprovedLinear
     }
 
-    public class DrawOptions
+    public class DrawOptions : INotifyPropertyChanged
     {
-        public Font TextFont { get; set; }
+        #region INotifyPropertyChanged Members
 
-        public bool ShowSize { get; set; }
+        [field: NonSerialized]
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        public int ShownLevelsCount { get; set; }
+        protected void RaisePropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this,new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
-        public ModeAffichageCouleurs ColorStyleChoice { get; set; }
+        #endregion
 
-        public int ImageRotation { get; set; }
+        private Font textFont;
+        public Font TextFont
+        {
+            get { return textFont; }
+            set
+            {
+                if (textFont != value)
+                {
+                    textFont = value;
+                    RaisePropertyChanged("TextFont");
+                }
+            }
+        }
 
+        private bool showSize;
+        public bool ShowSize
+        {
+            get { return showSize; }
+            set
+            {
+                if (showSize != value)
+                {
+                    showSize = value;
+                    RaisePropertyChanged("ShowSize");
+                }
+            }
+        }
+
+        private int shownLevelsCount;
+        public int ShownLevelsCount 
+        {
+            get { return shownLevelsCount; }
+            set
+            {
+                if (shownLevelsCount != value)
+                {
+                    shownLevelsCount = value;
+                    RaisePropertyChanged("ShownLevelsCount");
+                }
+            }
+        }
+
+        private ModeAffichageCouleurs colorStyleChoice;
+        public ModeAffichageCouleurs ColorStyleChoice
+        {
+            get { return colorStyleChoice; }
+            set
+            {
+                if (colorStyleChoice != value)
+                {
+                    colorStyleChoice = value;
+                    RaisePropertyChanged("ColorStyleChoice");
+                }
+            }
+        }
+
+        private int imageRotation;
+        public int ImageRotation
+        {
+            get { return imageRotation; }
+            set
+            {
+                if (imageRotation != value)
+                {
+                    imageRotation = value;
+                    RaisePropertyChanged("ImageRotation");
+                }
+            }
+        }
+
+        private int textDensity;
         /// <summary>
         /// Angle min to enable text print.
         /// </summary>
-        public int TextDensity { get; set; }
+        public int TextDensity
+        {
+            get { return textDensity; }
+            set
+            {
+                if (textDensity != value)
+                {
+                    textDensity = value;
+                    RaisePropertyChanged("TextDensity");
+                }
+            }
+        }
 
 
-        public DrawOptions Clone()
+        public virtual DrawOptions Clone()
         {
             return (DrawOptions)this.MemberwiseClone();
         }
@@ -51,6 +139,11 @@ namespace HDGraph.Interfaces.DrawEngines
                     return false;
             }
             return true;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

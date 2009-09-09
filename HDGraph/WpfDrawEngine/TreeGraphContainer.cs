@@ -22,8 +22,13 @@ namespace HDGraph.WpfDrawEngine
         {
             if (!this.DesignMode)
             {
-                ((TreeGraph)elementHost1.Child).SetRoot(node, options);
+                GetTreeGraph().SetRoot(node, options);
             }
+        }
+
+        private TreeGraph GetTreeGraph()
+        {
+            return (TreeGraph)elementHost1.Child;
         }
 
         IDirectoryNode node;
@@ -33,6 +38,28 @@ namespace HDGraph.WpfDrawEngine
         {
             this.node = node;
             this.options = options;
+        }
+
+        public event EventHandler<NodeContextEventArgs> ContextMenuRequired
+        {
+            add
+            {
+                if (!this.DesignMode)
+                {
+                    TreeGraph treeGraph = GetTreeGraph();
+                    if (treeGraph != null)
+                        treeGraph.ContextMenuRequired += value;
+                }
+            }
+            remove
+            {
+                if (!this.DesignMode)
+                {
+                    TreeGraph treeGraph = GetTreeGraph();
+                    if (treeGraph != null)
+                        treeGraph.ContextMenuRequired -= value;
+                }
+            }
         }
     }
 }

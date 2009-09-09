@@ -33,16 +33,16 @@ namespace HDGraph
         /// <summary>
         /// Moteur qui a la charge de conserver l'intégrité de l'arborescence DirectoryNode.
         /// </summary>
-        private HDGraphScanEngineBase moteur;
+        private HDGraphScanEngineBase scanEngine;
 
-        public HDGraphScanEngineBase Moteur
+        public HDGraphScanEngineBase ScanEngine
         {
-            get { return moteur; }
+            get { return scanEngine; }
             set
             {
-                moteur = value;
-                if (moteur != null)
-                    root = moteur.Root;
+                scanEngine = value;
+                if (scanEngine != null)
+                    root = scanEngine.Root;
             }
         }
 
@@ -172,6 +172,21 @@ namespace HDGraph
         {
             InitializeComponent();
             this.SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer, true);
+            this.DrawOptions.PropertyChanged += new PropertyChangedEventHandler(DrawOptions_PropertyChanged);
+        }
+
+        void DrawOptions_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "ShowSize")
+            {
+                TextChangeInProgress = true;
+                ForceRefresh();
+                TextChangeInProgress = false;
+            }
+            else
+            {
+                this.ForceRefresh();
+            }
         }
 
         #endregion
@@ -202,10 +217,12 @@ namespace HDGraph
 
         private InternalDrawOptions drawOptions = new InternalDrawOptions();
 
-        public InternalDrawOptions DrawOptions
+        public DrawOptions DrawOptions
         {
             get { return drawOptions; }
         }
+
+        public DrawType DrawType { get; set; }
 
         /// <summary>
         /// Méthode classique OnPaint surchargée pour afficher le graph, et le calculer si nécessaire.
@@ -223,7 +240,7 @@ namespace HDGraph
                 {
                     // tout premier init.
                     drawOptions.BitmapSize = this.ClientSize;
-                    ImageGraphGeneratorBase generator = ImageGraphGeneratorFactory.CreateGenerator(drawOptions.DrawStyle, this.Root, moteur);
+                    ImageGraphGeneratorBase generator = ImageGraphGeneratorFactory.CreateGenerator(this.DrawType, this.Root, scanEngine);
                     forceRefreshOnNextRepaint = true;
                     this.backgroundWorker1_DoWork(this, new DoWorkEventArgs(generator));
                 }
@@ -248,7 +265,7 @@ namespace HDGraph
                                 // lancement du calcul
                                 // Calcul
                                 drawOptions.BitmapSize = this.ClientSize;
-                                generator = ImageGraphGeneratorFactory.CreateGenerator(drawOptions.DrawStyle, this.Root, moteur);
+                                generator = ImageGraphGeneratorFactory.CreateGenerator(this.DrawType, this.Root, scanEngine);
                                 backgroundWorker1.RunWorkerAsync(generator);
                                 break;
                             case CalculationState.InProgress:
@@ -264,7 +281,7 @@ namespace HDGraph
                                     // lancement du calcul
                                     // Calcul
                                     drawOptions.BitmapSize = this.ClientSize;
-                                    generator = ImageGraphGeneratorFactory.CreateGenerator(drawOptions.DrawStyle, this.Root, moteur);
+                                    generator = ImageGraphGeneratorFactory.CreateGenerator(this.DrawType, this.Root, scanEngine);
                                     backgroundWorker1.RunWorkerAsync(generator);
                                 }
                                 else
@@ -556,7 +573,7 @@ namespace HDGraph
             if (lastClicNode != null)
             {
                 this.root = lastClicNode;
-                moteur.CompleterArborescence(root, this.NbNiveaux); // TODO: changer en nbCalcul
+                scanEngine.CompleterArborescence(root, this.NbNiveaux); // TODO: changer en nbCalcul
                 if (notifyNewRootNode != null)
                     notifyNewRootNode(this.root);
             }
@@ -648,7 +665,7 @@ namespace HDGraph
         {
             if (lastClicNode != null)
             {
-                moteur.RafraichirArborescence(lastClicNode);
+                scanEngine.RafraichirArborescence(lastClicNode);
             }
             ForceRefresh();
         }
@@ -722,20 +739,20 @@ namespace HDGraph
 
         internal void ShowFreeSpace()
         {
-            if (moteur != null)
+            if (scanEngine != null)
             {
-                moteur.ShowDiskFreeSpace = true;
-                moteur.ApplyFreeSpaceOption(this.root);
+                scanEngine.ShowDiskFreeSpace = true;
+                scanEngine.ApplyFreeSpaceOption(this.root);
             }
             this.ForceRefresh();
         }
 
         internal void HideFreeSpace()
         {
-            if (moteur != null)
+            if (scanEngine != null)
             {
-                moteur.ShowDiskFreeSpace = false;
-                moteur.ApplyFreeSpaceOption(this.root);
+                scanEngine.ShowDiskFreeSpace = false;
+                scanEngine.ApplyFreeSpaceOption(this.root);
             }
             this.ForceRefresh();
         }
@@ -795,7 +812,7 @@ namespace HDGraph
             ImageGraphGeneratorBase generator = e.Argument as ImageGraphGeneratorBase;
             if (generator == null)
                 return;
-            InternalDrawOptions currentOptions = drawOptions.Clone();
+            InternalDrawOptions currentOptions = (InternalDrawOptions)drawOptions.Clone();
             lastCompletedGraphOption = null;
             if (!TextChangeInProgress)
             {

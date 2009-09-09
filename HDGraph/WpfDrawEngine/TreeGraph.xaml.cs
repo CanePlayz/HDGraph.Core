@@ -27,7 +27,7 @@ namespace HDGraph.WpfDrawEngine
             labelStatus.Content = "Acceleration : " + WpfUtils.GetAccelerationType().ToString();
         }
 
-
+        public event EventHandler<NodeContextEventArgs> ContextMenuRequired;
 
         public bool IsRotating
         {
@@ -234,89 +234,6 @@ namespace HDGraph.WpfDrawEngine
             }
         }
 
-        ///// <summary>
-        ///// Dessine le nom d'un répertoire sur le graph, lorsque ce répertoire a un angle de 360°.
-        ///// </summary>
-        ///// <param name="node"></param>
-        ///// <param name="rec"></param>
-        ///// <returns></returns>
-        //private void WriteDirectoryNameForFullPie(IDirectoryNode node, RectangleF rec)
-        //{
-        //    float x = 0, y;
-        //    if (rec.Height == singleLevelHeight * 2)
-        //    {
-        //        y = 0;
-        //    }
-        //    else
-        //    {
-        //        y = rec.Height / 2f - singleLevelHeight * 3f / 4f;
-        //    }
-        //    x += currentWorkingOptions.BitmapSize.Width / 2f;
-        //    y += currentWorkingOptions.BitmapSize.Height / 2f;
-        //    string nodeText = node.Name;
-        //    if (currentWorkingOptions.ShowSize)
-        //        nodeText += Environment.NewLine + HDGTools.FormatSize(node.TotalSize);
-
-        //    SizeF size = frontGraph.MeasureString(nodeText, currentWorkingOptions.TextFont);
-        //    x -= size.Width / 2f;
-        //    y -= size.Height / 2f;
-        //    // Adoucir le fond du texte :
-        //    Color colTransp = Color.FromArgb(100, Color.White);
-        //    frontGraph.FillRectangle(new SolidBrush(colTransp),
-        //                        x, y, size.Width, size.Height);
-        //    frontGraph.DrawRectangle(new Pen(Color.Black), x, y, size.Width, size.Height);
-        //    frontGraph.DrawString(nodeText, currentWorkingOptions.TextFont, new SolidBrush(Color.Black), x, y);
-        //}
-
-        ///// <summary>
-        ///// Dessine le nom d'un répertoire sur le graph.
-        ///// </summary>
-        ///// <param name="node"></param>
-        ///// <param name="rec"></param>
-        ///// <param name="startAngle"></param>
-        ///// <param name="nodeAngle"></param>
-        ///// <returns></returns>
-        //private void WriteDirectoryName(IDirectoryNode node, RectangleF rec, float startAngle, float nodeAngle)
-        //{
-        //    //float textWidthLimit = singleLevelHeight * 1.5f;
-        //    float textWidthLimit = singleLevelHeight * 2f;
-        //    float x, y, angleCentre, hyp;
-        //    hyp = (rec.Width - singleLevelHeight) / 2f;
-        //    angleCentre = startAngle + nodeAngle / 2f;
-        //    x = (float)Math.Cos(MathHelper.GetRadianFromDegree(angleCentre)) * hyp;
-        //    y = (float)Math.Sin(MathHelper.GetRadianFromDegree(angleCentre)) * hyp;
-        //    x += currentWorkingOptions.BitmapSize.Width / 2f;
-        //    y += currentWorkingOptions.BitmapSize.Height / 2f;
-        //    StringFormat format = new StringFormat();
-        //    format.Alignment = StringAlignment.Center;
-        //    string nodeText = node.Name;
-        //    SizeF sizeTextName = frontGraph.MeasureString(nodeText, currentWorkingOptions.TextFont);
-        //    if (sizeTextName.Width <= textWidthLimit)
-        //    {
-        //        if (currentWorkingOptions.ShowSize)
-        //        {
-        //            float xName = x - sizeTextName.Width / 2f;
-        //            float yName = y - sizeTextName.Height;
-        //            frontGraph.DrawString(nodeText, currentWorkingOptions.TextFont, new SolidBrush(Color.Black), xName, yName); //, format);
-        //            string nodeSize = HDGTools.FormatSize(node.TotalSize);
-        //            SizeF sizeTextSize = frontGraph.MeasureString(nodeSize, currentWorkingOptions.TextFont);
-        //            float xSize = x - sizeTextSize.Width / 2f;
-        //            float ySize = y;
-        //            // Adoucir le fond du texte :
-        //            //Color colTransp = Color.FromArgb(50, Color.White);
-        //            //graph.FillRectangle(new SolidBrush(colTransp),
-        //            //                    xSize, ySize, sizeTextSize.Width, sizeTextSize.Height);
-        //            frontGraph.DrawString(nodeSize, currentWorkingOptions.TextFont, new SolidBrush(Color.Black), xSize, ySize); //, format);
-        //        }
-        //        else
-        //        {
-        //            x -= sizeTextName.Width / 2f;
-        //            y -= sizeTextName.Height / 2f;
-        //            frontGraph.DrawString(nodeText, currentWorkingOptions.TextFont, new SolidBrush(Color.Black), x, y); //, format);
-        //        }
-        //    }
-        //}
-
         /// <summary>
         /// Dessine un semi anneau sur le graph.
         /// </summary>
@@ -349,7 +266,7 @@ namespace HDGraph.WpfDrawEngine
             {
                 Source = sliderTextSize,
                 Path = new PropertyPath(Slider.ValueProperty),
-                Mode = BindingMode.OneWay
+                Mode = BindingMode.OneWay, 
             };
             BindingOperations.SetBinding(arc, Arc2.FontSizeProperty, b);
 
@@ -605,82 +522,19 @@ namespace HDGraph.WpfDrawEngine
             labelStatus.Content = "rotationAngle:" + rotationAngle + " initVector:" + initVector + " newVector:" + newVector + " centerPoint:" + centerPoint;
         }
 
-        ///// <summary>
-        ///// Trouve quel est le répertoire survolé d'après la position du curseur.
-        ///// (Recherche par coordonnées cartésiennes).
-        ///// </summary>
-        ///// <param name="curseurPos">Position du curseur. Doit être relative au contrôle, pas à l'écran ou à la form !</param>
-        ///// <returns></returns>
-        //public override IDirectoryNode FindNodeByCursorPosition(Point curseurPos)
-        //{
-        //    // On a les coordonnées du curseur dans le controle.
-        //    // Il faut faire un changement de référentiel pour avoir les coordonnées vis à vis de l'origine (le centre des cercles).
-        //    curseurPos.X -= latestUsedOptions.BitmapSize.Width / 2;
-        //    curseurPos.Y -= latestUsedOptions.BitmapSize.Height / 2;
-        //    // On a maintenant les coordonnées vis-à-vis du centre des cercles.
-        //    //System.Windows.Forms.MessageBox.Show(curseurPos.ToString());
-
-        //    // Cherchons l'angle formé par le curseur et la taille du rayon jusqu'à celui-ci.
-        //    double angle = MathHelper.GetDegreeFromRadian(Math.Atan(-curseurPos.Y / (double)curseurPos.X));
-        //    // l'angle obtenu à corriger en fonction du quartier où se situe le curseur
-        //    if (curseurPos.X < 0)
-        //        angle = 180 - angle;
-        //    else
-        //        angle = (curseurPos.Y < 0) ? 360 - angle : -angle;
-
-        //    angle -= latestUsedOptions.ImageRotation;
-        //    if (angle < 0)
-        //        angle += 360;
-        //    double rayon = Math.Sqrt(Math.Pow(curseurPos.X, 2) + Math.Pow(curseurPos.Y, 2));
-        //    //System.Windows.Forms.MessageBox.Show("angle: " + angle + "; rayon: " + rayon);
-        //    if (this.rootNode == null || this.rootNode.TotalSize == 0)
-        //        return this.rootNode;
-        //    IDirectoryNode foundNode = FindNodeInTree(
-        //                this.rootNode,
-        //                0,
-        //                0,
-        //                360,
-        //                angle,
-        //                rayon);
-        //    return foundNode;
-        //}
-
-        ///// <summary>
-        ///// Recherche quel est le répertoire dans lequel se trouve le point définit par l'angle cursorAngle et la distance cursorLen.
-        ///// (Recherche par coordonnées polaires).
-        ///// </summary>
-        ///// <param name="node"></param>
-        ///// <param name="levelHeight"></param>
-        ///// <param name="startAngle"></param>
-        ///// <param name="endAngle"></param>
-        ///// <param name="cursorAngle"></param>
-        ///// <param name="cursorLen"></param>
-        ///// <returns></returns>
-        //private IDirectoryNode FindNodeInTree(IDirectoryNode node, float levelHeight, float startAngle, float endAngle, double cursorAngle, double cursorLen)
-        //{
-        //    if (node.TotalSize == 0)
-        //        return node;
-        //    float nodeAngle = endAngle - startAngle;
-        //    levelHeight += singleLevelHeight;
-        //    if (levelHeight > cursorLen && cursorAngle >= startAngle && cursorAngle <= endAngle)
-        //    {
-        //        // le noeud courant est celui recherché
-        //        if (node.DirectoryType == SpecialDirTypes.FreeSpaceAndHide)
-        //            return null;
-        //        return node;
-        //    }
-        //    long cumulSize = 0;
-        //    float currentStartAngle;
-        //    foreach (IDirectoryNode childNode in node.Children)
-        //    {
-        //        currentStartAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
-        //        float childAngle = childNode.TotalSize * nodeAngle / node.TotalSize;
-        //        if (cursorLen > levelHeight && cursorAngle >= currentStartAngle && cursorAngle <= (currentStartAngle + childAngle))
-        //            return FindNodeInTree(childNode, levelHeight, currentStartAngle, currentStartAngle + childAngle, cursorAngle, cursorLen);
-        //        cumulSize += childNode.TotalSize;
-        //    }
-        //    currentStartAngle = startAngle + cumulSize * nodeAngle / node.TotalSize;
-        //    return null;
-        //}
+        private void treeGraph1_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+            if (ContextMenuRequired != null)
+            {
+                IDirectoryNode selectedNode = null; // TODO
+                ContextMenuRequired(sender, new NodeContextEventArgs() 
+                                            { 
+                                                Position = new System.Drawing.PointF(Convert.ToSingle(e.CursorLeft), Convert.ToSingle(e.CursorTop)),
+                                                Node = selectedNode,
+                                            }
+                                   );
+                e.Handled = true;
+            }
+        }
     }
 }
