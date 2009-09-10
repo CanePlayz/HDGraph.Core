@@ -228,12 +228,12 @@ namespace HDGraph.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::HDGraph.Interfaces.DrawEngines.DrawOptions DrawOptions {
+        public global::HDGraph.Interfaces.DrawEngines.DrawOptions MyDrawOptions {
             get {
-                return ((global::HDGraph.Interfaces.DrawEngines.DrawOptions)(this["DrawOptions"]));
+                return ((global::HDGraph.Interfaces.DrawEngines.DrawOptions)(this["MyDrawOptions"]));
             }
             set {
-                this["DrawOptions"] = value;
+                this["MyDrawOptions"] = value;
             }
         }
     }

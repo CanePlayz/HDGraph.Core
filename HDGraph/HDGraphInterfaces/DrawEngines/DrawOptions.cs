@@ -4,6 +4,7 @@ using System.Text;
 using System.Reflection;
 using System.Drawing;
 using System.ComponentModel;
+using System.Xml.Serialization;
 
 namespace HDGraph.Interfaces.DrawEngines
 {
@@ -16,8 +17,13 @@ namespace HDGraph.Interfaces.DrawEngines
         ImprovedLinear
     }
 
+    [Serializable]
     public class DrawOptions : INotifyPropertyChanged
     {
+        public DrawOptions()
+        {
+        }
+
         #region INotifyPropertyChanged Members
 
         [field: NonSerialized]
@@ -34,6 +40,7 @@ namespace HDGraph.Interfaces.DrawEngines
         #endregion
 
         private Font textFont;
+        [XmlIgnore]
         public Font TextFont
         {
             get { return textFont; }
@@ -121,6 +128,12 @@ namespace HDGraph.Interfaces.DrawEngines
         }
 
         private Size targetSize;
+        /// <summary>
+        /// Used to define the target size of the graph. May be useless sometimes (if
+        /// the graph automatically determine the size it should use).
+        /// For exemple, is used when the user manually set the final size of the graph (for 
+        /// exemple to export a bitmap).
+        /// </summary>
         public Size TargetSize
         {
             get { return targetSize; }

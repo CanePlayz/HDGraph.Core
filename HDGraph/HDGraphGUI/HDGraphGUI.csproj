@@ -143,12 +143,6 @@
     <Compile Include="UserControls\OptionsUserControl.Designer.cs">
       <DependentUpon>OptionsUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="PickColorForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PickColorForm.Designer.cs">
-      <DependentUpon>PickColorForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutBox.en.resx">
@@ -218,10 +212,6 @@
     <EmbeddedResource Include="UserControls\OptionsUserControl.resx">
       <SubType>Designer</SubType>
       <DependentUpon>OptionsUserControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PickColorForm.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>PickColorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\ApplicationMessages.en.resx">
       <SubType>Designer</SubType>

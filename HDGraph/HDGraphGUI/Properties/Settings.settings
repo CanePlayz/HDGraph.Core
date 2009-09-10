@@ -53,7 +53,7 @@
     <Setting Name="OptionUseSimpleScanEngine" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="DrawOptions" Type="HDGraph.Interfaces.DrawEngines.DrawOptions" Scope="User">
+    <Setting Name="MyDrawOptions" Type="HDGraph.Interfaces.DrawEngines.DrawOptions" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

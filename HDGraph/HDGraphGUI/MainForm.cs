@@ -111,9 +111,9 @@ namespace HDGraph
             this.WindowState = HDGraph.Properties.Settings.Default.OptionMainWindowOpenState;
             this.ClientSize = HDGraph.Properties.Settings.Default.OptionMainWindowSize;
 
-            if (Properties.Settings.Default.DrawOptions == null)
-                Properties.Settings.Default.DrawOptions = new DrawOptions();
-            treeGraph1.DrawOptions = Properties.Settings.Default.DrawOptions;
+            if (Properties.Settings.Default.MyDrawOptions == null)
+                Properties.Settings.Default.MyDrawOptions = new DrawOptions();
+            treeGraph1.DrawOptions = Properties.Settings.Default.MyDrawOptions;
             drawOptionsBindingSource.DataSource = treeGraph1.DrawOptions;
             explorerIntegrationToolStripMenuItem.Enabled = ToolProviderBase.CurrentOsIsWindows();
             EnableHelpIfAvailable();
@@ -632,9 +632,6 @@ namespace HDGraph
                     && nbNiveaux <= trackBarZoom.Maximum
                     && !currentlyScrollingZoom)
                     trackBarZoom.Value = nbNiveaux;
-                treeGraph1.DrawOptions.ShownLevelsCount = nbNiveaux;
-                treeGraph1.ForceRefresh();
-                PrintStatus(Resources.ApplicationMessages.GraphRefreshed, false);
             }
             catch (Exception ex)
             {
@@ -799,11 +796,6 @@ namespace HDGraph
             (new LicenceForm()).ShowDialog();
         }
 
-        private void MainForm_Activated(object sender, EventArgs e)
-        {
-
-        }
-
         public Size? OutputImgSize { get; set; }
 
         private void MainForm_Shown(object sender, EventArgs e)
@@ -903,11 +895,6 @@ namespace HDGraph
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            (new PickColorForm()).Show();
-        }
-
         private void comboBoxColorStyle_SelectedIndexChanged(object sender, EventArgs e)
         {
             ModeAffichageCouleurs modeCouleurs = (ModeAffichageCouleurs)comboBoxColorStyle.SelectedIndex;
@@ -927,18 +914,8 @@ namespace HDGraph
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            HDGraph.Properties.Settings.Default.DrawOptions = treeGraph1.DrawOptions;
+            HDGraph.Properties.Settings.Default.MyDrawOptions = treeGraph1.DrawOptions;
             HDGraph.Properties.Settings.Default.Save();
-        }
-
-        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void shortcutsToolStripMenuItem_Click(object sender, EventArgs e)
