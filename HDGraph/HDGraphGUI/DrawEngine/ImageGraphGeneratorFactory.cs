@@ -18,9 +18,9 @@ namespace HDGraph.DrawEngine
             switch (type)
             {
                 case DrawType.Circular:
-                    return new CircularImageGraphGenerator(node, engine);
+                    return new CircularImageGraphGenerator(node);
                 case DrawType.Rectangular:
-                    return new RectangularImageGraphGenerator(node, engine);
+                    return new RectangularImageGraphGenerator(node);
                 default:
                     throw new NotSupportedException();
             }

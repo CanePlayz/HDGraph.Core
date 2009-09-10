@@ -144,7 +144,7 @@ namespace HDGraph
             root = new DirectoryNode(path);
             ErrorList = new List<ScanError>();
             AnalyseStartDate = DateTime.Now;
-            ConstruireArborescence(root, maxLevel - 1);
+            BuildTreeInternal(root, maxLevel - 1);
             ApplySpecialRootOptions(root);
 
             analyzeDate = DateTime.Now;
@@ -223,7 +223,7 @@ namespace HDGraph
             return rootNodeIsDrive;
         }
 
-        protected abstract void ConstruireArborescence(IDirectoryNode dir, int maxLevel);
+        protected abstract void BuildTreeInternal(IDirectoryNode dir, int maxLevel);
 
         protected void HandleAnalysisException(IDirectoryNode dir, Exception ex)
         {
@@ -245,7 +245,7 @@ namespace HDGraph
         /// <param name="node"></param>
         /// <param name="maxLevel"></param>
         /// <returns></returns>
-        public bool CompleterArborescence(IDirectoryNode node, int maxLevel)
+        public bool FillUpTreeToLevel(IDirectoryNode node, int maxLevel)
         {
             if (!this.autoRefreshAllowed)
                 return false;
@@ -263,18 +263,18 @@ namespace HDGraph
                 long dirPreviousTotalSize = node.TotalSize;
                 node.TotalSize = 0;
                 node.FilesSize = 0;
-                ConstruireArborescence(node, maxLevel - 1);
+                BuildTreeInternal(node, maxLevel - 1);
                 if (dirPreviousTotalSize != node.TotalSize)
-                    IncrementerTailleParents(node, node.TotalSize - dirPreviousTotalSize);
+                    AdjustParentSize(node, node.TotalSize - dirPreviousTotalSize);
             }
             else
             {
                 foreach (IDirectoryNode fils in node.Children)
                 {
-                    CompleterArborescence(fils, maxLevel - 1);
+                    FillUpTreeToLevel(fils, maxLevel - 1);
                 }
             }
-            RafraichirEspaceLibre(node);
+            RefreshFreeSpace(node);
             return true;
         }
 
@@ -283,16 +283,16 @@ namespace HDGraph
         /// </summary>
         /// <param name="node">Noeud dont les parents sont à mettre à jour.</param>
         /// <param name="tailleAjoutee">Montant à ajouter.</param>
-        private void IncrementerTailleParents(IDirectoryNode node, long tailleAjoutee)
+        private void AdjustParentSize(IDirectoryNode node, long addedSize)
         {
             if (node.Parent == null)
                 return;
-            node.Parent.TotalSize += tailleAjoutee;
-            IncrementerTailleParents(node.Parent, tailleAjoutee);
+            node.Parent.TotalSize += addedSize;
+            AdjustParentSize(node.Parent, addedSize);
         }
 
 
-        public bool RafraichirArborescence(IDirectoryNode node)
+        public bool RefreshTreeFromNode(IDirectoryNode node)
         {
             if (!this.autoRefreshAllowed)
                 return false;
@@ -303,14 +303,14 @@ namespace HDGraph
             node.Children = new List<IDirectoryNode>();
             if (!Directory.Exists(node.Path))
             {
-                IncrementerTailleParents(node, -dirPreviousTotalSize);
-                RafraichirEspaceLibre(node);
+                AdjustParentSize(node, -dirPreviousTotalSize);
+                RefreshFreeSpace(node);
                 return true;
             }
-            ConstruireArborescence(node, node.DepthMaxLevel - 1);
+            BuildTreeInternal(node, node.DepthMaxLevel - 1);
             if (dirPreviousTotalSize != node.TotalSize)
-                IncrementerTailleParents(node, node.TotalSize - dirPreviousTotalSize);
-            RafraichirEspaceLibre(node);
+                AdjustParentSize(node, node.TotalSize - dirPreviousTotalSize);
+            RefreshFreeSpace(node);
             return true;
         }
 
@@ -318,7 +318,7 @@ namespace HDGraph
         /// Refresh the free space size on the root folder of the given node.
         /// </summary>
         /// <param name="theNode"></param>
-        private void RafraichirEspaceLibre(IDirectoryNode theNode)
+        private void RefreshFreeSpace(IDirectoryNode theNode)
         {
             IDirectoryNode root = theNode.Root;
             if (PathIsDrive(root.Path))

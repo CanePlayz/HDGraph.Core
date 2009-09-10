@@ -551,7 +551,7 @@ namespace HDGraph
             if (lastClicNode != null)
             {
                 this.root = lastClicNode;
-                scanEngine.CompleterArborescence(root, drawOptions.ShownLevelsCount); // TODO: changer en nbCalcul
+                scanEngine.FillUpTreeToLevel(root, drawOptions.ShownLevelsCount); // TODO: changer en nbCalcul
                 if (notifyNewRootNode != null)
                     notifyNewRootNode(this.root);
             }
@@ -643,7 +643,7 @@ namespace HDGraph
         {
             if (lastClicNode != null)
             {
-                scanEngine.RafraichirArborescence(lastClicNode);
+                scanEngine.RefreshTreeFromNode(lastClicNode);
             }
             ForceRefresh();
         }

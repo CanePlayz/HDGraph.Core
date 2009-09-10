@@ -17,7 +17,7 @@ namespace HDGraph.ScanEngine
         /// </summary>
         /// <param name="dir"></param>
         /// <param name="maxLevel"></param>
-        protected override void ConstruireArborescence(IDirectoryNode dir, int maxLevel)
+        protected override void BuildTreeInternal(IDirectoryNode dir, int maxLevel)
         {
             if (pleaseCancelCurrentWork)
             {
@@ -65,7 +65,7 @@ namespace HDGraph.ScanEngine
                                 //    // TODO
                                 //}
 
-                                ConstruireArborescence(dirNode, maxLevel - 1);
+                                BuildTreeInternal(dirNode, maxLevel - 1);
                                 dirNode.Parent = dir;
                                 dir.Children.Add(dirNode);
                                 dir.TotalSize += dirNode.TotalSize;

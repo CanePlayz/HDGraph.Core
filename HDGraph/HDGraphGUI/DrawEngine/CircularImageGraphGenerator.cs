@@ -27,15 +27,13 @@ namespace HDGraph.DrawEngine
         /// </summary>
         private bool printDirNames = false;
 
-        private HDGraphScanEngineBase scanEngine;
         private DrawOptions currentWorkingOptions;
         private DrawOptions latestUsedOptions;
         private ColorManager colorManager;
         private IDirectoryNode rootNode;
 
-        public CircularImageGraphGenerator(IDirectoryNode rootNode, HDGraphScanEngineBase moteur)
+        public CircularImageGraphGenerator(IDirectoryNode rootNode)
         {
-            this.scanEngine = moteur;
             this.colorManager = new ColorManager();
             this.rootNode = rootNode;
         }
@@ -106,17 +104,20 @@ namespace HDGraph.DrawEngine
         private void PaintSpecialCase()
         {
             string text;
-            if (scanEngine != null && scanEngine.WorkCanceled)
+            if (currentWorkingOptions.DrawAction == DrawAction.PrintMessageWorkCanceledByUser)
                 text = Resources.ApplicationMessages.UserCanceledAnalysis;
-            else if (rootNode != null && rootNode.TotalSize == 0)
+            else if ((rootNode != null && rootNode.TotalSize == 0)
+                      || currentWorkingOptions.DrawAction == DrawAction.PrintMessageNodeIsEmpty)
                 text = Resources.ApplicationMessages.FolderIsEmpty;
-            else
+            else if (currentWorkingOptions.DrawAction == DrawAction.PrintWelcomeMessage)
                 text = Resources.ApplicationMessages.GraphGuideLine;
+            else
+                throw new InvalidOperationException();
 
             DrawHelper.PrintTextInTheMiddle(frontGraph, currentWorkingOptions.TargetSize, text, currentWorkingOptions.TextFont, new SolidBrush(Color.Black), false);
         }
 
-        
+
         /// <summary>
         /// Procédure récursive pour graphiquer les arcs de cercle. Graphique de l'extérieur vers l'intérieur.
         /// </summary>

@@ -27,15 +27,13 @@ namespace HDGraph.DrawEngine
         /// </summary>
         private bool printDirNames = false;
 
-        private HDGraphScanEngineBase moteur;
         private DrawOptions currentWorkingOptions;
         private DrawOptions latestUsedOptions;
         private ColorManager colorManager;
         private IDirectoryNode rootNode;
 
-        public RectangularImageGraphGenerator(IDirectoryNode rootNode, HDGraphScanEngineBase moteur)
+        public RectangularImageGraphGenerator(IDirectoryNode rootNode)
         {
-            this.moteur = moteur;
             this.colorManager = new ColorManager();
             this.rootNode = rootNode;
         }
@@ -106,12 +104,15 @@ namespace HDGraph.DrawEngine
         private void PaintSpecialCase()
         {
             string text;
-            if (moteur != null && moteur.WorkCanceled)
+            if (currentWorkingOptions.DrawAction == DrawAction.PrintMessageWorkCanceledByUser)
                 text = Resources.ApplicationMessages.UserCanceledAnalysis;
-            else if (rootNode != null && rootNode.TotalSize == 0)
+            else if ((rootNode != null && rootNode.TotalSize == 0)
+                    || currentWorkingOptions.DrawAction == DrawAction.PrintMessageNodeIsEmpty)
                 text = Resources.ApplicationMessages.FolderIsEmpty;
-            else
+            else if (currentWorkingOptions.DrawAction == DrawAction.PrintWelcomeMessage)
                 text = Resources.ApplicationMessages.GraphGuideLine;
+            else
+                throw new NotImplementedException();
 
             DrawHelper.PrintTextInTheMiddle(frontGraph, currentWorkingOptions.TargetSize, text, currentWorkingOptions.TextFont, new SolidBrush(Color.Black), false);
         }

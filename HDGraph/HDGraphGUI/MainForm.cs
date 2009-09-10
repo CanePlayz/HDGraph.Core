@@ -84,6 +84,7 @@ namespace HDGraph
         }
 
         public DrawType DrawType { get; set; }
+        private DrawOptions DrawOptions { get; set; }
 
         #endregion
 
@@ -113,8 +114,9 @@ namespace HDGraph
 
             if (Properties.Settings.Default.MyDrawOptions == null)
                 Properties.Settings.Default.MyDrawOptions = new DrawOptions();
-            treeGraph1.DrawOptions = Properties.Settings.Default.MyDrawOptions;
-            drawOptionsBindingSource.DataSource = treeGraph1.DrawOptions;
+            DrawOptions = Properties.Settings.Default.MyDrawOptions;
+            treeGraph1.DrawOptions = DrawOptions;
+            drawOptionsBindingSource.DataSource = DrawOptions;
             explorerIntegrationToolStripMenuItem.Enabled = ToolProviderBase.CurrentOsIsWindows();
             EnableHelpIfAvailable();
             comboBoxPath.DataSource = HDGraph.Properties.Settings.Default.PathHistory;
@@ -669,6 +671,7 @@ namespace HDGraph
                 Application.DoEvents();
         }
 
+        
 
         /// <summary>
         /// Lance le scan et le graphiquage.
@@ -685,7 +688,6 @@ namespace HDGraph
             //Stopwatch watch = new Stopwatch();
             //watch.Start();
             form.ShowDialogAndStartScan(scanEngine, comboBoxPath.Text, nbNiveaux);
-
             //watch.Stop();
             //MessageBox.Show(watch.Elapsed.ToString());
 
@@ -694,6 +696,11 @@ namespace HDGraph
 
             scanEngine.NotifyForNewInfo = new HDGraphScanEngineBase.PrintInfoDelegate(PrintStatus);
             treeGraph1.ScanEngine = scanEngine;
+            if (scanEngine.WorkCanceled)
+                DrawOptions.DrawAction = DrawAction.PrintMessageWorkCanceledByUser;
+            else
+                DrawOptions.DrawAction = DrawAction.DrawNode;
+            
             numUpDownNbNivxAffich.Value = nbNiveaux;
             treeGraph1.DrawOptions.ShownLevelsCount = nbNiveaux;
             treeGraph1.ForceRefresh();
