@@ -13,7 +13,7 @@ namespace HDGraph.DrawEngine
 
     public class ImageGraphGeneratorFactory
     {
-        public static ImageGraphGeneratorBase CreateGenerator(DrawType type, IDirectoryNode node, HDGraphScanEngineBase engine)
+        public static ImageGraphGeneratorBase CreateGenerator(DrawType type, IDirectoryNode node)
         {
             switch (type)
             {

@@ -228,7 +228,7 @@ namespace HDGraph
                 {
                     // tout premier init.
                     drawOptions.TargetSize = this.ClientSize;
-                    ImageGraphGeneratorBase generator = ImageGraphGeneratorFactory.CreateGenerator(this.DrawType, this.Root, scanEngine);
+                    ImageGraphGeneratorBase generator = ImageGraphGeneratorFactory.CreateGenerator(this.DrawType, this.Root);
                     forceRefreshOnNextRepaint = true;
                     this.backgroundWorker1_DoWork(this, new DoWorkEventArgs(generator));
                 }
@@ -253,7 +253,7 @@ namespace HDGraph
                                 // lancement du calcul
                                 // Calcul
                                 drawOptions.TargetSize = this.ClientSize;
-                                generator = ImageGraphGeneratorFactory.CreateGenerator(this.DrawType, this.Root, scanEngine);
+                                generator = ImageGraphGeneratorFactory.CreateGenerator(this.DrawType, this.Root);
                                 backgroundWorker1.RunWorkerAsync(generator);
                                 break;
                             case CalculationState.InProgress:
@@ -269,7 +269,7 @@ namespace HDGraph
                                     // lancement du calcul
                                     // Calcul
                                     drawOptions.TargetSize = this.ClientSize;
-                                    generator = ImageGraphGeneratorFactory.CreateGenerator(this.DrawType, this.Root, scanEngine);
+                                    generator = ImageGraphGeneratorFactory.CreateGenerator(this.DrawType, this.Root);
                                     backgroundWorker1.RunWorkerAsync(generator);
                                 }
                                 else

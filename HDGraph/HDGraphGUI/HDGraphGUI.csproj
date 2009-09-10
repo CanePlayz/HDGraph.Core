@@ -90,6 +90,8 @@
     <Compile Include="DrawEngine\ImageGraphGeneratorFactory.cs" />
     <Compile Include="DrawEngine\MathHelper.cs" />
     <Compile Include="DrawEngine\RectangularImageGraphGenerator.cs" />
+    <Compile Include="DrawEngine\SimpleDrawEngine.cs" />
+    <Compile Include="DrawEngine\SimpleDrawEngineContract.cs" />
     <Compile Include="Interop\PathWithIcon.cs" />
     <Compile Include="Interop\EnvironmentTarget.cs" />
     <Compile Include="Interop\ToolProviderBase.cs" />

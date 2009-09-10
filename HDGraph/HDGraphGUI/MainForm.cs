@@ -50,6 +50,10 @@ namespace HDGraph
         /// </summary>
         private HDGraphScanEngineBase scanEngine;
 
+        private IDrawEngineContract drawEngineContract;
+        private IDrawEngine drawEngine;
+        private Control drawControl;
+
         /// <summary>
         /// Liste des nodes parcours, pour les boutons "back" et "next".
         /// </summary>
@@ -98,6 +102,7 @@ namespace HDGraph
             resManager = new System.Resources.ResourceManager(this.GetType().Assembly.GetName().Name + ".Resources.ApplicationMessages", this.GetType().Assembly);
             HDGTools.resManager = resManager;
             CreateScanEngine();
+
             scanEngine.ShowDiskFreeSpace = Properties.Settings.Default.OptionShowFreeSpace;
             if (!changeLangIsSuccess)
                 MessageBox.Show(resManager.GetString("ErrorInConfigLanguage"),
@@ -106,7 +111,7 @@ namespace HDGraph
                                 MessageBoxIcon.Warning);
 
             InitializeComponent();
-
+            CreateDrawEngine();
             ApplyIcon();
             this.Text = AboutBox.AssemblyTitle;
             this.WindowState = HDGraph.Properties.Settings.Default.OptionMainWindowOpenState;
@@ -134,6 +139,11 @@ namespace HDGraph
             }
             PopulateAnalyseShortcuts();
             splitContainerGraphAndOptions.Panel2Collapsed = true;
+        }
+
+        private void CreateDrawEngine()
+        {
+            // TODO.
         }
 
         private void CreateScanEngine()
@@ -818,7 +828,7 @@ namespace HDGraph
                     if (outputImgFilePath != null
                         && outputImgFilePath.Length > 0)
                     {
-                        ImageGraphGeneratorBase generator = ImageGraphGeneratorFactory.CreateGenerator(this.DrawType, scanEngine.Root, scanEngine);
+                        ImageGraphGeneratorBase generator = ImageGraphGeneratorFactory.CreateGenerator(this.DrawType, scanEngine.Root);
                         DrawOptions outputDrawOptions = treeGraph1.DrawOptions.Clone();
                         if (OutputImgSize.HasValue)
                             outputDrawOptions.TargetSize = OutputImgSize.Value;

@@ -6,10 +6,10 @@ using HDGraph.Interfaces.DrawEngines;
 
 namespace HDGraph.WpfDrawEngine
 {
-    public class DrawEngine : IControlTypeEngine
+    public class DrawEngine : IDrawEngine
     {
 
-        #region IControlTypeEngine Members
+        #region IDrawEngine Members
 
         public System.Windows.Forms.Control GenerateControlFromNode(IDirectoryNode node, DrawOptions options)
         {
@@ -25,13 +25,9 @@ namespace HDGraph.WpfDrawEngine
                 ContextMenuRequired(sender, e);
         }
 
-        #endregion
-
-        #region IControlTypeEngine Members
-
-
         public event EventHandler<NodeContextEventArgs> ContextMenuRequired;
 
         #endregion
+
     }
 }

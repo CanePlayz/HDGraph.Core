@@ -62,7 +62,7 @@ namespace HDGraph.PlugIn
                 return;
 
             IDrawEngineContract engineContract = plugins[0];
-            IControlTypeEngine engine = engineContract.GetNewControlTypeEngine();
+            IDrawEngine engine = engineContract.GetNewEngine();
             Control control = engine.GenerateControlFromNode(node, options);
             Form form = new Form();
             form.WindowState = FormWindowState.Maximized;

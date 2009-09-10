@@ -3,27 +3,25 @@ using System.Collections.Generic;
 using System.Text;
 using HDGraph.Interfaces.DrawEngines;
 
-namespace HDGraph.WpfDrawEngine
+namespace HDGraph.DrawEngine
 {
-    public class WpfDrawEngineContract : IDrawEngineContract
+    public class SimpleDrawEngineContract : IDrawEngineContract
     {
-
         #region IDrawEngineContract Members
-
 
         public string Name
         {
-            get { return "WPF Draw Engine"; }
+            get { return "Standard"; }
         }
 
         public string Description
         {
-            get { return "Evolved draw engine. Renders vectorial content. Requires .NET Framework version 3.5 or higher."; }
+            get { return "The first HDGraph draw engine. Based on Bitmap generation. Slower dans less powerfull than WPF engine (if you have a good graphic card)."; }
         }
 
         public IDrawEngine GetNewEngine()
         {
-            return new DrawEngine();
+            return new SimpleDrawEngine();
         }
 
         #endregion
