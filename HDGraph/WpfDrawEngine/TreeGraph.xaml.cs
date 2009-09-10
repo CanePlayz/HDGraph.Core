@@ -53,8 +53,9 @@ namespace HDGraph.WpfDrawEngine
         {
             if (root == null || options == null)
                 return;
+            
             this.rootNode = root;
-
+            canvas1.Children.Clear();
 
             // Création du bitmap buffer
             currentWorkingOptions = options;

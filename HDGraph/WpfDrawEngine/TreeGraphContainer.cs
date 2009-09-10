@@ -12,6 +12,9 @@ namespace HDGraph.WpfDrawEngine
 {
     public partial class TreeGraphContainer : UserControl
     {
+        public IActionExecutor ActionExecutor { get; set; }
+        private bool alreadyLoaded;
+
         public TreeGraphContainer()
         {
             InitializeComponent();
@@ -23,6 +26,7 @@ namespace HDGraph.WpfDrawEngine
             if (!this.DesignMode)
             {
                 GetTreeGraph().SetRoot(node, options);
+                alreadyLoaded = true;
             }
         }
 
@@ -31,13 +35,31 @@ namespace HDGraph.WpfDrawEngine
             return (TreeGraph)elementHost1.Child;
         }
 
-        IDirectoryNode node;
-        DrawOptions options;
+        private IDirectoryNode node;
+        private DrawOptions options;
 
         public void SetRoot(IDirectoryNode node, DrawOptions options)
         {
-            this.node = node;
             this.options = options;
+            SetRoot(node);
+        }
+
+        public void SetRoot(IDirectoryNode node)
+        {
+            this.node = node;
+            if (alreadyLoaded)
+                UpdateVisual();
+        }
+
+        public IDirectoryNode GetRoot()
+        {
+            return node;
+        }
+
+
+        private void UpdateVisual()
+        {
+            GetTreeGraph().SetRoot(node, options);
         }
 
         public event EventHandler<NodeContextEventArgs> ContextMenuRequired

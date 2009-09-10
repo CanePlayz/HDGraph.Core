@@ -30,22 +30,6 @@ namespace HDGraph
             set { root = value; }
         }
 
-        /// <summary>
-        /// Moteur qui a la charge de conserver l'intégrité de l'arborescence DirectoryNode.
-        /// </summary>
-        private HDGraphScanEngineBase scanEngine;
-        [ReadOnly(true)]
-        public HDGraphScanEngineBase ScanEngine
-        {
-            get { return scanEngine; }
-            set
-            {
-                scanEngine = value;
-                if (scanEngine != null)
-                    root = scanEngine.Root;
-            }
-        }
-
         private Pen graphPen = new Pen(Color.Black, 1.0f);
 
         public Pen GraphPen
@@ -65,29 +49,6 @@ namespace HDGraph
                 base.Font = value;
                 drawOptions.TextFont = value;
             }
-        }
-
-        public delegate void NodeNotificationDelegate(IDirectoryNode node);
-
-        private NodeNotificationDelegate updateHoverNode;
-        /// <summary>
-        /// Obtient ou définit la méthode appelée par le composant TreeGraph lorsque le curseur de la souris 
-        /// passe au dessus d'un répertoire du graphe.
-        /// </summary>
-        public NodeNotificationDelegate UpdateHoverNode
-        {
-            get { return updateHoverNode; }
-            set { updateHoverNode = value; }
-        }
-
-        private NodeNotificationDelegate notifyNewRootNode;
-        /// <summary>
-        /// Obtient ou définit la méthode appelée par le composant TreeGraph lorsque le répertoire au centre du graph a changé.
-        /// </summary>
-        public NodeNotificationDelegate NotifyNewRootNode
-        {
-            get { return notifyNewRootNode; }
-            set { notifyNewRootNode = value; }
         }
 
         /// <summary>
@@ -138,9 +99,16 @@ namespace HDGraph
         /// </summary>
         public bool TextChangeInProgress { get; set; }
 
+        private IActionExecutor actionExecutor;
+
         #endregion
 
         #region Constructeur
+
+        public TreeGraph(IActionExecutor actionExecutor):this()
+        {
+            this.actionExecutor = actionExecutor;
+        }
 
         public TreeGraph()
         {
@@ -443,8 +411,8 @@ namespace HDGraph
                 UpdateOrCreateToolTip(foundNode);
             }
 
-            if (updateHoverNode != null)
-                UpdateHoverNode(foundNode);
+            if (actionExecutor != null)
+                actionExecutor.Notify4NewHoveredNode(foundNode);
         }
 
         private ToolTip toolTip;
@@ -551,9 +519,8 @@ namespace HDGraph
             if (lastClicNode != null)
             {
                 this.root = lastClicNode;
-                scanEngine.FillUpTreeToLevel(root, drawOptions.ShownLevelsCount); // TODO: changer en nbCalcul
-                if (notifyNewRootNode != null)
-                    notifyNewRootNode(this.root);
+                actionExecutor.ExecuteTreeFillUpToLevel(root, drawOptions.ShownLevelsCount);
+                actionExecutor.Notify4NewRootNode(this.root);
             }
             ForceRefresh();
         }
@@ -571,8 +538,7 @@ namespace HDGraph
             if (lastClicNode != null && lastClicNode.Parent != null)
             {
                 this.Root = lastClicNode.Parent;
-                if (notifyNewRootNode != null)
-                    notifyNewRootNode(this.root);
+                actionExecutor.Notify4NewRootNode(this.root);
             }
             ForceRefresh();
         }
@@ -643,7 +609,7 @@ namespace HDGraph
         {
             if (lastClicNode != null)
             {
-                scanEngine.RefreshTreeFromNode(lastClicNode);
+                actionExecutor.ExecuteTreeFullRefresh(lastClicNode);
             }
             ForceRefresh();
         }

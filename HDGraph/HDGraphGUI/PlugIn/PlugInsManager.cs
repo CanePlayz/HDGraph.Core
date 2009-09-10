@@ -54,7 +54,7 @@ namespace HDGraph.PlugIn
         }
 
 
-        public static void Test(IDirectoryNode node, DrawOptions options)
+        public static void TestFirstPlugin(IDirectoryNode node, DrawOptions options, IActionExecutor actionExecutor)
         {
             List<IDrawEngineContract> plugins = GetDrawEnginePlugins();
             if (plugins == null
@@ -63,7 +63,7 @@ namespace HDGraph.PlugIn
 
             IDrawEngineContract engineContract = plugins[0];
             IDrawEngine engine = engineContract.GetNewEngine();
-            Control control = engine.GenerateControlFromNode(node, options);
+            Control control = engine.GenerateControlFromNode(node, options, actionExecutor);
             Form form = new Form();
             form.WindowState = FormWindowState.Maximized;
             form.Controls.Add(control);

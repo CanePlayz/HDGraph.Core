@@ -55,8 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DrawEngines\DrawOptions.cs" />
+    <Compile Include="DrawEngines\IActionExecutor.cs" />
     <Compile Include="DrawEngines\IDrawEngineContract.cs" />
     <Compile Include="DrawEngines\IDrawEngine.cs" />
+    <Compile Include="DrawEngines\IManualRefreshControl.cs" />
     <Compile Include="DrawEngines\NodeContextEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScanEngines\IDirectoryNode.cs" />

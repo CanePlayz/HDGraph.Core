@@ -20,7 +20,7 @@ using HDGraph.Interfaces.DrawEngines;
 
 namespace HDGraph
 {
-    public partial class MainForm : Form
+    public partial class MainForm : Form, IActionExecutor
     {
         #region Variables et propriétés
 
@@ -52,7 +52,7 @@ namespace HDGraph
 
         private IDrawEngineContract drawEngineContract;
         private IDrawEngine drawEngine;
-        private Control drawControl;
+        private Control graphControl;
 
         /// <summary>
         /// Liste des nodes parcours, pour les boutons "back" et "next".
@@ -111,7 +111,6 @@ namespace HDGraph
                                 MessageBoxIcon.Warning);
 
             InitializeComponent();
-            CreateDrawEngine();
             ApplyIcon();
             this.Text = AboutBox.AssemblyTitle;
             this.WindowState = HDGraph.Properties.Settings.Default.OptionMainWindowOpenState;
@@ -120,8 +119,8 @@ namespace HDGraph
             if (Properties.Settings.Default.MyDrawOptions == null)
                 Properties.Settings.Default.MyDrawOptions = new DrawOptions();
             DrawOptions = Properties.Settings.Default.MyDrawOptions;
-            treeGraph1.DrawOptions = DrawOptions;
             drawOptionsBindingSource.DataSource = DrawOptions;
+            CreateDrawEngine(); // the draw engine can be created only once the DrawOptions exists and the scanEngine exists.
             explorerIntegrationToolStripMenuItem.Enabled = ToolProviderBase.CurrentOsIsWindows();
             EnableHelpIfAvailable();
             comboBoxPath.DataSource = HDGraph.Properties.Settings.Default.PathHistory;
@@ -143,7 +142,12 @@ namespace HDGraph
 
         private void CreateDrawEngine()
         {
-            // TODO.
+            this.drawEngineContract = PlugIn.PlugInsManager.GetDrawEnginePlugins()[0]; // TODO : load from config
+            this.drawEngine = drawEngineContract.GetNewEngine();
+            this.graphControl = this.drawEngine.GenerateControlFromNode(scanEngine.Root, DrawOptions, this);
+            this.splitContainerGraphAndOptions.Panel1.Controls.Add(graphControl);
+            this.graphControl.Dock = DockStyle.Fill;
+            this.graphControl.BackColor = Color.White;
         }
 
         private void CreateScanEngine()
@@ -313,18 +317,16 @@ namespace HDGraph
                 scanEngine = (HDGraphScanEngineBase)serializer.Deserialize(reader);
                 reader.Close();
                 scanEngine.NotifyForNewInfo = new HDGraphScanEngineBase.PrintInfoDelegate(PrintStatus);
-                treeGraph1.ScanEngine = scanEngine;
-                treeGraph1.UpdateHoverNode = new TreeGraph.NodeNotificationDelegate(PrintNodeHoverCursor);
-                treeGraph1.NotifyNewRootNode = new TreeGraph.NodeNotificationDelegate(UpdateCurrentNodeRoot);
+                drawEngine.SetRootNodeOfControl(graphControl, scanEngine.Root);
 
                 if (scanEngine.Root != null)
                 {
                     comboBoxPath.Text = scanEngine.Root.Path;
                     numUpDownNbNivx.Value = scanEngine.Root.DepthMaxLevel;
                     numUpDownNbNivxAffich.Value = scanEngine.Root.DepthMaxLevel;
-                    treeGraph1.DrawOptions.ShownLevelsCount = scanEngine.Root.DepthMaxLevel;
+                    DrawOptions.ShownLevelsCount = scanEngine.Root.DepthMaxLevel;
                 }
-                treeGraph1.ForceRefresh();
+                RefreshGraphControl();
                 UpdateNodeHistory(scanEngine.Root);
                 PrintStatus(String.Format(resManager.GetString("GraphLoadedFromDate"), scanEngine.AnalyzeDate.ToString()));
             }
@@ -375,16 +377,29 @@ namespace HDGraph
 
         private void exportAsImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            saveFileDialog.Filter = "Portable Network Graphics (PNG)" +
-                                    " (*.png)|*.png|" +
-                                    resManager.GetString("AllFiles") +
-                                    "(*.*)|*.*";
-            if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+            try
             {
-                string fileName = saveFileDialog.FileName;
-                treeGraph1.ImageBuffer.Save(fileName);
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+                saveFileDialog.Filter = "Portable Network Graphics (PNG)" +
+                                        " (*.png)|*.png|" +
+                                        resManager.GetString("AllFiles") +
+                                        "(*.*)|*.*";
+                if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    string fileName = saveFileDialog.FileName;
+                    if (graphControl is TreeGraph)
+                        ((TreeGraph)graphControl).ImageBuffer.Save(fileName);
+                    else
+                        throw new NotImplementedException();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,
+                    HDGTools.resManager.GetString("Error"),
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Trace.TraceError(HDGTools.PrintError(ex));
             }
         }
 
@@ -681,7 +696,7 @@ namespace HDGraph
                 Application.DoEvents();
         }
 
-        
+
 
         /// <summary>
         /// Lance le scan et le graphiquage.
@@ -705,19 +720,17 @@ namespace HDGraph
             // // moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(WaitForm.ShowWaitForm); // OBSOLETE
 
             scanEngine.NotifyForNewInfo = new HDGraphScanEngineBase.PrintInfoDelegate(PrintStatus);
-            treeGraph1.ScanEngine = scanEngine;
+            drawEngine.SetRootNodeOfControl(graphControl, scanEngine.Root);
             if (scanEngine.WorkCanceled)
                 DrawOptions.DrawAction = DrawAction.PrintMessageWorkCanceledByUser;
             else
                 DrawOptions.DrawAction = DrawAction.DrawNode;
-            
+
             numUpDownNbNivxAffich.Value = nbNiveaux;
-            treeGraph1.DrawOptions.ShownLevelsCount = nbNiveaux;
-            treeGraph1.ForceRefresh();
+            DrawOptions.ShownLevelsCount = nbNiveaux;
+            RefreshGraphControl();
             UpdateNodeHistory(scanEngine.Root);
             //PrintStatus("Terminé !");
-            treeGraph1.UpdateHoverNode = new TreeGraph.NodeNotificationDelegate(PrintNodeHoverCursor);
-            treeGraph1.NotifyNewRootNode = new TreeGraph.NodeNotificationDelegate(UpdateCurrentNodeRoot);
             errorStatus1.Update(scanEngine.ErrorList);
             buttonScan.Enabled = true;
             TimeSpan executionTime = scanEngine.AnalyzeDate.Subtract(scanEngine.AnalyseStartDate);
@@ -728,7 +741,7 @@ namespace HDGraph
         /// Affiche les informations du répertoire "node" dans la barre de status.
         /// </summary>
         /// <param name="node"></param>
-        private void PrintNodeHoverCursor(IDirectoryNode node)
+        public void Notify4NewHoveredNode(IDirectoryNode node)
         {
             if (node == null)
             {
@@ -757,19 +770,6 @@ namespace HDGraph
                 else
                     labelFilesSize.Text = " - ";
                 groupBoxHoverInfo.Visible = true;
-            }
-        }
-
-        /// <summary>
-        /// Affiche les informations du répertoire "node" dans la barre de status.
-        /// </summary>
-        /// <param name="node"></param>
-        private void UpdateCurrentNodeRoot(IDirectoryNode node)
-        {
-            if (node != null)
-            {
-                comboBoxPath.Text = node.Path;
-                UpdateNodeHistory(node);
             }
         }
 
@@ -829,7 +829,7 @@ namespace HDGraph
                         && outputImgFilePath.Length > 0)
                     {
                         ImageGraphGeneratorBase generator = ImageGraphGeneratorFactory.CreateGenerator(this.DrawType, scanEngine.Root);
-                        DrawOptions outputDrawOptions = treeGraph1.DrawOptions.Clone();
+                        DrawOptions outputDrawOptions = DrawOptions.Clone();
                         if (OutputImgSize.HasValue)
                             outputDrawOptions.TargetSize = OutputImgSize.Value;
                         Bitmap bmp = generator.Draw(true, true, outputDrawOptions).Obj1;
@@ -871,12 +871,19 @@ namespace HDGraph
             if (currentNodeIndex < graphViewHistory.Count - 1)
             {
                 currentNodeIndex++;
-                treeGraph1.Root = graphViewHistory[currentNodeIndex];
-                if (treeGraph1.Root != null)
-                    comboBoxPath.Text = treeGraph1.Root.Path;
-                treeGraph1.ForceRefresh();
+                IDirectoryNode node = graphViewHistory[currentNodeIndex];
+                drawEngine.SetRootNodeOfControl(graphControl, node);
+                if (node != null)
+                    comboBoxPath.Text = node.Path;
+                RefreshGraphControl();
             }
             UpdateNavigateButtonsAvailability();
+        }
+
+        private void RefreshGraphControl()
+        {
+            if (graphControl is IManualRefreshControl)
+                ((IManualRefreshControl)graphControl).ForceRefresh();
         }
 
         private void toolStripButtonNavBack_Click(object sender, EventArgs e)
@@ -884,10 +891,11 @@ namespace HDGraph
             if (currentNodeIndex > 0)
             {
                 currentNodeIndex--;
-                treeGraph1.Root = graphViewHistory[currentNodeIndex];
-                if (treeGraph1.Root != null)
-                    comboBoxPath.Text = treeGraph1.Root.Path;
-                treeGraph1.ForceRefresh();
+                IDirectoryNode node = graphViewHistory[currentNodeIndex];
+                drawEngine.SetRootNodeOfControl(graphControl, node);
+                if (node != null)
+                    comboBoxPath.Text = node.Path;
+                RefreshGraphControl();
             }
             UpdateNavigateButtonsAvailability();
         }
@@ -915,7 +923,7 @@ namespace HDGraph
         private void comboBoxColorStyle_SelectedIndexChanged(object sender, EventArgs e)
         {
             ModeAffichageCouleurs modeCouleurs = (ModeAffichageCouleurs)comboBoxColorStyle.SelectedIndex;
-            treeGraph1.DrawOptions.ColorStyleChoice = modeCouleurs;
+            DrawOptions.ColorStyleChoice = modeCouleurs;
             PrintStatus(Resources.ApplicationMessages.GraphRefreshed);
         }
 
@@ -931,7 +939,7 @@ namespace HDGraph
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            HDGraph.Properties.Settings.Default.MyDrawOptions = treeGraph1.DrawOptions;
+            HDGraph.Properties.Settings.Default.MyDrawOptions = DrawOptions;
             HDGraph.Properties.Settings.Default.Save();
         }
 
@@ -951,7 +959,7 @@ namespace HDGraph
             if (scanEngine != null)
             {
                 scanEngine.ShowDiskFreeSpace = checkBoxShowFreeSpace.Checked;
-                treeGraph1.ForceRefresh();
+                RefreshGraphControl();
             }
         }
 
@@ -976,42 +984,48 @@ namespace HDGraph
 
         private void MainForm_ResizeBegin(object sender, EventArgs e)
         {
-            treeGraph1.Resizing = true;
+            if (graphControl is IManualRefreshControl)
+                ((IManualRefreshControl)graphControl).Resizing = true;
         }
 
         private void MainForm_ResizeEnd(object sender, EventArgs e)
         {
-            treeGraph1.Resizing = false;
-            treeGraph1.Refresh();
+            if (graphControl is IManualRefreshControl)
+                ((IManualRefreshControl)graphControl).Resizing = false;
+            RefreshGraphControl();
         }
 
 
         private void trackBarTextDensity_MouseDown(object sender, MouseEventArgs e)
         {
-            treeGraph1.TextChangeInProgress = true;
+            if (graphControl is IManualRefreshControl)
+                ((IManualRefreshControl)graphControl).TextChangeInProgress = true;
         }
 
         private void trackBarTextDensity_MouseUp(object sender, MouseEventArgs e)
         {
-            treeGraph1.TextChangeInProgress = false;
+            if (graphControl is IManualRefreshControl)
+                ((IManualRefreshControl)graphControl).TextChangeInProgress = false;
         }
 
         private void imageRotationTrackBar_MouseDown(object sender, MouseEventArgs e)
         {
-            treeGraph1.RotationInProgress = true;
+            if (graphControl is IManualRefreshControl)
+                ((IManualRefreshControl)graphControl).RotationInProgress = true;
         }
 
         private void imageRotationTrackBar_MouseUp(object sender, MouseEventArgs e)
         {
-            treeGraph1.RotationInProgress = false;
-            //treeGraph1.ForceRefresh();
+            if (graphControl is IManualRefreshControl)
+                ((IManualRefreshControl)graphControl).RotationInProgress = false;
         }
 
         private void radioButtonEngineCircular_CheckedChanged(object sender, EventArgs e)
         {
             this.DrawType = (radioButtonEngineCircular.Checked) ? DrawType.Circular : DrawType.Rectangular;
-            this.treeGraph1.DrawType = this.DrawType;
-            treeGraph1.ForceRefresh();
+            if (graphControl is TreeGraph)
+                ((TreeGraph)graphControl).DrawType = this.DrawType; // TODO : move that !
+            RefreshGraphControl();
         }
 
         private void buttonAdvanced_Click(object sender, EventArgs e)
@@ -1108,7 +1122,7 @@ namespace HDGraph
 
         private void buttonTestWpf_Click(object sender, EventArgs e)
         {
-            PlugIn.PlugInsManager.Test(this.scanEngine.Root, this.treeGraph1.DrawOptions);
+            PlugIn.PlugInsManager.TestFirstPlugin(this.scanEngine.Root, DrawOptions, this);
         }
 
         private void drawOptionsBindingSource_CurrentChanged(object sender, EventArgs e)
@@ -1116,5 +1130,38 @@ namespace HDGraph
 
         }
 
+
+        #region IActionExecutor Members
+
+        public void ShowContextMenu(NodeContextEventArgs arg)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ExecuteTreeFullRefresh(IDirectoryNode node)
+        {
+            scanEngine.RefreshTreeFromNode(node);
+        }
+
+        public void ExecuteTreeFillUpToLevel(IDirectoryNode node, int targetLevel)
+        {
+            scanEngine.FillUpTreeToLevel(node, targetLevel);
+        }
+
+
+        /// <summary>
+        /// Affiche les informations du répertoire "node" dans la barre de status.
+        /// </summary>
+        /// <param name="node"></param>
+        public void Notify4NewRootNode(IDirectoryNode node)
+        {
+            if (node != null)
+            {
+                comboBoxPath.Text = node.Path;
+                UpdateNodeHistory(node);
+            }
+        }
+
+        #endregion
     }
 }

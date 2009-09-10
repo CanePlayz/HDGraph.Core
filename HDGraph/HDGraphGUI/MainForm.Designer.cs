@@ -52,7 +52,6 @@ namespace HDGraph
             this.splitContainerGraphAndOptions = new System.Windows.Forms.SplitContainer();
             this.buttonTestWpf = new System.Windows.Forms.Button();
             this.linkLabelHelpGraph = new System.Windows.Forms.LinkLabel();
-            this.treeGraph1 = new HDGraph.TreeGraph();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioButtonEngineRec = new System.Windows.Forms.RadioButton();
             this.radioButtonEngineCircular = new System.Windows.Forms.RadioButton();
@@ -340,7 +339,6 @@ namespace HDGraph
             // 
             this.splitContainerGraphAndOptions.Panel1.Controls.Add(this.buttonTestWpf);
             this.splitContainerGraphAndOptions.Panel1.Controls.Add(this.linkLabelHelpGraph);
-            this.splitContainerGraphAndOptions.Panel1.Controls.Add(this.treeGraph1);
             resources.ApplyResources(this.splitContainerGraphAndOptions.Panel1, "splitContainerGraphAndOptions.Panel1");
             this.helpProvider1.SetShowHelp(this.splitContainerGraphAndOptions.Panel1, ((bool)(resources.GetObject("splitContainerGraphAndOptions.Panel1.ShowHelp"))));
             // 
@@ -368,24 +366,6 @@ namespace HDGraph
             this.helpProvider1.SetShowHelp(this.linkLabelHelpGraph, ((bool)(resources.GetObject("linkLabelHelpGraph.ShowHelp"))));
             this.linkLabelHelpGraph.TabStop = true;
             this.linkLabelHelpGraph.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelHelpGraph_LinkClicked);
-            // 
-            // treeGraph1
-            // 
-            this.treeGraph1.BackColor = System.Drawing.Color.White;
-            this.treeGraph1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            resources.ApplyResources(this.treeGraph1, "treeGraph1");
-            this.treeGraph1.DrawOptions = ((HDGraph.Interfaces.DrawEngines.DrawOptions)(resources.GetObject("treeGraph1.DrawOptions")));
-            this.treeGraph1.DrawType = HDGraph.DrawEngine.DrawType.Circular;
-            this.treeGraph1.ForceRefreshOnNextRepaint = false;
-            this.treeGraph1.MinimumSize = new System.Drawing.Size(50, 50);
-            this.treeGraph1.Name = "treeGraph1";
-            this.treeGraph1.NotifyNewRootNode = null;
-            this.treeGraph1.Resizing = false;
-            this.treeGraph1.Root = null;
-            this.treeGraph1.RotationInProgress = false;
-            this.helpProvider1.SetShowHelp(this.treeGraph1, ((bool)(resources.GetObject("treeGraph1.ShowHelp"))));
-            this.treeGraph1.TextChangeInProgress = false;
-            this.treeGraph1.UpdateHoverNode = null;
             // 
             // groupBox1
             // 
@@ -1242,7 +1222,6 @@ namespace HDGraph
         private System.Windows.Forms.ToolStripMenuItem arrangeIconsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
         private System.Windows.Forms.HelpProvider helpProvider1;
-        private HDGraph.TreeGraph treeGraph1;
         private System.Windows.Forms.NumericUpDown numUpDownNbNivxAffich;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
