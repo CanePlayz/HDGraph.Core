@@ -504,17 +504,8 @@ namespace HDGraph
 
         #region Méthodes diverses
 
-        /// <summary>
-        /// Affichage fenêtre "A propos".
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            (new AboutBox()).ShowDialog();
-        }
 
-        private void aboutToolStripMenuItem_Click_1(object sender, EventArgs e)
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             (new AboutBox()).ShowDialog();
         }
@@ -729,7 +720,6 @@ namespace HDGraph
             numUpDownNbNivxAffich.Value = nbNiveaux;
             DrawOptions.ShownLevelsCount = nbNiveaux;
             RefreshGraphControl();
-            UpdateNodeHistory(scanEngine.Root);
             //PrintStatus("Terminé !");
             errorStatus1.Update(scanEngine.ErrorList);
             buttonScan.Enabled = true;
@@ -779,14 +769,16 @@ namespace HDGraph
         /// <param name="node"></param>
         private void UpdateNodeHistory(IDirectoryNode node)
         {
-
-            if (currentNodeIndex < graphViewHistory.Count - 1)
+            if (!navigationMoveInProgress)
             {
-                graphViewHistory.RemoveRange(currentNodeIndex + 1, graphViewHistory.Count - 1 - currentNodeIndex);
-            }
+                if (currentNodeIndex < graphViewHistory.Count - 1)
+                {
+                    graphViewHistory.RemoveRange(currentNodeIndex + 1, graphViewHistory.Count - 1 - currentNodeIndex);
+                }
 
-            this.graphViewHistory.Add(node);
-            currentNodeIndex = graphViewHistory.Count - 1;
+                this.graphViewHistory.Add(node);
+                currentNodeIndex = graphViewHistory.Count - 1;
+            }
             UpdateNavigateButtonsAvailability();
         }
 
@@ -866,18 +858,21 @@ namespace HDGraph
             checkBoxAutoRecalc.Checked = HDGraph.Properties.Settings.Default.OptionAutoCompleteGraph;
         }
 
+        private bool navigationMoveInProgress;
+
         private void toolStripButtonNavForward_Click(object sender, EventArgs e)
         {
             if (currentNodeIndex < graphViewHistory.Count - 1)
             {
                 currentNodeIndex++;
+                navigationMoveInProgress = true;
                 IDirectoryNode node = graphViewHistory[currentNodeIndex];
                 drawEngine.SetRootNodeOfControl(graphControl, node);
                 if (node != null)
                     comboBoxPath.Text = node.Path;
                 RefreshGraphControl();
+                navigationMoveInProgress = false;
             }
-            UpdateNavigateButtonsAvailability();
         }
 
         private void RefreshGraphControl()
@@ -891,13 +886,14 @@ namespace HDGraph
             if (currentNodeIndex > 0)
             {
                 currentNodeIndex--;
+                navigationMoveInProgress = true;
                 IDirectoryNode node = graphViewHistory[currentNodeIndex];
                 drawEngine.SetRootNodeOfControl(graphControl, node);
                 if (node != null)
                     comboBoxPath.Text = node.Path;
                 RefreshGraphControl();
+                navigationMoveInProgress = false;
             }
-            UpdateNavigateButtonsAvailability();
         }
 
         private void linkLabelHelpGraph_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

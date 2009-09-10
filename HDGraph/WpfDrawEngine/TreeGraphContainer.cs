@@ -12,7 +12,12 @@ namespace HDGraph.WpfDrawEngine
 {
     public partial class TreeGraphContainer : UserControl
     {
-        public IActionExecutor ActionExecutor { get; set; }
+        public IActionExecutor ActionExecutor
+        {
+            get { return GetTreeGraph().ActionExecutor; }
+            set { GetTreeGraph().ActionExecutor = value; }
+        }
+
         private bool alreadyLoaded;
 
         public TreeGraphContainer()

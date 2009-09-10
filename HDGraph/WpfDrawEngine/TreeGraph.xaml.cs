@@ -28,6 +28,7 @@ namespace HDGraph.WpfDrawEngine
         }
 
         public event EventHandler<NodeContextEventArgs> ContextMenuRequired;
+        public IActionExecutor ActionExecutor { get; set; }
 
         public bool IsRotating
         {
@@ -53,7 +54,7 @@ namespace HDGraph.WpfDrawEngine
         {
             if (root == null || options == null)
                 return;
-            
+
             this.rootNode = root;
             canvas1.Children.Clear();
 
@@ -77,6 +78,7 @@ namespace HDGraph.WpfDrawEngine
                 return;
             }
             BuildTree(rootNode, 0, 0, 360);
+            ActionExecutor.Notify4NewRootNode(root);
         }
 
 
@@ -171,7 +173,7 @@ namespace HDGraph.WpfDrawEngine
         /// <param name="endAngle"></param>
         private void PaintUnknownPart(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
         {
-            Arc2 arc = new Arc2();
+            Arc arc = new Arc();
             arc.BeginEdit();
             arc.StartAngle = startAngle;
             arc.StopAngle = endAngle - startAngle;
@@ -194,7 +196,7 @@ namespace HDGraph.WpfDrawEngine
 
         private void PaintMultipleNodesPart(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
         {
-            Arc2 arc = new Arc2();
+            Arc arc = new Arc();
             arc.BeginEdit();
             arc.StartAngle = startAngle;
             arc.StopAngle = endAngle - startAngle;
@@ -224,7 +226,10 @@ namespace HDGraph.WpfDrawEngine
                 Ellipse e = new Ellipse()
                 {
                     Width = currentLevel * singleLevelHeight,
-                    Height = Width
+                    Height = Width,
+                    Stroke = Brushes.BlueViolet,
+                    StrokeThickness = 1,
+                    Fill = Brushes.Beige,
                 };
                 canvas1.Children.Add(e);
                 // TODO : print text.
@@ -244,11 +249,12 @@ namespace HDGraph.WpfDrawEngine
         /// <param name="nodeAngle"></param>
         private void BuildPartialPie(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
         {
-            Arc2 arc = BuildArc(node, currentLevel, startAngle, endAngle);
+            Arc arc = BuildArc(node, currentLevel, startAngle, endAngle);
             arc.DataContext = node;
             canvas1.Children.Add(arc);
             arc.MouseEnter += new MouseEventHandler(arc_MouseEnter);
             arc.MouseLeave += new MouseEventHandler(arc_MouseLeave);
+            arc.MouseDoubleClick += new MouseButtonEventHandler(arc_MouseDoubleClick);
             ArcToolTip arcTooltip = new ArcToolTip()
             {
                 DataContext = node
@@ -261,17 +267,17 @@ namespace HDGraph.WpfDrawEngine
                 Source = rotateTransform,
                 Path = new PropertyPath(RotateTransform.AngleProperty),
             };
-            BindingOperations.SetBinding(arc, Arc2.TextRotationProperty, b);
+            BindingOperations.SetBinding(arc, Arc.TextRotationProperty, b);
 
             b = new Binding()
             {
                 Source = sliderTextSize,
                 Path = new PropertyPath(Slider.ValueProperty),
-                Mode = BindingMode.OneWay, 
+                Mode = BindingMode.OneWay,
             };
-            BindingOperations.SetBinding(arc, Arc2.FontSizeProperty, b);
+            BindingOperations.SetBinding(arc, Arc.FontSizeProperty, b);
 
-            
+
 
 
 
@@ -318,6 +324,20 @@ namespace HDGraph.WpfDrawEngine
             }
         }
 
+        void arc_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                // Center graph on the clicked node.
+                IDirectoryNode node = ((Arc)sender).Node;
+                if (node != null)
+                {
+                    ActionExecutor.ExecuteTreeFillUpToLevel(node, currentWorkingOptions.ShownLevelsCount);
+                    SetRoot(node, currentWorkingOptions);
+                }
+            }
+        }
+
         private DivideBy2NumericConverter divideBy2Converter = new DivideBy2NumericConverter(true);
 
         private const int DEFAULT_Z_INDEX_STANDARD_ARC = 1;
@@ -326,28 +346,30 @@ namespace HDGraph.WpfDrawEngine
 
         void arc_MouseLeave(object sender, MouseEventArgs e)
         {
-            Arc2 arc = (Arc2)sender;
+            Arc arc = (Arc)sender;
             if (arc != null)
             {
                 arc.path1.StrokeThickness = 1;
                 Canvas.SetZIndex(arc, DEFAULT_Z_INDEX_STANDARD_ARC);
+                ActionExecutor.Notify4NewHoveredNode(null);
             }
         }
 
         void arc_MouseEnter(object sender, MouseEventArgs e)
         {
-            Arc2 arc = (Arc2)sender;
+            Arc arc = (Arc)sender;
             if (arc != null)
             {
                 arc.path1.StrokeThickness = 3;
                 Canvas.SetZIndex(arc, DEFAULT_Z_INDEX_STANDARD_ARC_OVER);
+                ActionExecutor.Notify4NewHoveredNode(arc.Node);
             }
         }
 
 
-        private Arc2 BuildArc(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
+        private Arc BuildArc(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
         {
-            Arc2 arc = new Arc2();
+            Arc arc = new Arc();
             arc.BeginEdit();
             arc.StartAngle = startAngle;
             arc.StopAngle = endAngle - startAngle;
@@ -490,7 +512,7 @@ namespace HDGraph.WpfDrawEngine
                 IsRotating = true;
                 if (!canvas1.CaptureMouse())
                     initialCursorLocation = null;
-                
+
             }
         }
 
@@ -528,8 +550,8 @@ namespace HDGraph.WpfDrawEngine
             if (ContextMenuRequired != null)
             {
                 IDirectoryNode selectedNode = null; // TODO
-                ContextMenuRequired(sender, new NodeContextEventArgs() 
-                                            { 
+                ContextMenuRequired(sender, new NodeContextEventArgs()
+                                            {
                                                 Position = new System.Drawing.PointF(Convert.ToSingle(e.CursorLeft), Convert.ToSingle(e.CursorTop)),
                                                 Node = selectedNode,
                                             }

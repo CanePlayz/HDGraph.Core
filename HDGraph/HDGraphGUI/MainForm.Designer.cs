@@ -56,9 +56,9 @@ namespace HDGraph
             this.radioButtonEngineRec = new System.Windows.Forms.RadioButton();
             this.radioButtonEngineCircular = new System.Windows.Forms.RadioButton();
             this.checkBoxShowTooltip = new System.Windows.Forms.CheckBox();
+            this.drawOptionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.checkBoxShowFreeSpace = new System.Windows.Forms.CheckBox();
             this.checkBoxPrintSizes = new System.Windows.Forms.CheckBox();
-            this.drawOptionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.trackBarTextDensity = new System.Windows.Forms.TrackBar();
             this.numUpDownNbNivxAffich = new System.Windows.Forms.NumericUpDown();
             this.trackBarZoom = new System.Windows.Forms.TrackBar();
@@ -197,8 +197,8 @@ namespace HDGraph
             // 
             // toolStripContainer2.TopToolStripPanel
             // 
-            this.toolStripContainer2.TopToolStripPanel.Controls.Add(this.toolStripShortcuts);
             this.toolStripContainer2.TopToolStripPanel.Controls.Add(this.toolBarToolStrip);
+            this.toolStripContainer2.TopToolStripPanel.Controls.Add(this.toolStripShortcuts);
             this.helpProvider1.SetShowHelp(this.toolStripContainer2.TopToolStripPanel, ((bool)(resources.GetObject("toolStripContainer2.TopToolStripPanel.ShowHelp"))));
             // 
             // toolStripShortcuts
@@ -419,6 +419,12 @@ namespace HDGraph
             this.helpProvider1.SetShowHelp(this.checkBoxShowTooltip, ((bool)(resources.GetObject("checkBoxShowTooltip.ShowHelp"))));
             this.checkBoxShowTooltip.UseVisualStyleBackColor = true;
             // 
+            // drawOptionsBindingSource
+            // 
+            this.drawOptionsBindingSource.AllowNew = false;
+            this.drawOptionsBindingSource.DataSource = typeof(HDGraph.Interfaces.DrawEngines.DrawOptions);
+            this.drawOptionsBindingSource.CurrentChanged += new System.EventHandler(this.drawOptionsBindingSource_CurrentChanged);
+            // 
             // checkBoxShowFreeSpace
             // 
             resources.ApplyResources(this.checkBoxShowFreeSpace, "checkBoxShowFreeSpace");
@@ -440,12 +446,6 @@ namespace HDGraph
             this.checkBoxPrintSizes.Name = "checkBoxPrintSizes";
             this.helpProvider1.SetShowHelp(this.checkBoxPrintSizes, ((bool)(resources.GetObject("checkBoxPrintSizes.ShowHelp"))));
             this.checkBoxPrintSizes.UseVisualStyleBackColor = true;
-            // 
-            // drawOptionsBindingSource
-            // 
-            this.drawOptionsBindingSource.AllowNew = false;
-            this.drawOptionsBindingSource.DataSource = typeof(HDGraph.Interfaces.DrawEngines.DrawOptions);
-            this.drawOptionsBindingSource.CurrentChanged += new System.EventHandler(this.drawOptionsBindingSource_CurrentChanged);
             // 
             // trackBarTextDensity
             // 
@@ -1031,7 +1031,7 @@ namespace HDGraph
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click_1);
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // panel2
             // 

@@ -11,6 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HDGraph.Interfaces.ScanEngines;
+using System.Diagnostics;
 
 namespace HDGraph.WpfDrawEngine
 {
@@ -19,7 +20,6 @@ namespace HDGraph.WpfDrawEngine
     /// </summary>
     public partial class Arc : UserControl
     {
-
         public Arc()
         {
             InitializeComponent();
@@ -36,7 +36,36 @@ namespace HDGraph.WpfDrawEngine
 
 
 
+
         #region Dependency Properties
+
+
+
+
+        public double InternalTextSize
+        {
+            get { return (double)GetValue(InternalTextSizeProperty); }
+            set { SetValue(InternalTextSizeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for InternalTextSize.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty InternalTextSizeProperty =
+            DependencyProperty.Register("InternalTextSize", typeof(double), typeof(Arc), new UIPropertyMetadata((double)0));
+
+
+
+
+        public string Caption
+        {
+            get { return (string)GetValue(CaptionProperty); }
+            set { SetValue(CaptionProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Caption.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CaptionProperty =
+            DependencyProperty.Register("Caption", typeof(string), typeof(Arc), new UIPropertyMetadata(String.Empty));
+
+
 
         public float StartAngle
         {
@@ -47,6 +76,18 @@ namespace HDGraph.WpfDrawEngine
         // Using a DependencyProperty as the backing store for StartAngle.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty StartAngleProperty =
             DependencyProperty.Register("StartAngle", typeof(float), typeof(Arc), new UIPropertyMetadata(0f, new PropertyChangedCallback(OnDesignPropertyChanged)));
+
+
+
+        private float MiddleAngle
+        {
+            get { return (float)GetValue(MiddleAngleProperty); }
+            set { SetValue(MiddleAngleProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MiddleAngle.  This enables animation, styling, binding, etc...
+        private static readonly DependencyProperty MiddleAngleProperty =
+            DependencyProperty.Register("MiddleAngle", typeof(float), typeof(Arc), new UIPropertyMetadata(0f));
 
 
         public float StopAngle
@@ -94,6 +135,19 @@ namespace HDGraph.WpfDrawEngine
             DependencyProperty.Register("Node", typeof(IDirectoryNode), typeof(Arc), new UIPropertyMetadata(null, new PropertyChangedCallback(OnNodePropertyChanged)));
 
 
+
+        public float TextRotation
+        {
+            get { return (float)GetValue(TextRotationProperty); }
+            set { SetValue(TextRotationProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for TextRotation.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty TextRotationProperty =
+            DependencyProperty.Register("TextRotation", typeof(float), typeof(Arc), new UIPropertyMetadata(0f));
+
+
+
         #endregion
 
         public static void OnNodePropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs arg)
@@ -123,9 +177,8 @@ namespace HDGraph.WpfDrawEngine
 
         private void UpdateDesign()
         {
+            MiddleAngle = StartAngle + StopAngle / 2;
             float newRadius = this.LargeRadius;
-            this.line1.Point = new Point(newRadius, 0);
-            this.arc1.Size = new Size(newRadius, newRadius);
             double stopAngleInRadian = WpfUtils.GetRadianFromDegree(this.StopAngle);
             double stopAngleCos = Math.Cos(stopAngleInRadian);
             double stopAngleSin = Math.Sin(stopAngleInRadian);
@@ -133,14 +186,42 @@ namespace HDGraph.WpfDrawEngine
             double yLarge = stopAngleSin * this.LargeRadius;
             double xSmall = stopAngleCos * this.SmallRadius;
             double ySmall = stopAngleSin * this.SmallRadius;
-            this.arc1.Point = new Point(xLarge, yLarge);
-            this.line2.Point = new Point(xSmall, ySmall);
-            this.arc1.IsLargeArc = (this.StopAngle > 180);
-            this.pathFigure1.StartPoint = new Point(this.SmallRadius, 0);
-            this.arc2.Point = this.pathFigure1.StartPoint;
-            this.arc2.Size = new Size(this.SmallRadius, this.SmallRadius);
-            this.arc2.IsLargeArc = this.arc1.IsLargeArc;
-            this.rotateTransform1.Angle = this.StartAngle;
+
+            // Create a StreamGeometry to use to specify myPath.
+            StreamGeometry geometry = new StreamGeometry();
+            geometry.FillRule = FillRule.EvenOdd;
+
+
+
+            // Open a StreamGeometryContext that can be used to describe this StreamGeometry 
+            // object's contents.
+            using (StreamGeometryContext ctx = geometry.Open())
+            {
+                ctx.BeginFigure(new Point(newRadius, 0), true, true);
+                ctx.ArcTo(new Point(xLarge, yLarge),
+                          new Size(newRadius, newRadius),
+                          StopAngle,
+                          (this.StopAngle > 180),
+                          SweepDirection.Clockwise,
+                          true,
+                          false);
+                ctx.LineTo(new Point(xSmall, ySmall), true, false);
+                ctx.ArcTo(new Point(this.SmallRadius, 0),
+                          new Size(this.SmallRadius, this.SmallRadius),
+                          StopAngle,
+                          (this.StopAngle > 180),
+                          SweepDirection.Counterclockwise,
+                          true,
+                          false);
+                //this.rotateTransform1.Angle = this.StartAngle;
+
+            }
+            // Freeze the geometry (make it unmodifiable)
+            // for additional performance benefits.
+            geometry.Freeze();
+
+            // Specify the shape (triangle) of the Path using the StreamGeometry.
+            path1.Data = geometry;
         }
 
         public static void OnDesignPropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs arg)

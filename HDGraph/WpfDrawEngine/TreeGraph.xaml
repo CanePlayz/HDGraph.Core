@@ -85,8 +85,8 @@
             <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
         <Viewbox Grid.Row="1" x:Name="viewBoxTreegraph">
-            <Canvas x:Name="canvas1" Width="500" Height="500" MouseDown="canvas1_MouseDown" MouseUp="canvas1_MouseUp" MouseMove="canvas1_MouseMove">
-                <Label x:Name="labelInfo" Visibility="Hidden">Nothing to draw.</Label>
+            <Canvas x:Name="canvas1" Width="500" Height="500"
+                    MouseDown="canvas1_MouseDown" MouseUp="canvas1_MouseUp" MouseMove="canvas1_MouseMove">
                 <Canvas.RenderTransform>
                     <TransformGroup>
                         <RotateTransform x:Name="rotateTransform"></RotateTransform>
@@ -110,10 +110,16 @@
                 </Canvas.RenderTransform>
             </Canvas>
         </Viewbox>
-        <ContentControl Style="{StaticResource RotateArrowStyle}" Content="{StaticResource RotateArrow}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top"></ContentControl>
+        <ContentControl Style="{StaticResource RotateArrowStyle}" 
+                        Content="{StaticResource RotateArrow}" 
+                        Grid.Row="1" HorizontalAlignment="Left" 
+                        VerticalAlignment="Top"
+                        Opacity="0"
+                        ></ContentControl>
         <!--<ContentControl Style="{StaticResource RotateArrowStyle}" Content="{StaticResource RotateArrow}" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top"></ContentControl>
         <ContentControl Style="{StaticResource RotateArrowStyle}" Content="{StaticResource RotateArrow}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom"></ContentControl>
         <ContentControl Style="{StaticResource RotateArrowStyle}" Content="{StaticResource RotateArrow}" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"></ContentControl>-->
+        <Label x:Name="labelInfo" Grid.Row="1" Visibility="Hidden">Nothing to draw.</Label>
         <Label Grid.Row="2" x:Name="labelStatus" >
         </Label>
         <Expander Grid.Row="0" Header="View options" Name="expander1" Background="#55BAC6FF">
