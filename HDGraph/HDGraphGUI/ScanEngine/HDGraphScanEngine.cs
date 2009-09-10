@@ -98,7 +98,15 @@ namespace HDGraph
         public bool ShowDiskFreeSpace
         {
             get { return showDiskFreeSpace; }
-            set { showDiskFreeSpace = value; }
+            set
+            {
+                if (showDiskFreeSpace != value)
+                {
+                    showDiskFreeSpace = value;
+                    ApplyFreeSpaceOption(this.root);
+                }
+
+            }
         }
 
         public List<ScanError> ErrorList { get; set; }
@@ -405,7 +413,7 @@ namespace HDGraph
         /// Show or hide the free space on the root folder of the given node.
         /// </summary>
         /// <param name="directoryNode"></param>
-        public void ApplyFreeSpaceOption(IDirectoryNode directoryNode)
+        private void ApplyFreeSpaceOption(IDirectoryNode directoryNode)
         {
             if (directoryNode == null)
                 return;

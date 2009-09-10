@@ -147,6 +147,23 @@ namespace HDGraph.Interfaces.DrawEngines
             }
         }
 
+        private bool showTooltip = true;
+        /// <summary>
+        /// Activate or deactivate tooltips on the graph.
+        /// </summary>
+        public bool ShowTooltip
+        {
+            get { return showTooltip; }
+            set
+            {
+                if (showTooltip != value)
+                {
+                    showTooltip = value;
+                    RaisePropertyChanged("ShowTooltip");
+                }
+            }
+        }
+
         public virtual DrawOptions Clone()
         {
             return (DrawOptions)this.MemberwiseClone();

@@ -931,11 +931,11 @@ namespace HDGraph
 
         private void checkBoxShowFreeSpace_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBoxShowFreeSpace.Checked)
-                treeGraph1.ShowFreeSpace();
-            else
-                treeGraph1.HideFreeSpace();
-            PrintStatus(Resources.ApplicationMessages.GraphRefreshed);
+            if (scanEngine != null)
+            {
+                scanEngine.ShowDiskFreeSpace = checkBoxShowFreeSpace.Checked;
+                treeGraph1.ForceRefresh();
+            }
         }
 
         private bool currentlyScrollingZoom;
@@ -966,11 +966,6 @@ namespace HDGraph
         {
             treeGraph1.Resizing = false;
             treeGraph1.Refresh();
-        }
-
-        private void checkBoxShowTooltip_CheckedChanged(object sender, EventArgs e)
-        {
-            treeGraph1.ShowTooltip = checkBoxShowTooltip.Checked;
         }
 
 

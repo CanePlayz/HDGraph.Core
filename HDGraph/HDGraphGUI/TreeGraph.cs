@@ -150,6 +150,11 @@ namespace HDGraph
 
         void DrawOptions_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
+            if (e.PropertyName == "ShowTooltip")
+            {
+                // Nothing to do.
+                return;
+            }
             if (e.PropertyName == "ShowSize")
             {
                 TextChangeInProgress = true;
@@ -444,23 +449,13 @@ namespace HDGraph
 
         private ToolTip toolTip;
 
-        private bool showTooltip = true;
-        /// <summary>
-        /// Hide or show a tooltip on directories.
-        /// </summary>
-        public bool ShowTooltip
-        {
-            get { return showTooltip; }
-            set { showTooltip = value; }
-        }
-
         /// <summary>
         /// Ensure the correct tooltip is affected to the current userControl, according to the given node.
         /// </summary>
         /// <param name="foundNode"></param>
         private void UpdateOrCreateToolTip(IDirectoryNode foundNode)
         {
-            if (!ShowTooltip
+            if (!DrawOptions.ShowTooltip
                 || this.calculationState == CalculationState.InProgress)
                 return;
             if (toolTip != null
@@ -719,26 +714,6 @@ namespace HDGraph
             ContextMenuStrip.Show();
         }
 
-
-        internal void ShowFreeSpace()
-        {
-            if (scanEngine != null)
-            {
-                scanEngine.ShowDiskFreeSpace = true;
-                scanEngine.ApplyFreeSpaceOption(this.root);
-            }
-            this.ForceRefresh();
-        }
-
-        internal void HideFreeSpace()
-        {
-            if (scanEngine != null)
-            {
-                scanEngine.ShowDiskFreeSpace = false;
-                scanEngine.ApplyFreeSpaceOption(this.root);
-            }
-            this.ForceRefresh();
-        }
 
         private void detailsViewToolStripMenuItem_Click(object sender, EventArgs e)
         {
