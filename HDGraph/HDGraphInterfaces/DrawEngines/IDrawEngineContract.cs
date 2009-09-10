@@ -24,23 +24,4 @@ namespace HDGraph.Interfaces.DrawEngines
 
         IBitmapTypeEngine GetNewBitmapTypeEngine();
     }
-
-    public interface IControlTypeEngine
-    {
-        System.Windows.Forms.Control GenerateControlFromNode(IDirectoryNode node, DrawOptions options);
-
-        event EventHandler<NodeContextEventArgs> ContextMenuRequired;
-    }
-
-    public interface IBitmapTypeEngine
-    {
-        Object GenerateBitmapFromNode(IDirectoryNode node);
-    }
-
-    public class NodeContextEventArgs : EventArgs
-    {
-        public IDirectoryNode Node { get; set; }
-
-        public PointF Position { get; set; }
-    }
 }

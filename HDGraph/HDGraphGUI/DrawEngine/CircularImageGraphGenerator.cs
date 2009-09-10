@@ -27,7 +27,7 @@ namespace HDGraph.DrawEngine
         /// </summary>
         private bool printDirNames = false;
 
-        private HDGraphScanEngineBase moteur;
+        private HDGraphScanEngineBase scanEngine;
         private DrawOptions currentWorkingOptions;
         private DrawOptions latestUsedOptions;
         private ColorManager colorManager;
@@ -35,7 +35,7 @@ namespace HDGraph.DrawEngine
 
         public CircularImageGraphGenerator(IDirectoryNode rootNode, HDGraphScanEngineBase moteur)
         {
-            this.moteur = moteur;
+            this.scanEngine = moteur;
             this.colorManager = new ColorManager();
             this.rootNode = rootNode;
         }
@@ -106,7 +106,7 @@ namespace HDGraph.DrawEngine
         private void PaintSpecialCase()
         {
             string text;
-            if (moteur != null && moteur.WorkCanceled)
+            if (scanEngine != null && scanEngine.WorkCanceled)
                 text = Resources.ApplicationMessages.UserCanceledAnalysis;
             else if (rootNode != null && rootNode.TotalSize == 0)
                 text = Resources.ApplicationMessages.FolderIsEmpty;

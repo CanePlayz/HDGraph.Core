@@ -32,7 +32,7 @@ namespace HDGraph.WpfDrawEngine
 
         public IBitmapTypeEngine GetNewBitmapTypeEngine()
         {
-            return null;
+            throw new InvalidOperationException();
         }
 
         #endregion

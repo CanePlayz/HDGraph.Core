@@ -17,6 +17,26 @@ namespace HDGraph.Interfaces.DrawEngines
         ImprovedLinear
     }
 
+    public enum DrawAction
+    {
+        /// <summary>
+        /// Just say "welcome" to the user. Don't draw any graph (current node is invalid).
+        /// </summary>
+        PrintWelcomeMessage,
+        /// <summary>
+        /// Draw a graph with the given nodes.
+        /// </summary>
+        DrawNode,
+        /// <summary>
+        /// Just inform the user that he canceled the scan. Don't draw anything else (current node is invalid).
+        /// </summary>
+        PrintMessageWorkCanceledByUser,
+        /// <summary>
+        /// Just inform the user that the node is empty. Don't draw anything else (current node is invalid).
+        /// </summary>
+        PrintMessageNodeIsEmpty,
+    }
+
     [Serializable]
     public class DrawOptions : INotifyPropertyChanged
     {
@@ -162,6 +182,20 @@ namespace HDGraph.Interfaces.DrawEngines
                     RaisePropertyChanged("ShowTooltip");
                 }
             }
+        }
+
+        private DrawAction drawAction = DrawAction.PrintWelcomeMessage;
+        [XmlIgnore]
+        public DrawAction DrawAction {
+            get { return drawAction; }
+            set
+            {
+                if (drawAction != value)
+                {
+                    drawAction = value;
+                    RaisePropertyChanged("DrawAction");
+                }
+            } 
         }
 
         public virtual DrawOptions Clone()
