@@ -35,24 +35,12 @@
         </Style>
     </UserControl.Resources>
 
-    <UserControl.ContextMenu>
-        <ContextMenu>
-            <GroupBox Header="Details">
-                <StackPanel Name="stackPanel1"  >
-                    <TextBlock>
-                    <Label FontWeight="Bold"  Content="{Binding Name}" />
-                <Hyperlink>
-                    <Label Content="{Binding Path}"></Label>
-                </Hyperlink>
-                    </TextBlock>
-
-                </StackPanel>
-            </GroupBox>
-        </ContextMenu>
-    </UserControl.ContextMenu>
     <!--diag:PresentationTraceSources.TraceLevel="High"-->
     <Canvas>
-        <TextBlock Text="{Binding Path=Name}" x:Name="TextBlockArcName" FontSize="{Binding ElementName=arcUC, Path=FontSize}">
+        <TextBlock Text="{Binding Path=Name}" 
+                   x:Name="TextBlockArcName" 
+                   FontSize="{Binding ElementName=arcUC, Path=FontSize}"
+                   FontFamily="Corbel">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <TranslateTransform X="{Binding Path=ActualWidth, ElementName=TextBlockArcName, Converter={StaticResource myDivideBy2NumericConverter}, ConverterParameter=-1}"/>

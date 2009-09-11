@@ -7,11 +7,13 @@ namespace HDGraph.Interfaces.DrawEngines
 {
     public interface IActionExecutor
     {
-        void ShowContextMenu(NodeContextEventArgs arg);
-
         void ExecuteTreeFullRefresh(IDirectoryNode node);
 
         void ExecuteTreeFillUpToLevel(IDirectoryNode node, int targetLevel);
+
+        void NavigateForward();
+
+        void NavigateBackward();
 
         /// <summary>
         /// Notify the main windows that the cursor's position has changed and a new new node is hovered.

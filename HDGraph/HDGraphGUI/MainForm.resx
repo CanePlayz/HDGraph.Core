@@ -141,7 +141,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="toolStripContainer2.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>841, 1</value>
+    <value>841, 0</value>
   </data>
   <data name="&gt;&gt;toolStripContainer2.ContentPanel.Name" xml:space="preserve">
     <value>toolStripContainer2.ContentPanel</value>
@@ -387,7 +387,7 @@
     <value>Help</value>
   </data>
   <data name="toolBarToolStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 0</value>
+    <value>3, 0</value>
   </data>
   <data name="toolBarToolStrip.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -414,7 +414,7 @@
     <value>0</value>
   </data>
   <metadata name="toolStripShortcuts.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>3, 25</value>
+    <value>3, 0</value>
   </metadata>
   <data name="toolStripShortcuts.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
@@ -468,7 +468,7 @@
     <value>C:</value>
   </data>
   <data name="toolStripShortcuts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
+    <value>3, 25</value>
   </data>
   <data name="toolStripShortcuts.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -564,7 +564,7 @@
     <value>NoControl</value>
   </data>
   <data name="linkLabelHelpGraph.Location" type="System.Drawing.Point, System.Drawing">
-    <value>451, 603</value>
+    <value>445, 597</value>
   </data>
   <data name="linkLabelHelpGraph.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>

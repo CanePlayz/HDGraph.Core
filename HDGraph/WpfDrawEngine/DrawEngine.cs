@@ -19,14 +19,6 @@ namespace HDGraph.WpfDrawEngine
             return container;
         }
 
-        void container_ContextMenuRequired(object sender, NodeContextEventArgs e)
-        {
-            if (ContextMenuRequired != null)
-                ContextMenuRequired(sender, e);
-        }
-
-        public event EventHandler<NodeContextEventArgs> ContextMenuRequired;
-
         public IDirectoryNode GetRootNodeOfControl(System.Windows.Forms.Control control)
         {
             if (control == null

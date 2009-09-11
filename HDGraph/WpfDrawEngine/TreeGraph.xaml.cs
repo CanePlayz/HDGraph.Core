@@ -25,6 +25,16 @@ namespace HDGraph.WpfDrawEngine
         {
             InitializeComponent();
             labelStatus.Content = "Acceleration : " + WpfUtils.GetAccelerationType().ToString();
+            CommandManager.RegisterClassCommandBinding(
+                typeof(TreeGraph),
+                new CommandBinding(
+                    NavigationCommands.BrowseBack,
+                    BrowseBackCommand_Executed));
+            CommandManager.RegisterClassCommandBinding(
+                typeof(TreeGraph),
+                new CommandBinding(
+                    NavigationCommands.BrowseForward,
+                    BrowseForwardCommand_Executed));
         }
 
         public IActionExecutor ActionExecutor { get; set; }
@@ -80,6 +90,16 @@ namespace HDGraph.WpfDrawEngine
             ActionExecutor.Notify4NewRootNode(root);
         }
 
+
+        private void BrowseBackCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            ActionExecutor.NavigateBackward();
+        }
+
+        private void BrowseForwardCommand_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            ActionExecutor.NavigateForward();
+        }
 
         /// <summary>
         /// Affiche un message spécifique au lieu du graph.
@@ -349,6 +369,7 @@ namespace HDGraph.WpfDrawEngine
         {
             Arc arc = new Arc();
             arc.ContextMenuOpening += new ContextMenuEventHandler(arc_ContextMenuOpening);
+            arc.ContextMenu = (ContextMenu) FindResource("essai");
             arc.BeginEdit();
             arc.StartAngle = startAngle;
             arc.StopAngle = endAngle - startAngle;
@@ -361,19 +382,27 @@ namespace HDGraph.WpfDrawEngine
 
         void arc_ContextMenuOpening(object sender, ContextMenuEventArgs e)
         {
-            Arc arc = sender as Arc;
-            if (arc == null)
-                return;
-            IDirectoryNode selectedNode = arc.Node;
-            e.Handled = true;
-            Point p = arc.PointToScreen(new System.Windows.Point(e.CursorLeft, e.CursorTop));
-            ActionExecutor.ShowContextMenu(new NodeContextEventArgs()
-                {
-                    Position = new System.Drawing.PointF(Convert.ToSingle(p.X), Convert.ToSingle(p.Y)),
-                    Node = selectedNode,
-                }
-            );
+            // TODO
+            //Arc arc = sender as Arc;
+            //if (arc == null)
+            //    return;
+            //IDirectoryNode selectedNode = arc.Node;
+            //e.Handled = true;
+            //Point p = arc.PointToScreen(new System.Windows.Point(e.CursorLeft, e.CursorTop));
+            //ActionExecutor.ShowContextMenu(new NodeContextEventArgs()
+            //    {
+            //        Position = new System.Drawing.PointF(Convert.ToSingle(p.X), Convert.ToSingle(p.Y)),
+            //        Node = selectedNode,
+            //    }
+            //);
         }
+
+
+        private void contextMenu1_Opened(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
 
         //private Color myTransparentColor = Color.Black;
 
@@ -548,5 +577,6 @@ namespace HDGraph.WpfDrawEngine
         {
 
         }
+
     }
 }

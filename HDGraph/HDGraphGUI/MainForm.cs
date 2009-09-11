@@ -862,17 +862,7 @@ namespace HDGraph
 
         private void toolStripButtonNavForward_Click(object sender, EventArgs e)
         {
-            if (currentNodeIndex < graphViewHistory.Count - 1)
-            {
-                currentNodeIndex++;
-                navigationMoveInProgress = true;
-                IDirectoryNode node = graphViewHistory[currentNodeIndex];
-                drawEngine.SetRootNodeOfControl(graphControl, node);
-                if (node != null)
-                    comboBoxPath.Text = node.Path;
-                RefreshGraphControl();
-                navigationMoveInProgress = false;
-            }
+            NavigateForward();            
         }
 
         private void RefreshGraphControl()
@@ -883,17 +873,7 @@ namespace HDGraph
 
         private void toolStripButtonNavBack_Click(object sender, EventArgs e)
         {
-            if (currentNodeIndex > 0)
-            {
-                currentNodeIndex--;
-                navigationMoveInProgress = true;
-                IDirectoryNode node = graphViewHistory[currentNodeIndex];
-                drawEngine.SetRootNodeOfControl(graphControl, node);
-                if (node != null)
-                    comboBoxPath.Text = node.Path;
-                RefreshGraphControl();
-                navigationMoveInProgress = false;
-            }
+            NavigateBackward();            
         }
 
         private void linkLabelHelpGraph_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -1129,10 +1109,6 @@ namespace HDGraph
 
         #region IActionExecutor Members
 
-        public void ShowContextMenu(NodeContextEventArgs arg)
-        {
-            throw new NotImplementedException();
-        }
 
         public void ExecuteTreeFullRefresh(IDirectoryNode node)
         {
@@ -1155,6 +1131,36 @@ namespace HDGraph
             {
                 comboBoxPath.Text = node.Path;
                 UpdateNodeHistory(node);
+            }
+        }
+
+        public void NavigateForward()
+        {
+            if (currentNodeIndex < graphViewHistory.Count - 1)
+            {
+                currentNodeIndex++;
+                navigationMoveInProgress = true;
+                IDirectoryNode node = graphViewHistory[currentNodeIndex];
+                drawEngine.SetRootNodeOfControl(graphControl, node);
+                if (node != null)
+                    comboBoxPath.Text = node.Path;
+                RefreshGraphControl();
+                navigationMoveInProgress = false;
+            }
+        }
+
+        public void NavigateBackward()
+        {
+            if (currentNodeIndex > 0)
+            {
+                currentNodeIndex--;
+                navigationMoveInProgress = true;
+                IDirectoryNode node = graphViewHistory[currentNodeIndex];
+                drawEngine.SetRootNodeOfControl(graphControl, node);
+                if (node != null)
+                    comboBoxPath.Text = node.Path;
+                RefreshGraphControl();
+                navigationMoveInProgress = false;
             }
         }
 

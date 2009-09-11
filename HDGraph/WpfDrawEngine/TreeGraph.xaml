@@ -76,6 +76,20 @@
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
+            <ContextMenu x:Key="essai" HasDropShadow="True" Opacity="0.9" Opened="contextMenu1_Opened">
+                <TextBlock Text="{Binding Path=Name}" FontSize="16" FontWeight="Bold" ></TextBlock>
+                <Separator/>
+                <MenuItem Header="Show details"/>
+                <MenuItem Header="Open in external window"/>
+                <Separator/>
+                <MenuItem Header="Refresh this directory"/>
+                <MenuItem Header="Center graph on this directory"/>
+                <Separator/>
+                <MenuItem Header="Delete this directory and all subdirectories">
+                    <MenuItem Header="Delete permanently"/>
+                </MenuItem>
+            </ContextMenu>
+
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid Margin="0,0,0,0" x:Name="grid1">

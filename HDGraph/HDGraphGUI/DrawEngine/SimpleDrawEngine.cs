@@ -10,8 +10,6 @@ namespace HDGraph.DrawEngine
     {
         #region IDrawEngine Members
 
-        public event EventHandler<NodeContextEventArgs> ContextMenuRequired;
-
         public Control GenerateControlFromNode(HDGraph.Interfaces.ScanEngines.IDirectoryNode node, DrawOptions options, IActionExecutor actionExecutor)
         {
             // 
