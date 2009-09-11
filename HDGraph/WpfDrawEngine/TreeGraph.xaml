@@ -80,11 +80,10 @@
     </UserControl.Resources>
     <Grid Margin="0,0,0,0" x:Name="grid1">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
-        <Viewbox Grid.Row="1" x:Name="viewBoxTreegraph">
+        <Viewbox Grid.Row="0" x:Name="viewBoxTreegraph">
             <Canvas x:Name="canvas1" Width="500" Height="500"
                     MouseDown="canvas1_MouseDown"
                     MouseUp="canvas1_MouseUp" 
@@ -112,65 +111,68 @@
                 </Canvas.RenderTransform>
             </Canvas>
         </Viewbox>
-        <ContentControl Style="{StaticResource RotateArrowStyle}" 
+        <ContentControl Style="{StaticResource RotateArrowStyle}"
                         Content="{StaticResource RotateArrow}" 
-                        Grid.Row="1" HorizontalAlignment="Left" 
+                        Grid.Row="0" HorizontalAlignment="Right" 
                         VerticalAlignment="Top"
-                        Opacity="0"
+                        Opacity="0" Margin="10"
                         ></ContentControl>
         <!--<ContentControl Style="{StaticResource RotateArrowStyle}" Content="{StaticResource RotateArrow}" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top"></ContentControl>
         <ContentControl Style="{StaticResource RotateArrowStyle}" Content="{StaticResource RotateArrow}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom"></ContentControl>
         <ContentControl Style="{StaticResource RotateArrowStyle}" Content="{StaticResource RotateArrow}" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"></ContentControl>-->
         <Label x:Name="labelInfo" Grid.Row="1" Visibility="Hidden">Nothing to draw.</Label>
-        <Label Grid.Row="2" x:Name="labelStatus" >
+        <Label Grid.Row="1" x:Name="labelStatus" >
         </Label>
-        <Expander Grid.Row="0" Header="View options" BorderBrush="Gray" BorderThickness="2" Margin="20"
+        <Canvas>
+            <Expander Header="View options" BorderBrush="Gray" BorderThickness="2" Margin="20"
                   Name="expander1" Background="#55BAC6FF"
                   Padding="10 0 10 0"
                   >
-            <Grid Margin="0 0 0 10" Background="#BBFFFFFF">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="45">
-                    </ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Rotation :</Label>
-                <Slider Grid.Column="1" Grid.Row="0"
+                <Grid Margin="0 0 0 10" Width="350" Background="#BBFFFFFF">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="45">
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Rotation :</Label>
+                    <Slider Grid.Column="1" Grid.Row="0"
                     Name="sliderRotation" Margin="10,10,10,10" Maximum="360" Minimum="0" Value="{Binding ElementName=rotateTransform, Path=Angle}" />
-                <Label Grid.Column="2" Grid.Row="0" 
+                    <Label Grid.Column="2" Grid.Row="0" 
                        HorizontalAlignment="Left" VerticalAlignment="Center"
                        Content="{Binding ElementName=sliderRotation, Path=Value}"
                        ContentStringFormat="{}{0:0.0}°" />
 
-                <Label Grid.Column="0" Grid.Row="1"  VerticalAlignment="Center">Zoom :</Label>
-                <Slider Grid.Column="1" Grid.Row="1"
+                    <Label Grid.Column="0" Grid.Row="1"  VerticalAlignment="Center">Zoom :</Label>
+                    <Slider Grid.Column="1" Grid.Row="1"
                     Name="sliderScale" Margin="10,10,10,10" Maximum="20" Minimum="0.5" Value="1" />
-                <Label Grid.Column="2" Grid.Row="1" 
+                    <Label Grid.Column="2" Grid.Row="1" 
                        HorizontalAlignment="Left" VerticalAlignment="Center"
                        Content="{Binding ElementName=sliderScale, Path=Value}"
                        ContentStringFormat="x {0:0.0}" />
 
-                
-                <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Text size :</Label>
-                <Slider Grid.Column="1" Grid.Row="2"
+
+                    <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Text size :</Label>
+                    <Slider Grid.Column="1" Grid.Row="2"
                     Name="sliderTextSize" Margin="10,10,10,10" Maximum="25" Minimum="0.5" Value="8"/>
-                <Label Grid.Column="2" Grid.Row="2" 
+                    <Label Grid.Column="2" Grid.Row="2" 
                        HorizontalAlignment="Left" VerticalAlignment="Center"
                        Content="{Binding ElementName=sliderTextSize, Path=Value}"
                        ContentStringFormat="x {0:0.0}" />
 
-                <StackPanel Visibility="Hidden" Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="3">
-                    <Button x:Name="ButtonPrint" 
+                    <StackPanel Visibility="Hidden" Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="3">
+                        <Button x:Name="ButtonPrint" 
                         Click="ButtonPrint_Click">Print</Button>
-                </StackPanel>
-            </Grid>
-        </Expander>
+                    </StackPanel>
+                </Grid>
+            </Expander>
+        </Canvas>
+
     </Grid>
 
 
