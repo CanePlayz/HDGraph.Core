@@ -179,6 +179,11 @@ namespace HDGraph.WpfDrawEngine
         {
             MiddleAngle = StartAngle + StopAngle / 2;
             float newRadius = this.LargeRadius;
+
+            // Create a StreamGeometry to use to specify myPath.
+            StreamGeometry geometry = new StreamGeometry();
+            geometry.FillRule = FillRule.EvenOdd;
+
             double stopAngleInRadian = WpfUtils.GetRadianFromDegree(this.StopAngle);
             double stopAngleCos = Math.Cos(stopAngleInRadian);
             double stopAngleSin = Math.Sin(stopAngleInRadian);
@@ -187,34 +192,54 @@ namespace HDGraph.WpfDrawEngine
             double xSmall = stopAngleCos * this.SmallRadius;
             double ySmall = stopAngleSin * this.SmallRadius;
 
-            // Create a StreamGeometry to use to specify myPath.
-            StreamGeometry geometry = new StreamGeometry();
-            geometry.FillRule = FillRule.EvenOdd;
-
-
-
-            // Open a StreamGeometryContext that can be used to describe this StreamGeometry 
-            // object's contents.
-            using (StreamGeometryContext ctx = geometry.Open())
+            if (StopAngle == 360)
             {
-                ctx.BeginFigure(new Point(newRadius, 0), true, true);
-                ctx.ArcTo(new Point(xLarge, yLarge),
-                          new Size(newRadius, newRadius),
-                          StopAngle,
-                          (this.StopAngle > 180),
-                          SweepDirection.Clockwise,
-                          true,
-                          false);
-                ctx.LineTo(new Point(xSmall, ySmall), true, false);
-                ctx.ArcTo(new Point(this.SmallRadius, 0),
-                          new Size(this.SmallRadius, this.SmallRadius),
-                          StopAngle,
-                          (this.StopAngle > 180),
-                          SweepDirection.Counterclockwise,
-                          true,
-                          false);
-                //this.rotateTransform1.Angle = this.StartAngle;
+                // Open a StreamGeometryContext that can be used to describe this StreamGeometry 
+                // object's contents.
+                using (StreamGeometryContext ctx = geometry.Open())
+                {
 
+                    ctx.BeginFigure(new Point(newRadius, 0), true, true);
+                    ctx.ArcTo(new Point(-newRadius, 0),
+                              new Size(newRadius, newRadius),
+                              180,
+                              false,
+                              SweepDirection.Clockwise,
+                              true,
+                              false);
+                    ctx.ArcTo(new Point(newRadius, 0),
+                              new Size(newRadius, newRadius),
+                              180,
+                              false,
+                              SweepDirection.Clockwise,
+                              true,
+                              false);
+                }
+                radiusLabelTranslation.X = 0;
+            }
+            else
+            {
+                // Open a StreamGeometryContext that can be used to describe this StreamGeometry 
+                // object's contents.
+                using (StreamGeometryContext ctx = geometry.Open())
+                {
+                    ctx.BeginFigure(new Point(newRadius, 0), true, true);
+                    ctx.ArcTo(new Point(xLarge, yLarge),
+                              new Size(newRadius, newRadius),
+                              StopAngle,
+                              (this.StopAngle > 180),
+                              SweepDirection.Clockwise,
+                              true,
+                              false);
+                    ctx.LineTo(new Point(xSmall, ySmall), true, false);
+                    ctx.ArcTo(new Point(this.SmallRadius, 0),
+                              new Size(this.SmallRadius, this.SmallRadius),
+                              StopAngle,
+                              (this.StopAngle > 180),
+                              SweepDirection.Counterclockwise,
+                              true,
+                              false);
+                }
             }
             // Freeze the geometry (make it unmodifiable)
             // for additional performance benefits.

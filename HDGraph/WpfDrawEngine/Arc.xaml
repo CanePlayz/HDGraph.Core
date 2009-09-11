@@ -63,7 +63,7 @@
                                      CenterX="0" CenterY="0" ></RotateTransform>
                     <RotateTransform Angle="{Binding ElementName=arcUC, Path=TextRotation, Converter={StaticResource myReverseNumericConverter}}"
                                      CenterX="0" CenterY="0" />
-                    <TranslateTransform>
+                    <TranslateTransform x:Name="radiusLabelTranslation">
                         <TranslateTransform.X>
                             <MultiBinding Converter="{StaticResource myAverageNumericConverter}" >
                                 <Binding ElementName="arcUC" Path="SmallRadius"/>

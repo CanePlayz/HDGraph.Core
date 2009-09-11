@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:extern="clr-namespace:HDGraph.WpfDrawEngine"
     x:Name="treeGraph1" ContextMenuOpening="treeGraph1_ContextMenuOpening"
-    >
+    MouseWheel="treeGraph1_MouseWheel">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -86,7 +86,9 @@
         </Grid.RowDefinitions>
         <Viewbox Grid.Row="1" x:Name="viewBoxTreegraph">
             <Canvas x:Name="canvas1" Width="500" Height="500"
-                    MouseDown="canvas1_MouseDown" MouseUp="canvas1_MouseUp" MouseMove="canvas1_MouseMove">
+                    MouseDown="canvas1_MouseDown"
+                    MouseUp="canvas1_MouseUp" 
+                    MouseMove="canvas1_MouseMove">
                 <Canvas.RenderTransform>
                     <TransformGroup>
                         <RotateTransform x:Name="rotateTransform"></RotateTransform>

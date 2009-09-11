@@ -220,35 +220,6 @@ namespace HDGraph.WpfDrawEngine
         /// <param name="nodeAngle"></param>
         private void BuildDirPart(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
         {
-            // on gère les arcs "pleins" (360°) de manière particulière pour avoir un disque "plein", sans trait à l'angle 0
-            if ((endAngle - startAngle) == 360)
-            {
-                Ellipse e = new Ellipse()
-                {
-                    Width = currentLevel * singleLevelHeight,
-                    Height = Width,
-                    Stroke = Brushes.BlueViolet,
-                    StrokeThickness = 1,
-                    Fill = Brushes.Beige,
-                };
-                canvas1.Children.Add(e);
-                // TODO : print text.
-            }
-            else
-            {
-                BuildPartialPie(node, currentLevel, startAngle, endAngle);
-            }
-        }
-
-        /// <summary>
-        /// Dessine un semi anneau sur le graph.
-        /// </summary>
-        /// <param name="node"></param>
-        /// <param name="rec"></param>
-        /// <param name="startAngle"></param>
-        /// <param name="nodeAngle"></param>
-        private void BuildPartialPie(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
-        {
             Arc arc = BuildArc(node, currentLevel, startAngle, endAngle);
             arc.DataContext = node;
             canvas1.Children.Add(arc);
@@ -328,12 +299,20 @@ namespace HDGraph.WpfDrawEngine
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                // Center graph on the clicked node.
                 IDirectoryNode node = ((Arc)sender).Node;
                 if (node != null)
                 {
-                    ActionExecutor.ExecuteTreeFillUpToLevel(node, currentWorkingOptions.ShownLevelsCount);
-                    SetRoot(node, currentWorkingOptions);
+                    if (Object.ReferenceEquals(node, this.rootNode))
+                    {
+                        // Go to parent
+                        SetRoot(node.Parent, currentWorkingOptions);
+                    }
+                    else
+                    {
+                        // Center graph on the clicked node.
+                        ActionExecutor.ExecuteTreeFillUpToLevel(node, currentWorkingOptions.ShownLevelsCount);
+                        SetRoot(node, currentWorkingOptions);
+                    }
                 }
             }
         }
@@ -558,6 +537,11 @@ namespace HDGraph.WpfDrawEngine
                                    );
                 e.Handled = true;
             }
+        }
+
+        private void treeGraph1_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+
         }
     }
 }
