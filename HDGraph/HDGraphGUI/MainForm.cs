@@ -142,7 +142,7 @@ namespace HDGraph
 
         private void CreateDrawEngine()
         {
-            this.drawEngineContract = PlugIn.PlugInsManager.GetDrawEnginePlugins()[0]; // TODO : load from config
+            this.drawEngineContract = PlugIn.PlugInsManager.GetDrawEnginePlugins()[1]; // TODO : load from config
             this.drawEngine = drawEngineContract.GetNewEngine();
             this.graphControl = this.drawEngine.GenerateControlFromNode(scanEngine.Root, DrawOptions, this);
             this.splitContainerGraphAndOptions.Panel1.Controls.Add(graphControl);

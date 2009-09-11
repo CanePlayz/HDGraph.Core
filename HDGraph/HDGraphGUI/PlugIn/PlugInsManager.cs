@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using HDGraph.Interfaces.ScanEngines;
 using System.IO;
 using System.Diagnostics;
+using HDGraph.DrawEngine;
 
 namespace HDGraph.PlugIn
 {
@@ -24,6 +25,7 @@ namespace HDGraph.PlugIn
                 return new List<IDrawEngineContract>();
 
             List<IDrawEngineContract> plugInsList = new List<IDrawEngineContract>();
+            plugInsList.Add(new SimpleDrawEngineContract());
             foreach (string fileName in Directory.GetFiles(PlugInRelativePath, "*.dll", SearchOption.TopDirectoryOnly))
             {
                 try
