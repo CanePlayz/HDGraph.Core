@@ -243,11 +243,11 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="TreeGraph.fr.resx">
+    <EmbeddedResource Include="DrawEngine\TreeGraph.fr.resx">
       <SubType>Designer</SubType>
       <DependentUpon>TreeGraph.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TreeGraph.resx">
+    <EmbeddedResource Include="DrawEngine\TreeGraph.resx">
       <DependentUpon>TreeGraph.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -304,10 +304,10 @@
       <DependentUpon>ApplicationMessages.resx</DependentUpon>
     </Compile>
     <Compile Include="SortableBindingList.cs" />
-    <Compile Include="TreeGraph.cs">
+    <Compile Include="DrawEngine\TreeGraph.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TreeGraph.Designer.cs">
+    <Compile Include="DrawEngine\TreeGraph.Designer.cs">
       <DependentUpon>TreeGraph.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\BlinkingImage.cs">

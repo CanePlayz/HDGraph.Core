@@ -66,27 +66,5 @@ namespace HDGraph.WpfDrawEngine
         {
             GetTreeGraph().SetRoot(node, options);
         }
-
-        public event EventHandler<NodeContextEventArgs> ContextMenuRequired
-        {
-            add
-            {
-                if (!this.DesignMode)
-                {
-                    TreeGraph treeGraph = GetTreeGraph();
-                    if (treeGraph != null)
-                        treeGraph.ContextMenuRequired += value;
-                }
-            }
-            remove
-            {
-                if (!this.DesignMode)
-                {
-                    TreeGraph treeGraph = GetTreeGraph();
-                    if (treeGraph != null)
-                        treeGraph.ContextMenuRequired -= value;
-                }
-            }
-        }
     }
 }

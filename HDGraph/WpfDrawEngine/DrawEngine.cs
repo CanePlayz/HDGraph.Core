@@ -15,7 +15,6 @@ namespace HDGraph.WpfDrawEngine
         {
             TreeGraphContainer container = new TreeGraphContainer();
             container.ActionExecutor = actionExecutor;
-            container.ContextMenuRequired += new EventHandler<NodeContextEventArgs>(container_ContextMenuRequired);
             container.SetRoot(node, options);
             return container;
         }

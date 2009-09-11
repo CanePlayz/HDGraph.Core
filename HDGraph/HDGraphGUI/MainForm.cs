@@ -129,7 +129,7 @@ namespace HDGraph
             try
             {
                 scanEngine.AutoRefreshAllowed = HDGraph.Properties.Settings.Default.OptionAutoCompleteGraph;
-                ModeAffichageCouleurs modeCouleurs = (ModeAffichageCouleurs)Enum.Parse(typeof(ModeAffichageCouleurs), HDGraph.Properties.Settings.Default.OptionColorStyle);
+                GraphColorStyle modeCouleurs = (GraphColorStyle)Enum.Parse(typeof(GraphColorStyle), HDGraph.Properties.Settings.Default.OptionColorStyle);
                 comboBoxColorStyle.SelectedIndex = (int)modeCouleurs;
             }
             catch (Exception ex)
@@ -918,7 +918,7 @@ namespace HDGraph
 
         private void comboBoxColorStyle_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ModeAffichageCouleurs modeCouleurs = (ModeAffichageCouleurs)comboBoxColorStyle.SelectedIndex;
+            GraphColorStyle modeCouleurs = (GraphColorStyle)comboBoxColorStyle.SelectedIndex;
             DrawOptions.ColorStyleChoice = modeCouleurs;
             PrintStatus(Resources.ApplicationMessages.GraphRefreshed);
         }

@@ -363,22 +363,22 @@ namespace HDGraph.DrawEngine
         {
             switch (currentWorkingOptions.ColorStyleChoice)
             {
-                case ModeAffichageCouleurs.RandomNeutral:
-                case ModeAffichageCouleurs.RandomBright:
+                case GraphColorStyle.RandomNeutral:
+                case GraphColorStyle.RandomBright:
                     return new System.Drawing.Drawing2D.LinearGradientBrush(
                                     rec,
                                     colorManager.GetNextColor(startAngle),
                                     Color.SteelBlue,
                                     LinearGradientMode.ForwardDiagonal
                                 );
-                case ModeAffichageCouleurs.Linear2:
+                case GraphColorStyle.Linear2:
                     return new System.Drawing.Drawing2D.LinearGradientBrush(
                                     rec,
                                     colorManager.GetNextColor(startAngle + (nodeAngle / 2f)),
                                     Color.SteelBlue,
                                     LinearGradientMode.ForwardDiagonal
                                 );
-                case ModeAffichageCouleurs.Linear:
+                case GraphColorStyle.Linear:
                     float middleAngle = startAngle + (nodeAngle / 2f);
                     //return new System.Drawing.Drawing2D.LinearGradientBrush(
                     //                rec,
@@ -414,7 +414,7 @@ namespace HDGraph.DrawEngine
                                     Color.SteelBlue,
                                     LinearGradientMode.BackwardDiagonal
                                 );
-                case ModeAffichageCouleurs.ImprovedLinear:
+                case GraphColorStyle.ImprovedLinear:
                 default:
                     return new SolidBrush(myTransparentColor);
                 //if (nodeAngle < 1)

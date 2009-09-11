@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace HDGraph.Interfaces.DrawEngines
 {
-    public enum ModeAffichageCouleurs
+    public enum GraphColorStyle
     {
         RandomNeutral,
         RandomBright,
@@ -102,8 +102,8 @@ namespace HDGraph.Interfaces.DrawEngines
             }
         }
 
-        private ModeAffichageCouleurs colorStyleChoice;
-        public ModeAffichageCouleurs ColorStyleChoice
+        private GraphColorStyle colorStyleChoice;
+        public GraphColorStyle ColorStyleChoice
         {
             get { return colorStyleChoice; }
             set

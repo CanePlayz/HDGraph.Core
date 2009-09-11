@@ -27,7 +27,6 @@ namespace HDGraph.WpfDrawEngine
             labelStatus.Content = "Acceleration : " + WpfUtils.GetAccelerationType().ToString();
         }
 
-        public event EventHandler<NodeContextEventArgs> ContextMenuRequired;
         public IActionExecutor ActionExecutor { get; set; }
 
         public bool IsRotating
@@ -349,6 +348,7 @@ namespace HDGraph.WpfDrawEngine
         private Arc BuildArc(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
         {
             Arc arc = new Arc();
+            arc.ContextMenuOpening += new ContextMenuEventHandler(arc_ContextMenuOpening);
             arc.BeginEdit();
             arc.StartAngle = startAngle;
             arc.StopAngle = endAngle - startAngle;
@@ -357,6 +357,22 @@ namespace HDGraph.WpfDrawEngine
             arc.Node = node;
             arc.EndEdit();
             return arc;
+        }
+
+        void arc_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        {
+            Arc arc = sender as Arc;
+            if (arc == null)
+                return;
+            IDirectoryNode selectedNode = arc.Node;
+            e.Handled = true;
+            Point p = arc.PointToScreen(new System.Windows.Point(e.CursorLeft, e.CursorTop));
+            ActionExecutor.ShowContextMenu(new NodeContextEventArgs()
+                {
+                    Position = new System.Drawing.PointF(Convert.ToSingle(p.X), Convert.ToSingle(p.Y)),
+                    Node = selectedNode,
+                }
+            );
         }
 
         //private Color myTransparentColor = Color.Black;
@@ -526,17 +542,6 @@ namespace HDGraph.WpfDrawEngine
 
         private void treeGraph1_ContextMenuOpening(object sender, ContextMenuEventArgs e)
         {
-            if (ContextMenuRequired != null)
-            {
-                IDirectoryNode selectedNode = null; // TODO
-                ContextMenuRequired(sender, new NodeContextEventArgs()
-                                            {
-                                                Position = new System.Drawing.PointF(Convert.ToSingle(e.CursorLeft), Convert.ToSingle(e.CursorTop)),
-                                                Node = selectedNode,
-                                            }
-                                   );
-                e.Handled = true;
-            }
         }
 
         private void treeGraph1_MouseWheel(object sender, MouseWheelEventArgs e)

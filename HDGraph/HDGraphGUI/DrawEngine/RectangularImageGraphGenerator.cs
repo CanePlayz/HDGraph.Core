@@ -270,8 +270,8 @@ namespace HDGraph.DrawEngine
             int milieuX = Convert.ToInt32(xDepart + (xFin - xDepart) / 2f);
             switch (currentWorkingOptions.ColorStyleChoice)
             {
-                case ModeAffichageCouleurs.RandomNeutral:
-                case ModeAffichageCouleurs.RandomBright:
+                case GraphColorStyle.RandomNeutral:
+                case GraphColorStyle.RandomBright:
 
                     return new System.Drawing.Drawing2D.LinearGradientBrush(
                                     new PointF(targetRec.Left, targetRec.Bottom),
@@ -279,8 +279,8 @@ namespace HDGraph.DrawEngine
                                     colorManager.GetNextColor(0),
                                     Color.SteelBlue
                                 );
-                case ModeAffichageCouleurs.Linear:
-                case ModeAffichageCouleurs.Linear2:
+                case GraphColorStyle.Linear:
+                case GraphColorStyle.Linear2:
                     return new System.Drawing.Drawing2D.LinearGradientBrush(
                                     new PointF(targetRec.Left, targetRec.Bottom),
                                     new PointF(targetRec.Left, targetRec.Top),

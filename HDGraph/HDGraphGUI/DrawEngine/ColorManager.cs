@@ -36,13 +36,13 @@ namespace HDGraph.DrawEngine
         {
             switch (options.ColorStyleChoice)
             {
-                case ModeAffichageCouleurs.RandomNeutral:
+                case GraphColorStyle.RandomNeutral:
                     int[] col = new int[] { rand.Next(100, 255), rand.Next(100, 255), rand.Next(100, 255) };
                     col[rand.Next(3)] -= 100;
                     return Color.FromArgb(col[0], col[1], col[2]);
-                case ModeAffichageCouleurs.RandomBright:
+                case GraphColorStyle.RandomBright:
                     return ColorByLeft(rand.Next(360));
-                case ModeAffichageCouleurs.Linear:
+                case GraphColorStyle.Linear:
                 default:
                     return ColorByLeft(Convert.ToInt32(angle) % 360);
             }
