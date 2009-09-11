@@ -128,7 +128,7 @@
                   Name="expander1" Background="#55BAC6FF"
                   Padding="10 0 10 0"
                   >
-            <Grid>
+            <Grid Margin="0 0 0 10" Background="#BBFFFFFF">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition/>
