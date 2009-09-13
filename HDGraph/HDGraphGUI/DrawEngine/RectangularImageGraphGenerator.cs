@@ -194,7 +194,7 @@ namespace HDGraph.DrawEngine
                 // on dessine le disque uniquement
                 DrawRectangle(node, targetRec);
             }
-            else if (targetRec.Width > currentWorkingOptions.TextDensity)
+            else if (targetRec.Width > currentWorkingOptions.TextSize)
             {
                 // on dessine les noms de répertoire uniquement (si l'angle est supérieur à 10°)
                 WriteDirectoryName(node, new RectangleF(targetRec.X, targetRec.Height - pasNiveau, targetRec.Width, pasNiveau));

@@ -340,7 +340,6 @@ namespace HDGraph.WpfDrawEngine
 
         private const int DEFAULT_Z_INDEX_STANDARD_ARC = 1;
         private const int DEFAULT_Z_INDEX_STANDARD_ARC_OVER = 2;
-        private const int DEFAULT_Z_INDEX_ARC_CAPTION = 0;
 
         void arc_MouseLeave(object sender, MouseEventArgs e)
         {
@@ -369,6 +368,7 @@ namespace HDGraph.WpfDrawEngine
         {
             Arc arc = new Arc();
             arc.ContextMenuOpening += new ContextMenuEventHandler(arc_ContextMenuOpening);
+            arc.DrawOptions = this.currentWorkingOptions;
             arc.ContextMenu = (ContextMenu) FindResource("essai");
             arc.BeginEdit();
             arc.StartAngle = startAngle;
@@ -574,6 +574,11 @@ namespace HDGraph.WpfDrawEngine
         }
 
         private void treeGraph1_MouseWheel(object sender, MouseWheelEventArgs e)
+        {
+
+        }
+
+        private void grid1_MouseWheel(object sender, MouseWheelEventArgs e)
         {
 
         }

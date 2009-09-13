@@ -130,11 +130,28 @@ namespace HDGraph.Interfaces.DrawEngines
             }
         }
 
-        private int textDensity;
+        private int textSize;
+        /// <summary>
+        /// Text size.
+        /// </summary>
+        public int TextSize
+        {
+            get { return textSize; }
+            set
+            {
+                if (textSize != value)
+                {
+                    textSize = value;
+                    RaisePropertyChanged("TextSize");
+                }
+            }
+        }
+
+        private float textDensity;
         /// <summary>
         /// Angle min to enable text print.
         /// </summary>
-        public int TextDensity
+        public float TextDensity
         {
             get { return textDensity; }
             set

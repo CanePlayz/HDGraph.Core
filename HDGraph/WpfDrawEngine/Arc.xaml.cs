@@ -12,6 +12,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using HDGraph.Interfaces.ScanEngines;
 using System.Diagnostics;
+using HDGraph.Interfaces.DrawEngines;
 
 namespace HDGraph.WpfDrawEngine
 {
@@ -36,35 +37,20 @@ namespace HDGraph.WpfDrawEngine
 
 
 
+        public DrawOptions DrawOptions
+        {
+            get { return (DrawOptions)GetValue(DrawOptionsProperty); }
+            set { SetValue(DrawOptionsProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for DrawOption.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty DrawOptionsProperty =
+            DependencyProperty.Register("DrawOptions", typeof(DrawOptions), typeof(Arc), new UIPropertyMetadata(null));
+
+
+
 
         #region Dependency Properties
-
-
-
-
-        public double InternalTextSize
-        {
-            get { return (double)GetValue(InternalTextSizeProperty); }
-            set { SetValue(InternalTextSizeProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for InternalTextSize.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty InternalTextSizeProperty =
-            DependencyProperty.Register("InternalTextSize", typeof(double), typeof(Arc), new UIPropertyMetadata((double)0));
-
-
-
-
-        public string Caption
-        {
-            get { return (string)GetValue(CaptionProperty); }
-            set { SetValue(CaptionProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for Caption.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CaptionProperty =
-            DependencyProperty.Register("Caption", typeof(string), typeof(Arc), new UIPropertyMetadata(String.Empty));
-
 
 
         public float StartAngle

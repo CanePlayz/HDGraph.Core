@@ -86,6 +86,7 @@
     <Compile Include="Arc.xaml.cs">
       <DependentUpon>Arc.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BusinessConverters.cs" />
     <Compile Include="DrawEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -100,7 +101,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ReverseNumericConverter.cs" />
+    <Compile Include="NumericConverters.cs" />
     <Compile Include="TreeGraph.xaml.cs">
       <DependentUpon>TreeGraph.xaml</DependentUpon>
     </Compile>

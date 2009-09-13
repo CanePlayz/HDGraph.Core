@@ -92,7 +92,7 @@
 
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid Margin="0,0,0,0" x:Name="grid1">
+    <Grid Margin="0,0,0,0" x:Name="grid1" MouseWheel="grid1_MouseWheel">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="30"></RowDefinition>

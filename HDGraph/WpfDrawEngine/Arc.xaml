@@ -3,12 +3,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:HDGraph.WpfDrawEngine"
              xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
-
     x:Name="arcUC">
+    <!--<UserControl.Style>
+        <Style>
+            <Style.Triggers>
+                <Trigger Property="Path.IsMouseOver" Value="True">
+                    <Setter TargetName="TextBlockArcName"
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>-->
     <UserControl.Resources>
         <local:ReverseNumericConverter x:Key="myReverseNumericConverter"/>
         <local:DivideBy2NumericConverter x:Key="myDivideBy2NumericConverter"/>
         <local:MakeAverageNumericConverter x:Key="myAverageNumericConverter"/>
+        <local:VisibilityFromAnglesConverter x:Key="myVisibilityFromAnglesConverter"/>
         <Style x:Key="ArcStyle">
             <Setter Property="Path.Fill">
                 <Setter.Value>
@@ -40,7 +49,15 @@
         <TextBlock Text="{Binding Path=Name}" 
                    x:Name="TextBlockArcName" 
                    FontSize="{Binding ElementName=arcUC, Path=FontSize}"
-                   FontFamily="Corbel">
+                   FontFamily="Corbel"
+                   Panel.ZIndex="20"
+                   >
+            <TextBlock.Visibility>
+                <MultiBinding Converter="{StaticResource myVisibilityFromAnglesConverter}" >
+                                <Binding ElementName="arcUC" Path="DrawOptions.TextDensity"/>
+                                <Binding ElementName="arcUC" Path="StopAngle"/>
+                </MultiBinding>
+            </TextBlock.Visibility>
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <TranslateTransform X="{Binding Path=ActualWidth, ElementName=TextBlockArcName, Converter={StaticResource myDivideBy2NumericConverter}, ConverterParameter=-1}"/>

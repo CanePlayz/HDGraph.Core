@@ -79,30 +79,10 @@ namespace HDGraph.WpfDrawEngine
 
 
     /// <summary>
-    /// Converter used to divide by 2 a numeric.
+    /// Converter used to return the average a numeric values.
     /// </summary>
     internal class MakeAverageNumericConverter : IMultiValueConverter
     {
-
-        //public object Convert(object value, Type targetType,
-        //    object parameter, CultureInfo culture)
-        //{
-        //    if (value is double)
-        //        return ((double)value) / 2 * coef;
-        //    if (value is float)
-        //        return ((float)value) / 2 * coef;
-        //    return Binding.DoNothing;
-        //}
-
-        //public object ConvertBack(object value, Type targetType,
-        //    object parameter, CultureInfo culture)
-        //{
-        //    if (value is double)
-        //        return 2 * ((double)value) * coef;
-        //    if (value is float)
-        //        return 2 * ((float)value) * coef;
-        //    return Binding.DoNothing;
-        //}
         #region IMultiValueConverter Members
 
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
@@ -123,4 +103,6 @@ namespace HDGraph.WpfDrawEngine
 
         #endregion
     }
+
+   
 }
