@@ -711,14 +711,14 @@ namespace HDGraph
             // // moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(WaitForm.ShowWaitForm); // OBSOLETE
 
             scanEngine.NotifyForNewInfo = new HDGraphScanEngineBase.PrintInfoDelegate(PrintStatus);
-            drawEngine.SetRootNodeOfControl(graphControl, scanEngine.Root);
             if (scanEngine.WorkCanceled)
                 DrawOptions.DrawAction = DrawAction.PrintMessageWorkCanceledByUser;
             else
                 DrawOptions.DrawAction = DrawAction.DrawNode;
-
             numUpDownNbNivxAffich.Value = nbNiveaux;
             DrawOptions.ShownLevelsCount = nbNiveaux;
+            drawEngine.SetRootNodeOfControl(graphControl, scanEngine.Root);
+
             RefreshGraphControl();
             //PrintStatus("Terminé !");
             errorStatus1.Update(scanEngine.ErrorList);
@@ -862,7 +862,7 @@ namespace HDGraph
 
         private void toolStripButtonNavForward_Click(object sender, EventArgs e)
         {
-            NavigateForward();            
+            NavigateForward();
         }
 
         private void RefreshGraphControl()
@@ -873,7 +873,7 @@ namespace HDGraph
 
         private void toolStripButtonNavBack_Click(object sender, EventArgs e)
         {
-            NavigateBackward();            
+            NavigateBackward();
         }
 
         private void linkLabelHelpGraph_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -45,7 +45,7 @@
     </UserControl.Resources>
 
     <!--diag:PresentationTraceSources.TraceLevel="High"-->
-    <Canvas>
+    <Canvas Panel.ZIndex="10">
         <TextBlock Text="{Binding Path=Name}" 
                    x:Name="TextBlockArcName" 
                    FontSize="{Binding ElementName=arcUC, Path=FontSize}"

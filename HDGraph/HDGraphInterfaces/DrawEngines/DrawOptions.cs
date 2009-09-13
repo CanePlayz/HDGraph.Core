@@ -88,7 +88,7 @@ namespace HDGraph.Interfaces.DrawEngines
             }
         }
 
-        private int shownLevelsCount;
+        private int shownLevelsCount = 5;
         public int ShownLevelsCount 
         {
             get { return shownLevelsCount; }
@@ -116,8 +116,8 @@ namespace HDGraph.Interfaces.DrawEngines
             }
         }
 
-        private int imageRotation;
-        public int ImageRotation
+        private float imageRotation;
+        public float ImageRotation
         {
             get { return imageRotation; }
             set
@@ -130,11 +130,11 @@ namespace HDGraph.Interfaces.DrawEngines
             }
         }
 
-        private int textSize;
+        private float textSize;
         /// <summary>
         /// Text size.
         /// </summary>
-        public int TextSize
+        public float TextSize
         {
             get { return textSize; }
             set
@@ -225,7 +225,7 @@ namespace HDGraph.Interfaces.DrawEngines
             if (obj == null
                 || !(obj is DrawOptions))
                 return false;
-            if ((object)this == obj)
+            if (object.ReferenceEquals(this, obj))
                 return true;
             foreach (PropertyInfo property in this.GetType().GetProperties())
             {

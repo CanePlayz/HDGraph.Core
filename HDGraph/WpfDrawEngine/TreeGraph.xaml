@@ -104,7 +104,7 @@
                     MouseMove="canvas1_MouseMove">
                 <Canvas.RenderTransform>
                     <TransformGroup>
-                        <RotateTransform x:Name="rotateTransform"></RotateTransform>
+                        <RotateTransform x:Name="rotateTransform" Angle="{Binding ElementName=treeGraph1, Path=CurrentDrawOptions.ImageRotation}"></RotateTransform>
 
                         <ScaleTransform 
                                 ScaleX="{Binding ElementName=sliderScale, Path=Value}"
@@ -156,28 +156,28 @@
                     </Grid.RowDefinitions>
                     <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Rotation :</Label>
                     <Slider Grid.Column="1" Grid.Row="0"
-                    Name="sliderRotation" Margin="10,10,10,10" Maximum="360" Minimum="0" Value="{Binding ElementName=rotateTransform, Path=Angle}" />
+                    Name="sliderRotation" Margin="10,10,10,10" Maximum="360" Minimum="0" Value="{Binding ElementName=treeGraph1, Path=CurrentDrawOptions.ImageRotation}" />
                     <Label Grid.Column="2" Grid.Row="0" 
                        HorizontalAlignment="Left" VerticalAlignment="Center"
-                       Content="{Binding ElementName=sliderRotation, Path=Value}"
+                       Content="{Binding ElementName=treeGraph1, Path=CurrentDrawOptions.ImageRotation}"
                        ContentStringFormat="{}{0:0.0}°" />
 
                     <Label Grid.Column="0" Grid.Row="1"  VerticalAlignment="Center">Zoom :</Label>
-                    <Slider Grid.Column="1" Grid.Row="1"
-                    Name="sliderScale" Margin="10,10,10,10" Maximum="20" Minimum="0.5" Value="1" />
+                    <Slider Grid.Column="1" Grid.Row="1" Name="sliderScale" 
+                            Margin="10,10,10,10" Maximum="20" Minimum="0.5" Value="1" />
                     <Label Grid.Column="2" Grid.Row="1" 
-                       HorizontalAlignment="Left" VerticalAlignment="Center"
-                       Content="{Binding ElementName=sliderScale, Path=Value}"
-                       ContentStringFormat="x {0:0.0}" />
+                           HorizontalAlignment="Left" VerticalAlignment="Center"
+                           Content="{Binding ElementName=sliderScale, Path=Value}"
+                           ContentStringFormat="x {0:0.0}" />
 
 
                     <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Text size :</Label>
-                    <Slider Grid.Column="1" Grid.Row="2"
-                    Name="sliderTextSize" Margin="10,10,10,10" Maximum="25" Minimum="0.5" Value="8"/>
+                    <Slider Grid.Column="1" Grid.Row="2" Name="sliderTextSize" 
+                            Margin="10,10,10,10" Maximum="25" Minimum="0.5" Value="{Binding ElementName=treeGraph1, Path=CurrentDrawOptions.TextSize}"/>
                     <Label Grid.Column="2" Grid.Row="2" 
-                       HorizontalAlignment="Left" VerticalAlignment="Center"
-                       Content="{Binding ElementName=sliderTextSize, Path=Value}"
-                       ContentStringFormat="x {0:0.0}" />
+                           HorizontalAlignment="Left" VerticalAlignment="Center"
+                           Content="{Binding ElementName=sliderTextSize, Path=Value}"
+                           ContentStringFormat="x {0:0.0}" />
 
                     <StackPanel Visibility="Hidden" Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="3">
                         <Button x:Name="ButtonPrint" 

@@ -56,7 +56,18 @@ namespace HDGraph.WpfDrawEngine
         /// </summary>
         private double singleLevelHeight;
 
-        private DrawOptions currentWorkingOptions;
+        
+        public DrawOptions CurrentDrawOptions
+        {
+            get { return (DrawOptions)GetValue(CurrentDrawOptionsProperty); }
+            set { SetValue(CurrentDrawOptionsProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CurrentDrawOptions.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CurrentDrawOptionsProperty =
+            DependencyProperty.Register("CurrentDrawOptions", typeof(DrawOptions), typeof(TreeGraph), new UIPropertyMetadata(null));
+
+
         private IDirectoryNode rootNode;
 
         public void SetRoot(IDirectoryNode root, DrawOptions options)
@@ -68,7 +79,7 @@ namespace HDGraph.WpfDrawEngine
             canvas1.Children.Clear();
 
             // Création du bitmap buffer
-            currentWorkingOptions = options;
+            CurrentDrawOptions = options;
 
             // init des données du calcul
             //singleLevelHeight = Convert.ToDouble(
@@ -77,8 +88,8 @@ namespace HDGraph.WpfDrawEngine
 
             // init des données du calcul
             singleLevelHeight = Convert.ToDouble(
-                            Math.Min(500 / currentWorkingOptions.ShownLevelsCount / 2,
-                                     500 / currentWorkingOptions.ShownLevelsCount / 2));
+                            Math.Min(500 / CurrentDrawOptions.ShownLevelsCount / 2,
+                                     500 / CurrentDrawOptions.ShownLevelsCount / 2));
 
             labelInfo.Visibility = Visibility.Hidden;
             if (rootNode == null || rootNode.TotalSize == 0)
@@ -286,6 +297,7 @@ namespace HDGraph.WpfDrawEngine
                 ////float middleAngle = startAngle + (nodeAngle / 2f);
                 ////frontGraph.DrawRectangle(new Pen(colorManager.GetNextColor(middleAngle), 0.05f),
                 ////                        Rectangle.Round(rec));
+                // TODO : 
                 Canvas.SetZIndex(arc, DEFAULT_Z_INDEX_STANDARD_ARC);
             }
             else if (node.DirectoryType == SpecialDirTypes.FreeSpaceAndShow)
@@ -324,13 +336,13 @@ namespace HDGraph.WpfDrawEngine
                     if (Object.ReferenceEquals(node, this.rootNode))
                     {
                         // Go to parent
-                        SetRoot(node.Parent, currentWorkingOptions);
+                        SetRoot(node.Parent, CurrentDrawOptions);
                     }
                     else
                     {
                         // Center graph on the clicked node.
-                        ActionExecutor.ExecuteTreeFillUpToLevel(node, currentWorkingOptions.ShownLevelsCount);
-                        SetRoot(node, currentWorkingOptions);
+                        ActionExecutor.ExecuteTreeFillUpToLevel(node, CurrentDrawOptions.ShownLevelsCount);
+                        SetRoot(node, CurrentDrawOptions);
                     }
                 }
             }
@@ -349,14 +361,22 @@ namespace HDGraph.WpfDrawEngine
                 arc.path1.StrokeThickness = 1;
                 Canvas.SetZIndex(arc, DEFAULT_Z_INDEX_STANDARD_ARC);
                 ActionExecutor.Notify4NewHoveredNode(null);
+                Cursor = standardCursor;
             }
         }
+
+        private Cursor standardCursor;
 
         void arc_MouseEnter(object sender, MouseEventArgs e)
         {
             Arc arc = (Arc)sender;
             if (arc != null)
             {
+                if (Cursor != Cursors.Hand)
+                {
+                    standardCursor = Cursor;
+                    Cursor = Cursors.Hand;
+                }
                 arc.path1.StrokeThickness = 3;
                 Canvas.SetZIndex(arc, DEFAULT_Z_INDEX_STANDARD_ARC_OVER);
                 ActionExecutor.Notify4NewHoveredNode(arc.Node);
@@ -368,7 +388,7 @@ namespace HDGraph.WpfDrawEngine
         {
             Arc arc = new Arc();
             arc.ContextMenuOpening += new ContextMenuEventHandler(arc_ContextMenuOpening);
-            arc.DrawOptions = this.currentWorkingOptions;
+            arc.DrawOptions = this.CurrentDrawOptions;
             arc.ContextMenu = (ContextMenu) FindResource("essai");
             arc.BeginEdit();
             arc.StartAngle = startAngle;
@@ -564,9 +584,10 @@ namespace HDGraph.WpfDrawEngine
             if (rotationAngle < 0)
                 rotationAngle = rotationAngle + 360;
 
-            rotateTransform.Angle = rotationAngle;
+            CurrentDrawOptions.ImageRotation = Convert.ToSingle(rotationAngle);
+            //rotateTransform.Angle = rotationAngle;
             e.Handled = true;
-            labelStatus.Content = "rotationAngle:" + rotationAngle + " initVector:" + initVector + " newVector:" + newVector + " centerPoint:" + centerPoint;
+            //labelStatus.Content = "rotationAngle:" + rotationAngle + " initVector:" + initVector + " newVector:" + newVector + " centerPoint:" + centerPoint;
         }
 
         private void treeGraph1_ContextMenuOpening(object sender, ContextMenuEventArgs e)
