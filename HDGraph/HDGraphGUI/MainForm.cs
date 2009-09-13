@@ -164,7 +164,7 @@ namespace HDGraph
         {
             if (ToolProviderBase.CurrentOsIsWindows())
                 // errors on other os !
-                this.Icon = Properties.Resources.HDGraph_ico;
+                this.Icon = System.Drawing.Icon.ExtractAssociatedIcon(Application.ExecutablePath);
         }
 
         private void SetTrackBarZoomValueFromNumUpDown()

@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HDGraph</RootNamespace>
     <AssemblyName>HDGraph</AssemblyName>
-    <ApplicationIcon>Resources\HDGraph_ico.ico</ApplicationIcon>
+    <ApplicationIcon>HDGraph.ico</ApplicationIcon>
     <StartupObject>HDGraph.Program</StartupObject>
     <TargetZone>LocalIntranet</TargetZone>
     <GenerateManifests>false</GenerateManifests>
@@ -354,7 +354,6 @@
     <None Include="Properties\DataSources\HDGraph.Interfaces.DrawEngines.DrawOptions.datasource" />
     <None Include="Resources\FillRightHS.png" />
     <None Include="Resources\FillLeftHS.png" />
-    <None Include="Resources\HDGraph_ico.ico" />
     <None Include="Properties\DataSources\HDGraph.UserControls.ApplicationTip.datasource" />
     <None Include="Resources\Warning.png" />
     <None Include="Properties\DataSources\DirectoryNode.datasource" />

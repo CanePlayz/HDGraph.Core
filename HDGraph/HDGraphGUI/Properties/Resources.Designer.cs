@@ -102,13 +102,6 @@ namespace HDGraph.Properties {
             }
         }
         
-        internal static System.Drawing.Icon HDGraph_ico {
-            get {
-                object obj = ResourceManager.GetObject("HDGraph_ico", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
         internal static System.Drawing.Bitmap Help {
             get {
                 object obj = ResourceManager.GetObject("Help", resourceCulture);
