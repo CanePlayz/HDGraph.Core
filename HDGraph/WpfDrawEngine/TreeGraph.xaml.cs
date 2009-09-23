@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using HDGraph.Interfaces.ScanEngines;
 using HDGraph.Interfaces.DrawEngines;
 using System.Globalization;
+using System.Windows.Media.Animation;
 
 namespace HDGraph.WpfDrawEngine
 {
@@ -56,7 +57,19 @@ namespace HDGraph.WpfDrawEngine
         /// </summary>
         private double singleLevelHeight;
 
-        
+        public float SingleLevelHeight
+        {
+            get { return (float)GetValue(SingleLevelHeightProperty); }
+            set { SetValue(SingleLevelHeightProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SingleLevelHeight.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SingleLevelHeightProperty =
+            DependencyProperty.Register("SingleLevelHeight", typeof(float), typeof(TreeGraph), new UIPropertyMetadata(0f));
+
+
+
+
         public DrawOptions CurrentDrawOptions
         {
             get { return (DrawOptions)GetValue(CurrentDrawOptionsProperty); }
@@ -82,7 +95,7 @@ namespace HDGraph.WpfDrawEngine
             CurrentDrawOptions = options;
 
             // init des données du calcul
-            //singleLevelHeight = Convert.ToDouble(
+            //SingleLevelHeight = Convert.ToDouble(
             //                Math.Min(this.Width / currentWorkingOptions.ShownLevelsCount / 2,
             //                         this.Height / currentWorkingOptions.ShownLevelsCount / 2));
 
@@ -90,6 +103,7 @@ namespace HDGraph.WpfDrawEngine
             singleLevelHeight = Convert.ToDouble(
                             Math.Min(500 / CurrentDrawOptions.ShownLevelsCount / 2,
                                      500 / CurrentDrawOptions.ShownLevelsCount / 2));
+            SingleLevelHeight = Convert.ToSingle(singleLevelHeight); // Set the DP. Using a variable instead of the DP Getter increases perfs.
 
             labelInfo.Visibility = Visibility.Hidden;
             if (rootNode == null || rootNode.TotalSize == 0)
@@ -326,11 +340,14 @@ namespace HDGraph.WpfDrawEngine
             }
         }
 
+        #region Doubleclick on a node
+
         void arc_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                IDirectoryNode node = ((Arc)sender).Node;
+                Arc arc = (Arc)sender;
+                IDirectoryNode node = arc.Node;
                 if (node != null)
                 {
                     if (Object.ReferenceEquals(node, this.rootNode))
@@ -341,12 +358,60 @@ namespace HDGraph.WpfDrawEngine
                     else
                     {
                         // Center graph on the clicked node.
+
+                        // Apply animation : existing children disappear.
+                        Storyboard fadeStoryboard = TryFindResource("FadeOutStoryboard") as Storyboard;
+                        ApplyAnimationToChildren(fadeStoryboard, sender);
+
+                        // Complete the graph if data is missing
                         ActionExecutor.ExecuteTreeFillUpToLevel(node, CurrentDrawOptions.ShownLevelsCount);
-                        SetRoot(node, CurrentDrawOptions);
+                        // Apply animation to center graph to the new root
+                        Storyboard centerArcStoryboard = TryFindResource("CenterArcStoryboard") as Storyboard;
+                        SingleAnimation largeRadiusAnimation = centerArcStoryboard.Children[2] as SingleAnimation;
+                        newRootNode = node;
+                        if (largeRadiusAnimation == null || Storyboard.GetTargetProperty(largeRadiusAnimation).Path != "LargeRadius")
+                        {
+                            // invalid animation : don't launch the animation.
+                            Storyboard_Completed(sender, e);
+                        }
+                        else
+                        {
+                            largeRadiusAnimation.To = Convert.ToSingle(singleLevelHeight);
+                            // The new root will be set at the end of the animation, in method Storyboard_Completed.
+                            centerArcStoryboard.Begin(arc);
+                        }
                     }
                 }
             }
         }
+
+        /// <summary>
+        /// Ater a double clic on a node, the node is stored here in order to 
+        /// define it as root, as soon as the animation is finished.
+        /// </summary>
+        private IDirectoryNode newRootNode;
+
+        private void Storyboard_Completed(object sender, EventArgs e)
+        {
+            if (newRootNode == null)
+                return;
+            SetRoot(newRootNode, CurrentDrawOptions);
+            newRootNode = null;
+        }
+
+        private void ApplyAnimationToChildren(Storyboard storyboard, Object exceptElement)
+        {
+            foreach (UIElement child in canvas1.Children)
+            {
+                if (object.ReferenceEquals(child, exceptElement))
+                    continue;
+                FrameworkElement childElem = child as FrameworkElement;
+                if (childElem != null)
+                    storyboard.Begin(childElem);//, true); ?
+            }
+        }
+        #endregion
+
 
         private DivideBy2NumericConverter divideBy2Converter = new DivideBy2NumericConverter(true);
 
@@ -389,7 +454,7 @@ namespace HDGraph.WpfDrawEngine
             Arc arc = new Arc();
             arc.ContextMenuOpening += new ContextMenuEventHandler(arc_ContextMenuOpening);
             arc.DrawOptions = this.CurrentDrawOptions;
-            arc.ContextMenu = (ContextMenu) FindResource("essai");
+            arc.ContextMenu = (ContextMenu)FindResource("essai");
             arc.BeginEdit();
             arc.StartAngle = startAngle;
             arc.StopAngle = endAngle - startAngle;
@@ -420,7 +485,7 @@ namespace HDGraph.WpfDrawEngine
 
         private void contextMenu1_Opened(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
 
@@ -525,7 +590,7 @@ namespace HDGraph.WpfDrawEngine
             //if (!printDirNames && treeGraph.OptionAlsoPaintFiles)
             //{
             //    float nodeAngle = endAngle - startAngle;
-            //    rec.Inflate(singleLevelHeight, singleLevelHeight);
+            //    rec.Inflate(SingleLevelHeight, SingleLevelHeight);
             //    //Console.WriteLine("Processing Files (Angle:" + startAngle + ";" + endAngle + "; Rec:" + rec + ")...");
             //    frontGraph.FillPie(new SolidBrush(Color.White), Rectangle.Round(rec), startAngle, nodeAngle); //TODO
 
@@ -603,6 +668,7 @@ namespace HDGraph.WpfDrawEngine
         {
 
         }
+
 
     }
 }

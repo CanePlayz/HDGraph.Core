@@ -33,10 +33,17 @@
             <Style x:Key="UncalculatedPart">
                 <Setter Property="Path.Fill">
                     <Setter.Value>
-                        <LinearGradientBrush x:Name="brushUncalculatedPart" Opacity="1" >
-                            <GradientStop Color="Gray" Offset="0"></GradientStop>
-                            <GradientStop Color="LightGray" Offset="1"></GradientStop>
-                        </LinearGradientBrush>
+                        <RadialGradientBrush Opacity="0.7"
+                                         Center="0,0"  
+                                         GradientOrigin="0,0"
+                                         RadiusX="{Binding ElementName=arcUC, Path=LargeRadius}"
+                                         RadiusY="{Binding ElementName=arcUC, Path=LargeRadius}"
+                                         MappingMode="Absolute">
+                            <RadialGradientBrush.GradientStops>
+                                <GradientStop Color="Black" Offset="0.97"></GradientStop>
+                                <GradientStop Color="White" Offset="1"></GradientStop>
+                            </RadialGradientBrush.GradientStops>
+                        </RadialGradientBrush>
                     </Setter.Value>
                 </Setter>
             </Style>
@@ -76,6 +83,35 @@
                     </DataTrigger>
                 </Style.Triggers>
             </Style>
+            <Storyboard x:Key="FadeInStoryboard">
+                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+                </ObjectAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:1" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+
+            <Storyboard x:Key="FadeOutStoryboard">
+                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="00:00:1" Value="{x:Static Visibility.Collapsed}"/>
+                </ObjectAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:1" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+            
+            <Storyboard x:Key="CenterArcStoryboard" Completed="Storyboard_Completed"
+                        DecelerationRatio="0.5" AccelerationRatio="0.5">
+                <SingleAnimation Storyboard.TargetProperty="StopAngle"
+                                 To="359.99" Duration="00:00:01" />
+                <SingleAnimation Storyboard.TargetProperty="SmallRadius"
+                                 To="0" Duration="00:00:01" />
+                <SingleAnimation Storyboard.TargetProperty="LargeRadius"
+                                 To="10" Duration="00:00:01" />
+            </Storyboard>
+            
+            
             <ContextMenu x:Key="essai" HasDropShadow="True" Opacity="0.9" Opened="contextMenu1_Opened">
                 <TextBlock Text="{Binding Path=Name}" FontSize="16" FontWeight="Bold" ></TextBlock>
                 <Separator/>

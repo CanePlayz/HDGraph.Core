@@ -13,6 +13,7 @@ using System.Windows.Shapes;
 using HDGraph.Interfaces.ScanEngines;
 using System.Diagnostics;
 using HDGraph.Interfaces.DrawEngines;
+using System.ComponentModel;
 
 namespace HDGraph.WpfDrawEngine
 {
@@ -21,11 +22,39 @@ namespace HDGraph.WpfDrawEngine
     /// </summary>
     public partial class Arc : UserControl
     {
+        static Arc()
+        {
+            FontSizeProperty.OverrideMetadata(typeof(Arc), new FrameworkPropertyMetadata(new PropertyChangedCallback(OnFontSizePropertyChanged)));
+        }
+
+        public bool HideTooSmallText { get; set; }
+
         public Arc()
         {
             InitializeComponent();
             this.ToolTipOpening += new ToolTipEventHandler(Arc_ToolTipOpening);
             this.ToolTip = "TODO : Tooltip here."; // TODO.
+        }
+
+        private const int LimitVisibleSize = 15;
+
+        public static void OnFontSizePropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs arg)
+        {
+            
+            Arc arc = (Arc)obj;
+            if (!arc.HideTooSmallText)
+                return;
+            TextBlock textBlock = arc.TextBlockArcName;
+            if (!textBlock.IsLoaded)
+                return;
+            Point upperLeft = textBlock.PointToScreen(new Point(0, 0));
+            Point downRight = textBlock.PointToScreen(new Point(textBlock.ActualWidth, textBlock.ActualHeight));
+            double width = downRight.X - upperLeft.X;
+            double height = downRight.Y - upperLeft.Y;
+            if (height < LimitVisibleSize || width < LimitVisibleSize)
+                textBlock.Visibility = Visibility.Hidden;
+            else
+                textBlock.Visibility = Visibility.Visible;
         }
 
         void Arc_ToolTipOpening(object sender, ToolTipEventArgs e)

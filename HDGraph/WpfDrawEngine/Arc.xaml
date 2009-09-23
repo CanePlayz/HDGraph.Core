@@ -21,11 +21,48 @@
         <Style x:Key="ArcStyle">
             <Setter Property="Path.Fill">
                 <Setter.Value>
-                    <LinearGradientBrush x:Name="brushArcStyle" Opacity="0.7" >
+                    <RadialGradientBrush Opacity="0.7"
+                                         Center="0,0"  
+                                         GradientOrigin="0,0"
+                                         RadiusX="{Binding ElementName=arcUC, Path=LargeRadius}"
+                                         RadiusY="{Binding ElementName=arcUC, Path=LargeRadius}"
+                                         MappingMode="Absolute" 
+                                         >
+                        <!--RadiusX="{Binding ElementName=arcUC, Path=LargeRadius}"
+                                         RadiusY="{Binding ElementName=arcUC, Path=LargeRadius}"-->
+                        <RadialGradientBrush.GradientStops>
+                            <!-- Style 5-->
+                            <GradientStop Color="Yellow" Offset="0.5"></GradientStop>
+                            <GradientStop Color="Red" Offset="1"></GradientStop>
+                            <!--<GradientStop Color="Red" Offset="0.7"></GradientStop>
+                            <GradientStop Color="Yellow" Offset="1"></GradientStop>-->
+                            
+                            <!-- Style 4 -->
+                            <!--<GradientStop Color="Yellow" Offset="0"></GradientStop>
+                            <GradientStop Color="Red" Offset="0.5"></GradientStop>
+                            <GradientStop Color="Red" Offset="0.7"></GradientStop>
+                            <GradientStop Color="Yellow" Offset="1"></GradientStop>-->
+                            
+                            <!-- Style 2 -->
+                            <!--<GradientStop Color="Red" Offset="0"></GradientStop>
+                            <GradientStop Color="Yellow" Offset="0.5"></GradientStop>
+                            <GradientStop Color="Red" Offset="1"></GradientStop>-->
+                            
+                            <!-- Style 1 -->
+                            <!--<GradientStop Color="Green" Offset="0"></GradientStop>
+                            <GradientStop Color="Red" Offset="0.2"></GradientStop>
+                            <GradientStop Color="Yellow" Offset="0.4"></GradientStop>
+                            <GradientStop Color="Green" Offset="0.6"></GradientStop>
+                            <GradientStop Color="Red" Offset="0.8"></GradientStop>
+                            <GradientStop Color="Yellow" Offset="1"></GradientStop>-->
+                        </RadialGradientBrush.GradientStops>
+                    </RadialGradientBrush>
+                    <!-- Style 3 -->
+                    <!--<LinearGradientBrush x:Name="brushArcStyle" Opacity="0.7" >
                         <GradientStop Color="Yellow" Offset="0"></GradientStop>
                         <GradientStop Color="Red" Offset="0.5"></GradientStop>
                         <GradientStop Color="Yellow" Offset="1"></GradientStop>
-                    </LinearGradientBrush>
+                    </LinearGradientBrush>-->
                 </Setter.Value>
             </Setter>
             <Style.Triggers>
@@ -50,7 +87,7 @@
                    x:Name="TextBlockArcName" 
                    FontSize="{Binding ElementName=arcUC, Path=FontSize}"
                    FontFamily="Corbel"
-                   Panel.ZIndex="20"
+                   Panel.ZIndex="20" 
                    >
             <TextBlock.Visibility>
                 <MultiBinding Converter="{StaticResource myVisibilityFromAnglesConverter}" >
