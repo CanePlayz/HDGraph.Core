@@ -56,13 +56,13 @@ namespace HDGraph.WpfDrawEngine
                 return String.Empty;
 
             IDirectoryNode node = values[0] as IDirectoryNode;
-            DrawOptions options = values[1] as DrawOptions;
+            bool? showSize = values[1] as bool?;
 
             if (node == null
-                || options == null)
+                || showSize == null)
                 return String.Empty;
 
-            if (options.ShowSize)
+            if (showSize.Value)
                 return node.Name + Environment.NewLine + node.HumanReadableTotalSize;
             else
                 return node.Name;

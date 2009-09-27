@@ -100,7 +100,7 @@
             <TextBlock.Text>
                 <MultiBinding Converter="{StaticResource myArcLabelFromDrawOptionsConverter}">
                     <Binding/><!--Text="{Binding Path=Name}" -->
-                    <Binding ElementName="arcUC" Path="DrawOptions"/>
+                    <Binding ElementName="arcUC" Path="DrawOptions.ShowSize"/>
                 </MultiBinding>
             </TextBlock.Text>
             <TextBlock.RenderTransform>
