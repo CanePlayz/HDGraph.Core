@@ -15,7 +15,7 @@ using HDGraph.Interfaces.DrawEngines;
 
 namespace HDGraph
 {
-    public partial class TreeGraph : UserControl
+    public partial class TreeGraph : UserControl, IManualRefreshControl
     {
         #region Variables et propriétés
 
@@ -558,7 +558,7 @@ namespace HDGraph
         {
             if (lastClicNode != null
                 && !String.IsNullOrEmpty(lastClicNode.Path))
-                System.Diagnostics.Process.Start(lastClicNode.Path);
+                actionExecutor.OpenInExplorer(lastClicNode);
         }
 
         /// <summary>

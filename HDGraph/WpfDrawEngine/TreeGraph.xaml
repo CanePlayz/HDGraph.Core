@@ -74,7 +74,7 @@
                     <SplineDoubleKeyFrame KeyTime="00:00:1" Value="0"/>
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
-            
+
             <Storyboard x:Key="CenterArcStoryboard" Completed="Storyboard_Completed"
                         DecelerationRatio="0.5" AccelerationRatio="0.5">
                 <SingleAnimation Storyboard.TargetProperty="StopAngle"
@@ -84,19 +84,23 @@
                 <SingleAnimation Storyboard.TargetProperty="LargeRadius"
                                  To="10" Duration="00:00:01" />
             </Storyboard>
-            
-            
+
+
             <ContextMenu x:Key="StandardContextMenu" HasDropShadow="True" Opacity="0.9" Opened="contextMenu1_Opened">
-                <TextBlock Text="{Binding Path=Name}" FontSize="16" FontWeight="Bold" ></TextBlock>
+                <MenuItem Click="openExternalMenuItem_Click">
+                    <MenuItem.Header>
+                        <TextBlock Text="{Binding Path=Name}" FontSize="16" FontWeight="Bold" ></TextBlock>
+                    </MenuItem.Header>
+                </MenuItem>
                 <Separator/>
                 <MenuItem Header="Show details" Click="showDetailsMenuItem_Click"/>
-                <MenuItem Header="Open in external window"/>
+                <MenuItem Header="Open in external window" Click="openExternalMenuItem_Click"/>
                 <Separator/>
-                <MenuItem Header="Refresh this directory"/>
-                <MenuItem Header="Center graph on this directory"/>
+                <MenuItem Header="Refresh this directory" Click="refreshMenuItem_Click"/>
+                <MenuItem Header="Center graph on this directory" Click="centerOnDirMenuItem_Click"/>
                 <Separator/>
-                <MenuItem Header="Delete this directory and all subdirectories">
-                    <MenuItem Header="Delete permanently"/>
+                <MenuItem IsEnabled="False" Header="Delete this directory and all subdirectories">
+                    <MenuItem Header="Delete permanently" Click="deleteMenuItem_Click"/>
                 </MenuItem>
             </ContextMenu>
 

@@ -366,30 +366,35 @@ namespace HDGraph.WpfDrawEngine
                     else
                     {
                         // Center graph on the clicked node.
-
-                        // Apply animation : existing children disappear.
-                        Storyboard fadeStoryboard = TryFindResource("FadeOutStoryboard") as Storyboard;
-                        ApplyAnimationToChildren(fadeStoryboard, sender);
-
-                        // Complete the graph if data is missing
-                        ActionExecutor.ExecuteTreeFillUpToLevel(node, CurrentDrawOptions.ShownLevelsCount);
-                        // Apply animation to center graph to the new root
-                        Storyboard centerArcStoryboard = TryFindResource("CenterArcStoryboard") as Storyboard;
-                        SingleAnimation largeRadiusAnimation = centerArcStoryboard.Children[2] as SingleAnimation;
-                        newRootNode = node;
-                        if (largeRadiusAnimation == null || Storyboard.GetTargetProperty(largeRadiusAnimation).Path != "LargeRadius")
-                        {
-                            // invalid animation : don't launch the animation.
-                            Storyboard_Completed(sender, e);
-                        }
-                        else
-                        {
-                            largeRadiusAnimation.To = Convert.ToSingle(singleLevelHeight);
-                            // The new root will be set at the end of the animation, in method Storyboard_Completed.
-                            centerArcStoryboard.Begin(arc);
-                        }
+                        CenterGraphOnArc(sender, e, arc);
                     }
                 }
+            }
+        }
+
+        private void CenterGraphOnArc(object sender, EventArgs e, Arc arc)
+        {
+            IDirectoryNode node = arc.Node;
+            // Apply animation : existing children disappear.
+            Storyboard fadeStoryboard = TryFindResource("FadeOutStoryboard") as Storyboard;
+            ApplyAnimationToChildren(fadeStoryboard, arc);
+
+            // Complete the graph if data is missing
+            ActionExecutor.ExecuteTreeFillUpToLevel(node, CurrentDrawOptions.ShownLevelsCount);
+            // Apply animation to center graph to the new root
+            Storyboard centerArcStoryboard = TryFindResource("CenterArcStoryboard") as Storyboard;
+            SingleAnimation largeRadiusAnimation = centerArcStoryboard.Children[2] as SingleAnimation;
+            newRootNode = node;
+            if (largeRadiusAnimation == null || Storyboard.GetTargetProperty(largeRadiusAnimation).Path != "LargeRadius")
+            {
+                // invalid animation : don't launch the animation.
+                Storyboard_Completed(sender, e);
+            }
+            else
+            {
+                largeRadiusAnimation.To = Convert.ToSingle(singleLevelHeight);
+                // The new root will be set at the end of the animation, in method Storyboard_Completed.
+                centerArcStoryboard.Begin(arc);
             }
         }
 
@@ -702,6 +707,34 @@ namespace HDGraph.WpfDrawEngine
             Arc arcTarget = ((ContextMenu)((MenuItem)sender).Parent).PlacementTarget as Arc;
             if (ActionExecutor != null && arcTarget != null)
                 ActionExecutor.ShowNodeDetails(arcTarget.Node);
+        }
+
+        private void openExternalMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Arc arcTarget = ((ContextMenu)((MenuItem)sender).Parent).PlacementTarget as Arc;
+            if (ActionExecutor != null && arcTarget != null)
+                ActionExecutor.OpenInExplorer(arcTarget.Node);
+        }
+
+        private void refreshMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Arc arcTarget = ((ContextMenu)((MenuItem)sender).Parent).PlacementTarget as Arc;
+            if (ActionExecutor != null && arcTarget != null)
+                ActionExecutor.ExecuteTreeFullRefresh(arcTarget.Node);
+        }
+
+        private void centerOnDirMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Arc arcTarget = ((ContextMenu)((MenuItem)sender).Parent).PlacementTarget as Arc;
+            if (ActionExecutor != null && arcTarget != null)
+                CenterGraphOnArc(sender, e, arcTarget);
+        }
+
+        private void deleteMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Arc arcTarget = ((ContextMenu)((MenuItem)sender).Parent).PlacementTarget as Arc;
+            if (ActionExecutor != null && arcTarget != null)
+                ActionExecutor.DeleteNode(arcTarget.Node);
         }
     }
 }

@@ -1176,8 +1176,6 @@ namespace HDGraph
             }
         }
 
-        #endregion
-
         /// <summary>
         /// Open a new form showing the details of a given DirectoryNode.
         /// </summary>
@@ -1229,5 +1227,18 @@ namespace HDGraph
             drawEngine.SetRootNodeOfControl(graphControl, selectedNode);
             RefreshGraphControl();
         }
+
+
+        public void OpenInExplorer(IDirectoryNode directoryNode)
+        {
+            System.Diagnostics.Process.Start(directoryNode.Path);
+        }
+
+        public void DeleteNode(IDirectoryNode directoryNode)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

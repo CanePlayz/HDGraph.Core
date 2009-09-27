@@ -39,5 +39,9 @@ namespace HDGraph.Interfaces.DrawEngines
         /// </summary>
         /// <param name="selectedNode"></param>
         void SetNewRootNode(IDirectoryNode selectedNode);
+
+        void OpenInExplorer(IDirectoryNode iDirectoryNode);
+
+        void DeleteNode(IDirectoryNode iDirectoryNode);
     }
 }
