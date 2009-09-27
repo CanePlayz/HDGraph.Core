@@ -9,6 +9,7 @@ using HDGraph.ExternalTools;
 using HDGraph.Resources;
 using HDGraph.Interop;
 using HDGraph.Interfaces.ScanEngines;
+using HDGraph.Interfaces.DrawEngines;
 
 namespace HDGraph
 {
@@ -25,6 +26,8 @@ namespace HDGraph
                 folderIcon = icon.ToBitmap();
             this.dataGridViewTextImageColumnName.Image = folderIcon;
         }
+
+        public IActionExecutor ActionExecutor { get; set; }
 
         private void radioButtonSizesInBytes_CheckedChanged(object sender, EventArgs e)
         {
@@ -172,8 +175,8 @@ namespace HDGraph
 
         private void showDetailsInANewWindowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (selectedNode != null)
-                TreeGraph.ShowNodeDetails(selectedNode);
+            if (selectedNode != null && ActionExecutor != null)
+                ActionExecutor.ShowNodeDetails(selectedNode);
         }
 
         private void directoryNodeListBindingSource_ListChanged(object sender, ListChangedEventArgs e)

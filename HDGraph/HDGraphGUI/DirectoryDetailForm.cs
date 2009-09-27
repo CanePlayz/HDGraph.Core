@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using HDGraph.Interfaces.ScanEngines;
+using HDGraph.Interfaces.DrawEngines;
 
 namespace HDGraph
 {
@@ -14,6 +15,12 @@ namespace HDGraph
         public DirectoryDetailForm()
         {
             InitializeComponent();
+        }
+
+        public IActionExecutor ActionExecutor
+        {
+            get { return directoryDetailUC1.ActionExecutor; }
+            set { directoryDetailUC1.ActionExecutor = value; }
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

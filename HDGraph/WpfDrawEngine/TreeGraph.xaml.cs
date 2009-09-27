@@ -423,37 +423,30 @@ namespace HDGraph.WpfDrawEngine
 
         private DivideBy2NumericConverter divideBy2Converter = new DivideBy2NumericConverter(true);
 
-        private const int DEFAULT_Z_INDEX_STANDARD_ARC = 1;
-        private const int DEFAULT_Z_INDEX_STANDARD_ARC_OVER = 2;
-
         void arc_MouseLeave(object sender, MouseEventArgs e)
         {
-            //Arc arc = (Arc)sender;
-            //if (arc != null)
-            //{
-            //    arc.path1.StrokeThickness = 1;
-            //    Canvas.SetZIndex(arc, DEFAULT_Z_INDEX_STANDARD_ARC);
-            //    ActionExecutor.Notify4NewHoveredNode(null);
-            //    Cursor = standardCursor;
-            //}
+            Arc arc = (Arc)sender;
+            if (arc != null)
+            {
+                ActionExecutor.Notify4NewHoveredNode(null);
+                Cursor = standardCursor;
+            }
         }
 
         private Cursor standardCursor;
 
         void arc_MouseEnter(object sender, MouseEventArgs e)
         {
-            //Arc arc = (Arc)sender;
-            //if (arc != null)
-            //{
-            //    if (Cursor != Cursors.Hand)
-            //    {
-            //        standardCursor = Cursor;
-            //        Cursor = Cursors.Hand;
-            //    }
-            //    arc.path1.StrokeThickness = 3;
-            //    Canvas.SetZIndex(arc, DEFAULT_Z_INDEX_STANDARD_ARC_OVER);
-            //    ActionExecutor.Notify4NewHoveredNode(arc.Node);
-            //}
+            Arc arc = (Arc)sender;
+            if (arc != null)
+            {
+                if (Cursor != Cursors.Hand)
+                {
+                    standardCursor = Cursor;
+                    Cursor = Cursors.Hand;
+                }
+                ActionExecutor.Notify4NewHoveredNode(arc.Node);
+            }
         }
 
 
@@ -702,6 +695,13 @@ namespace HDGraph.WpfDrawEngine
                 encoder.Frames.Add(BitmapFrame.Create(render));
                 encoder.Save(stream);
             }
+        }
+
+        private void showDetailsMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Arc arcTarget = ((ContextMenu)((MenuItem)sender).Parent).PlacementTarget as Arc;
+            if (ActionExecutor != null && arcTarget != null)
+                ActionExecutor.ShowNodeDetails(arcTarget.Node);
         }
     }
 }

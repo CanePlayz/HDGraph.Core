@@ -105,7 +105,8 @@ namespace HDGraph
 
         #region Constructeur
 
-        public TreeGraph(IActionExecutor actionExecutor):this()
+        public TreeGraph(IActionExecutor actionExecutor)
+            : this()
         {
             this.actionExecutor = actionExecutor;
         }
@@ -683,49 +684,10 @@ namespace HDGraph
 
         private void detailsViewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowNodeDetails(lastClicNode);
+            if (actionExecutor != null && lastClicNode != null)
+                actionExecutor.ShowNodeDetails(lastClicNode);
         }
 
-        /// <summary>
-        /// Open a new form showing the details of a given DirectoryNode.
-        /// </summary>
-        /// <param name="node"></param>
-        public static void ShowNodeDetails(IDirectoryNode node)
-        {
-            if (node == null)
-                return;
-            if (node.DirectoryType == SpecialDirTypes.FreeSpaceAndShow)
-            {
-                MessageBox.Show(
-                    String.Format(
-                            ApplicationMessages.FreeSpaceDescription,
-                            node.HumanReadableTotalSize, node.TotalSize
-                            ).Replace("\\n", Environment.NewLine),
-                    "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            if (node.DirectoryType == SpecialDirTypes.UnknownPart)
-            {
-                MessageBox.Show(
-                   String.Format(
-                           ApplicationMessages.UnknownPartDescription,
-                           node.HumanReadableTotalSize, node.TotalSize
-                           ).Replace("\\n", Environment.NewLine),
-                   "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            if (node.ExistsUncalcSubDir)
-            {
-                MessageBox.Show(
-                            ApplicationMessages.UnableToShowUnknownContent,
-                    "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            DirectoryDetailForm form = new DirectoryDetailForm();
-            form.Directory = node;
-            form.Owner = Application.OpenForms[0];
-            form.Show();
-        }
 
         private DrawOptions lastCompletedGraphOption;
         private Bitmap imageOnlyBackBuffer;

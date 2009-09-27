@@ -27,5 +27,11 @@ namespace HDGraph.Interfaces.DrawEngines
         /// <param name="node"></param>
         void Notify4NewRootNode(IDirectoryNode node);
 
+        /// <summary>
+        /// Open a new window showing in a grid the details of the given node.
+        /// </summary>
+        /// <param name="node"></param>
+        void ShowNodeDetails(IDirectoryNode node);
+
     }
 }

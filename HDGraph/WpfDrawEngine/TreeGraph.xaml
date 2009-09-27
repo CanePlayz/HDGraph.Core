@@ -89,7 +89,7 @@
             <ContextMenu x:Key="StandardContextMenu" HasDropShadow="True" Opacity="0.9" Opened="contextMenu1_Opened">
                 <TextBlock Text="{Binding Path=Name}" FontSize="16" FontWeight="Bold" ></TextBlock>
                 <Separator/>
-                <MenuItem Header="Show details"/>
+                <MenuItem Header="Show details" Click="showDetailsMenuItem_Click"/>
                 <MenuItem Header="Open in external window"/>
                 <Separator/>
                 <MenuItem Header="Refresh this directory"/>
