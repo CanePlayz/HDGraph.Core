@@ -728,9 +728,10 @@ namespace HDGraph
                 DrawOptions.DrawAction = DrawAction.DrawNode;
             numUpDownNbNivxAffich.Value = nbNiveaux;
             DrawOptions.ShownLevelsCount = nbNiveaux;
-            drawEngine.SetRootNodeOfControl(graphControl, scanEngine.Root);
 
-            RefreshGraphControl();
+            SetNewRootNode(scanEngine.Root);
+
+
             //PrintStatus("Terminé !");
             errorStatus1.Update(scanEngine.ErrorList);
             buttonScan.Enabled = true;
@@ -1219,6 +1220,14 @@ namespace HDGraph
             form.Directory = node;
             form.Owner = Application.OpenForms[0];
             form.Show();
+        }
+
+
+        public void SetNewRootNode(IDirectoryNode selectedNode)
+        {
+            ExecuteTreeFillUpToLevel(selectedNode, (int)numUpDownNbNivx.Value);
+            drawEngine.SetRootNodeOfControl(graphControl, selectedNode);
+            RefreshGraphControl();
         }
     }
 }

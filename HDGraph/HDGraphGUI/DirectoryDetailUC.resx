@@ -642,6 +642,12 @@
   <data name="showDetailsInANewWindowToolStripMenuItem.Text" xml:space="preserve">
     <value>Show details in a new window</value>
   </data>
+  <data name="centerGraphOnThisDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>285, 22</value>
+  </data>
+  <data name="centerGraphOnThisDirectoryToolStripMenuItem.Text" xml:space="preserve">
+    <value>Center graph on this directory</value>
+  </data>
   <data name="openThisDirectoryInWindowsExplorerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>285, 22</value>
   </data>
@@ -649,7 +655,7 @@
     <value>Open this directory in Windows Explorer</value>
   </data>
   <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>286, 48</value>
+    <value>286, 92</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip1.Name" xml:space="preserve">
     <value>contextMenuStrip1</value>
@@ -759,29 +765,11 @@
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>583, 415</value>
   </data>
-  <data name="&gt;&gt;showDetailsInANewWindowToolStripMenuItem.Name" xml:space="preserve">
-    <value>showDetailsInANewWindowToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;showDetailsInANewWindowToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;openThisDirectoryInWindowsExplorerToolStripMenuItem.Name" xml:space="preserve">
-    <value>openThisDirectoryInWindowsExplorerToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;openThisDirectoryInWindowsExplorerToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;directoryNodeEntityBindingSource.Name" xml:space="preserve">
-    <value>directoryNodeEntityBindingSource</value>
-  </data>
-  <data name="&gt;&gt;directoryNodeEntityBindingSource.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;dataGridViewTextImageColumnName.Name" xml:space="preserve">
     <value>dataGridViewTextImageColumnName</value>
   </data>
   <data name="&gt;&gt;dataGridViewTextImageColumnName.Type" xml:space="preserve">
-    <value>HDGraph.ExternalTools.TextAndImageColumn, HDGraph, Version=1.3.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>HDGraph.ExternalTools.TextAndImageColumn, HDGraph, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumnTotalSize.Name" xml:space="preserve">
     <value>dataGridViewTextBoxColumnTotalSize</value>
@@ -825,6 +813,24 @@
   <data name="&gt;&gt;directoryNodeListBindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;directoryNodeEntityBindingSource.Name" xml:space="preserve">
+    <value>directoryNodeEntityBindingSource</value>
+  </data>
+  <data name="&gt;&gt;directoryNodeEntityBindingSource.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;showDetailsInANewWindowToolStripMenuItem.Name" xml:space="preserve">
+    <value>showDetailsInANewWindowToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;showDetailsInANewWindowToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;openThisDirectoryInWindowsExplorerToolStripMenuItem.Name" xml:space="preserve">
+    <value>openThisDirectoryInWindowsExplorerToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;openThisDirectoryInWindowsExplorerToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn1.Name" xml:space="preserve">
     <value>dataGridViewTextBoxColumn1</value>
   </data>
@@ -841,13 +847,19 @@
     <value>textAndImageColumn1</value>
   </data>
   <data name="&gt;&gt;textAndImageColumn1.Type" xml:space="preserve">
-    <value>HDGraph.ExternalTools.TextAndImageColumn, HDGraph, Version=1.3.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>HDGraph.ExternalTools.TextAndImageColumn, HDGraph, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn3.Name" xml:space="preserve">
     <value>dataGridViewTextBoxColumn3</value>
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn3.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;centerGraphOnThisDirectoryToolStripMenuItem.Name" xml:space="preserve">
+    <value>centerGraphOnThisDirectoryToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;centerGraphOnThisDirectoryToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>DirectoryDetailUC</value>

@@ -33,5 +33,11 @@ namespace HDGraph.Interfaces.DrawEngines
         /// <param name="node"></param>
         void ShowNodeDetails(IDirectoryNode node);
 
+        /// <summary>
+        /// Try to define the new root of the current graph : send a request to the current
+        /// graph to set the new root.
+        /// </summary>
+        /// <param name="selectedNode"></param>
+        void SetNewRootNode(IDirectoryNode selectedNode);
     }
 }

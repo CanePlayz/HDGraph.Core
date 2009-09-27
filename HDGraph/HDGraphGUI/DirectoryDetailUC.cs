@@ -183,5 +183,11 @@ namespace HDGraph
         {
             textBoxSubdirCount.Text = String.Format(ApplicationMessages.SubDirectoriesCount, directoryNodeListBindingSource.Count);
         }
+
+        private void centerGraphOnThisDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (selectedNode != null && ActionExecutor != null)
+                ActionExecutor.SetNewRootNode(selectedNode);
+        }
     }
 }

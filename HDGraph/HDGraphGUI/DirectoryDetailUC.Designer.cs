@@ -41,7 +41,16 @@ namespace HDGraph
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.directoryNodeDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextImageColumnName = new HDGraph.ExternalTools.TextAndImageColumn();
+            this.dataGridViewTextBoxColumnTotalSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumnTotalSizeHumanReadable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumnFilesSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumnFilesSizeHumanReadable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.directoryNodeListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.filesSizeTextBox = new System.Windows.Forms.TextBox();
+            this.directoryNodeEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.totalSizeTextBox = new System.Windows.Forms.TextBox();
             this.pathTextBox = new System.Windows.Forms.TextBox();
@@ -55,19 +64,11 @@ namespace HDGraph
             this.textBoxNumberOfFiles = new System.Windows.Forms.TextBox();
             this.textBoxTotalNumberOfFiles = new System.Windows.Forms.TextBox();
             this.textBoxSubdirCount = new System.Windows.Forms.TextBox();
-            this.directoryNodeEntityBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextImageColumnName = new HDGraph.ExternalTools.TextAndImageColumn();
-            this.dataGridViewTextBoxColumnTotalSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumnTotalSizeHumanReadable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumnFilesSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumnFilesSizeHumanReadable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.directoryNodeListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textAndImageColumn1 = new HDGraph.ExternalTools.TextAndImageColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.centerGraphOnThisDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             filesSizeLabel = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
             totalSizeLabel = new System.Windows.Forms.Label();
@@ -76,10 +77,10 @@ namespace HDGraph
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.directoryNodeDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeListBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeEntityBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeEntityBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeListBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // filesSizeLabel
@@ -146,130 +147,6 @@ namespace HDGraph
             this.directoryNodeDataGridView.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.directoryNodeDataGridView_CellContextMenuStripNeeded);
             this.directoryNodeDataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.directoryNodeDataGridView_CellFormatting);
             this.directoryNodeDataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.directoryNodeDataGridView_RowsAdded);
-            // 
-            // filesSizeTextBox
-            // 
-            resources.ApplyResources(this.filesSizeTextBox, "filesSizeTextBox");
-            this.filesSizeTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.filesSizeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.filesSizeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.directoryNodeEntityBindingSource, "FilesSize", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
-            this.filesSizeTextBox.MinimumSize = new System.Drawing.Size(187, 0);
-            this.filesSizeTextBox.Name = "filesSizeTextBox";
-            this.filesSizeTextBox.ReadOnly = true;
-            // 
-            // nameTextBox
-            // 
-            resources.ApplyResources(this.nameTextBox, "nameTextBox");
-            this.nameTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.nameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.directoryNodeEntityBindingSource, "Name", true));
-            this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.ReadOnly = true;
-            // 
-            // totalSizeTextBox
-            // 
-            resources.ApplyResources(this.totalSizeTextBox, "totalSizeTextBox");
-            this.totalSizeTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.totalSizeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.totalSizeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.directoryNodeEntityBindingSource, "TotalSize", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
-            this.totalSizeTextBox.MinimumSize = new System.Drawing.Size(187, 0);
-            this.totalSizeTextBox.Name = "totalSizeTextBox";
-            this.totalSizeTextBox.ReadOnly = true;
-            // 
-            // pathTextBox
-            // 
-            resources.ApplyResources(this.pathTextBox, "pathTextBox");
-            this.pathTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.pathTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.pathTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.directoryNodeEntityBindingSource, "Path", true));
-            this.pathTextBox.Name = "pathTextBox";
-            this.pathTextBox.ReadOnly = true;
-            // 
-            // groupBox1
-            // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.radioButtonSizesInBytes);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.radioButtonHumandReadableSizes);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
-            // 
-            // radioButtonSizesInBytes
-            // 
-            resources.ApplyResources(this.radioButtonSizesInBytes, "radioButtonSizesInBytes");
-            this.radioButtonSizesInBytes.Name = "radioButtonSizesInBytes";
-            this.radioButtonSizesInBytes.UseVisualStyleBackColor = true;
-            this.radioButtonSizesInBytes.CheckedChanged += new System.EventHandler(this.radioButtonSizesInBytes_CheckedChanged);
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
-            // radioButtonHumandReadableSizes
-            // 
-            resources.ApplyResources(this.radioButtonHumandReadableSizes, "radioButtonHumandReadableSizes");
-            this.radioButtonHumandReadableSizes.Checked = true;
-            this.radioButtonHumandReadableSizes.Name = "radioButtonHumandReadableSizes";
-            this.radioButtonHumandReadableSizes.TabStop = true;
-            this.radioButtonHumandReadableSizes.UseVisualStyleBackColor = true;
-            this.radioButtonHumandReadableSizes.CheckedChanged += new System.EventHandler(this.radioButtonHumandReadableSizes_CheckedChanged);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showDetailsInANewWindowToolStripMenuItem,
-            this.openThisDirectoryInWindowsExplorerToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
-            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
-            // 
-            // showDetailsInANewWindowToolStripMenuItem
-            // 
-            this.showDetailsInANewWindowToolStripMenuItem.Image = global::HDGraph.Properties.Resources.ActualSizeHS;
-            this.showDetailsInANewWindowToolStripMenuItem.Name = "showDetailsInANewWindowToolStripMenuItem";
-            resources.ApplyResources(this.showDetailsInANewWindowToolStripMenuItem, "showDetailsInANewWindowToolStripMenuItem");
-            this.showDetailsInANewWindowToolStripMenuItem.Click += new System.EventHandler(this.showDetailsInANewWindowToolStripMenuItem_Click);
-            // 
-            // openThisDirectoryInWindowsExplorerToolStripMenuItem
-            // 
-            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Image = global::HDGraph.Properties.Resources.CascadeWindowsHS;
-            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Name = "openThisDirectoryInWindowsExplorerToolStripMenuItem";
-            resources.ApplyResources(this.openThisDirectoryInWindowsExplorerToolStripMenuItem, "openThisDirectoryInWindowsExplorerToolStripMenuItem");
-            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Click += new System.EventHandler(this.openThisDirectoryInWindowsExplorerToolStripMenuItem_Click);
-            // 
-            // textBoxNumberOfFiles
-            // 
-            resources.ApplyResources(this.textBoxNumberOfFiles, "textBoxNumberOfFiles");
-            this.textBoxNumberOfFiles.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxNumberOfFiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxNumberOfFiles.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.directoryNodeEntityBindingSource, "DirectoryFilesNumber", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
-            this.textBoxNumberOfFiles.MinimumSize = new System.Drawing.Size(57, 0);
-            this.textBoxNumberOfFiles.Name = "textBoxNumberOfFiles";
-            this.textBoxNumberOfFiles.ReadOnly = true;
-            // 
-            // textBoxTotalNumberOfFiles
-            // 
-            resources.ApplyResources(this.textBoxTotalNumberOfFiles, "textBoxTotalNumberOfFiles");
-            this.textBoxTotalNumberOfFiles.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxTotalNumberOfFiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxTotalNumberOfFiles.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.directoryNodeEntityBindingSource, "TotalRecursiveFilesNumber", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
-            this.textBoxTotalNumberOfFiles.MinimumSize = new System.Drawing.Size(57, 0);
-            this.textBoxTotalNumberOfFiles.Name = "textBoxTotalNumberOfFiles";
-            this.textBoxTotalNumberOfFiles.ReadOnly = true;
-            // 
-            // textBoxSubdirCount
-            // 
-            resources.ApplyResources(this.textBoxSubdirCount, "textBoxSubdirCount");
-            this.textBoxSubdirCount.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxSubdirCount.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxSubdirCount.MinimumSize = new System.Drawing.Size(57, 0);
-            this.textBoxSubdirCount.Name = "textBoxSubdirCount";
-            this.textBoxSubdirCount.ReadOnly = true;
-            // 
-            // directoryNodeEntityBindingSource
-            // 
-            this.directoryNodeEntityBindingSource.DataSource = typeof(HDGraph.DirectoryNode);
             // 
             // dataGridViewTextImageColumnName
             // 
@@ -343,6 +220,131 @@ namespace HDGraph
             this.directoryNodeListBindingSource.DataSource = typeof(HDGraph.DirectoryNode);
             this.directoryNodeListBindingSource.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.directoryNodeListBindingSource_ListChanged);
             // 
+            // filesSizeTextBox
+            // 
+            resources.ApplyResources(this.filesSizeTextBox, "filesSizeTextBox");
+            this.filesSizeTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.filesSizeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.filesSizeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.directoryNodeEntityBindingSource, "FilesSize", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
+            this.filesSizeTextBox.MinimumSize = new System.Drawing.Size(187, 0);
+            this.filesSizeTextBox.Name = "filesSizeTextBox";
+            this.filesSizeTextBox.ReadOnly = true;
+            // 
+            // directoryNodeEntityBindingSource
+            // 
+            this.directoryNodeEntityBindingSource.DataSource = typeof(HDGraph.DirectoryNode);
+            // 
+            // nameTextBox
+            // 
+            resources.ApplyResources(this.nameTextBox, "nameTextBox");
+            this.nameTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.nameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.nameTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.directoryNodeEntityBindingSource, "Name", true));
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.ReadOnly = true;
+            // 
+            // totalSizeTextBox
+            // 
+            resources.ApplyResources(this.totalSizeTextBox, "totalSizeTextBox");
+            this.totalSizeTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.totalSizeTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.totalSizeTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.directoryNodeEntityBindingSource, "TotalSize", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
+            this.totalSizeTextBox.MinimumSize = new System.Drawing.Size(187, 0);
+            this.totalSizeTextBox.Name = "totalSizeTextBox";
+            this.totalSizeTextBox.ReadOnly = true;
+            // 
+            // pathTextBox
+            // 
+            resources.ApplyResources(this.pathTextBox, "pathTextBox");
+            this.pathTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.pathTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.pathTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.directoryNodeEntityBindingSource, "Path", true));
+            this.pathTextBox.Name = "pathTextBox";
+            this.pathTextBox.ReadOnly = true;
+            // 
+            // groupBox1
+            // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.radioButtonSizesInBytes);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.radioButtonHumandReadableSizes);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // radioButtonSizesInBytes
+            // 
+            resources.ApplyResources(this.radioButtonSizesInBytes, "radioButtonSizesInBytes");
+            this.radioButtonSizesInBytes.Name = "radioButtonSizesInBytes";
+            this.radioButtonSizesInBytes.UseVisualStyleBackColor = true;
+            this.radioButtonSizesInBytes.CheckedChanged += new System.EventHandler(this.radioButtonSizesInBytes_CheckedChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // radioButtonHumandReadableSizes
+            // 
+            resources.ApplyResources(this.radioButtonHumandReadableSizes, "radioButtonHumandReadableSizes");
+            this.radioButtonHumandReadableSizes.Checked = true;
+            this.radioButtonHumandReadableSizes.Name = "radioButtonHumandReadableSizes";
+            this.radioButtonHumandReadableSizes.TabStop = true;
+            this.radioButtonHumandReadableSizes.UseVisualStyleBackColor = true;
+            this.radioButtonHumandReadableSizes.CheckedChanged += new System.EventHandler(this.radioButtonHumandReadableSizes_CheckedChanged);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.showDetailsInANewWindowToolStripMenuItem,
+            this.centerGraphOnThisDirectoryToolStripMenuItem,
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            // 
+            // showDetailsInANewWindowToolStripMenuItem
+            // 
+            this.showDetailsInANewWindowToolStripMenuItem.Image = global::HDGraph.Properties.Resources.ActualSizeHS;
+            this.showDetailsInANewWindowToolStripMenuItem.Name = "showDetailsInANewWindowToolStripMenuItem";
+            resources.ApplyResources(this.showDetailsInANewWindowToolStripMenuItem, "showDetailsInANewWindowToolStripMenuItem");
+            this.showDetailsInANewWindowToolStripMenuItem.Click += new System.EventHandler(this.showDetailsInANewWindowToolStripMenuItem_Click);
+            // 
+            // openThisDirectoryInWindowsExplorerToolStripMenuItem
+            // 
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Image = global::HDGraph.Properties.Resources.CascadeWindowsHS;
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Name = "openThisDirectoryInWindowsExplorerToolStripMenuItem";
+            resources.ApplyResources(this.openThisDirectoryInWindowsExplorerToolStripMenuItem, "openThisDirectoryInWindowsExplorerToolStripMenuItem");
+            this.openThisDirectoryInWindowsExplorerToolStripMenuItem.Click += new System.EventHandler(this.openThisDirectoryInWindowsExplorerToolStripMenuItem_Click);
+            // 
+            // textBoxNumberOfFiles
+            // 
+            resources.ApplyResources(this.textBoxNumberOfFiles, "textBoxNumberOfFiles");
+            this.textBoxNumberOfFiles.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxNumberOfFiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxNumberOfFiles.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.directoryNodeEntityBindingSource, "DirectoryFilesNumber", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
+            this.textBoxNumberOfFiles.MinimumSize = new System.Drawing.Size(57, 0);
+            this.textBoxNumberOfFiles.Name = "textBoxNumberOfFiles";
+            this.textBoxNumberOfFiles.ReadOnly = true;
+            // 
+            // textBoxTotalNumberOfFiles
+            // 
+            resources.ApplyResources(this.textBoxTotalNumberOfFiles, "textBoxTotalNumberOfFiles");
+            this.textBoxTotalNumberOfFiles.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxTotalNumberOfFiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxTotalNumberOfFiles.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.directoryNodeEntityBindingSource, "TotalRecursiveFilesNumber", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
+            this.textBoxTotalNumberOfFiles.MinimumSize = new System.Drawing.Size(57, 0);
+            this.textBoxTotalNumberOfFiles.Name = "textBoxTotalNumberOfFiles";
+            this.textBoxTotalNumberOfFiles.ReadOnly = true;
+            // 
+            // textBoxSubdirCount
+            // 
+            resources.ApplyResources(this.textBoxSubdirCount, "textBoxSubdirCount");
+            this.textBoxSubdirCount.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxSubdirCount.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxSubdirCount.MinimumSize = new System.Drawing.Size(57, 0);
+            this.textBoxSubdirCount.Name = "textBoxSubdirCount";
+            this.textBoxSubdirCount.ReadOnly = true;
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -377,6 +379,12 @@ namespace HDGraph
             resources.ApplyResources(this.dataGridViewTextBoxColumn3, "dataGridViewTextBoxColumn3");
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
+            // centerGraphOnThisDirectoryToolStripMenuItem
+            // 
+            this.centerGraphOnThisDirectoryToolStripMenuItem.Name = "centerGraphOnThisDirectoryToolStripMenuItem";
+            resources.ApplyResources(this.centerGraphOnThisDirectoryToolStripMenuItem, "centerGraphOnThisDirectoryToolStripMenuItem");
+            this.centerGraphOnThisDirectoryToolStripMenuItem.Click += new System.EventHandler(this.centerGraphOnThisDirectoryToolStripMenuItem_Click);
+            // 
             // DirectoryDetailUC
             // 
             resources.ApplyResources(this, "$this");
@@ -401,11 +409,11 @@ namespace HDGraph
             this.Name = "DirectoryDetailUC";
             this.Load += new System.EventHandler(this.DirectoryDetailUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.directoryNodeDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeListBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeEntityBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeEntityBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.directoryNodeListBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -441,5 +449,6 @@ namespace HDGraph
         private System.Windows.Forms.TextBox textBoxNumberOfFiles;
         private System.Windows.Forms.TextBox textBoxTotalNumberOfFiles;
         private System.Windows.Forms.TextBox textBoxSubdirCount;
+        private System.Windows.Forms.ToolStripMenuItem centerGraphOnThisDirectoryToolStripMenuItem;
     }
 }
