@@ -6,6 +6,16 @@
         <Style.Triggers>
             <Trigger Property="Path.IsMouseOver" Value="True">
                 <Setter Property="Panel.ZIndex" Value="20" />
+                <Setter Property="Path.Fill" >
+                    <Setter.Value>
+                        <LinearGradientBrush x:Name="brushArcStyleOver" Opacity="0.5" >
+                            <GradientStop Color="Yellow" Offset="0"></GradientStop>
+                            <GradientStop Color="Blue" Offset="0.5"></GradientStop>
+                            <GradientStop Color="Yellow" Offset="1"></GradientStop>
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Path.StrokeThickness" Value="3"/>
             </Trigger>
         </Style.Triggers>
     </Style>

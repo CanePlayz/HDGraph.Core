@@ -40,7 +40,7 @@ namespace HDGraph.WpfDrawEngine
 
         public static void OnFontSizePropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs arg)
         {
-            
+
             Arc arc = (Arc)obj;
             if (!arc.HideTooSmallText)
                 return;
@@ -55,6 +55,26 @@ namespace HDGraph.WpfDrawEngine
                 textBlock.Visibility = Visibility.Hidden;
             else
                 textBlock.Visibility = Visibility.Visible;
+        }
+
+        private Style beforeMouseOverStyle;
+
+        private void arcUC_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (path1.Style == (Style)FindResource("ArcStyle"))
+            {
+                beforeMouseOverStyle = path1.Style;
+                path1.Style = (Style)FindResource("ArcStyleOnMouseOver");;
+            }
+        }
+
+        private void arcUC_MouseLeave(object sender, MouseEventArgs e)
+        {
+            if (beforeMouseOverStyle != null)
+            {
+                path1.Style = beforeMouseOverStyle; //(Style)FindResource("ArcStyle");
+                beforeMouseOverStyle = null;
+            }
         }
 
         void Arc_ToolTipOpening(object sender, ToolTipEventArgs e)
@@ -75,7 +95,6 @@ namespace HDGraph.WpfDrawEngine
         // Using a DependencyProperty as the backing store for DrawOption.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty DrawOptionsProperty =
             DependencyProperty.Register("DrawOptions", typeof(DrawOptions), typeof(Arc), new UIPropertyMetadata(null));
-
 
 
 
