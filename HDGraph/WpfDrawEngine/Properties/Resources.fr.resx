@@ -118,9 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="HiddenFolders" xml:space="preserve">
-    <value>There are hidden folders here. {0}To show them, center the graph on their parent ("{1}") with a double click.</value>
+    <value>Sous-répertoires masqués par HDGraph pour des raisons de performances. {0}Pour les afficher, centrer la vue sur le répertoire parent ("{1}") via un double-clic sur celui-ci.</value>
   </data>
   <data name="MultipleSmallFolders" xml:space="preserve">
-    <value>There are too many small folders to show them individually. {0}To show them, center the graph on their parent ("{1}") with a double click, or open the "Details" window of this parent.</value>
+    <value>Il y a ici trop de petits répertoires pour les afficher individuellement. {0}Pour les afficher, centrer la vue sur le répertoire parent ("{1}") via un double-clic sur celui-ci, ou ouvrez la fenêtre "Détails" de ce répertoire parent.</value>
   </data>
 </root>

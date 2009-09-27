@@ -52,9 +52,10 @@ namespace HDGraph
             this.splitContainerGraphAndOptions = new System.Windows.Forms.SplitContainer();
             this.buttonTestWpf = new System.Windows.Forms.Button();
             this.linkLabelHelpGraph = new System.Windows.Forms.LinkLabel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBoxDrawEngine = new System.Windows.Forms.ComboBox();
             this.radioButtonEngineRec = new System.Windows.Forms.RadioButton();
             this.radioButtonEngineCircular = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBoxShowTooltip = new System.Windows.Forms.CheckBox();
             this.drawOptionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.checkBoxShowFreeSpace = new System.Windows.Forms.CheckBox();
@@ -197,8 +198,8 @@ namespace HDGraph
             // 
             // toolStripContainer2.TopToolStripPanel
             // 
-            this.toolStripContainer2.TopToolStripPanel.Controls.Add(this.toolBarToolStrip);
             this.toolStripContainer2.TopToolStripPanel.Controls.Add(this.toolStripShortcuts);
+            this.toolStripContainer2.TopToolStripPanel.Controls.Add(this.toolBarToolStrip);
             this.helpProvider1.SetShowHelp(this.toolStripContainer2.TopToolStripPanel, ((bool)(resources.GetObject("toolStripContainer2.TopToolStripPanel.ShowHelp"))));
             // 
             // toolStripShortcuts
@@ -344,6 +345,9 @@ namespace HDGraph
             // 
             // splitContainerGraphAndOptions.Panel2
             // 
+            this.splitContainerGraphAndOptions.Panel2.Controls.Add(this.comboBoxDrawEngine);
+            this.splitContainerGraphAndOptions.Panel2.Controls.Add(this.radioButtonEngineRec);
+            this.splitContainerGraphAndOptions.Panel2.Controls.Add(this.radioButtonEngineCircular);
             this.splitContainerGraphAndOptions.Panel2.Controls.Add(this.groupBox1);
             this.splitContainerGraphAndOptions.Panel2.Controls.Add(this.groupBoxHoverInfo);
             this.splitContainerGraphAndOptions.Panel2.Controls.Add(this.errorStatus1);
@@ -367,11 +371,38 @@ namespace HDGraph
             this.linkLabelHelpGraph.TabStop = true;
             this.linkLabelHelpGraph.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelHelpGraph_LinkClicked);
             // 
+            // comboBoxDrawEngine
+            // 
+            this.comboBoxDrawEngine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDrawEngine.FormattingEnabled = true;
+            this.comboBoxDrawEngine.Items.AddRange(new object[] {
+            resources.GetString("comboBoxDrawEngine.Items"),
+            resources.GetString("comboBoxDrawEngine.Items1")});
+            resources.ApplyResources(this.comboBoxDrawEngine, "comboBoxDrawEngine");
+            this.comboBoxDrawEngine.Name = "comboBoxDrawEngine";
+            this.helpProvider1.SetShowHelp(this.comboBoxDrawEngine, ((bool)(resources.GetObject("comboBoxDrawEngine.ShowHelp"))));
+            this.comboBoxDrawEngine.SelectedIndexChanged += new System.EventHandler(this.comboBoxDrawEngine_SelectedIndexChanged);
+            // 
+            // radioButtonEngineRec
+            // 
+            resources.ApplyResources(this.radioButtonEngineRec, "radioButtonEngineRec");
+            this.radioButtonEngineRec.Name = "radioButtonEngineRec";
+            this.helpProvider1.SetShowHelp(this.radioButtonEngineRec, ((bool)(resources.GetObject("radioButtonEngineRec.ShowHelp"))));
+            this.radioButtonEngineRec.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonEngineCircular
+            // 
+            resources.ApplyResources(this.radioButtonEngineCircular, "radioButtonEngineCircular");
+            this.radioButtonEngineCircular.Checked = true;
+            this.radioButtonEngineCircular.Name = "radioButtonEngineCircular";
+            this.helpProvider1.SetShowHelp(this.radioButtonEngineCircular, ((bool)(resources.GetObject("radioButtonEngineCircular.ShowHelp"))));
+            this.radioButtonEngineCircular.TabStop = true;
+            this.radioButtonEngineCircular.UseVisualStyleBackColor = true;
+            this.radioButtonEngineCircular.CheckedChanged += new System.EventHandler(this.radioButtonEngineCircular_CheckedChanged);
+            // 
             // groupBox1
             // 
             resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.radioButtonEngineRec);
-            this.groupBox1.Controls.Add(this.radioButtonEngineCircular);
             this.groupBox1.Controls.Add(this.checkBoxShowTooltip);
             this.groupBox1.Controls.Add(this.checkBoxShowFreeSpace);
             this.groupBox1.Controls.Add(this.checkBoxPrintSizes);
@@ -391,23 +422,6 @@ namespace HDGraph
             this.groupBox1.Name = "groupBox1";
             this.helpProvider1.SetShowHelp(this.groupBox1, ((bool)(resources.GetObject("groupBox1.ShowHelp"))));
             this.groupBox1.TabStop = false;
-            // 
-            // radioButtonEngineRec
-            // 
-            resources.ApplyResources(this.radioButtonEngineRec, "radioButtonEngineRec");
-            this.radioButtonEngineRec.Name = "radioButtonEngineRec";
-            this.helpProvider1.SetShowHelp(this.radioButtonEngineRec, ((bool)(resources.GetObject("radioButtonEngineRec.ShowHelp"))));
-            this.radioButtonEngineRec.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonEngineCircular
-            // 
-            resources.ApplyResources(this.radioButtonEngineCircular, "radioButtonEngineCircular");
-            this.radioButtonEngineCircular.Checked = true;
-            this.radioButtonEngineCircular.Name = "radioButtonEngineCircular";
-            this.helpProvider1.SetShowHelp(this.radioButtonEngineCircular, ((bool)(resources.GetObject("radioButtonEngineCircular.ShowHelp"))));
-            this.radioButtonEngineCircular.TabStop = true;
-            this.radioButtonEngineCircular.UseVisualStyleBackColor = true;
-            this.radioButtonEngineCircular.CheckedChanged += new System.EventHandler(this.radioButtonEngineCircular_CheckedChanged);
             // 
             // checkBoxShowTooltip
             // 
@@ -1134,6 +1148,7 @@ namespace HDGraph
             this.toolBarToolStrip.PerformLayout();
             this.splitContainerGraphAndOptions.Panel1.ResumeLayout(false);
             this.splitContainerGraphAndOptions.Panel2.ResumeLayout(false);
+            this.splitContainerGraphAndOptions.Panel2.PerformLayout();
             this.splitContainerGraphAndOptions.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -1281,6 +1296,7 @@ namespace HDGraph
         private System.Windows.Forms.SplitContainer splitContainerAdressBarAndGraph;
         private System.Windows.Forms.Button buttonTestWpf;
         private System.Windows.Forms.BindingSource drawOptionsBindingSource;
+        private System.Windows.Forms.ComboBox comboBoxDrawEngine;
     }
 }
 

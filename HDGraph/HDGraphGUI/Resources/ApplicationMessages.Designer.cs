@@ -259,7 +259,7 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Errorr : the non calculable files have a negative size. This means that you don&apos;t have refreshed the whole disk, or that your disk has one or more hard link or junction links (in this case, linked files are counted twice ou more)..
+        ///   Looks up a localized string similar to Error : the non calculable files have a negative size. This means that you don&apos;t have refreshed the whole disk, or that your disk has one or more hard link or junction links (in this case, linked files are counted twice ou more)..
         /// </summary>
         internal static string ErrorNegativeSizeOfUnknownParts {
             get {

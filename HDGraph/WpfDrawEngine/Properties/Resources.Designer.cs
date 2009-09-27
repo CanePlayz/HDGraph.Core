@@ -59,5 +59,23 @@ namespace HDGraph.WpfDrawEngine.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are hidden folders here. {0}To show them, center the graph on their parent (&quot;{1}&quot;) with a double click..
+        /// </summary>
+        internal static string HiddenFolders {
+            get {
+                return ResourceManager.GetString("HiddenFolders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are too many small folders to show them individually. {0}To show them, center the graph on their parent (&quot;{1}&quot;) with a double click, or open the &quot;Details&quot; window of this parent..
+        /// </summary>
+        internal static string MultipleSmallFolders {
+            get {
+                return ResourceManager.GetString("MultipleSmallFolders", resourceCulture);
+            }
+        }
     }
 }

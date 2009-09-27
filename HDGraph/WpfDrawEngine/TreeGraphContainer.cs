@@ -66,5 +66,10 @@ namespace HDGraph.WpfDrawEngine
         {
             GetTreeGraph().SetRoot(node, options);
         }
+
+        public void SaveAsImageToFile(string filePath)
+        {
+            GetTreeGraph().SaveAsImageToFile(filePath);
+        }
     }
 }

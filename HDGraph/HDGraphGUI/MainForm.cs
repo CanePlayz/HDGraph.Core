@@ -140,11 +140,24 @@ namespace HDGraph
             splitContainerGraphAndOptions.Panel2Collapsed = true;
         }
 
+
+        private void comboBoxDrawEngine_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CreateDrawEngine();
+        }
+
         private void CreateDrawEngine()
         {
-            this.drawEngineContract = PlugIn.PlugInsManager.GetDrawEnginePlugins()[1]; // TODO : load from config
+            int selectedIndex = comboBoxDrawEngine.SelectedIndex;
+            if (selectedIndex < 0)
+                selectedIndex = 0;
+            this.drawEngineContract = PlugIn.PlugInsManager.GetDrawEnginePlugins()[selectedIndex]; // TODO : load from config
             this.drawEngine = drawEngineContract.GetNewEngine();
-            this.graphControl = this.drawEngine.GenerateControlFromNode(scanEngine.Root, DrawOptions, this);
+            if (this.graphControl != null)
+                this.splitContainerGraphAndOptions.Panel1.Controls.Remove(graphControl);
+
+            IDirectoryNode currentNode = (graphViewHistory.Count == 0) ? null : graphViewHistory[currentNodeIndex];
+            this.graphControl = this.drawEngine.GenerateControlFromNode(currentNode, DrawOptions, this);
             this.splitContainerGraphAndOptions.Panel1.Controls.Add(graphControl);
             this.graphControl.Dock = DockStyle.Fill;
             this.graphControl.BackColor = Color.White;
@@ -388,10 +401,8 @@ namespace HDGraph
                 if (saveFileDialog.ShowDialog(this) == DialogResult.OK)
                 {
                     string fileName = saveFileDialog.FileName;
-                    if (graphControl is TreeGraph)
-                        ((TreeGraph)graphControl).ImageBuffer.Save(fileName);
-                    else
-                        throw new NotImplementedException();
+
+                    drawEngine.SaveAsImageToFile(graphControl, fileName);
                 }
             }
             catch (Exception ex)
@@ -1165,5 +1176,6 @@ namespace HDGraph
         }
 
         #endregion
+
     }
 }

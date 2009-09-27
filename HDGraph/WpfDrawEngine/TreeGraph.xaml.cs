@@ -14,6 +14,7 @@ using HDGraph.Interfaces.ScanEngines;
 using HDGraph.Interfaces.DrawEngines;
 using System.Globalization;
 using System.Windows.Media.Animation;
+using System.IO;
 
 namespace HDGraph.WpfDrawEngine
 {
@@ -226,6 +227,9 @@ namespace HDGraph.WpfDrawEngine
             arc.Node = node;
             arc.path1.Style = (Style)FindResource("UncalculatedPart");
             arc.path1.StrokeThickness = 0;
+            arc.ToolTip = String.Format(Properties.Resources.HiddenFolders,
+                                        Environment.NewLine + Environment.NewLine,
+                                        node.Name);
             arc.EndEdit();
             canvas1.Children.Add(arc);
             // TODO : arc.brush1 ==> LargeConfetti
@@ -249,6 +253,9 @@ namespace HDGraph.WpfDrawEngine
             arc.Node = node;
             arc.path1.Style = (Style)FindResource("MultipleNodeStyle");
             arc.path1.StrokeThickness = 0;
+            arc.ToolTip = String.Format(Properties.Resources.MultipleSmallFolders,
+                                        Environment.NewLine + Environment.NewLine,
+                                        node.Name);
             arc.EndEdit();
             canvas1.Children.Add(arc);
         }
@@ -454,7 +461,7 @@ namespace HDGraph.WpfDrawEngine
             Arc arc = new Arc();
             arc.ContextMenuOpening += new ContextMenuEventHandler(arc_ContextMenuOpening);
             arc.DrawOptions = this.CurrentDrawOptions;
-            arc.ContextMenu = (ContextMenu)FindResource("essai");
+            arc.ContextMenu = (ContextMenu)FindResource("StandardContextMenu");
             arc.BeginEdit();
             arc.StartAngle = startAngle;
             arc.StopAngle = endAngle - startAngle;
@@ -668,7 +675,32 @@ namespace HDGraph.WpfDrawEngine
         {
 
         }
+        
 
-
+        public void SaveAsImageToFile(string filePath)
+        {
+            Visual theVisual = canvas1;
+            double width = Convert.ToDouble(theVisual.GetValue(FrameworkElement.WidthProperty));
+            double height = Convert.ToDouble(theVisual.GetValue(FrameworkElement.HeightProperty));
+            if (double.IsNaN(width) || double.IsNaN(height))
+            {
+                throw new FormatException("Width or Height of the UIElement is not valid.");
+            }
+            int quality = 2; // quality : from 1 to n...
+            RenderTargetBitmap render = new RenderTargetBitmap(
+                  Convert.ToInt32(width) * quality,
+                  Convert.ToInt32(height) * quality,
+                  96 * quality,
+                  96 * quality,
+                  PixelFormats.Pbgra32);
+            // Indicate which control to render in the image
+            render.Render(theVisual);
+            using (FileStream stream = new FileStream(filePath, FileMode.Create))
+            {
+                PngBitmapEncoder encoder = new PngBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(render));
+                encoder.Save(stream);
+            }
+        }
     }
 }

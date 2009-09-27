@@ -13,5 +13,7 @@ namespace HDGraph.Interfaces.DrawEngines
 
         IDirectoryNode GetRootNodeOfControl(Control control);
         void SetRootNodeOfControl(Control control, IDirectoryNode newRoot);
+
+        void SaveAsImageToFile(System.Windows.Forms.Control control, string filePath);
     }
 }

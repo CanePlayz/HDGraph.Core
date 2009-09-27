@@ -49,5 +49,19 @@ namespace HDGraph.DrawEngine
         }
 
         #endregion
+
+        #region IDrawEngine Members
+
+
+        public void SaveAsImageToFile(Control control, string filePath)
+        {
+            if (control == null
+               || !(control is TreeGraph))
+                throw new ArgumentException("The given control is null or is not a TreeGraph.", "control");
+
+            ((TreeGraph)control).ImageBuffer.Save(filePath);
+        }
+
+        #endregion
     }
 }

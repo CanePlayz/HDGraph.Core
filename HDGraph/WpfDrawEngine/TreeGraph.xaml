@@ -112,7 +112,7 @@
             </Storyboard>
             
             
-            <ContextMenu x:Key="essai" HasDropShadow="True" Opacity="0.9" Opened="contextMenu1_Opened">
+            <ContextMenu x:Key="StandardContextMenu" HasDropShadow="True" Opacity="0.9" Opened="contextMenu1_Opened">
                 <TextBlock Text="{Binding Path=Name}" FontSize="16" FontWeight="Bold" ></TextBlock>
                 <Separator/>
                 <MenuItem Header="Show details"/>

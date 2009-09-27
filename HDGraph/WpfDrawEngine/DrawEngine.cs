@@ -37,6 +37,15 @@ namespace HDGraph.WpfDrawEngine
             ((TreeGraphContainer)control).SetRoot(newRoot);
         }
 
+        public void SaveAsImageToFile(System.Windows.Forms.Control control, string filePath)
+        {
+            if (control == null
+                || !(control is TreeGraphContainer))
+                throw new ArgumentException("The given control is null or is not a TreeGraphContainer.", "control");
+
+            ((TreeGraphContainer)control).SaveAsImageToFile(filePath);
+        }
+
         #endregion
     }
 }

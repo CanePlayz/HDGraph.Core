@@ -18,6 +18,7 @@
         <local:DivideBy2NumericConverter x:Key="myDivideBy2NumericConverter"/>
         <local:MakeAverageNumericConverter x:Key="myAverageNumericConverter"/>
         <local:VisibilityFromAnglesConverter x:Key="myVisibilityFromAnglesConverter"/>
+        <local:ArcLabelFromDrawOptionsConverter x:Key="myArcLabelFromDrawOptionsConverter"/>
         <Style x:Key="ArcStyle">
             <Setter Property="Path.Fill">
                 <Setter.Value>
@@ -36,18 +37,18 @@
                             <GradientStop Color="Red" Offset="1"></GradientStop>
                             <!--<GradientStop Color="Red" Offset="0.7"></GradientStop>
                             <GradientStop Color="Yellow" Offset="1"></GradientStop>-->
-                            
+
                             <!-- Style 4 -->
                             <!--<GradientStop Color="Yellow" Offset="0"></GradientStop>
                             <GradientStop Color="Red" Offset="0.5"></GradientStop>
                             <GradientStop Color="Red" Offset="0.7"></GradientStop>
                             <GradientStop Color="Yellow" Offset="1"></GradientStop>-->
-                            
+
                             <!-- Style 2 -->
                             <!--<GradientStop Color="Red" Offset="0"></GradientStop>
                             <GradientStop Color="Yellow" Offset="0.5"></GradientStop>
                             <GradientStop Color="Red" Offset="1"></GradientStop>-->
-                            
+
                             <!-- Style 1 -->
                             <!--<GradientStop Color="Green" Offset="0"></GradientStop>
                             <GradientStop Color="Red" Offset="0.2"></GradientStop>
@@ -83,11 +84,12 @@
 
     <!--diag:PresentationTraceSources.TraceLevel="High"-->
     <Canvas Panel.ZIndex="10">
-        <TextBlock Text="{Binding Path=Name}" 
+        <TextBlock
                    x:Name="TextBlockArcName" 
                    FontSize="{Binding ElementName=arcUC, Path=FontSize}"
-                   FontFamily="Corbel"
+                   FontFamily="Verdana"
                    Panel.ZIndex="20" 
+                   HorizontalAlignment="Center" TextAlignment="Center"
                    >
             <TextBlock.Visibility>
                 <MultiBinding Converter="{StaticResource myVisibilityFromAnglesConverter}" >
@@ -95,6 +97,12 @@
                                 <Binding ElementName="arcUC" Path="StopAngle"/>
                 </MultiBinding>
             </TextBlock.Visibility>
+            <TextBlock.Text>
+                <MultiBinding Converter="{StaticResource myArcLabelFromDrawOptionsConverter}">
+                    <Binding/><!--Text="{Binding Path=Name}" -->
+                    <Binding ElementName="arcUC" Path="DrawOptions"/>
+                </MultiBinding>
+            </TextBlock.Text>
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <TranslateTransform X="{Binding Path=ActualWidth, ElementName=TextBlockArcName, Converter={StaticResource myDivideBy2NumericConverter}, ConverterParameter=-1}"/>

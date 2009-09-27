@@ -17,6 +17,8 @@ namespace HDGraph
         static void Main()
         {
             HDGTools.mySwitch = new TraceSwitch("traceLevelSwitch", "HDG TraceSwitch");
+            // TODO :
+            //Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
 #if (!DEBUG)
             try
             {
@@ -40,6 +42,16 @@ namespace HDGraph
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 #endif
+        }
+
+        static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        {
+            Console.Error.WriteLine(e.Exception.ToString());
+            Trace.TraceError(HDGTools.PrintError(e.Exception));
+            System.Resources.ResourceManager res = new System.Resources.ResourceManager(typeof(Program).Assembly.GetName().Name + ".Resources.ApplicationMessages", typeof(Program).Assembly);
+            MessageBox.Show(res.GetString("CriticalError"),
+                            res.GetString("Error"),
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         /// <summary>

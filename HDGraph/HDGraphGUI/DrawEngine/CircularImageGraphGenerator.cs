@@ -112,7 +112,8 @@ namespace HDGraph.DrawEngine
             else if (currentWorkingOptions.DrawAction == DrawAction.PrintWelcomeMessage)
                 text = Resources.ApplicationMessages.GraphGuideLine;
             else
-                throw new InvalidOperationException();
+                text = String.Empty;
+                //throw new InvalidOperationException();
 
             DrawHelper.PrintTextInTheMiddle(frontGraph, currentWorkingOptions.TargetSize, text, currentWorkingOptions.TextFont, new SolidBrush(Color.Black), false);
         }
