@@ -8,6 +8,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="MainDictionary.xaml" />
+                <ResourceDictionary Source="Skins/Default.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
             <extern:DivideBy2NumericConverter x:Key="myDivideBy2NumericConverter"/>
@@ -18,33 +19,6 @@
             </Style>
             <Style x:Key="ArcTextStyle">
                 <Setter Property="Label.FontSize" Value="{Binding ElementName=sliderTextSize, Path=Value}">
-                </Setter>
-            </Style>
-            <Style x:Key="MultipleNodeStyle">
-                <Setter Property="Path.Fill">
-                    <Setter.Value>
-                        <LinearGradientBrush x:Name="brushMultipleNode" Opacity="1" >
-                            <GradientStop Color="Gray" Offset="0"></GradientStop>
-                            <GradientStop Color="LightGray" Offset="1"></GradientStop>
-                        </LinearGradientBrush>
-                    </Setter.Value>
-                </Setter>
-            </Style>
-            <Style x:Key="UncalculatedPart">
-                <Setter Property="Path.Fill">
-                    <Setter.Value>
-                        <RadialGradientBrush Opacity="0.7"
-                                         Center="0,0"  
-                                         GradientOrigin="0,0"
-                                         RadiusX="{Binding ElementName=arcUC, Path=LargeRadius}"
-                                         RadiusY="{Binding ElementName=arcUC, Path=LargeRadius}"
-                                         MappingMode="Absolute">
-                            <RadialGradientBrush.GradientStops>
-                                <GradientStop Color="Black" Offset="0.97"></GradientStop>
-                                <GradientStop Color="White" Offset="1"></GradientStop>
-                            </RadialGradientBrush.GradientStops>
-                        </RadialGradientBrush>
-                    </Setter.Value>
                 </Setter>
             </Style>
             <Style x:Key="RotateArrowStyle">

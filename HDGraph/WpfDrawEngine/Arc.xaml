@@ -4,15 +4,6 @@
     xmlns:local="clr-namespace:HDGraph.WpfDrawEngine"
              xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
     x:Name="arcUC">
-    <!--<UserControl.Style>
-        <Style>
-            <Style.Triggers>
-                <Trigger Property="Path.IsMouseOver" Value="True">
-                    <Setter TargetName="TextBlockArcName"
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </UserControl.Style>-->
     <UserControl.Resources>
         <local:ReverseNumericConverter x:Key="myReverseNumericConverter"/>
         <local:DivideBy2NumericConverter x:Key="myDivideBy2NumericConverter"/>
@@ -20,6 +11,7 @@
         <local:VisibilityFromAnglesConverter x:Key="myVisibilityFromAnglesConverter"/>
         <local:ArcLabelFromDrawOptionsConverter x:Key="myArcLabelFromDrawOptionsConverter"/>
         <Style x:Key="ArcStyle">
+            <Setter Property="Path.StrokeThickness" Value="1"></Setter>
             <Setter Property="Path.Fill">
                 <Setter.Value>
                     <RadialGradientBrush Opacity="0.7"
@@ -77,18 +69,18 @@
                             </LinearGradientBrush>
                         </Setter.Value>
                     </Setter>
+                    <Setter Property="Path.StrokeThickness" Value="3"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
 
     <!--diag:PresentationTraceSources.TraceLevel="High"-->
-    <Canvas Panel.ZIndex="10">
-        <TextBlock
+    <Canvas>
+        <TextBlock Panel.ZIndex="50"
                    x:Name="TextBlockArcName" 
                    FontSize="{Binding ElementName=arcUC, Path=FontSize}"
                    FontFamily="Verdana"
-                   Panel.ZIndex="20" 
                    HorizontalAlignment="Center" TextAlignment="Center"
                    >
             <TextBlock.Visibility>
@@ -128,7 +120,7 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <Path x:Name="path1"
-                Stroke="Black" StrokeThickness="1" StrokeLineJoin="Round"  StrokeStartLineCap="Round"
+                Stroke="Black" StrokeLineJoin="Round"  StrokeStartLineCap="Round"
                 MouseEnter="Path_MouseEnter" MouseLeave="Path_MouseLeave" Style="{StaticResource ArcStyle}">
         </Path>
     </Canvas>

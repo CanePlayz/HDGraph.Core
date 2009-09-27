@@ -225,7 +225,7 @@ namespace HDGraph.WpfDrawEngine
             arc.SmallRadius = Convert.ToSingle(currentLevel * singleLevelHeight);
             arc.LargeRadius = Convert.ToSingle(currentLevel * singleLevelHeight + singleLevelHeight / 6);
             arc.Node = node;
-            arc.path1.Style = (Style)FindResource("UncalculatedPart");
+            arc.path1.Style = (Style)FindResource("HiddenFoldersArcStyle");
             arc.path1.StrokeThickness = 0;
             arc.ToolTip = String.Format(Properties.Resources.HiddenFolders,
                                         Environment.NewLine + Environment.NewLine,
@@ -273,6 +273,7 @@ namespace HDGraph.WpfDrawEngine
         {
             Arc arc = BuildArc(node, currentLevel, startAngle, endAngle);
             arc.DataContext = node;
+            arc.Style = (Style)FindResource("StandardArcStyle");
             canvas1.Children.Add(arc);
             arc.MouseEnter += new MouseEventHandler(arc_MouseEnter);
             arc.MouseLeave += new MouseEventHandler(arc_MouseLeave);
@@ -319,7 +320,7 @@ namespace HDGraph.WpfDrawEngine
                 ////frontGraph.DrawRectangle(new Pen(colorManager.GetNextColor(middleAngle), 0.05f),
                 ////                        Rectangle.Round(rec));
                 // TODO : 
-                Canvas.SetZIndex(arc, DEFAULT_Z_INDEX_STANDARD_ARC);
+                //Canvas.SetZIndex(arc, DEFAULT_Z_INDEX_STANDARD_ARC);
             }
             else if (node.DirectoryType == SpecialDirTypes.FreeSpaceAndShow)
             {
@@ -427,32 +428,32 @@ namespace HDGraph.WpfDrawEngine
 
         void arc_MouseLeave(object sender, MouseEventArgs e)
         {
-            Arc arc = (Arc)sender;
-            if (arc != null)
-            {
-                arc.path1.StrokeThickness = 1;
-                Canvas.SetZIndex(arc, DEFAULT_Z_INDEX_STANDARD_ARC);
-                ActionExecutor.Notify4NewHoveredNode(null);
-                Cursor = standardCursor;
-            }
+            //Arc arc = (Arc)sender;
+            //if (arc != null)
+            //{
+            //    arc.path1.StrokeThickness = 1;
+            //    Canvas.SetZIndex(arc, DEFAULT_Z_INDEX_STANDARD_ARC);
+            //    ActionExecutor.Notify4NewHoveredNode(null);
+            //    Cursor = standardCursor;
+            //}
         }
 
         private Cursor standardCursor;
 
         void arc_MouseEnter(object sender, MouseEventArgs e)
         {
-            Arc arc = (Arc)sender;
-            if (arc != null)
-            {
-                if (Cursor != Cursors.Hand)
-                {
-                    standardCursor = Cursor;
-                    Cursor = Cursors.Hand;
-                }
-                arc.path1.StrokeThickness = 3;
-                Canvas.SetZIndex(arc, DEFAULT_Z_INDEX_STANDARD_ARC_OVER);
-                ActionExecutor.Notify4NewHoveredNode(arc.Node);
-            }
+            //Arc arc = (Arc)sender;
+            //if (arc != null)
+            //{
+            //    if (Cursor != Cursors.Hand)
+            //    {
+            //        standardCursor = Cursor;
+            //        Cursor = Cursors.Hand;
+            //    }
+            //    arc.path1.StrokeThickness = 3;
+            //    Canvas.SetZIndex(arc, DEFAULT_Z_INDEX_STANDARD_ARC_OVER);
+            //    ActionExecutor.Notify4NewHoveredNode(arc.Node);
+            //}
         }
 
 
