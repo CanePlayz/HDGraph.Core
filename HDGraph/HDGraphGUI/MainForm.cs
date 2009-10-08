@@ -120,7 +120,8 @@ namespace HDGraph
                 Properties.Settings.Default.MyDrawOptions = new DrawOptions();
             DrawOptions = Properties.Settings.Default.MyDrawOptions;
             drawOptionsBindingSource.DataSource = DrawOptions;
-            CreateDrawEngine(); // the draw engine can be created only once the DrawOptions exists and the scanEngine exists.
+            // the draw engine can be created only once the DrawOptions exists and the scanEngine exists.
+            comboBoxDrawEngine.SelectedIndex = 0; // Changing index will create the draw engine.
             explorerIntegrationToolStripMenuItem.Enabled = ToolProviderBase.CurrentOsIsWindows();
             EnableHelpIfAvailable();
             comboBoxPath.DataSource = HDGraph.Properties.Settings.Default.PathHistory;

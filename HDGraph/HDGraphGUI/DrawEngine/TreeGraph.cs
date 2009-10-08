@@ -27,7 +27,12 @@ namespace HDGraph
         public IDirectoryNode Root
         {
             get { return root; }
-            set { root = value; }
+            set
+            {
+                root = value;
+                if (actionExecutor != null)
+                    actionExecutor.Notify4NewRootNode(value);
+            }
         }
 
         private Pen graphPen = new Pen(Color.Black, 1.0f);

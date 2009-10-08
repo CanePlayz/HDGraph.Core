@@ -84,6 +84,11 @@ namespace HDGraph.WpfDrawEngine
 
         private IDirectoryNode rootNode;
 
+        public void FullRefresh()
+        {
+            SetRoot(rootNode, CurrentDrawOptions);
+        }
+
         public void SetRoot(IDirectoryNode root, DrawOptions options)
         {
             if (root == null || options == null)
@@ -720,7 +725,10 @@ namespace HDGraph.WpfDrawEngine
         {
             Arc arcTarget = ((ContextMenu)((MenuItem)sender).Parent).PlacementTarget as Arc;
             if (ActionExecutor != null && arcTarget != null)
+            {
                 ActionExecutor.ExecuteTreeFullRefresh(arcTarget.Node);
+                FullRefresh();
+            }
         }
 
         private void centerOnDirMenuItem_Click(object sender, RoutedEventArgs e)

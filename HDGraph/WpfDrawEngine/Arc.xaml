@@ -80,6 +80,7 @@
                    FontSize="{Binding ElementName=arcUC, Path=FontSize}"
                    FontFamily="Verdana"
                    HorizontalAlignment="Center" TextAlignment="Center"
+                   SnapsToDevicePixels="True"
                    >
             <TextBlock.Visibility>
                 <MultiBinding Converter="{StaticResource myVisibilityFromAnglesConverter}" >

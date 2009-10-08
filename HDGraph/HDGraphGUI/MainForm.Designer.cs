@@ -78,7 +78,6 @@ namespace HDGraph
             this.labelFilesSize = new System.Windows.Forms.Label();
             this.labelDirTotalSize = new System.Windows.Forms.Label();
             this.labelDirName = new System.Windows.Forms.Label();
-            this.errorStatus1 = new HDGraph.UserControls.ErrorStatus();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.label3 = new System.Windows.Forms.Label();
@@ -144,6 +143,7 @@ namespace HDGraph
             this.buttonAdvanced = new System.Windows.Forms.Button();
             this.splitContainerGraphAndToolBar = new System.Windows.Forms.SplitContainer();
             this.splitContainerGraphAndStatusBar = new System.Windows.Forms.SplitContainer();
+            this.errorStatus1 = new HDGraph.UserControls.ErrorStatus();
             this.toolStripContainer2.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer2.SuspendLayout();
             this.toolStripShortcuts.SuspendLayout();
@@ -198,8 +198,8 @@ namespace HDGraph
             // 
             // toolStripContainer2.TopToolStripPanel
             // 
-            this.toolStripContainer2.TopToolStripPanel.Controls.Add(this.toolStripShortcuts);
             this.toolStripContainer2.TopToolStripPanel.Controls.Add(this.toolBarToolStrip);
+            this.toolStripContainer2.TopToolStripPanel.Controls.Add(this.toolStripShortcuts);
             this.helpProvider1.SetShowHelp(this.toolStripContainer2.TopToolStripPanel, ((bool)(resources.GetObject("toolStripContainer2.TopToolStripPanel.ShowHelp"))));
             // 
             // toolStripShortcuts
@@ -373,6 +373,8 @@ namespace HDGraph
             // 
             // comboBoxDrawEngine
             // 
+            this.comboBoxDrawEngine.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxDrawEngine.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxDrawEngine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxDrawEngine.FormattingEnabled = true;
             this.comboBoxDrawEngine.Items.AddRange(new object[] {
@@ -628,13 +630,6 @@ namespace HDGraph
             resources.ApplyResources(this.labelDirName, "labelDirName");
             this.labelDirName.Name = "labelDirName";
             this.helpProvider1.SetShowHelp(this.labelDirName, ((bool)(resources.GetObject("labelDirName.ShowHelp"))));
-            // 
-            // errorStatus1
-            // 
-            resources.ApplyResources(this.errorStatus1, "errorStatus1");
-            this.errorStatus1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.errorStatus1.Name = "errorStatus1";
-            this.helpProvider1.SetShowHelp(this.errorStatus1, ((bool)(resources.GetObject("errorStatus1.ShowHelp"))));
             // 
             // statusStrip
             // 
@@ -1120,6 +1115,13 @@ namespace HDGraph
             this.splitContainerGraphAndStatusBar.Panel2.Controls.Add(this.statusStrip);
             this.helpProvider1.SetShowHelp(this.splitContainerGraphAndStatusBar.Panel2, ((bool)(resources.GetObject("splitContainerGraphAndStatusBar.Panel2.ShowHelp"))));
             this.helpProvider1.SetShowHelp(this.splitContainerGraphAndStatusBar, ((bool)(resources.GetObject("splitContainerGraphAndStatusBar.ShowHelp"))));
+            // 
+            // errorStatus1
+            // 
+            resources.ApplyResources(this.errorStatus1, "errorStatus1");
+            this.errorStatus1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.errorStatus1.Name = "errorStatus1";
+            this.helpProvider1.SetShowHelp(this.errorStatus1, ((bool)(resources.GetObject("errorStatus1.ShowHelp"))));
             // 
             // MainForm
             // 
