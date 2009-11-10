@@ -249,7 +249,8 @@ namespace HDGraph
         {
             if (!this.autoRefreshAllowed)
                 return false;
-            if (node.DepthMaxLevel >= maxLevel)
+            if (node == null
+                || node.DepthMaxLevel >= maxLevel)
                 return true; // rien à faire !
 
             if (node.DepthMaxLevel == 1 && node.ExistsUncalcSubDir)

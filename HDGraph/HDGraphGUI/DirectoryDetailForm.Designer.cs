@@ -35,6 +35,7 @@ namespace HDGraph
             // 
             // directoryDetailUC1
             // 
+            this.directoryDetailUC1.ActionExecutor = null;
             resources.ApplyResources(this.directoryDetailUC1, "directoryDetailUC1");
             this.directoryDetailUC1.BackColor = System.Drawing.SystemColors.Control;
             this.directoryDetailUC1.Name = "directoryDetailUC1";

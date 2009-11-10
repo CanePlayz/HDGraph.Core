@@ -24,15 +24,21 @@ namespace HDGraph.WpfDrawEngine
         {
             InitializeComponent();
             this.Load += new EventHandler(TreeGraphContainer_Load);
+
         }
 
         void TreeGraphContainer_Load(object sender, EventArgs e)
         {
             if (!this.DesignMode)
             {
-                GetTreeGraph().SetRoot(node, options);
-                alreadyLoaded = true;
+                GetTreeGraph().Loaded += new System.Windows.RoutedEventHandler(TreeGraphContainer_Loaded);
             }
+        }
+
+        void TreeGraphContainer_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            GetTreeGraph().SetRoot(node, options);
+            alreadyLoaded = true;
         }
 
         private TreeGraph GetTreeGraph()

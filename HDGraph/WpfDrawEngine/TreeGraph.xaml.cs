@@ -58,15 +58,15 @@ namespace HDGraph.WpfDrawEngine
         /// </summary>
         private double singleLevelHeight;
 
-        public float SingleLevelHeight
+        public double SingleLevelHeight
         {
-            get { return (float)GetValue(SingleLevelHeightProperty); }
+            get { return (double)GetValue(SingleLevelHeightProperty); }
             set { SetValue(SingleLevelHeightProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for SingleLevelHeight.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty SingleLevelHeightProperty =
-            DependencyProperty.Register("SingleLevelHeight", typeof(float), typeof(TreeGraph), new UIPropertyMetadata(0f));
+            DependencyProperty.Register("SingleLevelHeight", typeof(double), typeof(TreeGraph), new UIPropertyMetadata(0d));
 
 
 
@@ -95,6 +95,7 @@ namespace HDGraph.WpfDrawEngine
                 return;
 
             this.rootNode = root;
+            sliderScale.Value = 1;
             canvas1.Children.Clear();
 
             // Création du bitmap buffer
@@ -106,10 +107,10 @@ namespace HDGraph.WpfDrawEngine
             //                         this.Height / currentWorkingOptions.ShownLevelsCount / 2));
 
             // init des données du calcul
-            singleLevelHeight = Convert.ToDouble(
-                            Math.Min(500 / CurrentDrawOptions.ShownLevelsCount / 2,
-                                     500 / CurrentDrawOptions.ShownLevelsCount / 2));
-            SingleLevelHeight = Convert.ToSingle(singleLevelHeight); // Set the DP. Using a variable instead of the DP Getter increases perfs.
+
+            double largeur = Math.Min(scrollViewer1.ActualWidth, scrollViewer1.ActualHeight);
+            singleLevelHeight = Convert.ToDouble(largeur / (CurrentDrawOptions.ShownLevelsCount) / 2d);
+            SingleLevelHeight = singleLevelHeight; // Set the DP. Using a variable instead of the DP Getter increases perfs.
 
             labelInfo.Visibility = Visibility.Hidden;
             if (rootNode == null || rootNode.TotalSize == 0)
@@ -626,7 +627,7 @@ namespace HDGraph.WpfDrawEngine
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                initialCursorLocation = e.MouseDevice.GetPosition(viewBoxTreegraph);
+                initialCursorLocation = e.MouseDevice.GetPosition(canvasContainer);
                 e.Handled = true;
                 initialRotationAngle = rotateTransform.Angle;
                 IsRotating = true;
@@ -651,8 +652,8 @@ namespace HDGraph.WpfDrawEngine
         {
             if (initialCursorLocation == null || e.LeftButton != MouseButtonState.Pressed)
                 return;
-            Point newPoint = e.MouseDevice.GetPosition(viewBoxTreegraph);
-            Vector centerPoint = new Vector(viewBoxTreegraph.ActualWidth / 2, viewBoxTreegraph.ActualHeight / 2);
+            Point newPoint = e.MouseDevice.GetPosition(canvasContainer);
+            Vector centerPoint = new Vector(canvasContainer.ActualWidth / 2, canvasContainer.ActualHeight / 2);
             Vector initVector = new Vector(initialCursorLocation.Value.X, initialCursorLocation.Value.Y);
             Vector newVector = new Vector(newPoint.X, newPoint.Y);
             double rotationAngle = Vector.AngleBetween(initVector - centerPoint, newVector - centerPoint);
@@ -679,7 +680,7 @@ namespace HDGraph.WpfDrawEngine
         {
 
         }
-        
+
 
         public void SaveAsImageToFile(string filePath)
         {

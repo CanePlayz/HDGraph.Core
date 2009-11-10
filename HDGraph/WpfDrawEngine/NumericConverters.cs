@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Data;
 using System.Globalization;
 using System.Linq;
+using System.Windows;
 
 namespace HDGraph.WpfDrawEngine
 {
@@ -67,11 +68,6 @@ namespace HDGraph.WpfDrawEngine
         public object ConvertBack(object value, Type targetType,
             object parameter, CultureInfo culture)
         {
-            //if (value is double)
-            //    return System.Convert.ChangeType(2 * ((double)value) * coef, targetType);
-            //if (value is float)
-            //    return System.Convert.ChangeType(2 * ((float)value) * coef, targetType);
-            //return Binding.DoNothing;
             throw new NotImplementedException();
         }
     }
@@ -104,5 +100,85 @@ namespace HDGraph.WpfDrawEngine
         #endregion
     }
 
-   
+    /// <summary>
+    /// Converter used to multiply the numeric values.
+    /// </summary>
+    internal class MultiplierNumericConverter : IMultiValueConverter
+    {
+        #region IMultiValueConverter Members
+
+        public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+        {
+            if (values == null || values.Length == 0)
+                return 0;
+            if (targetType == typeof(double))
+            {
+                double result = (parameter == null) ? 1 : System.Convert.ToDouble(parameter);
+                foreach (var val in values)
+                {
+                    if (val != DependencyProperty.UnsetValue)
+                        result *= System.Convert.ToDouble(val);
+                }
+                return result;
+            }
+            if (targetType == typeof(float))
+            {
+                float result = (parameter == null) ? 1 : System.Convert.ToSingle(parameter);
+                foreach (var val in values)
+                {
+                    if (val != DependencyProperty.UnsetValue)
+                        result *= System.Convert.ToSingle(val);
+                }
+                return result;
+            }
+            throw new NotSupportedException("The TargetType '" + targetType + "' is not valid for MultiplierNumericConverter.");
+        }
+
+        public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+    }
+
+    /// <summary>
+    /// Converter used to multiply a numeric value with a fixed parameter.
+    /// </summary>
+    internal class SingleMultiplierNumericConverter : IValueConverter
+    {
+        #region IMultiValueConverter Members
+
+        public object Convert(object value, Type targetType,
+           object parameter, CultureInfo culture)
+        {
+            if (value == null)
+                return 0;
+            if (targetType == typeof(double))
+            {
+                double result = (parameter == null) ? 1 : System.Convert.ToDouble(parameter);
+                if (value != DependencyProperty.UnsetValue)
+                    result *= System.Convert.ToDouble(value);
+                return result;
+            }
+            if (targetType == typeof(float))
+            {
+                float result = (parameter == null) ? 1 : System.Convert.ToSingle(parameter);
+                if (value != DependencyProperty.UnsetValue)
+                        result *= System.Convert.ToSingle(value);
+                return result;
+            }
+            throw new NotSupportedException("The TargetType '" + targetType + "' is not valid for SingleMultiplierNumericConverter.");
+        }
+
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
+    }
+
+
 }

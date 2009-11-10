@@ -1,9 +1,10 @@
 ﻿<UserControl x:Class="HDGraph.WpfDrawEngine.TreeGraph"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:extern="clr-namespace:HDGraph.WpfDrawEngine"
+    xmlns:loc="clr-namespace:HDGraph.WpfDrawEngine"
+    xmlns:sys="clr-namespace:System;assembly=System"
     x:Name="treeGraph1" ContextMenuOpening="treeGraph1_ContextMenuOpening"
-    MouseWheel="treeGraph1_MouseWheel">
+    MouseWheel="treeGraph1_MouseWheel" Height="158.414" Width="267.612">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -11,7 +12,9 @@
                 <ResourceDictionary Source="Skins/Default.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <extern:DivideBy2NumericConverter x:Key="myDivideBy2NumericConverter"/>
+            <loc:DivideBy2NumericConverter x:Key="myDivideBy2NumericConverter"/>
+            <loc:MultiplierNumericConverter x:Key="myMultiplierNumericConverter"/>
+            <loc:SingleMultiplierNumericConverter x:Key="mySingleMultiplierNumericConverter"/>
             <Style TargetType="{x:Type ToolTip}">
                 <Setter Property="Background" Value="#7F000000"/>
                 <Setter Property="BorderBrush" Value="#7Fdcdcdc" />
@@ -111,34 +114,84 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
-        <Viewbox Grid.Row="0" x:Name="viewBoxTreegraph">
-            <Canvas x:Name="canvas1" Width="500" Height="500"
-                    MouseDown="canvas1_MouseDown"
-                    MouseUp="canvas1_MouseUp" 
-                    MouseMove="canvas1_MouseMove">
-                <Canvas.RenderTransform>
-                    <TransformGroup>
-                        <RotateTransform x:Name="rotateTransform" Angle="{Binding ElementName=treeGraph1, Path=CurrentDrawOptions.ImageRotation}"></RotateTransform>
 
-                        <ScaleTransform 
+        <ScrollViewer Grid.Row="0"
+            Name="scrollViewer1" 
+            VerticalScrollBarVisibility="Auto" 
+            HorizontalScrollBarVisibility="Auto">
+            <Canvas x:Name="canvasContainer" >
+                <!--Background="BurlyWood"-->
+                <Canvas.Width>
+                    <!--Width="1000" Height="1000"-->
+                    <MultiBinding Converter="{StaticResource myMultiplierNumericConverter}">
+                        <Binding ElementName="treeGraph1" Path="SingleLevelHeight"
+                                 Converter="{StaticResource mySingleMultiplierNumericConverter}"
+                                 ConverterParameter="2"
+                                 FallbackValue="500">
+                        </Binding>
+                        <Binding ElementName="treeGraph1" Path="CurrentDrawOptions.ShownLevelsCount"/>
+                    </MultiBinding>
+                </Canvas.Width>
+                <Canvas.Height>
+                    <!--Width="1000" Height="1000"-->
+                    <MultiBinding Converter="{StaticResource myMultiplierNumericConverter}">
+                        <Binding ElementName="treeGraph1" Path="SingleLevelHeight"
+                                 Converter="{StaticResource mySingleMultiplierNumericConverter}"
+                                 ConverterParameter="2"
+                                 FallbackValue="500"/>
+                        <Binding ElementName="treeGraph1" Path="CurrentDrawOptions.ShownLevelsCount"/>
+                    </MultiBinding>
+                </Canvas.Height>
+                <Canvas.LayoutTransform>
+                    <ScaleTransform 
                                 ScaleX="{Binding ElementName=sliderScale, Path=Value}"
                                 ScaleY="{Binding ElementName=sliderScale, Path=Value}">
-                        </ScaleTransform>
-                        <TranslateTransform
-                             X="{Binding 
-                                Path=ActualWidth,
-                                RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Canvas}}, 
+                    </ScaleTransform>
+                </Canvas.LayoutTransform>
+
+                <!-- Empty Canvas : it defines the "clip" zone, necessary 
+                        just for the ScrollPreview to work properly.  -->
+                <Canvas
+                    Width="{Binding Path=Width, ElementName=canvasContainer}"
+                    Height="{Binding Path=Height, ElementName=canvasContainer}"
+                    > <!--Background="Salmon"-->
+                    <Canvas.RenderTransform>
+                        <RotateTransform Angle="45"
+                                             CenterX="{Binding Path=ActualWidth, ElementName=canvas1}"
+                                             CenterY="{Binding Path=ActualHeight, ElementName=canvas1}"/>
+                    </Canvas.RenderTransform>
+                </Canvas>
+
+                <Canvas x:Name="canvas1"
+                    MouseDown="canvas1_MouseDown"
+                    MouseUp="canvas1_MouseUp" 
+                    MouseMove="canvas1_MouseMove"
+                    Width="{Binding Path=Width, ElementName=canvasContainer, 
                                  Converter={StaticResource myDivideBy2NumericConverter}}"
-                            Y="{Binding 
-                                Path=ActualHeight,
-                                RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Canvas}}, 
+                    Height="{Binding Path=Height, ElementName=canvasContainer, 
                                  Converter={StaticResource myDivideBy2NumericConverter}}"
-                            >
-                        </TranslateTransform>
-                    </TransformGroup>
-                </Canvas.RenderTransform>
+                    >
+                    <!--Background="Blue"-->
+                    <Canvas.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform x:Name="rotateTransform" 
+                                             Angle="{Binding ElementName=treeGraph1, Path=CurrentDrawOptions.ImageRotation}"/>
+                            <TranslateTransform X="{Binding Path=ActualWidth, ElementName=canvas1}"
+                                                Y="{Binding Path=ActualHeight, ElementName=canvas1}"/>
+                        </TransformGroup>
+                    </Canvas.RenderTransform>
+                </Canvas>
             </Canvas>
-        </Viewbox>
+        </ScrollViewer>
+
+        <loc:ScrollPreview 
+            TargetScrollViewer="{Binding ElementName=scrollViewer1}"
+            TargetPopupButton="{Binding ElementName=buttonShowPreview}"
+            Width="150" Height="150"
+            >
+        </loc:ScrollPreview>
+        <Button Height="23" HorizontalAlignment="Left" Margin="20,0,0,12" Name="buttonShowPreview" VerticalAlignment="Bottom" Width="75">Go</Button>
+
         <ContentControl Style="{StaticResource RotateArrowStyle}"
                         Content="{StaticResource RotateArrow}" 
                         Grid.Row="0" HorizontalAlignment="Right" 
@@ -149,8 +202,7 @@
         <ContentControl Style="{StaticResource RotateArrowStyle}" Content="{StaticResource RotateArrow}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom"></ContentControl>
         <ContentControl Style="{StaticResource RotateArrowStyle}" Content="{StaticResource RotateArrow}" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"></ContentControl>-->
         <Label x:Name="labelInfo" Grid.Row="1" Visibility="Hidden">Nothing to draw.</Label>
-        <Label Grid.Row="1" x:Name="labelStatus" >
-        </Label>
+        <Label Grid.Row="1" x:Name="labelStatus" />
         <Canvas>
             <Expander Header="View options" BorderBrush="Gray" BorderThickness="2" Margin="20"
                   Name="expander1" Background="#55BAC6FF"
@@ -160,8 +212,7 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition/>
-                        <ColumnDefinition Width="45">
-                        </ColumnDefinition>
+                        <ColumnDefinition Width="45"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
@@ -188,10 +239,10 @@
                     <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Text size :</Label>
                     <Slider Grid.Column="1" Grid.Row="2" Name="sliderTextSize" 
                             Margin="10,10,10,10" Maximum="25" Minimum="0.5" Value="{Binding ElementName=treeGraph1, Path=CurrentDrawOptions.TextSize}"/>
-                    <Label Grid.Column="2" Grid.Row="2" 
+                    <Label Grid.Column="2" Grid.Row="2"
                            HorizontalAlignment="Left" VerticalAlignment="Center"
                            Content="{Binding ElementName=sliderTextSize, Path=Value}"
-                           ContentStringFormat="x {0:0.0}" />
+                           ContentStringFormat="{}{0:0.0}" />
 
                     <StackPanel Visibility="Hidden" Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="3">
                         <Button x:Name="ButtonPrint" 

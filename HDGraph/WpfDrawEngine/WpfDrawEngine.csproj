@@ -70,6 +70,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ScrollPreview.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="segd-arrow-symbols-icons [WPF Paths].xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -106,6 +110,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="NumericConverters.cs" />
+    <Compile Include="ScrollPreview.xaml.cs">
+      <DependentUpon>ScrollPreview.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TreeGraph.xaml.cs">
       <DependentUpon>TreeGraph.xaml</DependentUpon>
     </Compile>

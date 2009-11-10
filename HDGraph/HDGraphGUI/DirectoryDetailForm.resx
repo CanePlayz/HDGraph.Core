@@ -136,7 +136,7 @@
     <value>directoryDetailUC1</value>
   </data>
   <data name="&gt;&gt;directoryDetailUC1.Type" xml:space="preserve">
-    <value>HDGraph.DirectoryDetailUC, HDGraph, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>HDGraph.DirectoryDetailUC, HDGraph, Version=1.4.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;directoryDetailUC1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -182,6 +182,9 @@
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>555, 327</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>DirectoryDetailForm</value>
