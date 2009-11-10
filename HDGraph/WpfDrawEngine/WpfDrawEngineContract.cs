@@ -18,7 +18,7 @@ namespace HDGraph.WpfDrawEngine
 
         public string Description
         {
-            get { return "Evolved draw engine. Renders vectorial content. Requires .NET Framework version 3.5 or higher."; }
+            get { return "Evolved draw engine, but requires .NET Framework version 3.5 or higher. Renders vectorial content with full support for graph manipulations and printing."; }
         }
 
         public IDrawEngine GetNewEngine()

@@ -358,4 +358,16 @@ knowledge of the CeCILL license and that you accept its terms.</value>
   <data name="ScanCompletedIn" xml:space="preserve">
     <value>Scan completed in {0}.</value>
   </data>
+  <data name="ChooseDrawEngineHere" xml:space="preserve">
+    <value>Choose your draw engine here.</value>
+  </data>
+  <data name="OtherEnginesAvailableOnWindows" xml:space="preserve">
+    <value>Other draw engines are only available on Microsoft Windows. See www.hdgraph.com for details.</value>
+  </data>
+  <data name="SimpleDrawEngineDescription" xml:space="preserve">
+    <value>The first HDGraph draw engine. Based on Bitmap generation. Slower and less powerfull than WPF engine (unless you have an old graphic card).</value>
+  </data>
+  <data name="SimpleDrawEngineName" xml:space="preserve">
+    <value>Basic</value>
+  </data>
 </root>

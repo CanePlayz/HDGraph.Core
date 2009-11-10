@@ -52,27 +52,34 @@ namespace HDGraph
             this.splitContainerGraphAndOptions = new System.Windows.Forms.SplitContainer();
             this.buttonTestWpf = new System.Windows.Forms.Button();
             this.linkLabelHelpGraph = new System.Windows.Forms.LinkLabel();
-            this.comboBoxDrawEngine = new System.Windows.Forms.ComboBox();
-            this.radioButtonEngineRec = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.errorStatus1 = new HDGraph.UserControls.ErrorStatus();
             this.radioButtonEngineCircular = new System.Windows.Forms.RadioButton();
+            this.radioButtonEngineRec = new System.Windows.Forms.RadioButton();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.groupBoxScanOptions = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numUpDownNbNivx = new System.Windows.Forms.NumericUpDown();
             this.groupBoxDrawOptions = new System.Windows.Forms.GroupBox();
-            this.checkBoxShowTooltip = new System.Windows.Forms.CheckBox();
+            this.numUpDownNbNivxAffich = new System.Windows.Forms.NumericUpDown();
             this.drawOptionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.trackBarZoom = new System.Windows.Forms.TrackBar();
+            this.label2 = new System.Windows.Forms.Label();
+            this.checkBoxShowTooltip = new System.Windows.Forms.CheckBox();
             this.checkBoxShowFreeSpace = new System.Windows.Forms.CheckBox();
             this.checkBoxPrintSizes = new System.Windows.Forms.CheckBox();
             this.trackBarTextDensity = new System.Windows.Forms.TrackBar();
-            this.numUpDownNbNivxAffich = new System.Windows.Forms.NumericUpDown();
-            this.trackBarZoom = new System.Windows.Forms.TrackBar();
-            this.comboBoxColorStyle = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.checkBoxAutoRecalc = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.numUpDownNbNivx = new System.Windows.Forms.NumericUpDown();
             this.labelValeurRotation = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.imageRotationTrackBar = new System.Windows.Forms.TrackBar();
+            this.trackBarImageRotation = new System.Windows.Forms.TrackBar();
+            this.groupBoxDrawEngineOptions = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBoxColorStyle = new System.Windows.Forms.ComboBox();
+            this.comboBoxDrawEngine = new System.Windows.Forms.ComboBox();
+            this.iDrawEngineContractBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxHoverInfo = new System.Windows.Forms.GroupBox();
             this.labelFiles = new System.Windows.Forms.Label();
             this.labelFilesSize = new System.Windows.Forms.Label();
@@ -143,12 +150,6 @@ namespace HDGraph
             this.buttonAdvanced = new System.Windows.Forms.Button();
             this.splitContainerGraphAndToolBar = new System.Windows.Forms.SplitContainer();
             this.splitContainerGraphAndStatusBar = new System.Windows.Forms.SplitContainer();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBoxScanOptions = new System.Windows.Forms.GroupBox();
-            this.groupBoxDrawEngineOptions = new System.Windows.Forms.GroupBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.errorStatus1 = new HDGraph.UserControls.ErrorStatus();
             this.toolStripContainer2.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer2.SuspendLayout();
             this.toolBarToolStrip.SuspendLayout();
@@ -156,13 +157,18 @@ namespace HDGraph
             this.splitContainerGraphAndOptions.Panel1.SuspendLayout();
             this.splitContainerGraphAndOptions.Panel2.SuspendLayout();
             this.splitContainerGraphAndOptions.SuspendLayout();
-            this.groupBoxDrawOptions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.drawOptionsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarTextDensity)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivxAffich)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarZoom)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.groupBoxScanOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivx)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageRotationTrackBar)).BeginInit();
+            this.groupBoxDrawOptions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivxAffich)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drawOptionsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarZoom)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarTextDensity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarImageRotation)).BeginInit();
+            this.groupBoxDrawEngineOptions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iDrawEngineContractBindingSource)).BeginInit();
             this.groupBoxHoverInfo.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
@@ -176,10 +182,6 @@ namespace HDGraph
             this.splitContainerGraphAndStatusBar.Panel1.SuspendLayout();
             this.splitContainerGraphAndStatusBar.Panel2.SuspendLayout();
             this.splitContainerGraphAndStatusBar.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.groupBoxScanOptions.SuspendLayout();
-            this.groupBoxDrawEngineOptions.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripContainer2
@@ -376,26 +378,21 @@ namespace HDGraph
             this.linkLabelHelpGraph.TabStop = true;
             this.linkLabelHelpGraph.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelHelpGraph_LinkClicked);
             // 
-            // comboBoxDrawEngine
+            // panel1
             // 
-            this.comboBoxDrawEngine.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboBoxDrawEngine.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBoxDrawEngine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxDrawEngine.FormattingEnabled = true;
-            this.comboBoxDrawEngine.Items.AddRange(new object[] {
-            resources.GetString("comboBoxDrawEngine.Items"),
-            resources.GetString("comboBoxDrawEngine.Items1")});
-            resources.ApplyResources(this.comboBoxDrawEngine, "comboBoxDrawEngine");
-            this.comboBoxDrawEngine.Name = "comboBoxDrawEngine";
-            this.helpProvider1.SetShowHelp(this.comboBoxDrawEngine, ((bool)(resources.GetObject("comboBoxDrawEngine.ShowHelp"))));
-            this.comboBoxDrawEngine.SelectedIndexChanged += new System.EventHandler(this.comboBoxDrawEngine_SelectedIndexChanged);
+            this.panel1.Controls.Add(this.errorStatus1);
+            this.panel1.Controls.Add(this.radioButtonEngineCircular);
+            this.panel1.Controls.Add(this.radioButtonEngineRec);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            this.helpProvider1.SetShowHelp(this.panel1, ((bool)(resources.GetObject("panel1.ShowHelp"))));
             // 
-            // radioButtonEngineRec
+            // errorStatus1
             // 
-            resources.ApplyResources(this.radioButtonEngineRec, "radioButtonEngineRec");
-            this.radioButtonEngineRec.Name = "radioButtonEngineRec";
-            this.helpProvider1.SetShowHelp(this.radioButtonEngineRec, ((bool)(resources.GetObject("radioButtonEngineRec.ShowHelp"))));
-            this.radioButtonEngineRec.UseVisualStyleBackColor = true;
+            this.errorStatus1.Cursor = System.Windows.Forms.Cursors.Default;
+            resources.ApplyResources(this.errorStatus1, "errorStatus1");
+            this.errorStatus1.Name = "errorStatus1";
+            this.helpProvider1.SetShowHelp(this.errorStatus1, ((bool)(resources.GetObject("errorStatus1.ShowHelp"))));
             // 
             // radioButtonEngineCircular
             // 
@@ -406,6 +403,51 @@ namespace HDGraph
             this.radioButtonEngineCircular.TabStop = true;
             this.radioButtonEngineCircular.UseVisualStyleBackColor = true;
             this.radioButtonEngineCircular.CheckedChanged += new System.EventHandler(this.radioButtonEngineCircular_CheckedChanged);
+            // 
+            // radioButtonEngineRec
+            // 
+            resources.ApplyResources(this.radioButtonEngineRec, "radioButtonEngineRec");
+            this.radioButtonEngineRec.Name = "radioButtonEngineRec";
+            this.helpProvider1.SetShowHelp(this.radioButtonEngineRec, ((bool)(resources.GetObject("radioButtonEngineRec.ShowHelp"))));
+            this.radioButtonEngineRec.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.groupBoxScanOptions);
+            this.flowLayoutPanel1.Controls.Add(this.groupBoxDrawOptions);
+            this.flowLayoutPanel1.Controls.Add(this.groupBoxDrawEngineOptions);
+            this.flowLayoutPanel1.Controls.Add(this.groupBoxHoverInfo);
+            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.helpProvider1.SetShowHelp(this.flowLayoutPanel1, ((bool)(resources.GetObject("flowLayoutPanel1.ShowHelp"))));
+            // 
+            // groupBoxScanOptions
+            // 
+            this.groupBoxScanOptions.Controls.Add(this.label1);
+            this.groupBoxScanOptions.Controls.Add(this.numUpDownNbNivx);
+            resources.ApplyResources(this.groupBoxScanOptions, "groupBoxScanOptions");
+            this.groupBoxScanOptions.Name = "groupBoxScanOptions";
+            this.helpProvider1.SetShowHelp(this.groupBoxScanOptions, ((bool)(resources.GetObject("groupBoxScanOptions.ShowHelp"))));
+            this.groupBoxScanOptions.TabStop = false;
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            this.helpProvider1.SetShowHelp(this.label1, ((bool)(resources.GetObject("label1.ShowHelp"))));
+            // 
+            // numUpDownNbNivx
+            // 
+            this.numUpDownNbNivx.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::HDGraph.Properties.Settings.Default, "OptionCalculMaxDepth", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            resources.ApplyResources(this.numUpDownNbNivx, "numUpDownNbNivx");
+            this.numUpDownNbNivx.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numUpDownNbNivx.Name = "numUpDownNbNivx";
+            this.helpProvider1.SetShowHelp(this.numUpDownNbNivx, ((bool)(resources.GetObject("numUpDownNbNivx.ShowHelp"))));
+            this.numUpDownNbNivx.Value = global::HDGraph.Properties.Settings.Default.OptionCalculMaxDepth;
             // 
             // groupBoxDrawOptions
             // 
@@ -421,10 +463,53 @@ namespace HDGraph
             this.groupBoxDrawOptions.Controls.Add(this.labelValeurRotation);
             this.groupBoxDrawOptions.Controls.Add(this.label6);
             this.groupBoxDrawOptions.Controls.Add(this.label5);
-            this.groupBoxDrawOptions.Controls.Add(this.imageRotationTrackBar);
+            this.groupBoxDrawOptions.Controls.Add(this.trackBarImageRotation);
             this.groupBoxDrawOptions.Name = "groupBoxDrawOptions";
             this.helpProvider1.SetShowHelp(this.groupBoxDrawOptions, ((bool)(resources.GetObject("groupBoxDrawOptions.ShowHelp"))));
             this.groupBoxDrawOptions.TabStop = false;
+            // 
+            // numUpDownNbNivxAffich
+            // 
+            this.numUpDownNbNivxAffich.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.drawOptionsBindingSource, "ShownLevelsCount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            resources.ApplyResources(this.numUpDownNbNivxAffich, "numUpDownNbNivxAffich");
+            this.numUpDownNbNivxAffich.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numUpDownNbNivxAffich.Name = "numUpDownNbNivxAffich";
+            this.helpProvider1.SetShowHelp(this.numUpDownNbNivxAffich, ((bool)(resources.GetObject("numUpDownNbNivxAffich.ShowHelp"))));
+            this.ToolTip.SetToolTip(this.numUpDownNbNivxAffich, resources.GetString("numUpDownNbNivxAffich.ToolTip"));
+            this.numUpDownNbNivxAffich.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numUpDownNbNivxAffich.ValueChanged += new System.EventHandler(this.numUpDownNbNivxAffich_ValueChanged);
+            // 
+            // drawOptionsBindingSource
+            // 
+            this.drawOptionsBindingSource.AllowNew = false;
+            this.drawOptionsBindingSource.DataSource = typeof(HDGraph.Interfaces.DrawEngines.DrawOptions);
+            this.drawOptionsBindingSource.CurrentChanged += new System.EventHandler(this.drawOptionsBindingSource_CurrentChanged);
+            // 
+            // trackBarZoom
+            // 
+            resources.ApplyResources(this.trackBarZoom, "trackBarZoom");
+            this.trackBarZoom.Maximum = 20;
+            this.trackBarZoom.Minimum = 1;
+            this.trackBarZoom.Name = "trackBarZoom";
+            this.helpProvider1.SetShowHelp(this.trackBarZoom, ((bool)(resources.GetObject("trackBarZoom.ShowHelp"))));
+            this.trackBarZoom.Value = 1;
+            this.trackBarZoom.Scroll += new System.EventHandler(this.trackBarZoom_Scroll);
+            this.trackBarZoom.MouseDown += new System.Windows.Forms.MouseEventHandler(this.trackBarZoom_MouseDown);
+            this.trackBarZoom.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBarZoom_MouseUp);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            this.helpProvider1.SetShowHelp(this.label2, ((bool)(resources.GetObject("label2.ShowHelp"))));
             // 
             // checkBoxShowTooltip
             // 
@@ -435,12 +520,6 @@ namespace HDGraph
             this.checkBoxShowTooltip.Name = "checkBoxShowTooltip";
             this.helpProvider1.SetShowHelp(this.checkBoxShowTooltip, ((bool)(resources.GetObject("checkBoxShowTooltip.ShowHelp"))));
             this.checkBoxShowTooltip.UseVisualStyleBackColor = true;
-            // 
-            // drawOptionsBindingSource
-            // 
-            this.drawOptionsBindingSource.AllowNew = false;
-            this.drawOptionsBindingSource.DataSource = typeof(HDGraph.Interfaces.DrawEngines.DrawOptions);
-            this.drawOptionsBindingSource.CurrentChanged += new System.EventHandler(this.drawOptionsBindingSource_CurrentChanged);
             // 
             // checkBoxShowFreeSpace
             // 
@@ -476,61 +555,6 @@ namespace HDGraph
             this.trackBarTextDensity.MouseDown += new System.Windows.Forms.MouseEventHandler(this.trackBarTextDensity_MouseDown);
             this.trackBarTextDensity.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBarTextDensity_MouseUp);
             // 
-            // numUpDownNbNivxAffich
-            // 
-            this.numUpDownNbNivxAffich.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.drawOptionsBindingSource, "ShownLevelsCount", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            resources.ApplyResources(this.numUpDownNbNivxAffich, "numUpDownNbNivxAffich");
-            this.numUpDownNbNivxAffich.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numUpDownNbNivxAffich.Name = "numUpDownNbNivxAffich";
-            this.helpProvider1.SetShowHelp(this.numUpDownNbNivxAffich, ((bool)(resources.GetObject("numUpDownNbNivxAffich.ShowHelp"))));
-            this.ToolTip.SetToolTip(this.numUpDownNbNivxAffich, resources.GetString("numUpDownNbNivxAffich.ToolTip"));
-            this.numUpDownNbNivxAffich.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.numUpDownNbNivxAffich.ValueChanged += new System.EventHandler(this.numUpDownNbNivxAffich_ValueChanged);
-            // 
-            // trackBarZoom
-            // 
-            resources.ApplyResources(this.trackBarZoom, "trackBarZoom");
-            this.trackBarZoom.Maximum = 20;
-            this.trackBarZoom.Minimum = 1;
-            this.trackBarZoom.Name = "trackBarZoom";
-            this.helpProvider1.SetShowHelp(this.trackBarZoom, ((bool)(resources.GetObject("trackBarZoom.ShowHelp"))));
-            this.trackBarZoom.Value = 1;
-            this.trackBarZoom.Scroll += new System.EventHandler(this.trackBarZoom_Scroll);
-            this.trackBarZoom.MouseDown += new System.Windows.Forms.MouseEventHandler(this.trackBarZoom_MouseDown);
-            this.trackBarZoom.MouseUp += new System.Windows.Forms.MouseEventHandler(this.trackBarZoom_MouseUp);
-            // 
-            // comboBoxColorStyle
-            // 
-            this.comboBoxColorStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBoxColorStyle, "comboBoxColorStyle");
-            this.comboBoxColorStyle.Items.AddRange(new object[] {
-            resources.GetString("comboBoxColorStyle.Items"),
-            resources.GetString("comboBoxColorStyle.Items1"),
-            resources.GetString("comboBoxColorStyle.Items2"),
-            resources.GetString("comboBoxColorStyle.Items3")});
-            this.comboBoxColorStyle.Name = "comboBoxColorStyle";
-            this.helpProvider1.SetShowHelp(this.comboBoxColorStyle, ((bool)(resources.GetObject("comboBoxColorStyle.ShowHelp"))));
-            this.comboBoxColorStyle.Tag = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.comboBoxColorStyle.SelectedIndexChanged += new System.EventHandler(this.comboBoxColorStyle_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            resources.ApplyResources(this.label4, "label4");
-            this.label4.Name = "label4";
-            this.helpProvider1.SetShowHelp(this.label4, ((bool)(resources.GetObject("label4.ShowHelp"))));
-            // 
             // checkBoxAutoRecalc
             // 
             resources.ApplyResources(this.checkBoxAutoRecalc, "checkBoxAutoRecalc");
@@ -540,25 +564,6 @@ namespace HDGraph
             this.helpProvider1.SetShowHelp(this.checkBoxAutoRecalc, ((bool)(resources.GetObject("checkBoxAutoRecalc.ShowHelp"))));
             this.checkBoxAutoRecalc.UseVisualStyleBackColor = true;
             this.checkBoxAutoRecalc.CheckedChanged += new System.EventHandler(this.checkBoxAutoRecalc_CheckedChanged);
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            this.helpProvider1.SetShowHelp(this.label1, ((bool)(resources.GetObject("label1.ShowHelp"))));
-            // 
-            // numUpDownNbNivx
-            // 
-            this.numUpDownNbNivx.DataBindings.Add(new System.Windows.Forms.Binding("Value", global::HDGraph.Properties.Settings.Default, "OptionCalculMaxDepth", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            resources.ApplyResources(this.numUpDownNbNivx, "numUpDownNbNivx");
-            this.numUpDownNbNivx.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numUpDownNbNivx.Name = "numUpDownNbNivx";
-            this.helpProvider1.SetShowHelp(this.numUpDownNbNivx, ((bool)(resources.GetObject("numUpDownNbNivx.ShowHelp"))));
-            this.numUpDownNbNivx.Value = global::HDGraph.Properties.Settings.Default.OptionCalculMaxDepth;
             // 
             // labelValeurRotation
             // 
@@ -579,23 +584,75 @@ namespace HDGraph
             this.label5.Name = "label5";
             this.helpProvider1.SetShowHelp(this.label5, ((bool)(resources.GetObject("label5.ShowHelp"))));
             // 
-            // label2
+            // trackBarImageRotation
             // 
-            resources.ApplyResources(this.label2, "label2");
-            this.label2.Name = "label2";
-            this.helpProvider1.SetShowHelp(this.label2, ((bool)(resources.GetObject("label2.ShowHelp"))));
+            this.trackBarImageRotation.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.drawOptionsBindingSource, "ImageRotation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            resources.ApplyResources(this.trackBarImageRotation, "trackBarImageRotation");
+            this.trackBarImageRotation.Maximum = 360;
+            this.trackBarImageRotation.Name = "trackBarImageRotation";
+            this.helpProvider1.SetShowHelp(this.trackBarImageRotation, ((bool)(resources.GetObject("trackBarImageRotation.ShowHelp"))));
+            this.trackBarImageRotation.SmallChange = 5;
+            this.trackBarImageRotation.TickFrequency = 20;
+            this.trackBarImageRotation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.imageRotationTrackBar_MouseDown);
+            this.trackBarImageRotation.MouseUp += new System.Windows.Forms.MouseEventHandler(this.imageRotationTrackBar_MouseUp);
             // 
-            // imageRotationTrackBar
+            // groupBoxDrawEngineOptions
             // 
-            this.imageRotationTrackBar.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.drawOptionsBindingSource, "ImageRotation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            resources.ApplyResources(this.imageRotationTrackBar, "imageRotationTrackBar");
-            this.imageRotationTrackBar.Maximum = 360;
-            this.imageRotationTrackBar.Name = "imageRotationTrackBar";
-            this.helpProvider1.SetShowHelp(this.imageRotationTrackBar, ((bool)(resources.GetObject("imageRotationTrackBar.ShowHelp"))));
-            this.imageRotationTrackBar.SmallChange = 5;
-            this.imageRotationTrackBar.TickFrequency = 20;
-            this.imageRotationTrackBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.imageRotationTrackBar_MouseDown);
-            this.imageRotationTrackBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.imageRotationTrackBar_MouseUp);
+            this.groupBoxDrawEngineOptions.Controls.Add(this.label7);
+            this.groupBoxDrawEngineOptions.Controls.Add(this.label4);
+            this.groupBoxDrawEngineOptions.Controls.Add(this.comboBoxColorStyle);
+            this.groupBoxDrawEngineOptions.Controls.Add(this.comboBoxDrawEngine);
+            resources.ApplyResources(this.groupBoxDrawEngineOptions, "groupBoxDrawEngineOptions");
+            this.groupBoxDrawEngineOptions.Name = "groupBoxDrawEngineOptions";
+            this.helpProvider1.SetShowHelp(this.groupBoxDrawEngineOptions, ((bool)(resources.GetObject("groupBoxDrawEngineOptions.ShowHelp"))));
+            this.groupBoxDrawEngineOptions.TabStop = false;
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            this.helpProvider1.SetShowHelp(this.label7, ((bool)(resources.GetObject("label7.ShowHelp"))));
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            this.helpProvider1.SetShowHelp(this.label4, ((bool)(resources.GetObject("label4.ShowHelp"))));
+            // 
+            // comboBoxColorStyle
+            // 
+            this.comboBoxColorStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBoxColorStyle, "comboBoxColorStyle");
+            this.comboBoxColorStyle.Items.AddRange(new object[] {
+            resources.GetString("comboBoxColorStyle.Items"),
+            resources.GetString("comboBoxColorStyle.Items1"),
+            resources.GetString("comboBoxColorStyle.Items2"),
+            resources.GetString("comboBoxColorStyle.Items3")});
+            this.comboBoxColorStyle.Name = "comboBoxColorStyle";
+            this.helpProvider1.SetShowHelp(this.comboBoxColorStyle, ((bool)(resources.GetObject("comboBoxColorStyle.ShowHelp"))));
+            this.comboBoxColorStyle.Tag = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.comboBoxColorStyle.SelectedIndexChanged += new System.EventHandler(this.comboBoxColorStyle_SelectedIndexChanged);
+            // 
+            // comboBoxDrawEngine
+            // 
+            this.comboBoxDrawEngine.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxDrawEngine.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBoxDrawEngine.DataSource = this.iDrawEngineContractBindingSource;
+            this.comboBoxDrawEngine.DisplayMember = "Name";
+            this.comboBoxDrawEngine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxDrawEngine.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBoxDrawEngine, "comboBoxDrawEngine");
+            this.comboBoxDrawEngine.Name = "comboBoxDrawEngine";
+            this.helpProvider1.SetShowHelp(this.comboBoxDrawEngine, ((bool)(resources.GetObject("comboBoxDrawEngine.ShowHelp"))));
+            this.comboBoxDrawEngine.SelectedIndexChanged += new System.EventHandler(this.comboBoxDrawEngine_SelectedIndexChanged);
+            // 
+            // iDrawEngineContractBindingSource
+            // 
+            this.iDrawEngineContractBindingSource.DataSource = typeof(HDGraph.Interfaces.DrawEngines.IDrawEngineContract);
             // 
             // groupBoxHoverInfo
             // 
@@ -1043,6 +1100,12 @@ namespace HDGraph
             resources.ApplyResources(this.aboutToolStripMenuItem, "aboutToolStripMenuItem");
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // ToolTip
+            // 
+            this.ToolTip.AutoPopDelay = 15000;
+            this.ToolTip.InitialDelay = 500;
+            this.ToolTip.ReshowDelay = 100;
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.splitContainerAdressBarAndGraph);
@@ -1117,58 +1180,6 @@ namespace HDGraph
             this.helpProvider1.SetShowHelp(this.splitContainerGraphAndStatusBar.Panel2, ((bool)(resources.GetObject("splitContainerGraphAndStatusBar.Panel2.ShowHelp"))));
             this.helpProvider1.SetShowHelp(this.splitContainerGraphAndStatusBar, ((bool)(resources.GetObject("splitContainerGraphAndStatusBar.ShowHelp"))));
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.groupBoxScanOptions);
-            this.flowLayoutPanel1.Controls.Add(this.groupBoxDrawOptions);
-            this.flowLayoutPanel1.Controls.Add(this.groupBoxDrawEngineOptions);
-            this.flowLayoutPanel1.Controls.Add(this.groupBoxHoverInfo);
-            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.helpProvider1.SetShowHelp(this.flowLayoutPanel1, ((bool)(resources.GetObject("flowLayoutPanel1.ShowHelp"))));
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.errorStatus1);
-            this.panel1.Controls.Add(this.radioButtonEngineCircular);
-            this.panel1.Controls.Add(this.radioButtonEngineRec);
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Name = "panel1";
-            this.helpProvider1.SetShowHelp(this.panel1, ((bool)(resources.GetObject("panel1.ShowHelp"))));
-            // 
-            // groupBoxScanOptions
-            // 
-            this.groupBoxScanOptions.Controls.Add(this.label1);
-            this.groupBoxScanOptions.Controls.Add(this.numUpDownNbNivx);
-            resources.ApplyResources(this.groupBoxScanOptions, "groupBoxScanOptions");
-            this.groupBoxScanOptions.Name = "groupBoxScanOptions";
-            this.helpProvider1.SetShowHelp(this.groupBoxScanOptions, ((bool)(resources.GetObject("groupBoxScanOptions.ShowHelp"))));
-            this.groupBoxScanOptions.TabStop = false;
-            // 
-            // groupBoxDrawEngineOptions
-            // 
-            this.groupBoxDrawEngineOptions.Controls.Add(this.label7);
-            this.groupBoxDrawEngineOptions.Controls.Add(this.label4);
-            this.groupBoxDrawEngineOptions.Controls.Add(this.comboBoxColorStyle);
-            this.groupBoxDrawEngineOptions.Controls.Add(this.comboBoxDrawEngine);
-            resources.ApplyResources(this.groupBoxDrawEngineOptions, "groupBoxDrawEngineOptions");
-            this.groupBoxDrawEngineOptions.Name = "groupBoxDrawEngineOptions";
-            this.helpProvider1.SetShowHelp(this.groupBoxDrawEngineOptions, ((bool)(resources.GetObject("groupBoxDrawEngineOptions.ShowHelp"))));
-            this.groupBoxDrawEngineOptions.TabStop = false;
-            // 
-            // label7
-            // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
-            this.helpProvider1.SetShowHelp(this.label7, ((bool)(resources.GetObject("label7.ShowHelp"))));
-            // 
-            // errorStatus1
-            // 
-            this.errorStatus1.Cursor = System.Windows.Forms.Cursors.Default;
-            resources.ApplyResources(this.errorStatus1, "errorStatus1");
-            this.errorStatus1.Name = "errorStatus1";
-            this.helpProvider1.SetShowHelp(this.errorStatus1, ((bool)(resources.GetObject("errorStatus1.ShowHelp"))));
-            // 
             // MainForm
             // 
             this.AcceptButton = this.buttonScan;
@@ -1197,14 +1208,21 @@ namespace HDGraph
             this.splitContainerGraphAndOptions.Panel1.ResumeLayout(false);
             this.splitContainerGraphAndOptions.Panel2.ResumeLayout(false);
             this.splitContainerGraphAndOptions.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.groupBoxScanOptions.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivx)).EndInit();
             this.groupBoxDrawOptions.ResumeLayout(false);
             this.groupBoxDrawOptions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.drawOptionsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarTextDensity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivxAffich)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.drawOptionsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarZoom)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivx)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageRotationTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarTextDensity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarImageRotation)).EndInit();
+            this.groupBoxDrawEngineOptions.ResumeLayout(false);
+            this.groupBoxDrawEngineOptions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iDrawEngineContractBindingSource)).EndInit();
             this.groupBoxHoverInfo.ResumeLayout(false);
             this.groupBoxHoverInfo.PerformLayout();
             this.statusStrip.ResumeLayout(false);
@@ -1223,12 +1241,6 @@ namespace HDGraph
             this.splitContainerGraphAndStatusBar.Panel2.ResumeLayout(false);
             this.splitContainerGraphAndStatusBar.Panel2.PerformLayout();
             this.splitContainerGraphAndStatusBar.ResumeLayout(false);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.groupBoxScanOptions.ResumeLayout(false);
-            this.groupBoxDrawEngineOptions.ResumeLayout(false);
-            this.groupBoxDrawEngineOptions.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1335,7 +1347,7 @@ namespace HDGraph
         private HDGraph.UserControls.ErrorStatus errorStatus1;
         private System.Windows.Forms.Label labelValeurRotation;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TrackBar imageRotationTrackBar;
+        private System.Windows.Forms.TrackBar trackBarImageRotation;
         private System.Windows.Forms.TrackBar trackBarTextDensity;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.RadioButton radioButtonEngineRec;
@@ -1355,6 +1367,7 @@ namespace HDGraph
         private System.Windows.Forms.GroupBox groupBoxScanOptions;
         private System.Windows.Forms.GroupBox groupBoxDrawEngineOptions;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.BindingSource iDrawEngineContractBindingSource;
     }
 }
 

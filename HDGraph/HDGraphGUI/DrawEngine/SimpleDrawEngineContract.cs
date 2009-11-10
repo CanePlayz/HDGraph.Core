@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using HDGraph.Interfaces.DrawEngines;
+using HDGraph.Resources;
 
 namespace HDGraph.DrawEngine
 {
@@ -11,12 +12,12 @@ namespace HDGraph.DrawEngine
 
         public string Name
         {
-            get { return "Standard"; }
+            get { return ApplicationMessages.SimpleDrawEngineName; }
         }
 
         public string Description
         {
-            get { return "The first HDGraph draw engine. Based on Bitmap generation. Slower dans less powerfull than WPF engine (if you have a good graphic card)."; }
+            get { return ApplicationMessages.SimpleDrawEngineDescription; }
         }
 
         public IDrawEngine GetNewEngine()

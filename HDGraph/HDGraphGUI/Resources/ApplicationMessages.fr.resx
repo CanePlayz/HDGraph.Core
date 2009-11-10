@@ -356,4 +356,16 @@ termes.</value>
   <data name="ScanCompletedIn" xml:space="preserve">
     <value>Scan terminé en {0}.</value>
   </data>
+  <data name="ChooseDrawEngineHere" xml:space="preserve">
+    <value>Choisissez ici le moteur de rendu.</value>
+  </data>
+  <data name="OtherEnginesAvailableOnWindows" xml:space="preserve">
+    <value>Les autres moteurs de rendu ne sont disponibles que sur Microsoft Windows. Plus de détails sur www.hdgraph.com .</value>
+  </data>
+  <data name="SimpleDrawEngineDescription" xml:space="preserve">
+    <value>Le premier moteur de rendu utilisé initialement par HDGraph. Basé sur la génération d'images Bitmap. Plus lent et moins puissant que le moteur WPF (à moins que vous n'ayez une vieille carte graphique).</value>
+  </data>
+  <data name="SimpleDrawEngineName" xml:space="preserve">
+    <value>Basique</value>
+  </data>
 </root>

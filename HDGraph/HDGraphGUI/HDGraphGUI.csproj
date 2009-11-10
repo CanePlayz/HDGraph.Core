@@ -352,6 +352,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\DataSources\HDGraph.Interfaces.DrawEngines.DrawOptions.datasource" />
+    <None Include="Properties\DataSources\HDGraph.Interfaces.DrawEngines.IDrawEngineContract.datasource" />
     <None Include="Resources\FillRightHS.png" />
     <None Include="Resources\FillLeftHS.png" />
     <None Include="Properties\DataSources\HDGraph.UserControls.ApplicationTip.datasource" />

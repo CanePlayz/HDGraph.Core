@@ -111,6 +111,14 @@ namespace HDGraph
                                 MessageBoxIcon.Warning);
 
             InitializeComponent();
+            if (!ToolProviderBase.CurrentOsIsWindows())
+            {
+                // Fix a Mono Bug about trackBar Management.
+                trackBarZoom.Minimum = -10;
+                trackBarTextDensity.Minimum = -10;
+                trackBarImageRotation.Minimum = -10;
+                linkLabelHelpGraph.Visible = false; // Help link not implemented yet in Mono
+            }
             ApplyIcon();
             this.Text = AboutBox.AssemblyTitle;
             this.WindowState = HDGraph.Properties.Settings.Default.OptionMainWindowOpenState;
@@ -120,8 +128,7 @@ namespace HDGraph
                 Properties.Settings.Default.MyDrawOptions = new DrawOptions();
             DrawOptions = Properties.Settings.Default.MyDrawOptions;
             drawOptionsBindingSource.DataSource = DrawOptions;
-            // the draw engine can be created only once the DrawOptions exists and the scanEngine exists.
-            comboBoxDrawEngine.SelectedIndex = 0; // Changing index will create the draw engine.
+            
             explorerIntegrationToolStripMenuItem.Enabled = ToolProviderBase.CurrentOsIsWindows();
             EnableHelpIfAvailable();
             comboBoxPath.DataSource = HDGraph.Properties.Settings.Default.PathHistory;
@@ -139,20 +146,55 @@ namespace HDGraph
             }
             PopulateAnalyseShortcuts();
             splitContainerGraphAndOptions.Panel2Collapsed = true;
+            // the draw engine can be created only once the DrawOptions exists and the scanEngine exists.
+            LoadPlugins(); // Loading Plugins will update the PlugInsComboBox, which will create the selected draw engine.
+            if (!ToolProviderBase.CurrentOsIsWindows())
+            {
+                // restore initial state (modified in order to Fix a Mono Bug about trackBar Management).
+                trackBarZoom.Minimum = 1;
+                trackBarTextDensity.Minimum = 0;
+                trackBarImageRotation.Minimum = 0;
+                linkLabelHelpGraph.Visible = false; // Help link not implemented yet in Mono
+            }
         }
 
 
         private void comboBoxDrawEngine_SelectedIndexChanged(object sender, EventArgs e)
         {
-            CreateDrawEngine();
+            if (comboBoxDrawEngine.SelectedItem != null)
+            {
+                IDrawEngineContract contract = comboBoxDrawEngine.SelectedItem as IDrawEngineContract;
+                if (contract != null)
+                {
+                    this.drawEngineContract = contract;
+                    ApplyNewDrawEngine();
+                }
+            }
         }
 
-        private void CreateDrawEngine()
+        private void LoadPlugins()
         {
-            int selectedIndex = comboBoxDrawEngine.SelectedIndex;
-            if (selectedIndex < 0)
-                selectedIndex = 0;
-            this.drawEngineContract = PlugIn.PlugInsManager.GetDrawEnginePlugins()[selectedIndex]; // TODO : load from config
+            List<IDrawEngineContract> pluginList = PlugIn.PlugInsManager.GetDrawEnginePlugins();
+            this.iDrawEngineContractBindingSource.DataSource = pluginList;
+            // Construct comboBox tooltip
+            StringBuilder builder = new StringBuilder();
+            builder.Append(ApplicationMessages.ChooseDrawEngineHere + Environment.NewLine);
+            foreach (IDrawEngineContract contract in pluginList)
+            {
+                builder.AppendFormat("{0}- {1} :{0}   {2}", 
+                                    Environment.NewLine,
+                                    contract.Name,
+                                    contract.Description);
+            }
+            if (!ToolProviderBase.CurrentOsIsWindows())
+            {
+                builder.AppendFormat("{0}{0} {1}", Environment.NewLine, ApplicationMessages.OtherEnginesAvailableOnWindows);
+            }
+            ToolTip.SetToolTip(comboBoxDrawEngine, builder.ToString());
+        }
+
+        private void ApplyNewDrawEngine()
+        {
             this.drawEngine = drawEngineContract.GetNewEngine();
             if (this.graphControl != null)
                 this.splitContainerGraphAndOptions.Panel1.Controls.Remove(graphControl);

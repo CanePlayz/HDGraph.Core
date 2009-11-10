@@ -35,22 +35,25 @@ namespace HDGraph.PlugIn
                     {
                         try
                         {
-                            if (type.IsPublic && typeof(IDrawEngineContract).IsAssignableFrom(type))
+                            if (type.IsPublic && typeof(IDrawEngineContract).IsAssignableFrom(type)
+                                && type != typeof(IDrawEngineContract))
                             {
                                 IDrawEngineContract engineContract = (IDrawEngineContract)Activator.CreateInstance(type);
                                 plugInsList.Add(engineContract);
+                                MessageBox.Show("Class " + type.ToString() + " from Plugin (file " + fileName + ") is sucessfully loaded !", "Plugin loaded", MessageBoxButtons.OK, MessageBoxIcon.Information); // TODO : localize ?
                             }
                         }
                         catch (Exception ex)
                         {
                             Trace.TraceError(HDGTools.PrintError(ex));
+                            MessageBox.Show("Error loading class " + type.ToString() + " from Plugin (file " + fileName + ") : " + ex); // TODO : localize ?
                         }
                     }
                 }
                 catch (Exception ex)
                 {
                     Trace.TraceError(HDGTools.PrintError(ex));
-                    MessageBox.Show("Error loading Plugin from file " + fileName + " : " + ex); // TODO : localize.
+                    MessageBox.Show("Error loading Plugin from file " + fileName + " : " + ex, "Plugin failed to load.", MessageBoxButtons.OK, MessageBoxIcon.Warning); // TODO : localize ?
                 }
             }
             return plugInsList;
