@@ -63,5 +63,20 @@ namespace HDGraph.DrawEngine
         }
 
         #endregion
+
+        #region IDrawEngine Members
+
+
+        public Control GetOptionsControl(DrawOptions options)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveCurrentSpecificOptions()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

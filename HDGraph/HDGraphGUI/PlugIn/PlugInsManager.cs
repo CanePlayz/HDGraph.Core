@@ -50,6 +50,7 @@ namespace HDGraph.PlugIn
                 catch (Exception ex)
                 {
                     Trace.TraceError(HDGTools.PrintError(ex));
+                    MessageBox.Show("Error loading Plugin from file " + fileName + " : " + ex); // TODO : localize.
                 }
             }
             return plugInsList;

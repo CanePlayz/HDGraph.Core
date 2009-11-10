@@ -15,5 +15,14 @@ namespace HDGraph.Interfaces.DrawEngines
         void SetRootNodeOfControl(Control control, IDirectoryNode newRoot);
 
         void SaveAsImageToFile(System.Windows.Forms.Control control, string filePath);
+
+        #region Options management
+
+        Control GetOptionsControl(DrawOptions options);
+        void SaveCurrentSpecificOptions();
+
+        #endregion
+        
+
     }
 }

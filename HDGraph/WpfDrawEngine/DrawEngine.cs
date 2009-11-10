@@ -47,5 +47,20 @@ namespace HDGraph.WpfDrawEngine
         }
 
         #endregion
+
+        #region IDrawEngine Options Members
+
+
+        public System.Windows.Forms.Control GetOptionsControl(DrawOptions options)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SaveCurrentSpecificOptions()
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

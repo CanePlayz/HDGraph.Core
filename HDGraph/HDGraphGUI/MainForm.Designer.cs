@@ -31,12 +31,6 @@ namespace HDGraph
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.toolStripContainer2 = new System.Windows.Forms.ToolStripContainer();
-            this.toolStripShortcuts = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabelShortcuts = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripSplitButtonModel = new System.Windows.Forms.ToolStripSplitButton();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolBarToolStrip = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -49,13 +43,19 @@ namespace HDGraph
             this.toolStripButtonNavForward = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripShortcuts = new System.Windows.Forms.ToolStrip();
+            this.toolStripLabelShortcuts = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSplitButtonModel = new System.Windows.Forms.ToolStripSplitButton();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainerGraphAndOptions = new System.Windows.Forms.SplitContainer();
             this.buttonTestWpf = new System.Windows.Forms.Button();
             this.linkLabelHelpGraph = new System.Windows.Forms.LinkLabel();
             this.comboBoxDrawEngine = new System.Windows.Forms.ComboBox();
             this.radioButtonEngineRec = new System.Windows.Forms.RadioButton();
             this.radioButtonEngineCircular = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxDrawOptions = new System.Windows.Forms.GroupBox();
             this.checkBoxShowTooltip = new System.Windows.Forms.CheckBox();
             this.drawOptionsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.checkBoxShowFreeSpace = new System.Windows.Forms.CheckBox();
@@ -143,15 +143,20 @@ namespace HDGraph
             this.buttonAdvanced = new System.Windows.Forms.Button();
             this.splitContainerGraphAndToolBar = new System.Windows.Forms.SplitContainer();
             this.splitContainerGraphAndStatusBar = new System.Windows.Forms.SplitContainer();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBoxScanOptions = new System.Windows.Forms.GroupBox();
+            this.groupBoxDrawEngineOptions = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.errorStatus1 = new HDGraph.UserControls.ErrorStatus();
             this.toolStripContainer2.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer2.SuspendLayout();
-            this.toolStripShortcuts.SuspendLayout();
             this.toolBarToolStrip.SuspendLayout();
+            this.toolStripShortcuts.SuspendLayout();
             this.splitContainerGraphAndOptions.Panel1.SuspendLayout();
             this.splitContainerGraphAndOptions.Panel2.SuspendLayout();
             this.splitContainerGraphAndOptions.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxDrawOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.drawOptionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTextDensity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivxAffich)).BeginInit();
@@ -171,6 +176,10 @@ namespace HDGraph
             this.splitContainerGraphAndStatusBar.Panel1.SuspendLayout();
             this.splitContainerGraphAndStatusBar.Panel2.SuspendLayout();
             this.splitContainerGraphAndStatusBar.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.groupBoxScanOptions.SuspendLayout();
+            this.groupBoxDrawEngineOptions.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripContainer2
@@ -201,44 +210,6 @@ namespace HDGraph
             this.toolStripContainer2.TopToolStripPanel.Controls.Add(this.toolBarToolStrip);
             this.toolStripContainer2.TopToolStripPanel.Controls.Add(this.toolStripShortcuts);
             this.helpProvider1.SetShowHelp(this.toolStripContainer2.TopToolStripPanel, ((bool)(resources.GetObject("toolStripContainer2.TopToolStripPanel.ShowHelp"))));
-            // 
-            // toolStripShortcuts
-            // 
-            resources.ApplyResources(this.toolStripShortcuts, "toolStripShortcuts");
-            this.toolStripShortcuts.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabelShortcuts,
-            this.toolStripSplitButtonModel});
-            this.toolStripShortcuts.Name = "toolStripShortcuts";
-            this.helpProvider1.SetShowHelp(this.toolStripShortcuts, ((bool)(resources.GetObject("toolStripShortcuts.ShowHelp"))));
-            // 
-            // toolStripLabelShortcuts
-            // 
-            this.toolStripLabelShortcuts.Name = "toolStripLabelShortcuts";
-            resources.ApplyResources(this.toolStripLabelShortcuts, "toolStripLabelShortcuts");
-            // 
-            // toolStripSplitButtonModel
-            // 
-            this.toolStripSplitButtonModel.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem2,
-            this.toolStripMenuItem3,
-            this.toolStripMenuItem4});
-            resources.ApplyResources(this.toolStripSplitButtonModel, "toolStripSplitButtonModel");
-            this.toolStripSplitButtonModel.Name = "toolStripSplitButtonModel";
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
             // 
             // toolBarToolStrip
             // 
@@ -330,6 +301,44 @@ namespace HDGraph
             this.helpToolStripButton.Name = "helpToolStripButton";
             this.helpToolStripButton.Click += new System.EventHandler(this.contentsToolStripMenuItem_Click);
             // 
+            // toolStripShortcuts
+            // 
+            resources.ApplyResources(this.toolStripShortcuts, "toolStripShortcuts");
+            this.toolStripShortcuts.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabelShortcuts,
+            this.toolStripSplitButtonModel});
+            this.toolStripShortcuts.Name = "toolStripShortcuts";
+            this.helpProvider1.SetShowHelp(this.toolStripShortcuts, ((bool)(resources.GetObject("toolStripShortcuts.ShowHelp"))));
+            // 
+            // toolStripLabelShortcuts
+            // 
+            this.toolStripLabelShortcuts.Name = "toolStripLabelShortcuts";
+            resources.ApplyResources(this.toolStripLabelShortcuts, "toolStripLabelShortcuts");
+            // 
+            // toolStripSplitButtonModel
+            // 
+            this.toolStripSplitButtonModel.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4});
+            resources.ApplyResources(this.toolStripSplitButtonModel, "toolStripSplitButtonModel");
+            this.toolStripSplitButtonModel.Name = "toolStripSplitButtonModel";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            resources.ApplyResources(this.toolStripMenuItem2, "toolStripMenuItem2");
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            resources.ApplyResources(this.toolStripMenuItem3, "toolStripMenuItem3");
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            resources.ApplyResources(this.toolStripMenuItem4, "toolStripMenuItem4");
+            // 
             // splitContainerGraphAndOptions
             // 
             resources.ApplyResources(this.splitContainerGraphAndOptions, "splitContainerGraphAndOptions");
@@ -345,12 +354,8 @@ namespace HDGraph
             // 
             // splitContainerGraphAndOptions.Panel2
             // 
-            this.splitContainerGraphAndOptions.Panel2.Controls.Add(this.comboBoxDrawEngine);
-            this.splitContainerGraphAndOptions.Panel2.Controls.Add(this.radioButtonEngineRec);
-            this.splitContainerGraphAndOptions.Panel2.Controls.Add(this.radioButtonEngineCircular);
-            this.splitContainerGraphAndOptions.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainerGraphAndOptions.Panel2.Controls.Add(this.groupBoxHoverInfo);
-            this.splitContainerGraphAndOptions.Panel2.Controls.Add(this.errorStatus1);
+            this.splitContainerGraphAndOptions.Panel2.Controls.Add(this.panel1);
+            this.splitContainerGraphAndOptions.Panel2.Controls.Add(this.flowLayoutPanel1);
             this.helpProvider1.SetShowHelp(this.splitContainerGraphAndOptions.Panel2, ((bool)(resources.GetObject("splitContainerGraphAndOptions.Panel2.ShowHelp"))));
             this.helpProvider1.SetShowHelp(this.splitContainerGraphAndOptions, ((bool)(resources.GetObject("splitContainerGraphAndOptions.ShowHelp"))));
             // 
@@ -402,28 +407,24 @@ namespace HDGraph
             this.radioButtonEngineCircular.UseVisualStyleBackColor = true;
             this.radioButtonEngineCircular.CheckedChanged += new System.EventHandler(this.radioButtonEngineCircular_CheckedChanged);
             // 
-            // groupBox1
+            // groupBoxDrawOptions
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.checkBoxShowTooltip);
-            this.groupBox1.Controls.Add(this.checkBoxShowFreeSpace);
-            this.groupBox1.Controls.Add(this.checkBoxPrintSizes);
-            this.groupBox1.Controls.Add(this.trackBarTextDensity);
-            this.groupBox1.Controls.Add(this.numUpDownNbNivxAffich);
-            this.groupBox1.Controls.Add(this.trackBarZoom);
-            this.groupBox1.Controls.Add(this.comboBoxColorStyle);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.checkBoxAutoRecalc);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.numUpDownNbNivx);
-            this.groupBox1.Controls.Add(this.labelValeurRotation);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.imageRotationTrackBar);
-            this.groupBox1.Name = "groupBox1";
-            this.helpProvider1.SetShowHelp(this.groupBox1, ((bool)(resources.GetObject("groupBox1.ShowHelp"))));
-            this.groupBox1.TabStop = false;
+            resources.ApplyResources(this.groupBoxDrawOptions, "groupBoxDrawOptions");
+            this.groupBoxDrawOptions.Controls.Add(this.numUpDownNbNivxAffich);
+            this.groupBoxDrawOptions.Controls.Add(this.trackBarZoom);
+            this.groupBoxDrawOptions.Controls.Add(this.label2);
+            this.groupBoxDrawOptions.Controls.Add(this.checkBoxShowTooltip);
+            this.groupBoxDrawOptions.Controls.Add(this.checkBoxShowFreeSpace);
+            this.groupBoxDrawOptions.Controls.Add(this.checkBoxPrintSizes);
+            this.groupBoxDrawOptions.Controls.Add(this.trackBarTextDensity);
+            this.groupBoxDrawOptions.Controls.Add(this.checkBoxAutoRecalc);
+            this.groupBoxDrawOptions.Controls.Add(this.labelValeurRotation);
+            this.groupBoxDrawOptions.Controls.Add(this.label6);
+            this.groupBoxDrawOptions.Controls.Add(this.label5);
+            this.groupBoxDrawOptions.Controls.Add(this.imageRotationTrackBar);
+            this.groupBoxDrawOptions.Name = "groupBoxDrawOptions";
+            this.helpProvider1.SetShowHelp(this.groupBoxDrawOptions, ((bool)(resources.GetObject("groupBoxDrawOptions.ShowHelp"))));
+            this.groupBoxDrawOptions.TabStop = false;
             // 
             // checkBoxShowTooltip
             // 
@@ -1116,10 +1117,55 @@ namespace HDGraph
             this.helpProvider1.SetShowHelp(this.splitContainerGraphAndStatusBar.Panel2, ((bool)(resources.GetObject("splitContainerGraphAndStatusBar.Panel2.ShowHelp"))));
             this.helpProvider1.SetShowHelp(this.splitContainerGraphAndStatusBar, ((bool)(resources.GetObject("splitContainerGraphAndStatusBar.ShowHelp"))));
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.groupBoxScanOptions);
+            this.flowLayoutPanel1.Controls.Add(this.groupBoxDrawOptions);
+            this.flowLayoutPanel1.Controls.Add(this.groupBoxDrawEngineOptions);
+            this.flowLayoutPanel1.Controls.Add(this.groupBoxHoverInfo);
+            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.helpProvider1.SetShowHelp(this.flowLayoutPanel1, ((bool)(resources.GetObject("flowLayoutPanel1.ShowHelp"))));
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.errorStatus1);
+            this.panel1.Controls.Add(this.radioButtonEngineCircular);
+            this.panel1.Controls.Add(this.radioButtonEngineRec);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            this.helpProvider1.SetShowHelp(this.panel1, ((bool)(resources.GetObject("panel1.ShowHelp"))));
+            // 
+            // groupBoxScanOptions
+            // 
+            this.groupBoxScanOptions.Controls.Add(this.label1);
+            this.groupBoxScanOptions.Controls.Add(this.numUpDownNbNivx);
+            resources.ApplyResources(this.groupBoxScanOptions, "groupBoxScanOptions");
+            this.groupBoxScanOptions.Name = "groupBoxScanOptions";
+            this.helpProvider1.SetShowHelp(this.groupBoxScanOptions, ((bool)(resources.GetObject("groupBoxScanOptions.ShowHelp"))));
+            this.groupBoxScanOptions.TabStop = false;
+            // 
+            // groupBoxDrawEngineOptions
+            // 
+            this.groupBoxDrawEngineOptions.Controls.Add(this.label7);
+            this.groupBoxDrawEngineOptions.Controls.Add(this.label4);
+            this.groupBoxDrawEngineOptions.Controls.Add(this.comboBoxColorStyle);
+            this.groupBoxDrawEngineOptions.Controls.Add(this.comboBoxDrawEngine);
+            resources.ApplyResources(this.groupBoxDrawEngineOptions, "groupBoxDrawEngineOptions");
+            this.groupBoxDrawEngineOptions.Name = "groupBoxDrawEngineOptions";
+            this.helpProvider1.SetShowHelp(this.groupBoxDrawEngineOptions, ((bool)(resources.GetObject("groupBoxDrawEngineOptions.ShowHelp"))));
+            this.groupBoxDrawEngineOptions.TabStop = false;
+            // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            this.helpProvider1.SetShowHelp(this.label7, ((bool)(resources.GetObject("label7.ShowHelp"))));
+            // 
             // errorStatus1
             // 
-            resources.ApplyResources(this.errorStatus1, "errorStatus1");
             this.errorStatus1.Cursor = System.Windows.Forms.Cursors.Default;
+            resources.ApplyResources(this.errorStatus1, "errorStatus1");
             this.errorStatus1.Name = "errorStatus1";
             this.helpProvider1.SetShowHelp(this.errorStatus1, ((bool)(resources.GetObject("errorStatus1.ShowHelp"))));
             // 
@@ -1144,16 +1190,15 @@ namespace HDGraph
             this.toolStripContainer2.TopToolStripPanel.PerformLayout();
             this.toolStripContainer2.ResumeLayout(false);
             this.toolStripContainer2.PerformLayout();
-            this.toolStripShortcuts.ResumeLayout(false);
-            this.toolStripShortcuts.PerformLayout();
             this.toolBarToolStrip.ResumeLayout(false);
             this.toolBarToolStrip.PerformLayout();
+            this.toolStripShortcuts.ResumeLayout(false);
+            this.toolStripShortcuts.PerformLayout();
             this.splitContainerGraphAndOptions.Panel1.ResumeLayout(false);
             this.splitContainerGraphAndOptions.Panel2.ResumeLayout(false);
-            this.splitContainerGraphAndOptions.Panel2.PerformLayout();
             this.splitContainerGraphAndOptions.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxDrawOptions.ResumeLayout(false);
+            this.groupBoxDrawOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.drawOptionsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTextDensity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numUpDownNbNivxAffich)).EndInit();
@@ -1178,6 +1223,12 @@ namespace HDGraph
             this.splitContainerGraphAndStatusBar.Panel2.ResumeLayout(false);
             this.splitContainerGraphAndStatusBar.Panel2.PerformLayout();
             this.splitContainerGraphAndStatusBar.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.groupBoxScanOptions.ResumeLayout(false);
+            this.groupBoxDrawEngineOptions.ResumeLayout(false);
+            this.groupBoxDrawEngineOptions.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1245,7 +1296,7 @@ namespace HDGraph
         private System.Windows.Forms.NumericUpDown numUpDownNbNivx;
         private System.Windows.Forms.Button buttonScan;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxDrawOptions;
         private System.Windows.Forms.Button buttonBrowse;
         private System.Windows.Forms.CheckBox checkBoxPrintSizes;
         private System.Windows.Forms.ToolStripMenuItem explorerIntegrationToolStripMenuItem;
@@ -1299,6 +1350,11 @@ namespace HDGraph
         private System.Windows.Forms.Button buttonTestWpf;
         private System.Windows.Forms.BindingSource drawOptionsBindingSource;
         private System.Windows.Forms.ComboBox comboBoxDrawEngine;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.GroupBox groupBoxScanOptions;
+        private System.Windows.Forms.GroupBox groupBoxDrawEngineOptions;
+        private System.Windows.Forms.Label label7;
     }
 }
 

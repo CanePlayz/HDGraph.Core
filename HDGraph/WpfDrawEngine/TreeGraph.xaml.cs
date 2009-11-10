@@ -109,6 +109,7 @@ namespace HDGraph.WpfDrawEngine
             // init des données du calcul
 
             double largeur = Math.Min(scrollViewer1.ActualWidth, scrollViewer1.ActualHeight);
+            largeur -= 30; // keep space for last level effects, such as "hidden folder" effect. 
             singleLevelHeight = Convert.ToDouble(largeur / (CurrentDrawOptions.ShownLevelsCount) / 2d);
             SingleLevelHeight = singleLevelHeight; // Set the DP. Using a variable instead of the DP Getter increases perfs.
 

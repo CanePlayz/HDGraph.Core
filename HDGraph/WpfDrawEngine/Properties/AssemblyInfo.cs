@@ -8,11 +8,11 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("WpfDrawEngine")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Draw engine for HDGraph.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("HDGraph.com")]
 [assembly: AssemblyProduct("WpfDrawEngine")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2009")]
+[assembly: AssemblyCopyright("Copyright © Jean-Yves LAUGEL 2009")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -22,13 +22,13 @@ using System.Windows;
 [assembly: ComVisible(false)]
 
 //In order to begin building localizable applications, set 
-//<UICulture>CultureYouAreCodingWith</UICulture> in your .csproj file
+//<UICulture>en-US</UICulture> in your .csproj file
 //inside a <PropertyGroup>.  For example, if you are using US english
 //in your source files, set the <UICulture> to en-US.  Then uncomment
 //the NeutralResourceLanguage attribute below.  Update the "en-US" in
 //the line below to match the UICulture setting in the project file.
 
-//[assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.Satellite)]
+//[assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.MainAssembly)]
 
 
 [assembly: ThemeInfo(

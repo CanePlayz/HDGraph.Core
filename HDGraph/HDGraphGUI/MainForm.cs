@@ -1020,16 +1020,16 @@ namespace HDGraph
         private void buttonAdvanced_Click(object sender, EventArgs e)
         {
             splitContainerGraphAndOptions.Panel2Collapsed = !splitContainerGraphAndOptions.Panel2Collapsed;
-            splitContainerGraphAndOptions.SplitterDistance = splitContainerGraphAndOptions.Size.Width - 166;
+            //splitContainerGraphAndOptions.SplitterDistance = splitContainerGraphAndOptions.Size.Width - 166;
 
-            #region Force locations for some controls in order to correct a Mono bug on Linux
-            if (!ToolProviderBase.CurrentOsIsWindows())
-            {
-                groupBox1.Location = new Point(0, 5);
-                groupBoxHoverInfo.Location = new Point(0, 424);
-                errorStatus1.Location = new Point(4, 594);
-            }
-            #endregion
+            //#region Force locations for some controls in order to correct a Mono bug on Linux
+            //if (!ToolProviderBase.CurrentOsIsWindows())
+            //{
+            //    groupBoxDrawOptions.Location = new Point(0, 5);
+            //    groupBoxHoverInfo.Location = new Point(0, 424);
+            //    errorStatus1.Location = new Point(4, 594);
+            //}
+            //#endregion
 
             if (splitContainerGraphAndOptions.Panel2Collapsed)
                 buttonAdvanced.Image = Properties.Resources.FillLeftHS;
