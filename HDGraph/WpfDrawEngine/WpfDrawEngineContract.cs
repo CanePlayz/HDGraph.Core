@@ -26,6 +26,13 @@ namespace HDGraph.WpfDrawEngine
             return new DrawEngine();
         }
 
+        private static Guid guid = new Guid("{9053B2B2-E6E3-4ee7-BDAC-FCCA15C9E3BE}");
+
+        public Guid Guid
+        {
+            get { return guid; }
+        }
+
         #endregion
     }
 }

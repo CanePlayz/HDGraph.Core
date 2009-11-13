@@ -130,7 +130,7 @@ namespace HDGraph.Interfaces.DrawEngines
             }
         }
 
-        private float textSize;
+        private float textSize = 11f;
         /// <summary>
         /// Text size.
         /// </summary>

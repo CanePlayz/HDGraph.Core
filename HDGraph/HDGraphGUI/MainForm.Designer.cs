@@ -648,7 +648,6 @@ namespace HDGraph
             resources.ApplyResources(this.comboBoxDrawEngine, "comboBoxDrawEngine");
             this.comboBoxDrawEngine.Name = "comboBoxDrawEngine";
             this.helpProvider1.SetShowHelp(this.comboBoxDrawEngine, ((bool)(resources.GetObject("comboBoxDrawEngine.ShowHelp"))));
-            this.comboBoxDrawEngine.SelectedIndexChanged += new System.EventHandler(this.comboBoxDrawEngine_SelectedIndexChanged);
             // 
             // iDrawEngineContractBindingSource
             // 

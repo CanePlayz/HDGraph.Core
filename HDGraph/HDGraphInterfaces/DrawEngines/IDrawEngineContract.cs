@@ -14,5 +14,7 @@ namespace HDGraph.Interfaces.DrawEngines
         string Description { get; }
 
         IDrawEngine GetNewEngine();
+
+        Guid Guid { get; }
     }
 }

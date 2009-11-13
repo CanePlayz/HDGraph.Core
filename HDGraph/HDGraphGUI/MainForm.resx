@@ -205,7 +205,7 @@
     <value>toolStripContainer2</value>
   </data>
   <metadata name="toolBarToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>3, 0</value>
+    <value>168, 0</value>
   </metadata>
   <data name="toolBarToolStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
@@ -564,7 +564,7 @@
     <value>NoControl</value>
   </data>
   <data name="linkLabelHelpGraph.Location" type="System.Drawing.Point, System.Drawing">
-    <value>463, 618</value>
+    <value>460, 615</value>
   </data>
   <data name="linkLabelHelpGraph.ShowHelp" type="System.Boolean, mscorlib">
     <value>True</value>

@@ -11,7 +11,7 @@ namespace HDGraph.Interop.Unknown
             List<PathWithIcon> res = new List<PathWithIcon>();
             res.Add(new PathWithIcon()
             {
-                Name = "Home", // TODO : localize.
+                Name = "Home", // TODO : localize ?
                 Path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
                 Icon = null // TODO : this.GetFolderIcon(IconSize.Small, FolderType.Open)
             });
@@ -21,14 +21,14 @@ namespace HDGraph.Interop.Unknown
         public override System.Drawing.Icon GetFileIcon(string name, IconSize size, bool linkOverlay)
         {
             return null;
-            return System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath);
+            //return System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath);
             //return Properties.Resources.HDGraph_ico; // TODO
         }
 
         public override System.Drawing.Icon GetFolderIcon(IconSize size, FolderType folderType)
         {
             return null;
-            return System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath);
+            //return System.Drawing.Icon.ExtractAssociatedIcon(System.Windows.Forms.Application.ExecutablePath);
             //return Properties.Resources.HDGraph_ico; // TODO
         }
     }

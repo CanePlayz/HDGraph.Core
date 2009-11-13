@@ -128,7 +128,7 @@ namespace HDGraph
                 Properties.Settings.Default.MyDrawOptions = new DrawOptions();
             DrawOptions = Properties.Settings.Default.MyDrawOptions;
             drawOptionsBindingSource.DataSource = DrawOptions;
-            
+
             explorerIntegrationToolStripMenuItem.Enabled = ToolProviderBase.CurrentOsIsWindows();
             EnableHelpIfAvailable();
             comboBoxPath.DataSource = HDGraph.Properties.Settings.Default.PathHistory;
@@ -158,8 +158,7 @@ namespace HDGraph
             }
         }
 
-
-        private void comboBoxDrawEngine_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxDrawEngine_SelectedValueChanged(object sender, EventArgs e)
         {
             if (comboBoxDrawEngine.SelectedItem != null)
             {
@@ -168,6 +167,13 @@ namespace HDGraph
                 {
                     this.drawEngineContract = contract;
                     ApplyNewDrawEngine();
+                    // Save choice in config file :
+                    HDGraph.Properties.Settings settings = Properties.Settings.Default;
+                    if (settings.StartupDrawEngine != contract.Guid)
+                    {
+                        settings.StartupDrawEngine = contract.Guid;
+                        settings.Save();
+                    }
                 }
             }
         }
@@ -177,20 +183,15 @@ namespace HDGraph
             List<IDrawEngineContract> pluginList = PlugIn.PlugInsManager.GetDrawEnginePlugins();
             this.iDrawEngineContractBindingSource.DataSource = pluginList;
             // Construct comboBox tooltip
-            StringBuilder builder = new StringBuilder();
-            builder.Append(ApplicationMessages.ChooseDrawEngineHere + Environment.NewLine);
-            foreach (IDrawEngineContract contract in pluginList)
+            BuildTooltipForDrawEngine(pluginList);
+            int engineIndex = pluginList.FindIndex(new Predicate<IDrawEngineContract>(delegate(IDrawEngineContract contract)
             {
-                builder.AppendFormat("{0}- {1} :{0}   {2}", 
-                                    Environment.NewLine,
-                                    contract.Name,
-                                    contract.Description);
-            }
-            if (!ToolProviderBase.CurrentOsIsWindows())
-            {
-                builder.AppendFormat("{0}{0} {1}", Environment.NewLine, ApplicationMessages.OtherEnginesAvailableOnWindows);
-            }
-            ToolTip.SetToolTip(comboBoxDrawEngine, builder.ToString());
+                return contract.Guid == Properties.Settings.Default.StartupDrawEngine;
+            }));
+            if (engineIndex >= 0)
+                iDrawEngineContractBindingSource.Position = engineIndex;
+            comboBoxDrawEngine_SelectedValueChanged(comboBoxDrawEngine, EventArgs.Empty);
+            comboBoxDrawEngine.SelectedValueChanged += comboBoxDrawEngine_SelectedValueChanged;
         }
 
         private void ApplyNewDrawEngine()
@@ -204,6 +205,24 @@ namespace HDGraph
             this.splitContainerGraphAndOptions.Panel1.Controls.Add(graphControl);
             this.graphControl.Dock = DockStyle.Fill;
             this.graphControl.BackColor = Color.White;
+        }
+
+        private void BuildTooltipForDrawEngine(List<IDrawEngineContract> pluginList)
+        {
+            StringBuilder builder = new StringBuilder();
+            builder.Append(ApplicationMessages.ChooseDrawEngineHere + Environment.NewLine);
+            foreach (IDrawEngineContract contract in pluginList)
+            {
+                builder.AppendFormat("{0}- {1} :{0}   {2}",
+                                    Environment.NewLine,
+                                    contract.Name,
+                                    contract.Description);
+            }
+            if (!ToolProviderBase.CurrentOsIsWindows())
+            {
+                builder.AppendFormat("{0}{0} {1}", Environment.NewLine, ApplicationMessages.OtherEnginesAvailableOnWindows);
+            }
+            ToolTip.SetToolTip(comboBoxDrawEngine, builder.ToString());
         }
 
         private void CreateScanEngine()
