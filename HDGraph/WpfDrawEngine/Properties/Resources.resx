@@ -117,6 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ContextMenuCenterOnThis" xml:space="preserve">
+    <value>Center graph on this directory</value>
+  </data>
+  <data name="ContextMenuDeletePermanently" xml:space="preserve">
+    <value>Delete permanently</value>
+  </data>
+  <data name="ContextMenuDeleteThis" xml:space="preserve">
+    <value>Delete this directory and all subdirectories</value>
+  </data>
+  <data name="ContextMenuOpenExternal" xml:space="preserve">
+    <value>Open in external window</value>
+  </data>
+  <data name="ContextMenuRefreshThis" xml:space="preserve">
+    <value>Refresh this directory</value>
+  </data>
+  <data name="ContextMenuShowDetails" xml:space="preserve">
+    <value>Show details</value>
+  </data>
+  <data name="HardwareAcceleration" xml:space="preserve">
+    <value>Hardware acceleration: </value>
+  </data>
   <data name="HiddenFolders" xml:space="preserve">
     <value>There are hidden folders here. {0}To show them, center the graph on their parent ("{1}") with a double click.</value>
   </data>

@@ -26,7 +26,7 @@ namespace HDGraph.WpfDrawEngine
         public TreeGraph()
         {
             InitializeComponent();
-            labelStatus.Content = "Acceleration : " + WpfUtils.GetAccelerationType().ToString();
+            labelStatus.Content = Properties.Resources.HardwareAcceleration + WpfUtils.GetAccelerationType().ToString(); // +" ; Culture : " + CultureInfo.CurrentCulture + " ; UiCulture : " + CultureInfo.CurrentUICulture;
             CommandManager.RegisterClassCommandBinding(
                 typeof(TreeGraph),
                 new CommandBinding(
@@ -37,6 +37,7 @@ namespace HDGraph.WpfDrawEngine
                 new CommandBinding(
                     NavigationCommands.BrowseForward,
                     BrowseForwardCommand_Executed));
+            Properties.Resources.Culture = CultureInfo.CurrentCulture;
         }
 
         public IActionExecutor ActionExecutor { get; set; }
@@ -113,7 +114,6 @@ namespace HDGraph.WpfDrawEngine
             singleLevelHeight = Convert.ToDouble(largeur / (CurrentDrawOptions.ShownLevelsCount) / 2d);
             SingleLevelHeight = singleLevelHeight; // Set the DP. Using a variable instead of the DP Getter increases perfs.
 
-            labelInfo.Visibility = Visibility.Hidden;
             if (rootNode == null || rootNode.TotalSize == 0)
             {
                 PaintSpecialCase();
@@ -139,7 +139,6 @@ namespace HDGraph.WpfDrawEngine
         /// </summary>
         private void PaintSpecialCase()
         {
-            labelInfo.Visibility = Visibility.Visible;
             // TODO.
 
             //string text;

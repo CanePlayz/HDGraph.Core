@@ -29,7 +29,7 @@ namespace HDGraph.PlugIn
             {
                 try
                 {
-                    Assembly assembly = Assembly.LoadFile(new FileInfo(fileName).FullName);
+                    Assembly assembly = Assembly.LoadFrom(fileName);
                     foreach (Type type in assembly.GetTypes())
                     {
                         try

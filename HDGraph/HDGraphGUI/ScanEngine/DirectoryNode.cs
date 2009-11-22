@@ -7,7 +7,7 @@ using HDGraph.Interfaces.ScanEngines;
 
 namespace HDGraph
 {
-    public class DirectoryNode : IXmlSerializable, IDirectoryNode
+    public class DirectoryNode : IDirectoryNode
     {
         #region Variables et propriétés
 
@@ -308,7 +308,12 @@ namespace HDGraph
             writer.WriteElementString("DirectoryType", ((short)directoryType).ToString());
             writer.WriteStartElement("Children");
             XmlSerializer serializer = new XmlSerializer(typeof(List<DirectoryNode>));
-            serializer.Serialize(writer, children);
+            List<DirectoryNode> concreteChildren = new List<DirectoryNode>();
+            foreach (DirectoryNode node in Children)
+            {
+                concreteChildren.Add(node);
+            }
+            serializer.Serialize(writer, concreteChildren);
             writer.WriteEndElement();
 
             // Pour sérialiser génériquement les propriétés d'un  objet :

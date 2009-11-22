@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace HDGraph.Interfaces.ScanEngines
 {
-    public interface IDirectoryNode
+    public interface IDirectoryNode : IXmlSerializable
     {
         List<IDirectoryNode> Children { get; set; }
 

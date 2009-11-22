@@ -117,6 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ContextMenuCenterOnThis" xml:space="preserve">
+    <value>Centrer le graph sur ce répertoire</value>
+  </data>
+  <data name="ContextMenuDeletePermanently" xml:space="preserve">
+    <value>Supprimer définitivement</value>
+  </data>
+  <data name="ContextMenuDeleteThis" xml:space="preserve">
+    <value>Supprimer ce répertoire et ses sous-répertoires</value>
+  </data>
+  <data name="ContextMenuOpenExternal" xml:space="preserve">
+    <value>Ouvrir dans une fenêtre externe</value>
+  </data>
+  <data name="ContextMenuRefreshThis" xml:space="preserve">
+    <value>Rafraîchir ce répertoire</value>
+  </data>
+  <data name="ContextMenuShowDetails" xml:space="preserve">
+    <value>Afficher les détails</value>
+  </data>
+  <data name="HardwareAcceleration" xml:space="preserve">
+    <value>Accélération matérielle : </value>
+  </data>
   <data name="HiddenFolders" xml:space="preserve">
     <value>Sous-répertoires masqués par HDGraph pour des raisons de performances. {0}Pour les afficher, centrer la vue sur le répertoire parent ("{1}") via un double-clic sur celui-ci.</value>
   </data>

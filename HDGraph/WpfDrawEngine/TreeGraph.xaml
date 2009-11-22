@@ -3,6 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:loc="clr-namespace:HDGraph.WpfDrawEngine"
     xmlns:sys="clr-namespace:System;assembly=System"
+    xmlns:prop="clr-namespace:HDGraph.WpfDrawEngine.Properties"
     x:Name="treeGraph1" ContextMenuOpening="treeGraph1_ContextMenuOpening"
     MouseWheel="treeGraph1_MouseWheel" Height="158.414" Width="267.612">
     <UserControl.Resources>
@@ -96,14 +97,14 @@
                     </MenuItem.Header>
                 </MenuItem>
                 <Separator/>
-                <MenuItem Header="Show details" Click="showDetailsMenuItem_Click"/>
-                <MenuItem Header="Open in external window" Click="openExternalMenuItem_Click"/>
+                <MenuItem Header="{x:Static prop:Resources.ContextMenuShowDetails}" Click="showDetailsMenuItem_Click"/>
+                <MenuItem Header="{x:Static prop:Resources.ContextMenuOpenExternal}" Click="openExternalMenuItem_Click"/>
                 <Separator/>
-                <MenuItem Header="Refresh this directory" Click="refreshMenuItem_Click"/>
-                <MenuItem Header="Center graph on this directory" Click="centerOnDirMenuItem_Click"/>
+                <MenuItem Header="{x:Static prop:Resources.ContextMenuRefreshThis}" Click="refreshMenuItem_Click"/>
+                <MenuItem Header="{x:Static prop:Resources.ContextMenuCenterOnThis}" Click="centerOnDirMenuItem_Click"/>
                 <Separator/>
-                <MenuItem IsEnabled="False" Header="Delete this directory and all subdirectories">
-                    <MenuItem Header="Delete permanently" Click="deleteMenuItem_Click"/>
+                <MenuItem IsEnabled="False" Header="{x:Static prop:Resources.ContextMenuDeleteThis}">
+                    <MenuItem Header="{x:Static prop:Resources.ContextMenuDeletePermanently}" Click="deleteMenuItem_Click"/>
                 </MenuItem>
             </ContextMenu>
 
@@ -201,7 +202,6 @@
         <!--<ContentControl Style="{StaticResource RotateArrowStyle}" Content="{StaticResource RotateArrow}" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top"></ContentControl>
         <ContentControl Style="{StaticResource RotateArrowStyle}" Content="{StaticResource RotateArrow}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom"></ContentControl>
         <ContentControl Style="{StaticResource RotateArrowStyle}" Content="{StaticResource RotateArrow}" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"></ContentControl>-->
-        <Label x:Name="labelInfo" Grid.Row="1" Visibility="Hidden">Nothing to draw.</Label>
         <Label Grid.Row="1" x:Name="labelStatus" />
         <Canvas>
             <Expander Header="View options" BorderBrush="Gray" BorderThickness="2" Margin="20"
