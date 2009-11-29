@@ -39,7 +39,7 @@ namespace HDGraph.PlugIn
                             {
                                 IDrawEngineContract engineContract = (IDrawEngineContract)Activator.CreateInstance(type);
                                 plugInsList.Add(engineContract);
-                                MessageBox.Show("Class " + type.ToString() + " from Plugin (file " + fileName + ") is sucessfully loaded !", "Plugin loaded", MessageBoxButtons.OK, MessageBoxIcon.Information); // TODO : localize ?
+                                //MessageBox.Show("Class " + type.ToString() + " from Plugin (file " + fileName + ") is sucessfully loaded !", "Plugin loaded", MessageBoxButtons.OK, MessageBoxIcon.Information); // TODO : localize ?
                             }
                         }
                         catch (Exception ex)

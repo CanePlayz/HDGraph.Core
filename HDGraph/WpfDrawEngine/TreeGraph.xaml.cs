@@ -98,6 +98,7 @@ namespace HDGraph.WpfDrawEngine
             this.rootNode = root;
             sliderScale.Value = 1;
             canvas1.Children.Clear();
+            canvas1.Children.Add(opacityGrid);
 
             // Création du bitmap buffer
             CurrentDrawOptions = options;
@@ -382,8 +383,12 @@ namespace HDGraph.WpfDrawEngine
         {
             IDirectoryNode node = arc.Node;
             // Apply animation : existing children disappear.
-            Storyboard fadeStoryboard = TryFindResource("FadeOutStoryboard") as Storyboard;
-            ApplyAnimationToChildren(fadeStoryboard, arc);
+            Storyboard fadeStoryboard = TryFindResource("FadeInStoryboard") as Storyboard;
+            //ApplyAnimationToChildren(fadeStoryboard, arc);
+            int initialZIndex = Panel.GetZIndex(arc);
+            Panel.SetZIndex(arc, 250);
+            fadeStoryboard.Begin(opacityGrid, true);
+
 
             // Complete the graph if data is missing
             ActionExecutor.ExecuteTreeFillUpToLevel(node, CurrentDrawOptions.ShownLevelsCount);
@@ -416,9 +421,13 @@ namespace HDGraph.WpfDrawEngine
                 return;
             SetRoot(newRootNode, CurrentDrawOptions);
             newRootNode = null;
+            Storyboard fadeStoryboard = TryFindResource("FadeInStoryboard") as Storyboard;
+            fadeStoryboard.Stop(opacityGrid);
+            opacityGrid.Visibility = Visibility.Collapsed;
+            opacityGrid.Opacity = 0;
         }
 
-        private void ApplyAnimationToChildren(Storyboard storyboard, Object exceptElement)
+        private void ApplyAnimationToChildren(Storyboard storyboard, Arc exceptElement)
         {
             foreach (UIElement child in canvas1.Children)
             {

@@ -66,6 +66,7 @@
                     <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
                 </ObjectAnimationUsingKeyFrames>
                 <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:0" Value="0"/>
                     <SplineDoubleKeyFrame KeyTime="00:00:1" Value="1"/>
                 </DoubleAnimationUsingKeyFrames>
             </Storyboard>
@@ -86,7 +87,7 @@
                 <SingleAnimation Storyboard.TargetProperty="SmallRadius"
                                  To="0" Duration="00:00:01" />
                 <SingleAnimation Storyboard.TargetProperty="LargeRadius"
-                                 To="10" Duration="00:00:01" />
+                                 To="10" Duration="00:00:01"/>
             </Storyboard>
 
 
@@ -182,6 +183,38 @@
                                                 Y="{Binding Path=ActualHeight, ElementName=canvas1}"/>
                         </TransformGroup>
                     </Canvas.RenderTransform>
+                    <!--
+                        During a double-click on an arc, the other arcs should hide gradually.
+                        Instead of applying this effect to each other arc (which could be slow), 
+                        the main arc is placed OVER the opacityGrid and the opacityGrid is becoming
+                        less and less transparent.
+                    -->
+                    <Grid Panel.ZIndex="200" Background="White"
+                      x:Name="opacityGrid"
+                      Width="{Binding Path=Width, ElementName=canvasContainer}"
+                      Height="{Binding Path=Height, ElementName=canvasContainer}"
+                      Visibility="Collapsed"
+                      >
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform X="{Binding Path=ActualWidth, 
+                                                            ElementName=canvas1,
+                                                            Converter={StaticResource mySingleMultiplierNumericConverter},
+                                                            ConverterParameter=-1}"
+                                                Y="{Binding Path=ActualHeight, ElementName=canvas1,
+                                                            Converter={StaticResource mySingleMultiplierNumericConverter},
+                                                            ConverterParameter=-1}"/>
+                                <ScaleTransform 
+                                    ScaleX="{Binding ElementName=sliderScale, Path=Value,
+                                                            Converter={StaticResource mySingleMultiplierNumericConverter},
+                                                            ConverterParameter=-10}"
+                                    ScaleY="{Binding ElementName=sliderScale, Path=Value,
+                                                            Converter={StaticResource mySingleMultiplierNumericConverter},
+                                                            ConverterParameter=-10}">
+                                </ScaleTransform>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
+                    </Grid>
                 </Canvas>
             </Canvas>
         </ScrollViewer>
