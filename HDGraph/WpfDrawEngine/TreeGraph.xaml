@@ -155,7 +155,8 @@
                 <Canvas
                     Width="{Binding Path=Width, ElementName=canvasContainer}"
                     Height="{Binding Path=Height, ElementName=canvasContainer}"
-                    > <!--Background="Salmon"-->
+                    >
+                    <!--Background="Salmon"-->
                     <Canvas.RenderTransform>
                         <RotateTransform Angle="45"
                                              CenterX="{Binding Path=ActualWidth, ElementName=canvas1}"
@@ -191,7 +192,19 @@
             Width="150" Height="150"
             >
         </loc:ScrollPreview>
-        <Button Height="23" HorizontalAlignment="Left" Margin="20,0,0,12" Name="buttonShowPreview" VerticalAlignment="Bottom" Width="75">Go</Button>
+        <Button Height="23" HorizontalAlignment="Left" Margin="20,0,0,12" Name="buttonShowPreview" VerticalAlignment="Bottom" Width="75">
+            <Viewbox>
+                <Canvas Width="16" Height="12">
+                    <!-- Magnify clip -->
+                    <Path Data="F1 M 3.04,0 L 15.84,0 15.84,9.44 3.04,9.44 3.04,0 z" Fill="#ff808080" />
+                    <Path Data="F1 M 4.16,0.96 L 14.88,0.96 14.88,8.48 4.16,8.48 4.16,0.96 z" Fill="#ffffffff" />
+                    <Path Data="F1 M 0,5.28 L 7.36,5.28 7.36,11.68 0,11.68 0,5.28 z" Fill="#ff808080" />
+                    <Path Data="F1 M 0.96,6.4 L 6.4,6.4 6.4,10.56 0.96,10.56 0.96,6.4 z" Fill="#ffffffff" />
+                    <Path Data="F1 M 11.68,3.36 L 8.64,4 9.76,5.76 11.68,3.36 z" Fill="#ff808080" />
+                    <Path Data="F1 M 2.24,8.64 L 9.44,4.16 9.92,4.96 2.88,9.6 2.24,8.64 z" Fill="#ff808080" />
+                </Canvas>
+            </Viewbox>
+        </Button>
 
         <ContentControl Style="{StaticResource RotateArrowStyle}"
                         Content="{StaticResource RotateArrow}" 
