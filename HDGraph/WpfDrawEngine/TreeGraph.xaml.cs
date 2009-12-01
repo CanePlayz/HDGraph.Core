@@ -93,8 +93,12 @@ namespace HDGraph.WpfDrawEngine
         public void SetRoot(IDirectoryNode root, DrawOptions options)
         {
             if (root == null || options == null)
+            {
+                canvas1.Children.Clear();
+                welcomeControl.Visibility = Visibility.Visible;
                 return;
-
+            }
+            welcomeControl.Visibility = Visibility.Collapsed;
             this.rootNode = root;
             sliderScale.Value = 1;
             canvas1.Children.Clear();

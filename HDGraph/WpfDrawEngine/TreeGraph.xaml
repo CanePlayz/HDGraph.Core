@@ -4,6 +4,7 @@
     xmlns:loc="clr-namespace:HDGraph.WpfDrawEngine"
     xmlns:sys="clr-namespace:System;assembly=System"
     xmlns:prop="clr-namespace:HDGraph.WpfDrawEngine.Properties"
+    xmlns:skin="clr-namespace:HDGraph.WpfDrawEngine.Skins"
     x:Name="treeGraph1" ContextMenuOpening="treeGraph1_ContextMenuOpening"
     MouseWheel="treeGraph1_MouseWheel" Height="158.414" Width="267.612">
     <UserControl.Resources>
@@ -189,11 +190,11 @@
                         the main arc is placed OVER the opacityGrid and the opacityGrid is becoming
                         less and less transparent.
                     -->
-                    <Grid Panel.ZIndex="200" Background="White"
+                    <Grid Panel.ZIndex="200" 
                       x:Name="opacityGrid"
                       Width="{Binding Path=Width, ElementName=canvasContainer}"
                       Height="{Binding Path=Height, ElementName=canvasContainer}"
-                      Visibility="Collapsed"
+                      Visibility="Collapsed" Background="White"
                       >
                         <Grid.RenderTransform>
                             <TransformGroup>
@@ -214,6 +215,27 @@
                                 </ScaleTransform>
                             </TransformGroup>
                         </Grid.RenderTransform>
+                        <!---->
+                        <!--<Grid.Background>
+                            <RadialGradientBrush
+                                         Center="0,0"
+                                         GradientOrigin="0,0"
+                                         RadiusX="{Binding Path=ActualWidth, 
+                                                            ElementName=canvas1,
+                                                            Converter={StaticResource mySingleMultiplierNumericConverter},
+                                                            ConverterParameter=1}"
+                                         RadiusY="{Binding Path=ActualHeight, 
+                                                            ElementName=canvas1,
+                                                            Converter={StaticResource mySingleMultiplierNumericConverter},
+                                                            ConverterParameter=1}"
+                                         MappingMode="Absolute" 
+                                         >
+                                <RadialGradientBrush.GradientStops>
+                                    <GradientStop Color="Yellow" Offset="0.9"></GradientStop>
+                                    <GradientStop Color="Red" Offset="1"></GradientStop>
+                                </RadialGradientBrush.GradientStops>
+                            </RadialGradientBrush>
+                        </Grid.Background>-->
                     </Grid>
                 </Canvas>
             </Canvas>
@@ -225,7 +247,7 @@
             Width="150" Height="150"
             >
         </loc:ScrollPreview>
-        <Button Height="23" HorizontalAlignment="Left" Margin="20,0,0,12" Name="buttonShowPreview" VerticalAlignment="Bottom" Width="75">
+        <Button Height="23" HorizontalAlignment="Left" Margin="20,0,0,12" Name="buttonShowPreview" VerticalAlignment="Bottom" Width="75" Visibility="Collapsed">
             <Viewbox>
                 <Canvas Width="16" Height="12">
                     <!-- Magnify clip -->
@@ -249,7 +271,9 @@
         <ContentControl Style="{StaticResource RotateArrowStyle}" Content="{StaticResource RotateArrow}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom"></ContentControl>
         <ContentControl Style="{StaticResource RotateArrowStyle}" Content="{StaticResource RotateArrow}" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"></ContentControl>-->
         <Label Grid.Row="1" x:Name="labelStatus" />
+        <skin:Arrow x:Name="welcomeControl"></skin:Arrow>
         <Canvas>
+            
             <Expander Header="View options" BorderBrush="Gray" BorderThickness="2" Margin="20"
                   Name="expander1" Background="#55BAC6FF"
                   Padding="10 0 10 0"

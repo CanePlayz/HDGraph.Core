@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{3337D3AA-88D5-44E4-9B22-7EE588140A04}</ProjectGuid>
     <OutputType>library</OutputType>
@@ -78,6 +78,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Skins\Arrow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Skins\Default.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -112,6 +116,9 @@
     <Compile Include="NumericConverters.cs" />
     <Compile Include="ScrollPreview.xaml.cs">
       <DependentUpon>ScrollPreview.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Skins\Arrow.xaml.cs">
+      <DependentUpon>Arrow.xaml</DependentUpon>
     </Compile>
     <Compile Include="TreeGraph.xaml.cs">
       <DependentUpon>TreeGraph.xaml</DependentUpon>
