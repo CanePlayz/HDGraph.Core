@@ -99,11 +99,16 @@ namespace HDGraph
         private void LoadLanguagesCombo()
         {
             List<CultureInfoWrapper> cultureList = new List<CultureInfoWrapper>();
-            foreach (CultureInfo culture in CultureInfo.GetCultures(System.Globalization.CultureTypes.FrameworkCultures))
+            foreach (string cultureId in Properties.Settings.Default.AvailableLanguages)
             {
-                if (resManager.GetString("languageId", culture) == culture.Name)
-                    cultureList.Add(new CultureInfoWrapper(culture));
+                CultureInfo culture = CultureInfo.GetCultureInfo(cultureId);
+                cultureList.Add(new CultureInfoWrapper(culture));
             }
+            //foreach (CultureInfo culture in CultureInfo.GetCultures(System.Globalization.CultureTypes.FrameworkCultures))
+            //{
+            //    if (resManager.GetString("languageId", culture) == culture.Name)
+            //        cultureList.Add(new CultureInfoWrapper(culture));
+            //}
             comboBoxLanguage.DataSource = cultureList;
             comboBoxLanguage.SelectedItem = new CultureInfoWrapper(CultureInfo.CurrentUICulture);
         }

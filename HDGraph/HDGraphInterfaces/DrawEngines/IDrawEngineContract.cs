@@ -16,5 +16,9 @@ namespace HDGraph.Interfaces.DrawEngines
         IDrawEngine GetNewEngine();
 
         Guid Guid { get; }
+
+        bool PrintIsAvailable { get; }
+
+        bool PrintPreviewIsAvailable { get; }
     }
 }

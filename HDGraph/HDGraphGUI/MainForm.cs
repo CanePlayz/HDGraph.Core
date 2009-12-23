@@ -202,9 +202,15 @@ namespace HDGraph
 
             IDirectoryNode currentNode = (graphViewHistory.Count == 0) ? null : graphViewHistory[currentNodeIndex];
             this.graphControl = this.drawEngine.GenerateControlFromNode(currentNode, DrawOptions, this);
-            this.splitContainerGraphAndOptions.Panel1.Controls.Add(graphControl);
             this.graphControl.Dock = DockStyle.Fill;
+            this.graphControl.Visible = false;
+            this.splitContainerGraphAndOptions.Panel1.Controls.Add(graphControl);
             this.graphControl.BackColor = Color.White;
+            printPreviewToolStripButton.Enabled = drawEngineContract.PrintPreviewIsAvailable;
+            printPreviewToolStripMenuItem.Enabled = printPreviewToolStripButton.Enabled;
+            printToolStripButton.Enabled = drawEngineContract.PrintIsAvailable;
+            printToolStripMenuItem.Enabled = printToolStripButton.Enabled;
+            this.graphControl.Visible = true;
         }
 
         private void BuildTooltipForDrawEngine(List<IDrawEngineContract> pluginList)
@@ -606,12 +612,12 @@ namespace HDGraph
         /// <param name="e"></param>
         private void languageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.DoEvents();
-            if (!LanguageForm.IsLoaded)
-            {
-                // Premier chargement long
-                WaitForm.ShowWaitForm(this, Resources.ApplicationMessages.loadingLanguageList);
-            }
+            //Application.DoEvents();
+            //if (!LanguageForm.IsLoaded)
+            //{
+            //    // Premier chargement long
+            //    WaitForm.ShowWaitForm(this, Resources.ApplicationMessages.loadingLanguageList);
+            //}
             DialogResult res = (new LanguageForm(resManager)).ShowDialog();
         }
 
@@ -784,14 +790,15 @@ namespace HDGraph
             // // moteur.PrintInfoDeleg = new MoteurGraphiqueur.PrintInfoDelegate(WaitForm.ShowWaitForm); // OBSOLETE
 
             scanEngine.NotifyForNewInfo = new HDGraphScanEngineBase.PrintInfoDelegate(PrintStatus);
+            DrawOptions.SuspendPropertyChangedNotifications = true; // suspend the "auto refresh" event when "drawoptions" changed
             if (scanEngine.WorkCanceled)
                 DrawOptions.DrawAction = DrawAction.PrintMessageWorkCanceledByUser;
             else
                 DrawOptions.DrawAction = DrawAction.DrawNode;
             numUpDownNbNivxAffich.Value = nbNiveaux;
             DrawOptions.ShownLevelsCount = nbNiveaux;
-
-            SetNewRootNode(scanEngine.Root);
+            DrawOptions.SuspendPropertyChangedNotifications = false;  // restore the "auto refresh" event when "drawoptions" changed
+            SetNewRootNode(scanEngine.Root); // this will refresh the graph !
 
 
             //PrintStatus("Terminé !");
@@ -1302,5 +1309,16 @@ namespace HDGraph
         }
 
         #endregion
+
+        private void printToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            drawEngine.Print(graphControl);
+        }
+
+        private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            drawEngine.PrintWithPreview(graphControl);
+        }
+
     }
 }

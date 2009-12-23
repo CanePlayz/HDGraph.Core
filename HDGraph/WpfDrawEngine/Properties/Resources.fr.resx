@@ -117,6 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccelerationTypeFull" xml:space="preserve">
+    <value>Complète</value>
+  </data>
+  <data name="AccelerationTypeFullDesc" xml:space="preserve">
+    <value>Votre carte graphique permet d'assurer des performances de dessin optimales.</value>
+  </data>
+  <data name="AccelerationTypeNone" xml:space="preserve">
+    <value>Aucune !</value>
+  </data>
+  <data name="AccelerationTypeNoneDesc" xml:space="preserve">
+    <value>Votre carte graphique est très insuffisante pour assurer de bonnes performances de dessin (votre processeur est utilisé à la place). Pour obtenir de meilleurs performances, il est conseillé de définir le moteur de rendu "basique" dans les options avancées.</value>
+  </data>
+  <data name="AccelerationTypePartial" xml:space="preserve">
+    <value>Partielle</value>
+  </data>
+  <data name="AccelerationTypePartialDesc" xml:space="preserve">
+    <value>Votre carte graphique est insuffisante pour assurer de bonnes performances de dessin (votre processeur est partiellement utilisé à la place). Pour obtenir de meilleurs performances, il est conseillé de définir le moteur de rendu "basique" dans les options avancées.</value>
+  </data>
+  <data name="AccelerationTypeUnknown" xml:space="preserve">
+    <value>Inconnue</value>
+  </data>
+  <data name="AccelerationTypeUnknownDesc" xml:space="preserve">
+    <value>Une erreur s'est produite lors de l'analyse de votre carte graphique pour déterminer le niveau d'accélération disponible.</value>
+  </data>
   <data name="ContextMenuCenterOnThis" xml:space="preserve">
     <value>Centrer le graph sur ce répertoire</value>
   </data>
@@ -140,6 +164,21 @@
   </data>
   <data name="HiddenFolders" xml:space="preserve">
     <value>Sous-répertoires masqués par HDGraph pour des raisons de performances. {0}Pour les afficher, centrer la vue sur le répertoire parent ("{1}") via un double-clic sur celui-ci.</value>
+  </data>
+  <data name="LabelRotation" xml:space="preserve">
+    <value>Rotation :</value>
+  </data>
+  <data name="LabelTextSize" xml:space="preserve">
+    <value>Taille du texte :</value>
+  </data>
+  <data name="LabelTotalSize" xml:space="preserve">
+    <value>Taille totale :</value>
+  </data>
+  <data name="LabelViewOptions" xml:space="preserve">
+    <value>Options d'affichage</value>
+  </data>
+  <data name="LabelZoom" xml:space="preserve">
+    <value>Zoom :</value>
   </data>
   <data name="MultipleSmallFolders" xml:space="preserve">
     <value>Il y a ici trop de petits répertoires pour les afficher individuellement. {0}Pour les afficher, centrer la vue sur le répertoire parent ("{1}") via un double-clic sur celui-ci, ou ouvrez la fenêtre "Détails" de ce répertoire parent.</value>

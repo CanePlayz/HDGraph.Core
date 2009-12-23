@@ -23,9 +23,10 @@ namespace HDGraph.PlugIn
         {
             List<IDrawEngineContract> plugInsList = new List<IDrawEngineContract>();
             plugInsList.Add(new SimpleDrawEngineContract());
-            if (!Directory.Exists(PlugInRelativePath))
+            string plugInsPath = Application.StartupPath + System.IO.Path.DirectorySeparatorChar + PlugInRelativePath;
+            if (!Directory.Exists(plugInsPath))
                 return plugInsList;
-            foreach (string fileName in Directory.GetFiles(PlugInRelativePath, "*.dll", SearchOption.TopDirectoryOnly))
+            foreach (string fileName in Directory.GetFiles(plugInsPath, "*.dll", SearchOption.TopDirectoryOnly))
             {
                 try
                 {

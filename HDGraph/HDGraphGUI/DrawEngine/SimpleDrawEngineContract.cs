@@ -32,6 +32,16 @@ namespace HDGraph.DrawEngine
             get { return guid; }
         }
 
+        public bool PrintIsAvailable
+        {
+            get { return false; }
+        }
+
+        public bool PrintPreviewIsAvailable
+        {
+            get { return false; }
+        }
+
         #endregion
     }
 }

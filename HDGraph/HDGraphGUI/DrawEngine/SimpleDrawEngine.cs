@@ -48,11 +48,6 @@ namespace HDGraph.DrawEngine
             ((TreeGraph)control).Root = newRoot;
         }
 
-        #endregion
-
-        #region IDrawEngine Members
-
-
         public void SaveAsImageToFile(Control control, string filePath)
         {
             if (control == null
@@ -62,17 +57,23 @@ namespace HDGraph.DrawEngine
             ((TreeGraph)control).ImageBuffer.Save(filePath);
         }
 
-        #endregion
-
-        #region IDrawEngine Members
-
-
         public Control GetOptionsControl(DrawOptions options)
         {
             throw new NotImplementedException();
         }
 
         public void SaveCurrentSpecificOptions()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void Print(Control control)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PrintWithPreview(Control control)
         {
             throw new NotImplementedException();
         }

@@ -11,11 +11,12 @@ Added:
 	- WPF draw engine : Zoom feature
 	- WPF draw engine : Full "fluid" rotation, using slider or mouse directly.
 	- WPF draw engine : auto hide too small folders, in order to speed up the build of the graph.
-	- Experimental display style : "Bar style"
+	- New Print feature (in File menu)
 	- TODO : New "native" scan engine on Windows : faster and more accurate (up to 6 times faster).
 	- "Drag & drop" capable (from Windows explorer)
 Improved: 
 	- Design refactored, mostly with the WPF draw engine.
+	- (TODO) Compatible with Linux and Mac (basic draw engine only).
 Fixed:
 	- Bug on "Text Density" : value loaded from a previous saved state was wrong.
 	- Wrong message when folder deletion failed.

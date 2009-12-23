@@ -33,6 +33,16 @@ namespace HDGraph.WpfDrawEngine
             get { return guid; }
         }
 
+        public bool PrintIsAvailable
+        {
+            get { return true; }
+        }
+
+        public bool PrintPreviewIsAvailable
+        {
+            get { return false; }
+        }
+
         #endregion
     }
 }

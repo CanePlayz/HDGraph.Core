@@ -117,6 +117,30 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccelerationTypeFull" xml:space="preserve">
+    <value>Full</value>
+  </data>
+  <data name="AccelerationTypeFullDesc" xml:space="preserve">
+    <value>The higher level of acceleration is used, thanks to your graphic card.</value>
+  </data>
+  <data name="AccelerationTypeNone" xml:space="preserve">
+    <value>None !</value>
+  </data>
+  <data name="AccelerationTypeNoneDesc" xml:space="preserve">
+    <value>Your graphic card isn't powerfull enough to help drawing the graph. Performances should be very bad. You are advised to set the "Basic" draw engine in the avanced options.</value>
+  </data>
+  <data name="AccelerationTypePartial" xml:space="preserve">
+    <value>Partial</value>
+  </data>
+  <data name="AccelerationTypePartialDesc" xml:space="preserve">
+    <value>Your graphic card partially helps to draw the graph, but is not very powerfull. Performances can be poor. You should set the "Basic" draw engine in the avanced options.</value>
+  </data>
+  <data name="AccelerationTypeUnknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="AccelerationTypeUnknownDesc" xml:space="preserve">
+    <value>An error has prevented determining the acceleration level available for your graphic card.</value>
+  </data>
   <data name="ContextMenuCenterOnThis" xml:space="preserve">
     <value>Center graph on this directory</value>
   </data>
@@ -140,6 +164,21 @@
   </data>
   <data name="HiddenFolders" xml:space="preserve">
     <value>There are hidden folders here. {0}To show them, center the graph on their parent ("{1}") with a double click.</value>
+  </data>
+  <data name="LabelRotation" xml:space="preserve">
+    <value>Rotation:</value>
+  </data>
+  <data name="LabelTextSize" xml:space="preserve">
+    <value>Text size:</value>
+  </data>
+  <data name="LabelTotalSize" xml:space="preserve">
+    <value>Total size:</value>
+  </data>
+  <data name="LabelViewOptions" xml:space="preserve">
+    <value>View options</value>
+  </data>
+  <data name="LabelZoom" xml:space="preserve">
+    <value>Zoom:</value>
   </data>
   <data name="MultipleSmallFolders" xml:space="preserve">
     <value>There are too many small folders to show them individually. {0}To show them, center the graph on their parent ("{1}") with a double click, or open the "Details" window of this parent.</value>

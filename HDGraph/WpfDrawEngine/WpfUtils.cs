@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Media;
+using System.Resources;
 
 namespace HDGraph.WpfDrawEngine
 {
@@ -49,6 +50,32 @@ namespace HDGraph.WpfDrawEngine
             // The rendering tier corresponds to the high-order word of the Tier property.
             int renderingTier = (RenderCapability.Tier >> 16);
             return (AccelerationType)renderingTier;
+        }
+
+        public static string GetAccelerationTypeString(AccelerationType accelerationType)
+        {
+            try
+            {
+                return Properties.Resources.ResourceManager.GetString("AccelerationType" + accelerationType.ToString(), Properties.Resources.Culture);
+            }
+            catch
+            {
+                // TODO : log exception.
+                return Properties.Resources.AccelerationTypeUnknown;
+            }
+        }
+
+        public static string GetAccelerationTypeDescription(AccelerationType accelerationType)
+        {
+            try
+            {
+                return Properties.Resources.ResourceManager.GetString("AccelerationType" + accelerationType.ToString() + "Desc", Properties.Resources.Culture);
+            }
+            catch
+            {
+                // TODO : log exception.
+                return Properties.Resources.AccelerationTypeUnknownDesc;
+            }
         }
 
         /// <summary>

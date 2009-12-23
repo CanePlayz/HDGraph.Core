@@ -77,5 +77,10 @@ namespace HDGraph.WpfDrawEngine
         {
             GetTreeGraph().SaveAsImageToFile(filePath);
         }
+
+        internal void Print()
+        {
+            GetTreeGraph().Print();
+        }
     }
 }

@@ -63,9 +63,10 @@
                 </Style.Triggers>
             </Style>
             <Storyboard x:Key="FadeInStoryboard">
-                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <!--<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Visibility)">
                     <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
-                </ObjectAnimationUsingKeyFrames>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:01" Value="{x:Static Visibility.Collapsed}"/>
+                </ObjectAnimationUsingKeyFrames>-->
                 <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)">
                     <SplineDoubleKeyFrame KeyTime="00:00:0" Value="0"/>
                     <SplineDoubleKeyFrame KeyTime="00:00:1" Value="1"/>
@@ -270,11 +271,28 @@
         <!--<ContentControl Style="{StaticResource RotateArrowStyle}" Content="{StaticResource RotateArrow}" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top"></ContentControl>
         <ContentControl Style="{StaticResource RotateArrowStyle}" Content="{StaticResource RotateArrow}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom"></ContentControl>
         <ContentControl Style="{StaticResource RotateArrowStyle}" Content="{StaticResource RotateArrow}" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"></ContentControl>-->
-        <Label Grid.Row="1" x:Name="labelStatus" />
+        <Label Grid.Row="1" x:Name="labelStatus" >
+            <!--<Label.Effect>
+                <DropShadowEffect />
+            </Label.Effect>-->
+            <Label.Style>
+                <Style>
+                    <Style.Triggers>
+                        <Trigger Property="UIElement.IsMouseOver" Value="True">
+                            <Setter Property="Label.Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Label.Style>
+        </Label>
         <skin:Arrow x:Name="welcomeControl"></skin:Arrow>
         <Canvas>
             
-            <Expander Header="View options" BorderBrush="Gray" BorderThickness="2" Margin="20"
+            <Expander Header="{x:Static prop:Resources.LabelViewOptions}" BorderBrush="Gray" BorderThickness="2" Margin="20"
                   Name="expander1" Background="#55BAC6FF"
                   Padding="10 0 10 0"
                   >
@@ -289,7 +307,7 @@
                         <RowDefinition/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Label Grid.Column="0" Grid.Row="0" VerticalAlignment="Center">Rotation :</Label>
+                    <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{x:Static prop:Resources.LabelRotation}" />
                     <Slider Grid.Column="1" Grid.Row="0"
                     Name="sliderRotation" Margin="10,10,10,10" Maximum="360" Minimum="0" Value="{Binding ElementName=treeGraph1, Path=CurrentDrawOptions.ImageRotation}" />
                     <Label Grid.Column="2" Grid.Row="0" 
@@ -297,7 +315,7 @@
                        Content="{Binding ElementName=treeGraph1, Path=CurrentDrawOptions.ImageRotation}"
                        ContentStringFormat="{}{0:0.0}°" />
 
-                    <Label Grid.Column="0" Grid.Row="1"  VerticalAlignment="Center">Zoom :</Label>
+                    <TextBlock Grid.Column="0" Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Right" Text="{x:Static prop:Resources.LabelZoom}"/>
                     <Slider Grid.Column="1" Grid.Row="1" Name="sliderScale" 
                             Margin="10,10,10,10" Maximum="20" Minimum="0.5" Value="1" />
                     <Label Grid.Column="2" Grid.Row="1" 
@@ -306,7 +324,7 @@
                            ContentStringFormat="x {0:0.0}" />
 
 
-                    <Label Grid.Column="0" Grid.Row="2" VerticalAlignment="Center">Text size :</Label>
+                    <TextBlock Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{x:Static prop:Resources.LabelTextSize}"/>
                     <Slider Grid.Column="1" Grid.Row="2" Name="sliderTextSize" 
                             Margin="10,10,10,10" Maximum="25" Minimum="0.5" Value="{Binding ElementName=treeGraph1, Path=CurrentDrawOptions.TextSize}"/>
                     <Label Grid.Column="2" Grid.Row="2"
@@ -314,10 +332,6 @@
                            Content="{Binding ElementName=sliderTextSize, Path=Value}"
                            ContentStringFormat="{}{0:0.0}" />
 
-                    <StackPanel Visibility="Hidden" Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="3">
-                        <Button x:Name="ButtonPrint" 
-                        Click="ButtonPrint_Click">Print</Button>
-                    </StackPanel>
                 </Grid>
             </Expander>
         </Canvas>

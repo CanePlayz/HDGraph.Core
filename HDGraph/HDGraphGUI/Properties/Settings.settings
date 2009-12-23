@@ -59,5 +59,12 @@
     <Setting Name="StartupDrawEngine" Type="System.Guid" Scope="User">
       <Value Profile="(Default)">0959a259-3900-4ffe-ae6f-a9e3a63d2c6b</Value>
     </Setting>
+    <Setting Name="AvailableLanguages" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;en-US&lt;/string&gt;
+  &lt;string&gt;fr-FR&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

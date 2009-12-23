@@ -44,6 +44,8 @@ namespace HDGraph.Interfaces.DrawEngines
         {
         }
 
+        public bool SuspendPropertyChangedNotifications { get; set; }
+
         #region INotifyPropertyChanged Members
 
         [field: NonSerialized]
@@ -51,7 +53,7 @@ namespace HDGraph.Interfaces.DrawEngines
 
         protected void RaisePropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
+            if (PropertyChanged != null && !SuspendPropertyChangedNotifications)
             {
                 PropertyChanged(this,new PropertyChangedEventArgs(propertyName));
             }

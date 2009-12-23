@@ -46,17 +46,27 @@ namespace HDGraph.WpfDrawEngine
             ((TreeGraphContainer)control).SaveAsImageToFile(filePath);
         }
 
-        #endregion
-
-        #region IDrawEngine Options Members
-
-
         public System.Windows.Forms.Control GetOptionsControl(DrawOptions options)
         {
             throw new NotImplementedException();
         }
 
         public void SaveCurrentSpecificOptions()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void Print(System.Windows.Forms.Control control)
+        {
+            if (control == null
+                || !(control is TreeGraphContainer))
+                throw new ArgumentException("The given control is null or is not a TreeGraphContainer.", "control");
+
+            ((TreeGraphContainer)control).Print();
+        }
+
+        public void PrintWithPreview(System.Windows.Forms.Control control)
         {
             throw new NotImplementedException();
         }

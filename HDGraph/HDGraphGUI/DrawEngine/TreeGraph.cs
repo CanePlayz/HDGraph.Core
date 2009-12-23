@@ -148,7 +148,9 @@ namespace HDGraph
         {
             if (drawOptions == null)
                 drawOptions = new DrawOptions();
+            drawOptions.SuspendPropertyChangedNotifications = true;
             drawOptions.TextFont = this.Font;
+            drawOptions.SuspendPropertyChangedNotifications = false;
         }
 
 

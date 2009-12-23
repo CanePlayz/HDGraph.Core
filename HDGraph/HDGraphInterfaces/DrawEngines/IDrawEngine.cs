@@ -15,6 +15,8 @@ namespace HDGraph.Interfaces.DrawEngines
         void SetRootNodeOfControl(Control control, IDirectoryNode newRoot);
 
         void SaveAsImageToFile(System.Windows.Forms.Control control, string filePath);
+        void Print(System.Windows.Forms.Control control);
+        void PrintWithPreview(System.Windows.Forms.Control control);
 
         #region Options management
 

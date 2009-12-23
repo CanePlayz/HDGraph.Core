@@ -61,6 +61,78 @@ namespace HDGraph.WpfDrawEngine.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Full.
+        /// </summary>
+        public static string AccelerationTypeFull {
+            get {
+                return ResourceManager.GetString("AccelerationTypeFull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The higher level of acceleration is used, thanks to your graphic card..
+        /// </summary>
+        public static string AccelerationTypeFullDesc {
+            get {
+                return ResourceManager.GetString("AccelerationTypeFullDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to None !.
+        /// </summary>
+        public static string AccelerationTypeNone {
+            get {
+                return ResourceManager.GetString("AccelerationTypeNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your graphic card isn&apos;t powerfull enough to help drawing the graph. Performances should be very bad. You are advised to set the &quot;Basic&quot; draw engine in the avanced options..
+        /// </summary>
+        public static string AccelerationTypeNoneDesc {
+            get {
+                return ResourceManager.GetString("AccelerationTypeNoneDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Partial.
+        /// </summary>
+        public static string AccelerationTypePartial {
+            get {
+                return ResourceManager.GetString("AccelerationTypePartial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your graphic card partially helps to draw the graph, but is not very powerfull. Performances can be poor. You should set the &quot;Basic&quot; draw engine in the avanced options..
+        /// </summary>
+        public static string AccelerationTypePartialDesc {
+            get {
+                return ResourceManager.GetString("AccelerationTypePartialDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown.
+        /// </summary>
+        public static string AccelerationTypeUnknown {
+            get {
+                return ResourceManager.GetString("AccelerationTypeUnknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error has prevented determining the acceleration level available for your graphic card..
+        /// </summary>
+        public static string AccelerationTypeUnknownDesc {
+            get {
+                return ResourceManager.GetString("AccelerationTypeUnknownDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Center graph on this directory.
         /// </summary>
         public static string ContextMenuCenterOnThis {
@@ -129,6 +201,51 @@ namespace HDGraph.WpfDrawEngine.Properties {
         public static string HiddenFolders {
             get {
                 return ResourceManager.GetString("HiddenFolders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rotation:.
+        /// </summary>
+        public static string LabelRotation {
+            get {
+                return ResourceManager.GetString("LabelRotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Text size:.
+        /// </summary>
+        public static string LabelTextSize {
+            get {
+                return ResourceManager.GetString("LabelTextSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total size:.
+        /// </summary>
+        public static string LabelTotalSize {
+            get {
+                return ResourceManager.GetString("LabelTotalSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View options.
+        /// </summary>
+        public static string LabelViewOptions {
+            get {
+                return ResourceManager.GetString("LabelViewOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zoom:.
+        /// </summary>
+        public static string LabelZoom {
+            get {
+                return ResourceManager.GetString("LabelZoom", resourceCulture);
             }
         }
         

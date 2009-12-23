@@ -26,7 +26,9 @@ namespace HDGraph.WpfDrawEngine
         public TreeGraph()
         {
             InitializeComponent();
-            labelStatus.Content = Properties.Resources.HardwareAcceleration + WpfUtils.GetAccelerationType().ToString(); // +" ; Culture : " + CultureInfo.CurrentCulture + " ; UiCulture : " + CultureInfo.CurrentUICulture;
+            AccelerationType acc = WpfUtils.GetAccelerationType();
+            labelStatus.Content = Properties.Resources.HardwareAcceleration + WpfUtils.GetAccelerationTypeString(acc);
+            labelStatus.ToolTip = WpfUtils.GetAccelerationTypeDescription(acc);
             CommandManager.RegisterClassCommandBinding(
                 typeof(TreeGraph),
                 new CommandBinding(
@@ -99,6 +101,8 @@ namespace HDGraph.WpfDrawEngine
                 return;
             }
             welcomeControl.Visibility = Visibility.Collapsed;
+            Cursor originalCursor = Cursor;
+            Cursor = Cursors.Wait;
             this.rootNode = root;
             sliderScale.Value = 1;
             canvas1.Children.Clear();
@@ -126,6 +130,7 @@ namespace HDGraph.WpfDrawEngine
             }
             BuildTree(rootNode, 0, 0, 360);
             ActionExecutor.Notify4NewRootNode(root);
+            Cursor = originalCursor;
         }
 
 
@@ -371,8 +376,9 @@ namespace HDGraph.WpfDrawEngine
                 {
                     if (Object.ReferenceEquals(node, this.rootNode))
                     {
-                        // Go to parent
-                        SetRoot(node.Parent, CurrentDrawOptions);
+                        if (node.Parent != null)
+                            // Go to parent
+                            SetRoot(node.Parent, CurrentDrawOptions);
                     }
                     else
                     {
@@ -391,6 +397,7 @@ namespace HDGraph.WpfDrawEngine
             //ApplyAnimationToChildren(fadeStoryboard, arc);
             int initialZIndex = Panel.GetZIndex(arc);
             Panel.SetZIndex(arc, 250);
+            opacityGrid.Visibility = Visibility.Visible;
             fadeStoryboard.Begin(opacityGrid, true);
 
 
@@ -428,7 +435,7 @@ namespace HDGraph.WpfDrawEngine
             Storyboard fadeStoryboard = TryFindResource("FadeInStoryboard") as Storyboard;
             fadeStoryboard.Stop(opacityGrid);
             opacityGrid.Visibility = Visibility.Collapsed;
-            opacityGrid.Opacity = 0;
+            //opacityGrid.Opacity = 0;
         }
 
         private void ApplyAnimationToChildren(Storyboard storyboard, Arc exceptElement)
@@ -623,14 +630,13 @@ namespace HDGraph.WpfDrawEngine
         }
 
 
-        private void ButtonPrint_Click(object sender, RoutedEventArgs e)
+        internal void Print()
         {
             PrintDialog dialog = new PrintDialog();
             if (dialog.ShowDialog() == true)
             {
-                dialog.PrintVisual(canvas1, "HDGraph diagram");
+                dialog.PrintVisual(canvasContainer, "HDGraph");
             }
-
         }
 
         private Point? initialCursorLocation;
