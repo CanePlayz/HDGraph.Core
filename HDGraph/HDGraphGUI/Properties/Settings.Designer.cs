@@ -259,5 +259,17 @@ namespace HDGraph.Properties {
                 return ((global::System.Collections.Specialized.StringCollection)(this["AvailableLanguages"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool CheckForNewVersionAfterStartup {
+            get {
+                return ((bool)(this["CheckForNewVersionAfterStartup"]));
+            }
+            set {
+                this["CheckForNewVersionAfterStartup"] = value;
+            }
+        }
     }
 }

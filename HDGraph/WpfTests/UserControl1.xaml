@@ -12,7 +12,7 @@
                         <GeometryDrawing Brush="LightBlue">
                             <GeometryDrawing.Geometry>
                                 <GeometryGroup>
-                                    <PathGeometry Figures="M1 1"/>
+                                    <PathGeometry Figures="M 1 1"/>
                                     <EllipseGeometry RadiusX="1" RadiusY="1" />
                                 </GeometryGroup>
                             </GeometryDrawing.Geometry>

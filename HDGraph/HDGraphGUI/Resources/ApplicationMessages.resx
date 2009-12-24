@@ -370,4 +370,7 @@ knowledge of the CeCILL license and that you accept its terms.</value>
   <data name="SimpleDrawEngineName" xml:space="preserve">
     <value>Basic</value>
   </data>
+  <data name="ReleasedOn" xml:space="preserve">
+    <value>released on {0}.</value>
+  </data>
 </root>

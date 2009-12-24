@@ -353,6 +353,7 @@ namespace HDGraph
         private void MainForm_Load(object sender, EventArgs e)
         {
             //toolStripContainer1.Location = new Point(0, menuStrip.Size.Height);
+            new VersionCheck().CheckForNewVersion(this);
             PrintStatus(resManager.GetString("statusReady"));
         }
 
@@ -966,7 +967,7 @@ namespace HDGraph
         {
             try
             {
-                System.Diagnostics.Process.Start(Application.StartupPath + "\\HDGraph.log");
+                System.Diagnostics.Process.Start(Program.GetLogFilename());
             }
             catch (Exception ex)
             {

@@ -1,3 +1,5 @@
+//#define GENERATE_VERSION_INFO     // comment for standard application use.
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -17,6 +19,7 @@ namespace HDGraph
         static void Main()
         {
             HDGTools.mySwitch = new TraceSwitch("traceLevelSwitch", "HDG TraceSwitch");
+            Trace.Listeners.Add(new TextWriterTraceListener(GetLogFilename()) { TraceOutputOptions = TraceOptions.DateTime });
             // TODO :
             //Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
 #if (!DEBUG)
@@ -24,6 +27,20 @@ namespace HDGraph
             {
 #endif
             Trace.WriteLineIf(HDGTools.mySwitch.TraceInfo, "Application started.");
+
+#if GENERATE_VERSION_INFO
+            VersionInfo vInfo = new VersionInfo()
+            {
+                ChangeLogUrl = "http://hdgraph.com/index.php?option=com_content&view=category&layout=blog&id=38&Itemid=64",
+                DownloadPageUrl = "http://hdgraph.com/index.php?option=com_content&view=article&id=51&Itemid=56",
+                VersionNumber = typeof(Program).Assembly.GetName().Version.ToString(),
+                ReleaseDate = DateTime.Now,
+            };
+            string filename = "versionInfo.xml";
+            File.WriteAllText(filename, vInfo.SerializeToString(), System.Text.Encoding.Default);
+            Process.Start(filename);
+            return;
+#endif
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             MainForm form = new MainForm();
@@ -42,6 +59,13 @@ namespace HDGraph
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 #endif
+        }
+
+        private const string LogFilename = "HDGraph.log";
+
+        public static string GetLogFilename()
+        {
+            return Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + Path.DirectorySeparatorChar + LogFilename;
         }
 
         static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)

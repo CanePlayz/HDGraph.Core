@@ -14,6 +14,7 @@ Added:
 	- New Print feature (in File menu)
 	- TODO : New "native" scan engine on Windows : faster and more accurate (up to 6 times faster).
 	- "Drag & drop" capable (from Windows explorer)
+	- Auto check if a new version is available
 Improved: 
 	- Design refactored, mostly with the WPF draw engine.
 	- (TODO) Compatible with Linux and Mac (basic draw engine only).

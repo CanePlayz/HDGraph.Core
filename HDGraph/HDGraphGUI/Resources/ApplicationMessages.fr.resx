@@ -368,4 +368,7 @@ termes.</value>
   <data name="SimpleDrawEngineName" xml:space="preserve">
     <value>Basique</value>
   </data>
+  <data name="ReleasedOn" xml:space="preserve">
+    <value>du {0}.</value>
+  </data>
 </root>
