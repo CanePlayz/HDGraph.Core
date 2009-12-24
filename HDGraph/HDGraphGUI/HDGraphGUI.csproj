@@ -205,6 +205,10 @@
       <DependentUpon>LicenceForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewVersionAvailableForm.fr.resx">
+      <DependentUpon>NewVersionAvailableForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="NewVersionAvailableForm.resx">
       <DependentUpon>NewVersionAvailableForm.cs</DependentUpon>
       <SubType>Designer</SubType>
