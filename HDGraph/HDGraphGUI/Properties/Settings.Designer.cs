@@ -263,12 +263,12 @@ namespace HDGraph.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool CheckForNewVersionAfterStartup {
+        public bool OptionCheckForNewVersionAfterStartup {
             get {
-                return ((bool)(this["CheckForNewVersionAfterStartup"]));
+                return ((bool)(this["OptionCheckForNewVersionAfterStartup"]));
             }
             set {
-                this["CheckForNewVersionAfterStartup"] = value;
+                this["OptionCheckForNewVersionAfterStartup"] = value;
             }
         }
     }

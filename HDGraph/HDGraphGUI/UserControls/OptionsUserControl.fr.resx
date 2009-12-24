@@ -117,35 +117,47 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="labelScanEngineDesc.Text" xml:space="preserve">
-    <value>Le moteur de scan est le composant chargé de l'énumération des fichiers et dossiers. Il établit un rapport qui sera utilisé par HDGraph pour dessiner le graphique.</value>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Démarrage de l'application</value>
   </data>
-  <data name="radioButtonNativeEngine.Text" xml:space="preserve">
-    <value>Moteur "natif" : utilise l'API native du système. Ce mode est plus rapide et plus précis, mais son fonctionnement n'est pas garanti sur tous les systèmes.</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Menu du clic droit</value>
   </data>
-  <data name="radioButtonSimpleEngine.Text" xml:space="preserve">
-    <value>Moteur standard : utilise l'API .Net. Ce mode est plus robuste (il fonctionne sur tous les systèmes), mais il est moins rapide et peut être moins précis dans certains cas.</value>
+  <data name="tabPageRightClic.Text" xml:space="preserve">
+    <value>Comportement de l'application</value>
   </data>
-  <data name="groupBoxEngine.Text" xml:space="preserve">
-    <value>Choisissez un moteur de scan</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Cette opération va télécharger, de manière anonyme sur le site web HDGraph.com, un petit fichier contenant le numéro de la dernière version disponible.</value>
   </data>
-  <data name="tabPageScanEngine.Text" xml:space="preserve">
-    <value>Moteur de scan</value>
+  <data name="checkBox1.Text" xml:space="preserve">
+    <value>Vérifier les mise à jour au démarrage de l'application.</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkBoxDeletionAsk4Confirmation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>287, 17</value>
-  </data>
-  <data name="checkBoxDeletionAsk4Confirmation.Text" xml:space="preserve">
-    <value>Toujours demander une confirmation avant suppression</value>
-  </data>
   <data name="checkBoxAllowDeleteOption.Size" type="System.Drawing.Size, System.Drawing">
     <value>302, 17</value>
   </data>
   <data name="checkBoxAllowDeleteOption.Text" xml:space="preserve">
     <value>Autoriser la suppression de répertoire via menu du clic droit</value>
   </data>
-  <data name="tabPageRightClic.Text" xml:space="preserve">
-    <value>Menu du clic droit</value>
+  <data name="checkBoxDeletionAsk4Confirmation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>287, 17</value>
+  </data>
+  <data name="checkBoxDeletionAsk4Confirmation.Text" xml:space="preserve">
+    <value>Toujours demander une confirmation avant suppression</value>
+  </data>
+  <data name="tabPageScanEngine.Text" xml:space="preserve">
+    <value>Moteur de scan</value>
+  </data>
+  <data name="labelScanEngineDesc.Text" xml:space="preserve">
+    <value>Le moteur de scan est le composant chargé de l'énumération des fichiers et dossiers. Il établit un rapport qui sera utilisé par HDGraph pour dessiner le graphique.</value>
+  </data>
+  <data name="groupBoxEngine.Text" xml:space="preserve">
+    <value>Choisissez un moteur de scan</value>
+  </data>
+  <data name="radioButtonNativeEngine.Text" xml:space="preserve">
+    <value>Moteur "natif" : utilise l'API native du système. Ce mode est plus rapide et plus précis, mais son fonctionnement n'est pas garanti sur tous les systèmes.</value>
+  </data>
+  <data name="radioButtonSimpleEngine.Text" xml:space="preserve">
+    <value>Moteur standard : utilise l'API .Net. Ce mode est plus robuste (il fonctionne sur tous les systèmes), mais il est moins rapide et peut être moins précis dans certains cas.</value>
   </data>
 </root>

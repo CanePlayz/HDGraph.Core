@@ -353,7 +353,8 @@ namespace HDGraph
         private void MainForm_Load(object sender, EventArgs e)
         {
             //toolStripContainer1.Location = new Point(0, menuStrip.Size.Height);
-            new VersionCheck().CheckForNewVersion(this);
+            if (Properties.Settings.Default.OptionCheckForNewVersionAfterStartup)
+                new VersionCheck().CheckForNewVersion(this);
             PrintStatus(resManager.GetString("statusReady"));
         }
 
@@ -603,7 +604,7 @@ namespace HDGraph
         /// <param name="e"></param>
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            (new OptionsForm()).ShowDialog();
+            (new OptionsForm()).ShowDialog(this);
         }
 
         /// <summary>

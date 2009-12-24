@@ -17,6 +17,8 @@ namespace HDGraph
 
         private void OptionsForm_Load(object sender, EventArgs e)
         {
+            if (this.Owner != null)
+                this.Icon = Owner.Icon;
         }
 
 
