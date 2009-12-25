@@ -277,6 +277,15 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Un error occured while checking version. Go to www.hdgraph.com to manually check for the latest version (your version is {0})..
+        /// </summary>
+        internal static string ErrorOccuredWhileCheckingVersion {
+            get {
+                return ResourceManager.GetString("ErrorOccuredWhileCheckingVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Draw space with HDGraph.
         /// </summary>
         internal static string ExplorerContextMenuAction {
@@ -745,6 +754,15 @@ namespace HDGraph.Resources {
         internal static string UserCanceledAnalysis {
             get {
                 return ResourceManager.GetString("UserCanceledAnalysis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your version is up to date (it&apos;s already the latest version available)..
+        /// </summary>
+        internal static string YourVersionIsUpToDate {
+            get {
+                return ResourceManager.GetString("YourVersionIsUpToDate", resourceCulture);
             }
         }
     }

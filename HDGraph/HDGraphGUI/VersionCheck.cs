@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using HDGraph.Resources;
 
 namespace HDGraph
 {
@@ -14,11 +15,13 @@ namespace HDGraph
     {
         private const string CheckForNewVersionUrl = "http://www.hdgraph.com/VersionChecks/GetCurrentVersionNumber.php";
         private Form parent;
+        private bool alwaysPopup;
 
-        public void CheckForNewVersion(Form parent)
+        public void CheckForNewVersion(Form parent, bool alwaysPopup)
         {
             try
             {
+                this.alwaysPopup = alwaysPopup;
                 this.parent = parent;
                 WebClient client = new WebClient();
                 client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_DownloadStringCompleted);
@@ -34,23 +37,38 @@ namespace HDGraph
         {
             if (e.Cancelled)
                 return;
+            Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
             if (e.Error == null)
             {
                 try
                 {
                     string result = e.Result;
                     VersionInfo versionInfo = VersionInfo.DeserializeFromString(result);
-                    if (Assembly.GetExecutingAssembly().GetName().Version.CompareTo(new Version(versionInfo.VersionNumber)) < 0)
-                        //newer version :
+                    if (currentVersion.CompareTo(new Version(versionInfo.VersionNumber)) < 0)
+                        //newer version is available:
                         new NewVersionAvailableForm() { VersionInfo = versionInfo }.ShowDialog(parent);
+                    else
+                    {
+                        // no newer version available
+                        if (alwaysPopup)
+                            MessageBox.Show(ApplicationMessages.YourVersionIsUpToDate, "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
                 }
                 catch (Exception ex)
                 {
                     Trace.TraceError("Error during check for new version (response analysis failed): " + HDGTools.PrintError(ex));
+                    if (alwaysPopup)
+                        MessageBox.Show(String.Format(ApplicationMessages.ErrorOccuredWhileCheckingVersion, currentVersion),
+                            "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
+            {
                 Trace.TraceError("Error downloading latest version info : " + HDGTools.PrintError(e.Error));
+                if (alwaysPopup)
+                    MessageBox.Show(String.Format(ApplicationMessages.ErrorOccuredWhileCheckingVersion, currentVersion), "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 

@@ -354,7 +354,7 @@ namespace HDGraph
         {
             //toolStripContainer1.Location = new Point(0, menuStrip.Size.Height);
             if (Properties.Settings.Default.OptionCheckForNewVersionAfterStartup)
-                new VersionCheck().CheckForNewVersion(this);
+                new VersionCheck().CheckForNewVersion(this, false);
             PrintStatus(resManager.GetString("statusReady"));
         }
 
@@ -1320,6 +1320,11 @@ namespace HDGraph
         private void printPreviewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             drawEngine.PrintWithPreview(graphControl);
+        }
+
+        private void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new VersionCheck().CheckForNewVersion(this, true);
         }
 
     }

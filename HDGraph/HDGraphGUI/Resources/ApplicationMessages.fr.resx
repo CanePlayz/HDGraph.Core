@@ -371,4 +371,10 @@ termes.</value>
   <data name="ReleasedOn" xml:space="preserve">
     <value>du {0}.</value>
   </data>
+  <data name="ErrorOccuredWhileCheckingVersion" xml:space="preserve">
+    <value>Une erreur est survenue durant la vérification de mises à jour. Vous pouvez manuellement aller sur le site web www.hdgraph.com pour vérifier quelle est la dernière version (actuellement, votre version est {0}).</value>
+  </data>
+  <data name="YourVersionIsUpToDate" xml:space="preserve">
+    <value>Votre version est à jour, c'est la dernière version disponible.</value>
+  </data>
 </root>

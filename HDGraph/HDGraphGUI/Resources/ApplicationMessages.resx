@@ -373,4 +373,10 @@ knowledge of the CeCILL license and that you accept its terms.</value>
   <data name="ReleasedOn" xml:space="preserve">
     <value>released on {0}.</value>
   </data>
+  <data name="ErrorOccuredWhileCheckingVersion" xml:space="preserve">
+    <value>Un error occured while checking version. Go to www.hdgraph.com to manually check for the latest version (your version is {0}).</value>
+  </data>
+  <data name="YourVersionIsUpToDate" xml:space="preserve">
+    <value>Your version is up to date (it's already the latest version available).</value>
+  </data>
 </root>

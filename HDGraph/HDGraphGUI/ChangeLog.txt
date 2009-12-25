@@ -7,14 +7,14 @@ HDGraph ChangeLog (http://hdgraph.sourceforge.net)
 Version 1.4.0
 ======================================================
 Added:
-	- Totaly new draw engine (WPF). Faster and above all more powerfull. Defined as a plugin, which requires ".Net framework" version 3.0 or higher.
+	- Totaly new draw engine (WPF). Faster and more powerfull. Defined as a plugin, which requires ".Net framework" version 3.5 or higher.
 	- WPF draw engine : Zoom feature
 	- WPF draw engine : Full "fluid" rotation, using slider or mouse directly.
 	- WPF draw engine : auto hide too small folders, in order to speed up the build of the graph.
 	- New Print feature (in File menu)
 	- TODO : New "native" scan engine on Windows : faster and more accurate (up to 6 times faster).
 	- "Drag & drop" capable (from Windows explorer)
-	- Auto check if a new version is available
+	- Auto check (after startup) if a new version is available. Check can be done manually via the "Help" menu.
 Improved: 
 	- Design refactored, mostly with the WPF draw engine.
 	- (TODO) Compatible with Linux and Mac (basic draw engine only).
