@@ -36,6 +36,23 @@ namespace HDGraph.WpfDrawEngine
             this.ToolTip = "TODO : Tooltip here."; // TODO.
         }
 
+        #region Path Style
+
+
+        public Style PathStyle
+        {
+            get { return (Style)GetValue(PathStyleProperty); }
+            set { SetValue(PathStyleProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for PathStyle.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty PathStyleProperty =
+            DependencyProperty.Register("PathStyle", typeof(Style), typeof(Arc), new UIPropertyMetadata(null));
+
+
+
+        #endregion
+
         private const int LimitVisibleSize = 15;
 
         public static void OnFontSizePropertyChanged(DependencyObject obj, DependencyPropertyChangedEventArgs arg)
@@ -55,26 +72,6 @@ namespace HDGraph.WpfDrawEngine
                 textBlock.Visibility = Visibility.Hidden;
             else
                 textBlock.Visibility = Visibility.Visible;
-        }
-
-        private Style beforeMouseOverStyle;
-
-        private void arcUC_MouseEnter(object sender, MouseEventArgs e)
-        {
-            if (path1.Style == (Style)FindResource("ArcStyle"))
-            {
-                beforeMouseOverStyle = path1.Style;
-                path1.Style = (Style)FindResource("ArcStyleOnMouseOver");;
-            }
-        }
-
-        private void arcUC_MouseLeave(object sender, MouseEventArgs e)
-        {
-            if (beforeMouseOverStyle != null)
-            {
-                path1.Style = beforeMouseOverStyle; //(Style)FindResource("ArcStyle");
-                beforeMouseOverStyle = null;
-            }
         }
 
         void Arc_ToolTipOpening(object sender, ToolTipEventArgs e)
@@ -293,18 +290,5 @@ namespace HDGraph.WpfDrawEngine
                 // (Update will be called at the end of the "edit mode" if it is enabled).
                 arc.UpdateDesign();
         }
-
-        private void Path_MouseEnter(object sender, MouseEventArgs e)
-        {
-            //brush1.Opacity = 0.5;
-            //path1.StrokeThickness = 5;
-        }
-
-        private void Path_MouseLeave(object sender, MouseEventArgs e)
-        {
-            //brush1.Opacity = 1;
-            //path1.StrokeThickness = 1;
-        }
-
     }
 }

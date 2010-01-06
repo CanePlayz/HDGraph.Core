@@ -13,7 +13,7 @@
         <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Path, StringFormat=( {0} )}"></TextBlock>
         <Grid Margin="0 5 0 0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
+                <ColumnDefinition MaxWidth="100" MinWidth="30"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>

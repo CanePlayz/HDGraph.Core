@@ -340,7 +340,7 @@ namespace HDGraph.WpfDrawEngine
             }
             else if (node.DirectoryType == SpecialDirTypes.FreeSpaceAndShow)
             {
-                // TODO
+                arc.Style = (Style)FindResource("FreeSpaceArcStyle");
                 //// free space
                 //frontGraph.FillPie(new System.Drawing.Drawing2D.HatchBrush(
                 //                            System.Drawing.Drawing2D.HatchStyle.Wave,
