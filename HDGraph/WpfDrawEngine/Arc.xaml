@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:HDGraph.WpfDrawEngine"
     xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
-    x:Name="arcUC">
+    x:Name="arcUC" Focusable="True"> <!-- Focusable="True" is necessary in order to allow the arc to be a command target. -->
     <UserControl.Resources>
         <local:ReverseNumericConverter x:Key="myReverseNumericConverter"/>
         <local:DivideBy2NumericConverter x:Key="myDivideBy2NumericConverter"/>

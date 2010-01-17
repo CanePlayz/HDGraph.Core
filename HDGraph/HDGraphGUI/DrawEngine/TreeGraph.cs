@@ -629,56 +629,8 @@ namespace HDGraph
         /// <param name="e"></param>
         private void deletePermanentlyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string msg = String.Format(HDGTools.resManager.GetString("GoingToDeleteFolderMsg"),
-                                       lastClicNode.Name);
-            if ((!Properties.Settings.Default.OptionDeletionAsk4Confirmation)
-                || MessageBox.Show(msg,
-                        HDGTools.resManager.GetString("GoingToDeleteFolderTitle"),
-                        MessageBoxButtons.OKCancel,
-                        MessageBoxIcon.Exclamation,
-                        MessageBoxDefaultButton.Button2) == DialogResult.OK)
-            {
-                try
-                {
-                    WaitForm waitForm = new WaitForm();
-                    waitForm.ShowDialogAndStartAction(HDGTools.resManager.GetString("DeleteInProgress"),
-                                                            DeleteSelectedForlder);
-                    if (waitForm.ActionError == null)
-                        MessageBox.Show(HDGTools.resManager.GetString("DeletionCompleteMsg"),
-                                        HDGTools.resManager.GetString("OperationSuccessfullTitle"),
-                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    else
-                        NotifyUserAboutDeletionError(waitForm.ActionError);
-                    RafraichirArboDuDernierClic();
-                }
-                catch (Exception ex)
-                {
-                    WaitForm.HideWaitForm();
-                    NotifyUserAboutDeletionError(ex);
-                    RafraichirArboDuDernierClic();
-                }
-            }
-        }
-
-        private void NotifyUserAboutDeletionError(Exception ex)
-        {
-            string msgErreur = String.Format(
-                HDGTools.resManager.GetString("ErrorDeletingFolder"),
-                ex.Message, Environment.NewLine);
-            Trace.TraceError(HDGTools.PrintError(ex));
-            DialogResult answer = MessageBox.Show(msgErreur,
-                HDGTools.resManager.GetString("Error"),
-                MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-            if (answer == DialogResult.Yes)
-                OpenSelectedFolderInExplorer();
-        }
-
-        /// <summary>
-        /// Supprime définitivement un répertoire et rafraichit l'arborescence en conséquence.
-        /// </summary>
-        private void DeleteSelectedForlder()
-        {
-            System.IO.Directory.Delete(lastClicNode.Path, true);
+            if (actionExecutor.DeleteNode(lastClicNode))
+                RafraichirArboDuDernierClic();
         }
 
 

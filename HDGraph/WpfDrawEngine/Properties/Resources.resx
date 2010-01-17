@@ -180,6 +180,9 @@
   <data name="LabelZoom" xml:space="preserve">
     <value>Zoom:</value>
   </data>
+  <data name="ManySmallFolders" xml:space="preserve">
+    <value>Many small folders</value>
+  </data>
   <data name="MultipleSmallFolders" xml:space="preserve">
     <value>There are too many small folders to show them individually. {0}To show them, center the graph on their parent ("{1}") with a double click, or open the "Details" window of this parent.</value>
   </data>

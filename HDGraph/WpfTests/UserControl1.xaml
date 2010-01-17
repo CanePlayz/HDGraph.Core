@@ -18,7 +18,7 @@
                                 </GeometryGroup>
                             </GeometryDrawing.Geometry>
                             <GeometryDrawing.Pen>
-                                <Pen Thickness="1" Brush="White" />
+                                <Pen Thickness="1" Brush="LightGray" />
                             </GeometryDrawing.Pen>
                         </GeometryDrawing>
                     </DrawingBrush.Drawing>

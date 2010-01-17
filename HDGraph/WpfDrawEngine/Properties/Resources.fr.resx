@@ -180,6 +180,9 @@
   <data name="LabelZoom" xml:space="preserve">
     <value>Zoom :</value>
   </data>
+  <data name="ManySmallFolders" xml:space="preserve">
+    <value>Ensemble de petits répertoires</value>
+  </data>
   <data name="MultipleSmallFolders" xml:space="preserve">
     <value>Il y a ici trop de petits répertoires pour les afficher individuellement. {0}Pour les afficher, centrer la vue sur le répertoire parent ("{1}") via un double-clic sur celui-ci, ou ouvrez la fenêtre "Détails" de ce répertoire parent.</value>
   </data>

@@ -100,8 +100,9 @@ namespace HDGraph
                     HDGTools.RemoveMeFromExplorerContextMenu(true);
                     launchForm = false;
                 }
-                else if (path.StartsWith("/"))
+                else if (path.StartsWith("/") || path.StartsWith("::"))
                 {
+                    // path startsWith "::" is a Window internal shortcut ; exemple : "::{GUID_here}" for MyComputer.
                     path = "";
                 }
                 else

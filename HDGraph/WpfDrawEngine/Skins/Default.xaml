@@ -6,17 +6,17 @@
     <DrawingBrush x:Key="ArcBrushFreeSpace"
         Viewport="0,0,10,10"
         ViewportUnits="Absolute" 
-        TileMode="Tile">
+        TileMode="Tile" Opacity="0.4">
         <DrawingBrush.Drawing>
             <GeometryDrawing Brush="LightGray">
                 <GeometryDrawing.Geometry>
                     <GeometryGroup>
                         <EllipseGeometry Center="0,0" RadiusX="1" RadiusY="1" />
-                        <EllipseGeometry Center="3,3" RadiusX="1" RadiusY="1" />
+                        <!--<EllipseGeometry Center="3,3" RadiusX="1" RadiusY="1" />-->
                     </GeometryGroup>
                 </GeometryDrawing.Geometry>
                 <GeometryDrawing.Pen>
-                    <Pen Thickness="1" Brush="White" />
+                    <Pen Thickness="1" Brush="LightGray" />
                 </GeometryDrawing.Pen>
             </GeometryDrawing>
         </DrawingBrush.Drawing>

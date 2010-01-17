@@ -42,6 +42,84 @@ namespace HDGraph.WpfDrawEngine
             Properties.Resources.Culture = CultureInfo.CurrentCulture;
         }
 
+        private void ArcCommandExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            string commandParam = e.Parameter as string;
+            Arc arcTarget = e.OriginalSource as Arc;
+            switch (commandParam)
+            {
+                case GraphCommands.ActionCenterOnDir:
+                    if (ActionExecutor != null && arcTarget != null)
+                        CenterGraphOnArc(sender, e, arcTarget);
+                    break;
+                case GraphCommands.ActionCenterOnParent:
+                    if (arcTarget.Node != null && arcTarget.Node.Parent != null)
+                        SetRoot(arcTarget.Node.Parent, CurrentDrawOptions);
+                    break;
+                case GraphCommands.ActionCanDelete:
+                    break;
+                case GraphCommands.ActionDelete:
+                    if (ActionExecutor != null && arcTarget != null)
+                    {
+                        if (ActionExecutor.DeleteNode(arcTarget.Node))
+                        {
+                            ActionExecutor.ExecuteTreeFullRefresh(arcTarget.Node);
+                            FullRefresh();
+                        }
+                    }
+                    break;
+                case GraphCommands.ActionOpenExternal:
+                    if (ActionExecutor != null && arcTarget != null)
+                        ActionExecutor.OpenInExplorer(arcTarget.Node);
+                    break;
+                case GraphCommands.ActionRefresh:
+                    if (ActionExecutor != null && arcTarget != null)
+                    {
+                        ActionExecutor.ExecuteTreeFullRefresh(arcTarget.Node);
+                        FullRefresh();
+                    }
+                    break;
+                case GraphCommands.ActionShowDetails:
+                    if (ActionExecutor != null && arcTarget != null)
+                        ActionExecutor.ShowNodeDetails(arcTarget.Node);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void ArcCommandCanExecute(object sender, CanExecuteRoutedEventArgs e)
+        {
+            string commandParam = e.Parameter as string;
+            Arc arcTarget = e.OriginalSource as Arc;
+            IDirectoryNode node = arcTarget.Node;
+            if (arcTarget == null || node == null)
+            {
+                e.CanExecute = false;
+                return;
+            }
+
+            bool nodeIsRegularNode = (node.DirectoryType == SpecialDirTypes.NotSpecial);
+            e.CanExecute = nodeIsRegularNode;
+
+            // Exceptions
+            if (commandParam == GraphCommands.ActionShowDetails)
+            {
+                e.CanExecute = true;
+            }
+            if (commandParam == GraphCommands.ActionCenterOnDir)
+            {
+                e.CanExecute = nodeIsRegularNode && node != this.rootNode;
+                return;
+            }
+            if (commandParam == GraphCommands.ActionCanDelete
+                || commandParam == GraphCommands.ActionDelete)
+            {
+                e.CanExecute = nodeIsRegularNode && ActionExecutor != null && ActionExecutor.FolderDeletionIsAllowed;
+                return;
+            }
+        }
+
         public IActionExecutor ActionExecutor { get; set; }
 
         public bool IsRotating
@@ -234,45 +312,128 @@ namespace HDGraph.WpfDrawEngine
         /// <param name="endAngle"></param>
         private void PaintUnknownPart(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
         {
-            Arc arc = new Arc();
+            Arc arc = BuildArc(node, currentLevel, startAngle, endAngle);
             arc.BeginEdit();
-            arc.StartAngle = startAngle;
-            arc.StopAngle = endAngle - startAngle;
-            arc.SmallRadius = Convert.ToSingle(currentLevel * singleLevelHeight);
             arc.LargeRadius = Convert.ToSingle(currentLevel * singleLevelHeight + singleLevelHeight / 6);
-            arc.Node = node;
             arc.path1.Style = (Style)FindResource("HiddenFoldersArcStyle");
             arc.path1.StrokeThickness = 0;
             arc.ToolTip = String.Format(Properties.Resources.HiddenFolders,
                                         Environment.NewLine + Environment.NewLine,
                                         node.Name);
+            arc.ContextMenu = null;
             arc.EndEdit();
             canvas1.Children.Add(arc);
-            // TODO : arc.brush1 ==> LargeConfetti
+        }
 
-            //frontGraph.FillPie(new System.Drawing.Drawing2D.HatchBrush(
-            //                            System.Drawing.Drawing2D.HatchStyle.LargeConfetti,
-            //                            Color.Gray,
-            //                            Color.White),
-            //                    Rectangle.Round(rec), startAngle, nodeAngle);
+        private class MultipleFoldersNode : IDirectoryNode
+        {
+            private IDirectoryNode parent;
 
+            public MultipleFoldersNode(IDirectoryNode parent)
+            {
+                this.parent = parent;
+            }
+
+            #region IDirectoryNode Members
+
+            public List<IDirectoryNode> Children
+            {
+                get { return new List<IDirectoryNode>(); }
+                set { }
+            }
+
+            public int DepthMaxLevel
+            {
+                get { return 1; }
+                set { }
+            }
+
+            public long DirectoryFilesNumber
+            {
+                get { return 0; }
+                set { }
+            }
+
+            public SpecialDirTypes DirectoryType
+            {
+                get { return SpecialDirTypes.SubDirectoryCollection; }
+                set { }
+            }
+
+            public bool ExistsUncalcSubDir
+            {
+                get { return false; }
+                set { }
+            }
+
+            public long FilesSize { get { return 0; } set { } }
+
+            public string Name
+            {
+                get { return Properties.Resources.ManySmallFolders; }
+                set { }
+            }
+
+            public IDirectoryNode Parent { get { return parent; } set { } }
+
+            public string Path { get { return parent.Path; } set { } }
+
+            public IDirectoryNode Root { get; set; }
+
+            public long TotalRecursiveFilesNumber
+            {
+                get { return 0; }
+            }
+
+            public long TotalSize
+            {
+                get { return 0; }
+                set { }
+            }
+
+            public bool HasMoreChildrenThan(long threshold)
+            {
+                return false;
+            }
+
+            public string HumanReadableTotalSize
+            {
+                get { return String.Empty; }
+            }
+
+            #endregion
+
+            #region IXmlSerializable Members
+
+            public System.Xml.Schema.XmlSchema GetSchema()
+            {
+                throw new NotImplementedException();
+            }
+
+            public void ReadXml(System.Xml.XmlReader reader)
+            {
+                throw new NotImplementedException();
+            }
+
+            public void WriteXml(System.Xml.XmlWriter writer)
+            {
+                throw new NotImplementedException();
+            }
+
+            #endregion
         }
 
         private void PaintMultipleNodesPart(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
         {
-            Arc arc = new Arc();
+            Arc arc = BuildArc(new MultipleFoldersNode(node), currentLevel, startAngle, endAngle);
             arc.BeginEdit();
-            arc.StartAngle = startAngle;
-            arc.StopAngle = endAngle - startAngle;
-            arc.SmallRadius = Convert.ToSingle(currentLevel * singleLevelHeight);
-            arc.LargeRadius = Convert.ToSingle((currentLevel + 1) * singleLevelHeight);
-            arc.Node = node;
             arc.path1.Style = (Style)FindResource("MultipleNodeStyle");
             arc.path1.StrokeThickness = 0;
             arc.ToolTip = String.Format(Properties.Resources.MultipleSmallFolders,
                                         Environment.NewLine + Environment.NewLine,
                                         node.Name);
             arc.EndEdit();
+            arc.ContextMenu = null;
             canvas1.Children.Add(arc);
         }
 
@@ -288,12 +449,12 @@ namespace HDGraph.WpfDrawEngine
         private void BuildDirPart(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
         {
             Arc arc = BuildArc(node, currentLevel, startAngle, endAngle);
+
             arc.DataContext = node;
             arc.Style = (Style)FindResource("StandardArcStyle");
             canvas1.Children.Add(arc);
             arc.MouseEnter += new MouseEventHandler(arc_MouseEnter);
             arc.MouseLeave += new MouseEventHandler(arc_MouseLeave);
-            arc.MouseDoubleClick += new MouseButtonEventHandler(arc_MouseDoubleClick);
             ArcToolTip arcTooltip = new ArcToolTip()
             {
                 DataContext = node
@@ -323,6 +484,13 @@ namespace HDGraph.WpfDrawEngine
             // TODO : now, apply the correct brush.
             if (node.DirectoryType == SpecialDirTypes.NotSpecial)
             {
+                // Add double click to center graph :
+                InputBinding inputBinding = new MouseBinding(GraphCommands.ArcCommand, new MouseGesture(MouseAction.LeftDoubleClick));
+                inputBinding.CommandParameter = Object.ReferenceEquals(node, this.rootNode) ?
+                                                    GraphCommands.ActionCenterOnParent
+                                                    : GraphCommands.ActionCenterOnDir;
+                arc.InputBindings.Add(inputBinding);
+
                 // TODO
                 //// standard zone
                 //frontGraph.FillPie(
@@ -365,29 +533,6 @@ namespace HDGraph.WpfDrawEngine
         }
 
         #region Doubleclick on a node
-
-        void arc_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            if (e.LeftButton == MouseButtonState.Pressed)
-            {
-                Arc arc = (Arc)sender;
-                IDirectoryNode node = arc.Node;
-                if (node != null)
-                {
-                    if (Object.ReferenceEquals(node, this.rootNode))
-                    {
-                        if (node.Parent != null)
-                            // Go to parent
-                            SetRoot(node.Parent, CurrentDrawOptions);
-                    }
-                    else
-                    {
-                        // Center graph on the clicked node.
-                        CenterGraphOnArc(sender, e, arc);
-                    }
-                }
-            }
-        }
 
         private void CenterGraphOnArc(object sender, EventArgs e, Arc arc)
         {
@@ -484,10 +629,9 @@ namespace HDGraph.WpfDrawEngine
         private Arc BuildArc(IDirectoryNode node, int currentLevel, float startAngle, float endAngle)
         {
             Arc arc = new Arc();
-            arc.ContextMenuOpening += new ContextMenuEventHandler(arc_ContextMenuOpening);
+            arc.BeginEdit();
             arc.DrawOptions = this.CurrentDrawOptions;
             arc.ContextMenu = (ContextMenu)FindResource("StandardContextMenu");
-            arc.BeginEdit();
             arc.StartAngle = startAngle;
             arc.StopAngle = endAngle - startAngle;
             arc.SmallRadius = Convert.ToSingle(currentLevel * singleLevelHeight);
@@ -496,30 +640,6 @@ namespace HDGraph.WpfDrawEngine
             arc.EndEdit();
             return arc;
         }
-
-        void arc_ContextMenuOpening(object sender, ContextMenuEventArgs e)
-        {
-            // TODO
-            //Arc arc = sender as Arc;
-            //if (arc == null)
-            //    return;
-            //IDirectoryNode selectedNode = arc.Node;
-            //e.Handled = true;
-            //Point p = arc.PointToScreen(new System.Windows.Point(e.CursorLeft, e.CursorTop));
-            //ActionExecutor.ShowContextMenu(new NodeContextEventArgs()
-            //    {
-            //        Position = new System.Drawing.PointF(Convert.ToSingle(p.X), Convert.ToSingle(p.Y)),
-            //        Node = selectedNode,
-            //    }
-            //);
-        }
-
-
-        private void contextMenu1_Opened(object sender, RoutedEventArgs e)
-        {
-
-        }
-
 
         //private Color myTransparentColor = Color.Black;
 
@@ -688,6 +808,7 @@ namespace HDGraph.WpfDrawEngine
 
         private void treeGraph1_ContextMenuOpening(object sender, ContextMenuEventArgs e)
         {
+
         }
 
         private void treeGraph1_MouseWheel(object sender, MouseWheelEventArgs e)
@@ -725,44 +846,6 @@ namespace HDGraph.WpfDrawEngine
                 encoder.Frames.Add(BitmapFrame.Create(render));
                 encoder.Save(stream);
             }
-        }
-
-        private void showDetailsMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            Arc arcTarget = ((ContextMenu)((MenuItem)sender).Parent).PlacementTarget as Arc;
-            if (ActionExecutor != null && arcTarget != null)
-                ActionExecutor.ShowNodeDetails(arcTarget.Node);
-        }
-
-        private void openExternalMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            Arc arcTarget = ((ContextMenu)((MenuItem)sender).Parent).PlacementTarget as Arc;
-            if (ActionExecutor != null && arcTarget != null)
-                ActionExecutor.OpenInExplorer(arcTarget.Node);
-        }
-
-        private void refreshMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            Arc arcTarget = ((ContextMenu)((MenuItem)sender).Parent).PlacementTarget as Arc;
-            if (ActionExecutor != null && arcTarget != null)
-            {
-                ActionExecutor.ExecuteTreeFullRefresh(arcTarget.Node);
-                FullRefresh();
-            }
-        }
-
-        private void centerOnDirMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            Arc arcTarget = ((ContextMenu)((MenuItem)sender).Parent).PlacementTarget as Arc;
-            if (ActionExecutor != null && arcTarget != null)
-                CenterGraphOnArc(sender, e, arcTarget);
-        }
-
-        private void deleteMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            Arc arcTarget = ((ContextMenu)((MenuItem)sender).Parent).PlacementTarget as Arc;
-            if (ActionExecutor != null && arcTarget != null)
-                ActionExecutor.DeleteNode(arcTarget.Node);
         }
     }
 }

@@ -7,6 +7,11 @@
     xmlns:skin="clr-namespace:HDGraph.WpfDrawEngine.Skins"
     x:Name="treeGraph1" ContextMenuOpening="treeGraph1_ContextMenuOpening"
     MouseWheel="treeGraph1_MouseWheel" Height="158.414" Width="267.612">
+    <UserControl.CommandBindings>
+        <CommandBinding Command="loc:GraphCommands.ArcCommand" 
+                        CanExecute="ArcCommandCanExecute"
+                        Executed="ArcCommandExecuted"/>
+    </UserControl.CommandBindings>
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -92,25 +97,64 @@
                                  To="10" Duration="00:00:01"/>
             </Storyboard>
 
-
-            <ContextMenu x:Key="StandardContextMenu" HasDropShadow="True" Opacity="0.9" Opened="contextMenu1_Opened">
-                <MenuItem Click="openExternalMenuItem_Click">
+            <ContextMenu x:Key="StandardContextMenu" HasDropShadow="True" Opacity="0.9">
+                <MenuItem 
+                    Command="loc:GraphCommands.ArcCommand"
+                    CommandParameter="{x:Static  loc:GraphCommands.ActionOpenExternal}"
+                    CommandTarget="{Binding Path=PlacementTarget, 
+                                      RelativeSource={RelativeSource FindAncestor, 
+                                      AncestorType={x:Type ContextMenu}}}">
                     <MenuItem.Header>
                         <TextBlock Text="{Binding Path=Name}" FontSize="16" FontWeight="Bold" ></TextBlock>
                     </MenuItem.Header>
                 </MenuItem>
                 <Separator/>
-                <MenuItem Header="{x:Static prop:Resources.ContextMenuShowDetails}" Click="showDetailsMenuItem_Click"/>
-                <MenuItem Header="{x:Static prop:Resources.ContextMenuOpenExternal}" Click="openExternalMenuItem_Click"/>
+                <MenuItem 
+                    Header="{x:Static prop:Resources.ContextMenuShowDetails}"
+                    Command="loc:GraphCommands.ArcCommand"
+                    CommandParameter="showDetails"
+                    CommandTarget="{Binding Path=PlacementTarget, 
+                                      RelativeSource={RelativeSource FindAncestor, 
+                                      AncestorType={x:Type ContextMenu}}}"/>
+                <MenuItem 
+                    Header="{x:Static prop:Resources.ContextMenuOpenExternal}" 
+                    Command="loc:GraphCommands.ArcCommand"
+                    CommandParameter="openExternal"
+                    CommandTarget="{Binding Path=PlacementTarget, 
+                                      RelativeSource={RelativeSource FindAncestor, 
+                                      AncestorType={x:Type ContextMenu}}}"/>
                 <Separator/>
-                <MenuItem Header="{x:Static prop:Resources.ContextMenuRefreshThis}" Click="refreshMenuItem_Click"/>
-                <MenuItem Header="{x:Static prop:Resources.ContextMenuCenterOnThis}" Click="centerOnDirMenuItem_Click"/>
+                <MenuItem 
+                    Header="{x:Static prop:Resources.ContextMenuRefreshThis}" 
+                    Command="loc:GraphCommands.ArcCommand"
+                    CommandParameter="refresh"
+                    CommandTarget="{Binding Path=PlacementTarget, 
+                                      RelativeSource={RelativeSource FindAncestor, 
+                                      AncestorType={x:Type ContextMenu}}}"/>
+                <MenuItem 
+                    Header="{x:Static prop:Resources.ContextMenuCenterOnThis}" 
+                    Command="loc:GraphCommands.ArcCommand"
+                    CommandParameter="centerOnDir"
+                    CommandTarget="{Binding Path=PlacementTarget, 
+                                      RelativeSource={RelativeSource FindAncestor, 
+                                      AncestorType={x:Type ContextMenu}}}"/>
                 <Separator/>
-                <MenuItem IsEnabled="False" Header="{x:Static prop:Resources.ContextMenuDeleteThis}">
-                    <MenuItem Header="{x:Static prop:Resources.ContextMenuDeletePermanently}" Click="deleteMenuItem_Click"/>
+                <MenuItem 
+                    Header="{x:Static prop:Resources.ContextMenuDeleteThis}"
+                    Command="loc:GraphCommands.ArcCommand"
+                    CommandParameter="canDelete"
+                    CommandTarget="{Binding Path=PlacementTarget, 
+                                          RelativeSource={RelativeSource FindAncestor, 
+                                          AncestorType={x:Type ContextMenu}}}">
+                    <MenuItem 
+                        Header="{x:Static prop:Resources.ContextMenuDeletePermanently}" 
+                        Command="loc:GraphCommands.ArcCommand"
+                        CommandParameter="delete"
+                        CommandTarget="{Binding Path=PlacementTarget, 
+                                          RelativeSource={RelativeSource FindAncestor, 
+                                          AncestorType={x:Type ContextMenu}}}"/>
                 </MenuItem>
             </ContextMenu>
-
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid Margin="0,0,0,0" x:Name="grid1" MouseWheel="grid1_MouseWheel">
@@ -335,7 +379,6 @@
                 </Grid>
             </Expander>
         </Canvas>
-
     </Grid>
 
 

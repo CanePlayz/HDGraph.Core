@@ -42,6 +42,13 @@ namespace HDGraph.Interfaces.DrawEngines
 
         void OpenInExplorer(IDirectoryNode iDirectoryNode);
 
-        void DeleteNode(IDirectoryNode iDirectoryNode);
+        /// <summary>
+        /// Delete the folder.
+        /// </summary>
+        /// <param name="iDirectoryNode"></param>
+        /// <returns>true if action has been started (even if it fails).</returns>
+        bool DeleteNode(IDirectoryNode iDirectoryNode);
+
+        bool FolderDeletionIsAllowed { get; }
     }
 }

@@ -1305,10 +1305,71 @@ namespace HDGraph
             System.Diagnostics.Process.Start(directoryNode.Path);
         }
 
-        public void DeleteNode(IDirectoryNode directoryNode)
+        #region Delete folder
+
+        private IDirectoryNode nodeToDelete;
+        public bool DeleteNode(IDirectoryNode directoryNode)
         {
-            throw new NotImplementedException();
+            string msg = String.Format(HDGTools.resManager.GetString("GoingToDeleteFolderMsg"),
+                                       directoryNode.Name);
+            if ((!Properties.Settings.Default.OptionDeletionAsk4Confirmation)
+                || MessageBox.Show(msg,
+                        ApplicationMessages.GoingToDeleteFolderTitle,
+                        MessageBoxButtons.OKCancel,
+                        MessageBoxIcon.Exclamation,
+                        MessageBoxDefaultButton.Button2) == DialogResult.OK)
+            {
+                try
+                {
+                    nodeToDelete = directoryNode;
+                    WaitForm waitForm = new WaitForm();
+                    waitForm.ShowDialogAndStartAction(ApplicationMessages.DeleteInProgress,
+                                                            DeleteSelectedForlder);
+                    if (waitForm.ActionError == null)
+                        MessageBox.Show(ApplicationMessages.DeletionCompleteMsg,
+                                        ApplicationMessages.OperationSuccessfullTitle,
+                                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    else
+                        NotifyUserAboutDeletionError(waitForm.ActionError);
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    WaitForm.HideWaitForm();
+                    NotifyUserAboutDeletionError(ex);
+                    return true;
+                }
+            }
+            return false;
         }
+
+        private void NotifyUserAboutDeletionError(Exception ex)
+        {
+            string msgErreur = String.Format(ApplicationMessages.ErrorDeletingFolder,
+                ex.Message, Environment.NewLine);
+            Trace.TraceError(HDGTools.PrintError(ex));
+            DialogResult answer = MessageBox.Show(msgErreur,
+                ApplicationMessages.Error,
+                MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            if (answer == DialogResult.Yes)
+                OpenInExplorer(nodeToDelete);
+        }
+
+        /// <summary>
+        /// Supprime définitivement un répertoire et rafraichit l'arborescence en conséquence.
+        /// </summary>
+        private void DeleteSelectedForlder()
+        {
+            System.IO.Directory.Delete(nodeToDelete.Path, true);
+        }
+
+        public bool FolderDeletionIsAllowed
+        {
+            get { return Properties.Settings.Default.OptionAllowFolderDeletion; }
+        }
+
+        #endregion
 
         #endregion
 

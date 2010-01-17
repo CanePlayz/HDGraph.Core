@@ -100,6 +100,7 @@
     </Compile>
     <Compile Include="BusinessConverters.cs" />
     <Compile Include="DrawEngine.cs" />
+    <Compile Include="GraphCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
