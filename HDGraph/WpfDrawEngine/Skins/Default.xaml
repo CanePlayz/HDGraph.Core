@@ -21,13 +21,45 @@
             </GeometryDrawing>
         </DrawingBrush.Drawing>
     </DrawingBrush>
+    <!-- style for unknown (lost ?) space -->
+    <VisualBrush x:Key="ArcBrushUnknownSpace"
+                 TileMode="Tile"
+                 ViewportUnits="Absolute"
+                 Viewport="0,0,10,14"
+                 Stretch="None" >
+        <VisualBrush.Visual>
+            <StackPanel Height="20" Background="BlanchedAlmond">
+                <TextBlock Margin="5 0 0 0" FontSize="14" Foreground="Red">?</TextBlock>
+            </StackPanel>
+        </VisualBrush.Visual>
+        <VisualBrush.Transform>
+            <RotateTransform Angle="90"></RotateTransform>
+        </VisualBrush.Transform>
+    </VisualBrush>
+
+
     <Style x:Key="FreeSpaceArcPathStyle">
         <Setter Property="Path.StrokeThickness" Value="1"></Setter>
         <Setter Property="Path.Fill" Value="{StaticResource ArcBrushFreeSpace}"/>
     </Style>
+    <Style x:Key="UnknownSpaceArcPathStyle">
+        <Setter Property="Path.StrokeThickness" Value="1"></Setter>
+        <Setter Property="Path.Fill" Value="{StaticResource ArcBrushUnknownSpace}"/>
+    </Style>
+
     <Style x:Key="FreeSpaceArcStyle">
         <Setter Property="Panel.ZIndex" Value="10"/>
         <Setter Property="loc:Arc.PathStyle" Value="{StaticResource FreeSpaceArcPathStyle}"/>
+        <Style.Triggers>
+            <Trigger Property="Path.IsMouseOver" Value="True">
+                <Setter Property="Panel.ZIndex" Value="20" />
+                <Setter Property="Path.StrokeThickness" Value="3"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style x:Key="UnknownSpaceArcStyle">
+        <Setter Property="Panel.ZIndex" Value="10"/>
+        <Setter Property="loc:Arc.PathStyle" Value="{StaticResource UnknownSpaceArcPathStyle}"/>
         <Style.Triggers>
             <Trigger Property="Path.IsMouseOver" Value="True">
                 <Setter Property="Panel.ZIndex" Value="20" />
@@ -107,7 +139,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
     <Style x:Key="HiddenFoldersArcStyle">
         <Setter Property="Panel.ZIndex" Value="5"/>
         <Setter Property="Path.Fill">

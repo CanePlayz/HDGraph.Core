@@ -302,6 +302,8 @@ namespace HDGraph.WpfDrawEngine
             BuildDirPart(node, currentLevel, startAngle, endAngle);
         }
 
+        private const int TooltipShowDuration = 20000;
+
         /// <summary>
         /// Dessine sur l'objet "graph" l'arc de cercle représentant une partie "inconnue" (confettis)
         /// d'un répertoire.
@@ -320,6 +322,7 @@ namespace HDGraph.WpfDrawEngine
             arc.ToolTip = String.Format(Properties.Resources.HiddenFolders,
                                         Environment.NewLine + Environment.NewLine,
                                         node.Name);
+            ToolTipService.SetShowDuration(arc, TooltipShowDuration);
             arc.ContextMenu = null;
             arc.EndEdit();
             canvas1.Children.Add(arc);
@@ -432,6 +435,7 @@ namespace HDGraph.WpfDrawEngine
             arc.ToolTip = String.Format(Properties.Resources.MultipleSmallFolders,
                                         Environment.NewLine + Environment.NewLine,
                                         node.Name);
+            ToolTipService.SetShowDuration(arc, TooltipShowDuration);
             arc.EndEdit();
             arc.ContextMenu = null;
             canvas1.Children.Add(arc);
@@ -460,7 +464,7 @@ namespace HDGraph.WpfDrawEngine
                 DataContext = node
             };
             arc.ToolTip = arcTooltip;
-
+            ToolTipService.SetShowDuration(arc, TooltipShowDuration);
 
             Binding b = new Binding()
             {
@@ -478,10 +482,7 @@ namespace HDGraph.WpfDrawEngine
             BindingOperations.SetBinding(arc, Arc.FontSizeProperty, b);
 
 
-
-
-
-            // TODO : now, apply the correct brush.
+            // now, apply the correct brush.
             if (node.DirectoryType == SpecialDirTypes.NotSpecial)
             {
                 // Add double click to center graph :
@@ -490,45 +491,16 @@ namespace HDGraph.WpfDrawEngine
                                                     GraphCommands.ActionCenterOnParent
                                                     : GraphCommands.ActionCenterOnDir;
                 arc.InputBindings.Add(inputBinding);
-
-                // TODO
-                //// standard zone
-                //frontGraph.FillPie(
-                //    GetBrushForAngles(rec, startAngle, nodeAngle),
-                //    Rectangle.Round(rec),
-                //    startAngle,
-                //    nodeAngle);
-                //frontGraph.DrawPie(new Pen(Color.Black, 0.05f), rec, startAngle, nodeAngle);
-                //// For tests
-                ////float middleAngle = startAngle + (nodeAngle / 2f);
-                ////frontGraph.DrawRectangle(new Pen(colorManager.GetNextColor(middleAngle), 0.05f),
-                ////                        Rectangle.Round(rec));
-                // TODO : 
-                //Canvas.SetZIndex(arc, DEFAULT_Z_INDEX_STANDARD_ARC);
             }
             else if (node.DirectoryType == SpecialDirTypes.FreeSpaceAndShow)
             {
+                // free space
                 arc.Style = (Style)FindResource("FreeSpaceArcStyle");
-                //// free space
-                //frontGraph.FillPie(new System.Drawing.Drawing2D.HatchBrush(
-                //                            System.Drawing.Drawing2D.HatchStyle.Wave,
-                //                            Color.LightGray,
-                //                            Color.White),
-                //                Rectangle.Round(rec),
-                //                startAngle,
-                //                nodeAngle);
             }
             else if (node.DirectoryType == SpecialDirTypes.UnknownPart)
             {
-                // TODO.
-                //// non-calculable files
-                //frontGraph.FillPie(new System.Drawing.Drawing2D.HatchBrush(
-                //                            System.Drawing.Drawing2D.HatchStyle.Trellis,
-                //                            Color.Red,
-                //                            Color.White),
-                //                Rectangle.Round(rec),
-                //                startAngle,
-                //                nodeAngle);
+                // non-calculable files
+                arc.Style = (Style)FindResource("UnknownSpaceArcStyle");
             }
         }
 
@@ -634,7 +606,7 @@ namespace HDGraph.WpfDrawEngine
             arc.ContextMenu = (ContextMenu)FindResource("StandardContextMenu");
             arc.StartAngle = startAngle;
             arc.StopAngle = endAngle - startAngle;
-            if (arc.StopAngle == 360 && node.Parent != null)
+            if (arc.StopAngle == 360 && currentLevel != 0)
                 arc.StopAngle = 359.999f; // prevent overlap of disks when 2 folders have both an angle of 360 degrees (parent with only one child). 
             arc.SmallRadius = Convert.ToSingle(currentLevel * singleLevelHeight);
             arc.LargeRadius = Convert.ToSingle((currentLevel + 1) * singleLevelHeight);
