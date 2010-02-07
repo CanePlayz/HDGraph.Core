@@ -168,6 +168,12 @@
   <data name="LabelRotation" xml:space="preserve">
     <value>Rotation :</value>
   </data>
+  <data name="LabelTextDensity" xml:space="preserve">
+    <value>Densité du texte :</value>
+  </data>
+  <data name="LabelTextDensityTooltip" xml:space="preserve">
+    <value>Angle minimum pour afficher le libellé.</value>
+  </data>
   <data name="LabelTextSize" xml:space="preserve">
     <value>Taille du texte :</value>
   </data>

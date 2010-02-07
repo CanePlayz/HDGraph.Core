@@ -168,6 +168,12 @@
   <data name="LabelRotation" xml:space="preserve">
     <value>Rotation:</value>
   </data>
+  <data name="LabelTextDensity" xml:space="preserve">
+    <value>Text density:</value>
+  </data>
+  <data name="LabelTextDensityTooltip" xml:space="preserve">
+    <value>Minimum angle required to print the arc text.</value>
+  </data>
   <data name="LabelTextSize" xml:space="preserve">
     <value>Text size:</value>
   </data>

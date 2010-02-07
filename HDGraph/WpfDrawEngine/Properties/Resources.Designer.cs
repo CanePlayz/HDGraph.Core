@@ -214,6 +214,24 @@ namespace HDGraph.WpfDrawEngine.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Text density:.
+        /// </summary>
+        public static string LabelTextDensity {
+            get {
+                return ResourceManager.GetString("LabelTextDensity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimum angle required to print the arc text..
+        /// </summary>
+        public static string LabelTextDensityTooltip {
+            get {
+                return ResourceManager.GetString("LabelTextDensityTooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Text size:.
         /// </summary>
         public static string LabelTextSize {

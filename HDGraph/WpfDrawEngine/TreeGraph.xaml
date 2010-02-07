@@ -350,6 +350,7 @@
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
                     <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{x:Static prop:Resources.LabelRotation}" />
                     <Slider Grid.Column="1" Grid.Row="0"
@@ -375,6 +376,16 @@
                            HorizontalAlignment="Left" VerticalAlignment="Center"
                            Content="{Binding ElementName=sliderTextSize, Path=Value}"
                            ContentStringFormat="{}{0:0.0}" />
+                    
+                    <TextBlock Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{x:Static prop:Resources.LabelTextDensity}"/>
+                    <Slider Grid.Column="1" Grid.Row="3" Name="sliderTextDensity" 
+                            Margin="10,10,10,10" Maximum="20" Minimum="1" Value="{Binding ElementName=treeGraph1, Path=CurrentDrawOptions.TextDensity}"
+                            ToolTip="{x:Static prop:Resources.LabelTextDensityTooltip}"
+                            />
+                    <Label Grid.Column="2" Grid.Row="3"
+                           HorizontalAlignment="Left" VerticalAlignment="Center"
+                           Content="{Binding ElementName=sliderTextDensity, Path=Value}"
+                           ContentStringFormat="&gt; {0:0.0}°" />
 
                 </Grid>
             </Expander>
