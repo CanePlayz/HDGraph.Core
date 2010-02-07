@@ -634,6 +634,8 @@ namespace HDGraph.WpfDrawEngine
             arc.ContextMenu = (ContextMenu)FindResource("StandardContextMenu");
             arc.StartAngle = startAngle;
             arc.StopAngle = endAngle - startAngle;
+            if (arc.StopAngle == 360 && node.Parent != null)
+                arc.StopAngle = 359.999f; // prevent overlap of disks when 2 folders have both an angle of 360 degrees (parent with only one child). 
             arc.SmallRadius = Convert.ToSingle(currentLevel * singleLevelHeight);
             arc.LargeRadius = Convert.ToSingle((currentLevel + 1) * singleLevelHeight);
             arc.Node = node;
