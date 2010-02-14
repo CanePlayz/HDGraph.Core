@@ -17,6 +17,7 @@ using HDGraph.Interop;
 using HDGraph.Resources;
 using HDGraph.Interfaces.ScanEngines;
 using HDGraph.Interfaces.DrawEngines;
+using HDGraph.Properties;
 
 namespace HDGraph
 {
@@ -105,22 +106,22 @@ namespace HDGraph
             scanEngine.ShowDiskFreeSpace = Properties.Settings.Default.OptionShowFreeSpace;
             //if (!ToolProviderBase.CurrentOsIsWindows())
             //{
-                // Clear config file, because it's not stable on Mono.
-                //HDGraph.Properties.Settings.Default.Reset();
-                //HDGraph.Properties.Settings.Default.Reload();
-                //Trace.Write("Please note that settings are ignored, due tu Mono bug loading config file.");
+            // Clear config file, because it's not stable on Mono.
+            //HDGraph.Properties.Settings.Default.Reset();
+            //HDGraph.Properties.Settings.Default.Reload();
+            //Trace.Write("Please note that settings are ignored, due tu Mono bug loading config file.");
 
             //}
-            
+
 
             InitializeComponent();
-            
+
             if (!changeLangIsSuccess)
                 MessageBox.Show(resManager.GetString("ErrorInConfigLanguage"),
                                 resManager.GetString("ErrorInConfigLanguageTitle"),
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Warning);
-            
+
             if (!ToolProviderBase.CurrentOsIsWindows())
             {
                 // Fix a Mono Bug about trackBar Management.
@@ -1007,10 +1008,25 @@ namespace HDGraph
 
         }
 
+        private const string HDGraphForum = "http://sourceforge.net/projects/hdgraph/forums";
+
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            bool isFirstRun = Settings.Default.IsFirstRun;
+            if (isFirstRun)
+                Settings.Default.IsFirstRun = false;
+
             HDGraph.Properties.Settings.Default.MyDrawOptions = DrawOptions;
             HDGraph.Properties.Settings.Default.Save();
+
+            if (isFirstRun)
+            {
+                DialogResult res = MessageBox.Show(ApplicationMessages.ExperimentalVersionGoToForum, "HDGraph", MessageBoxButtons.YesNoCancel);
+                if (res == DialogResult.Cancel)
+                    e.Cancel = true;
+                else if (res == DialogResult.Yes)
+                    Process.Start(HDGraphForum);
+            }
         }
 
         private void shortcutsToolStripMenuItem_Click(object sender, EventArgs e)

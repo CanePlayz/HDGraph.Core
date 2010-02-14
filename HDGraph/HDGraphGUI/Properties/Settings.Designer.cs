@@ -239,7 +239,7 @@ namespace HDGraph.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0959a259-3900-4ffe-ae6f-a9e3a63d2c6b")]
+        [global::System.Configuration.DefaultSettingValueAttribute("9053b2b2-e6e3-4ee7-bdac-fcca15c9e3be")]
         public global::System.Guid StartupDrawEngine {
             get {
                 return ((global::System.Guid)(this["StartupDrawEngine"]));
@@ -269,6 +269,18 @@ namespace HDGraph.Properties {
             }
             set {
                 this["OptionCheckForNewVersionAfterStartup"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool IsFirstRun {
+            get {
+                return ((bool)(this["IsFirstRun"]));
+            }
+            set {
+                this["IsFirstRun"] = value;
             }
         }
     }

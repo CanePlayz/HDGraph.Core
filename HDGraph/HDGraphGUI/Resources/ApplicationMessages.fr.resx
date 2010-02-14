@@ -377,4 +377,10 @@ termes.</value>
   <data name="YourVersionIsUpToDate" xml:space="preserve">
     <value>Votre version est à jour, c'est la dernière version disponible.</value>
   </data>
+  <data name="ExperimentalVersionGoToForum" xml:space="preserve">
+    <value>Cette version d'HDGraph est une version experimentale. Pour nous aider à la faire évoluer, pourriez-vous svp nous transmettre vos impressions sur le forum HDGraph ?
+Toutes vos impressions, positives ou négatives, rapport de bug ou demande de fonctionnalité, seront très appréciées.
+
+Voulez-vous visiter le forum HDGraph maintenant ?</value>
+  </data>
 </root>

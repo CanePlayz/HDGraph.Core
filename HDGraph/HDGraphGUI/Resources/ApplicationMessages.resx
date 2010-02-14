@@ -379,4 +379,9 @@ knowledge of the CeCILL license and that you accept its terms.</value>
   <data name="YourVersionIsUpToDate" xml:space="preserve">
     <value>Your version is up to date (it's already the latest version available).</value>
   </data>
+  <data name="ExperimentalVersionGoToForum" xml:space="preserve">
+    <value>This version of HDGraph is still experimental. Please reports your feedback on the HDGraph forum (your feedback, good or bad, bug report or feature request, will be greatly appreciated). 
+
+Would you like to go to the HDGraph forum now ?</value>
+  </data>
 </root>
