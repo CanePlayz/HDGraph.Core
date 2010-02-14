@@ -53,7 +53,7 @@ namespace HDGraph.PlugIn
                 catch (Exception ex)
                 {
                     Trace.TraceError(HDGTools.PrintError(ex));
-                    MessageBox.Show("Error loading Plugin from file " + fileName + " : " + ex, "Plugin failed to load.", MessageBoxButtons.OK, MessageBoxIcon.Warning); // TODO : localize ?
+                    //MessageBox.Show("Error loading Plugin from file " + fileName + " : " + ex, "Plugin failed to load.", MessageBoxButtons.OK, MessageBoxIcon.Warning); // TODO : localize ?
                 }
             }
             return plugInsList;

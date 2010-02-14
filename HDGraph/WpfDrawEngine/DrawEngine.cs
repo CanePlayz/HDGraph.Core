@@ -72,5 +72,19 @@ namespace HDGraph.WpfDrawEngine
         }
 
         #endregion
+
+        #region IDrawEngine Members
+
+
+        public void UpdateVisual(System.Windows.Forms.Control control)
+        {
+            if (control == null
+                 || !(control is TreeGraphContainer))
+                throw new ArgumentException("The given control is null or is not a TreeGraphContainer.", "control");
+
+            ((TreeGraphContainer)control).UpdateVisual();
+        }
+
+        #endregion
     }
 }

@@ -15,6 +15,7 @@ using HDGraph.Interfaces.DrawEngines;
 using System.Globalization;
 using System.Windows.Media.Animation;
 using System.IO;
+using System.Windows.Threading;
 
 namespace HDGraph.WpfDrawEngine
 {
@@ -179,8 +180,11 @@ namespace HDGraph.WpfDrawEngine
                 return;
             }
             welcomeControl.Visibility = Visibility.Collapsed;
+            DrawingMask.Visibility = Visibility.Visible;
             Cursor originalCursor = Cursor;
             Cursor = Cursors.Wait;
+            WpfUtils.DoEvents(); // force draw of DrawingMask
+
             this.rootNode = root;
             sliderScale.Value = 1;
             canvas1.Children.Clear();
@@ -209,6 +213,7 @@ namespace HDGraph.WpfDrawEngine
             BuildTree(rootNode, 0, 0, 360);
             ActionExecutor.Notify4NewRootNode(root);
             Cursor = originalCursor;
+            DrawingMask.Visibility = Visibility.Collapsed;
         }
 
 
@@ -821,5 +826,6 @@ namespace HDGraph.WpfDrawEngine
                 encoder.Save(stream);
             }
         }
+
     }
 }

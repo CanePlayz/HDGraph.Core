@@ -102,15 +102,25 @@ namespace HDGraph
             resManager = new System.Resources.ResourceManager(this.GetType().Assembly.GetName().Name + ".Resources.ApplicationMessages", this.GetType().Assembly);
             HDGTools.resManager = resManager;
             CreateScanEngine();
-
             scanEngine.ShowDiskFreeSpace = Properties.Settings.Default.OptionShowFreeSpace;
+            //if (!ToolProviderBase.CurrentOsIsWindows())
+            //{
+                // Clear config file, because it's not stable on Mono.
+                //HDGraph.Properties.Settings.Default.Reset();
+                //HDGraph.Properties.Settings.Default.Reload();
+                //Trace.Write("Please note that settings are ignored, due tu Mono bug loading config file.");
+
+            //}
+            
+
+            InitializeComponent();
+            
             if (!changeLangIsSuccess)
                 MessageBox.Show(resManager.GetString("ErrorInConfigLanguage"),
                                 resManager.GetString("ErrorInConfigLanguageTitle"),
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Warning);
-
-            InitializeComponent();
+            
             if (!ToolProviderBase.CurrentOsIsWindows())
             {
                 // Fix a Mono Bug about trackBar Management.
@@ -118,6 +128,7 @@ namespace HDGraph
                 trackBarTextDensity.Minimum = -10;
                 trackBarImageRotation.Minimum = -10;
                 linkLabelHelpGraph.Visible = false; // Help link not implemented yet in Mono
+                this.comboBoxPath.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             }
             ApplyIcon();
             this.Text = AboutBox.AssemblyTitle;
@@ -233,8 +244,8 @@ namespace HDGraph
 
         private void CreateScanEngine()
         {
-            if (Properties.Settings.Default.OptionUseSimpleScanEngine
-                || !ToolProviderBase.CurrentOsIsWindows())
+            if (!ToolProviderBase.CurrentOsIsWindows()
+                || Properties.Settings.Default.OptionUseSimpleScanEngine)
                 scanEngine = new SimpleFileSystemScanEngine();
             else
                 scanEngine = new NativeFileSystemScanEngine();
@@ -1051,7 +1062,7 @@ namespace HDGraph
         {
             if (graphControl is IManualRefreshControl)
                 ((IManualRefreshControl)graphControl).Resizing = false;
-            RefreshGraphControl();
+            drawEngine.UpdateVisual(graphControl);
         }
 
 

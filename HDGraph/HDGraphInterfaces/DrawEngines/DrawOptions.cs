@@ -76,7 +76,7 @@ namespace HDGraph.Interfaces.DrawEngines
             }
         }
 
-        private bool showSize;
+        private bool showSize = true;
         public bool ShowSize
         {
             get { return showSize; }
@@ -149,7 +149,7 @@ namespace HDGraph.Interfaces.DrawEngines
             }
         }
 
-        private float textDensity;
+        private float textDensity = 4;
         /// <summary>
         /// Angle min to enable text print.
         /// </summary>

@@ -335,7 +335,7 @@
         </Label>
         <skin:Arrow x:Name="welcomeControl"></skin:Arrow>
         <Canvas>
-            
+
             <Expander Header="{x:Static prop:Resources.LabelViewOptions}" BorderBrush="Gray" BorderThickness="2" Margin="20"
                   Name="expander1" Background="#55BAC6FF"
                   Padding="10 0 10 0"
@@ -376,7 +376,7 @@
                            HorizontalAlignment="Left" VerticalAlignment="Center"
                            Content="{Binding ElementName=sliderTextSize, Path=Value}"
                            ContentStringFormat="{}{0:0.0}" />
-                    
+
                     <TextBlock Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{x:Static prop:Resources.LabelTextDensity}"/>
                     <Slider Grid.Column="1" Grid.Row="3" Name="sliderTextDensity" 
                             Margin="10,10,10,10" Maximum="20" Minimum="1" Value="{Binding ElementName=treeGraph1, Path=CurrentDrawOptions.TextDensity}"
@@ -390,6 +390,17 @@
                 </Grid>
             </Expander>
         </Canvas>
+        <Grid Background="#AAAAAAAA" Panel.ZIndex="999"
+              x:Name="DrawingMask"
+              Visibility="Collapsed">
+            <Border BorderBrush="Black" 
+                    BorderThickness="5" 
+                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                    CornerRadius="10" Background="#99FFFFFF"
+                    >
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="28" Margin="20 10 20 10" Text="{x:Static prop:Resources.LabelDrawing}"></TextBlock>
+            </Border>
+        </Grid>
     </Grid>
 
 

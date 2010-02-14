@@ -165,8 +165,14 @@
   <data name="HiddenFolders" xml:space="preserve">
     <value>There are hidden folders here. {0}To show them, center the graph on their parent ("{1}") with a double click.</value>
   </data>
+  <data name="LabelDrawing" xml:space="preserve">
+    <value>Drawing...</value>
+  </data>
   <data name="LabelRotation" xml:space="preserve">
     <value>Rotation:</value>
+  </data>
+  <data name="LabelShowMeWhereToStart" xml:space="preserve">
+    <value>Show me where to start</value>
   </data>
   <data name="LabelTextDensity" xml:space="preserve">
     <value>Text density:</value>
@@ -182,6 +188,9 @@
   </data>
   <data name="LabelViewOptions" xml:space="preserve">
     <value>View options</value>
+  </data>
+  <data name="LabelWelcome" xml:space="preserve">
+    <value>Welcome to HDGraph !</value>
   </data>
   <data name="LabelZoom" xml:space="preserve">
     <value>Zoom:</value>

@@ -43,6 +43,7 @@ namespace HDGraph
             set { graphPen = value; }
         }
 
+        [ReadOnly(true)]
         public override Font Font
         {
             get

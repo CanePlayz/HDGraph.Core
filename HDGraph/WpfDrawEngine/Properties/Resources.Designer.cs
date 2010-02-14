@@ -205,11 +205,29 @@ namespace HDGraph.WpfDrawEngine.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Drawing....
+        /// </summary>
+        public static string LabelDrawing {
+            get {
+                return ResourceManager.GetString("LabelDrawing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rotation:.
         /// </summary>
         public static string LabelRotation {
             get {
                 return ResourceManager.GetString("LabelRotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show me where to start.
+        /// </summary>
+        public static string LabelShowMeWhereToStart {
+            get {
+                return ResourceManager.GetString("LabelShowMeWhereToStart", resourceCulture);
             }
         }
         
@@ -255,6 +273,15 @@ namespace HDGraph.WpfDrawEngine.Properties {
         public static string LabelViewOptions {
             get {
                 return ResourceManager.GetString("LabelViewOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome to HDGraph !.
+        /// </summary>
+        public static string LabelWelcome {
+            get {
+                return ResourceManager.GetString("LabelWelcome", resourceCulture);
             }
         }
         

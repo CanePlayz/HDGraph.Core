@@ -79,5 +79,19 @@ namespace HDGraph.DrawEngine
         }
 
         #endregion
+
+        #region IDrawEngine Members
+
+
+        public void UpdateVisual(Control control)
+        {
+            if (control == null
+               || !(control is TreeGraph))
+                throw new ArgumentException("The given control is null or is not a TreeGraph.", "control");
+
+            ((TreeGraph)control).ForceRefresh();
+        }
+
+        #endregion
     }
 }

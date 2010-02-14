@@ -165,8 +165,14 @@
   <data name="HiddenFolders" xml:space="preserve">
     <value>Sous-répertoires masqués par HDGraph pour des raisons de performances. {0}Pour les afficher, centrer la vue sur le répertoire parent ("{1}") via un double-clic sur celui-ci.</value>
   </data>
+  <data name="LabelDrawing" xml:space="preserve">
+    <value>Dessin en cours...</value>
+  </data>
   <data name="LabelRotation" xml:space="preserve">
     <value>Rotation :</value>
+  </data>
+  <data name="LabelShowMeWhereToStart" xml:space="preserve">
+    <value>Montrez-moi par où commencer</value>
   </data>
   <data name="LabelTextDensity" xml:space="preserve">
     <value>Densité du texte :</value>
@@ -182,6 +188,9 @@
   </data>
   <data name="LabelViewOptions" xml:space="preserve">
     <value>Options d'affichage</value>
+  </data>
+  <data name="LabelWelcome" xml:space="preserve">
+    <value>Bienvenue dans HDGraph !</value>
   </data>
   <data name="LabelZoom" xml:space="preserve">
     <value>Zoom :</value>

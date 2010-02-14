@@ -17,6 +17,10 @@ namespace HDGraph.Interfaces.DrawEngines
         void SaveAsImageToFile(System.Windows.Forms.Control control, string filePath);
         void Print(System.Windows.Forms.Control control);
         void PrintWithPreview(System.Windows.Forms.Control control);
+        /// <summary>
+        /// Redraw the whole graphic
+        /// </summary>
+        void UpdateVisual(System.Windows.Forms.Control control);
 
         #region Options management
 

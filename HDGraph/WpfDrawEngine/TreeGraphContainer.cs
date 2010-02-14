@@ -68,7 +68,7 @@ namespace HDGraph.WpfDrawEngine
         }
 
 
-        private void UpdateVisual()
+        public void UpdateVisual()
         {
             GetTreeGraph().SetRoot(node, options);
         }
