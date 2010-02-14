@@ -4,20 +4,20 @@ HDGraph ChangeLog (http://hdgraph.sourceforge.net)
 [French version at the bottom !]
 [Version Française plus bas !]
 
-Version 1.4.0
+Version 1.4.0 "Beta"
 ======================================================
 Added:
-	- Totaly new draw engine (WPF). Faster and more powerfull. Defined as a plugin, which requires ".Net framework" version 3.5 or higher.
+	- Totaly new draw engine (WPF). Faster and more powerfull. Defined as a plugin, which requires ".Net framework" version 3.5 SP1 or higher. Original draw engine ("basic engine") is still available.
 	- WPF draw engine : Zoom feature
 	- WPF draw engine : Full "fluid" rotation, using slider or mouse directly.
 	- WPF draw engine : auto hide too small folders, in order to speed up the build of the graph.
-	- New Print feature (in File menu)
-	- TODO : New "native" scan engine on Windows : faster and more accurate (up to 6 times faster).
+	- WPF draw engine : New Print feature (in File menu)
+	- New "native" scan engine on Windows : faster and more accurate (up to 6 times faster).
 	- "Drag & drop" capable (from Windows explorer)
-	- Auto check (after startup) if a new version is available. Check can be done manually via the "Help" menu.
+	- Auto check (after startup) if a new version is available. Check can be done manually via the "Help" menu. Auto check can be disabled in the Options menu.
+	- Partially compatible with Linux and Mac (basic draw engine only), thanks to Mono (http://www.mono-project.com).
 Improved: 
 	- Design refactored, mostly with the WPF draw engine.
-	- (TODO) Compatible with Linux and Mac (basic draw engine only).
 Fixed:
 	- Bug on "Text Density" : value loaded from a previous saved state was wrong.
 	- Wrong message when folder deletion failed.
@@ -136,6 +136,25 @@ Initial public release.
 *				VERSION FRANCAISE
 *
 ******************************************************/
+
+Version 1.4.0 "Beta"
+======================================================
+Ajouts et améliorations:
+	- Tout nouveau moteur de dessin (WPF) qui fonctionne indépendament du moteur d'origine. Plus rapide et plus puissant. Réalisé sous forme de plugin, il requiert le framework Microsoft .NET version 3.5 SP1 ou supérieur. L'application reste fonctionnelle avec le moteur d'origine pour ceux qui ne disposent pas de cette version du framework.
+	- Moteur de dessin WPF : Fonctionnalité de Zoom
+	- Moteur de dessin WPF : Rotation "fluide", directement avec la souris sur le graphique.
+	- Moteur de dessin WPF : les dossiers trop petits en taille sont masqués, pour améliorer les performances de l'application.
+	- Moteur de dessin WPF : l'impression est disponible via le menu Fichier.
+	- Nouveau moteur de scan "natif" sous Windows : plus rapide et plus précis (jusqu'à 6 fois plus rapide).
+	- Possibilité de "Drag & drop" depuis l'explorateur Windows pour choisir le chemin à analyser
+	- Vérification automatique au démarrage de la disponibilité d'une nouvelle version. La vérification peut aussi être lancée manuellement via le menu "Aide". La vérification automatique peut être désactivée via le menu des options.
+	- Partiellement compatible avec Linux and Mac (moteur de dessin basique seulement) via Mono (http://www.mono-project.com).
+	- Design remodelé, principalement grâce au nouveau moteur de dessin.
+Corrections:
+	- Bug sur la densité du texte
+	- Message lors d'un échec de suppression corrigé.
+	- Autres bugs mineurs
+	
 
 Version 1.3.0
 ======================================================
