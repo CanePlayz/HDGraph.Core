@@ -20,12 +20,12 @@ Install on WINDOWS :
 - Start the installation file (setup file).
 - Follow the instructions.
 
-Install on Linux, Mac OS :
+Install on Linux, Mac OS : 
 ======================================================
 
 - You must install Mono if it's not installed already. (Version 2.6.1 or higher is recommended. HDGraph has NOT been tested with an older version of Mono). Download Mono at http://mono-project.com .
 - Unzip the HDGraph Zip file somewhere on your hard disk.
-- Open a shell and execute the following command (without quotes) :   "mono HDGraph.exe"
+- Open a shell and execute, in the HDGraph folder, the following command (without quotes) :   "mono HDGraph.exe"
 	
 
 Uninstall on WINDOWS :
@@ -87,7 +87,7 @@ Installation sous Linux, Mac OS :
 
 - Vous devez installer Mono s'il n'est pas déjà installé. La version 2.6.1 ou supérieure est recommandée. HDGraph n'a PAS été testé avec une version antérieur de Mono. Mono est disponible sur http://mono-project.com .
 - Décompresser le fichier Zip de HDGraph sur le disque dur.
-- Ouvrir un shell et exécuter la commande suivante (sans les guillemets) :   "mono HDGraph.exe"
+- Ouvrir un shell, se positionner dans le répertoire où a été extrait le Zip HDGraph, et exécuter la commande suivante (sans les guillemets) :   "mono HDGraph.exe"
 
 
 Désinstallation sous WINDOWS:
