@@ -59,18 +59,18 @@ namespace HDGraph.WpfDrawEngine
         {
             this.node = node;
             if (alreadyLoaded)
-                UpdateVisual();
+                GetTreeGraph().SetRoot(node, options);
         }
 
         public IDirectoryNode GetRoot()
         {
-            return node;
+            return GetTreeGraph().GetCurrentRoot();
         }
 
 
         public void UpdateVisual()
         {
-            GetTreeGraph().SetRoot(node, options);
+            GetTreeGraph().FullRefresh();
         }
 
         public void SaveAsImageToFile(string filePath)

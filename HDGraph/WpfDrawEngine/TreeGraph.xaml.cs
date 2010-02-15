@@ -166,6 +166,11 @@ namespace HDGraph.WpfDrawEngine
 
         private IDirectoryNode rootNode;
 
+        public IDirectoryNode GetCurrentRoot()
+        {
+            return rootNode;
+        }
+
         public void FullRefresh()
         {
             SetRoot(rootNode, CurrentDrawOptions);
@@ -190,7 +195,6 @@ namespace HDGraph.WpfDrawEngine
             canvas1.Children.Clear();
             canvas1.Children.Add(opacityGrid);
 
-            // Création du bitmap buffer
             CurrentDrawOptions = options;
 
             // init des données du calcul
