@@ -1,6 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Setup", "Setup", "{C5B4FD8D-797A-4BD4-A1D2-DFB9739C542B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6064F259-64F0-4099-A1E2-C96C1982A7A4}"
+	ProjectSection(SolutionItems) = preProject
+		TestPlan HDGraph.xlsx = TestPlan HDGraph.xlsx
+	EndProjectSection
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HDGraphGUI", "HDGraphGUI\HDGraphGUI.csproj", "{99A5D2B9-4B2C-4177-A69C-02BCB163DC78}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupHDGraph", "SetupHDGraph\HDGraphSetup.vdproj", "{EE7BF0A8-9FBA-4CAD-8B88-469EF41B7DF1}"
@@ -16,13 +23,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfDrawEngine", "WpfDrawEngine\WpfDrawEngine.csproj", "{3337D3AA-88D5-44E4-9B22-7EE588140A04}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTests", "WpfTests\WpfTests.csproj", "{EADFA540-90F3-48C3-AF84-07CA68F566D6}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Setup", "Setup", "{C5B4FD8D-797A-4BD4-A1D2-DFB9739C542B}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6064F259-64F0-4099-A1E2-C96C1982A7A4}"
-	ProjectSection(SolutionItems) = preProject
-		TestPlan HDGraph.xlsx = TestPlan HDGraph.xlsx
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
@@ -93,8 +93,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{EE7BF0A8-9FBA-4CAD-8B88-469EF41B7DF1} = {C5B4FD8D-797A-4BD4-A1D2-DFB9739C542B}
 		{F8B79193-FAA4-46BC-B304-075A3B75BA19} = {C5B4FD8D-797A-4BD4-A1D2-DFB9739C542B}
 		{FB6757F0-8155-44DD-A28D-3A995DAAB57A} = {C5B4FD8D-797A-4BD4-A1D2-DFB9739C542B}
-		{EE7BF0A8-9FBA-4CAD-8B88-469EF41B7DF1} = {C5B4FD8D-797A-4BD4-A1D2-DFB9739C542B}
 	EndGlobalSection
 EndGlobal
