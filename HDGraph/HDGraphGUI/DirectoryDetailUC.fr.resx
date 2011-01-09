@@ -187,15 +187,6 @@
   <data name="totalSizeTextBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 13</value>
   </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>351, 91</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 81</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Options d'affichage</value>
-  </data>
   <data name="radioButtonSizesInBytes.Location" type="System.Drawing.Point, System.Drawing">
     <value>88, 35</value>
   </data>
@@ -223,20 +214,35 @@
   <data name="radioButtonHumandReadableSizes.Text" xml:space="preserve">
     <value>Unité automatique</value>
   </data>
-  <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>303, 48</value>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>351, 91</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 81</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Options d'affichage</value>
   </data>
   <data name="showDetailsInANewWindowToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>302, 22</value>
+    <value>309, 22</value>
   </data>
   <data name="showDetailsInANewWindowToolStripMenuItem.Text" xml:space="preserve">
     <value>Afficher les &amp;détails dans une nouvelle fenêtre</value>
   </data>
+  <data name="centerGraphOnThisDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>309, 22</value>
+  </data>
+  <data name="centerGraphOnThisDirectoryToolStripMenuItem.Text" xml:space="preserve">
+    <value>&amp;Centrer le graphique sur ce répertoire</value>
+  </data>
   <data name="openThisDirectoryInWindowsExplorerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>302, 22</value>
+    <value>309, 22</value>
   </data>
   <data name="openThisDirectoryInWindowsExplorerToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Ouvrir dans l'explorateur Windows</value>
+  </data>
+  <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>310, 70</value>
   </data>
   <data name="textBoxNumberOfFiles.Location" type="System.Drawing.Point, System.Drawing">
     <value>231, 113</value>
