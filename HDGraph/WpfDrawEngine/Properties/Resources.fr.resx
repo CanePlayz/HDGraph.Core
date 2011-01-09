@@ -168,6 +168,9 @@
   <data name="LabelDrawing" xml:space="preserve">
     <value>Dessin en cours...</value>
   </data>
+  <data name="LabelNothingToDraw" xml:space="preserve">
+    <value>Il n'y a rien à dessiner pour ce dossier. Le dossier est peut-être vide, ou une erreur est survenue.</value>
+  </data>
   <data name="LabelRotation" xml:space="preserve">
     <value>Rotation :</value>
   </data>

@@ -168,6 +168,9 @@
   <data name="LabelDrawing" xml:space="preserve">
     <value>Drawing...</value>
   </data>
+  <data name="LabelNothingToDraw" xml:space="preserve">
+    <value>There is nothing to draw for this folder. The folder is probably empty or an error occured.</value>
+  </data>
   <data name="LabelRotation" xml:space="preserve">
     <value>Rotation:</value>
   </data>

@@ -54,6 +54,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\HDGraphGUI\Properties\AssemblyCommonInfo.cs">
+      <Link>Properties\AssemblyCommonInfo.cs</Link>
+    </Compile>
     <Compile Include="DrawEngines\DrawOptions.cs" />
     <Compile Include="DrawEngines\IActionExecutor.cs" />
     <Compile Include="DrawEngines\IDrawEngineContract.cs" />

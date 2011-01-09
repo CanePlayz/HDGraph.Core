@@ -162,7 +162,11 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
-
+        <TextBlock x:Name="textBlockNothingToDraw" Visibility="Collapsed"
+                   VerticalAlignment="Center" HorizontalAlignment="Center" 
+                   Margin="0 0 0 0" TextAlignment="Center"
+                   TextWrapping="Wrap"
+                   FontSize="24" Text="{x:Static prop:Resources.LabelNothingToDraw}"></TextBlock>
         <ScrollViewer Grid.Row="0"
             Name="scrollViewer1" 
             VerticalScrollBarVisibility="Auto" 

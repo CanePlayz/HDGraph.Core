@@ -4,6 +4,12 @@ HDGraph ChangeLog (http://hdgraph.sourceforge.net)
 [French version at the bottom !]
 [Version Française plus bas !]
 
+Version 1.4.1 "Beta"
+======================================================
+Fixed:
+	- Bug 3153690 : Error while scanning path with a "," or ";"
+	- Fixed UI for empty folder
+
 Version 1.4.0 "Beta"
 ======================================================
 Added:
@@ -137,6 +143,13 @@ Initial public release.
 *
 ******************************************************/
 
+Version 1.4.1 "Beta"
+======================================================
+Corrections:
+	- Bug 3153690 : Erreur de scan pour les noms de dossiers contenant un "," ou un ";"
+	- Correction de l'IHM pour l'affichage des dossiers vides ou des erreurs de scan
+	
+	
 Version 1.4.0 "Beta"
 ======================================================
 Ajouts et améliorations:

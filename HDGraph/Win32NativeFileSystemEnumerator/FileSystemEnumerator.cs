@@ -94,7 +94,7 @@ namespace HDGraph.Win32NativeFileSystemEnumerator
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="pathsToSearch">Semicolon- or comma-delimitted list of paths to search.</param>
+        /// <param name="pathsToSearch">path to search.</param>
         /// <param name="fileTypesToMatch">Semicolon- or comma-delimitted list of wildcard filespecs to match.</param>
         /// <param name="includeSubDirs">If true, subdirectories are searched.</param>
         public FileSystemEnumerator(string pathsToSearch, string fileTypesToMatch, bool includeSubDirs)
@@ -105,10 +105,11 @@ namespace HDGraph.Win32NativeFileSystemEnumerator
             if (null == pathsToSearch)
                 throw new ArgumentNullException("pathsToSearch");
 
-            m_paths = pathsToSearch.Split(new char[] { ';', ',' });
+            // m_paths = pathsToSearch.Split(new char[] { ';', ',' }); // a single folder can contains ";" or "," ==> so don't split !
+            m_paths = new string[] { pathsToSearch };
             m_fileSpecs = null;
             m_includeSubDirs = includeSubDirs;
-            
+
             if (fileTypesToMatch != null)
             {
 

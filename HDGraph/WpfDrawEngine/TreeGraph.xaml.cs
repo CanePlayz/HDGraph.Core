@@ -178,46 +178,54 @@ namespace HDGraph.WpfDrawEngine
 
         public void SetRoot(IDirectoryNode root, DrawOptions options)
         {
+            textBlockNothingToDraw.Visibility = Visibility.Collapsed;
             if (root == null || options == null)
             {
                 canvas1.Children.Clear();
                 welcomeControl.Visibility = Visibility.Visible;
                 return;
             }
-            welcomeControl.Visibility = Visibility.Collapsed;
-            DrawingMask.Visibility = Visibility.Visible;
             Cursor originalCursor = Cursor;
             Cursor = Cursors.Wait;
-            WpfUtils.DoEvents(); // force draw of DrawingMask
-
-            this.rootNode = root;
-            sliderScale.Value = 1;
-            canvas1.Children.Clear();
-            canvas1.Children.Add(opacityGrid);
-
-            CurrentDrawOptions = options;
-
-            // init des données du calcul
-            //SingleLevelHeight = Convert.ToDouble(
-            //                Math.Min(this.Width / currentWorkingOptions.ShownLevelsCount / 2,
-            //                         this.Height / currentWorkingOptions.ShownLevelsCount / 2));
-
-            // init des données du calcul
-
-            double largeur = Math.Min(scrollViewer1.ActualWidth, scrollViewer1.ActualHeight);
-            largeur -= 30; // keep space for last level effects, such as "hidden folder" effect. 
-            singleLevelHeight = Convert.ToDouble(largeur / (CurrentDrawOptions.ShownLevelsCount) / 2d);
-            SingleLevelHeight = singleLevelHeight; // Set the DP. Using a variable instead of the DP Getter increases perfs.
-
-            if (rootNode == null || rootNode.TotalSize == 0)
+            try
             {
-                PaintSpecialCase();
-                return;
+                welcomeControl.Visibility = Visibility.Collapsed;
+                DrawingMask.Visibility = Visibility.Visible;
+
+                WpfUtils.DoEvents(); // force draw of DrawingMask
+
+                this.rootNode = root;
+                sliderScale.Value = 1;
+                canvas1.Children.Clear();
+                canvas1.Children.Add(opacityGrid);
+
+                CurrentDrawOptions = options;
+
+                // init des données du calcul
+                //SingleLevelHeight = Convert.ToDouble(
+                //                Math.Min(this.Width / currentWorkingOptions.ShownLevelsCount / 2,
+                //                         this.Height / currentWorkingOptions.ShownLevelsCount / 2));
+
+                // init des données du calcul
+
+                double largeur = Math.Min(scrollViewer1.ActualWidth, scrollViewer1.ActualHeight);
+                largeur -= 30; // keep space for last level effects, such as "hidden folder" effect. 
+                singleLevelHeight = Convert.ToDouble(largeur / (CurrentDrawOptions.ShownLevelsCount) / 2d);
+                SingleLevelHeight = singleLevelHeight; // Set the DP. Using a variable instead of the DP Getter increases perfs.
+
+                if (rootNode == null || rootNode.TotalSize == 0)
+                {
+                    PaintSpecialCase();
+                    return;
+                }
+                BuildTree(rootNode, 0, 0, 360);
+                ActionExecutor.Notify4NewRootNode(root);
             }
-            BuildTree(rootNode, 0, 0, 360);
-            ActionExecutor.Notify4NewRootNode(root);
-            Cursor = originalCursor;
-            DrawingMask.Visibility = Visibility.Collapsed;
+            finally
+            {
+                Cursor = originalCursor;
+                DrawingMask.Visibility = Visibility.Collapsed;
+            }
         }
 
 
@@ -236,7 +244,8 @@ namespace HDGraph.WpfDrawEngine
         /// </summary>
         private void PaintSpecialCase()
         {
-            // TODO.
+            if (rootNode == null || rootNode.TotalSize == 0)
+                textBlockNothingToDraw.Visibility = Visibility.Visible;
 
             //string text;
             //if (moteur != null && moteur.WorkCanceled)

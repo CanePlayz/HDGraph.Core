@@ -92,6 +92,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\HDGraphGUI\Properties\AssemblyCommonInfo.cs">
+      <Link>Properties\AssemblyCommonInfo.cs</Link>
+    </Compile>
     <Compile Include="ArcToolTip.xaml.cs">
       <DependentUpon>ArcToolTip.xaml</DependentUpon>
     </Compile>

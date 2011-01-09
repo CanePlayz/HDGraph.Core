@@ -9,10 +9,6 @@ using System.Resources;
 [assembly: AssemblyTitle("HDGraph")]
 [assembly: AssemblyDescription("Affiche l'occupation de l'espace disque par camemberts imbriqués.")] // TODO: traductions ?
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("HDGraph.com")]
-[assembly: AssemblyProduct("HDGraph")]
-[assembly: AssemblyCopyright("Copyright © 2006-2009 LAUGEL Jean-Yves")]
-[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
@@ -23,13 +19,5 @@ using System.Resources;
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("fb16e03a-1ebb-4925-90fe-aee681dcb35d")]
 
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-[assembly: AssemblyVersion("1.4.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+
 //[assembly: NeutralResourcesLanguageAttribute("en")]
