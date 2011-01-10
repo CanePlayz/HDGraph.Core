@@ -1,0 +1,255 @@
+HDGraph ChangeLog (http://hdgraph.sourceforge.net)
+==================================================
+
+[French version at the bottom !]
+[Version Française plus bas !]
+
+Version 1.4.0 "Beta"
+======================================================
+Added:
+	- Totaly new draw engine (WPF). Faster and more powerfull. Defined as a plugin, which requires ".Net framework" version 3.5 SP1 or higher. Original draw engine ("basic engine") is still available.
+	- WPF draw engine : Zoom feature
+	- WPF draw engine : Full "fluid" rotation, using slider or mouse directly.
+	- WPF draw engine : auto hide too small folders, in order to speed up the build of the graph.
+	- WPF draw engine : New Print feature (in File menu)
+	- New "native" scan engine on Windows : faster and more accurate (up to 6 times faster).
+	- "Drag & drop" capable (from Windows explorer)
+	- Auto check (after startup) if a new version is available. Check can be done manually via the "Help" menu. Auto check can be disabled in the Options menu.
+	- Partially compatible with Linux and Mac (basic draw engine only), thanks to Mono (http://www.mono-project.com).
+Improved: 
+	- Design refactored, mostly with the WPF draw engine.
+Fixed:
+	- Bug on "Text Density" : value loaded from a previous saved state was wrong.
+	- Wrong message when folder deletion failed.
+	- Some minor bugs
+
+
+Version 1.3.0
+======================================================
+Added:
+	- New warning messages when scan errors occured.
+	- New "image rotation" capability (you can rotate the graph as you want).
+	- New "text density" setting (you can change the text density in real time).
+	- New tooltip available when the mouse is hovered a directory.
+	- Count the number of files in a directory (see the "Directory Details" form).
+	- New commande line argument to set output image size.
+Improved: 
+	- Better resize mode (preview during resize, real redraw when resize finished)
+	- Asynchronous draw for complicated graphs (which take a long time to draw), to avoid application freeze.
+	- Main window state is memorized on exit (or the size if the window is not maximized).
+	- Performance improvements
+Fixed:
+	- Bug 2505755 ("Wrong Image saved when run from CLI")
+	- Some minor bugs
+
+
+Version 1.2.0
+======================================================
+Added:
+	- Root folder can include disk free spaces
+	- Root folder always contain an 'unknown files' parts, which represents the files that can not be scanned (due to acces restrictions for exemple) and lost space.
+	- Multiple color styles (random or linear colors)
+	- New "Details" window, including the full list of current subfolders
+	- Command line support (see help for details) for scripting use
+	- New toolbar containing analyse shortcuts with computer's drives
+	- New wait form when you delete a folder
+	- Cursor appearance change on hovered folders
+Improved: 
+	- Graph export available in PNG format.
+	- Full support of Windows Vista (UAC support for explorer integration)
+	- Main window size is memorized on exit.
+	- Scan button is now the default action (equivalent to Enter key).
+Fixed:
+	- some minor bugs
+Other:
+	- Licence replacement: HDGraph is now shipped under the CeCILL v2 licence.
+
+Version 1.0.1
+======================================================
+Added:
+	- Manual dir refresh (with right clic)
+	- "Open log file" menu item
+	- "Delete folder" menu item
+	- Icons in right clic menu
+Improved: 
+	- Installer automatically remove previous version.
+Fixed:
+	- Tab order (use the tab key to navigate from a control to another)
+	- Minor translation mistakes.
+	- Bug on dir scan if a filename introduce a too long file path (these files are know ignored)
+	- other minor bugs...
+	
+	
+Version 0.9.3
+======================================================
+Improved:
+	- Documentation.
+	- AboutBox completed.
+Fixed:
+	- Load from explorer: directory name displayed in 8.3 format (#1579159)
+	- Incorrect window minimum size (#1580362)
+	- some other minor bugs.
+
+
+Version 0.9.2
+======================================================
+Added:
+	- New Auto complete graph option: auto complete missing chart parts when you navigate in-depth directories
+	- First lines in documentation file (FR only; EN coming soon).
+	- "Legend" link (FR only; EN coming soon).
+Fixed:
+	- Image bug in the about form in EN language. (#1577157)
+	- Invalid controls locations after changing language if the main form has been resized before. (#1577159)
+
+
+Version 0.9.1
+======================================================
+Added: 
+	- Directory scan can be canceled
+	- Short "Getting started" text showed at startup.
+
+Improved:
+	- Directory scan window is now modal (mother window not accessible until operation is finished)
+	- Changing language doesn't need to restart the application anymore.
+	- Improved error management and logs
+	- Some minor improvements
+
+Fixed:
+	- Bug opening HDGraph with a right clic on a drive in the explorer
+
+
+Version 0.9.0
+======================================================
+Initial public release.
+
+
+
+
+
+
+
+
+
+
+/*****************************************************
+*
+*				VERSION FRANCAISE
+*
+******************************************************/
+
+Version 1.4.0 "Beta"
+======================================================
+Ajouts et améliorations:
+	- Tout nouveau moteur de dessin (WPF) qui fonctionne indépendament du moteur d'origine. Plus rapide et plus puissant. Réalisé sous forme de plugin, il requiert le framework Microsoft .NET version 3.5 SP1 ou supérieur. L'application reste fonctionnelle avec le moteur d'origine pour ceux qui ne disposent pas de cette version du framework.
+	- Moteur de dessin WPF : Fonctionnalité de Zoom
+	- Moteur de dessin WPF : Rotation "fluide", directement avec la souris sur le graphique.
+	- Moteur de dessin WPF : les dossiers trop petits en taille sont masqués, pour améliorer les performances de l'application.
+	- Moteur de dessin WPF : l'impression est disponible via le menu Fichier.
+	- Nouveau moteur de scan "natif" sous Windows : plus rapide et plus précis (jusqu'à 6 fois plus rapide).
+	- Possibilité de "Drag & drop" depuis l'explorateur Windows pour choisir le chemin à analyser
+	- Vérification automatique au démarrage de la disponibilité d'une nouvelle version. La vérification peut aussi être lancée manuellement via le menu "Aide". La vérification automatique peut être désactivée via le menu des options.
+	- Partiellement compatible avec Linux and Mac (moteur de dessin basique seulement) via Mono (http://www.mono-project.com).
+	- Design remodelé, principalement grâce au nouveau moteur de dessin.
+Corrections:
+	- Bug sur la densité du texte
+	- Message lors d'un échec de suppression corrigé.
+	- Autres bugs mineurs
+	
+
+Version 1.3.0
+======================================================
+Ajouts et améliorations:
+	- Liste les erreurs survenues lors du scan (voir icône "attention" en bas à droite)
+	- Rotation possible du graphique (avec effet immédiat)
+	- Modification de la densité du texte sur le graphique (avec effet immédiat)
+	- Nouvelle infobulle lorsque le curseur survole un répertoire du graphique
+	- Donne le nombre total de fichiers d'un répertoire (avec ou sans ses sous-répertoires), dans la vue détaillée
+	- Nouvel argument en ligne de commande permettant de définir la taille de l'image de sortie.
+	- Redimentionnement de la fenêtre améliorée (mode "aperçu")
+	- Dessin asynchrone du graphique, pour une meilleur réactivité de l'application sur les graphiques complexes
+	- Etat de la fenêtre mémorisée à la fermeture
+	- Amélioration des performances
+Corrections:
+	- Bug 2505755 ("Mauvaise sauvegarde de l'image si scan en mode ligne de commande")
+	- Autres bugs mineurs
+
+
+Version 1.2.0
+======================================================
+Ajouts:
+	- Les répertoires racines peuvent desormais inclure l'espace libre
+	- Les répertoire racines indiquent toujours la quantité inconnue d'espace disque, contenant les fichiers que HDGraph n'a pas été en mesure de scaner (par exemple par manque de droits) ainsi que l'espace perdu.
+	- Multiple styles de couleur (aléatoires ou linéaires)
+	- Nouvelle fenêtre "Détails", incluant la liste exhaustive des dossiers contenus par le dossier courant (permettant de trier les dossiers par taille)
+	- Fonctionne en "ligne de commande" pour usage par script (cf. aide)
+	- Nouvelle barre d'outils contenant les raccourcis vers les disques disponibles (c:, d:, etc).
+	- Nouvelle fenêtre d'attente pour les suppressions de répertoire
+	- Changement de l'apparence du curseur lors du survol du graphique
+Améliorations: 
+	- L'export du Graph se fait au format PNG.
+	- Totale compatibilité avec Windows Vista (support de l'UAC pour l'intégration à l'explorateur)
+	- Taille de la fenêtre principale mémorisée à la fermeture de l'application
+	- Le bouton "Scan" devient le bouton par défaut (raccourci via touche Entree).
+Corrections:
+	- divers bugs mineurs
+Autre:
+	- Changement de licence pour la Licence CeCILL v2.
+	
+Version 1.0.1
+======================================================
+Ajouts:
+	- Possiblité de rafraîchir un répertoire via clic droit
+	- Option "ouvrir le fichier journal" depuis le menu
+	- Menu "Supprimer le répertoire"
+	- Nouvelles icones dans le menu du clic droit
+Améliorations: 
+	- L'installeur supprime de lui même la version précédente.
+Corrections:
+	- Ordre des tabulations
+	- Quelques erreurs de traductions
+	- Bug dans le scan des fichiers si un des fichiers a un nom trop long.
+	- d'autres bugs mineurs
+	
+
+Version 0.9.3
+======================================================
+Améliorations:
+	- Documentation.
+	- Boîte de dialogue "A propos".
+Corrections:
+	- Chargement depusi l'explorateur: nom de dossier affiché au format 8.3 (#1579159).
+	- Taille minimum de fenêtre incorrecte (#1580362).
+	- d'autres bugs mineurs.
+	
+	
+Version 0.9.2
+======================================================
+Ajouts:
+	- Nouvelle option "auto-compléter le graphe", calculant à la volée les parties manquantes du graphique lors de la navigation d'un répertoire à l'autre.
+	- Premières lignes dans le fichier de documentation (langue française seulement).
+	- Lien "Légende"
+
+Corrections:
+	- Mauvaise image dans boite de dialogue "à propos" (EN suelement). (#1577157)
+	- Position des contrôles invalide après un changement de langue si la taille initiale de la fenêtre à changé. (#1577159)
+	
+
+Version 0.9.1
+======================================================
+Ajouts: 
+	- Le scan des répertoires peut maintenant être annulé
+	- Instructions "Pour commencer" ajoutées au démarrage
+
+Améliorations:
+	- La fenêtre "Travail en cours" devient modale (fenêtre parent innacessible) durant l'opération.
+	- Le changement de langue ne requiert plus le redémarrage de l'application.
+	- Amélioration de la gestion des erreurs et des logs
+	- Améliorations mineures.
+
+Corrections:
+	- Bug sur l'ouverture de HDGraph via clic droit sur un lecteur depuis l'explorateur
+	
+
+Version 0.9.0
+======================================================
+Première distribution publique.
