@@ -81,14 +81,36 @@ namespace HDGraph.Interop.Windows
         public static bool IsReallyVista()
         {
             IntPtr hmodule = LoadLibrary("kernel32");
-
-            if (hmodule.ToInt32() != 0)
+            try
             {
-                //just any old API function that happens only to exist on Vista and higher
-                IntPtr hProc = GetProcAddress(hmodule, "CreateThreadpoolWait");
-                if (hProc.ToInt32() != 0)
+                if (hmodule.ToInt32() != 0)
                 {
-                    return true;
+                    //just any old API function that happens only to exist on Vista and higher
+                    IntPtr hProc = GetProcAddress(hmodule, "CreateThreadpoolWait");
+                    if (hProc.ToInt64() != 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (System.OverflowException e)
+            {
+                try
+                {
+
+                    if (hmodule.ToInt64() != 0)
+                    {
+                        //just any old API function that happens only to exist on Vista and higher
+                        IntPtr hProc = GetProcAddress(hmodule, "CreateThreadpoolWait");
+                        if (hProc.ToInt64() != 0)
+                        {
+                            return true;
+                        }
+                    }
+                }
+                catch (System.OverflowException e2)
+                {
+                    return false;
                 }
             }
 
