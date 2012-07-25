@@ -8,7 +8,7 @@ HDGraph (http://www.hdgraph.com)
 Minimum requirements
 ======================================================
 
-- Windows XP or Windows Vista or Any system with Mono (Linux, Mac OS, etc.)
+- Windows XP or Windows Vista or Windows 7 or Windows 8 or Any system with Mono (Linux, Mac OS, etc.)
 - For Windows XP, the Microsoft .NET Framework 2.0 (HDGraph Setup wil propose you to download it, if it's not installed).
 - Recommanded (but not required) : in order to use the evolved draw engine, you must have the version 3.5 SP1 of the .NET Framework.
 
@@ -31,15 +31,20 @@ Install on Linux, Mac OS :
 Uninstall on WINDOWS :
 ======================================================
 
-- Close all opened HDGraph windows.
-- Open "Add/Remove programs" from the Configuration Panel
-- Select HDGraph in the list and clic "Remove".
+First of all : 
+- If you previously activated the HDGraph "windows explorer integration", it is better to deactivate it first (open HDGraph and go to the menu item "Tools > Explorer Integration >  Remove me from the explorer context menu").
+- Make sure you closed all opened HDGraph windows.
+
+Next :
+- if you used the Zip package to install HDGraph (for example the "HDGraph_light_x.y.z.zip" file), you just have to delete the HDGraph folder.
+- if you used the MSI file (for example "SetupHDGraph_English_x.y.z.msi"), HDGraph is in the uninstall software list of the control panel and you can uninstall it from here : 
+	1/ Open "Add/Remove programs" from the Configuration Panel, 
+	2/ select HDGraph in the list and clic "Remove"
 
 
 Known bugs and limitations:
 ======================================================
 
-- HDGraph is unable to detect Hard Links.
 - HDGraph is unable to scan files and directories which full path is greater thant 255 characters.
 - Using HDGraph on Mono is experimental :
 -    Some feature are not available
@@ -70,7 +75,7 @@ http://www.hdgraph.com
 Configuration requise
 ======================================================
 
-- Windows XP ou Windows Vista ou tout système compatible avec Mono (Linux, Mac OS, etc.)
+- Windows XP ou Windows Vista ou Windows 7 ou Windows 8 ou tout système compatible avec Mono (Linux, Mac OS, etc.)
 - Pour Windows XP, le .NET Framework 2.0 (Le Setup HDGraph vous proposera de le télécharger automatiquement si vous ne l'avez pas).
 - Recommandé (mais facultatif) : pour utilisé le dernier moteur de dessin WPF, vous devez avoir la version 3.5 SP1 du framework .NET.
 
@@ -93,14 +98,21 @@ Installation sous Linux, Mac OS :
 Désinstallation sous WINDOWS:
 ======================================================
 
+Avant toute chose :
 - Fermez toutes les fenêtres HDGraph ouvertes.
-- Ouvrez "Ajout/Suppression de programmes" dans le panneau de configuration
-- Séléectionnez HDGraph dans la liste puis cliquez sur "Supprimer".
+- Si vous avez dans le passé activé l'intégration d'HDGraph à l'explorateur, il est préférable de désactiver cette option avant de désinstaller.(ouvrir HDGraph and go to the menu item "Tools > Explorer Integration >  Remove me from the explorer context menu").
+
+Ensuite :
+- si vous avez installé HDGraph avec un fichier Zip (par exemple "HDGraph_light_x.y.z.zip"), il vous suffit de supprimer le dossier dans lequel vous avez décompressé le fichier.
+- si vous avez installé HDGraph avec un installeur MSI (par exemple "SetupHDGraph_Francais_x.y.z.msi"), vous pouvez désinstaller HDGraph via le panneau de configuration : 
+	1/ Ouvrir le Panneau de configuration > Programmes > Programmes et fonctionnalités
+	2/ selectionner HDGraph dans la liste et cliquer sur "Désinstaller"
+
+
 
 Bug connus et limitations :
 ======================================================
 
-- HDGraph est incapable de détecter les liens physiques (Hard Links).
 - HDGraph est incapable de scaner les fichiers et répetoires dont le chemin excède 255 caractères.
 - Sous Mono : version EXPERIMENTALE :
 -	Le nombre de fonctionnalités est restreinte
