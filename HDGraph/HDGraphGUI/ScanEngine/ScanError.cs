@@ -11,17 +11,23 @@ namespace HDGraph.ScanEngine
 
         public Exception Exception { get; set; }
 
+        public string ManualMessage { get; set; }
+
         public string Message
         {
             get
             {
-                string msg = Exception.Message;
-                if (Exception.InnerException != null)
+                if (Exception != null)
                 {
-                    msg += msg.Trim().EndsWith(".")  ? " " : " : ";
-                    msg += Exception.InnerException.Message;
+                    string msg = Exception.Message;
+                    if (Exception.InnerException != null)
+                    {
+                        msg += msg.Trim().EndsWith(".") ? " " : " : ";
+                        msg += Exception.InnerException.Message;
+                    }
+                    return msg;
                 }
-                return msg;
+                return ManualMessage;
             }
         }
 

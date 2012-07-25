@@ -384,4 +384,7 @@ knowledge of the CeCILL license and that you accept its terms.</value>
 
 Would you like to go to the HDGraph forum now ?</value>
   </data>
+  <data name="FolderOrFileIsReparsePoint" xml:space="preserve">
+    <value>The folder is a reparse point (http://en.wikipedia.org/wiki/Reparse_point) : it is a junction point, an NTFS symbolic link or a volume mount point, which works as a shortcut to a folder located elsewhere. It has been excluded to prevent some sub folders or files to be counted twice.</value>
+  </data>
 </root>

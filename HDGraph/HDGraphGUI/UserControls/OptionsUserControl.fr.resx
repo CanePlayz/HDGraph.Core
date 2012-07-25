@@ -154,6 +154,16 @@
   <data name="groupBoxEngine.Text" xml:space="preserve">
     <value>Choisissez un moteur de scan</value>
   </data>
+  <data name="checkBoxIgnoreReparsePoints.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="checkBoxIgnoreReparsePoints.Size" type="System.Drawing.Size, System.Drawing">
+    <value>480, 44</value>
+  </data>
+  <data name="checkBoxIgnoreReparsePoints.Text" xml:space="preserve">
+    <value>Exclure les liens lors du parcours de l'arborescence.
+Cochez pour exclure de l'analyse les liens symboliques afin d'éviter les doublons dans le calcul de l'espace occupé. Fonctionne uniquement pour le moteur "natif".</value>
+  </data>
   <data name="radioButtonNativeEngine.Text" xml:space="preserve">
     <value>Moteur "natif" : utilise l'API native du système. Ce mode est plus rapide et plus précis, mais son fonctionnement n'est pas garanti sur tous les systèmes.</value>
   </data>

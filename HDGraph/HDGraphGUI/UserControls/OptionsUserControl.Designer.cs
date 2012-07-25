@@ -39,6 +39,7 @@ namespace HDGraph
             this.tabPageScanEngine = new System.Windows.Forms.TabPage();
             this.labelScanEngineDesc = new System.Windows.Forms.Label();
             this.groupBoxEngine = new System.Windows.Forms.GroupBox();
+            this.checkBoxIgnoreReparsePoints = new System.Windows.Forms.CheckBox();
             this.radioButtonNativeEngine = new System.Windows.Forms.RadioButton();
             this.radioButtonSimpleEngine = new System.Windows.Forms.RadioButton();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -52,163 +53,120 @@ namespace HDGraph
             // 
             // tabPageRightClic
             // 
-            this.tabPageRightClic.AccessibleDescription = null;
-            this.tabPageRightClic.AccessibleName = null;
-            resources.ApplyResources(this.tabPageRightClic, "tabPageRightClic");
-            this.tabPageRightClic.BackgroundImage = null;
             this.tabPageRightClic.Controls.Add(this.groupBox2);
             this.tabPageRightClic.Controls.Add(this.groupBox1);
-            this.tabPageRightClic.Font = null;
+            resources.ApplyResources(this.tabPageRightClic, "tabPageRightClic");
             this.tabPageRightClic.Name = "tabPageRightClic";
             this.tabPageRightClic.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
-            this.groupBox2.AccessibleDescription = null;
-            this.groupBox2.AccessibleName = null;
             resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.BackgroundImage = null;
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.checkBox1);
-            this.groupBox2.Font = null;
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
             // label1
             // 
-            this.label1.AccessibleDescription = null;
-            this.label1.AccessibleName = null;
             resources.ApplyResources(this.label1, "label1");
-            this.label1.Font = null;
             this.label1.Name = "label1";
             // 
             // checkBox1
             // 
-            this.checkBox1.AccessibleDescription = null;
-            this.checkBox1.AccessibleName = null;
             resources.ApplyResources(this.checkBox1, "checkBox1");
             this.checkBox1.AutoEllipsis = true;
-            this.checkBox1.BackgroundImage = null;
             this.checkBox1.Checked = global::HDGraph.Properties.Settings.Default.OptionCheckForNewVersionAfterStartup;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::HDGraph.Properties.Settings.Default, "OptionCheckForNewVersionAfterStartup", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.checkBox1.Font = null;
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            this.groupBox1.AccessibleDescription = null;
-            this.groupBox1.AccessibleName = null;
             resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.BackgroundImage = null;
             this.groupBox1.Controls.Add(this.checkBoxAllowDeleteOption);
             this.groupBox1.Controls.Add(this.checkBoxDeletionAsk4Confirmation);
-            this.groupBox1.Font = null;
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
             // checkBoxAllowDeleteOption
             // 
-            this.checkBoxAllowDeleteOption.AccessibleDescription = null;
-            this.checkBoxAllowDeleteOption.AccessibleName = null;
             resources.ApplyResources(this.checkBoxAllowDeleteOption, "checkBoxAllowDeleteOption");
-            this.checkBoxAllowDeleteOption.BackgroundImage = null;
             this.checkBoxAllowDeleteOption.Checked = global::HDGraph.Properties.Settings.Default.OptionAllowFolderDeletion;
             this.checkBoxAllowDeleteOption.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::HDGraph.Properties.Settings.Default, "OptionAllowFolderDeletion", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.checkBoxAllowDeleteOption.Font = null;
             this.checkBoxAllowDeleteOption.Name = "checkBoxAllowDeleteOption";
             this.checkBoxAllowDeleteOption.UseVisualStyleBackColor = true;
             this.checkBoxAllowDeleteOption.CheckedChanged += new System.EventHandler(this.checkBoxAllowDeleteOption_CheckedChanged);
             // 
             // checkBoxDeletionAsk4Confirmation
             // 
-            this.checkBoxDeletionAsk4Confirmation.AccessibleDescription = null;
-            this.checkBoxDeletionAsk4Confirmation.AccessibleName = null;
             resources.ApplyResources(this.checkBoxDeletionAsk4Confirmation, "checkBoxDeletionAsk4Confirmation");
-            this.checkBoxDeletionAsk4Confirmation.BackgroundImage = null;
             this.checkBoxDeletionAsk4Confirmation.Checked = global::HDGraph.Properties.Settings.Default.OptionDeletionAsk4Confirmation;
             this.checkBoxDeletionAsk4Confirmation.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxDeletionAsk4Confirmation.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::HDGraph.Properties.Settings.Default, "OptionDeletionAsk4Confirmation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.checkBoxDeletionAsk4Confirmation.Font = null;
             this.checkBoxDeletionAsk4Confirmation.Name = "checkBoxDeletionAsk4Confirmation";
             this.checkBoxDeletionAsk4Confirmation.UseVisualStyleBackColor = true;
             // 
             // tabPageScanEngine
             // 
-            this.tabPageScanEngine.AccessibleDescription = null;
-            this.tabPageScanEngine.AccessibleName = null;
-            resources.ApplyResources(this.tabPageScanEngine, "tabPageScanEngine");
-            this.tabPageScanEngine.BackgroundImage = null;
             this.tabPageScanEngine.Controls.Add(this.labelScanEngineDesc);
             this.tabPageScanEngine.Controls.Add(this.groupBoxEngine);
-            this.tabPageScanEngine.Font = null;
+            resources.ApplyResources(this.tabPageScanEngine, "tabPageScanEngine");
             this.tabPageScanEngine.Name = "tabPageScanEngine";
             this.tabPageScanEngine.UseVisualStyleBackColor = true;
             // 
             // labelScanEngineDesc
             // 
-            this.labelScanEngineDesc.AccessibleDescription = null;
-            this.labelScanEngineDesc.AccessibleName = null;
             resources.ApplyResources(this.labelScanEngineDesc, "labelScanEngineDesc");
-            this.labelScanEngineDesc.Font = null;
             this.labelScanEngineDesc.Name = "labelScanEngineDesc";
             // 
             // groupBoxEngine
             // 
-            this.groupBoxEngine.AccessibleDescription = null;
-            this.groupBoxEngine.AccessibleName = null;
             resources.ApplyResources(this.groupBoxEngine, "groupBoxEngine");
-            this.groupBoxEngine.BackgroundImage = null;
+            this.groupBoxEngine.Controls.Add(this.checkBoxIgnoreReparsePoints);
             this.groupBoxEngine.Controls.Add(this.radioButtonNativeEngine);
             this.groupBoxEngine.Controls.Add(this.radioButtonSimpleEngine);
-            this.groupBoxEngine.Font = null;
             this.groupBoxEngine.Name = "groupBoxEngine";
             this.groupBoxEngine.TabStop = false;
             // 
+            // checkBoxIgnoreReparsePoints
+            // 
+            resources.ApplyResources(this.checkBoxIgnoreReparsePoints, "checkBoxIgnoreReparsePoints");
+            this.checkBoxIgnoreReparsePoints.Checked = global::HDGraph.Properties.Settings.Default.OptionIgnoreReparsePoints;
+            this.checkBoxIgnoreReparsePoints.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxIgnoreReparsePoints.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::HDGraph.Properties.Settings.Default, "OptionIgnoreReparsePoints", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.checkBoxIgnoreReparsePoints.Name = "checkBoxIgnoreReparsePoints";
+            this.checkBoxIgnoreReparsePoints.UseVisualStyleBackColor = true;
+            // 
             // radioButtonNativeEngine
             // 
-            this.radioButtonNativeEngine.AccessibleDescription = null;
-            this.radioButtonNativeEngine.AccessibleName = null;
             resources.ApplyResources(this.radioButtonNativeEngine, "radioButtonNativeEngine");
-            this.radioButtonNativeEngine.BackgroundImage = null;
-            this.radioButtonNativeEngine.Font = null;
             this.radioButtonNativeEngine.Name = "radioButtonNativeEngine";
             this.radioButtonNativeEngine.TabStop = true;
             this.radioButtonNativeEngine.UseVisualStyleBackColor = true;
+            this.radioButtonNativeEngine.CheckedChanged += new System.EventHandler(this.radioButtonNativeEngine_CheckedChanged);
             // 
             // radioButtonSimpleEngine
             // 
-            this.radioButtonSimpleEngine.AccessibleDescription = null;
-            this.radioButtonSimpleEngine.AccessibleName = null;
             resources.ApplyResources(this.radioButtonSimpleEngine, "radioButtonSimpleEngine");
-            this.radioButtonSimpleEngine.BackgroundImage = null;
-            this.radioButtonSimpleEngine.Font = null;
             this.radioButtonSimpleEngine.Name = "radioButtonSimpleEngine";
             this.radioButtonSimpleEngine.TabStop = true;
             this.radioButtonSimpleEngine.UseVisualStyleBackColor = true;
             // 
             // tabControl1
             // 
-            this.tabControl1.AccessibleDescription = null;
-            this.tabControl1.AccessibleName = null;
-            resources.ApplyResources(this.tabControl1, "tabControl1");
-            this.tabControl1.BackgroundImage = null;
             this.tabControl1.Controls.Add(this.tabPageScanEngine);
             this.tabControl1.Controls.Add(this.tabPageRightClic);
-            this.tabControl1.Font = null;
+            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             // 
             // OptionsUserControl
             // 
-            this.AccessibleDescription = null;
-            this.AccessibleName = null;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = null;
             this.Controls.Add(this.tabControl1);
-            this.Font = null;
             this.Name = "OptionsUserControl";
             this.tabPageRightClic.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
@@ -236,6 +194,7 @@ namespace HDGraph
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox checkBoxIgnoreReparsePoints;
 
 
 

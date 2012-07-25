@@ -383,4 +383,7 @@ Toutes vos impressions, positives ou négatives, rapport de bug ou demande de fo
 
 Voulez-vous visiter le forum HDGraph maintenant ?</value>
   </data>
+  <data name="FolderOrFileIsReparsePoint" xml:space="preserve">
+    <value>Ce dossier est un "Reparse point" : un point de jonction, un lien symbolique NTFS ou le point de montage d'une ressource externe au disque. Cela indique que ce n'est qu'un raccourci vers des fichiers présents en réalité à un autre emplacement. Il a donc été ignoré lors de l'analyse pour éviter que certains fichiers ou dossiers ne soient comptés en double.</value>
+  </data>
 </root>

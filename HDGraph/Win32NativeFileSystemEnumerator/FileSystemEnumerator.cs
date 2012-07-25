@@ -75,6 +75,11 @@ namespace HDGraph.Win32NativeFileSystemEnumerator
         /// </summary>
         private bool m_includeSubDirs;
 
+        /// <summary>
+        /// If true, analyse directories and ignore it if it's a symLink/hardLink/junctionPoint.
+        /// </summary>
+        private bool ignoreDirectoryLinks;
+
         #region IDisposable implementation
 
         /// <summary>
@@ -97,10 +102,10 @@ namespace HDGraph.Win32NativeFileSystemEnumerator
         /// <param name="pathsToSearch">path to search.</param>
         /// <param name="fileTypesToMatch">Semicolon- or comma-delimitted list of wildcard filespecs to match.</param>
         /// <param name="includeSubDirs">If true, subdirectories are searched.</param>
-        public FileSystemEnumerator(string pathsToSearch, string fileTypesToMatch, bool includeSubDirs)
+        public FileSystemEnumerator(string pathsToSearch, string fileTypesToMatch, bool includeSubDirs, bool ignoreDirectoryLinks)
         {
             m_scopes = new Stack<SearchInfo>();
-
+            this.ignoreDirectoryLinks = ignoreDirectoryLinks;
             // check for nulls
             if (null == pathsToSearch)
                 throw new ArgumentNullException("pathsToSearch");
@@ -140,6 +145,7 @@ namespace HDGraph.Win32NativeFileSystemEnumerator
         public IEnumerable<IExtendedFileInfo> Matches()
         {
             lastErrors = new List<string>();
+            ignoredLinks = new List<string>();
             Stack<string> pathsToSearch = new Stack<string>(m_paths);
             Win32.FindData findData = new Win32.FindData();
             string path, fileName;
@@ -147,6 +153,7 @@ namespace HDGraph.Win32NativeFileSystemEnumerator
             while (0 != pathsToSearch.Count)
             {
                 path = pathsToSearch.Pop(); //.Trim()
+
                 using (Win32.SafeFindHandle handle = Win32.SafeNativeMethods.FindFirstFile(
                     Path.Combine(path, "*"), findData))
                 {
@@ -163,6 +170,12 @@ namespace HDGraph.Win32NativeFileSystemEnumerator
                             {
                                 if (m_includeSubDirs)
                                 {
+                                    if (ignoreDirectoryLinks && (0 != ((int)FileAttributes.ReparsePoint & findData.fileAttributes)))
+                                    {
+                                        ignoredLinks.Add(path);
+                                        continue;
+                                    }
+
                                     pathsToSearch.Push(Path.Combine(path, fileName));
                                     lastRootHasSubdir = true;
                                 }
@@ -186,8 +199,9 @@ namespace HDGraph.Win32NativeFileSystemEnumerator
                                 {
                                     ExtendedFileInfo extInfo = new ExtendedFileInfo()
                                     {
-                                        FileName = Path.Combine(path, fileName),
-                                        Size = GetSize(findData)
+                                        FileName = fileName,
+                                        Size = GetSize(findData),
+                                        FolderPath = path,
                                     };
                                     yield return extInfo;
                                 }
@@ -218,6 +232,16 @@ namespace HDGraph.Win32NativeFileSystemEnumerator
             get
             {
                 return lastErrors;
+            }
+        }
+
+        private IList<string> ignoredLinks;
+
+        public IList<string> IgnoredLinks
+        {
+            get
+            {
+                return ignoredLinks;
             }
         }
 

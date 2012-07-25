@@ -73,6 +73,11 @@ namespace HDGraph
                 return DialogResult.OK;
             }
         }
+
+        private void radioButtonNativeEngine_CheckedChanged(object sender, EventArgs e)
+        {
+            checkBoxIgnoreReparsePoints.Enabled = radioButtonNativeEngine.Checked;
+        }
     }
 
     class OptionsUserControlDesigner : ControlDesigner

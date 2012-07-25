@@ -117,388 +117,417 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;radioButtonNativeEngine.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
-  <data name="&gt;&gt;checkBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="tabPageRightClic.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 38</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>511, 37</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>This is an anonymous process which will download on the HDGraph website a very small file containing the latest version number.</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label1.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="checkBoxDeletionAsk4Confirmation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;checkBoxAllowDeleteOption.Name" xml:space="preserve">
-    <value>checkBoxAllowDeleteOption</value>
+  <data name="checkBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="checkBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 19</value>
+  </data>
+  <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>527, 22</value>
+  </data>
+  <data name="checkBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBox1.Text" xml:space="preserve">
+    <value>Check for updates at application startup.</value>
+  </data>
+  <data name="&gt;&gt;checkBox1.Name" xml:space="preserve">
+    <value>checkBox1</value>
+  </data>
+  <data name="&gt;&gt;checkBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox1.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;checkBox1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 89</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>545, 80</value>
   </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Application startup</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>tabPageRightClic</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="checkBoxAllowDeleteOption.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxAllowDeleteOption.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxAllowDeleteOption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 22</value>
+  </data>
+  <data name="checkBoxAllowDeleteOption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 17</value>
+  </data>
+  <data name="checkBoxAllowDeleteOption.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBoxAllowDeleteOption.Text" xml:space="preserve">
+    <value>Allow to delete folders from the right clic menu</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAllowDeleteOption.Name" xml:space="preserve">
+    <value>checkBoxAllowDeleteOption</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAllowDeleteOption.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAllowDeleteOption.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAllowDeleteOption.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkBoxDeletionAsk4Confirmation.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxDeletionAsk4Confirmation.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBoxDeletionAsk4Confirmation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxDeletionAsk4Confirmation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 45</value>
+  </data>
+  <data name="checkBoxDeletionAsk4Confirmation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>267, 17</value>
+  </data>
+  <data name="checkBoxDeletionAsk4Confirmation.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="checkBoxDeletionAsk4Confirmation.Text" xml:space="preserve">
+    <value>Allways ask for confirmation before deleting a folder</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDeletionAsk4Confirmation.Name" xml:space="preserve">
+    <value>checkBoxDeletionAsk4Confirmation</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDeletionAsk4Confirmation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDeletionAsk4Confirmation.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDeletionAsk4Confirmation.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>545, 77</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Right click</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>tabPageRightClic</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabPageRightClic.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageRightClic.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageRightClic.Size" type="System.Drawing.Size, System.Drawing">
+    <value>557, 292</value>
+  </data>
+  <data name="tabPageRightClic.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPageRightClic.Text" xml:space="preserve">
+    <value>Application behaviour</value>
+  </data>
+  <data name="&gt;&gt;tabPageRightClic.Name" xml:space="preserve">
+    <value>tabPageRightClic</value>
+  </data>
+  <data name="&gt;&gt;tabPageRightClic.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageRightClic.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPageRightClic.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="labelScanEngineDesc.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="labelScanEngineDesc.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelScanEngineDesc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="labelScanEngineDesc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>554, 41</value>
+  </data>
+  <data name="labelScanEngineDesc.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="labelScanEngineDesc.Text" xml:space="preserve">
+    <value>The scan engine is the component of HDGraph responsible for enumerating the files and folders. It builds a report which will be used by HDGraph to draw the chart.</value>
+  </data>
+  <data name="labelScanEngineDesc.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
+  <data name="&gt;&gt;labelScanEngineDesc.Name" xml:space="preserve">
+    <value>labelScanEngineDesc</value>
+  </data>
+  <data name="&gt;&gt;labelScanEngineDesc.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelScanEngineDesc.Parent" xml:space="preserve">
+    <value>tabPageScanEngine</value>
+  </data>
+  <data name="&gt;&gt;labelScanEngineDesc.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="groupBoxEngine.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="checkBoxIgnoreReparsePoints.CheckAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopLeft</value>
+  </data>
+  <data name="checkBoxIgnoreReparsePoints.Location" type="System.Drawing.Point, System.Drawing">
+    <value>65, 88</value>
+  </data>
+  <data name="checkBoxIgnoreReparsePoints.Size" type="System.Drawing.Size, System.Drawing">
+    <value>480, 44</value>
+  </data>
+  <data name="checkBoxIgnoreReparsePoints.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="checkBoxIgnoreReparsePoints.Text" xml:space="preserve">
+    <value>Ignore reparse points. 
+Check this to bypass the symbolic links (and junction points, volume mount points) to avoid duplicates. Works only for native engine.
+</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIgnoreReparsePoints.Name" xml:space="preserve">
+    <value>checkBoxIgnoreReparsePoints</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIgnoreReparsePoints.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIgnoreReparsePoints.Parent" xml:space="preserve">
+    <value>groupBoxEngine</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIgnoreReparsePoints.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="radioButtonNativeEngine.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="radioButtonNativeEngine.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonNativeEngine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 58</value>
+  </data>
+  <data name="radioButtonNativeEngine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>525, 32</value>
+  </data>
+  <data name="radioButtonNativeEngine.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="radioButtonNativeEngine.Text" xml:space="preserve">
+    <value>Native engine : use the system native API. This mode is faster and more accurate, but is not guaranteed to work on all systems.</value>
+  </data>
+  <data name="&gt;&gt;radioButtonNativeEngine.Name" xml:space="preserve">
+    <value>radioButtonNativeEngine</value>
+  </data>
+  <data name="&gt;&gt;radioButtonNativeEngine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonNativeEngine.Parent" xml:space="preserve">
+    <value>groupBoxEngine</value>
+  </data>
+  <data name="&gt;&gt;radioButtonNativeEngine.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="radioButtonSimpleEngine.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="radioButtonSimpleEngine.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonSimpleEngine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 19</value>
+  </data>
+  <data name="radioButtonSimpleEngine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>525, 33</value>
+  </data>
+  <data name="radioButtonSimpleEngine.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="radioButtonSimpleEngine.Text" xml:space="preserve">
+    <value>Simple engine : use .Net API. This mode is safe (it works on all systems) but is slower and sometimes less accurate.</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSimpleEngine.Name" xml:space="preserve">
+    <value>radioButtonSimpleEngine</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSimpleEngine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSimpleEngine.Parent" xml:space="preserve">
+    <value>groupBoxEngine</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSimpleEngine.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="groupBoxEngine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 44</value>
+  </data>
+  <data name="groupBoxEngine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>551, 138</value>
+  </data>
   <data name="groupBoxEngine.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="groupBoxEngine.Text" xml:space="preserve">
     <value>Choose a scan engine</value>
   </data>
-  <data name="&gt;&gt;checkBoxDeletionAsk4Confirmation.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabPageScanEngine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>557, 292</value>
-  </data>
-  <data name="tabPageRightClic.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>tabPageRightClic</value>
-  </data>
-  <data name="checkBoxDeletionAsk4Confirmation.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSimpleEngine.Parent" xml:space="preserve">
-    <value>groupBoxEngine</value>
-  </data>
-  <data name="checkBoxAllowDeleteOption.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="checkBoxAllowDeleteOption.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelScanEngineDesc.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Application startup</value>
-  </data>
-  <data name="&gt;&gt;tabPageScanEngine.Name" xml:space="preserve">
-    <value>tabPageScanEngine</value>
-  </data>
   <data name="&gt;&gt;groupBoxEngine.Name" xml:space="preserve">
     <value>groupBoxEngine</value>
-  </data>
-  <data name="radioButtonSimpleEngine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>525, 33</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAllowDeleteOption.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="groupBoxEngine.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 38</value>
-  </data>
-  <data name="checkBoxAllowDeleteOption.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;checkBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSimpleEngine.Name" xml:space="preserve">
-    <value>radioButtonSimpleEngine</value>
-  </data>
-  <data name="checkBox1.Text" xml:space="preserve">
-    <value>Check for updates at application startup.</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>511, 37</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>565, 318</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="tabPageRightClic.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="checkBoxDeletionAsk4Confirmation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 45</value>
-  </data>
-  <data name="&gt;&gt;groupBoxEngine.Parent" xml:space="preserve">
-    <value>tabPageScanEngine</value>
-  </data>
-  <data name="checkBoxAllowDeleteOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 17</value>
-  </data>
-  <data name="radioButtonNativeEngine.Text" xml:space="preserve">
-    <value>Native engine : use the system native API. This mode is faster and more accurate, but is not guaranteed to work on all systems.</value>
-  </data>
-  <data name="&gt;&gt;tabPageScanEngine.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="labelScanEngineDesc.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
-  </data>
-  <data name="radioButtonSimpleEngine.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageRightClic.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="radioButtonSimpleEngine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 19</value>
-  </data>
-  <data name="checkBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="radioButtonNativeEngine.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>OptionsUserControl</value>
-  </data>
-  <data name="tabPageScanEngine.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="&gt;&gt;labelScanEngineDesc.Parent" xml:space="preserve">
-    <value>tabPageScanEngine</value>
-  </data>
-  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 89</value>
-  </data>
-  <data name="&gt;&gt;checkBox1.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;radioButtonNativeEngine.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="groupBoxEngine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>551, 99</value>
-  </data>
-  <data name="&gt;&gt;radioButtonNativeEngine.Name" xml:space="preserve">
-    <value>radioButtonNativeEngine</value>
-  </data>
-  <data name="radioButtonNativeEngine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 58</value>
-  </data>
-  <data name="&gt;&gt;tabPageRightClic.Name" xml:space="preserve">
-    <value>tabPageRightClic</value>
-  </data>
-  <data name="checkBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAllowDeleteOption.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDeletionAsk4Confirmation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxEngine.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="checkBoxDeletionAsk4Confirmation.Text" xml:space="preserve">
-    <value>Allways ask for confirmation before deleting a folder</value>
-  </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>565, 318</value>
-  </data>
-  <data name="tabPageRightClic.Size" type="System.Drawing.Size, System.Drawing">
-    <value>557, 292</value>
-  </data>
-  <data name="&gt;&gt;tabPageRightClic.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;checkBox1.Name" xml:space="preserve">
-    <value>checkBox1</value>
-  </data>
-  <data name="tabPageScanEngine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="&gt;&gt;labelScanEngineDesc.Name" xml:space="preserve">
-    <value>labelScanEngineDesc</value>
-  </data>
-  <data name="labelScanEngineDesc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="&gt;&gt;groupBoxEngine.Parent" xml:space="preserve">
+    <value>tabPageScanEngine</value>
   </data>
   <data name="&gt;&gt;groupBoxEngine.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="tabPageScanEngine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
   </data>
-  <data name="&gt;&gt;checkBoxDeletionAsk4Confirmation.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="tabPageScanEngine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>557, 292</value>
   </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBoxDeletionAsk4Confirmation.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;tabPageScanEngine.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSimpleEngine.ZOrder" xml:space="preserve">
+  <data name="tabPageScanEngine.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="tabPageRightClic.Text" xml:space="preserve">
-    <value>Application behaviour</value>
-  </data>
-  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="checkBoxDeletionAsk4Confirmation.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="labelScanEngineDesc.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="radioButtonNativeEngine.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonSimpleEngine.Text" xml:space="preserve">
-    <value>Simple engine : use .Net API. This mode is safe (it works on all systems) but is slower and sometimes less accurate.</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="labelScanEngineDesc.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>tabPageRightClic</value>
-  </data>
-  <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>527, 22</value>
-  </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="label1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="checkBoxAllowDeleteOption.Text" xml:space="preserve">
-    <value>Allow to delete folders from the right clic menu</value>
-  </data>
-  <data name="tabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="labelScanEngineDesc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>554, 41</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAllowDeleteOption.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;radioButtonNativeEngine.Parent" xml:space="preserve">
-    <value>groupBoxEngine</value>
-  </data>
-  <data name="checkBoxAllowDeleteOption.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 22</value>
-  </data>
-  <data name="&gt;&gt;tabPageRightClic.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSimpleEngine.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>545, 77</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonNativeEngine.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tabPageScanEngine.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="groupBoxEngine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 44</value>
-  </data>
-  <data name="checkBoxDeletionAsk4Confirmation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>267, 17</value>
-  </data>
-  <data name="checkBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 19</value>
-  </data>
-  <data name="labelScanEngineDesc.Text" xml:space="preserve">
-    <value>The scan engine is the component of HDGraph responsible for enumerating the files and folders. It builds a report which will be used by HDGraph to draw the chart.</value>
-  </data>
-  <data name="radioButtonSimpleEngine.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDeletionAsk4Confirmation.Name" xml:space="preserve">
-    <value>checkBoxDeletionAsk4Confirmation</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>This is an anonymous process which will download on the HDGraph website a very small file containing the latest version number.</value>
-  </data>
-  <data name="radioButtonSimpleEngine.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;labelScanEngineDesc.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="labelScanEngineDesc.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
   </data>
   <data name="tabPageScanEngine.Text" xml:space="preserve">
     <value>Scan engine</value>
   </data>
-  <data name="radioButtonNativeEngine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>525, 32</value>
+  <data name="&gt;&gt;tabPageScanEngine.Name" xml:space="preserve">
+    <value>tabPageScanEngine</value>
+  </data>
+  <data name="&gt;&gt;tabPageScanEngine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageScanEngine.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPageScanEngine.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>565, 318</value>
+  </data>
+  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>565, 318</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>OptionsUserControl</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

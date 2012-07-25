@@ -12,6 +12,8 @@ namespace HDGraph
 {
     public abstract class HDGraphScanEngineBase : IXmlSerializable
     {
+        public bool IgnoreSymLinks { get; set; }
+
         #region Vatiables et propriétés
 
         #region Variables avec role de cache
@@ -111,6 +113,8 @@ namespace HDGraph
 
         public List<ScanError> ErrorList { get; set; }
 
+        public List<string> IgnoredSymFoldersList { get; set; }
+
         #endregion
 
         #region Contructeur(s)
@@ -120,6 +124,7 @@ namespace HDGraph
             if (scanningMessage == null)
                 scanningMessage = ApplicationMessages.Scanning;
             ErrorList = new List<ScanError>();
+            IgnoredSymFoldersList = new List<string>();
         }
 
         #endregion
@@ -143,6 +148,7 @@ namespace HDGraph
                 throw new ArgumentOutOfRangeException("maxLevel", "Il faut afficher au moins 1 niveau !");
             root = new DirectoryNode(path);
             ErrorList = new List<ScanError>();
+            IgnoredSymFoldersList = new List<string>();
             AnalyseStartDate = DateTime.Now;
             BuildTreeInternal(root, maxLevel - 1);
             ApplySpecialRootOptions(root);

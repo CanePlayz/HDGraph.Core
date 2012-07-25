@@ -12,6 +12,10 @@ namespace HDGraph.ScanEngine
     public class NativeFileSystemScanEngine : HDGraphScanEngineBase
     {
 
+        public NativeFileSystemScanEngine()
+        {
+        }
+
         /// <summary>
         /// Méthode récursive construisant l'arborescence de DirectoryNode.
         /// </summary>
@@ -19,6 +23,7 @@ namespace HDGraph.ScanEngine
         /// <param name="maxLevel"></param>
         protected override void BuildTreeInternal(IDirectoryNode dir, int maxLevel)
         {
+            this.IgnoreSymLinks = Properties.Settings.Default.OptionIgnoreReparsePoints;
             if (pleaseCancelCurrentWork)
             {
                 workCanceled = true;
@@ -58,12 +63,12 @@ namespace HDGraph.ScanEngine
                             try
                             {
 
-                                // TODO : détecter hardlink/junction points.
-                                //if ((di.Attributes & FileAttributes.ReparsePoint) == FileAttributes.ReparsePoint)
-                                //{
-                                //    string path = JunctionPoint.GetTargetOrNull(di.FullName);
-                                //    // TODO
-                                //}
+                                // detect symLinks/hardlink/junction points.
+                                if (IgnoreSymLinks && (di.Attributes & FileAttributes.ReparsePoint) == FileAttributes.ReparsePoint)
+                                {
+                                    IgnoredSymFoldersList.Add(di.FullName);
+                                    continue;
+                                }
 
                                 BuildTreeInternal(dirNode, maxLevel - 1);
                                 dirNode.Parent = dir;
@@ -93,7 +98,8 @@ namespace HDGraph.ScanEngine
 
         private void ScanFilesOfDir(IDirectoryNode dir, bool includeFilesOfSubdir)
         {
-            FileSystemEnumerator enumerator = new FileSystemEnumerator(dir.Path, null, includeFilesOfSubdir);
+            
+            FileSystemEnumerator enumerator = new FileSystemEnumerator(dir.Path, null, includeFilesOfSubdir, this.IgnoreSymLinks);
             foreach (IExtendedFileInfo fi in enumerator.Matches())
             {
                 if (pleaseCancelCurrentWork)
@@ -106,23 +112,18 @@ namespace HDGraph.ScanEngine
                     dir.DirectoryFilesNumber++;
                     try
                     {
-                        // TODO : détecter hardlink/junction points.
-                        //if ((fi.Attributes & FileAttributes.ReparsePoint) == FileAttributes.ReparsePoint)
-                        //{
-                        //    string path = JunctionPoint.GetTargetOrNull(fi.FullName);
-                        //    // TODO
-                        //}
                         dir.FilesSize += fi.Size;
                     }
                     catch (Exception ex)
                     {
                         // Une erreur de type FileNotFoundException peut survenir.
                         // Elle peut être due à une PathTooLongException.
+                        string fullFileName = Path.Combine(fi.FolderPath, fi.FileName);
                         Trace.TraceError("Error during file analysis (" + dir.Path +
-                            "\\" + fi.FileName + "). Details: " + HDGTools.PrintError(ex));
+                            "\\" + fullFileName + "). Details: " + HDGTools.PrintError(ex));
                         ErrorList.Add(new ScanError()
                         {
-                            FileOrDirPath = fi.FileName,
+                            FileOrDirPath = fullFileName,
                             Exception = ex
                         });
                     }
@@ -137,6 +138,7 @@ namespace HDGraph.ScanEngine
                     Exception = new InvalidOperationException()
                 });
             }
+            IgnoredSymFoldersList.AddRange(enumerator.IgnoredLinks);
         }
 
 

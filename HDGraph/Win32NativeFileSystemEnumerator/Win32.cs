@@ -4,13 +4,14 @@ using System.Text;
 using System.Runtime.InteropServices;
 using System.Runtime.ConstrainedExecution;
 using System.Security.Permissions;
+using System.IO;
 
 namespace HDGraph.Win32NativeFileSystemEnumerator.Win32
 {
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
     internal sealed class FindData
     {
-        public uint fileAttributes;
+        public int fileAttributes;
         public System.Runtime.InteropServices.ComTypes.FILETIME ftCreationTime;
         public System.Runtime.InteropServices.ComTypes.FILETIME ftLastAccessTime;
         public System.Runtime.InteropServices.ComTypes.FILETIME ftLastWriteTime;

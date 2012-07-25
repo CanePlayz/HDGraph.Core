@@ -816,7 +816,16 @@ namespace HDGraph
 
 
             //PrintStatus("Terminé !");
-            errorStatus1.Update(scanEngine.ErrorList);
+            List<ScanError> errors = new List<ScanError>(scanEngine.ErrorList);
+            foreach (var link in scanEngine.IgnoredSymFoldersList)
+            {
+                errors.Add(new ScanError()
+                {
+                    FileOrDirPath = link,
+                    ManualMessage = ApplicationMessages.FolderOrFileIsReparsePoint,
+                });
+            }
+            errorStatus1.Update(errors);
             buttonScan.Enabled = true;
             TimeSpan executionTime = scanEngine.AnalyzeDate.Subtract(scanEngine.AnalyseStartDate);
             PrintStatus(String.Format(ApplicationMessages.ScanCompletedIn, executionTime));
@@ -1019,14 +1028,15 @@ namespace HDGraph
             HDGraph.Properties.Settings.Default.MyDrawOptions = DrawOptions;
             HDGraph.Properties.Settings.Default.Save();
 
-            if (isFirstRun)
-            {
-                DialogResult res = MessageBox.Show(ApplicationMessages.ExperimentalVersionGoToForum, "HDGraph", MessageBoxButtons.YesNoCancel);
-                if (res == DialogResult.Cancel)
-                    e.Cancel = true;
-                else if (res == DialogResult.Yes)
-                    Process.Start(HDGraphForum);
-            }
+            // For BETA versions ONLY :
+            //if (isFirstRun)
+            //{
+            //    DialogResult res = MessageBox.Show(ApplicationMessages.ExperimentalVersionGoToForum, "HDGraph", MessageBoxButtons.YesNoCancel);
+            //    if (res == DialogResult.Cancel)
+            //        e.Cancel = true;
+            //    else if (res == DialogResult.Yes)
+            //        Process.Start(HDGraphForum);
+            //}
         }
 
         private void shortcutsToolStripMenuItem_Click(object sender, EventArgs e)

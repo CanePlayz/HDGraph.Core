@@ -9,5 +9,7 @@ namespace HDGraph.Interfaces.ScanEngines
         string FileName { get; }
 
         long Size { get; }
+
+        string FolderPath { get; }
     }
 }
