@@ -9,7 +9,7 @@ Version 1.4.2
 Added:
 	- New "ignore reparse points" option, to avoid duplicates due to symbolic links, junction points, or volume mount points.
 Fixed:
-	- Bug 3442099 : Crash when running on Windows 8 x64
+	- Bug 3442099 : Crash when running on Windows 8 x64 (thanks to AdamNCasey )
 
 Version 1.4.1 "Beta"
 ======================================================
