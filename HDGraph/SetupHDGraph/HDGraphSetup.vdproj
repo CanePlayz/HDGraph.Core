@@ -21,8 +21,26 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_6C2346E8D18375EA1C9A722776FDFB12"
+        "OwnerKey" = "8:_2BFC090C1BD44105BDB439B6273822F8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_87A1FE75868042DFAB999A0617A548B3"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B4DB98CF247E167EA9A9272EAF0D347D"
+        "OwnerKey" = "8:_2BFC090C1BD44105BDB439B6273822F8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B4DB98CF247E167EA9A9272EAF0D347D"
+        "OwnerKey" = "8:_6C2346E8D18375EA1C9A722776FDFB12"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -35,6 +53,18 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_2BFC090C1BD44105BDB439B6273822F8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_6C2346E8D18375EA1C9A722776FDFB12"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_B4DB98CF247E167EA9A9272EAF0D347D"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -124,7 +154,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "Version" = "8:2.0.50727"
+                "FrameworkVersion" = "8:2.0.50727"
                 "AllowLaterVersions" = "11:TRUE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=9832"
                 }
@@ -132,6 +162,37 @@
         }
         "File"
         {
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6C2346E8D18375EA1C9A722776FDFB12"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Win32NativeFileSystemEnumerator, Version=1.4.2.0, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_6C2346E8D18375EA1C9A722776FDFB12"
+                    {
+                    "Name" = "8:Win32NativeFileSystemEnumerator.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Win32NativeFileSystemEnumerator.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_4E790C2004A742B69D2BD8EC179402C0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_87A1FE75868042DFAB999A0617A548B3"
             {
             "SourcePath" = "8:..\\HDGraphGUI\\HDGraph.ico"
@@ -150,6 +211,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B4DB98CF247E167EA9A9272EAF0D347D"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:HDGraphInterfaces, Version=1.4.2.0, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_B4DB98CF247E167EA9A9272EAF0D347D"
+                    {
+                    "Name" = "8:HDGraphInterfaces.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:HDGraphInterfaces.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_4E790C2004A742B69D2BD8EC179402C0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C09815AA3795432A971E84507B418F5D"
@@ -262,14 +354,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HDGraph"
-        "ProductCode" = "8:{8B583E95-EF9E-48D8-AF3B-15FD4F28B682}"
-        "PackageCode" = "8:{457483DE-4724-4FFE-BBCE-4E81F97FDAF1}"
+        "ProductCode" = "8:{F890AB9C-C84B-495B-8D28-185195110A9F}"
+        "PackageCode" = "8:{229A284B-8DCE-49E5-B93D-ECA38F975B72}"
         "UpgradeCode" = "8:{ECE6C8C8-DA14-4318-9557-2B99CB9B9DFF}"
+        "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.3.0"
+        "ProductVersion" = "8:1.4.2"
         "Manufacturer" = "8:JYL2002"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -858,7 +951,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_2BFC090C1BD44105BDB439B6273822F8"
             {
-            "SourcePath" = "8:..\\HDGraphGUI\\obj\\Release\\HDGraph.exe"
+            "SourcePath" = "8:..\\HDGraphGUI\\obj\\Debug\\HDGraph.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4E790C2004A742B69D2BD8EC179402C0"

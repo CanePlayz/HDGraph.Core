@@ -54,7 +54,7 @@ namespace HDGraph
                 Console.Error.WriteLine(ex.ToString());
                 Trace.TraceError(HDGTools.PrintError(ex));
                 System.Resources.ResourceManager res = new System.Resources.ResourceManager(typeof(Program).Assembly.GetName().Name + ".Resources.ApplicationMessages", typeof(Program).Assembly);
-                MessageBox.Show(res.GetString("CriticalError"),
+                MessageBox.Show(string.Format(res.GetString("CriticalError"), GetLogFilename()),
                                 res.GetString("Error"),
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -73,7 +73,7 @@ namespace HDGraph
             Console.Error.WriteLine(e.Exception.ToString());
             Trace.TraceError(HDGTools.PrintError(e.Exception));
             System.Resources.ResourceManager res = new System.Resources.ResourceManager(typeof(Program).Assembly.GetName().Name + ".Resources.ApplicationMessages", typeof(Program).Assembly);
-            MessageBox.Show(res.GetString("CriticalError"),
+            MessageBox.Show(string.Format(res.GetString("CriticalError"), GetLogFilename()),
                             res.GetString("Error"),
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
         }

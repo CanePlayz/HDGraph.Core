@@ -244,7 +244,7 @@
     <value>Légende / Comment lire le graphique ?</value>
   </data>
   <data name="groupBoxScanOptions.Text" xml:space="preserve">
-    <value>0ptions du scan</value>
+    <value>Options du scan</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Niveaux de rép. à mémoriser (réduire pour améliorer les perfs) :</value>
@@ -292,7 +292,7 @@
     <value>Densité du texte :</value>
   </data>
   <data name="groupBoxDrawEngineOptions.Text" xml:space="preserve">
-    <value>0ptions du moteur de rendu</value>
+    <value>Options du moteur de rendu</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 13</value>
@@ -821,5 +821,8 @@
   </data>
   <data name="aboutToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;A propos...</value>
+  </data>
+  <data name="buttonAdvanced.Text" xml:space="preserve">
+    <value>&amp;Options...   </value>
   </data>
 </root>

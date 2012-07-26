@@ -17,8 +17,10 @@ Install on WINDOWS :
 ======================================================
 
 - Make sure your computer satisfy the minimum requirements.
-- Start the installation file (setup file).
-- Follow the instructions.
+- Start the installation file (setup file) and follow the instructions.
+OR
+- Unzip the Zip file and start HDGraph.exe
+
 
 Install on Linux, Mac OS : 
 ======================================================
@@ -84,8 +86,9 @@ Installation sous WINDOWS :
 ======================================================
 
 - Assurez vous que votre ordinateur possède au moins la configuration requise pour installer le logiciel.
-- Lancez le fichier d'installation.
-- Ensuite suivez les instructions indiquées à l'écran.
+- Lancez le fichier d'installation et suivez les instructions indiquées à l'écran.
+OU
+- Décompressez le fichier ZIP dans un dossier puis lancez le fichier HDGraph.exe.
 
 Installation sous Linux, Mac OS :
 ======================================================

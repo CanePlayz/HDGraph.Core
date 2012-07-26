@@ -27,6 +27,7 @@ namespace HDGraph.WpfDrawEngine
         public TreeGraph()
         {
             InitializeComponent();
+            Properties.Resources.Culture = CultureInfo.CurrentCulture;
             AccelerationType acc = WpfUtils.GetAccelerationType();
             labelStatus.Content = Properties.Resources.HardwareAcceleration + WpfUtils.GetAccelerationTypeString(acc);
             labelStatus.ToolTip = WpfUtils.GetAccelerationTypeDescription(acc);
@@ -40,7 +41,7 @@ namespace HDGraph.WpfDrawEngine
                 new CommandBinding(
                     NavigationCommands.BrowseForward,
                     BrowseForwardCommand_Executed));
-            Properties.Resources.Culture = CultureInfo.CurrentCulture;
+            
         }
 
         private void ArcCommandExecuted(object sender, ExecutedRoutedEventArgs e)

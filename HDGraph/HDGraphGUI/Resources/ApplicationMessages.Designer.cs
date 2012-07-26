@@ -142,7 +142,7 @@ namespace HDGraph.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A critical error occured. Error is logged, and application will stop. Please send the application log to the HDGraph team (contact: http://hdgraph.sourceforge.net). Thank you..
+        ///   Looks up a localized string similar to A critical error occured. Error is logged, and application will stop. Please send the application log ({0}) to the HDGraph team (contact: http://hdgraph.sourceforge.net). Thank you. .
         /// </summary>
         internal static string CriticalError {
             get {

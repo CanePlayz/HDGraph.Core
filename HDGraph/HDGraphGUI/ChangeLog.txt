@@ -8,8 +8,10 @@ Version 1.4.2
 ======================================================
 Added:
 	- New "ignore reparse points" option, to avoid duplicates due to symbolic links, junction points, or volume mount points.
+	- Excluded folders appear in the report list (advanced tab)
 Fixed:
 	- Bug 3442099 : Crash when running on Windows 8 x64 (thanks to AdamNCasey )
+	- minor i18n bug
 
 Version 1.4.1 "Beta"
 ======================================================
@@ -154,8 +156,10 @@ Version 1.4.2
 ======================================================
 Ajouts et améliorations:
 	- Nouvelle option "exclure les liens lors de l'analyse" pour éviter les doublons créés par les liens symboliques, les points de jonctions, etc.
+	- Les dossiers exclus apparaissent dans le rapport des éléments ignorés (en bas de la zone identifiée par le bouton "avancé")
 Corrections:
 	- Bug 3442099 : Crash sous Windows 8 x64
+	- Bug mineur d'internationalisation.
 
 Version 1.4.1 "Beta"
 ======================================================
