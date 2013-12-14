@@ -1,0 +1,223 @@
+﻿<UserControl x:Class="HDGraph.WpfDrawEngine.Skins.Arrow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:prop="clr-namespace:HDGraph.WpfDrawEngine.Properties"
+	mc:Ignorable="d"
+	x:Name="UserControl"
+	d:DesignWidth="640" d:DesignHeight="480">
+    <UserControl.Resources>
+        <Storyboard x:Key="Storyboard1">
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ArrowLayout" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.000000" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="arrowLine1" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                <SplineColorKeyFrame KeyTime="00:00:00" Value="Transparent"/>
+                <SplineColorKeyFrame KeyTime="00:00:01" Value="#00000000"/>
+                <SplineColorKeyFrame KeyTime="00:00:01.6860000" Value="#00000000"/>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="arrowLine1" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Offset)">
+                <SplineDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:01.6860000" Value="0.972"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:01.8000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="arrowLine1" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Offset)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:01.6860000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="path1" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Offset)">
+                <SplineDoubleKeyFrame KeyTime="00:00:01.8710000" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:01.9000000" Value="0.084"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:02.2000000" Value="0.815"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:02.2290000" Value="0.884"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:02.3000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="path1" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Offset)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:01" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:01.8000000" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:01.8710000" Value="0.169"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:01.9000000" Value="0.137"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:02.2000000" Value="0.867"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:02.2290000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="path2" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Offset)">
+                <SplineDoubleKeyFrame KeyTime="00:00:02.3000000" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:02.7000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="path2" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Offset)">
+                <SplineDoubleKeyFrame KeyTime="00:00:02.3000000" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:02.7000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="path1" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                <SplineColorKeyFrame KeyTime="00:00:01" Value="#00000000"/>
+                <SplineColorKeyFrame KeyTime="00:00:01.8000000" Value="#00000000"/>
+                <SplineColorKeyFrame KeyTime="00:00:01.8710000" Value="#00000000"/>
+            </ColorAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.0010000" Storyboard.TargetName="arrowLine2" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                <SplineColorKeyFrame KeyTime="00:00:00" Value="#00000000"/>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="arrowLine2" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Offset)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:03.9000000" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:04.3000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="arrowLine2" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Offset)">
+                <SplineDoubleKeyFrame KeyTime="00:00:03.9000000" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:04.3000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="arrowHead2" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <SplineDoubleKeyFrame KeyTime="00:00:00" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:04.4000000" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="00:00:04.6000000" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="Number1" Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.1000000" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.2600000" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.4200000" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.5800000" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.7400000" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:00.9000000" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Number2">
+                <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:03" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:03.1600000" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:03.3200000" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:03.4800000" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:03.6400000" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="00:00:03.8000000" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <!--<UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+        </EventTrigger>
+    </UserControl.Triggers>-->
+
+    <Grid x:Name="LayoutRoot" Margin="-49,8,131,-8">
+        <Grid x:Name="ArrowLayout" Visibility="Collapsed">
+            <Path x:Name="arrowLine1" StrokeThickness="8" StrokeLineJoin="Round" Data="F1 M4.6123197,260.44507 C77.25634,245.53879 113.07212,201.54313 107.55758,4.2589355" Margin="174.311,66.317,272.407,0" RenderTransformOrigin="0.5,0.5" OpacityMask="{x:Null}" VerticalAlignment="Top" Height="264.704" Stretch="Fill">
+                <Path.Effect>
+                    <DropShadowEffect/>
+                </Path.Effect>
+                <Path.Stroke>
+                    <LinearGradientBrush EndPoint="1,0" StartPoint="0,1">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Path.Stroke>
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+            <Path x:Name="path1" Stretch="Fill" StrokeThickness="10" StrokeLineJoin="Round" Data="F1 M 406,214.504C 456.997,175.506 385.001,39.013 453.997,150.007C 522.994,261.002 491.495,214.504 491.495,214.504" Margin="0,5.407,217.329,0" VerticalAlignment="Top" Height="126.761" HorizontalAlignment="Right" Width="104.872">
+                <Path.Stroke>
+                    <LinearGradientBrush EndPoint="1,0" StartPoint="0,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="#00920000" Offset="0.486"/>
+                    </LinearGradientBrush>
+                </Path.Stroke>
+            </Path>
+            <Path x:Name="path2" Stretch="Fill" StrokeThickness="4" StrokeLineJoin="Round" Data="F1 M 405.997,214.42C 405.997,214.42 447.771,172.339 494.268,221.837" Margin="0,98.736,224.891,0" VerticalAlignment="Top" Height="28.101" HorizontalAlignment="Right" Width="94.249">
+                <Path.Stroke>
+                    <LinearGradientBrush EndPoint="0,0" StartPoint="1,0">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="#00000000"/>
+                    </LinearGradientBrush>
+                </Path.Stroke>
+            </Path>
+            <Grid x:Name="Number1" Margin="97.982,256.852,0,0" HorizontalAlignment="Left" Width="78.531" VerticalAlignment="Top" Height="89.6">
+                <TextBlock Margin="21.018,10.148,0,14.452" FontFamily="Segoe Script" FontSize="48" FontWeight="Bold" Text="1" TextWrapping="Wrap"/>
+                <Path Stretch="Fill" StrokeLineJoin="Round" StrokeThickness="4" Margin="0,0,5.398,0" RenderTransformOrigin="0.5,0.5" Data="M163.86827,191.21933 C170.34793,202.84417 158.43849,212.58992 153.98444,199.08723 149.25439,184.74781 161.75995,187.46222 163.84659,195.98472">
+                    <Path.Stroke>
+                        <LinearGradientBrush EndPoint="1,0" StartPoint="0,1">
+                            <GradientStop Color="Black" Offset="0"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Path.Stroke>
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-83.184"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+            </Grid>
+            <Grid x:Name="Number2" Margin="260.892,0,0,19.413" VerticalAlignment="Bottom" Height="71.238" HorizontalAlignment="Left" Width="76.621">
+                <TextBlock Margin="19.108,0,0,19.587" FontFamily="Segoe Script" FontSize="48" FontWeight="Bold" Text="2" TextWrapping="Wrap"/>
+                <Path Stretch="Fill" StrokeLineJoin="Round" StrokeThickness="4" Margin="0,8.981,5.861,-2" RenderTransformOrigin="0.5,0.5" Data="M163.68453,190.87945 C171.49383,204.14577 157.90466,213.43242 153.45061,199.92973 148.72056,185.59031 161.59226,184.02331 163.6789,192.54581">
+                    <Path.Stroke>
+                        <LinearGradientBrush EndPoint="1,0" StartPoint="0,1">
+                            <GradientStop Color="Black" Offset="0"/>
+                            <GradientStop Color="White" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Path.Stroke>
+                    <Path.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-89.761"/>
+                            <TranslateTransform X="2.5367284552194276" Y="-7.6900572302856034"/>
+                        </TransformGroup>
+                    </Path.RenderTransform>
+                </Path>
+            </Grid>
+            <Path x:Name="arrowLine2" StrokeThickness="8" StrokeLineJoin="Round" Data="F1 M4.0000041,458.99998 C82.000017,440.99998 264.00001,312.99999 290,4.0000138" Margin="352,67.007,31,50.226" RenderTransformOrigin="0.5,0.5" Stretch="Fill">
+                <Path.Stroke>
+                    <LinearGradientBrush EndPoint="1,0" StartPoint="1,1">
+                        <GradientStop Color="Black" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Path.Stroke>
+                <Path.Effect>
+                    <DropShadowEffect/>
+                </Path.Effect>
+                <Path.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Path.RenderTransform>
+            </Path>
+            <Grid x:Name="arrowHead2" Margin="0,3.53,6.832,0" VerticalAlignment="Top" Height="146.886" OpacityMask="Black" HorizontalAlignment="Right" Width="80.168" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-12.942"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <Path x:Name="path1_Copy" StrokeThickness="10" StrokeLineJoin="Round" Data="F1 M5,98.470066 C55.996981,59.471696 77.3104,-55.473027 74.999125,45.469896 C71.999624,176.47048 72.49516,135.9753 72.49516,135.9753" Stroke="Black" Margin="0,0,0,-2" HorizontalAlignment="Right" Width="80.168"/>
+                <Path x:Name="path2_Copy" StrokeThickness="4" StrokeLineJoin="Round" Data="F1 M2.0000011,13.091068 C2.0000011,13.091068 57.999999,-31.90958 63.751005,59.378132" Margin="9,0,5.417,2.129" VerticalAlignment="Bottom" Height="63.378" Stroke="Black"/>
+            </Grid>
+        </Grid>
+        <TextBlock Panel.ZIndex="10" Margin="59,158,0,0" 
+                   Name="textBlockWelcome" VerticalAlignment="Top" 
+                   Text="{x:Static prop:Resources.LabelWelcome}" FontSize="28"
+                   HorizontalAlignment="Left" />
+        <TextBlock Panel.ZIndex="9" Margin="61,160,0,0" 
+                   Name="textBlockWelcomeShadow" VerticalAlignment="Top" 
+                   Text="{x:Static prop:Resources.LabelWelcome}" FontSize="28"
+                   HorizontalAlignment="Left"
+                   Foreground="Wheat" />
+        <TextBlock Margin="61,201,0,0">
+            <Hyperlink x:Name="showMeWhereToStart" Click="showMeWhereToStart_Click">
+                <TextBlock Text="{x:Static prop:Resources.LabelShowMeWhereToStart}"/>
+             </Hyperlink>
+        </TextBlock>
+    </Grid>
+</UserControl>

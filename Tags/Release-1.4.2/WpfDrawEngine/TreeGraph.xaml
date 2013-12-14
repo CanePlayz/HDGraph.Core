@@ -1,0 +1,411 @@
+﻿<UserControl x:Class="HDGraph.WpfDrawEngine.TreeGraph"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:loc="clr-namespace:HDGraph.WpfDrawEngine"
+    xmlns:sys="clr-namespace:System;assembly=System"
+    xmlns:prop="clr-namespace:HDGraph.WpfDrawEngine.Properties"
+    xmlns:skin="clr-namespace:HDGraph.WpfDrawEngine.Skins"
+    x:Name="treeGraph1" ContextMenuOpening="treeGraph1_ContextMenuOpening"
+    MouseWheel="treeGraph1_MouseWheel" Height="158.414" Width="267.612">
+    <UserControl.CommandBindings>
+        <CommandBinding Command="loc:GraphCommands.ArcCommand" 
+                        CanExecute="ArcCommandCanExecute"
+                        Executed="ArcCommandExecuted"/>
+    </UserControl.CommandBindings>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="MainDictionary.xaml" />
+                <ResourceDictionary Source="Skins/Default.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <loc:DivideBy2NumericConverter x:Key="myDivideBy2NumericConverter"/>
+            <loc:MultiplierNumericConverter x:Key="myMultiplierNumericConverter"/>
+            <loc:SingleMultiplierNumericConverter x:Key="mySingleMultiplierNumericConverter"/>
+            <Style TargetType="{x:Type ToolTip}">
+                <Setter Property="Background" Value="#7F000000"/>
+                <Setter Property="BorderBrush" Value="#7Fdcdcdc" />
+                <Setter Property="Foreground" Value="White"/>
+            </Style>
+            <Style x:Key="ArcTextStyle">
+                <Setter Property="Label.FontSize" Value="{Binding ElementName=sliderTextSize, Path=Value}">
+                </Setter>
+            </Style>
+            <Style x:Key="RotateArrowStyle">
+                <!--<Setter Property="ContentControl.RenderTransform">
+                    <Setter.Value>
+                        <RotateTransform x:Name="rotateArrowRotation" Angle="0"
+                                         CenterX="{Binding Path=ActualWidth, 
+                                              RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContentControl}}, 
+                                              Converter={StaticResource myDivideBy2NumericConverter}}"
+                                         CenterY="{Binding Path=ActualHeight, 
+                                              RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContentControl}}, 
+                                              Converter={StaticResource myDivideBy2NumericConverter}}">
+                        </RotateTransform>
+                    </Setter.Value>
+                </Setter>-->
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding ElementName=treeGraph1, Path=IsRotating}" Value="true">
+                        <DataTrigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                        From="0" To="1" Duration="0:0:0.5" AutoReverse="True" AccelerationRatio="1" RepeatBehavior="Forever"/>
+                                    <!--<DoubleAnimation Storyboard.TargetProperty="RenderTransform.Angle"
+                                        From="360" To="0" Duration="0:0:1" RepeatBehavior="Forever"/>-->
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.EnterActions>
+                        <DataTrigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                        To="0" Duration="0:0:0.4" />
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.ExitActions>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+            <Storyboard x:Key="FadeInStoryboard">
+                <!--<ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="00:00:00" Value="{x:Static Visibility.Visible}"/>
+                    <DiscreteObjectKeyFrame KeyTime="00:00:01" Value="{x:Static Visibility.Collapsed}"/>
+                </ObjectAnimationUsingKeyFrames>-->
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:0" Value="0"/>
+                    <SplineDoubleKeyFrame KeyTime="00:00:1" Value="1"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+
+            <Storyboard x:Key="FadeOutStoryboard">
+                <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Visibility)">
+                    <DiscreteObjectKeyFrame KeyTime="00:00:1" Value="{x:Static Visibility.Collapsed}"/>
+                </ObjectAnimationUsingKeyFrames>
+                <DoubleAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(UIElement.Opacity)">
+                    <SplineDoubleKeyFrame KeyTime="00:00:1" Value="0"/>
+                </DoubleAnimationUsingKeyFrames>
+            </Storyboard>
+
+            <Storyboard x:Key="CenterArcStoryboard" Completed="Storyboard_Completed"
+                        DecelerationRatio="0.5" AccelerationRatio="0.5">
+                <SingleAnimation Storyboard.TargetProperty="StopAngle"
+                                 To="359.99" Duration="00:00:01" />
+                <SingleAnimation Storyboard.TargetProperty="SmallRadius"
+                                 To="0" Duration="00:00:01" />
+                <SingleAnimation Storyboard.TargetProperty="LargeRadius"
+                                 To="10" Duration="00:00:01"/>
+            </Storyboard>
+
+            <ContextMenu x:Key="StandardContextMenu" HasDropShadow="True" Opacity="0.9">
+                <MenuItem 
+                    Command="loc:GraphCommands.ArcCommand"
+                    CommandParameter="{x:Static  loc:GraphCommands.ActionOpenExternal}"
+                    CommandTarget="{Binding Path=PlacementTarget, 
+                                      RelativeSource={RelativeSource FindAncestor, 
+                                      AncestorType={x:Type ContextMenu}}}">
+                    <MenuItem.Header>
+                        <TextBlock Text="{Binding Path=Name}" FontSize="16" FontWeight="Bold" ></TextBlock>
+                    </MenuItem.Header>
+                </MenuItem>
+                <Separator/>
+                <MenuItem 
+                    Header="{x:Static prop:Resources.ContextMenuShowDetails}"
+                    Command="loc:GraphCommands.ArcCommand"
+                    CommandParameter="showDetails"
+                    CommandTarget="{Binding Path=PlacementTarget, 
+                                      RelativeSource={RelativeSource FindAncestor, 
+                                      AncestorType={x:Type ContextMenu}}}"/>
+                <MenuItem 
+                    Header="{x:Static prop:Resources.ContextMenuOpenExternal}" 
+                    Command="loc:GraphCommands.ArcCommand"
+                    CommandParameter="openExternal"
+                    CommandTarget="{Binding Path=PlacementTarget, 
+                                      RelativeSource={RelativeSource FindAncestor, 
+                                      AncestorType={x:Type ContextMenu}}}"/>
+                <Separator/>
+                <MenuItem 
+                    Header="{x:Static prop:Resources.ContextMenuRefreshThis}" 
+                    Command="loc:GraphCommands.ArcCommand"
+                    CommandParameter="refresh"
+                    CommandTarget="{Binding Path=PlacementTarget, 
+                                      RelativeSource={RelativeSource FindAncestor, 
+                                      AncestorType={x:Type ContextMenu}}}"/>
+                <MenuItem 
+                    Header="{x:Static prop:Resources.ContextMenuCenterOnThis}" 
+                    Command="loc:GraphCommands.ArcCommand"
+                    CommandParameter="centerOnDir"
+                    CommandTarget="{Binding Path=PlacementTarget, 
+                                      RelativeSource={RelativeSource FindAncestor, 
+                                      AncestorType={x:Type ContextMenu}}}"/>
+                <Separator/>
+                <MenuItem 
+                    Header="{x:Static prop:Resources.ContextMenuDeleteThis}"
+                    Command="loc:GraphCommands.ArcCommand"
+                    CommandParameter="canDelete"
+                    CommandTarget="{Binding Path=PlacementTarget, 
+                                          RelativeSource={RelativeSource FindAncestor, 
+                                          AncestorType={x:Type ContextMenu}}}">
+                    <MenuItem 
+                        Header="{x:Static prop:Resources.ContextMenuDeletePermanently}" 
+                        Command="loc:GraphCommands.ArcCommand"
+                        CommandParameter="delete"
+                        CommandTarget="{Binding Path=PlacementTarget, 
+                                          RelativeSource={RelativeSource FindAncestor, 
+                                          AncestorType={x:Type ContextMenu}}}"/>
+                </MenuItem>
+            </ContextMenu>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Margin="0,0,0,0" x:Name="grid1" MouseWheel="grid1_MouseWheel">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="textBlockNothingToDraw" Visibility="Collapsed"
+                   VerticalAlignment="Center" HorizontalAlignment="Center" 
+                   Margin="0 0 0 0" TextAlignment="Center"
+                   TextWrapping="Wrap"
+                   FontSize="24" Text="{x:Static prop:Resources.LabelNothingToDraw}"></TextBlock>
+        <ScrollViewer Grid.Row="0"
+            Name="scrollViewer1" 
+            VerticalScrollBarVisibility="Auto" 
+            HorizontalScrollBarVisibility="Auto">
+            <Canvas x:Name="canvasContainer" >
+                <!--Background="BurlyWood"-->
+                <Canvas.Width>
+                    <!--Width="1000" Height="1000"-->
+                    <MultiBinding Converter="{StaticResource myMultiplierNumericConverter}">
+                        <Binding ElementName="treeGraph1" Path="SingleLevelHeight"
+                                 Converter="{StaticResource mySingleMultiplierNumericConverter}"
+                                 ConverterParameter="2"
+                                 FallbackValue="500">
+                        </Binding>
+                        <Binding ElementName="treeGraph1" Path="CurrentDrawOptions.ShownLevelsCount"/>
+                    </MultiBinding>
+                </Canvas.Width>
+                <Canvas.Height>
+                    <!--Width="1000" Height="1000"-->
+                    <MultiBinding Converter="{StaticResource myMultiplierNumericConverter}">
+                        <Binding ElementName="treeGraph1" Path="SingleLevelHeight"
+                                 Converter="{StaticResource mySingleMultiplierNumericConverter}"
+                                 ConverterParameter="2"
+                                 FallbackValue="500"/>
+                        <Binding ElementName="treeGraph1" Path="CurrentDrawOptions.ShownLevelsCount"/>
+                    </MultiBinding>
+                </Canvas.Height>
+                <Canvas.LayoutTransform>
+                    <ScaleTransform 
+                                ScaleX="{Binding ElementName=sliderScale, Path=Value}"
+                                ScaleY="{Binding ElementName=sliderScale, Path=Value}">
+                    </ScaleTransform>
+                </Canvas.LayoutTransform>
+
+                <!-- Empty Canvas : it defines the "clip" zone, necessary 
+                        just for the ScrollPreview to work properly.  -->
+                <Canvas
+                    Width="{Binding Path=Width, ElementName=canvasContainer}"
+                    Height="{Binding Path=Height, ElementName=canvasContainer}"
+                    >
+                    <!--Background="Salmon"-->
+                    <Canvas.RenderTransform>
+                        <RotateTransform Angle="45"
+                                             CenterX="{Binding Path=ActualWidth, ElementName=canvas1}"
+                                             CenterY="{Binding Path=ActualHeight, ElementName=canvas1}"/>
+                    </Canvas.RenderTransform>
+                </Canvas>
+
+                <Canvas x:Name="canvas1"
+                    MouseDown="canvas1_MouseDown"
+                    MouseUp="canvas1_MouseUp" 
+                    MouseMove="canvas1_MouseMove"
+                    Width="{Binding Path=Width, ElementName=canvasContainer, 
+                                 Converter={StaticResource myDivideBy2NumericConverter}}"
+                    Height="{Binding Path=Height, ElementName=canvasContainer, 
+                                 Converter={StaticResource myDivideBy2NumericConverter}}"
+                    >
+                    <!--Background="Blue"-->
+                    <Canvas.RenderTransform>
+                        <TransformGroup>
+                            <RotateTransform x:Name="rotateTransform" 
+                                             Angle="{Binding ElementName=treeGraph1, Path=CurrentDrawOptions.ImageRotation}"/>
+                            <TranslateTransform X="{Binding Path=ActualWidth, ElementName=canvas1}"
+                                                Y="{Binding Path=ActualHeight, ElementName=canvas1}"/>
+                        </TransformGroup>
+                    </Canvas.RenderTransform>
+                    <!--
+                        During a double-click on an arc, the other arcs should hide gradually.
+                        Instead of applying this effect to each other arc (which could be slow), 
+                        the main arc is placed OVER the opacityGrid and the opacityGrid is becoming
+                        less and less transparent.
+                    -->
+                    <Grid Panel.ZIndex="200" 
+                      x:Name="opacityGrid"
+                      Width="{Binding Path=Width, ElementName=canvasContainer}"
+                      Height="{Binding Path=Height, ElementName=canvasContainer}"
+                      Visibility="Collapsed" Background="White"
+                      >
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform X="{Binding Path=ActualWidth, 
+                                                            ElementName=canvas1,
+                                                            Converter={StaticResource mySingleMultiplierNumericConverter},
+                                                            ConverterParameter=-1}"
+                                                Y="{Binding Path=ActualHeight, ElementName=canvas1,
+                                                            Converter={StaticResource mySingleMultiplierNumericConverter},
+                                                            ConverterParameter=-1}"/>
+                                <ScaleTransform 
+                                    ScaleX="{Binding ElementName=sliderScale, Path=Value,
+                                                            Converter={StaticResource mySingleMultiplierNumericConverter},
+                                                            ConverterParameter=-10}"
+                                    ScaleY="{Binding ElementName=sliderScale, Path=Value,
+                                                            Converter={StaticResource mySingleMultiplierNumericConverter},
+                                                            ConverterParameter=-10}">
+                                </ScaleTransform>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
+                        <!---->
+                        <!--<Grid.Background>
+                            <RadialGradientBrush
+                                         Center="0,0"
+                                         GradientOrigin="0,0"
+                                         RadiusX="{Binding Path=ActualWidth, 
+                                                            ElementName=canvas1,
+                                                            Converter={StaticResource mySingleMultiplierNumericConverter},
+                                                            ConverterParameter=1}"
+                                         RadiusY="{Binding Path=ActualHeight, 
+                                                            ElementName=canvas1,
+                                                            Converter={StaticResource mySingleMultiplierNumericConverter},
+                                                            ConverterParameter=1}"
+                                         MappingMode="Absolute" 
+                                         >
+                                <RadialGradientBrush.GradientStops>
+                                    <GradientStop Color="Yellow" Offset="0.9"></GradientStop>
+                                    <GradientStop Color="Red" Offset="1"></GradientStop>
+                                </RadialGradientBrush.GradientStops>
+                            </RadialGradientBrush>
+                        </Grid.Background>-->
+                    </Grid>
+                </Canvas>
+            </Canvas>
+        </ScrollViewer>
+
+        <loc:ScrollPreview 
+            TargetScrollViewer="{Binding ElementName=scrollViewer1}"
+            TargetPopupButton="{Binding ElementName=buttonShowPreview}"
+            Width="150" Height="150"
+            >
+        </loc:ScrollPreview>
+        <Button Height="23" HorizontalAlignment="Left" Margin="20,0,0,12" Name="buttonShowPreview" VerticalAlignment="Bottom" Width="75" Visibility="Collapsed">
+            <Viewbox>
+                <Canvas Width="16" Height="12">
+                    <!-- Magnify clip -->
+                    <Path Data="F1 M 3.04,0 L 15.84,0 15.84,9.44 3.04,9.44 3.04,0 z" Fill="#ff808080" />
+                    <Path Data="F1 M 4.16,0.96 L 14.88,0.96 14.88,8.48 4.16,8.48 4.16,0.96 z" Fill="#ffffffff" />
+                    <Path Data="F1 M 0,5.28 L 7.36,5.28 7.36,11.68 0,11.68 0,5.28 z" Fill="#ff808080" />
+                    <Path Data="F1 M 0.96,6.4 L 6.4,6.4 6.4,10.56 0.96,10.56 0.96,6.4 z" Fill="#ffffffff" />
+                    <Path Data="F1 M 11.68,3.36 L 8.64,4 9.76,5.76 11.68,3.36 z" Fill="#ff808080" />
+                    <Path Data="F1 M 2.24,8.64 L 9.44,4.16 9.92,4.96 2.88,9.6 2.24,8.64 z" Fill="#ff808080" />
+                </Canvas>
+            </Viewbox>
+        </Button>
+
+        <ContentControl Style="{StaticResource RotateArrowStyle}"
+                        Content="{StaticResource RotateArrow}" 
+                        Grid.Row="0" HorizontalAlignment="Right" 
+                        VerticalAlignment="Top"
+                        Opacity="0" Margin="10"
+                        ></ContentControl>
+        <!--<ContentControl Style="{StaticResource RotateArrowStyle}" Content="{StaticResource RotateArrow}" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top"></ContentControl>
+        <ContentControl Style="{StaticResource RotateArrowStyle}" Content="{StaticResource RotateArrow}" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom"></ContentControl>
+        <ContentControl Style="{StaticResource RotateArrowStyle}" Content="{StaticResource RotateArrow}" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom"></ContentControl>-->
+        <Label Grid.Row="1" x:Name="labelStatus" >
+            <!--<Label.Effect>
+                <DropShadowEffect />
+            </Label.Effect>-->
+            <Label.Style>
+                <Style>
+                    <Style.Triggers>
+                        <Trigger Property="UIElement.IsMouseOver" Value="True">
+                            <Setter Property="Label.Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Label.Style>
+        </Label>
+        <skin:Arrow x:Name="welcomeControl"></skin:Arrow>
+        <Canvas>
+
+            <Expander Header="{x:Static prop:Resources.LabelViewOptions}" BorderBrush="Gray" BorderThickness="2" Margin="20"
+                  Name="expander1" Background="#55BAC6FF"
+                  Padding="10 0 10 0"
+                  >
+                <Grid Margin="0 0 0 10" Width="350" Background="#BBFFFFFF">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="45"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{x:Static prop:Resources.LabelRotation}" />
+                    <Slider Grid.Column="1" Grid.Row="0"
+                    Name="sliderRotation" Margin="10,10,10,10" Maximum="360" Minimum="0" Value="{Binding ElementName=treeGraph1, Path=CurrentDrawOptions.ImageRotation}" />
+                    <Label Grid.Column="2" Grid.Row="0" 
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       Content="{Binding ElementName=treeGraph1, Path=CurrentDrawOptions.ImageRotation}"
+                       ContentStringFormat="{}{0:0.0}°" />
+
+                    <TextBlock Grid.Column="0" Grid.Row="1"  VerticalAlignment="Center" HorizontalAlignment="Right" Text="{x:Static prop:Resources.LabelZoom}"/>
+                    <Slider Grid.Column="1" Grid.Row="1" Name="sliderScale" 
+                            Margin="10,10,10,10" Maximum="20" Minimum="0.5" Value="1" />
+                    <Label Grid.Column="2" Grid.Row="1" 
+                           HorizontalAlignment="Left" VerticalAlignment="Center"
+                           Content="{Binding ElementName=sliderScale, Path=Value}"
+                           ContentStringFormat="x {0:0.0}" />
+
+
+                    <TextBlock Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{x:Static prop:Resources.LabelTextSize}"/>
+                    <Slider Grid.Column="1" Grid.Row="2" Name="sliderTextSize" 
+                            Margin="10,10,10,10" Maximum="25" Minimum="0.5" Value="{Binding ElementName=treeGraph1, Path=CurrentDrawOptions.TextSize}"/>
+                    <Label Grid.Column="2" Grid.Row="2"
+                           HorizontalAlignment="Left" VerticalAlignment="Center"
+                           Content="{Binding ElementName=sliderTextSize, Path=Value}"
+                           ContentStringFormat="{}{0:0.0}" />
+
+                    <TextBlock Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right" Text="{x:Static prop:Resources.LabelTextDensity}"/>
+                    <Slider Grid.Column="1" Grid.Row="3" Name="sliderTextDensity" 
+                            Margin="10,10,10,10" Maximum="20" Minimum="1" Value="{Binding ElementName=treeGraph1, Path=CurrentDrawOptions.TextDensity}"
+                            ToolTip="{x:Static prop:Resources.LabelTextDensityTooltip}"
+                            />
+                    <Label Grid.Column="2" Grid.Row="3"
+                           HorizontalAlignment="Left" VerticalAlignment="Center"
+                           Content="{Binding ElementName=sliderTextDensity, Path=Value}"
+                           ContentStringFormat="&gt; {0:0.0}°" />
+
+                </Grid>
+            </Expander>
+        </Canvas>
+        <Grid Background="#AAAAAAAA" Panel.ZIndex="999"
+              x:Name="DrawingMask"
+              Visibility="Collapsed">
+            <Border BorderBrush="Black" 
+                    BorderThickness="5" 
+                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                    CornerRadius="10" Background="#99FFFFFF"
+                    >
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="28" Margin="20 10 20 10" Text="{x:Static prop:Resources.LabelDrawing}"></TextBlock>
+            </Border>
+        </Grid>
+    </Grid>
+
+
+</UserControl>
