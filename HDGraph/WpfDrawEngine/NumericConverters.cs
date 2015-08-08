@@ -154,6 +154,9 @@ namespace HDGraph.WpfDrawEngine
         {
             if (value == null)
                 return 0;
+            if (targetType == typeof(Object))
+                // fallback sur le type de la valeur d'origine.
+                targetType = value.GetType();
             if (targetType == typeof(double))
             {
                 double result = (parameter == null) ? 1 : System.Convert.ToDouble(parameter);
@@ -168,6 +171,7 @@ namespace HDGraph.WpfDrawEngine
                         result *= System.Convert.ToSingle(value);
                 return result;
             }
+
             throw new NotSupportedException("The TargetType '" + targetType + "' is not valid for SingleMultiplierNumericConverter.");
         }
 
