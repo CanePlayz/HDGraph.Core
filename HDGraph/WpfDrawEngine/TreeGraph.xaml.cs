@@ -818,8 +818,8 @@ namespace HDGraph.WpfDrawEngine
         public void SaveAsImageToFile(string filePath)
         {
             Visual theVisual = canvas1;
-            double width = Convert.ToDouble(theVisual.GetValue(FrameworkElement.WidthProperty));
-            double height = Convert.ToDouble(theVisual.GetValue(FrameworkElement.HeightProperty));
+            double width = Convert.ToDouble(theVisual.GetValue(FrameworkElement.ActualWidthProperty)) * 2;
+            double height = Convert.ToDouble(theVisual.GetValue(FrameworkElement.ActualHeightProperty)) * 2;
             if (double.IsNaN(width) || double.IsNaN(height))
             {
                 throw new FormatException("Width or Height of the UIElement is not valid.");

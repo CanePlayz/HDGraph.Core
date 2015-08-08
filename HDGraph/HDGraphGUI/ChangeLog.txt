@@ -4,6 +4,14 @@ HDGraph ChangeLog (http://hdgraph.sourceforge.net)
 [French version at the bottom !]
 [Version Française plus bas !]
 
+Version 1.5.1
+======================================================
+New:
+	- .Net Framework v.4.5.1 required to start HDGraph (use HDGraph v. 1.4.2 if you don't have it and don't want to install it)
+Fixed:
+	- Right click on a drive from the Windows explorer didn't open the right folder
+	- Fix bug #13 : Win8- Export only quarter
+
 Version 1.4.2
 ======================================================
 Added:
@@ -151,6 +159,14 @@ Initial public release.
 *				VERSION FRANCAISE
 *
 ******************************************************/
+
+Version 1.5.1
+======================================================
+Nouveauté :
+	- .Net Framework v.4.5.1 est désormais requis (utilisez HDGraph v. 1.4.2 si vous n'avez pas cette version du framework et que vous ne voulez par l'installer)
+Corrections :
+	- Dans l'explorateur Windows, un clic droit sur un disque n'ouvrait pas le bon dossier.
+	- Bug #13 corrigé : l'export en tant qu'image créait une image partielle.
 
 Version 1.4.2
 ======================================================
