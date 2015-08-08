@@ -17,8 +17,6 @@ Install on WINDOWS :
 ======================================================
 
 - Make sure your computer satisfy the minimum requirements.
-- Start the installation file (setup file) and follow the instructions.
-OR
 - Unzip the Zip file and start HDGraph.exe
 
 
@@ -38,10 +36,7 @@ First of all :
 - Make sure you closed all opened HDGraph windows.
 
 Next :
-- if you used the Zip package to install HDGraph (for example the "HDGraph_light_x.y.z.zip" file), you just have to delete the HDGraph folder.
-- if you used the MSI file (for example "SetupHDGraph_English_x.y.z.msi"), HDGraph is in the uninstall software list of the control panel and you can uninstall it from here : 
-	1/ Open "Add/Remove programs" from the Configuration Panel, 
-	2/ select HDGraph in the list and clic "Remove"
+- you just have to delete the HDGraph folder.
 
 
 Known bugs and limitations:
@@ -86,8 +81,6 @@ Installation sous WINDOWS :
 ======================================================
 
 - Assurez vous que votre ordinateur possède au moins la configuration requise pour installer le logiciel.
-- Lancez le fichier d'installation et suivez les instructions indiquées à l'écran.
-OU
 - Décompressez le fichier ZIP dans un dossier puis lancez le fichier HDGraph.exe.
 
 Installation sous Linux, Mac OS :
@@ -106,10 +99,7 @@ Avant toute chose :
 - Si vous avez dans le passé activé l'intégration d'HDGraph à l'explorateur, il est préférable de désactiver cette option avant de désinstaller.(ouvrir HDGraph and go to the menu item "Tools > Explorer Integration >  Remove me from the explorer context menu").
 
 Ensuite :
-- si vous avez installé HDGraph avec un fichier Zip (par exemple "HDGraph_light_x.y.z.zip"), il vous suffit de supprimer le dossier dans lequel vous avez décompressé le fichier.
-- si vous avez installé HDGraph avec un installeur MSI (par exemple "SetupHDGraph_Francais_x.y.z.msi"), vous pouvez désinstaller HDGraph via le panneau de configuration : 
-	1/ Ouvrir le Panneau de configuration > Programmes > Programmes et fonctionnalités
-	2/ selectionner HDGraph dans la liste et cliquer sur "Désinstaller"
+- il vous suffit de supprimer le dossier dans lequel vous avez décompressé le fichier.
 
 
 

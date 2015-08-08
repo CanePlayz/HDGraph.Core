@@ -115,6 +115,10 @@ namespace HDGraph
                     }
                     else
                     {   // le 1er argument est un répertoire: il faut lancer le scan.
+                        
+                        // via appel depuis l'explorateur : on peut recevoir un chemin sans "\", comme par exemple "C:", on complète avec le \ qui manque :
+                        if (path.EndsWith(":"))
+                            path += "\\";
                         path = (new DirectoryInfo(path)).FullName;
                         form.comboBoxPath.Text = path;
                         form.SavePathHistory();

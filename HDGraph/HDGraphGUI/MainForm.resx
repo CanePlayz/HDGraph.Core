@@ -1649,7 +1649,7 @@
     <value>0</value>
   </data>
   <data name="comboBoxPath.Text" xml:space="preserve">
-    <value>c:\</value>
+    <value>C:\</value>
   </data>
   <data name="&gt;&gt;comboBoxPath.Name" xml:space="preserve">
     <value>comboBoxPath</value>

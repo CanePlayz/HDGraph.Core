@@ -93,7 +93,7 @@ namespace HDGraph.Interop.Windows
                     }
                 }
             }
-            catch (System.OverflowException e)
+            catch (System.OverflowException)
             {
                 try
                 {
@@ -108,7 +108,7 @@ namespace HDGraph.Interop.Windows
                         }
                     }
                 }
-                catch (System.OverflowException e2)
+                catch (System.OverflowException)
                 {
                     return false;
                 }
