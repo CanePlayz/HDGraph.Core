@@ -9,20 +9,21 @@ Minimum requirements
 ======================================================
 
 - Windows 8 / 8.1 / 10.
-- or Windows XP, Windows Vista, or Windows 7, but the Microsoft .NET Framework 4.5 must be installed.
+- or Windows Vista, or Windows 7, but the Microsoft .NET Framework 4.5 must be installed.
 
 	
-Install on WINDOWS :
+Install on WINDOWS (Vista, 7, 8, 10 or higher) :
 ======================================================
 
 - Make sure your computer satisfy the minimum requirements.
 - Unzip the Zip file and start HDGraph.exe
 
 
-Install on Linux, Mac OS : 
+Install on Linux, Mac OS, Windows XP : 
 ======================================================
 
-Support for linux and Max OS is discontinued (however HDGraph will probably work using Mono version 2.6.1 or higher)
+Support for linux and Mac OS is discontinued (however HDGraph will probably work using Mono version 2.6.1 or higher).
+Support for Windows XP is also discontinued (.Net framework 4.5 is not available on Windows XP). Please download HDGraph v1.4.2 instead.
 
 
 Uninstall on WINDOWS :
@@ -67,19 +68,20 @@ Configuration requise
 ======================================================
 
 - Windows 8, 8.1, ou 10
-- Windows XP, Windows Vista, ou Windows 7 : l'installation du framework Microsoft .NET est nécessaire, version 4.5
+- Windows Vista, ou Windows 7 : l'installation du framework Microsoft .NET est nécessaire, version 4.5
 
 
-Installation sous WINDOWS :
+Installation sous WINDOWS (Vista, 7, 8, 10 ou plus):
 ======================================================
 
 - Assurez vous que votre ordinateur possède au moins la configuration requise pour installer le logiciel.
 - Décompressez le fichier ZIP dans un dossier puis lancez le fichier HDGraph.exe.
 
-Installation sous Linux, Mac OS :
+Installation sous Linux, Mac OS, Windows XP :
 ======================================================
 
 L'installation sous Linux/Mac OS n'est pas supportée (bien que HDGraph puisse fonctionner avec Mono).
+Windows XP n'est plus supporté par HDGraph 1.5 et plus (car le framework .net 4.5 n'est pas disponible pour Windows XP), veuillez télécharger l'ancienne version v1.4.2 de HDGraph à la place.
 
 
 Désinstallation sous WINDOWS:
