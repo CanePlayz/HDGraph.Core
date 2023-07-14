@@ -18,3 +18,7 @@ The goals of this project are to:
 ## Who am I?
 
 I'm Jacob, a software developer from Germany. I'm currently studying at university and I'm planning on working on this project in my free time. I'm still learning C# and .NET, so any help would be greatly appreciated.
+
+## Why is there a single folder called HDGraph containing everything?
+
+This is a remnant from the original project and I'm planning on changing it in the future.
