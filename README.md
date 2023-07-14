@@ -11,9 +11,9 @@ HDGraph was originally created by Jean-Yves Laugel. It is hosted on [SourceForge
 
 The goals of this project are to:
 
-- Update HDGraph to use modern technologies (most notably .NET instead of .NET Framework)
-- Update the UI
-- Pave the way for new features
+- [ ] Update HDGraph to use modern technologies (most notably .NET and WiX)
+- [ ] Update the UI
+- [ ] Pave the way for new features
 
 ## Who am I?
 

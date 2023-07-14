@@ -3,14 +3,7 @@
 VisualStudioVersion = 17.6.5
 MinimumVisualStudioVersion = 10.0.40219.1
 
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Setup", "Setup", "{C5B4FD8D-797A-4BD4-A1D2-DFB9739C542B}"
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HDGraphGUI", "HDGraphGUI\HDGraphGUI.csproj", "{99A5D2B9-4B2C-4177-A69C-02BCB163DC78}"
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupHDGraph", "SetupHDGraph\HDGraphSetup.vdproj", "{EE7BF0A8-9FBA-4CAD-8B88-469EF41B7DF1}"
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupHDGraph-FR", "SetupHDGraph-FR\SetupHDGraph-FR.vdproj", "{F8B79193-FAA4-46BC-B304-075A3B75BA19}"
-EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupHDGraph-Sources", "SetupHDGraph-Sources\SetupHDGraph-Sources.vdproj", "{FB6757F0-8155-44DD-A28D-3A995DAAB57A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win32NativeFileSystemEnumerator", "Win32NativeFileSystemEnumerator\Win32NativeFileSystemEnumerator.csproj", "{DCEF8EBC-5FEC-439C-8097-AC5BE1D26D69}"
 EndProject
@@ -39,27 +32,6 @@ Global
 		{99A5D2B9-4B2C-4177-A69C-02BCB163DC78}.Release|Any CPU.Build.0 = Release|Any CPU
 		{99A5D2B9-4B2C-4177-A69C-02BCB163DC78}.Release|x86.ActiveCfg = Release|Any CPU
 		{99A5D2B9-4B2C-4177-A69C-02BCB163DC78}.Release|x86.Build.0 = Release|Any CPU
-		# SetupHDGraph
-		{EE7BF0A8-9FBA-4CAD-8B88-469EF41B7DF1}.Debug|Any CPU.ActiveCfg = Debug
-		{EE7BF0A8-9FBA-4CAD-8B88-469EF41B7DF1}.Debug|x86.ActiveCfg = Debug
-		{EE7BF0A8-9FBA-4CAD-8B88-469EF41B7DF1}.Release|Any CPU.ActiveCfg = Release
-		{EE7BF0A8-9FBA-4CAD-8B88-469EF41B7DF1}.Release|Any CPU.Build.0 = Release
-		{EE7BF0A8-9FBA-4CAD-8B88-469EF41B7DF1}.Release|x86.ActiveCfg = Release
-		{EE7BF0A8-9FBA-4CAD-8B88-469EF41B7DF1}.Release|x86.Build.0 = Release
-		# SetupHDGraph-FR
-		{F8B79193-FAA4-46BC-B304-075A3B75BA19}.Debug|Any CPU.ActiveCfg = Debug
-		{F8B79193-FAA4-46BC-B304-075A3B75BA19}.Debug|x86.ActiveCfg = Debug
-		{F8B79193-FAA4-46BC-B304-075A3B75BA19}.Release|Any CPU.ActiveCfg = Release
-		{F8B79193-FAA4-46BC-B304-075A3B75BA19}.Release|Any CPU.Build.0 = Release
-		{F8B79193-FAA4-46BC-B304-075A3B75BA19}.Release|x86.ActiveCfg = Release
-		{F8B79193-FAA4-46BC-B304-075A3B75BA19}.Release|x86.Build.0 = Release
-		# SetupHDGraph-Sources
-		{FB6757F0-8155-44DD-A28D-3A995DAAB57A}.Debug|Any CPU.ActiveCfg = Debug
-		{FB6757F0-8155-44DD-A28D-3A995DAAB57A}.Debug|x86.ActiveCfg = Debug
-		{FB6757F0-8155-44DD-A28D-3A995DAAB57A}.Release|Any CPU.ActiveCfg = Release
-		{FB6757F0-8155-44DD-A28D-3A995DAAB57A}.Release|Any CPU.Build.0 = Release
-		{FB6757F0-8155-44DD-A28D-3A995DAAB57A}.Release|x86.ActiveCfg = Release
-		{FB6757F0-8155-44DD-A28D-3A995DAAB57A}.Release|x86.Build.0 = Release
 		# Win32NativeFileSystemEnumerator
 		{DCEF8EBC-5FEC-439C-8097-AC5BE1D26D69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DCEF8EBC-5FEC-439C-8097-AC5BE1D26D69}.Debug|Any CPU.Build.0 = Debug|Any CPU
@@ -99,10 +71,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{EE7BF0A8-9FBA-4CAD-8B88-469EF41B7DF1} = {C5B4FD8D-797A-4BD4-A1D2-DFB9739C542B}
-		{F8B79193-FAA4-46BC-B304-075A3B75BA19} = {C5B4FD8D-797A-4BD4-A1D2-DFB9739C542B}
-		{FB6757F0-8155-44DD-A28D-3A995DAAB57A} = {C5B4FD8D-797A-4BD4-A1D2-DFB9739C542B}
 	EndGlobalSection
 EndGlobal
