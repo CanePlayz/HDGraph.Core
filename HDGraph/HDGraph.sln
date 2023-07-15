@@ -1,17 +1,17 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.5
 MinimumVisualStudioVersion = 10.0.40219.1
 
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HDGraphGUI", "HDGraphGUI\HDGraphGUI.csproj", "{99A5D2B9-4B2C-4177-A69C-02BCB163DC78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HDGraphGUI", "HDGraphGUI\HDGraphGUI.csproj", "{99A5D2B9-4B2C-4177-A69C-02BCB163DC78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win32NativeFileSystemEnumerator", "Win32NativeFileSystemEnumerator\Win32NativeFileSystemEnumerator.csproj", "{DCEF8EBC-5FEC-439C-8097-AC5BE1D26D69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Win32NativeFileSystemEnumerator", "Win32NativeFileSystemEnumerator\Win32NativeFileSystemEnumerator.csproj", "{DCEF8EBC-5FEC-439C-8097-AC5BE1D26D69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HDGraphInterfaces", "HDGraphInterfaces\HDGraphInterfaces.csproj", "{E52451BA-30AB-44C4-A09B-EBDCC62E72F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HDGraphInterfaces", "HDGraphInterfaces\HDGraphInterfaces.csproj", "{E52451BA-30AB-44C4-A09B-EBDCC62E72F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfDrawEngine", "WpfDrawEngine\WpfDrawEngine.csproj", "{3337D3AA-88D5-44E4-9B22-7EE588140A04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfDrawEngine", "WpfDrawEngine\WpfDrawEngine.csproj", "{3337D3AA-88D5-44E4-9B22-7EE588140A04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTests", "WpfTests\WpfTests.csproj", "{EADFA540-90F3-48C3-AF84-07CA68F566D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfTests", "WpfTests\WpfTests.csproj", "{EADFA540-90F3-48C3-AF84-07CA68F566D6}"
 EndProject
 
 Global
