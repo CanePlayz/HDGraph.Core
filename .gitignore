@@ -1,4 +1,8 @@
+# VS and VS Code files
 .vs
 .vscode
+
+# Build results
 bin
 obj
+*.csproj.user
