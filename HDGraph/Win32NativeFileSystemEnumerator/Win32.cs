@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
-using System.Runtime.ConstrainedExecution;
 using System.Security.Permissions;
 using System.IO;
 
@@ -42,17 +41,16 @@ namespace HDGraph.Win32NativeFileSystemEnumerator.Win32
         /// Release the find handle
         /// </summary>
         /// <returns>true if the handle was released</returns>
-        [ReliabilityContract(Consistency.WillNotCorruptState, Cer.Success)]
         protected override bool ReleaseHandle()
         {
             return SafeNativeMethods.FindClose(handle);
         }
     }
 
+
     /// <summary>
     /// Wrapper for P/Invoke methods used by FileSystemEnumerator
     /// </summary>
-    [SecurityPermissionAttribute(SecurityAction.Assert, UnmanagedCode = true)]
     internal static class SafeNativeMethods
     {
         [DllImport("Kernel32.dll", CharSet = CharSet.Auto)]

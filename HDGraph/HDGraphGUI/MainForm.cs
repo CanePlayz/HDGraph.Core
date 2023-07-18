@@ -196,7 +196,7 @@ namespace HDGraph
             this.iDrawEngineContractBindingSource.DataSource = pluginList;
             // Construct comboBox tooltip
             BuildTooltipForDrawEngine(pluginList);
-            int engineIndex = pluginList.FindIndex(new Predicate<IDrawEngineContract>(delegate(IDrawEngineContract contract)
+            int engineIndex = pluginList.FindIndex(new Predicate<IDrawEngineContract>(delegate (IDrawEngineContract contract)
             {
                 return contract.Guid == Properties.Settings.Default.StartupDrawEngine;
             }));
@@ -362,11 +362,11 @@ namespace HDGraph
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void MainForm_Load(object sender, EventArgs e)
+        private async void MainForm_Load(object sender, EventArgs e)
         {
             //toolStripContainer1.Location = new Point(0, menuStrip.Size.Height);
             if (Properties.Settings.Default.OptionCheckForNewVersionAfterStartup)
-                new VersionCheck().CheckForNewVersion(this, false);
+                await new VersionCheck().CheckForNewVersion(this, false);
             PrintStatus(resManager.GetString("statusReady"));
         }
 
@@ -1420,9 +1420,9 @@ namespace HDGraph
             drawEngine.PrintWithPreview(graphControl);
         }
 
-        private void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new VersionCheck().CheckForNewVersion(this, true);
+            await new VersionCheck().CheckForNewVersion(this, true);
         }
 
     }

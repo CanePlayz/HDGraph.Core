@@ -1,13 +1,15 @@
-﻿using System;
+﻿using HDGraph.Resources;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Net;
 using System.Diagnostics;
-using System.Xml.Serialization;
 using System.IO;
+using System.Net;
+using System.Net.Http;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using HDGraph.Resources;
+using System.Xml.Serialization;
 
 namespace HDGraph
 {
@@ -17,15 +19,15 @@ namespace HDGraph
         private Form parent;
         private bool alwaysPopup;
 
-        public void CheckForNewVersion(Form parent, bool alwaysPopup)
+        public async Task CheckForNewVersion(Form parent, bool alwaysPopup)
         {
             try
             {
                 this.alwaysPopup = alwaysPopup;
                 this.parent = parent;
-                WebClient client = new WebClient();
-                client.DownloadStringCompleted += new DownloadStringCompletedEventHandler(client_DownloadStringCompleted);
-                client.DownloadStringAsync(new Uri(CheckForNewVersionUrl));
+                HttpClient client = new HttpClient();
+                string result = await client.GetStringAsync(CheckForNewVersionUrl);
+                client_DownloadStringCompleted(result);
             }
             catch (Exception ex)
             {
@@ -33,41 +35,29 @@ namespace HDGraph
             }
         }
 
-        void client_DownloadStringCompleted(object sender, DownloadStringCompletedEventArgs e)
-        {
-            if (e.Cancelled)
-                return;
-            Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
-            if (e.Error == null)
-            {
-                try
-                {
-                    string result = e.Result;
-                    VersionInfo versionInfo = VersionInfo.DeserializeFromString(result);
-                    if (currentVersion.CompareTo(new Version(versionInfo.VersionNumber)) < 0)
-                        //newer version is available:
-                        new NewVersionAvailableForm() { VersionInfo = versionInfo }.ShowDialog(parent);
-                    else
-                    {
-                        // no newer version available
-                        if (alwaysPopup)
-                            MessageBox.Show(ApplicationMessages.YourVersionIsUpToDate, "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
 
-                }
-                catch (Exception ex)
+        void client_DownloadStringCompleted(string result)
+        {
+            Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
+            try
+            {
+                VersionInfo versionInfo = VersionInfo.DeserializeFromString(result);
+                if (currentVersion.CompareTo(new Version(versionInfo.VersionNumber)) < 0)
+                    // newer version is available:
+                    new NewVersionAvailableForm() { VersionInfo = versionInfo }.ShowDialog(parent);
+                else
                 {
-                    Trace.TraceError("Error during check for new version (response analysis failed): " + HDGTools.PrintError(ex));
+                    // no newer version available
                     if (alwaysPopup)
-                        MessageBox.Show(String.Format(ApplicationMessages.ErrorOccuredWhileCheckingVersion, currentVersion),
-                            "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show(ApplicationMessages.YourVersionIsUpToDate, "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                Trace.TraceError("Error downloading latest version info : " + HDGTools.PrintError(e.Error));
+                Trace.TraceError("Error during check for new version (response analysis failed): " + HDGTools.PrintError(ex));
                 if (alwaysPopup)
-                    MessageBox.Show(String.Format(ApplicationMessages.ErrorOccuredWhileCheckingVersion, currentVersion), "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(String.Format(ApplicationMessages.ErrorOccuredWhileCheckingVersion, currentVersion),
+                        "HDGraph", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

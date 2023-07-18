@@ -43,63 +43,63 @@
             this.labelReleaseDate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
+            //
             // label1
-            // 
+            //
             this.label1.AccessibleDescription = null;
             this.label1.AccessibleName = null;
             resources.ApplyResources(this.label1, "label1");
             this.label1.Font = null;
             this.label1.Name = "label1";
-            // 
+            //
             // label2
-            // 
+            //
             this.label2.AccessibleDescription = null;
             this.label2.AccessibleName = null;
             resources.ApplyResources(this.label2, "label2");
             this.label2.Font = null;
             this.label2.Name = "label2";
-            // 
+            //
             // label3
-            // 
+            //
             this.label3.AccessibleDescription = null;
             this.label3.AccessibleName = null;
             resources.ApplyResources(this.label3, "label3");
             this.label3.Font = null;
             this.label3.Name = "label3";
-            // 
+            //
             // labelCurrentVersion
-            // 
+            //
             this.labelCurrentVersion.AccessibleDescription = null;
             this.labelCurrentVersion.AccessibleName = null;
             resources.ApplyResources(this.labelCurrentVersion, "labelCurrentVersion");
             this.labelCurrentVersion.Name = "labelCurrentVersion";
-            // 
+            //
             // labelNewerVersion
-            // 
+            //
             this.labelNewerVersion.AccessibleDescription = null;
             this.labelNewerVersion.AccessibleName = null;
             resources.ApplyResources(this.labelNewerVersion, "labelNewerVersion");
             this.labelNewerVersion.Name = "labelNewerVersion";
-            // 
+            //
             // label4
-            // 
+            //
             this.label4.AccessibleDescription = null;
             this.label4.AccessibleName = null;
             resources.ApplyResources(this.label4, "label4");
             this.label4.Font = null;
             this.label4.Name = "label4";
-            // 
+            //
             // label5
-            // 
+            //
             this.label5.AccessibleDescription = null;
             this.label5.AccessibleName = null;
             resources.ApplyResources(this.label5, "label5");
             this.label5.Font = null;
             this.label5.Name = "label5";
-            // 
+            //
             // buttonYes
-            // 
+            //
             this.buttonYes.AccessibleDescription = null;
             this.buttonYes.AccessibleName = null;
             resources.ApplyResources(this.buttonYes, "buttonYes");
@@ -109,9 +109,9 @@
             this.buttonYes.Name = "buttonYes";
             this.buttonYes.UseVisualStyleBackColor = true;
             this.buttonYes.Click += new System.EventHandler(this.buttonYes_Click);
-            // 
+            //
             // buttonNo
-            // 
+            //
             this.buttonNo.AccessibleDescription = null;
             this.buttonNo.AccessibleName = null;
             resources.ApplyResources(this.buttonNo, "buttonNo");
@@ -121,9 +121,9 @@
             this.buttonNo.Name = "buttonNo";
             this.buttonNo.UseVisualStyleBackColor = true;
             this.buttonNo.Click += new System.EventHandler(this.buttonNo_Click);
-            // 
+            //
             // linkLabel1
-            // 
+            //
             this.linkLabel1.AccessibleDescription = null;
             this.linkLabel1.AccessibleName = null;
             resources.ApplyResources(this.linkLabel1, "linkLabel1");
@@ -131,9 +131,9 @@
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.TabStop = true;
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
+            //
             // pictureBox1
-            // 
+            //
             this.pictureBox1.AccessibleDescription = null;
             this.pictureBox1.AccessibleName = null;
             resources.ApplyResources(this.pictureBox1, "pictureBox1");
@@ -143,17 +143,17 @@
             this.pictureBox1.ImageLocation = null;
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;
-            // 
+            //
             // labelReleaseDate
-            // 
+            //
             this.labelReleaseDate.AccessibleDescription = null;
             this.labelReleaseDate.AccessibleName = null;
             resources.ApplyResources(this.labelReleaseDate, "labelReleaseDate");
             this.labelReleaseDate.Font = null;
             this.labelReleaseDate.Name = "labelReleaseDate";
-            // 
+            //
             // NewVersionAvailableForm
-            // 
+            //
             this.AcceptButton = this.buttonYes;
             this.AccessibleDescription = null;
             this.AccessibleName = null;

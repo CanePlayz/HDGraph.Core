@@ -27,8 +27,6 @@ namespace HDGraph
             }
         }
 
-        private WebClient webClient = new WebClient();
-
         public NewVersionAvailableForm()
         {
             InitializeComponent();

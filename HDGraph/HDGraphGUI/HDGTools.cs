@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 
 namespace HDGraph
 {
-    public class IncompatibleVersionException:Exception
+    public class IncompatibleVersionException : Exception
     {
 
     }
@@ -41,10 +41,10 @@ namespace HDGraph
     {
         public static ResourceManager resManager;
 
-        public static TraceSwitch mySwitch;	
+        public static TraceSwitch mySwitch;
 
         private const string HDG_REG_KEY = "HDGraph";
-        
+
         #region Variables chaîne (utilisées en tant que cache du resourceManager)
 
         private static string abrevOctet;
@@ -104,7 +104,7 @@ namespace HDGraph
         }
 
         #endregion
-        
+
         /// <summary>
         /// Format une taille en octets en chaine de caractères.
         /// </summary>
@@ -127,8 +127,8 @@ namespace HDGraph
             unit *= 1024;
             return String.Format("{0:F} " + AbrevTo, sizeInOctet / (double)unit);
         }
-        
-        
+
+
         public enum RestartAction
         {
             addToExplorerContextMenu,
@@ -150,19 +150,19 @@ namespace HDGraph
             {
                 Process p = new Process();
                 p.StartInfo = startInfo;
-                
+
                 p.Start();
                 //System.Threading.Thread.Sleep(500);
 
                 //Process p2 = Process.GetProcessesByName("consent.exe")[0];
                 //SetForegroundWindow(p2.MainWindowHandle);
-                
+
                 // Attente de la fin de la commande
                 //p.WaitForExit();
                 // Libération des ressources
                 //p.Close();
             }
-            catch(System.ComponentModel.Win32Exception ex)
+            catch (System.ComponentModel.Win32Exception ex)
             {
                 Trace.TraceError(HDGTools.PrintError(ex));
                 return; //If cancelled, do nothing
@@ -301,7 +301,7 @@ namespace HDGraph
             FieldInfo[] fieldInfos = form.GetType().GetFields(BindingFlags.Instance |
                 BindingFlags.DeclaredOnly | BindingFlags.NonPublic);
 
-            // Call SuspendLayout for Form and all fields derived from Control, so assignment of 
+            // Call SuspendLayout for Form and all fields derived from Control, so assignment of
             //   localized text doesn't change layout immediately.
             form.SuspendLayout();
             for (int index = 0; index < fieldInfos.Length; index++)
@@ -320,7 +320,7 @@ namespace HDGraph
             System.Drawing.Size? size = null;
             size = resources.GetObject("$this.ClientSize") as System.Drawing.Size?;
             if (size != null)
-                form.ClientSize = size.Value;            
+                form.ClientSize = size.Value;
             String text = resources.GetString("$this.Text");
             if (text != null)
                 form.Text = text;
@@ -338,13 +338,15 @@ namespace HDGraph
                 }
                 if (fieldInfos[index].FieldType.GetProperty("Location", typeof(System.Drawing.Point)) != null)
                 {
-                    point = (System.Drawing.Point)resources.GetObject(fieldInfos[index].Name + ".Location");
-                    if (point != null)
+                    object location = resources.GetObject(fieldInfos[index].Name + ".Location");
+                    if (location != null)
                     {
+                        point = (System.Drawing.Point)location;
                         fieldInfos[index].FieldType.InvokeMember("Location",
                             BindingFlags.SetProperty, null,
                             fieldInfos[index].GetValue(form), new object[] { point });
                     }
+
                 }
                 if (fieldInfos[index].FieldType.GetProperty("Size", typeof(System.Drawing.Size)) != null)
                 {
