@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>HDGraph</RootNamespace>
+    <AssemblyName>HDGraph</AssemblyName>
+    <ApplicationIcon>HDGraph.ico</ApplicationIcon>
+    <Copyright>Copyright © 2006-2015 LAUGEL Jean-Yves, 2023 Jacob Pfundstein</Copyright>
+    <AssemblyVersion>1.5.1.0</AssemblyVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotnetRuntimeBootstrapper" Version="2.5.1">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HDGraphInterfaces\HDGraphInterfaces.csproj" />
+    <ProjectReference Include="..\Win32NativeFileSystemEnumerator\Win32NativeFileSystemEnumerator.csproj" />
+  </ItemGroup>
+
+</Project>

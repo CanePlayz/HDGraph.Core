@@ -27,11 +27,11 @@ jobs:
 
     - name: Publish
       run: >
-        dotnet publish ./HDGraph/HDGraphGUI
-        --output ./publish/
+        dotnet publish HDGraphGUI
+        --output publish/
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
       with:
         name: HDGraph
-        path: ./publish/
+        path: publish/
