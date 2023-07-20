@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using HDGraph.Interfaces.ScanEngines;
 using System.IO;
-using HDGraph.Interfaces;
 using System.Text.RegularExpressions;
 
 /*=============================================================================

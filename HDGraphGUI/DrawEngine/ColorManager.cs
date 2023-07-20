@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Drawing;
 using HDGraph.Interfaces.DrawEngines;
 
@@ -11,7 +9,7 @@ namespace HDGraph.DrawEngine
         private DrawOptions options;
 
         #region Ctor
-        
+
         public ColorManager()
         {
         }

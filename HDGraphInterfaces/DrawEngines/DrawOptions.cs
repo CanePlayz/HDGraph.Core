@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Reflection;
 using System.Drawing;
 using System.ComponentModel;
@@ -55,7 +53,7 @@ namespace HDGraph.Interfaces.DrawEngines
         {
             if (PropertyChanged != null && !SuspendPropertyChangedNotifications)
             {
-                PropertyChanged(this,new PropertyChangedEventArgs(propertyName));
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
 
@@ -91,7 +89,7 @@ namespace HDGraph.Interfaces.DrawEngines
         }
 
         private int shownLevelsCount = 5;
-        public int ShownLevelsCount 
+        public int ShownLevelsCount
         {
             get { return shownLevelsCount; }
             set
@@ -205,7 +203,8 @@ namespace HDGraph.Interfaces.DrawEngines
 
         private DrawAction drawAction = DrawAction.PrintWelcomeMessage;
         [XmlIgnore]
-        public DrawAction DrawAction {
+        public DrawAction DrawAction
+        {
             get { return drawAction; }
             set
             {
@@ -214,7 +213,7 @@ namespace HDGraph.Interfaces.DrawEngines
                     drawAction = value;
                     RaisePropertyChanged("DrawAction");
                 }
-            } 
+            }
         }
 
         public virtual DrawOptions Clone()

@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
-using System.Windows.Forms.Design;
 using HDGraph.Resources;
 using System.Reflection;
 
@@ -30,7 +27,7 @@ namespace HDGraph.UserControls
             PropertyInfo[] properties = typeof(ApplicationMessages).GetProperties(BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
             // sort properties by name
             Array.Sort(properties,
-                            delegate(PropertyInfo propertyInfo1, PropertyInfo propertyInfo2)
+                            delegate (PropertyInfo propertyInfo1, PropertyInfo propertyInfo2)
                             {
                                 return propertyInfo1.Name.CompareTo(propertyInfo2.Name);
                             });
@@ -51,7 +48,7 @@ namespace HDGraph.UserControls
                     {
                         string tipCode = propName.Substring(0, underscoreIndex);
                         PropertyInfo propInfoImage = propertiesList.Find(new Predicate<PropertyInfo>(
-                            delegate(PropertyInfo target)
+                            delegate (PropertyInfo target)
                             {
                                 return target.Name.StartsWith(tipCode) && typeof(Image).IsAssignableFrom(target.PropertyType);
                             }));

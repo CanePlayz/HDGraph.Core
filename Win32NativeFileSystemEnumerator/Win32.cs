@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Runtime.InteropServices;
-using System.Security.Permissions;
-using System.IO;
 
 namespace HDGraph.Win32NativeFileSystemEnumerator.Win32
 {

@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Resources;
 using Microsoft.Win32;
 using System.Windows.Forms;
@@ -9,7 +7,6 @@ using System.ComponentModel;
 using System.Reflection;
 using System.Diagnostics;
 using System.Security.Principal;
-using System.Runtime.InteropServices;
 
 namespace HDGraph
 {

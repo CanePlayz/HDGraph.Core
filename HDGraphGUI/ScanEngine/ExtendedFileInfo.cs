@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HDGraph.ScanEngine
+﻿namespace HDGraph.ScanEngine
 {
     public class ExtendedFileInfo
     {

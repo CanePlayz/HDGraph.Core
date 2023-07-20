@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.IO;
 using System.Xml.Serialization;
 using System.Diagnostics;
@@ -224,7 +223,7 @@ namespace HDGraph
         public static bool PathIsDrive(string path)
         {
             bool rootNodeIsDrive = path.IndexOf('\\') == path.LastIndexOf('\\') // 1 seul '\' dans le chemin
-                // le seul '\' du chemin est le dernier car du chemin ( en effet, c:\test n'est pas la racine)                   
+                                                                                // le seul '\' du chemin est le dernier car du chemin ( en effet, c:\test n'est pas la racine)                   
                 && path.IndexOf('\\') == path.Length - 1;
             return rootNodeIsDrive;
         }

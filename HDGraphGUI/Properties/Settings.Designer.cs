@@ -8,290 +8,362 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HDGraph.Properties {
-    
-    
+namespace HDGraph.Properties
+{
+
+
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.6.0.0")]
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
+    {
+
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-        
-        public static Settings Default {
-            get {
+
+        public static Settings Default
+        {
+            get
+            {
                 return defaultInstance;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Language {
-            get {
+        public string Language
+        {
+            get
+            {
                 return ((string)(this["Language"]));
             }
-            set {
+            set
+            {
                 this["Language"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Specialized.StringCollection PathHistory {
-            get {
+        public global::System.Collections.Specialized.StringCollection PathHistory
+        {
+            get
+            {
                 return ((global::System.Collections.Specialized.StringCollection)(this["PathHistory"]));
             }
-            set {
+            set
+            {
                 this["PathHistory"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("5")]
-        public decimal OptionCalculMaxDepth {
-            get {
+        public decimal OptionCalculMaxDepth
+        {
+            get
+            {
                 return ((decimal)(this["OptionCalculMaxDepth"]));
             }
-            set {
+            set
+            {
                 this["OptionCalculMaxDepth"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("5")]
-        public decimal OptionDrawMaxDepth {
-            get {
+        public decimal OptionDrawMaxDepth
+        {
+            get
+            {
                 return ((decimal)(this["OptionDrawMaxDepth"]));
             }
-            set {
+            set
+            {
                 this["OptionDrawMaxDepth"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool OptionPrintSize {
-            get {
+        public bool OptionPrintSize
+        {
+            get
+            {
                 return ((bool)(this["OptionPrintSize"]));
             }
-            set {
+            set
+            {
                 this["OptionPrintSize"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool OptionAutoCompleteGraph {
-            get {
+        public bool OptionAutoCompleteGraph
+        {
+            get
+            {
                 return ((bool)(this["OptionAutoCompleteGraph"]));
             }
-            set {
+            set
+            {
                 this["OptionAutoCompleteGraph"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool OptionAllowFolderDeletion {
-            get {
+        public bool OptionAllowFolderDeletion
+        {
+            get
+            {
                 return ((bool)(this["OptionAllowFolderDeletion"]));
             }
-            set {
+            set
+            {
                 this["OptionAllowFolderDeletion"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool OptionDeletionAsk4Confirmation {
-            get {
+        public bool OptionDeletionAsk4Confirmation
+        {
+            get
+            {
                 return ((bool)(this["OptionDeletionAsk4Confirmation"]));
             }
-            set {
+            set
+            {
                 this["OptionDeletionAsk4Confirmation"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Linear")]
-        public string OptionColorStyle {
-            get {
+        public string OptionColorStyle
+        {
+            get
+            {
                 return ((string)(this["OptionColorStyle"]));
             }
-            set {
+            set
+            {
                 this["OptionColorStyle"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Normal")]
-        public global::System.Windows.Forms.FormWindowState OptionMainWindowOpenState {
-            get {
+        public global::System.Windows.Forms.FormWindowState OptionMainWindowOpenState
+        {
+            get
+            {
                 return ((global::System.Windows.Forms.FormWindowState)(this["OptionMainWindowOpenState"]));
             }
-            set {
+            set
+            {
                 this["OptionMainWindowOpenState"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("762, 592")]
-        public global::System.Drawing.Size OptionMainWindowSize {
-            get {
+        public global::System.Drawing.Size OptionMainWindowSize
+        {
+            get
+            {
                 return ((global::System.Drawing.Size)(this["OptionMainWindowSize"]));
             }
-            set {
+            set
+            {
                 this["OptionMainWindowSize"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("506, 24")]
-        public global::System.Drawing.Point OptionToolbarLocation {
-            get {
+        public global::System.Drawing.Point OptionToolbarLocation
+        {
+            get
+            {
                 return ((global::System.Drawing.Point)(this["OptionToolbarLocation"]));
             }
-            set {
+            set
+            {
                 this["OptionToolbarLocation"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool OptionShowFreeSpace {
-            get {
+        public bool OptionShowFreeSpace
+        {
+            get
+            {
                 return ((bool)(this["OptionShowFreeSpace"]));
             }
-            set {
+            set
+            {
                 this["OptionShowFreeSpace"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool OptionShowSizesInHumanForm {
-            get {
+        public bool OptionShowSizesInHumanForm
+        {
+            get
+            {
                 return ((bool)(this["OptionShowSizesInHumanForm"]));
             }
-            set {
+            set
+            {
                 this["OptionShowSizesInHumanForm"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool OptionShowTooltips {
-            get {
+        public bool OptionShowTooltips
+        {
+            get
+            {
                 return ((bool)(this["OptionShowTooltips"]));
             }
-            set {
+            set
+            {
                 this["OptionShowTooltips"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public int OptionTextDensity {
-            get {
+        public int OptionTextDensity
+        {
+            get
+            {
                 return ((int)(this["OptionTextDensity"]));
             }
-            set {
+            set
+            {
                 this["OptionTextDensity"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool OptionUseSimpleScanEngine {
-            get {
+        public bool OptionUseSimpleScanEngine
+        {
+            get
+            {
                 return ((bool)(this["OptionUseSimpleScanEngine"]));
             }
-            set {
+            set
+            {
                 this["OptionUseSimpleScanEngine"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::HDGraph.Interfaces.DrawEngines.DrawOptions MyDrawOptions {
-            get {
+        public global::HDGraph.Interfaces.DrawEngines.DrawOptions MyDrawOptions
+        {
+            get
+            {
                 return ((global::HDGraph.Interfaces.DrawEngines.DrawOptions)(this["MyDrawOptions"]));
             }
-            set {
+            set
+            {
                 this["MyDrawOptions"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("9053b2b2-e6e3-4ee7-bdac-fcca15c9e3be")]
-        public global::System.Guid StartupDrawEngine {
-            get {
+        public global::System.Guid StartupDrawEngine
+        {
+            get
+            {
                 return ((global::System.Guid)(this["StartupDrawEngine"]));
             }
-            set {
+            set
+            {
                 this["StartupDrawEngine"] = value;
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("<?xml version=\"1.0\" encoding=\"utf-16\"?>\r\n<ArrayOfString xmlns:xsi=\"http://www.w3." +
             "org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\r\n  <s" +
             "tring>en-US</string>\r\n  <string>fr-FR</string>\r\n</ArrayOfString>")]
-        public global::System.Collections.Specialized.StringCollection AvailableLanguages {
-            get {
+        public global::System.Collections.Specialized.StringCollection AvailableLanguages
+        {
+            get
+            {
                 return ((global::System.Collections.Specialized.StringCollection)(this["AvailableLanguages"]));
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool OptionCheckForNewVersionAfterStartup {
-            get {
+        public bool OptionCheckForNewVersionAfterStartup
+        {
+            get
+            {
                 return ((bool)(this["OptionCheckForNewVersionAfterStartup"]));
             }
-            set {
+            set
+            {
                 this["OptionCheckForNewVersionAfterStartup"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool IsFirstRun {
-            get {
+        public bool IsFirstRun
+        {
+            get
+            {
                 return ((bool)(this["IsFirstRun"]));
             }
-            set {
+            set
+            {
                 this["IsFirstRun"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool OptionIgnoreReparsePoints {
-            get {
+        public bool OptionIgnoreReparsePoints
+        {
+            get
+            {
                 return ((bool)(this["OptionIgnoreReparsePoints"]));
             }
-            set {
+            set
+            {
                 this["OptionIgnoreReparsePoints"] = value;
             }
         }

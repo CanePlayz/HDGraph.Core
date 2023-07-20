@@ -1,9 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace HDGraph
@@ -24,7 +19,7 @@ namespace HDGraph
 
         private void buttonOk_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void OptionsForm_FormClosing(object sender, FormClosingEventArgs e)

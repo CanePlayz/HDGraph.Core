@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using HDGraph.Interfaces.ScanEngines;
 
 namespace HDGraph.DrawEngine

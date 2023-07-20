@@ -1,14 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using System.Globalization;
 using System.Resources;
 using System.Threading;
-using System.Reflection;
 
 namespace HDGraph
 {
@@ -75,7 +70,7 @@ namespace HDGraph
         private void ApplyNewLangage()
         {
             if (MessageBox.Show(Resources.ApplicationMessages.AppRestartRequiredToApplyLangage,
-                                "HDGraph", MessageBoxButtons.YesNo, 
+                                "HDGraph", MessageBoxButtons.YesNo,
                                 MessageBoxIcon.Question
                                 ) == DialogResult.Yes)
             {
@@ -154,6 +149,6 @@ namespace HDGraph
                 return culture.NativeName.Substring(0, 1).ToUpper() + culture.NativeName.Substring(1);
             }
         }
-    
+
     }
 }

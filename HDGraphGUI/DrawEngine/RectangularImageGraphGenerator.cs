@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using HDGraph.Interfaces.ScanEngines;
 using HDGraph.Interfaces.DrawEngines;
 
@@ -68,10 +65,10 @@ namespace HDGraph.DrawEngine
                 frontGraph.Dispose();
                 latestUsedOptions = currentWorkingOptions;
                 return new BiResult<Bitmap, DrawOptions>()
-                            {
-                                Obj1 = backBufferTmp,
-                                Obj2 = currentWorkingOptions
-                            };
+                {
+                    Obj1 = backBufferTmp,
+                    Obj2 = currentWorkingOptions
+                };
             }
         }
 
@@ -219,7 +216,7 @@ namespace HDGraph.DrawEngine
                 nodeText += Environment.NewLine + HDGTools.FormatSize(node.TotalSize);
             }
             SizeF sizeTextName = frontGraph.MeasureString(nodeText, currentWorkingOptions.TextFont);
-            
+
             if (sizeTextName.Height <= pasNiveau)
             {
                 float x = targetRec.X + (targetRec.Width - sizeTextName.Width) / 2;

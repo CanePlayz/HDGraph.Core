@@ -1,7 +1,6 @@
 //#define GENERATE_VERSION_INFO     // comment for standard application use.
 
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
@@ -115,7 +114,7 @@ namespace HDGraph
                     }
                     else
                     {   // le 1er argument est un répertoire: il faut lancer le scan.
-                        
+
                         // via appel depuis l'explorateur : on peut recevoir un chemin sans "\", comme par exemple "C:", on complète avec le \ qui manque :
                         if (path.EndsWith(":"))
                             path += "\\";

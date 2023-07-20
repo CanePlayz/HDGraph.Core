@@ -1,15 +1,9 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Text;
 using System.Windows.Forms;
-using System.Diagnostics;
-using System.Drawing.Drawing2D;
 using HDGraph.Resources;
 using HDGraph.DrawEngine;
-using System.Drawing.Imaging;
 using HDGraph.Interfaces.ScanEngines;
 using HDGraph.Interfaces.DrawEngines;
 

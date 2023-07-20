@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
 using System.Diagnostics;
-using HDGraph.Interfaces;
 using HDGraph.Win32NativeFileSystemEnumerator;
 using HDGraph.Interfaces.ScanEngines;
 
@@ -42,7 +39,7 @@ namespace HDGraph.ScanEngine
                 else
                 {
                     DirectoryInfo dirInfo = new DirectoryInfo(dir.Path);
-                    
+
                     // Add sub dir.
                     if (pleaseCancelCurrentWork)
                     {
@@ -98,7 +95,7 @@ namespace HDGraph.ScanEngine
 
         private void ScanFilesOfDir(IDirectoryNode dir, bool includeFilesOfSubdir)
         {
-            
+
             FileSystemEnumerator enumerator = new FileSystemEnumerator(dir.Path, null, includeFilesOfSubdir, this.IgnoreSymLinks);
             foreach (IExtendedFileInfo fi in enumerator.Matches())
             {

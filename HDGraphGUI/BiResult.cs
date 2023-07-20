@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HDGraph
+﻿namespace HDGraph
 {
     public class BiResult<T1, T2>
     {
