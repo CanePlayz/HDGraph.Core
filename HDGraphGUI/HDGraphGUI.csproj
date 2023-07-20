@@ -5,9 +5,9 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>HDGraph</RootNamespace>
     <AssemblyName>HDGraph</AssemblyName>
+    <Version>1.5.1.0</Version>
     <ApplicationIcon>HDGraph.ico</ApplicationIcon>
     <Copyright>Copyright © 2006-2015 LAUGEL Jean-Yves, 2023 Jacob Pfundstein</Copyright>
-    <AssemblyVersion>1.5.1.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

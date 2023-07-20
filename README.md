@@ -11,13 +11,14 @@ HDGraph was originally created by Jean-Yves Laugel. It is hosted on [SourceForge
 
 The goals of this project are to:
 
-- [ ] Update HDGraph to use modern technologies (most notably .NET 7/8 and WiX)
-- [ ] Modernize the UI (potentially with a new framework, WinUI 3?)
+- [ ] Clean up the codebase
+- [ ] Update HDGraph to use modern technologies (most notably .NET 7/8)
+- [ ] Modernize the UI (potentially with WinUI 3)
 - [ ] Pave the way for new features
 
 ## What is the roadmap for this project?
 
-Firstly, I want to get the version with .NET 7.0 fully working. Then, I want to provide a proper installer (potentially with WiX) or consider a portable solution. After that, HDGraph will be ready for its first release (probably called 2.0). Once that is done, I want to start working on an improved UI and eventually new features.
+Once the cleanup and modernization are done, HDGraph will be ready for its first release (2.0). After that, new features can be considered.
 
 ## Who am I?
 
