@@ -8,6 +8,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Win32NativeFileSystemEnumer
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HDGraphInterfaces", "HDGraphInterfaces\HDGraphInterfaces.csproj", "{E52451BA-30AB-44C4-A09B-EBDCC62E72F6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HDGraph", "HDGraph\HDGraph.csproj", "{25A61FEE-9B33-4D19-8ADF-719E0CB937B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,8 +28,15 @@ Global
 		{E52451BA-30AB-44C4-A09B-EBDCC62E72F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E52451BA-30AB-44C4-A09B-EBDCC62E72F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E52451BA-30AB-44C4-A09B-EBDCC62E72F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25A61FEE-9B33-4D19-8ADF-719E0CB937B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25A61FEE-9B33-4D19-8ADF-719E0CB937B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25A61FEE-9B33-4D19-8ADF-719E0CB937B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25A61FEE-9B33-4D19-8ADF-719E0CB937B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {08FCE819-BEE1-4418-B3F7-7BB59F3131EF}
 	EndGlobalSection
 EndGlobal

@@ -11,9 +11,8 @@ HDGraph was originally created by Jean-Yves Laugel. It is hosted on [SourceForge
 
 The goals of this project are to:
 
-- [ ] Clean up the codebase
-- [ ] Update HDGraph to use modern technologies (most notably .NET 7/8)
-- [ ] Modernize the UI (potentially with WinUI 3)
+- [ ] Update HDGraph to use modern technologies (most notably .NET 8)
+- [ ] Port to Avalonia UI (a cross-platform UI framework)
 - [ ] Pave the way for new features
 
 ## What is the roadmap for this project?
