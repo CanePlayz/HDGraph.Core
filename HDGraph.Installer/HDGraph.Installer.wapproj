@@ -58,7 +58,6 @@
     <NoWarn>$(NoWarn);NU1702</NoWarn>
     <EntryPointProjectUniqueName>..\HDGraph\HDGraph.csproj</EntryPointProjectUniqueName>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
-    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
     <AppxBundlePlatforms>x86|x64</AppxBundlePlatforms>
     <PackageCertificateKeyFile>Certificate.pfx</PackageCertificateKeyFile>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
@@ -99,7 +98,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <None Include="HDGraph.Installer_TemporaryKey.pfx" />
+    <None Include="Certificate.pfx" />
     <Content Include="Images\BadgeLogo.scale-100.png" />
     <Content Include="Images\BadgeLogo.scale-125.png" />
     <Content Include="Images\BadgeLogo.scale-150.png" />
