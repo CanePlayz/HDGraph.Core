@@ -1,0 +1,60 @@
+name: Package
+
+on:
+  workflow_dispatch:
+
+jobs:
+  package:
+    name: Package
+    runs-on: windows-latest
+
+    env:
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+      DOTNET_NOLOGO: true
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Install .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.0.x
+
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.1
+
+    - name: Restore projects
+      run: >
+        dotnet restore
+
+    - name: Create certificate file
+      id: secret-file1
+      run: |
+        $certContent = [System.Convert]::FromBase64String("${{ secrets.B64_CERTIFICATE }}")
+        $certPath = Join-Path -Path "${{ github.workspace }}/HDGraph.Installer" -ChildPath "Certificate.pfx"
+        [System.IO.File]::WriteAllBytes($certPath, $certContent)
+        $certHash = (Get-FileHash -Path $certPath -Algorithm SHA256).Hash
+        echo "Hash: $certHash"
+      shell: pwsh
+
+    - name: Build MSIX package
+      run: >
+        msbuild HDGraph.Installer/HDGraph.Installer.wapproj /nologo /nr:false /p:AppxBundle=Always /p:UapAppxPackageBuildMode=Sideload /p:AppxBundlePlatforms="x64|x86" /p:configuration="Release"
+
+    - name: Move and rename package
+      run: |
+        [xml]$appxManifest = Get-Content "${{ github.workspace }}/HDGraph.Installer/Package.appxmanifest"
+        $version = $appxManifest.Package.Identity.Version
+        $sourcePath = "${{ github.workspace }}/HDGraph.Installer/AppPackages/HDGraph.Installer_$($version)_Test/HDGraph.Installer_$($version)_x64_x86.msixbundle"
+        $destinationPath = "${{ github.workspace }}/publish/HDGraph_Installer.msixbundle"
+        New-Item -ItemType Directory -Force -Path "${{ github.workspace }}/publish" | Out-Null
+        Move-Item $sourcePath $destinationPath
+      shell: pwsh
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: Installer
+        path: publish/*.msixbundle
