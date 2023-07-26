@@ -27,7 +27,7 @@ jobs:
 
     - name: Publish
       run: >
-        dotnet publish HDGraph --output publish/ --configuration Release
+        dotnet publish HDGraph --output publish/ --configuration Release /p:BuildingPortable=true
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v3
