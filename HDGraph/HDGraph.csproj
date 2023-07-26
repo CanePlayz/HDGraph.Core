@@ -4,10 +4,12 @@
     <TargetFramework>net7.0</TargetFramework>
     <AssemblyName>HDGraph</AssemblyName>
     <Version>2.0</Version>
-    <Nullable>enable</Nullable>
     <ApplicationIcon>Assets\HDGraph.ico</ApplicationIcon>
     <Copyright>Copyright © 2006-2015 LAUGEL Jean-Yves, 2023 Jacob Pfundstein</Copyright>
+    <RuntimeIdentifiers>win-x64;win-x86</RuntimeIdentifiers>
+    <Nullable>enable</Nullable>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
