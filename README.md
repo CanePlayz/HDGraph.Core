@@ -1,11 +1,13 @@
-# HDGraph
+# HDGraph.Core
 
-## What is HDGraph?
+## What is HDGraph [.Core]?
+
+HDGraph.Core is a project which aims to update and modernize the original HDGraph. But what is this HDGraph?
 
 "HDG is a free tool allowing to graphically display the hard disk space usage. It shows all the directories and subdirectories of the hard drive on a single graph, allowing [you] to see the largest directories at a glance."
 -Quote from [HDGraph's documentation](https://hdgraph.sourceforge.net/doc/en/HDGraph.htm)
 
-HDGraph was originally created by Jean-Yves Laugel. It is hosted on [SourceForge](https://sourceforge.net/projects/hdgraph/) and was created with [SVN](https://subversion.apache.org/). It was last updated in 2015 with the release of version 1.5.1.
+HDGraph was originally created by Jean-Yves Laugel,  hosted on [SourceForge](https://sourceforge.net/projects/hdgraph/) and created with [SVN](https://subversion.apache.org/). It was last updated in 2015 with the release of version 1.5.1.
 
 ## What are the goals of this project?
 
