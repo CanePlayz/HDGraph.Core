@@ -1,5 +1,7 @@
 # HDGraph.Core
 
+![HDGraph.Core logo](images/logo.svg)
+
 ## What is HDGraph [.Core]?
 
 HDGraph.Core is a project which aims to update and modernize the original HDGraph. But what is this HDGraph?
